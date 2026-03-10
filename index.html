@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORIM — Optimisation Résolutive Immuno-Métabolique</title>
+  <meta name="description" content="ORIM — Association scientifique genevoise spécialisée en optimisation immuno-métabolique. Nutrition, Smart Farming, Technologie de pointe." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d1b2a;
+      --blue:   #1a4a7a;
+      --cyan:   #00b4d8;
+      --lcyan:  #90e0ef;
+      --white:  #f8fafc;
+      --gray:   #94a3b8;
+      --lgray:  #1e2d3d;
+      --gold:   #c9a84c;
+      --green:  #22c55e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── VIDEO HERO BG ────────────────────────────────────────────────── */
+    #hero-video {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%; min-height: 100%;
+      width: auto; height: auto;
+      z-index: 0; object-fit: cover;
+      opacity: .45;
+      pointer-events: none;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(13,27,42,.55) 0%,
+        rgba(13,27,42,.35) 40%,
+        rgba(13,27,42,.85) 100%
+      );
+    }
+
+    /* ── CANVAS PARTICLES ─────────────────────────────────────────────── */
+    #canvas-bg {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0; pointer-events: none;
+    }
+
+    /* ── NAV ──────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(13, 27, 42, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 180, 216, 0.15);
+      transition: all .3s;
+    }
+    .nav-logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem; font-weight: 700;
+      background: linear-gradient(135deg, #00b4d8, #1a4a7a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: .12em;
+    }
+    .nav-logo span { font-size: .7rem; display: block; letter-spacing: .25em; color: var(--gray); -webkit-text-fill-color: var(--gray); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      border: none; color: #fff; padding: .55rem 1.4rem;
+      border-radius: 2rem; font-size: .8rem; font-weight: 600;
+      letter-spacing: .08em; cursor: pointer; transition: opacity .2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ── HERO ─────────────────────────────────────────────────────────── */
+    #hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-content {
+      text-align: center; padding: 8rem 2rem 4rem;
+      max-width: 900px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0,180,216,.12);
+      border: 1px solid rgba(0,180,216,.3);
+      color: var(--cyan); font-size: .75rem;
+      padding: .35rem 1rem; border-radius: 2rem;
+      letter-spacing: .15em; text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeInUp .8s ease both;
+    }
+    .hero-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 700; line-height: 1;
+      background: linear-gradient(135deg, #ffffff 0%, #00b4d8 50%, #90e0ef 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      animation: fadeInUp .8s .2s ease both;
+    }
+    .hero-subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(.9rem, 2vw, 1.25rem);
+      color: var(--lcyan); letter-spacing: .3em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+      animation: fadeInUp .8s .35s ease both;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--gray); line-height: 1.7;
+      max-width: 600px; margin: 0 auto 2.5rem;
+      animation: fadeInUp .8s .5s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeInUp .8s .65s ease both;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), #0077b6);
+      color: #fff; border: none; padding: .85rem 2.2rem;
+      border-radius: 2rem; font-size: .9rem; font-weight: 600;
+      cursor: pointer; letter-spacing: .06em; transition: transform .2s, box-shadow .2s;
+      text-decoration: none; display: inline-block;
+      box-shadow: 0 0 30px rgba(0,180,216,.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,180,216,.5); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(0,180,216,.5);
+      color: var(--cyan); padding: .85rem 2.2rem;
+      border-radius: 2rem; font-size: .9rem; font-weight: 600;
+      cursor: pointer; letter-spacing: .06em; transition: all .2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { background: rgba(0,180,216,.1); border-color: var(--cyan); }
+
+    /* DNA central glow */
+    .dna-visual {
+      margin: 3rem auto 0;
+      width: min(380px, 80vw);
+      animation: fadeInUp .8s .8s ease both, float 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 40px rgba(0,180,216,.4));
+    }
+    .dna-visual img { width: 100%; border-radius: 50%; }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      color: var(--gray); font-size: .7rem; letter-spacing: .15em;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after {
+      content: ''; width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--cyan), transparent);
+    }
+
+    /* ── STATS BAR ────────────────────────────────────────────────────── */
+    .stats-bar {
+      position: relative; z-index: 1;
+      background: rgba(26,74,122,.2);
+      border-top: 1px solid rgba(0,180,216,.1);
+      border-bottom: 1px solid rgba(0,180,216,.1);
+      padding: 2rem 3rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem; text-align: center;
+    }
+    .stat-item { }
+    .stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--cyan), var(--lcyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: .75rem; color: var(--gray); letter-spacing: .1em; text-transform: uppercase; }
+
+    /* ── SECTIONS common ──────────────────────────────────────────────── */
+    section { position: relative; z-index: 1; padding: 6rem 2rem; }
+    .section-tag {
+      display: inline-block; color: var(--cyan); font-size: .7rem;
+      letter-spacing: .25em; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .section-tag::before { content: '— '; }
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem); font-weight: 700;
+      line-height: 1.1; margin-bottom: 1rem;
+    }
+    .section-line {
+      width: 50px; height: 3px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      border-radius: 2px; margin: 1rem 0 2rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ── MÉTHODE ─────────────────────────────────────────────────────── */
+    #methode { background: rgba(13,27,42,.6); }
+    .methode-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      margin-top: 3rem;
+    }
+    .methode-text p {
+      color: var(--gray); line-height: 1.8; margin-bottom: 1.2rem;
+      font-size: .95rem;
+    }
+    .acro-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-top: 2rem;
+    }
+    .acro-card {
+      background: rgba(0,180,216,.06);
+      border: 1px solid rgba(0,180,216,.15);
+      border-radius: 12px; padding: 1.2rem;
+      transition: all .3s;
+    }
+    .acro-card:hover {
+      background: rgba(0,180,216,.12);
+      border-color: rgba(0,180,216,.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,180,216,.1);
+    }
+    .acro-letter {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem; font-weight: 700; color: var(--cyan);
+      line-height: 1;
+    }
+    .acro-word { font-size: .75rem; color: var(--gray); margin-top: .2rem; }
+    .acro-desc { font-size: .8rem; color: var(--white); margin-top: .5rem; line-height: 1.5; }
+    .methode-visual {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .dna-ring {
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 30%, rgba(0,180,216,.15), transparent 70%);
+      border: 1px solid rgba(0,180,216,.2);
+      display: flex; align-items: center; justify-content: center;
+      animation: rotate 20s linear infinite;
+      box-shadow: 0 0 80px rgba(0,180,216,.1), inset 0 0 80px rgba(0,180,216,.05);
+    }
+    .dna-ring img { width: 240px; animation: rotate 20s linear infinite reverse; border-radius: 50%; }
+
+    /* ── DOMAINES ────────────────────────────────────────────────────── */
+    #domaines { }
+    .domains-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .domain-card {
+      background: rgba(30,45,61,.6);
+      border: 1px solid rgba(0,180,216,.1);
+      border-radius: 16px; padding: 2rem;
+      transition: all .35s; cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .domain-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .35s;
+    }
+    .domain-card:hover::before { transform: scaleX(1); }
+    .domain-card:hover {
+      border-color: rgba(0,180,216,.3);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 30px rgba(0,180,216,.08);
+    }
+    .domain-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(0,180,216,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin-bottom: 1.2rem;
+    }
+    .domain-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--white); margin-bottom: .6rem;
+    }
+    .domain-desc { font-size: .85rem; color: var(--gray); line-height: 1.7; }
+    .domain-tags {
+      display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem;
+    }
+    .tag {
+      background: rgba(0,180,216,.08);
+      border: 1px solid rgba(0,180,216,.2);
+      color: var(--lcyan); font-size: .65rem;
+      padding: .2rem .7rem; border-radius: 2rem;
+      letter-spacing: .06em;
+    }
+
+    /* ── ASSOCIATION ─────────────────────────────────────────────────── */
+    #association {
+      background: linear-gradient(135deg, rgba(13,27,42,.9), rgba(26,74,122,.2));
+    }
+    .assoc-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start; margin-top: 3rem;
+    }
+    .assoc-info-card {
+      background: rgba(0,180,216,.05);
+      border: 1px solid rgba(0,180,216,.2);
+      border-radius: 16px; padding: 2rem;
+    }
+    .info-row {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label {
+      font-size: .7rem; color: var(--cyan);
+      letter-spacing: .12em; text-transform: uppercase;
+      min-width: 90px; margin-top: .1rem;
+    }
+    .info-value { font-size: .9rem; color: var(--white); }
+    .founder-card {
+      background: rgba(30,45,61,.8);
+      border: 1px solid rgba(0,180,216,.15);
+      border-radius: 16px; padding: 2rem;
+      text-align: center;
+    }
+    .founder-photo {
+      width: 100px; height: 100px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 3px solid rgba(0,180,216,.4);
+      box-shadow: 0 0 30px rgba(0,180,216,.2);
+      margin: 0 auto 1rem; display: block;
+    }
+    .founder-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2rem; font-weight: 700; color: var(--white);
+    }
+    .founder-role { font-size: .75rem; color: var(--cyan); letter-spacing: .1em; margin: .3rem 0 1rem; }
+    .founder-bio { font-size: .82rem; color: var(--gray); line-height: 1.7; }
+
+    /* Membership form */
+    .membership-box {
+      background: rgba(0,180,216,.06);
+      border: 1px solid rgba(0,180,216,.2);
+      border-radius: 16px; padding: 2rem; margin-top: 2rem;
+    }
+    .membership-box h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2rem; margin-bottom: 1rem; color: var(--cyan);
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: rgba(255,255,255,.05);
+      border: 1px solid rgba(0,180,216,.2); border-radius: 8px;
+      padding: .7rem 1rem; color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: .85rem;
+      transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--cyan);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); }
+    .form-group select option { background: var(--navy); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── CF MANAGEMENT ───────────────────────────────────────────────── */
+    #cfmanagement {
+      background: linear-gradient(180deg, rgba(13,27,42,0) 0%, rgba(201,168,76,.04) 100%);
+    }
+    .cf-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; margin-top: 3rem;
+    }
+    .cf-logo-area {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1.5rem;
+    }
+    .cf-logo-box {
+      background: rgba(201,168,76,.06);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 20px; padding: 3rem;
+      text-align: center; width: 100%;
+    }
+    .cf-brand {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.5rem; font-weight: 300;
+      letter-spacing: .35em; color: var(--white);
+    }
+    .cf-sub {
+      font-size: .7rem; color: var(--gold);
+      letter-spacing: .3em; text-transform: uppercase;
+      margin-top: .5rem;
+    }
+    .cf-country {
+      display: flex; align-items: center; gap: .5rem;
+      color: var(--gray); font-size: .8rem;
+    }
+    .cf-services { margin-top: 1rem; }
+    .cf-service-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem; border-radius: 10px;
+      border: 1px solid rgba(201,168,76,.08);
+      margin-bottom: .8rem;
+      transition: all .25s;
+    }
+    .cf-service-item:hover {
+      background: rgba(201,168,76,.05);
+      border-color: rgba(201,168,76,.2);
+    }
+    .cf-service-icon { font-size: 1.3rem; min-width: 30px; }
+    .cf-service-title { font-size: .9rem; font-weight: 600; margin-bottom: .2rem; }
+    .cf-service-desc { font-size: .8rem; color: var(--gray); line-height: 1.5; }
+    .cf-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--gold); font-size: .85rem; text-decoration: none;
+      border: 1px solid rgba(201,168,76,.3); padding: .6rem 1.4rem;
+      border-radius: 2rem; transition: all .2s;
+    }
+    .cf-link:hover { background: rgba(201,168,76,.1); }
+
+    /* ── CONTACT ─────────────────────────────────────────────────────── */
+    #contact {
+      background: rgba(13,27,42,.8);
+      text-align: center;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem; margin: 3rem 0;
+    }
+    .contact-card {
+      background: rgba(30,45,61,.5);
+      border: 1px solid rgba(0,180,216,.1);
+      border-radius: 16px; padding: 2rem;
+      transition: all .3s;
+    }
+    .contact-card:hover {
+      border-color: rgba(0,180,216,.3);
+      transform: translateY(-4px);
+    }
+    .contact-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .contact-card-title { font-family: 'Rajdhani', sans-serif; font-size: 1rem; margin-bottom: .5rem; color: var(--cyan); }
+    .contact-card-val { font-size: .85rem; color: var(--gray); }
+    .contact-card a { color: var(--gray); text-decoration: none; }
+    .contact-card a:hover { color: var(--cyan); }
+
+    /* ── FOOTER ──────────────────────────────────────────────────────── */
+    footer {
+      position: relative; z-index: 1;
+      background: rgba(8,16,24,.95);
+      border-top: 1px solid rgba(0,180,216,.1);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand .nav-logo { font-size: 2rem; }
+    .footer-brand p { font-size: .82rem; color: var(--gray); line-height: 1.7; margin-top: .8rem; max-width: 260px; }
+    .footer-col h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .8rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: .6rem; }
+    .footer-col a { color: var(--gray); text-decoration: none; font-size: .82rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      max-width: 1200px; margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.05);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .75rem; color: var(--gray);
+      flex-wrap: wrap; gap: .5rem;
+    }
+    .footer-entities { display: flex; gap: 1.5rem; }
+
+    /* ── ANIMATIONS ──────────────────────────────────────────────────── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-15px); }
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 30px rgba(0,180,216,.3); }
+      50%       { box-shadow: 0 0 60px rgba(0,180,216,.6); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .methode-grid, .assoc-grid, .cf-split { grid-template-columns: 1fr; gap: 2rem; }
+      .acro-grid, .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ── GATEWAY — CHOISISSEZ VOTRE UNIVERS ─────────────────────────── */
+    #gateway {
+      position: relative; z-index: 1;
+      display: flex;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .gw-panel {
+      flex: 1;
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 6rem 4rem 4rem;
+      text-align: center;
+      cursor: pointer;
+      transition: flex .65s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+    #gateway:has(.gw-panel:hover) .gw-panel { flex: 0.7; }
+    #gateway .gw-panel:hover { flex: 1.3; }
+    .gw-orim {
+      background: linear-gradient(165deg, #06101e 0%, #0b1c38 50%, #0c2448 100%);
+      border-right: 1px solid rgba(0,180,216,.13);
+    }
+    .gw-cf {
+      background: linear-gradient(165deg, #06100e 0%, #0d120a 50%, #111005 100%);
+    }
+    .gw-ambient {
+      position: absolute; inset: 0; pointer-events: none;
+      transition: opacity .6s;
+    }
+    .gw-ambient-orim {
+      background:
+        radial-gradient(ellipse at 28% 32%, rgba(0,180,216,.13) 0%, transparent 58%),
+        radial-gradient(ellipse at 72% 72%, rgba(26,74,122,.1) 0%, transparent 52%);
+    }
+    .gw-ambient-cf {
+      background:
+        radial-gradient(ellipse at 66% 32%, rgba(201,168,76,.11) 0%, transparent 58%),
+        radial-gradient(ellipse at 32% 72%, rgba(120,90,15,.08) 0%, transparent 52%);
+    }
+    .gw-panel:hover .gw-ambient { opacity: 1.6; }
+    .gw-icon-wrap {
+      width: 110px; height: 110px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem; margin: 0 auto 1.8rem;
+      transition: transform .4s, box-shadow .4s;
+    }
+    .gw-orim .gw-icon-wrap {
+      background: radial-gradient(circle at 35% 30%, #1a4a7a, #0d1b2a);
+      border: 2px solid rgba(0,180,216,.35);
+      box-shadow: 0 0 40px rgba(0,180,216,.2);
+    }
+    .gw-cf .gw-icon-wrap {
+      background: radial-gradient(circle at 35% 30%, #3a2a0a, #0d0d08);
+      border: 2px solid rgba(201,168,76,.35);
+      box-shadow: 0 0 40px rgba(201,168,76,.18);
+    }
+    .gw-panel:hover .gw-icon-wrap { transform: scale(1.1) translateY(-4px); }
+    .gw-orim:hover .gw-icon-wrap { box-shadow: 0 0 65px rgba(0,180,216,.45); }
+    .gw-cf:hover .gw-icon-wrap { box-shadow: 0 0 65px rgba(201,168,76,.4); }
+    .gw-brand {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1.9rem, 3.2vw, 3rem);
+      font-weight: 700;
+      letter-spacing: .15em;
+      margin-bottom: .45rem;
+      transition: letter-spacing .5s;
+    }
+    .gw-panel:hover .gw-brand { letter-spacing: .22em; }
+    .gw-orim .gw-brand {
+      background: linear-gradient(135deg, #ffffff 0%, #00b4d8 55%, #90e0ef 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .gw-cf .gw-brand {
+      background: linear-gradient(135deg, #ffffff 0%, #c9a84c 55%, #e8d090 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .gw-sub {
+      font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+    .gw-orim .gw-sub { color: var(--lcyan); }
+    .gw-cf .gw-sub { color: var(--gold); }
+    .gw-desc {
+      font-size: .92rem; color: var(--gray);
+      line-height: 1.82; max-width: 360px; margin: 0 auto 2.2rem;
+    }
+    .gw-cta {
+      display: inline-block;
+      padding: .9rem 2.3rem;
+      border-radius: 3rem;
+      font-size: .88rem; font-weight: 600;
+      letter-spacing: .08em;
+      text-decoration: none;
+      transition: all .28s;
+      position: relative; z-index: 1;
+    }
+    .gw-orim .gw-cta {
+      background: linear-gradient(135deg, var(--cyan), #0077b6);
+      color: #fff;
+      box-shadow: 0 0 28px rgba(0,180,216,.3);
+    }
+    .gw-orim .gw-cta:hover { box-shadow: 0 0 55px rgba(0,180,216,.65); transform: translateY(-3px); }
+    .gw-cf .gw-cta {
+      background: linear-gradient(135deg, #d4a820, #8a6010);
+      color: #fff;
+      box-shadow: 0 0 28px rgba(201,168,76,.3);
+    }
+    .gw-cf .gw-cta:hover { box-shadow: 0 0 55px rgba(201,168,76,.55); transform: translateY(-3px); }
+    .gw-chips {
+      display: flex; flex-wrap: wrap; gap: .45rem; justify-content: center; margin-top: 1.8rem;
+    }
+    .gw-chip {
+      font-size: .62rem; padding: .28rem .85rem; border-radius: 2rem;
+      letter-spacing: .06em;
+    }
+    .gw-orim .gw-chip { background: rgba(0,180,216,.08); border: 1px solid rgba(0,180,216,.22); color: var(--lcyan); }
+    .gw-cf .gw-chip { background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.22); color: var(--gold); }
+    /* Gateway central OR separator */
+    .gw-or-wrap {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      display: flex; flex-direction: column; align-items: center;
+      pointer-events: none; gap: 0;
+    }
+    .gw-vline {
+      width: 1px; height: 90px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.2), transparent);
+    }
+    .gw-or-badge {
+      background: #0d1b2a;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Rajdhani', sans-serif; font-size: .72rem;
+      font-weight: 700; letter-spacing: .14em;
+      color: rgba(255,255,255,.5);
+    }
+    /* Gateway top label */
+    .gw-top-label {
+      position: absolute; top: 2rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      pointer-events: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .62rem; font-weight: 600;
+      letter-spacing: .45em; text-transform: uppercase;
+      color: rgba(255,255,255,.22);
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      #gateway { flex-direction: column; min-height: auto; }
+      #gateway:has(.gw-panel:hover) .gw-panel { flex: 1; }
+      #gateway .gw-panel:hover { flex: 1; }
+      .gw-panel { min-height: 60vh; padding: 4rem 2rem 3rem; }
+      .gw-or-wrap { display: none; }
+      .gw-orim { border-right: none; border-bottom: 1px solid rgba(0,180,216,.13); }
+      .gw-top-label { display: none; }
+    }
+
+    /* ── CF MANAGEMENT COMPACT ───────────────────────────────────────── */
+    .cf-teaser {
+      background: linear-gradient(135deg, rgba(201,168,76,.05), rgba(13,27,42,.4));
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 20px;
+      padding: 2.5rem 3rem;
+      display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .cf-teaser-brand { flex: 1; min-width: 220px; }
+    .cf-teaser-body { flex: 2; min-width: 260px; }
+
+    /* ── GLOW DIVIDER ────────────────────────────────────────────────── */
+    .glow-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      margin: 0; opacity: .4; position: relative; z-index: 1;
+    }
+
+    /* ── CYBER GRID OVERLAY ──────────────────────────────────────────── */
+    .hex-bg {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle at 25% 25%, rgba(0,180,216,.05) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(26,74,122,.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── PARTICLES CANVAS ──────────────────────────────────────────────────── -->
+<canvas id="canvas-bg"></canvas>
+
+<!-- ── NAVIGATION ───────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">ORIM<span>Association & SAS</span></div>
+  <ul class="nav-links">
+    <li><a href="#gateway">Nos Univers</a></li>
+    <li><a href="#methode">La Méthode</a></li>
+    <li><a href="#domaines">Domaines</a></li>
+    <li><a href="#association">Association</a></li>
+    <li><a href="#partenaires">Équipe</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#association" class="nav-cta">Rejoindre l'association</a>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+<section id="hero">
+  <video id="hero-video" autoplay muted loop playsinline>
+    <source src="hero-bg.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hex-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Association Scientifique &bull; Genève &bull; Fondée 2026</div>
+    <h1 class="hero-title">ORIM</h1>
+    <p class="hero-subtitle">Optimisation Résolutive Immuno-Métabolique</p>
+    <p class="hero-desc">
+      Une approche scientifique d'avant-garde qui réunit immunologie, métabolisme
+      et technologie pour optimiser la santé humaine à son niveau fondamental — l'ADN de votre vitalité.
+    </p>
+    <div class="hero-actions">
+      <a href="#gateway" class="btn-primary">Choisir votre univers ↓</a>
+      <a href="#association" class="btn-outline">Rejoindre l'association</a>
+    </div>
+
+    <div class="dna-visual" style="filter:drop-shadow(0 0 60px rgba(0,180,216,.6));">
+      <img src="../06_COMMUNICATION/06.1_Identite_Visuelle/Logos/ORIM OFFICIAL LOGO 2026.jpeg" alt="ORIM DNA Logo" style="border-radius:50%; border:1px solid rgba(0,180,216,.25);"/>
+    </div>
+  </div>
+  <div class="scroll-hint">Défiler</div>
+</section>
+
+<!-- ── GATEWAY — CHOISISSEZ VOTRE UNIVERS ───────────────────────────────── -->
+<section id="gateway">
+
+  <!-- Label centré en haut -->
+  <div class="gw-top-label">Choisissez votre univers</div>
+
+  <!-- ┌─────────────────────────────┐ -->
+  <!-- │  Panneau gauche : ORIM Nutrition │ -->
+  <!-- └─────────────────────────────┘ -->
+  <div class="gw-panel gw-orim" onclick="document.getElementById('methode').scrollIntoView({behavior:'smooth'})">
+    <div class="gw-ambient gw-ambient-orim"></div>
+
+    <div class="gw-icon-wrap">🧬</div>
+
+    <div class="gw-brand">ORIM NUTRITION</div>
+    <div class="gw-sub">Association & SAS · Science & Santé</div>
+
+    <p class="gw-desc">
+      La méthode ORIM — une approche scientifique d'avant-garde qui optimise votre
+      terrain immuno-métabolique à travers la nutrition, la micronutrition,
+      la recherche et la formation.
+    </p>
+
+    <a href="#methode" class="gw-cta" onclick="event.stopPropagation()">
+      Explorer ORIM Nutrition ↓
+    </a>
+
+    <div class="gw-chips">
+      <span class="gw-chip">Immunologie</span>
+      <span class="gw-chip">Micronutrition</span>
+      <span class="gw-chip">Smart Farming</span>
+      <span class="gw-chip">Association Genève 🇨🇭</span>
+      <span class="gw-chip">ORIM SAS France 🇫🇷</span>
+    </div>
+  </div>
+
+  <!-- ── Séparateur central OU ─────────────────────────────────────────── -->
+  <div class="gw-or-wrap">
+    <div class="gw-vline"></div>
+    <div class="gw-or-badge">OU</div>
+    <div class="gw-vline"></div>
+  </div>
+
+  <!-- ┌──────────────────────────────┐ -->
+  <!-- │  Panneau droit : CF Management │ -->
+  <!-- └──────────────────────────────┘ -->
+  <div class="gw-panel gw-cf" onclick="window.open('https://www.cfmanagement.ch','_blank')">
+    <div class="gw-ambient gw-ambient-cf"></div>
+
+    <div class="gw-icon-wrap">💼</div>
+
+    <div class="gw-brand">CF MANAGEMENT</div>
+    <div class="gw-sub">Coaching · Optimisation · Performance</div>
+
+    <p class="gw-desc">
+      Optimisez votre performance professionnelle et personnelle.
+      Conseil stratégique, coaching individuel et accompagnement
+      fondés sur les principes ORIM appliqués au monde professionnel.
+    </p>
+
+    <a href="https://www.cfmanagement.ch" target="_blank" class="gw-cta" onclick="event.stopPropagation()">
+      Visiter cfmanagement.ch ↗
+    </a>
+
+    <div class="gw-chips">
+      <span class="gw-chip">Coaching</span>
+      <span class="gw-chip">Conseil en organisation</span>
+      <span class="gw-chip">Formation ORIM</span>
+      <span class="gw-chip">Ferney-Voltaire 🇫🇷</span>
+      <span class="gw-chip">cfmanagement.ch 🇨🇭</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── STATS BAR ──────────────────────────────────────────────────────────── -->
+<div class="stats-bar reveal">
+  <div class="stat-item"><div class="stat-num">2026</div><div class="stat-label">Année de fondation</div></div>
+  <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Piliers scientifiques</div></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Domaines d'application</div></div>
+  <div class="stat-item"><div class="stat-num">CH / FR</div><div class="stat-label">Présence internationale</div></div>
+</div>
+
+<div class="glow-divider"></div>
+
+<!-- ── MÉTHODE ──────────────────────────────────────────────────────────── -->
+<section id="methode">
+  <div class="container">
+    <p class="section-tag reveal">Science</p>
+    <h2 class="section-title reveal">La Méthode ORIM</h2>
+    <div class="section-line reveal"></div>
+
+    <div class="methode-grid">
+      <div class="methode-text reveal">
+        <p>
+          ORIM est une approche holistique et scientifique qui place l'optimisation
+          du terrain biologique au cœur de la santé. Là où la médecine conventionnelle
+          traite les symptômes, ORIM agit sur les mécanismes fondamentaux — immunitaires
+          et métaboliques — qui déterminent votre vitalité.
+        </p>
+        <p>
+          Développée par Olivier Chevalley, la méthode ORIM s'appuie sur une
+          lecture intégrative des signaux biologiques pour construire des protocoles
+          personnalisés, mesurables et reproductibles.
+        </p>
+        <p>
+          L'acronyme ORIM résume une vision complète : de l'<strong style="color:var(--cyan)">Optimisation</strong> ciblée,
+          une approche <strong style="color:var(--cyan)">Résolutive</strong> orientée solutions,
+          un ancrage <strong style="color:var(--cyan)">Immuno</strong>logique solide,
+          et une dimension <strong style="color:var(--cyan)">Métabolique</strong> centrale.
+        </p>
+        <div class="acro-grid">
+          <div class="acro-card">
+            <div class="acro-letter">O</div>
+            <div class="acro-word">Optimisation</div>
+            <div class="acro-desc">Maximiser les performances biologiques par une approche précise et personnalisée.</div>
+          </div>
+          <div class="acro-card">
+            <div class="acro-letter">R</div>
+            <div class="acro-word">Résolutive</div>
+            <div class="acro-desc">Des solutions concrètes orientées vers la résolution durable des déséquilibres.</div>
+          </div>
+          <div class="acro-card">
+            <div class="acro-letter">I</div>
+            <div class="acro-word">Immuno</div>
+            <div class="acro-desc">Renforcer et moduler le système immunitaire comme pilier central de la santé.</div>
+          </div>
+          <div class="acro-card">
+            <div class="acro-letter">M</div>
+            <div class="acro-word">Métabolique</div>
+            <div class="acro-desc">Optimiser les processus métaboliques pour une énergie et une régénération optimales.</div>
+          </div>
+        </div>
+      </div>
+      <div class="methode-visual reveal">
+        <div class="dna-ring">
+          <img src="06_COMMUNICATION/06.1_Identite_Visuelle/Logos/ORIM transparent.jpg" alt="ORIM" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ── DOMAINES ──────────────────────────────────────────────────────────── -->
+<section id="domaines">
+  <div class="container">
+    <p class="section-tag reveal">Applications</p>
+    <h2 class="section-title reveal">Nos Domaines d'Excellence</h2>
+    <div class="section-line reveal"></div>
+    <p class="reveal" style="color:var(--gray); max-width:600px; margin-bottom:1rem;">
+      L'approche ORIM dépasse la santé individuelle. Elle s'étend à l'alimentation,
+      à l'agriculture et à la technologie — une vision intégrée de l'optimisation de la vie.
+    </p>
+
+    <div class="domains-grid">
+      <div class="domain-card reveal">
+        <div class="domain-icon">🧬</div>
+        <div class="domain-title">Santé & Nutrition</div>
+        <div class="domain-desc">
+          Protocoles nutritionnels personnalisés basés sur l'analyse du terrain immuno-métabolique.
+          Complémentation ciblée, alimentation fonctionnelle et suivi biologique précis.
+        </div>
+        <div class="domain-tags">
+          <span class="tag">Immunologie</span>
+          <span class="tag">Micronutrition</span>
+          <span class="tag">Bilan métabolique</span>
+        </div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon">🌱</div>
+        <div class="domain-title">Agriculture Verticale</div>
+        <div class="domain-desc">
+          Des aliments cultivés avec une densité nutritionnelle maximale. ORIM applique
+          ses principes d'optimisation à la production alimentaire — pour une nutrition
+          à la source.
+        </div>
+        <div class="domain-tags">
+          <span class="tag">Vertical Farming</span>
+          <span class="tag">Qualité nutritive</span>
+          <span class="tag">Circuit court</span>
+        </div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon">🤖</div>
+        <div class="domain-title">Smart Farming & Tech</div>
+        <div class="domain-desc">
+          Intelligence artificielle, drones de surveillance et capteurs biologiques
+          au service d'une agriculture de précision. La technologie comme levier
+          de la qualité nutritionnelle.
+        </div>
+        <div class="domain-tags">
+          <span class="tag">IA</span>
+          <span class="tag">Drones</span>
+          <span class="tag">IoT agricole</span>
+        </div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon">🔬</div>
+        <div class="domain-title">Recherche & Formation</div>
+        <div class="domain-desc">
+          L'association ORIM promeut la recherche en optimisation immuno-métabolique
+          et forme les praticiens de demain à une approche intégrative, scientifique
+          et mesurable.
+        </div>
+        <div class="domain-tags">
+          <span class="tag">R&D</span>
+          <span class="tag">Formation certifiante</span>
+          <span class="tag">Publications</span>
+        </div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon">💊</div>
+        <div class="domain-title">Micronutrition Avancée</div>
+        <div class="domain-desc">
+          Formulation de compléments alimentaires et de protocoles micronutritionnels
+          basés sur la science des interactions immuno-métaboliques.
+        </div>
+        <div class="domain-tags">
+          <span class="tag">Compléments ciblés</span>
+          <span class="tag">APE 8690D</span>
+          <span class="tag">Paramédicale</span>
+        </div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon">🌍</div>
+        <div class="domain-title">Impact Global</div>
+        <div class="domain-desc">
+          De Genève à Ferney-Voltaire, ORIM construit un réseau franco-suisse
+          d'excellence pour exporter une vision globale de la santé optimisée
+          au service de l'humanité.
+        </div>
+        <div class="domain-tags">
+          <span class="tag">Suisse</span>
+          <span class="tag">France</span>
+          <span class="tag">International</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ── ASSOCIATION ──────────────────────────────────────────────────────── -->
+<section id="association">
+  <div class="container">
+    <p class="section-tag reveal">Association à but non lucratif</p>
+    <h2 class="section-title reveal">Association ORIM — Genève</h2>
+    <div class="section-line reveal"></div>
+
+    <div class="assoc-grid">
+      <div>
+        <div class="assoc-info-card reveal">
+          <div class="info-row">
+            <span class="info-label">Fondée le</span>
+            <span class="info-value">18 février 2026</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Siège</span>
+            <span class="info-value">86 rue de Genève, 1225 Chêne-Bourg, Genève — Suisse</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Statut</span>
+            <span class="info-value">Association à but non lucratif — Code civil suisse art. 60 ss.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Président</span>
+            <span class="info-value">Olivier Chevalley</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Mission</span>
+            <span class="info-value">Promouvoir la recherche, la formation et la pratique de l'Optimisation Résolutive Immuno-Métabolique</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Cotisation</span>
+            <span class="info-value">Membres actifs, bienfaiteurs, honoraires — contactez-nous</span>
+          </div>
+        </div>
+
+        <div class="founder-card reveal" style="margin-top:1.5rem">
+          <!-- Avatar ORIM — pas de photo personnelle -->
+          <div style="width:100px;height:100px;border-radius:50%;margin:0 auto 1rem;
+                      background:linear-gradient(135deg,#0d1b2a,#1a4a7a);
+                      border:3px solid rgba(0,180,216,.4);
+                      box-shadow:0 0 30px rgba(0,180,216,.2);
+                      display:flex;align-items:center;justify-content:center;">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6 Q26 14 34 6" stroke="#00b4d8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M18 16 Q26 24 34 16" stroke="#00b4d8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M18 26 Q26 34 34 26" stroke="#00b4d8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M18 36 Q26 44 34 36" stroke="#00b4d8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <line x1="18" y1="6" x2="18" y2="46" stroke="#90e0ef" stroke-width="1.8" stroke-opacity="0.5"/>
+              <line x1="34" y1="6" x2="34" y2="46" stroke="#90e0ef" stroke-width="1.8" stroke-opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="founder-name">Olivier Chevalley</div>
+          <div class="founder-role">Fondateur de la méthode ORIM &bull; Président &bull; Spécialiste en Ingénierie QHSE</div>
+          <div class="founder-bio">
+            Fondateur de la méthode ORIM et expert en ingénierie QHSE (ISO 9001),
+            Olivier Chevalley place la rigueur scientifique et la qualité systémique
+            au cœur de chaque protocole. Il dirige l'association genevoise
+            et la branche commerciale française ORIM SAS, assurant la cohérence
+            et la traçabilité de l'ensemble de la démarche ORIM.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="membership-box reveal">
+          <h3>Rejoindre l'Association ORIM</h3>
+          <p style="color:var(--gray); font-size:.85rem; margin-bottom:1.5rem; line-height:1.7;">
+            Partagez notre vision d'une santé optimisée par la science.
+            En rejoignant l'association, vous accédez à nos publications, formations
+            et réseau de praticiens certifiés ORIM.
+          </p>
+          <div class="form-group form-row">
+            <input type="text" placeholder="Prénom" />
+            <input type="text" placeholder="Nom" />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Adresse e-mail" />
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Profession / spécialité" />
+          </div>
+          <div class="form-group">
+            <select>
+              <option value="">Type de membership souhaité</option>
+              <option>Membre actif</option>
+              <option>Membre bienfaiteur</option>
+              <option>Praticien certifié ORIM</option>
+              <option>Partenaire institutionnel</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea rows="3" placeholder="Message ou question (optionnel)"></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%; border-radius:10px;">
+            Envoyer ma demande d'adhésion
+          </button>
+          <p style="font-size:.7rem; color:var(--gray); margin-top:.8rem; text-align:center;">
+            Nous vous répondons sous 48h. Vos données restent confidentielles.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ── PARTENAIRES THÉRAPEUTIQUES ────────────────────────────────────────── -->
+<section id="partenaires" style="background:linear-gradient(135deg,rgba(13,27,42,.95),rgba(60,78,20,.15));">
+  <div class="container">
+    <p class="section-tag reveal" style="color:#90b828;">Partenaires thérapeutiques</p>
+    <h2 class="section-title reveal">L'Équipe ORIM</h2>
+    <div class="section-line reveal" style="background:linear-gradient(135deg,#90b828,transparent);"></div>
+    <p class="reveal" style="color:var(--gray); max-width:650px; line-height:1.8; margin-bottom:3rem;">
+      ORIM s'appuie sur un réseau de praticiens certifiés aux compétences complémentaires.
+      Chaque partenaire est sélectionné pour son expertise, ses résultats démontrés
+      et son alignement avec la philosophie ORIM : personnalisation, prévention et efficacité mesurable.
+    </p>
+
+    <!-- Grille d'équipe -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem;">
+
+      <!-- Carte Olivier (QHSE) -->
+      <div class="domain-card reveal" style="border-color:rgba(0,180,216,.2);">
+        <div style="display:flex; gap:1.2rem; align-items:flex-start;">
+          <!-- Avatar ORIM à la place de la photo -->
+          <div style="width:72px;height:72px;border-radius:50%;flex-shrink:0;
+                      background:linear-gradient(135deg,#0d1b2a,#1a4a7a);
+                      border:2px solid rgba(0,180,216,.4);
+                      display:flex;align-items:center;justify-content:center;">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- ADN stylisé -->
+              <path d="M12 4 Q18 10 24 4" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M12 12 Q18 18 24 12" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M12 20 Q18 26 24 20" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M12 28 Q18 34 24 28" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <line x1="12" y1="4" x2="12" y2="32" stroke="#90e0ef" stroke-width="1.5" stroke-opacity="0.6"/>
+              <line x1="24" y1="4" x2="24" y2="32" stroke="#90e0ef" stroke-width="1.5" stroke-opacity="0.6"/>
+            </svg>
+          </div>
+          <div>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:1.15rem;font-weight:700;color:var(--white);">
+              Olivier Chevalley
+            </div>
+            <div style="color:var(--cyan);font-size:.7rem;letter-spacing:.1em;margin:.25rem 0 .6rem;">
+              FONDATEUR DE LA MÉTHODE ORIM &bull; PRÉSIDENT &bull; INGÉNIERIE QHSE
+            </div>
+            <div style="font-size:.82rem;color:var(--gray);line-height:1.6;">
+              Fondateur de la méthode ORIM et spécialiste en ingénierie QHSE (ISO 9001).
+              Garant de la rigueur scientifique, de la qualité des protocoles et de la
+              conformité réglementaire de l'ensemble du dispositif ORIM en Suisse et en France.
+            </div>
+          </div>
+        </div>
+        <div class="domain-tags" style="margin-top:1rem;">
+          <span class="tag" style="border-color:rgba(0,180,216,.3);color:var(--lcyan);">QHSE ISO 9001</span>
+          <span class="tag" style="border-color:rgba(0,180,216,.3);color:var(--lcyan);">Fondateur méthode ORIM</span>
+          <span class="tag" style="border-color:rgba(0,180,216,.3);color:var(--lcyan);">Protocoles</span>
+        </div>
+      </div>
+
+      <!-- Carte Noël Calderón / Saybar -->
+      <div class="domain-card reveal" style="border-color:rgba(144,184,40,.25);">
+        <div style="display:flex; gap:1.2rem; align-items:flex-start;">
+          <!-- Avatar Saybar (logo) -->
+          <div style="width:72px;height:72px;border-radius:50%;flex-shrink:0;overflow:hidden;
+                      border:2px solid rgba(144,184,40,.4);">
+            <img src="../06_COMMUNICATION/06.1_Identite_Visuelle/Logos/Saybar_logo_v2.png"
+                 alt="Saybar"
+                 style="width:100%;height:100%;object-fit:cover;object-position:center 20%;"/>
+          </div>
+          <div>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:1.15rem;font-weight:700;color:var(--white);">
+              Noël Calderón
+            </div>
+            <div style="color:#90b828;font-size:.7rem;letter-spacing:.1em;margin:.25rem 0 .6rem;">
+              DIRECTEUR SCIENTIFIQUE &bull; MEMBRE COMITÉ FONDATEUR ORIM
+            </div>
+            <div style="font-size:.82rem;color:var(--gray);line-height:1.6;">
+              Chef cuisinier thérapeutique, naturopathe et thérapeute en nutrition.
+              Diplômé en médecine orthomoléculaire et en physiologie-pathologie,
+              Noël apporte une expertise holistique unique au sein du programme ORIM,
+              avec des résultats cliniquement démontrés auprès de ses clients.
+            </div>
+          </div>
+        </div>
+        <div class="domain-tags" style="margin-top:1rem;">
+          <span class="tag" style="border-color:rgba(144,184,40,.35);color:#b8d860;">Naturopathie</span>
+          <span class="tag" style="border-color:rgba(144,184,40,.35);color:#b8d860;">Médecine orthomoléculaire</span>
+          <span class="tag" style="border-color:rgba(144,184,40,.35);color:#b8d860;">Cuisine thérapeutique</span>
+        </div>
+
+        <!-- Encadré Saybar -->
+        <div style="margin-top:1.2rem; padding:1rem; border-radius:10px;
+                    background:rgba(144,184,40,.06); border:1px solid rgba(144,184,40,.2);">
+          <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;">
+            <img src="../06_COMMUNICATION/06.1_Identite_Visuelle/Logos/Saybar_logo_v2.png"
+                 style="width:32px;height:32px;border-radius:50%;" alt="Saybar"/>
+            <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:#c8d878;letter-spacing:.15em;font-size:.95rem;">SAYBAR</span>
+            <span style="font-size:.7rem;color:var(--gray);font-style:italic;">ta santé, ton choix</span>
+          </div>
+          <p style="font-size:.78rem;color:var(--gray);line-height:1.6;">
+            Saybar propose consultations personnalisées, ateliers de cuisine thérapeutique
+            et nutraceutiques (micronutriments) ciblés pour traiter le syndrome métabolique,
+            l'hypertension, le surpoids, la dyslipidémie et le diabète de type 2.
+          </p>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;">
+            <span class="tag" style="border-color:rgba(144,184,40,.3);color:#a8c860;font-size:.6rem;">Syndrome métabolique</span>
+            <span class="tag" style="border-color:rgba(144,184,40,.3);color:#a8c860;font-size:.6rem;">Diabète type 2</span>
+            <span class="tag" style="border-color:rgba(144,184,40,.3);color:#a8c860;font-size:.6rem;">Nutraceutiques</span>
+            <span class="tag" style="border-color:rgba(144,184,40,.3);color:#a8c860;font-size:.6rem;">+41 78 717 91 89</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ── CF MANAGEMENT — TEASER ────────────────────────────────────────────── -->
+<section id="cfmanagement" style="padding:4rem 2rem;">
+  <div class="container">
+    <div class="cf-teaser reveal">
+
+      <!-- Identité CF -->
+      <div class="cf-teaser-brand">
+        <div style="font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:.55rem;">Branche commerciale</div>
+        <div class="cf-brand">CF MANAGEMENT</div>
+        <div class="cf-sub">Coaching &bull; Optimisation &bull; Performance</div>
+        <div style="display:flex;gap:1.2rem;margin-top:.9rem;font-size:.78rem;color:var(--gray);">
+          <span>🇨🇭 Genève</span>
+          <span>🇫🇷 Ferney-Voltaire</span>
+        </div>
+      </div>
+
+      <!-- Description + CTA -->
+      <div class="cf-teaser-body">
+        <p style="color:var(--gray);font-size:.9rem;line-height:1.85;margin-bottom:1.5rem;">
+          CF Management opérationnalise les principes ORIM dans le domaine du conseil,
+          du coaching et de l'optimisation de la performance humaine et organisationnelle.
+          Coaching individuel, conseil en organisation, formation ORIM appliquée
+          et programmes nutritionnels personnalisés.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+          <a href="https://www.cfmanagement.ch" target="_blank" class="cf-link">
+            Visiter cfmanagement.ch ↗
+          </a>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+            <span class="tag" style="border-color:rgba(201,168,76,.25);color:var(--gold);">📈 Coaching</span>
+            <span class="tag" style="border-color:rgba(201,168,76,.25);color:var(--gold);">🏢 Conseil</span>
+            <span class="tag" style="border-color:rgba(201,168,76,.25);color:var(--gold);">🧠 Formation</span>
+            <span class="tag" style="border-color:rgba(201,168,76,.25);color:var(--gold);">🌿 Nutrition</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ── CONTACT ───────────────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <p class="section-tag reveal">Contact</p>
+    <h2 class="section-title reveal">Nous Contacter</h2>
+    <div class="section-line reveal" style="margin:1rem auto 2rem;"></div>
+
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">🏛️</div>
+        <div class="contact-card-title">Association ORIM</div>
+        <div class="contact-card-val">86 rue de Genève<br/>1225 Chêne-Bourg<br/>Genève — Suisse</div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">🏢</div>
+        <div class="contact-card-title">ORIM SAS / CF Management</div>
+        <div class="contact-card-val">8 Chemin des Potiers, Bât. B<br/>01210 Ferney-Voltaire<br/>Ain — France</div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">🌐</div>
+        <div class="contact-card-title">Sites web</div>
+        <div class="contact-card-val">
+          <a href="https://www.orimnutrition.com">www.orimnutrition.com</a><br/>
+          <a href="https://www.cfmanagement.ch">www.cfmanagement.ch</a>
+        </div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">📱</div>
+        <div class="contact-card-title">Réseaux sociaux</div>
+        <div class="contact-card-val">
+          <a href="#">Instagram ORIM</a><br/>
+          <a href="#">LinkedIn CF Management</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">ORIM</div>
+      <p>Optimisation Résolutive Immuno-Métabolique — Association genevoise et branche commerciale française au service de la santé optimisée par la science.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#gateway">Nos Univers</a></li>
+        <li><a href="#methode">La Méthode</a></li>
+        <li><a href="#domaines">Domaines</a></li>
+        <li><a href="#association">Association</a></li>
+        <li><a href="#partenaires">Équipe</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Entités</h4>
+      <ul>
+        <li><a href="#">Association ORIM Genève</a></li>
+        <li><a href="https://www.cfmanagement.ch">CF Management CH</a></li>
+        <li><a href="#">ORIM SAS France</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+        <li><a href="#">Statuts de l'association</a></li>
+        <li><a href="#">CGV ORIM SAS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ORIM — Tous droits réservés</span>
+    <div class="footer-entities">
+      <span>Association ORIM — Genève 🇨🇭</span>
+      <span>ORIM SAS — Ferney-Voltaire 🇫🇷</span>
+      <span>CF Management — cfmanagement.ch 🇨🇭</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ───────────────────────────────────────────────────────────── -->
+<script>
+/* ── PARTICLES ──────────────────────────────────────────────────────────── */
+const canvas = document.getElementById('canvas-bg');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', () => { resize(); initParticles(); });
+
+function Particle() {
+  this.x = Math.random() * W;
+  this.y = Math.random() * H;
+  this.vx = (Math.random() - .5) * .4;
+  this.vy = (Math.random() - .5) * .4;
+  this.r  = Math.random() * 1.5 + .5;
+  this.alpha = Math.random() * .5 + .1;
+}
+
+function initParticles() {
+  const n = Math.floor(W * H / 9000);
+  particles = Array.from({length: n}, () => new Particle());
+}
+initParticles();
+
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,180,216,${p.alpha})`;
+    ctx.fill();
+  });
+
+  // Draw connections
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(0,180,216,${.12 * (1 - dist/120)})`;
+        ctx.lineWidth = .5;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+/* ── SCROLL REVEAL ───────────────────────────────────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ── NAV SCROLL SHRINK ───────────────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.padding = window.scrollY > 60 ? '.7rem 3rem' : '1rem 3rem';
+});
+</script>
+
+</body>
+</html>

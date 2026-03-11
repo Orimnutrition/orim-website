@@ -379,60 +379,6 @@
     .form-group select option { background: var(--navy); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-    /* ── CF MANAGEMENT ───────────────────────────────────────────────── */
-    #cfmanagement {
-      background: linear-gradient(180deg, rgba(13,27,42,0) 0%, rgba(201,168,76,.04) 100%);
-    }
-    .cf-split {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center; margin-top: 3rem;
-    }
-    .cf-logo-area {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 1.5rem;
-    }
-    .cf-logo-box {
-      background: rgba(201,168,76,.06);
-      border: 1px solid rgba(201,168,76,.2);
-      border-radius: 20px; padding: 3rem;
-      text-align: center; width: 100%;
-    }
-    .cf-brand {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 2.5rem; font-weight: 300;
-      letter-spacing: .35em; color: var(--white);
-    }
-    .cf-sub {
-      font-size: .7rem; color: var(--gold);
-      letter-spacing: .3em; text-transform: uppercase;
-      margin-top: .5rem;
-    }
-    .cf-country {
-      display: flex; align-items: center; gap: .5rem;
-      color: var(--gray); font-size: .8rem;
-    }
-    .cf-services { margin-top: 1rem; }
-    .cf-service-item {
-      display: flex; align-items: flex-start; gap: 1rem;
-      padding: 1rem; border-radius: 10px;
-      border: 1px solid rgba(201,168,76,.08);
-      margin-bottom: .8rem;
-      transition: all .25s;
-    }
-    .cf-service-item:hover {
-      background: rgba(201,168,76,.05);
-      border-color: rgba(201,168,76,.2);
-    }
-    .cf-service-icon { font-size: 1.3rem; min-width: 30px; }
-    .cf-service-title { font-size: .9rem; font-weight: 600; margin-bottom: .2rem; }
-    .cf-service-desc { font-size: .8rem; color: var(--gray); line-height: 1.5; }
-    .cf-link {
-      display: inline-flex; align-items: center; gap: .5rem;
-      color: var(--gold); font-size: .85rem; text-decoration: none;
-      border: 1px solid rgba(201,168,76,.3); padding: .6rem 1.4rem;
-      border-radius: 2rem; transition: all .2s;
-    }
-    .cf-link:hover { background: rgba(201,168,76,.1); }
 
     /* ── CONTACT ─────────────────────────────────────────────────────── */
     #contact {
@@ -550,10 +496,6 @@
     #gateway .gw-panel:hover { flex: 1.3; }
     .gw-orim {
       background: linear-gradient(165deg, #06101e 0%, #0b1c38 50%, #0c2448 100%);
-      border-right: 1px solid rgba(0,180,216,.13);
-    }
-    .gw-cf {
-      background: linear-gradient(165deg, #06100e 0%, #0d120a 50%, #111005 100%);
     }
     .gw-ambient {
       position: absolute; inset: 0; pointer-events: none;
@@ -563,11 +505,6 @@
       background:
         radial-gradient(ellipse at 28% 32%, rgba(0,180,216,.13) 0%, transparent 58%),
         radial-gradient(ellipse at 72% 72%, rgba(26,74,122,.1) 0%, transparent 52%);
-    }
-    .gw-ambient-cf {
-      background:
-        radial-gradient(ellipse at 66% 32%, rgba(201,168,76,.11) 0%, transparent 58%),
-        radial-gradient(ellipse at 32% 72%, rgba(120,90,15,.08) 0%, transparent 52%);
     }
     .gw-panel:hover .gw-ambient { opacity: 1.6; }
     .gw-icon-wrap {
@@ -581,14 +518,8 @@
       border: 2px solid rgba(0,180,216,.35);
       box-shadow: 0 0 40px rgba(0,180,216,.2);
     }
-    .gw-cf .gw-icon-wrap {
-      background: radial-gradient(circle at 35% 30%, #3a2a0a, #0d0d08);
-      border: 2px solid rgba(201,168,76,.35);
-      box-shadow: 0 0 40px rgba(201,168,76,.18);
-    }
     .gw-panel:hover .gw-icon-wrap { transform: scale(1.1) translateY(-4px); }
     .gw-orim:hover .gw-icon-wrap { box-shadow: 0 0 65px rgba(0,180,216,.45); }
-    .gw-cf:hover .gw-icon-wrap { box-shadow: 0 0 65px rgba(201,168,76,.4); }
     .gw-brand {
       font-family: 'Rajdhani', sans-serif;
       font-size: clamp(1.9rem, 3.2vw, 3rem);
@@ -602,16 +533,11 @@
       background: linear-gradient(135deg, #ffffff 0%, #00b4d8 55%, #90e0ef 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .gw-cf .gw-brand {
-      background: linear-gradient(135deg, #ffffff 0%, #c9a84c 55%, #e8d090 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
     .gw-sub {
       font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
       margin-bottom: 1.6rem;
     }
     .gw-orim .gw-sub { color: var(--lcyan); }
-    .gw-cf .gw-sub { color: var(--gold); }
     .gw-desc {
       font-size: .92rem; color: var(--gray);
       line-height: 1.82; max-width: 360px; margin: 0 auto 2.2rem;
@@ -632,12 +558,6 @@
       box-shadow: 0 0 28px rgba(0,180,216,.3);
     }
     .gw-orim .gw-cta:hover { box-shadow: 0 0 55px rgba(0,180,216,.65); transform: translateY(-3px); }
-    .gw-cf .gw-cta {
-      background: linear-gradient(135deg, #d4a820, #8a6010);
-      color: #fff;
-      box-shadow: 0 0 28px rgba(201,168,76,.3);
-    }
-    .gw-cf .gw-cta:hover { box-shadow: 0 0 55px rgba(201,168,76,.55); transform: translateY(-3px); }
     .gw-chips {
       display: flex; flex-wrap: wrap; gap: .45rem; justify-content: center; margin-top: 1.8rem;
     }
@@ -646,15 +566,7 @@
       letter-spacing: .06em;
     }
     .gw-orim .gw-chip { background: rgba(0,180,216,.08); border: 1px solid rgba(0,180,216,.22); color: var(--lcyan); }
-    .gw-cf .gw-chip { background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.22); color: var(--gold); }
-    /* Gateway central OR separator */
-    .gw-or-wrap {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 20;
-      display: flex; flex-direction: column; align-items: center;
-      pointer-events: none; gap: 0;
-    }
+
     .gw-vline {
       width: 1px; height: 90px;
       background: linear-gradient(to bottom, transparent, rgba(255,255,255,.2), transparent);
@@ -686,21 +598,8 @@
       #gateway:has(.gw-panel:hover) .gw-panel { flex: 1; }
       #gateway .gw-panel:hover { flex: 1; }
       .gw-panel { min-height: 60vh; padding: 4rem 2rem 3rem; }
-      .gw-or-wrap { display: none; }
-      .gw-orim { border-right: none; border-bottom: 1px solid rgba(0,180,216,.13); }
       .gw-top-label { display: none; }
     }
-
-    /* ── CF MANAGEMENT COMPACT ───────────────────────────────────────── */
-    .cf-teaser {
-      background: linear-gradient(135deg, rgba(201,168,76,.05), rgba(13,27,42,.4));
-      border: 1px solid rgba(201,168,76,.2);
-      border-radius: 20px;
-      padding: 2.5rem 3rem;
-      display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
-    }
-    .cf-teaser-brand { flex: 1; min-width: 220px; }
-    .cf-teaser-body { flex: 2; min-width: 260px; }
 
     /* ── GLOW DIVIDER ────────────────────────────────────────────────── */
     .glow-divider {
@@ -801,42 +700,6 @@
     </div>
   </div>
 
-  <!-- ── Séparateur central OU ─────────────────────────────────────────── -->
-  <div class="gw-or-wrap">
-    <div class="gw-vline"></div>
-    <div class="gw-or-badge">OU</div>
-    <div class="gw-vline"></div>
-  </div>
-
-  <!-- ┌──────────────────────────────┐ -->
-  <!-- │  Panneau droit : CF Management │ -->
-  <!-- └──────────────────────────────┘ -->
-  <div class="gw-panel gw-cf" onclick="window.open('https://www.cfmanagement.ch','_blank')">
-    <div class="gw-ambient gw-ambient-cf"></div>
-
-    <div class="gw-icon-wrap">💼</div>
-
-    <div class="gw-brand">CF MANAGEMENT</div>
-    <div class="gw-sub">Coaching · Optimisation · Performance</div>
-
-    <p class="gw-desc">
-      Optimisez votre performance professionnelle et personnelle.
-      Conseil stratégique, coaching individuel et accompagnement
-      fondés sur les principes ORIM appliqués au monde professionnel.
-    </p>
-
-    <a href="https://www.cfmanagement.ch" target="_blank" class="gw-cta" onclick="event.stopPropagation()">
-      Visiter cfmanagement.ch ↗
-    </a>
-
-    <div class="gw-chips">
-      <span class="gw-chip">Coaching</span>
-      <span class="gw-chip">Conseil en organisation</span>
-      <span class="gw-chip">Formation ORIM</span>
-      <span class="gw-chip">Ferney-Voltaire 🇫🇷</span>
-      <span class="gw-chip">cfmanagement.ch 🇨🇭</span>
-    </div>
-  </div>
 
 </section>
 
@@ -1237,49 +1100,6 @@
 
 <div class="glow-divider"></div>
 
-<!-- ── CF MANAGEMENT — TEASER ────────────────────────────────────────────── -->
-<section id="cfmanagement" style="padding:4rem 2rem;">
-  <div class="container">
-    <div class="cf-teaser reveal">
-
-      <!-- Identité CF -->
-      <div class="cf-teaser-brand">
-        <div style="font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:.55rem;">Branche commerciale</div>
-        <div class="cf-brand">CF MANAGEMENT</div>
-        <div class="cf-sub">Coaching &bull; Optimisation &bull; Performance</div>
-        <div style="display:flex;gap:1.2rem;margin-top:.9rem;font-size:.78rem;color:var(--gray);">
-          <span>🇨🇭 Genève</span>
-          <span>🇫🇷 Ferney-Voltaire</span>
-        </div>
-      </div>
-
-      <!-- Description + CTA -->
-      <div class="cf-teaser-body">
-        <p style="color:var(--gray);font-size:.9rem;line-height:1.85;margin-bottom:1.5rem;">
-          CF Management opérationnalise les principes ORIM dans le domaine du conseil,
-          du coaching et de l'optimisation de la performance humaine et organisationnelle.
-          Coaching individuel, conseil en organisation, formation ORIM appliquée
-          et programmes nutritionnels personnalisés.
-        </p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
-          <a href="https://www.cfmanagement.ch" target="_blank" class="cf-link">
-            Visiter cfmanagement.ch ↗
-          </a>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-            <span class="tag" style="border-color:rgba(201,168,76,.25);color:var(--gold);">📈 Coaching</span>
-            <span class="tag" style="border-color:rgba(201,168,76,.25);color:var(--gold);">🏢 Conseil</span>
-            <span class="tag" style="border-color:rgba(201,168,76,.25);color:var(--gold);">🧠 Formation</span>
-            <span class="tag" style="border-color:rgba(201,168,76,.25);color:var(--gold);">🌿 Nutrition</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="glow-divider"></div>
-
 <!-- ── CONTACT ───────────────────────────────────────────────────────────── -->
 <section id="contact">
   <div class="container">
@@ -1295,15 +1115,14 @@
       </div>
       <div class="contact-card reveal">
         <div class="contact-card-icon">🏢</div>
-        <div class="contact-card-title">ORIM SAS / CF Management</div>
+        <div class="contact-card-title">ORIM SAS</div>
         <div class="contact-card-val">8 Chemin des Potiers, Bât. B<br/>01210 Ferney-Voltaire<br/>Ain — France</div>
       </div>
       <div class="contact-card reveal">
         <div class="contact-card-icon">🌐</div>
         <div class="contact-card-title">Sites web</div>
         <div class="contact-card-val">
-          <a href="https://www.orimnutrition.com">www.orimnutrition.com</a><br/>
-          <a href="https://www.cfmanagement.ch">www.cfmanagement.ch</a>
+          <a href="https://www.orimnutrition.com">www.orimnutrition.com</a>
         </div>
       </div>
       <div class="contact-card reveal">
@@ -1311,7 +1130,7 @@
         <div class="contact-card-title">Réseaux sociaux</div>
         <div class="contact-card-val">
           <a href="#">Instagram ORIM</a><br/>
-          <a href="#">LinkedIn CF Management</a>
+          <a href="#">LinkedIn ORIM</a>
         </div>
       </div>
     </div>
@@ -1340,7 +1159,6 @@
       <h4>Entités</h4>
       <ul>
         <li><a href="#">Association ORIM Genève</a></li>
-        <li><a href="https://www.cfmanagement.ch">CF Management CH</a></li>
         <li><a href="#">ORIM SAS France</a></li>
       </ul>
     </div>
@@ -1359,7 +1177,6 @@
     <div class="footer-entities">
       <span>Association ORIM — Genève 🇨🇭</span>
       <span>ORIM SAS — Ferney-Voltaire 🇫🇷</span>
-      <span>CF Management — cfmanagement.ch 🇨🇭</span>
     </div>
   </div>
 </footer>

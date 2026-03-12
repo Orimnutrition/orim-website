@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ORIM — Optimisation Résolutive Immuno-Métabolique</title>
-  <meta name="description" content="ORIM — Association scientifique genevoise spécialisée en optimisation immuno-métabolique. Nutrition, Smart Farming, Technologie de pointe." />
+  <title>ORIM™ — Optimisation Résolutive Immuno-Métabolique</title>
+  <meta name="description" content="ORIM™ — Association scientifique genevoise & ORIM SAS France. Nutrition, Recherche, Thérapeutique, Compléments alimentaires." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --navy:   #0d1b2a;
       --blue:   #1a4a7a;
@@ -20,1240 +19,696 @@
       --lgray:  #1e2d3d;
       --gold:   #c9a84c;
       --green:  #22c55e;
+      --ch-color: #1a6a9a;
+      --fr-color: #8a1a2a;
+      --ch-light: #cce8f4;
+      --fr-light: #f4ccd2;
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      overflow-x: hidden;
-    }
+    /* CANVAS */
+    #canvas-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
 
-    /* ── VIDEO HERO BG ────────────────────────────────────────────────── */
-    #hero-video {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%; min-height: 100%;
-      width: auto; height: auto;
-      z-index: 0; object-fit: cover;
-      opacity: .45;
-      pointer-events: none;
-    }
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(13,27,42,.55) 0%,
-        rgba(13,27,42,.35) 40%,
-        rgba(13,27,42,.85) 100%
-      );
-    }
+    /* VIDEO HERO */
+    #hero-video { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; z-index:0; object-fit:cover; opacity:.35; pointer-events:none; }
+    .hero-overlay { position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(13,27,42,.6) 0%,rgba(13,27,42,.3) 40%,rgba(13,27,42,.9) 100%); }
 
-    /* ── CANVAS PARTICLES ─────────────────────────────────────────────── */
-    #canvas-bg {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0; pointer-events: none;
+    /* LANG SWITCHER */
+    .lang-bar {
+      position:fixed; top:0; right:0; z-index:200;
+      display:flex; gap:.3rem; padding:.5rem 1rem;
+      background:rgba(13,27,42,.85); backdrop-filter:blur(10px);
+      border-bottom-left-radius:.8rem;
+      border:1px solid rgba(0,180,216,.15); border-top:none; border-right:none;
     }
+    .lang-btn {
+      background:transparent; border:1px solid rgba(0,180,216,.3);
+      color:var(--gray); font-size:.7rem; font-weight:600; letter-spacing:.1em;
+      padding:.3rem .6rem; border-radius:.4rem; cursor:pointer; transition:all .2s;
+    }
+    .lang-btn.active, .lang-btn:hover { background:var(--cyan); color:#fff; border-color:var(--cyan); }
 
-    /* ── NAV ──────────────────────────────────────────────────────────── */
+    /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 3rem;
-      background: rgba(13, 27, 42, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 180, 216, 0.15);
-      transition: all .3s;
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.8rem 3rem;
+      background:rgba(13,27,42,.88); backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(0,180,216,.15);
     }
-    .nav-logo {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.8rem; font-weight: 700;
-      background: linear-gradient(135deg, #00b4d8, #1a4a7a);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: .12em;
-    }
-    .nav-logo span { font-size: .7rem; display: block; letter-spacing: .25em; color: var(--gray); -webkit-text-fill-color: var(--gray); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--gray); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
-    .nav-links a:hover { color: var(--cyan); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      border: none; color: #fff; padding: .55rem 1.4rem;
-      border-radius: 2rem; font-size: .8rem; font-weight: 600;
-      letter-spacing: .08em; cursor: pointer; transition: opacity .2s;
-      text-decoration: none;
-    }
-    .nav-cta:hover { opacity: .85; }
+    .nav-logo { font-family:'Rajdhani',sans-serif; font-size:1.8rem; font-weight:700; background:linear-gradient(135deg,#00b4d8,#1a4a7a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:.12em; text-decoration:none; }
+    .nav-logo span { font-size:.65rem; display:block; letter-spacing:.25em; color:var(--gray); -webkit-text-fill-color:var(--gray); }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--gray); font-size:.8rem; letter-spacing:.07em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--cyan); }
+    .nav-cta { background:linear-gradient(135deg,var(--cyan),var(--blue)); border:none; color:#fff; padding:.5rem 1.3rem; border-radius:2rem; font-size:.78rem; font-weight:600; letter-spacing:.07em; cursor:pointer; transition:opacity .2s; text-decoration:none; }
+    .nav-cta:hover { opacity:.85; }
+    .nav-mobile-toggle { display:none; background:none; border:1px solid rgba(0,180,216,.4); color:var(--cyan); padding:.4rem .8rem; border-radius:.4rem; cursor:pointer; font-size:.9rem; }
 
-    /* ── HERO ─────────────────────────────────────────────────────────── */
-    #hero {
-      position: relative; z-index: 1;
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .hero-content {
-      text-align: center; padding: 8rem 2rem 4rem;
-      max-width: 900px;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(0,180,216,.12);
-      border: 1px solid rgba(0,180,216,.3);
-      color: var(--cyan); font-size: .75rem;
-      padding: .35rem 1rem; border-radius: 2rem;
-      letter-spacing: .15em; text-transform: uppercase;
-      margin-bottom: 2rem;
-      animation: fadeInUp .8s ease both;
-    }
-    .hero-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(3.5rem, 10vw, 7rem);
-      font-weight: 700; line-height: 1;
-      background: linear-gradient(135deg, #ffffff 0%, #00b4d8 50%, #90e0ef 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-      animation: fadeInUp .8s .2s ease both;
-    }
-    .hero-subtitle {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(.9rem, 2vw, 1.25rem);
-      color: var(--lcyan); letter-spacing: .3em;
-      text-transform: uppercase; margin-bottom: 1.5rem;
-      animation: fadeInUp .8s .35s ease both;
-    }
-    .hero-desc {
-      font-size: 1rem; color: var(--gray); line-height: 1.7;
-      max-width: 600px; margin: 0 auto 2.5rem;
-      animation: fadeInUp .8s .5s ease both;
-    }
-    .hero-actions {
-      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-      animation: fadeInUp .8s .65s ease both;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--cyan), #0077b6);
-      color: #fff; border: none; padding: .85rem 2.2rem;
-      border-radius: 2rem; font-size: .9rem; font-weight: 600;
-      cursor: pointer; letter-spacing: .06em; transition: transform .2s, box-shadow .2s;
-      text-decoration: none; display: inline-block;
-      box-shadow: 0 0 30px rgba(0,180,216,.3);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,180,216,.5); }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(0,180,216,.5);
-      color: var(--cyan); padding: .85rem 2.2rem;
-      border-radius: 2rem; font-size: .9rem; font-weight: 600;
-      cursor: pointer; letter-spacing: .06em; transition: all .2s;
-      text-decoration: none; display: inline-block;
-    }
-    .btn-outline:hover { background: rgba(0,180,216,.1); border-color: var(--cyan); }
+    /* HERO */
+    #hero { position:relative; z-index:1; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .hero-content { text-align:center; padding:8rem 2rem 4rem; max-width:960px; }
+    .hero-badge { display:inline-block; background:rgba(0,180,216,.12); border:1px solid rgba(0,180,216,.3); color:var(--cyan); font-size:.72rem; padding:.35rem 1rem; border-radius:2rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:1.8rem; animation:fadeInUp .8s ease both; }
+    .hero-title { font-family:'Rajdhani',sans-serif; font-size:clamp(3rem,9vw,6.5rem); font-weight:700; line-height:1; background:linear-gradient(135deg,#ffffff 0%,#00b4d8 50%,#90e0ef 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:1rem; animation:fadeInUp .8s .2s ease both; }
+    .hero-subtitle { font-family:'Rajdhani',sans-serif; font-size:clamp(.85rem,2vw,1.15rem); color:var(--lcyan); letter-spacing:.3em; text-transform:uppercase; margin-bottom:1.5rem; animation:fadeInUp .8s .35s ease both; }
+    .hero-desc { font-size:.95rem; color:var(--gray); line-height:1.75; max-width:620px; margin:0 auto 2.5rem; animation:fadeInUp .8s .5s ease both; }
+    .hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeInUp .8s .65s ease both; }
+    .btn-primary { background:linear-gradient(135deg,var(--cyan),#0077b6); color:#fff; border:none; padding:.8rem 2rem; border-radius:2rem; font-size:.88rem; font-weight:600; cursor:pointer; letter-spacing:.06em; transition:transform .2s,box-shadow .2s; text-decoration:none; display:inline-block; box-shadow:0 0 30px rgba(0,180,216,.3); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 50px rgba(0,180,216,.5); }
+    .btn-outline { background:transparent; border:1px solid rgba(0,180,216,.5); color:var(--cyan); padding:.8rem 2rem; border-radius:2rem; font-size:.88rem; font-weight:600; cursor:pointer; letter-spacing:.06em; transition:all .2s; text-decoration:none; display:inline-block; }
+    .btn-outline:hover { background:rgba(0,180,216,.1); border-color:var(--cyan); }
+    .scroll-hint { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.4rem; color:var(--gray); font-size:.65rem; letter-spacing:.15em; animation:bounce 2s infinite; }
+    .scroll-hint::after { content:''; width:1px; height:40px; background:linear-gradient(to bottom,var(--cyan),transparent); }
 
-    /* DNA central glow */
-    .dna-visual {
-      margin: 3rem auto 0;
-      width: min(380px, 80vw);
-      animation: fadeInUp .8s .8s ease both, float 6s ease-in-out infinite;
-      filter: drop-shadow(0 0 40px rgba(0,180,216,.4));
-    }
-    .dna-visual img { width: 100%; border-radius: 50%; }
+    /* STATS BAR */
+    .stats-bar { position:relative; z-index:1; background:rgba(26,74,122,.2); border-top:1px solid rgba(0,180,216,.1); border-bottom:1px solid rgba(0,180,216,.1); padding:1.8rem 3rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1.5rem; text-align:center; }
+    .stat-num { font-family:'Rajdhani',sans-serif; font-size:2rem; font-weight:700; background:linear-gradient(135deg,var(--cyan),var(--lcyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .stat-label { font-size:.72rem; color:var(--gray); letter-spacing:.1em; text-transform:uppercase; }
 
-    /* scroll indicator */
-    .scroll-hint {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: .4rem;
-      color: var(--gray); font-size: .7rem; letter-spacing: .15em;
-      animation: bounce 2s infinite;
+    /* GATEWAY — DUAL ENTITY */
+    #gateway { position:relative; z-index:1; padding:5rem 2rem; }
+    .gateway-intro { text-align:center; max-width:700px; margin:0 auto 3.5rem; }
+    .section-tag { display:inline-block; color:var(--cyan); font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; margin-bottom:.75rem; }
+    .section-tag::before { content:'— '; }
+    .section-title { font-family:'Rajdhani',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; }
+    .section-title .accent { background:linear-gradient(135deg,var(--cyan),var(--lcyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .section-desc { font-size:.92rem; color:var(--gray); line-height:1.7; margin-top:1rem; }
+    .gateway-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:1100px; margin:0 auto; }
+    .entity-card {
+      border-radius:1.2rem; padding:2.5rem; position:relative; overflow:hidden;
+      transition:transform .3s, box-shadow .3s; cursor:pointer; text-decoration:none;
     }
-    .scroll-hint::after {
-      content: ''; width: 1px; height: 40px;
-      background: linear-gradient(to bottom, var(--cyan), transparent);
-    }
+    .entity-card:hover { transform:translateY(-6px); }
+    .entity-card-ch { background:linear-gradient(135deg,rgba(26,106,154,.25) 0%,rgba(0,40,70,.4) 100%); border:1px solid rgba(26,106,154,.5); box-shadow:0 0 40px rgba(26,106,154,.15); }
+    .entity-card-ch:hover { box-shadow:0 0 60px rgba(26,106,154,.35); }
+    .entity-card-fr { background:linear-gradient(135deg,rgba(138,26,42,.25) 0%,rgba(70,0,15,.4) 100%); border:1px solid rgba(138,26,42,.5); box-shadow:0 0 40px rgba(138,26,42,.15); }
+    .entity-card-fr:hover { box-shadow:0 0 60px rgba(138,26,42,.35); }
+    .entity-flag { font-size:2.5rem; margin-bottom:1rem; }
+    .entity-badge-ch { display:inline-block; background:rgba(26,106,154,.3); border:1px solid rgba(26,106,154,.6); color:#6ec6ea; font-size:.65rem; padding:.25rem .8rem; border-radius:2rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
+    .entity-badge-fr { display:inline-block; background:rgba(138,26,42,.3); border:1px solid rgba(138,26,42,.6); color:#ea8090; font-size:.65rem; padding:.25rem .8rem; border-radius:2rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
+    .entity-name { font-family:'Rajdhani',sans-serif; font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:.5rem; }
+    .entity-tagline { font-size:.82rem; color:var(--gray); line-height:1.6; margin-bottom:1.5rem; }
+    .entity-services { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+    .entity-services li { font-size:.82rem; color:#b0cce0; display:flex; align-items:center; gap:.7rem; }
+    .entity-services li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
+    .entity-card-fr .entity-services li::before { background:#ea8090; }
+    .entity-card-fr .entity-services li { color:#e0b0b8; }
+    .entity-cta { margin-top:1.8rem; display:inline-block; padding:.6rem 1.5rem; border-radius:2rem; font-size:.8rem; font-weight:600; letter-spacing:.07em; text-decoration:none; transition:all .2s; }
+    .entity-cta-ch { background:rgba(26,106,154,.4); border:1px solid rgba(26,106,154,.7); color:#6ec6ea; }
+    .entity-cta-ch:hover { background:rgba(26,106,154,.7); }
+    .entity-cta-fr { background:rgba(138,26,42,.4); border:1px solid rgba(138,26,42,.7); color:#ea8090; }
+    .entity-cta-fr:hover { background:rgba(138,26,42,.7); }
+    .entity-card-glow-ch { position:absolute; top:-50%; right:-30%; width:200px; height:200px; background:radial-gradient(circle,rgba(26,106,154,.3),transparent 70%); pointer-events:none; }
+    .entity-card-glow-fr { position:absolute; top:-50%; right:-30%; width:200px; height:200px; background:radial-gradient(circle,rgba(138,26,42,.3),transparent 70%); pointer-events:none; }
 
-    /* ── STATS BAR ────────────────────────────────────────────────────── */
-    .stats-bar {
-      position: relative; z-index: 1;
-      background: rgba(26,74,122,.2);
-      border-top: 1px solid rgba(0,180,216,.1);
-      border-bottom: 1px solid rgba(0,180,216,.1);
-      padding: 2rem 3rem;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.5rem; text-align: center;
-    }
-    .stat-item { }
-    .stat-num {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 2.2rem; font-weight: 700;
-      background: linear-gradient(135deg, var(--cyan), var(--lcyan));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .stat-label { font-size: .75rem; color: var(--gray); letter-spacing: .1em; text-transform: uppercase; }
+    /* PÔLES — ASSOCIATION CH */
+    #poles { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
+    .poles-header { text-align:center; margin-bottom:3.5rem; }
+    .entity-section-title { font-family:'Rajdhani',sans-serif; font-size:clamp(1.5rem,3vw,2.3rem); font-weight:700; margin:.5rem 0; }
+    .ch-label { color:#6ec6ea; }
+    .fr-label { color:#ea8090; }
+    .poles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem; max-width:1100px; margin:0 auto; }
+    .pole-card { background:rgba(26,74,122,.15); border:1px solid rgba(0,180,216,.15); border-radius:1rem; padding:2rem; transition:transform .3s, border-color .3s; }
+    .pole-card:hover { transform:translateY(-4px); border-color:rgba(0,180,216,.4); }
+    .pole-icon { font-size:2.2rem; margin-bottom:1rem; }
+    .pole-name { font-family:'Rajdhani',sans-serif; font-size:1.25rem; font-weight:700; color:var(--cyan); margin-bottom:.5rem; }
+    .pole-desc { font-size:.82rem; color:var(--gray); line-height:1.65; margin-bottom:1rem; }
+    .pole-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .pole-tag { background:rgba(0,180,216,.1); border:1px solid rgba(0,180,216,.2); color:var(--lcyan); font-size:.65rem; padding:.2rem .6rem; border-radius:.3rem; letter-spacing:.08em; }
 
-    /* ── SECTIONS common ──────────────────────────────────────────────── */
-    section { position: relative; z-index: 1; padding: 6rem 2rem; }
-    .section-tag {
-      display: inline-block; color: var(--cyan); font-size: .7rem;
-      letter-spacing: .25em; text-transform: uppercase;
-      margin-bottom: .75rem;
-    }
-    .section-tag::before { content: '— '; }
-    .section-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(2rem, 5vw, 3rem); font-weight: 700;
-      line-height: 1.1; margin-bottom: 1rem;
-    }
-    .section-line {
-      width: 50px; height: 3px;
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      border-radius: 2px; margin: 1rem 0 2rem;
-    }
-    .container { max-width: 1200px; margin: 0 auto; }
+    /* PÔLE COMMERCIAL — SAS FR */
+    #commercial { position:relative; z-index:1; padding:5rem 2rem; }
+    .commercial-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.8rem; max-width:1100px; margin:3rem auto 0; }
+    .commercial-card { background:linear-gradient(135deg,rgba(138,26,42,.15),rgba(70,0,15,.2)); border:1px solid rgba(138,26,42,.3); border-radius:1rem; padding:2rem; transition:transform .3s, border-color .3s; }
+    .commercial-card:hover { transform:translateY(-4px); border-color:rgba(200,80,100,.5); }
+    .commercial-icon { font-size:2rem; margin-bottom:.8rem; }
+    .commercial-name { font-family:'Rajdhani',sans-serif; font-size:1.15rem; font-weight:700; color:#ea8090; margin-bottom:.4rem; }
+    .commercial-desc { font-size:.82rem; color:var(--gray); line-height:1.65; }
+    .fr-notice { max-width:1100px; margin:1.5rem auto 0; padding:1rem 1.5rem; background:rgba(138,26,42,.15); border:1px solid rgba(138,26,42,.3); border-radius:.8rem; font-size:.8rem; color:#e0b0b8; }
+    .fr-notice strong { color:#ea8090; }
 
-    /* ── MÉTHODE ─────────────────────────────────────────────────────── */
-    #methode { background: rgba(13,27,42,.6); }
-    .methode-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
-      margin-top: 3rem;
-    }
-    .methode-text p {
-      color: var(--gray); line-height: 1.8; margin-bottom: 1.2rem;
-      font-size: .95rem;
-    }
-    .acro-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin-top: 2rem;
-    }
-    .acro-card {
-      background: rgba(0,180,216,.06);
-      border: 1px solid rgba(0,180,216,.15);
-      border-radius: 12px; padding: 1.2rem;
-      transition: all .3s;
-    }
-    .acro-card:hover {
-      background: rgba(0,180,216,.12);
-      border-color: rgba(0,180,216,.4);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0,180,216,.1);
-    }
-    .acro-letter {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 2rem; font-weight: 700; color: var(--cyan);
-      line-height: 1;
-    }
-    .acro-word { font-size: .75rem; color: var(--gray); margin-top: .2rem; }
-    .acro-desc { font-size: .8rem; color: var(--white); margin-top: .5rem; line-height: 1.5; }
-    .methode-visual {
-      display: flex; justify-content: center; align-items: center;
-    }
-    .dna-ring {
-      width: 300px; height: 300px; border-radius: 50%;
-      background: radial-gradient(circle at 40% 30%, rgba(0,180,216,.15), transparent 70%);
-      border: 1px solid rgba(0,180,216,.2);
-      display: flex; align-items: center; justify-content: center;
-      animation: rotate 20s linear infinite;
-      box-shadow: 0 0 80px rgba(0,180,216,.1), inset 0 0 80px rgba(0,180,216,.05);
-    }
-    .dna-ring img { width: 240px; animation: rotate 20s linear infinite reverse; border-radius: 50%; }
+    /* MARQUE / IP */
+    #marque { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
+    .marque-inner { max-width:900px; margin:0 auto; }
+    .marque-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:3rem; }
+    .marque-block { background:rgba(26,74,122,.1); border:1px solid rgba(0,180,216,.1); border-radius:1rem; padding:1.8rem; }
+    .marque-block h3 { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; color:var(--cyan); margin-bottom:.8rem; }
+    .marque-block p { font-size:.82rem; color:var(--gray); line-height:1.65; }
+    .marque-badge { display:inline-block; background:rgba(201,168,76,.15); border:1px solid rgba(201,168,76,.4); color:var(--gold); font-size:.65rem; padding:.2rem .7rem; border-radius:.3rem; letter-spacing:.1em; margin-bottom:1rem; }
 
-    /* ── DOMAINES ────────────────────────────────────────────────────── */
-    #domaines { }
-    .domains-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem; margin-top: 3rem;
-    }
-    .domain-card {
-      background: rgba(30,45,61,.6);
-      border: 1px solid rgba(0,180,216,.1);
-      border-radius: 16px; padding: 2rem;
-      transition: all .35s; cursor: default;
-      position: relative; overflow: hidden;
-    }
-    .domain-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--cyan), transparent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .35s;
-    }
-    .domain-card:hover::before { transform: scaleX(1); }
-    .domain-card:hover {
-      border-color: rgba(0,180,216,.3);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 30px rgba(0,180,216,.08);
-    }
-    .domain-icon {
-      width: 56px; height: 56px; border-radius: 14px;
-      background: rgba(0,180,216,.1);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; margin-bottom: 1.2rem;
-    }
-    .domain-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.3rem; font-weight: 700;
-      color: var(--white); margin-bottom: .6rem;
-    }
-    .domain-desc { font-size: .85rem; color: var(--gray); line-height: 1.7; }
-    .domain-tags {
-      display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem;
-    }
-    .tag {
-      background: rgba(0,180,216,.08);
-      border: 1px solid rgba(0,180,216,.2);
-      color: var(--lcyan); font-size: .65rem;
-      padding: .2rem .7rem; border-radius: 2rem;
-      letter-spacing: .06em;
-    }
+    /* SAYBAR */
+    #saybar { position:relative; z-index:1; padding:5rem 2rem; }
+    .saybar-inner { max-width:900px; margin:0 auto; text-align:center; }
+    .saybar-flow { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin:3rem 0 2rem; }
+    .saybar-node { background:rgba(26,74,122,.2); border:1px solid rgba(0,180,216,.25); border-radius:.8rem; padding:1rem 1.5rem; font-size:.82rem; font-weight:600; color:var(--white); }
+    .saybar-node.ch { background:rgba(26,106,154,.2); border-color:rgba(26,106,154,.5); color:#6ec6ea; }
+    .saybar-node.fr { background:rgba(138,26,42,.2); border-color:rgba(138,26,42,.5); color:#ea8090; }
+    .saybar-node.partner { background:rgba(34,197,94,.1); border-color:rgba(34,197,94,.4); color:#4ade80; }
+    .saybar-arrow { color:var(--cyan); font-size:1.2rem; }
+    .saybar-desc { font-size:.85rem; color:var(--gray); line-height:1.7; }
 
-    /* ── ASSOCIATION ─────────────────────────────────────────────────── */
-    #association {
-      background: linear-gradient(135deg, rgba(13,27,42,.9), rgba(26,74,122,.2));
-    }
-    .assoc-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: start; margin-top: 3rem;
-    }
-    .assoc-info-card {
-      background: rgba(0,180,216,.05);
-      border: 1px solid rgba(0,180,216,.2);
-      border-radius: 16px; padding: 2rem;
-    }
-    .info-row {
-      display: flex; align-items: flex-start; gap: 1rem;
-      padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
-    }
-    .info-row:last-child { border-bottom: none; }
-    .info-label {
-      font-size: .7rem; color: var(--cyan);
-      letter-spacing: .12em; text-transform: uppercase;
-      min-width: 90px; margin-top: .1rem;
-    }
-    .info-value { font-size: .9rem; color: var(--white); }
-    .founder-card {
-      background: rgba(30,45,61,.8);
-      border: 1px solid rgba(0,180,216,.15);
-      border-radius: 16px; padding: 2rem;
-      text-align: center;
-    }
-    .founder-photo {
-      width: 100px; height: 100px; border-radius: 50%;
-      object-fit: cover; object-position: center top;
-      border: 3px solid rgba(0,180,216,.4);
-      box-shadow: 0 0 30px rgba(0,180,216,.2);
-      margin: 0 auto 1rem; display: block;
-    }
-    .founder-name {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.2rem; font-weight: 700; color: var(--white);
-    }
-    .founder-role { font-size: .75rem; color: var(--cyan); letter-spacing: .1em; margin: .3rem 0 1rem; }
-    .founder-bio { font-size: .82rem; color: var(--gray); line-height: 1.7; }
+    /* TEAM */
+    #equipe { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
+    .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:1000px; margin:3rem auto 0; }
+    .team-card { background:rgba(26,74,122,.1); border:1px solid rgba(0,180,216,.15); border-radius:1rem; padding:1.8rem; text-align:center; transition:transform .3s, border-color .3s; }
+    .team-card:hover { transform:translateY(-4px); border-color:rgba(0,180,216,.35); }
+    .team-avatar { width:70px; height:70px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--cyan)); display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 1rem; border:2px solid rgba(0,180,216,.3); }
+    .team-name { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; color:var(--white); }
+    .team-roles { margin-top:.5rem; display:flex; flex-wrap:wrap; gap:.3rem; justify-content:center; }
+    .team-role { font-size:.65rem; padding:.2rem .6rem; border-radius:.3rem; letter-spacing:.07em; }
+    .team-role.ch { background:rgba(26,106,154,.3); color:#6ec6ea; }
+    .team-role.fr { background:rgba(138,26,42,.3); color:#ea8090; }
+    .team-role.sci { background:rgba(0,180,216,.15); color:var(--cyan); }
 
-    /* Membership form */
-    .membership-box {
-      background: rgba(0,180,216,.06);
-      border: 1px solid rgba(0,180,216,.2);
-      border-radius: 16px; padding: 2rem; margin-top: 2rem;
-    }
-    .membership-box h3 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.2rem; margin-bottom: 1rem; color: var(--cyan);
-    }
-    .form-group { margin-bottom: 1rem; }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; background: rgba(255,255,255,.05);
-      border: 1px solid rgba(0,180,216,.2); border-radius: 8px;
-      padding: .7rem 1rem; color: var(--white);
-      font-family: 'Inter', sans-serif; font-size: .85rem;
-      transition: border-color .2s;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      outline: none; border-color: var(--cyan);
-    }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); }
-    .form-group select option { background: var(--navy); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    /* CONTACT */
+    #contact { position:relative; z-index:1; padding:5rem 2rem; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; max-width:900px; margin:3rem auto 0; }
+    .contact-block { background:rgba(26,74,122,.1); border:1px solid rgba(0,180,216,.15); border-radius:1rem; padding:2rem; }
+    .contact-block.ch-block { border-color:rgba(26,106,154,.4); }
+    .contact-block.fr-block { border-color:rgba(138,26,42,.4); }
+    .contact-block h3 { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:1.2rem; }
+    .contact-block.ch-block h3 { color:#6ec6ea; }
+    .contact-block.fr-block h3 { color:#ea8090; }
+    .contact-item { display:flex; align-items:flex-start; gap:.7rem; margin-bottom:.9rem; }
+    .contact-item-icon { font-size:1rem; min-width:1.3rem; }
+    .contact-item-text { font-size:.82rem; color:var(--gray); line-height:1.5; }
+    .contact-item-text a { color:var(--cyan); text-decoration:none; }
+    .contact-item-text a:hover { text-decoration:underline; }
 
+    /* FOOTER */
+    footer { position:relative; z-index:1; background:rgba(13,27,42,.9); border-top:1px solid rgba(0,180,216,.1); padding:3rem 2rem 2rem; text-align:center; }
+    .footer-logo { font-family:'Rajdhani',sans-serif; font-size:1.6rem; font-weight:700; background:linear-gradient(135deg,#00b4d8,#1a4a7a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:.12em; }
+    .footer-entities { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin:1.5rem 0; }
+    .footer-entity { font-size:.75rem; color:var(--gray); }
+    .footer-entity strong { display:block; color:var(--white); margin-bottom:.2rem; }
+    .footer-links { display:flex; gap:2rem; justify-content:center; margin:1.5rem 0; flex-wrap:wrap; }
+    .footer-links a { font-size:.75rem; color:var(--gray); text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:var(--cyan); }
+    .footer-bottom { font-size:.7rem; color:rgba(148,163,184,.5); margin-top:1.5rem; border-top:1px solid rgba(0,180,216,.08); padding-top:1.5rem; }
 
-    /* ── CONTACT ─────────────────────────────────────────────────────── */
-    #contact {
-      background: rgba(13,27,42,.8);
-      text-align: center;
-    }
-    .contact-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem; margin: 3rem 0;
-    }
-    .contact-card {
-      background: rgba(30,45,61,.5);
-      border: 1px solid rgba(0,180,216,.1);
-      border-radius: 16px; padding: 2rem;
-      transition: all .3s;
-    }
-    .contact-card:hover {
-      border-color: rgba(0,180,216,.3);
-      transform: translateY(-4px);
-    }
-    .contact-card-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .contact-card-title { font-family: 'Rajdhani', sans-serif; font-size: 1rem; margin-bottom: .5rem; color: var(--cyan); }
-    .contact-card-val { font-size: .85rem; color: var(--gray); }
-    .contact-card a { color: var(--gray); text-decoration: none; }
-    .contact-card a:hover { color: var(--cyan); }
+    /* ANIMATIONS */
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes bounce { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(-8px); } }
+    @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
 
-    /* ── FOOTER ──────────────────────────────────────────────────────── */
-    footer {
-      position: relative; z-index: 1;
-      background: rgba(8,16,24,.95);
-      border-top: 1px solid rgba(0,180,216,.1);
-      padding: 3rem 2rem 2rem;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-    }
-    .footer-brand .nav-logo { font-size: 2rem; }
-    .footer-brand p { font-size: .82rem; color: var(--gray); line-height: 1.7; margin-top: .8rem; max-width: 260px; }
-    .footer-col h4 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: .8rem; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--cyan);
-      margin-bottom: 1.2rem;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: .6rem; }
-    .footer-col a { color: var(--gray); text-decoration: none; font-size: .82rem; transition: color .2s; }
-    .footer-col a:hover { color: var(--white); }
-    .footer-bottom {
-      max-width: 1200px; margin: 2rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,.05);
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: .75rem; color: var(--gray);
-      flex-wrap: wrap; gap: .5rem;
-    }
-    .footer-entities { display: flex; gap: 1.5rem; }
+    /* Reveal on scroll */
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
 
-    /* ── ANIMATIONS ──────────────────────────────────────────────────── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+      .gateway-grid, .poles-grid, .marque-grid, .commercial-grid, .contact-grid, .team-grid { grid-template-columns:1fr; }
+      nav { padding:.8rem 1.5rem; }
+      .nav-links, .nav-cta { display:none; }
+      .nav-mobile-toggle { display:block; }
+      .nav-links.open { display:flex; flex-direction:column; position:fixed; top:60px; left:0; right:0; background:rgba(13,27,42,.97); padding:2rem; gap:1.5rem; z-index:99; }
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-15px); }
-    }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%       { transform: translateX(-50%) translateY(8px); }
-    }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 30px rgba(0,180,216,.3); }
-      50%       { box-shadow: 0 0 60px rgba(0,180,216,.6); }
-    }
-
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ──────────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem; }
-      .nav-links { display: none; }
-      .methode-grid, .assoc-grid, .cf-split { grid-template-columns: 1fr; gap: 2rem; }
-      .acro-grid, .form-row { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-    }
-
-    /* ── GATEWAY — CHOISISSEZ VOTRE UNIVERS ─────────────────────────── */
-    #gateway {
-      position: relative; z-index: 1;
-      display: flex;
-      min-height: 100vh;
-      overflow: hidden;
-    }
-    .gw-panel {
-      flex: 1;
-      position: relative;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 6rem 4rem 4rem;
-      text-align: center;
-      cursor: pointer;
-      transition: flex .65s cubic-bezier(.4,0,.2,1);
-      overflow: hidden;
-    }
-    #gateway:has(.gw-panel:hover) .gw-panel { flex: 0.7; }
-    #gateway .gw-panel:hover { flex: 1.3; }
-    .gw-orim {
-      background: linear-gradient(165deg, #06101e 0%, #0b1c38 50%, #0c2448 100%);
-    }
-    .gw-ambient {
-      position: absolute; inset: 0; pointer-events: none;
-      transition: opacity .6s;
-    }
-    .gw-ambient-orim {
-      background:
-        radial-gradient(ellipse at 28% 32%, rgba(0,180,216,.13) 0%, transparent 58%),
-        radial-gradient(ellipse at 72% 72%, rgba(26,74,122,.1) 0%, transparent 52%);
-    }
-    .gw-panel:hover .gw-ambient { opacity: 1.6; }
-    .gw-icon-wrap {
-      width: 110px; height: 110px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3.2rem; margin: 0 auto 1.8rem;
-      transition: transform .4s, box-shadow .4s;
-    }
-    .gw-orim .gw-icon-wrap {
-      background: radial-gradient(circle at 35% 30%, #1a4a7a, #0d1b2a);
-      border: 2px solid rgba(0,180,216,.35);
-      box-shadow: 0 0 40px rgba(0,180,216,.2);
-    }
-    .gw-panel:hover .gw-icon-wrap { transform: scale(1.1) translateY(-4px); }
-    .gw-orim:hover .gw-icon-wrap { box-shadow: 0 0 65px rgba(0,180,216,.45); }
-    .gw-brand {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(1.9rem, 3.2vw, 3rem);
-      font-weight: 700;
-      letter-spacing: .15em;
-      margin-bottom: .45rem;
-      transition: letter-spacing .5s;
-    }
-    .gw-panel:hover .gw-brand { letter-spacing: .22em; }
-    .gw-orim .gw-brand {
-      background: linear-gradient(135deg, #ffffff 0%, #00b4d8 55%, #90e0ef 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .gw-sub {
-      font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
-      margin-bottom: 1.6rem;
-    }
-    .gw-orim .gw-sub { color: var(--lcyan); }
-    .gw-desc {
-      font-size: .92rem; color: var(--gray);
-      line-height: 1.82; max-width: 360px; margin: 0 auto 2.2rem;
-    }
-    .gw-cta {
-      display: inline-block;
-      padding: .9rem 2.3rem;
-      border-radius: 3rem;
-      font-size: .88rem; font-weight: 600;
-      letter-spacing: .08em;
-      text-decoration: none;
-      transition: all .28s;
-      position: relative; z-index: 1;
-    }
-    .gw-orim .gw-cta {
-      background: linear-gradient(135deg, var(--cyan), #0077b6);
-      color: #fff;
-      box-shadow: 0 0 28px rgba(0,180,216,.3);
-    }
-    .gw-orim .gw-cta:hover { box-shadow: 0 0 55px rgba(0,180,216,.65); transform: translateY(-3px); }
-    .gw-chips {
-      display: flex; flex-wrap: wrap; gap: .45rem; justify-content: center; margin-top: 1.8rem;
-    }
-    .gw-chip {
-      font-size: .62rem; padding: .28rem .85rem; border-radius: 2rem;
-      letter-spacing: .06em;
-    }
-    .gw-orim .gw-chip { background: rgba(0,180,216,.08); border: 1px solid rgba(0,180,216,.22); color: var(--lcyan); }
-
-    .gw-vline {
-      width: 1px; height: 90px;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.2), transparent);
-    }
-    .gw-or-badge {
-      background: #0d1b2a;
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 50%;
-      width: 52px; height: 52px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Rajdhani', sans-serif; font-size: .72rem;
-      font-weight: 700; letter-spacing: .14em;
-      color: rgba(255,255,255,.5);
-    }
-    /* Gateway top label */
-    .gw-top-label {
-      position: absolute; top: 2rem; left: 50%;
-      transform: translateX(-50%);
-      z-index: 20;
-      pointer-events: none;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: .62rem; font-weight: 600;
-      letter-spacing: .45em; text-transform: uppercase;
-      color: rgba(255,255,255,.22);
-      white-space: nowrap;
-    }
-    @media (max-width: 768px) {
-      #gateway { flex-direction: column; min-height: auto; }
-      #gateway:has(.gw-panel:hover) .gw-panel { flex: 1; }
-      #gateway .gw-panel:hover { flex: 1; }
-      .gw-panel { min-height: 60vh; padding: 4rem 2rem 3rem; }
-      .gw-top-label { display: none; }
-    }
-
-    /* ── GLOW DIVIDER ────────────────────────────────────────────────── */
-    .glow-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-      margin: 0; opacity: .4; position: relative; z-index: 1;
-    }
-
-    /* ── CYBER GRID OVERLAY ──────────────────────────────────────────── */
-    .hex-bg {
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background-image:
-        radial-gradient(circle at 25% 25%, rgba(0,180,216,.05) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(26,74,122,.08) 0%, transparent 50%);
-      pointer-events: none;
+    @media(max-width:600px) {
+      .lang-bar { padding:.4rem .7rem; }
+      .lang-btn { font-size:.6rem; padding:.25rem .5rem; }
+      .saybar-flow { flex-direction:column; }
+      .stats-bar { padding:1.5rem 1rem; }
     }
   </style>
 </head>
 <body>
+  <canvas id="canvas-bg"></canvas>
 
-<!-- ── PARTICLES CANVAS ──────────────────────────────────────────────────── -->
-<canvas id="canvas-bg"></canvas>
-
-<!-- ── NAVIGATION ───────────────────────────────────────────────────────── -->
-<nav>
-  <div class="nav-logo">ORIM<span>Association & SAS</span></div>
-  <ul class="nav-links">
-    <li><a href="#gateway">Nos Univers</a></li>
-    <li><a href="#methode">La Méthode</a></li>
-    <li><a href="#domaines">Domaines</a></li>
-    <li><a href="#association">Association</a></li>
-    <li><a href="#partenaires">Équipe</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#association" class="nav-cta">Rejoindre l'association</a>
-</nav>
-
-<!-- ── HERO ─────────────────────────────────────────────────────────────── -->
-<section id="hero">
-  <video id="hero-video" autoplay muted loop playsinline>
-    <source src="hero-bg.mp4" type="video/mp4" />
-  </video>
-  <div class="hero-overlay"></div>
-  <div class="hex-bg"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Association Scientifique &bull; Genève &bull; Fondée 2026</div>
-    <h1 class="hero-title">ORIM</h1>
-    <p class="hero-subtitle">Optimisation Résolutive Immuno-Métabolique</p>
-    <p class="hero-desc">
-      Une approche scientifique d'avant-garde qui réunit immunologie, métabolisme
-      et technologie pour optimiser la santé humaine à son niveau fondamental — l'ADN de votre vitalité.
-    </p>
-    <div class="hero-actions">
-      <a href="#gateway" class="btn-primary">Choisir votre univers ↓</a>
-      <a href="#association" class="btn-outline">Rejoindre l'association</a>
-    </div>
-
-    <div class="dna-visual" style="filter:drop-shadow(0 0 60px rgba(0,180,216,.6));">
-      <img src="../06_COMMUNICATION/06.1_Identite_Visuelle/Logos/ORIM OFFICIAL LOGO 2026.jpeg" alt="ORIM DNA Logo" style="border-radius:50%; border:1px solid rgba(0,180,216,.25);"/>
-    </div>
-  </div>
-  <div class="scroll-hint">Défiler</div>
-</section>
-
-<!-- ── GATEWAY — CHOISISSEZ VOTRE UNIVERS ───────────────────────────────── -->
-<section id="gateway">
-
-  <!-- Label centré en haut -->
-  <div class="gw-top-label">Choisissez votre univers</div>
-
-  <!-- ┌─────────────────────────────┐ -->
-  <!-- │  Panneau gauche : ORIM Nutrition │ -->
-  <!-- └─────────────────────────────┘ -->
-  <div class="gw-panel gw-orim" onclick="document.getElementById('methode').scrollIntoView({behavior:'smooth'})">
-    <div class="gw-ambient gw-ambient-orim"></div>
-
-    <div class="gw-icon-wrap">🧬</div>
-
-    <div class="gw-brand">ORIM NUTRITION</div>
-    <div class="gw-sub">Association & SAS · Science & Santé</div>
-
-    <p class="gw-desc">
-      La méthode ORIM — une approche scientifique d'avant-garde qui optimise votre
-      terrain immuno-métabolique à travers la nutrition, la micronutrition,
-      la recherche et la formation.
-    </p>
-
-    <a href="#methode" class="gw-cta" onclick="event.stopPropagation()">
-      Explorer ORIM Nutrition ↓
-    </a>
-
-    <div class="gw-chips">
-      <span class="gw-chip">Immunologie</span>
-      <span class="gw-chip">Micronutrition</span>
-      <span class="gw-chip">Smart Farming</span>
-      <span class="gw-chip">Association Genève 🇨🇭</span>
-      <span class="gw-chip">ORIM SAS France 🇫🇷</span>
-    </div>
+  <!-- LANG SWITCHER -->
+  <div class="lang-bar" role="navigation" aria-label="Language selector">
+    <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
+    <button class="lang-btn" onclick="setLang('de')" id="btn-de">DE</button>
   </div>
 
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#hero" class="nav-logo">ORIM<span data-i18n="nav.tagline">Immuno-Métabolique</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#gateway" data-i18n="nav.entites">Entités</a></li>
+      <li><a href="#poles" data-i18n="nav.poles">Pôles</a></li>
+      <li><a href="#commercial" data-i18n="nav.commercial">Commercial</a></li>
+      <li><a href="#marque" data-i18n="nav.marque">Marque ORIM™</a></li>
+      <li><a href="#equipe" data-i18n="nav.equipe">Équipe</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <a href="mailto:info@orimnutrition.com" class="nav-cta" data-i18n="nav.cta">Nous contacter</a>
+    <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
+  </nav>
 
-</section>
+  <!-- HERO -->
+  <section id="hero">
+    <video id="hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="hero-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="hero.badge">Science · Innovation · Santé</div>
+      <h1 class="hero-title">ORIM™</h1>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">Optimisation Résolutive Immuno-Métabolique</p>
+      <p class="hero-desc" data-i18n="hero.desc">Association scientifique genevoise &amp; ORIM SAS France — deux entités complémentaires au service de votre santé immuno-métabolique.</p>
+      <div class="hero-actions">
+        <a href="#gateway" class="btn-primary" data-i18n="hero.btn1">Découvrir nos entités</a>
+        <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Nous contacter</a>
+      </div>
+    </div>
+    <div class="scroll-hint" data-i18n="hero.scroll">Découvrir</div>
+  </section>
 
-<!-- ── STATS BAR ──────────────────────────────────────────────────────────── -->
-<div class="stats-bar reveal">
-  <div class="stat-item"><div class="stat-num">2026</div><div class="stat-label">Année de fondation</div></div>
-  <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Piliers scientifiques</div></div>
-  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Domaines d'application</div></div>
-  <div class="stat-item"><div class="stat-num">CH / FR</div><div class="stat-label">Présence internationale</div></div>
-</div>
+  <!-- STATS BAR -->
+  <div class="stats-bar reveal">
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label" data-i18n="stats.entites">Entités juridiques</div></div>
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label" data-i18n="stats.poles">Pôles Association</div></div>
+    <div class="stat-item"><div class="stat-num">85</div><div class="stat-label" data-i18n="stats.aliments">Aliments indexés ORIM™</div></div>
+    <div class="stat-item"><div class="stat-num">v3.0</div><div class="stat-label" data-i18n="stats.indice">Indice ORIM™ actuel</div></div>
+    <div class="stat-item"><div class="stat-num">2027</div><div class="stat-label" data-i18n="stats.microbiome">Microbiome v4.0</div></div>
+    <div class="stat-item"><div class="stat-num">CH+FR</div><div class="stat-label" data-i18n="stats.pays">Présence</div></div>
+  </div>
 
-<div class="glow-divider"></div>
+  <!-- GATEWAY — DUAL ENTITY -->
+  <section id="gateway">
+    <div class="gateway-intro reveal">
+      <div class="section-tag" data-i18n="gateway.tag">Nos entités</div>
+      <h2 class="section-title"><span class="accent" data-i18n="gateway.title1">Deux entités,</span> <span data-i18n="gateway.title2">une vision</span></h2>
+      <p class="section-desc" data-i18n="gateway.desc">ORIM™ opère via deux structures juridiques distinctes et complémentaires — l'Association ORIM Genève (CH) et ORIM SAS France (FR) — chacune avec des missions clairement définies.</p>
+    </div>
+    <div class="gateway-grid">
+      <!-- CH -->
+      <div class="entity-card entity-card-ch reveal">
+        <div class="entity-card-glow-ch"></div>
+        <div class="entity-flag">🇨🇭</div>
+        <div class="entity-badge-ch" data-i18n="entity.ch.badge">Association · Genève · Suisse</div>
+        <div class="entity-name" data-i18n="entity.ch.name">Association ORIM Genève</div>
+        <p class="entity-tagline" data-i18n="entity.ch.tagline">Entité scientifique à but non lucratif. Propriétaire de la marque ORIM™ et de l'Indice ORIM™. Pôles Éducatif, Thérapeutique &amp; Recherche.</p>
+        <ul class="entity-services">
+          <li data-i18n="entity.ch.s1">Séminaires &amp; formations éducatives</li>
+          <li data-i18n="entity.ch.s2">Suivi thérapeutique individuel</li>
+          <li data-i18n="entity.ch.s3">Atelier Seniors 55+</li>
+          <li data-i18n="entity.ch.s4">Indice ORIM™ v3.0 (Recherche)</li>
+          <li data-i18n="entity.ch.s5">Subventions R&amp;D · Microbiome v4.0</li>
+          <li data-i18n="entity.ch.s6">Veille scientifique Premium</li>
+        </ul>
+        <a href="#poles" class="entity-cta entity-cta-ch" data-i18n="entity.ch.cta">Voir les pôles Association →</a>
+      </div>
+      <!-- FR -->
+      <div class="entity-card entity-card-fr reveal">
+        <div class="entity-card-glow-fr"></div>
+        <div class="entity-flag">🇫🇷</div>
+        <div class="entity-badge-fr" data-i18n="entity.fr.badge">SAS · France · Commercial</div>
+        <div class="entity-name" data-i18n="entity.fr.name">ORIM SAS France</div>
+        <p class="entity-tagline" data-i18n="entity.fr.tagline">Entité commerciale française. Distributeur agréé sous licence ORIM™. Pôle Commercial — compléments, voyages santé, partenariats corporate.</p>
+        <ul class="entity-services">
+          <li data-i18n="entity.fr.s1">Compléments alimentaires ORIM™</li>
+          <li data-i18n="entity.fr.s2">Voyages Santé &amp; Retraite</li>
+          <li data-i18n="entity.fr.s3">Partenariats Corporates</li>
+          <li data-i18n="entity.fr.s4">Distribution réseau Saybar</li>
+          <li data-i18n="entity.fr.s5">Marque utilisée sous licence Association CH</li>
+        </ul>
+        <a href="#commercial" class="entity-cta entity-cta-fr" data-i18n="entity.fr.cta">Voir le pôle commercial →</a>
+      </div>
+    </div>
+  </section>
 
-<!-- ── MÉTHODE ──────────────────────────────────────────────────────────── -->
-<section id="methode">
-  <div class="container">
-    <p class="section-tag reveal">Science</p>
-    <h2 class="section-title reveal">La Méthode ORIM</h2>
-    <div class="section-line reveal"></div>
-
-    <div class="methode-grid">
-      <div class="methode-text reveal">
-        <p>
-          ORIM est une approche holistique et scientifique qui place l'optimisation
-          du terrain biologique au cœur de la santé. Là où la médecine conventionnelle
-          traite les symptômes, ORIM agit sur les mécanismes fondamentaux — immunitaires
-          et métaboliques — qui déterminent votre vitalité.
-        </p>
-        <p>
-          Développée par Olivier Chevalley, la méthode ORIM s'appuie sur une
-          lecture intégrative des signaux biologiques pour construire des protocoles
-          personnalisés, mesurables et reproductibles.
-        </p>
-        <p>
-          L'acronyme ORIM résume une vision complète : de l'<strong style="color:var(--cyan)">Optimisation</strong> ciblée,
-          une approche <strong style="color:var(--cyan)">Résolutive</strong> orientée solutions,
-          un ancrage <strong style="color:var(--cyan)">Immuno</strong>logique solide,
-          et une dimension <strong style="color:var(--cyan)">Métabolique</strong> centrale.
-        </p>
-        <div class="acro-grid">
-          <div class="acro-card">
-            <div class="acro-letter">O</div>
-            <div class="acro-word">Optimisation</div>
-            <div class="acro-desc">Maximiser les performances biologiques par une approche précise et personnalisée.</div>
-          </div>
-          <div class="acro-card">
-            <div class="acro-letter">R</div>
-            <div class="acro-word">Résolutive</div>
-            <div class="acro-desc">Des solutions concrètes orientées vers la résolution durable des déséquilibres.</div>
-          </div>
-          <div class="acro-card">
-            <div class="acro-letter">I</div>
-            <div class="acro-word">Immuno</div>
-            <div class="acro-desc">Renforcer et moduler le système immunitaire comme pilier central de la santé.</div>
-          </div>
-          <div class="acro-card">
-            <div class="acro-letter">M</div>
-            <div class="acro-word">Métabolique</div>
-            <div class="acro-desc">Optimiser les processus métaboliques pour une énergie et une régénération optimales.</div>
-          </div>
+  <!-- PÔLES ASSOCIATION CH -->
+  <section id="poles">
+    <div class="poles-header reveal">
+      <div class="section-tag">Association ORIM Genève</div>
+      <h2 class="entity-section-title ch-label" data-i18n="poles.title">🏛️ Trois Pôles — Association CH</h2>
+      <p class="section-desc" style="max-width:600px;margin:.8rem auto 0;" data-i18n="poles.desc">L'Association ORIM Genève structure ses activités en trois pôles complémentaires, conformément au Workflow A (Éducatif &amp; Thérapeutique) et D (Recherche &amp; IP).</p>
+    </div>
+    <div class="poles-grid">
+      <!-- ÉDUCATIF -->
+      <div class="pole-card reveal">
+        <div class="pole-icon">🎓</div>
+        <div class="pole-name" data-i18n="pole.edu.name">Pôle Éducatif</div>
+        <p class="pole-desc" data-i18n="pole.edu.desc">Formations individuelles et collectives en nutrition immuno-métabolique. Séminaires, contenus pédagogiques, cotisations membres Standard &amp; Bienfaiteur.</p>
+        <div class="pole-tags">
+          <span class="pole-tag" data-i18n="pole.edu.t1">Séminaires collectifs</span>
+          <span class="pole-tag" data-i18n="pole.edu.t2">Formation individuelle</span>
+          <span class="pole-tag" data-i18n="pole.edu.t3">Atelier Seniors 55+</span>
+          <span class="pole-tag" data-i18n="pole.edu.t4">Contenus pédagogiques</span>
+          <span class="pole-tag" data-i18n="pole.edu.t5">Cotisations membres</span>
         </div>
       </div>
-      <div class="methode-visual reveal">
-        <div class="dna-ring">
-          <img src="06_COMMUNICATION/06.1_Identite_Visuelle/Logos/ORIM transparent.jpg" alt="ORIM" />
+      <!-- THÉRAPEUTIQUE -->
+      <div class="pole-card reveal">
+        <div class="pole-icon">🩺</div>
+        <div class="pole-name" data-i18n="pole.thera.name">Pôle Thérapeutique</div>
+        <p class="pole-desc" data-i18n="pole.thera.desc">Suivi thérapeutique personnalisé sous mandat Association, supervisé par le Dr. Mahour. Application de l'Indice ORIM™ expérimental. Actes médicaux exclusifs à l'Association.</p>
+        <div class="pole-tags">
+          <span class="pole-tag" data-i18n="pole.thera.t1">Suivi thérapeutique</span>
+          <span class="pole-tag" data-i18n="pole.thera.t2">Indice ORIM™ expérimental</span>
+          <span class="pole-tag" data-i18n="pole.thera.t3">Dr. Mahour</span>
+          <span class="pole-tag" data-i18n="pole.thera.t4">Droit suisse · Genève</span>
+        </div>
+      </div>
+      <!-- RECHERCHE -->
+      <div class="pole-card reveal">
+        <div class="pole-icon">🔬</div>
+        <div class="pole-name" data-i18n="pole.rech.name">Pôle Recherche &amp; IP</div>
+        <p class="pole-desc" data-i18n="pole.rech.desc">Développement de l'Indice ORIM™ v4.0 Microbiome (2027) &amp; v5.0 IA Nutrigénomique (2028). Gestion des subventions R&amp;D 20kCHF. Propriété intellectuelle &amp; dépôt marque.</p>
+        <div class="pole-tags">
+          <span class="pole-tag" data-i18n="pole.rech.t1">Indice v4.0 · 2027</span>
+          <span class="pole-tag" data-i18n="pole.rech.t2">Indice v5.0 · 2028</span>
+          <span class="pole-tag" data-i18n="pole.rech.t3">Subventions R&amp;D</span>
+          <span class="pole-tag" data-i18n="pole.rech.t4">Propriété intellectuelle</span>
+          <span class="pole-tag" data-i18n="pole.rech.t5">INPI · IGE</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="glow-divider"></div>
-
-<!-- ── DOMAINES ──────────────────────────────────────────────────────────── -->
-<section id="domaines">
-  <div class="container">
-    <p class="section-tag reveal">Applications</p>
-    <h2 class="section-title reveal">Nos Domaines d'Excellence</h2>
-    <div class="section-line reveal"></div>
-    <p class="reveal" style="color:var(--gray); max-width:600px; margin-bottom:1rem;">
-      L'approche ORIM dépasse la santé individuelle. Elle s'étend à l'alimentation,
-      à l'agriculture et à la technologie — une vision intégrée de l'optimisation de la vie.
-    </p>
-
-    <div class="domains-grid">
-      <div class="domain-card reveal">
-        <div class="domain-icon">🧬</div>
-        <div class="domain-title">Santé & Nutrition</div>
-        <div class="domain-desc">
-          Protocoles nutritionnels personnalisés basés sur l'analyse du terrain immuno-métabolique.
-          Complémentation ciblée, alimentation fonctionnelle et suivi biologique précis.
-        </div>
-        <div class="domain-tags">
-          <span class="tag">Immunologie</span>
-          <span class="tag">Micronutrition</span>
-          <span class="tag">Bilan métabolique</span>
-        </div>
+  <!-- PÔLE COMMERCIAL SAS FR -->
+  <section id="commercial">
+    <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto;">
+      <div class="section-tag">ORIM SAS France</div>
+      <h2 class="entity-section-title fr-label" data-i18n="commercial.title">🏢 Pôle Commercial — SAS FR</h2>
+      <p class="section-desc" data-i18n="commercial.desc">ORIM SAS France opère le pôle commercial sous licence de marque ORIM™ délivrée par l'Association ORIM Genève (Workflow B). Toutes les prestations commerciales sont facturées sur IBAN FR.</p>
+    </div>
+    <div class="commercial-grid">
+      <div class="commercial-card reveal">
+        <div class="commercial-icon">💊</div>
+        <div class="commercial-name" data-i18n="comm.c1.name">Compléments Alimentaires</div>
+        <p class="commercial-desc" data-i18n="comm.c1.desc">Gamme de compléments alimentaires sous marque ORIM™. Distribution nationale et internationale. Formulations basées sur l'Indice ORIM™ v3.0.</p>
       </div>
-
-      <div class="domain-card reveal">
-        <div class="domain-icon">🌱</div>
-        <div class="domain-title">Agriculture Verticale</div>
-        <div class="domain-desc">
-          Des aliments cultivés avec une densité nutritionnelle maximale. ORIM applique
-          ses principes d'optimisation à la production alimentaire — pour une nutrition
-          à la source.
-        </div>
-        <div class="domain-tags">
-          <span class="tag">Vertical Farming</span>
-          <span class="tag">Qualité nutritive</span>
-          <span class="tag">Circuit court</span>
-        </div>
+      <div class="commercial-card reveal">
+        <div class="commercial-icon">✈️</div>
+        <div class="commercial-name" data-i18n="comm.c2.name">Voyages Santé &amp; Retraite</div>
+        <p class="commercial-desc" data-i18n="comm.c2.desc">Séjours bien-être et retraites santé. Programmes immuno-métaboliques en immersion. Partenariats hôteliers sélectionnés.</p>
       </div>
-
-      <div class="domain-card reveal">
-        <div class="domain-icon">🤖</div>
-        <div class="domain-title">Smart Farming & Tech</div>
-        <div class="domain-desc">
-          Intelligence artificielle, drones de surveillance et capteurs biologiques
-          au service d'une agriculture de précision. La technologie comme levier
-          de la qualité nutritionnelle.
-        </div>
-        <div class="domain-tags">
-          <span class="tag">IA</span>
-          <span class="tag">Drones</span>
-          <span class="tag">IoT agricole</span>
-        </div>
+      <div class="commercial-card reveal">
+        <div class="commercial-icon">🤝</div>
+        <div class="commercial-name" data-i18n="comm.c3.name">Partenariats Corporates</div>
+        <p class="commercial-desc" data-i18n="comm.c3.desc">Programmes santé en entreprise. Nutrition optimale au travail. Contrats B2B avec facturation TVA FR 20%.</p>
       </div>
-
-      <div class="domain-card reveal">
-        <div class="domain-icon">🔬</div>
-        <div class="domain-title">Recherche & Formation</div>
-        <div class="domain-desc">
-          L'association ORIM promeut la recherche en optimisation immuno-métabolique
-          et forme les praticiens de demain à une approche intégrative, scientifique
-          et mesurable.
-        </div>
-        <div class="domain-tags">
-          <span class="tag">R&D</span>
-          <span class="tag">Formation certifiante</span>
-          <span class="tag">Publications</span>
-        </div>
+      <div class="commercial-card reveal">
+        <div class="commercial-icon">🔗</div>
+        <div class="commercial-name" data-i18n="comm.c4.name">Distribution &amp; Réseau</div>
+        <p class="commercial-desc" data-i18n="comm.c4.desc">Distribution via le réseau Saybar et partenaires agréés. Contrats de distribution sous licence marque ORIM™.</p>
       </div>
+    </div>
+    <div class="fr-notice reveal">
+      <strong data-i18n="fr.notice.title">⚠️ Information importante :</strong> <span data-i18n="fr.notice.text">Les prestations commerciales (compléments, voyages, corporate) sont exclusivement gérées par ORIM SAS France — IBAN FR. L'Association ORIM Genève (CH) ne traite aucune commande commerciale. Marque ORIM™ utilisée sous licence de l'Association ORIM Genève.</span>
+    </div>
+  </section>
 
-      <div class="domain-card reveal">
-        <div class="domain-icon">💊</div>
-        <div class="domain-title">Micronutrition Avancée</div>
-        <div class="domain-desc">
-          Formulation de compléments alimentaires et de protocoles micronutritionnels
-          basés sur la science des interactions immuno-métaboliques.
-        </div>
-        <div class="domain-tags">
-          <span class="tag">Compléments ciblés</span>
-          <span class="tag">APE 8690D</span>
-          <span class="tag">Paramédicale</span>
-        </div>
+  <!-- MARQUE ORIM™ -->
+  <section id="marque">
+    <div class="marque-inner">
+      <div class="reveal" style="text-align:center;margin-bottom:1rem;">
+        <div class="section-tag" data-i18n="marque.tag">Propriété intellectuelle</div>
+        <h2 class="section-title"><span class="accent">ORIM™</span> — <span data-i18n="marque.title">Marque &amp; Indice</span></h2>
       </div>
-
-      <div class="domain-card reveal">
-        <div class="domain-icon">🌍</div>
-        <div class="domain-title">Impact Global</div>
-        <div class="domain-desc">
-          De Genève à Ferney-Voltaire, ORIM construit un réseau franco-suisse
-          d'excellence pour exporter une vision globale de la santé optimisée
-          au service de l'humanité.
+      <div class="marque-grid">
+        <div class="marque-block reveal">
+          <div class="marque-badge" data-i18n="marque.owner.badge">Propriétaire · Association CH</div>
+          <h3 data-i18n="marque.owner.title">🏛️ Marque ORIM™</h3>
+          <p data-i18n="marque.owner.text">La marque ORIM™ est déposée à l'INPI (France) et à l'IGE (Suisse) par l'Association ORIM Genève. Elle est licenciée à ORIM SAS France pour usage commercial avec redevance arm's length de 6% du CA net HT, minimum 3 000 EUR/trimestre.</p>
         </div>
-        <div class="domain-tags">
-          <span class="tag">Suisse</span>
-          <span class="tag">France</span>
-          <span class="tag">International</span>
+        <div class="marque-block reveal">
+          <div class="marque-badge" data-i18n="marque.indice.badge">R&amp;D · Association CH</div>
+          <h3 data-i18n="marque.indice.title">🔬 Indice ORIM™</h3>
+          <p data-i18n="marque.indice.text">L'Indice ORIM™ v3.0 (85 aliments × 8 métriques) est développé et détenu par l'Association. ORIM SAS France accède aux données via la Convention Services R&D (Contrat n°2) — forfait annuel 8 000–12 000 EUR sur IBAN CH.</p>
+        </div>
+        <div class="marque-block reveal">
+          <div class="marque-badge" data-i18n="marque.v4.badge">2027 · Microbiome</div>
+          <h3 data-i18n="marque.v4.title">🧬 Indice v4.0</h3>
+          <p data-i18n="marque.v4.text">Développement Microbiome 2027 sous supervision Dr. Mahour. Financé par les subventions R&D (20 kCHF) sur compte Association exclusivement. Les algorithmes restent propriété Association.</p>
+        </div>
+        <div class="marque-block reveal">
+          <div class="marque-badge" data-i18n="marque.v5.badge">2028 · IA Nutrigénomique</div>
+          <h3 data-i18n="marque.v5.title">🤖 Indice v5.0</h3>
+          <p data-i18n="marque.v5.text">Vision 2028 : intégration de l'intelligence artificielle et de la nutrigénomique. Algorithmes exclusifs Association ORIM Genève. Archivage et protection IP renforcés dès la phase R&D.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="glow-divider"></div>
+  <!-- PARTENARIAT SAYBAR -->
+  <section id="saybar">
+    <div class="saybar-inner reveal">
+      <div class="section-tag" data-i18n="saybar.tag">Partenariat stratégique</div>
+      <h2 class="section-title"><span class="accent">ORIM™ × </span><span data-i18n="saybar.title">Saybar</span></h2>
+      <p class="saybar-desc" data-i18n="saybar.desc">Le partenariat tripartite ORIM × Saybar implique les deux entités ORIM avec des rôles distincts et des flux financiers strictement séparés (Workflow C).</p>
+      <div class="saybar-flow">
+        <div class="saybar-node ch" data-i18n="saybar.node.ch">🏛️ Association CH<br><small data-i18n="saybar.node.ch.sub">Licence méthode ORIM™<br>→ IBAN CH</small></div>
+        <div class="saybar-arrow">⟷</div>
+        <div class="saybar-node partner" data-i18n="saybar.node.partner">🤝 Saybar<br><small data-i18n="saybar.node.partner.sub">Partenaire distribution<br>+ Usage thérapeutique</small></div>
+        <div class="saybar-arrow">⟷</div>
+        <div class="saybar-node fr" data-i18n="saybar.node.fr">🏢 SAS FR<br><small data-i18n="saybar.node.fr.sub">Distribution produits<br>→ IBAN FR</small></div>
+      </div>
+      <p class="saybar-desc" style="font-size:.75rem;color:rgba(148,163,184,.6);" data-i18n="saybar.legal">Deux contrats distincts — Contrat A (Association → Saybar) &amp; Contrat B (SAS → Saybar). Virements sur IBAN distincts. Clé de répartition 60% Association / 40% SAS pour éléments mixtes.</p>
+    </div>
+  </section>
 
-<!-- ── ASSOCIATION ──────────────────────────────────────────────────────── -->
-<section id="association">
-  <div class="container">
-    <p class="section-tag reveal">Association à but non lucratif</p>
-    <h2 class="section-title reveal">Association ORIM — Genève</h2>
-    <div class="section-line reveal"></div>
-
-    <div class="assoc-grid">
-      <div>
-        <div class="assoc-info-card reveal">
-          <div class="info-row">
-            <span class="info-label">Fondée le</span>
-            <span class="info-value">18 février 2026</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Siège</span>
-            <span class="info-value">86 rue de Genève, 1225 Chêne-Bourg, Genève — Suisse</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Statut</span>
-            <span class="info-value">Association à but non lucratif — Code civil suisse art. 60 ss.</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Président</span>
-            <span class="info-value">Olivier Chevalley</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Mission</span>
-            <span class="info-value">Promouvoir la recherche, la formation et la pratique de l'Optimisation Résolutive Immuno-Métabolique</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Cotisation</span>
-            <span class="info-value">Membres actifs, bienfaiteurs, honoraires — contactez-nous</span>
-          </div>
-        </div>
-
-        <div class="founder-card reveal" style="margin-top:1.5rem">
-          <!-- Avatar ORIM — pas de photo personnelle -->
-          <div style="width:100px;height:100px;border-radius:50%;margin:0 auto 1rem;
-                      background:linear-gradient(135deg,#0d1b2a,#1a4a7a);
-                      border:3px solid rgba(0,180,216,.4);
-                      box-shadow:0 0 30px rgba(0,180,216,.2);
-                      display:flex;align-items:center;justify-content:center;">
-            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 6 Q26 14 34 6" stroke="#00b4d8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <path d="M18 16 Q26 24 34 16" stroke="#00b4d8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <path d="M18 26 Q26 34 34 26" stroke="#00b4d8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <path d="M18 36 Q26 44 34 36" stroke="#00b4d8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <line x1="18" y1="6" x2="18" y2="46" stroke="#90e0ef" stroke-width="1.8" stroke-opacity="0.5"/>
-              <line x1="34" y1="6" x2="34" y2="46" stroke="#90e0ef" stroke-width="1.8" stroke-opacity="0.5"/>
-            </svg>
-          </div>
-          <div class="founder-name">Olivier Chevalley</div>
-          <div class="founder-role">Fondateur de la méthode ORIM &bull; Président &bull; Spécialiste en Ingénierie QHSE</div>
-          <div class="founder-bio">
-            Fondateur de la méthode ORIM et expert en ingénierie QHSE (ISO 9001),
-            Olivier Chevalley place la rigueur scientifique et la qualité systémique
-            au cœur de chaque protocole. Il dirige l'association genevoise
-            et la branche commerciale française ORIM SAS, assurant la cohérence
-            et la traçabilité de l'ensemble de la démarche ORIM.
-          </div>
+  <!-- ÉQUIPE -->
+  <section id="equipe">
+    <div class="reveal" style="text-align:center;margin-bottom:1rem;">
+      <div class="section-tag" data-i18n="equipe.tag">Notre équipe</div>
+      <h2 class="section-title"><span class="accent" data-i18n="equipe.title">Dirigeants &amp; Experts</span></h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">OC</div>
+        <div class="team-name">Olivier Chevalley</div>
+        <div class="team-roles">
+          <span class="team-role ch" data-i18n="team.oc.r1">Président · Association CH</span>
+          <span class="team-role fr" data-i18n="team.oc.r2">Associé · SAS FR</span>
         </div>
       </div>
-
-      <div>
-        <div class="membership-box reveal">
-          <h3>Rejoindre l'Association ORIM</h3>
-          <p style="color:var(--gray); font-size:.85rem; margin-bottom:1.5rem; line-height:1.7;">
-            Partagez notre vision d'une santé optimisée par la science.
-            En rejoignant l'association, vous accédez à nos publications, formations
-            et réseau de praticiens certifiés ORIM.
-          </p>
-          <div class="form-group form-row">
-            <input type="text" placeholder="Prénom" />
-            <input type="text" placeholder="Nom" />
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Adresse e-mail" />
-          </div>
-          <div class="form-group">
-            <input type="text" placeholder="Profession / spécialité" />
-          </div>
-          <div class="form-group">
-            <select>
-              <option value="">Type de membership souhaité</option>
-              <option>Membre actif</option>
-              <option>Membre bienfaiteur</option>
-              <option>Praticien certifié ORIM</option>
-              <option>Partenaire institutionnel</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <textarea rows="3" placeholder="Message ou question (optionnel)"></textarea>
-          </div>
-          <button class="btn-primary" style="width:100%; border-radius:10px;">
-            Envoyer ma demande d'adhésion
-          </button>
-          <p style="font-size:.7rem; color:var(--gray); margin-top:.8rem; text-align:center;">
-            Nous vous répondons sous 48h. Vos données restent confidentielles.
-          </p>
+      <div class="team-card reveal">
+        <div class="team-avatar">NC</div>
+        <div class="team-name">Noël Calderón</div>
+        <div class="team-roles">
+          <span class="team-role fr" data-i18n="team.nc.r1">DG · ORIM SAS France</span>
+          <span class="team-role ch" data-i18n="team.nc.r2">Directeur Thérapeutique · Association</span>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar">KM</div>
+        <div class="team-name">Dr. Khoutir Mahour</div>
+        <div class="team-roles">
+          <span class="team-role sci" data-i18n="team.km.r1">Superviseur R&amp;D · Indice ORIM™</span>
+          <span class="team-role ch" data-i18n="team.km.r2">Mandataire · Association CH</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="glow-divider"></div>
-
-<!-- ── PARTENAIRES THÉRAPEUTIQUES ────────────────────────────────────────── -->
-<section id="partenaires" style="background:linear-gradient(135deg,rgba(13,27,42,.95),rgba(60,78,20,.15));">
-  <div class="container">
-    <p class="section-tag reveal" style="color:#90b828;">Partenaires thérapeutiques</p>
-    <h2 class="section-title reveal">L'Équipe ORIM</h2>
-    <div class="section-line reveal" style="background:linear-gradient(135deg,#90b828,transparent);"></div>
-    <p class="reveal" style="color:var(--gray); max-width:650px; line-height:1.8; margin-bottom:3rem;">
-      ORIM s'appuie sur un réseau de praticiens certifiés aux compétences complémentaires.
-      Chaque partenaire est sélectionné pour son expertise, ses résultats démontrés
-      et son alignement avec la philosophie ORIM : personnalisation, prévention et efficacité mesurable.
-    </p>
-
-    <!-- Grille d'équipe -->
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem;">
-
-      <!-- Carte Olivier (QHSE) -->
-      <div class="domain-card reveal" style="border-color:rgba(0,180,216,.2);">
-        <div style="display:flex; gap:1.2rem; align-items:flex-start;">
-          <!-- Avatar ORIM à la place de la photo -->
-          <div style="width:72px;height:72px;border-radius:50%;flex-shrink:0;
-                      background:linear-gradient(135deg,#0d1b2a,#1a4a7a);
-                      border:2px solid rgba(0,180,216,.4);
-                      display:flex;align-items:center;justify-content:center;">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- ADN stylisé -->
-              <path d="M12 4 Q18 10 24 4" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M12 12 Q18 18 24 12" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M12 20 Q18 26 24 20" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M12 28 Q18 34 24 28" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <line x1="12" y1="4" x2="12" y2="32" stroke="#90e0ef" stroke-width="1.5" stroke-opacity="0.6"/>
-              <line x1="24" y1="4" x2="24" y2="32" stroke="#90e0ef" stroke-width="1.5" stroke-opacity="0.6"/>
-            </svg>
-          </div>
-          <div>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:1.15rem;font-weight:700;color:var(--white);">
-              Olivier Chevalley
-            </div>
-            <div style="color:var(--cyan);font-size:.7rem;letter-spacing:.1em;margin:.25rem 0 .6rem;">
-              FONDATEUR DE LA MÉTHODE ORIM &bull; PRÉSIDENT &bull; INGÉNIERIE QHSE
-            </div>
-            <div style="font-size:.82rem;color:var(--gray);line-height:1.6;">
-              Fondateur de la méthode ORIM et spécialiste en ingénierie QHSE (ISO 9001).
-              Garant de la rigueur scientifique, de la qualité des protocoles et de la
-              conformité réglementaire de l'ensemble du dispositif ORIM en Suisse et en France.
-            </div>
-          </div>
-        </div>
-        <div class="domain-tags" style="margin-top:1rem;">
-          <span class="tag" style="border-color:rgba(0,180,216,.3);color:var(--lcyan);">QHSE ISO 9001</span>
-          <span class="tag" style="border-color:rgba(0,180,216,.3);color:var(--lcyan);">Fondateur méthode ORIM</span>
-          <span class="tag" style="border-color:rgba(0,180,216,.3);color:var(--lcyan);">Protocoles</span>
-        </div>
-      </div>
-
-      <!-- Carte Noël Calderón / Saybar -->
-      <div class="domain-card reveal" style="border-color:rgba(144,184,40,.25);">
-        <div style="display:flex; gap:1.2rem; align-items:flex-start;">
-          <!-- Avatar Saybar (logo) -->
-          <div style="width:72px;height:72px;border-radius:50%;flex-shrink:0;overflow:hidden;
-                      border:2px solid rgba(144,184,40,.4);">
-            <img src="../06_COMMUNICATION/06.1_Identite_Visuelle/Logos/Saybar_logo_v2.png"
-                 alt="Saybar"
-                 style="width:100%;height:100%;object-fit:cover;object-position:center 20%;"/>
-          </div>
-          <div>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:1.15rem;font-weight:700;color:var(--white);">
-              Noël Calderón
-            </div>
-            <div style="color:#90b828;font-size:.7rem;letter-spacing:.1em;margin:.25rem 0 .6rem;">
-              DIRECTEUR SCIENTIFIQUE &bull; MEMBRE COMITÉ FONDATEUR ORIM
-            </div>
-            <div style="font-size:.82rem;color:var(--gray);line-height:1.6;">
-              Chef cuisinier thérapeutique, naturopathe et thérapeute en nutrition.
-              Diplômé en médecine orthomoléculaire et en physiologie-pathologie,
-              Noël apporte une expertise holistique unique au sein du programme ORIM,
-              avec des résultats cliniquement démontrés auprès de ses clients.
-            </div>
-          </div>
-        </div>
-        <div class="domain-tags" style="margin-top:1rem;">
-          <span class="tag" style="border-color:rgba(144,184,40,.35);color:#b8d860;">Naturopathie</span>
-          <span class="tag" style="border-color:rgba(144,184,40,.35);color:#b8d860;">Médecine orthomoléculaire</span>
-          <span class="tag" style="border-color:rgba(144,184,40,.35);color:#b8d860;">Cuisine thérapeutique</span>
-        </div>
-
-        <!-- Encadré Saybar -->
-        <div style="margin-top:1.2rem; padding:1rem; border-radius:10px;
-                    background:rgba(144,184,40,.06); border:1px solid rgba(144,184,40,.2);">
-          <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;">
-            <img src="../06_COMMUNICATION/06.1_Identite_Visuelle/Logos/Saybar_logo_v2.png"
-                 style="width:32px;height:32px;border-radius:50%;" alt="Saybar"/>
-            <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:#c8d878;letter-spacing:.15em;font-size:.95rem;">SAYBAR</span>
-            <span style="font-size:.7rem;color:var(--gray);font-style:italic;">ta santé, ton choix</span>
-          </div>
-          <p style="font-size:.78rem;color:var(--gray);line-height:1.6;">
-            Saybar propose consultations personnalisées, ateliers de cuisine thérapeutique
-            et nutraceutiques (micronutriments) ciblés pour traiter le syndrome métabolique,
-            l'hypertension, le surpoids, la dyslipidémie et le diabète de type 2.
-          </p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;">
-            <span class="tag" style="border-color:rgba(144,184,40,.3);color:#a8c860;font-size:.6rem;">Syndrome métabolique</span>
-            <span class="tag" style="border-color:rgba(144,184,40,.3);color:#a8c860;font-size:.6rem;">Diabète type 2</span>
-            <span class="tag" style="border-color:rgba(144,184,40,.3);color:#a8c860;font-size:.6rem;">Nutraceutiques</span>
-            <span class="tag" style="border-color:rgba(144,184,40,.3);color:#a8c860;font-size:.6rem;">+41 78 717 91 89</span>
-          </div>
-        </div>
-      </div>
-
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="reveal" style="text-align:center;margin-bottom:1rem;">
+      <div class="section-tag" data-i18n="contact.tag">Nous joindre</div>
+      <h2 class="section-title"><span class="accent" data-i18n="contact.title">Contact</span></h2>
+      <p class="section-desc" style="max-width:550px;margin:.8rem auto 0;" data-i18n="contact.desc">Contactez l'entité correspondant à votre besoin.</p>
     </div>
-  </div>
-</section>
-
-<div class="glow-divider"></div>
-
-<!-- ── CONTACT ───────────────────────────────────────────────────────────── -->
-<section id="contact">
-  <div class="container">
-    <p class="section-tag reveal">Contact</p>
-    <h2 class="section-title reveal">Nous Contacter</h2>
-    <div class="section-line reveal" style="margin:1rem auto 2rem;"></div>
-
     <div class="contact-grid">
-      <div class="contact-card reveal">
-        <div class="contact-card-icon">🏛️</div>
-        <div class="contact-card-title">Association ORIM</div>
-        <div class="contact-card-val">86 rue de Genève<br/>1225 Chêne-Bourg<br/>Genève — Suisse</div>
+      <div class="contact-block ch-block reveal">
+        <h3 data-i18n="contact.ch.title">🏛️ Association ORIM Genève (CH)</h3>
+        <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><a href="mailto:info@orimnutrition.com">info@orimnutrition.com</a><br><span style="font-size:.72rem;color:rgba(148,163,184,.5);" data-i18n="contact.ch.email.note">Éducatif · Thérapeutique · Recherche</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🌐</div><div class="contact-item-text"><a href="https://www.orimnutrition.com">www.orimnutrition.com</a></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text" data-i18n="contact.ch.address">Genève, Suisse — Droit suisse applicable · For Genève</div></div>
+        <div class="contact-item"><div class="contact-item-icon">🏦</div><div class="contact-item-text" data-i18n="contact.ch.iban">IBAN CH — Paiements Association uniquement</div></div>
       </div>
-      <div class="contact-card reveal">
-        <div class="contact-card-icon">🏢</div>
-        <div class="contact-card-title">ORIM SAS</div>
-        <div class="contact-card-val">8 Chemin des Potiers, Bât. B<br/>01210 Ferney-Voltaire<br/>Ain — France</div>
-      </div>
-      <div class="contact-card reveal">
-        <div class="contact-card-icon">🌐</div>
-        <div class="contact-card-title">Sites web</div>
-        <div class="contact-card-val">
-          <a href="https://www.orimnutrition.com">www.orimnutrition.com</a>
-        </div>
-      </div>
-      <div class="contact-card reveal">
-        <div class="contact-card-icon">📱</div>
-        <div class="contact-card-title">Réseaux sociaux</div>
-        <div class="contact-card-val">
-          <a href="#">Instagram ORIM</a><br/>
-          <a href="#">LinkedIn ORIM</a>
-        </div>
+      <div class="contact-block fr-block reveal">
+        <h3 data-i18n="contact.fr.title">🏢 ORIM SAS France (FR)</h3>
+        <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><a href="mailto:contact@orim-sas.fr" style="color:#ea8090;">contact@orim-sas.fr</a><br><span style="font-size:.72rem;color:rgba(148,163,184,.5);" data-i18n="contact.fr.email.note">Commercial · Compléments · Partenariats</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text" data-i18n="contact.fr.address">France — Droit français · Juridiction TGI Bourg-en-Bresse</div></div>
+        <div class="contact-item"><div class="contact-item-icon">🏦</div><div class="contact-item-text" data-i18n="contact.fr.iban">IBAN FR — Paiements SAS uniquement</div></div>
+        <div class="contact-item"><div class="contact-item-icon">ℹ️</div><div class="contact-item-text" style="font-size:.75rem;color:rgba(148,163,184,.6);" data-i18n="contact.fr.note">Marque ORIM™ utilisée sous licence de l'Association ORIM Genève.</div></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="nav-logo">ORIM</div>
-      <p>Optimisation Résolutive Immuno-Métabolique — Association genevoise et branche commerciale française au service de la santé optimisée par la science.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="#gateway">Nos Univers</a></li>
-        <li><a href="#methode">La Méthode</a></li>
-        <li><a href="#domaines">Domaines</a></li>
-        <li><a href="#association">Association</a></li>
-        <li><a href="#partenaires">Équipe</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Entités</h4>
-      <ul>
-        <li><a href="#">Association ORIM Genève</a></li>
-        <li><a href="#">ORIM SAS France</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Légal</h4>
-      <ul>
-        <li><a href="mentions-legales.html">Mentions légales</a></li>
-        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-        <li><a href="#">Statuts de l'association</a></li>
-        <li><a href="#">CGV ORIM SAS</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 ORIM — Tous droits réservés</span>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">ORIM™</div>
     <div class="footer-entities">
-      <span>Association ORIM — Genève 🇨🇭</span>
-      <span>ORIM SAS — Ferney-Voltaire 🇫🇷</span>
+      <div class="footer-entity"><strong data-i18n="footer.ch">Association ORIM Genève</strong><span data-i18n="footer.ch.sub">Suisse · But non lucratif · Marque &amp; IP</span></div>
+      <div class="footer-entity" style="color:rgba(148,163,184,.3)">|</div>
+      <div class="footer-entity"><strong data-i18n="footer.fr">ORIM SAS France</strong><span data-i18n="footer.fr.sub">France · Commercial · Sous licence ORIM™</span></div>
     </div>
-  </div>
-</footer>
+    <div class="footer-links">
+      <a href="mentions-legales.html" data-i18n="footer.mentions">Mentions légales</a>
+      <a href="politique-confidentialite.html" data-i18n="footer.privacy">Politique de confidentialité</a>
+      <a href="mailto:info@orimnutrition.com" data-i18n="footer.contact">Contact</a>
+    </div>
+    <div class="footer-bottom">© 2026 Association ORIM Genève · ORIM™ est une marque déposée · <span data-i18n="footer.conf">Document confidentiel</span></div>
+  </footer>
 
-<!-- ── SCRIPTS ───────────────────────────────────────────────────────────── -->
-<script>
-/* ── PARTICLES ──────────────────────────────────────────────────────────── */
-const canvas = document.getElementById('canvas-bg');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [];
+  <script>
+  // ─── I18N DATA ─────────────────────────────────────────────────────────────
+  const i18n = {
+    fr: {
+      "nav.tagline":"Immuno-Métabolique","nav.entites":"Entités","nav.poles":"Pôles","nav.commercial":"Commercial","nav.marque":"Marque ORIM™","nav.equipe":"Équipe","nav.contact":"Contact","nav.cta":"Nous contacter",
+      "hero.badge":"Science · Innovation · Santé","hero.subtitle":"Optimisation Résolutive Immuno-Métabolique","hero.desc":"Association scientifique genevoise & ORIM SAS France — deux entités complémentaires au service de votre santé immuno-métabolique.","hero.btn1":"Découvrir nos entités","hero.btn2":"Nous contacter","hero.scroll":"Découvrir",
+      "stats.entites":"Entités juridiques","stats.poles":"Pôles Association","stats.aliments":"Aliments indexés ORIM™","stats.indice":"Indice ORIM™ actuel","stats.microbiome":"Microbiome v4.0","stats.pays":"Présence",
+      "gateway.tag":"Nos entités","gateway.title1":"Deux entités,","gateway.title2":"une vision","gateway.desc":"ORIM™ opère via deux structures juridiques distinctes et complémentaires — l'Association ORIM Genève (CH) et ORIM SAS France (FR) — chacune avec des missions clairement définies.",
+      "entity.ch.badge":"Association · Genève · Suisse","entity.ch.name":"Association ORIM Genève","entity.ch.tagline":"Entité scientifique à but non lucratif. Propriétaire de la marque ORIM™ et de l'Indice ORIM™. Pôles Éducatif, Thérapeutique & Recherche.","entity.ch.s1":"Séminaires & formations éducatives","entity.ch.s2":"Suivi thérapeutique individuel","entity.ch.s3":"Atelier Seniors 55+","entity.ch.s4":"Indice ORIM™ v3.0 (Recherche)","entity.ch.s5":"Subventions R&D · Microbiome v4.0","entity.ch.s6":"Veille scientifique Premium","entity.ch.cta":"Voir les pôles Association →",
+      "entity.fr.badge":"SAS · France · Commercial","entity.fr.name":"ORIM SAS France","entity.fr.tagline":"Entité commerciale française. Distributeur agréé sous licence ORIM™. Pôle Commercial — compléments, voyages santé, partenariats corporate.","entity.fr.s1":"Compléments alimentaires ORIM™","entity.fr.s2":"Voyages Santé & Retraite","entity.fr.s3":"Partenariats Corporates","entity.fr.s4":"Distribution réseau Saybar","entity.fr.s5":"Marque utilisée sous licence Association CH","entity.fr.cta":"Voir le pôle commercial →",
+      "poles.title":"🏛️ Trois Pôles — Association CH","poles.desc":"L'Association ORIM Genève structure ses activités en trois pôles complémentaires, conformément au Workflow A (Éducatif & Thérapeutique) et D (Recherche & IP).",
+      "pole.edu.name":"Pôle Éducatif","pole.edu.desc":"Formations individuelles et collectives en nutrition immuno-métabolique. Séminaires, contenus pédagogiques, cotisations membres Standard & Bienfaiteur.","pole.edu.t1":"Séminaires collectifs","pole.edu.t2":"Formation individuelle","pole.edu.t3":"Atelier Seniors 55+","pole.edu.t4":"Contenus pédagogiques","pole.edu.t5":"Cotisations membres",
+      "pole.thera.name":"Pôle Thérapeutique","pole.thera.desc":"Suivi thérapeutique personnalisé sous mandat Association, supervisé par le Dr. Mahour. Application de l'Indice ORIM™ expérimental. Actes médicaux exclusifs à l'Association.","pole.thera.t1":"Suivi thérapeutique","pole.thera.t2":"Indice ORIM™ expérimental","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Droit suisse · Genève",
+      "pole.rech.name":"Pôle Recherche & IP","pole.rech.desc":"Développement de l'Indice ORIM™ v4.0 Microbiome (2027) & v5.0 IA Nutrigénomique (2028). Gestion des subventions R&D 20kCHF. Propriété intellectuelle & dépôt marque.","pole.rech.t1":"Indice v4.0 · 2027","pole.rech.t2":"Indice v5.0 · 2028","pole.rech.t3":"Subventions R&D","pole.rech.t4":"Propriété intellectuelle","pole.rech.t5":"INPI · IGE",
+      "commercial.title":"🏢 Pôle Commercial — SAS FR","commercial.desc":"ORIM SAS France opère le pôle commercial sous licence de marque ORIM™ délivrée par l'Association ORIM Genève (Workflow B). Toutes les prestations commerciales sont facturées sur IBAN FR.",
+      "comm.c1.name":"Compléments Alimentaires","comm.c1.desc":"Gamme de compléments alimentaires sous marque ORIM™. Distribution nationale et internationale. Formulations basées sur l'Indice ORIM™ v3.0.",
+      "comm.c2.name":"Voyages Santé & Retraite","comm.c2.desc":"Séjours bien-être et retraites santé. Programmes immuno-métaboliques en immersion. Partenariats hôteliers sélectionnés.",
+      "comm.c3.name":"Partenariats Corporates","comm.c3.desc":"Programmes santé en entreprise. Nutrition optimale au travail. Contrats B2B avec facturation TVA FR 20%.",
+      "comm.c4.name":"Distribution & Réseau","comm.c4.desc":"Distribution via le réseau Saybar et partenaires agréés. Contrats de distribution sous licence marque ORIM™.",
+      "fr.notice.title":"⚠️ Information importante :","fr.notice.text":"Les prestations commerciales (compléments, voyages, corporate) sont exclusivement gérées par ORIM SAS France — IBAN FR. L'Association ORIM Genève (CH) ne traite aucune commande commerciale. Marque ORIM™ utilisée sous licence de l'Association ORIM Genève.",
+      "marque.tag":"Propriété intellectuelle","marque.title":"Marque & Indice",
+      "marque.owner.badge":"Propriétaire · Association CH","marque.owner.title":"🏛️ Marque ORIM™","marque.owner.text":"La marque ORIM™ est déposée à l'INPI (France) et à l'IGE (Suisse) par l'Association ORIM Genève. Elle est licenciée à ORIM SAS France pour usage commercial avec redevance arm's length de 6% du CA net HT, minimum 3 000 EUR/trimestre.",
+      "marque.indice.badge":"R&D · Association CH","marque.indice.title":"🔬 Indice ORIM™","marque.indice.text":"L'Indice ORIM™ v3.0 (85 aliments × 8 métriques) est développé et détenu par l'Association. ORIM SAS France accède aux données via la Convention Services R&D (Contrat n°2) — forfait annuel 8 000–12 000 EUR sur IBAN CH.",
+      "marque.v4.badge":"2027 · Microbiome","marque.v4.title":"🧬 Indice v4.0","marque.v4.text":"Développement Microbiome 2027 sous supervision Dr. Mahour. Financé par les subventions R&D (20 kCHF) sur compte Association exclusivement. Les algorithmes restent propriété Association.",
+      "marque.v5.badge":"2028 · IA Nutrigénomique","marque.v5.title":"🤖 Indice v5.0","marque.v5.text":"Vision 2028 : intégration de l'intelligence artificielle et de la nutrigénomique. Algorithmes exclusifs Association ORIM Genève. Archivage et protection IP renforcés dès la phase R&D.",
+      "saybar.tag":"Partenariat stratégique","saybar.title":"Saybar","saybar.desc":"Le partenariat tripartite ORIM × Saybar implique les deux entités ORIM avec des rôles distincts et des flux financiers strictement séparés (Workflow C).","saybar.node.ch":"🏛️ Association CH","saybar.node.ch.sub":"Licence méthode ORIM™\n→ IBAN CH","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Partenaire distribution\n+ Usage thérapeutique","saybar.node.fr":"🏢 SAS FR","saybar.node.fr.sub":"Distribution produits\n→ IBAN FR","saybar.legal":"Deux contrats distincts — Contrat A (Association → Saybar) & Contrat B (SAS → Saybar). Virements sur IBAN distincts. Clé de répartition 60% Association / 40% SAS pour éléments mixtes.",
+      "equipe.tag":"Notre équipe","equipe.title":"Dirigeants & Experts","team.oc.r1":"Président · Association CH","team.oc.r2":"Associé · SAS FR","team.nc.r1":"DG · ORIM SAS France","team.nc.r2":"Directeur Thérapeutique · Association","team.km.r1":"Superviseur R&D · Indice ORIM™","team.km.r2":"Mandataire · Association CH",
+      "contact.tag":"Nous joindre","contact.title":"Contact","contact.desc":"Contactez l'entité correspondant à votre besoin.","contact.ch.title":"🏛️ Association ORIM Genève (CH)","contact.ch.email.note":"Éducatif · Thérapeutique · Recherche","contact.ch.address":"Genève, Suisse — Droit suisse applicable · For Genève","contact.ch.iban":"IBAN CH — Paiements Association uniquement","contact.fr.title":"🏢 ORIM SAS France (FR)","contact.fr.email.note":"Commercial · Compléments · Partenariats","contact.fr.address":"France — Droit français · Juridiction TGI Bourg-en-Bresse","contact.fr.iban":"IBAN FR — Paiements SAS uniquement","contact.fr.note":"Marque ORIM™ utilisée sous licence de l'Association ORIM Genève.",
+      "footer.ch":"Association ORIM Genève","footer.ch.sub":"Suisse · But non lucratif · Marque & IP","footer.fr":"ORIM SAS France","footer.fr.sub":"France · Commercial · Sous licence ORIM™","footer.mentions":"Mentions légales","footer.privacy":"Politique de confidentialité","footer.contact":"Contact","footer.conf":"Document confidentiel"
+    },
+    en: {
+      "nav.tagline":"Immuno-Metabolic","nav.entites":"Entities","nav.poles":"Poles","nav.commercial":"Commercial","nav.marque":"ORIM™ Brand","nav.equipe":"Team","nav.contact":"Contact","nav.cta":"Contact us",
+      "hero.badge":"Science · Innovation · Health","hero.subtitle":"Resolving Immuno-Metabolic Optimization","hero.desc":"Geneva scientific association & ORIM SAS France — two complementary entities dedicated to your immuno-metabolic health.","hero.btn1":"Discover our entities","hero.btn2":"Contact us","hero.scroll":"Explore",
+      "stats.entites":"Legal entities","stats.poles":"Association poles","stats.aliments":"ORIM™ indexed foods","stats.indice":"Current ORIM™ Index","stats.microbiome":"Microbiome v4.0","stats.pays":"Presence",
+      "gateway.tag":"Our entities","gateway.title1":"Two entities,","gateway.title2":"one vision","gateway.desc":"ORIM™ operates through two distinct and complementary legal structures — Association ORIM Geneva (CH) and ORIM SAS France (FR) — each with clearly defined missions.",
+      "entity.ch.badge":"Association · Geneva · Switzerland","entity.ch.name":"Association ORIM Geneva","entity.ch.tagline":"Non-profit scientific entity. Owner of the ORIM™ brand and ORIM™ Index. Educational, Therapeutic & Research poles.","entity.ch.s1":"Seminars & educational training","entity.ch.s2":"Individual therapeutic follow-up","entity.ch.s3":"Seniors 55+ Workshop","entity.ch.s4":"ORIM™ Index v3.0 (Research)","entity.ch.s5":"R&D grants · Microbiome v4.0","entity.ch.s6":"Premium scientific monitoring","entity.ch.cta":"View Association poles →",
+      "entity.fr.badge":"SAS · France · Commercial","entity.fr.name":"ORIM SAS France","entity.fr.tagline":"French commercial entity. Approved distributor under ORIM™ license. Commercial pole — supplements, health retreats, corporate partnerships.","entity.fr.s1":"ORIM™ dietary supplements","entity.fr.s2":"Health & Wellness Retreats","entity.fr.s3":"Corporate Partnerships","entity.fr.s4":"Saybar network distribution","entity.fr.s5":"Brand used under Association CH license","entity.fr.cta":"View commercial pole →",
+      "poles.title":"🏛️ Three Poles — Association CH","poles.desc":"The Association ORIM Geneva structures its activities into three complementary poles, in accordance with Workflow A (Educational & Therapeutic) and D (Research & IP).",
+      "pole.edu.name":"Educational Pole","pole.edu.desc":"Individual and collective training in immuno-metabolic nutrition. Seminars, educational content, Standard & Benefactor member subscriptions.","pole.edu.t1":"Group seminars","pole.edu.t2":"Individual training","pole.edu.t3":"Seniors 55+ Workshop","pole.edu.t4":"Educational content","pole.edu.t5":"Member subscriptions",
+      "pole.thera.name":"Therapeutic Pole","pole.thera.desc":"Personalized therapeutic follow-up under Association mandate, supervised by Dr. Mahour. Application of the experimental ORIM™ Index. Medical acts exclusive to the Association.","pole.thera.t1":"Therapeutic follow-up","pole.thera.t2":"Experimental ORIM™ Index","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Swiss law · Geneva",
+      "pole.rech.name":"Research & IP Pole","pole.rech.desc":"Development of ORIM™ Index v4.0 Microbiome (2027) & v5.0 AI Nutrigenomics (2028). Management of R&D grants 20kCHF. Intellectual property & brand registration.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"R&D grants","pole.rech.t4":"Intellectual property","pole.rech.t5":"INPI · IGE",
+      "commercial.title":"🏢 Commercial Pole — SAS FR","commercial.desc":"ORIM SAS France operates the commercial pole under the ORIM™ brand license granted by Association ORIM Geneva (Workflow B). All commercial services are invoiced on FR IBAN.",
+      "comm.c1.name":"Dietary Supplements","comm.c1.desc":"Range of dietary supplements under the ORIM™ brand. National and international distribution. Formulations based on ORIM™ Index v3.0.",
+      "comm.c2.name":"Health & Wellness Retreats","comm.c2.desc":"Wellness stays and health retreats. Immersive immuno-metabolic programs. Selected hotel partnerships.",
+      "comm.c3.name":"Corporate Partnerships","comm.c3.desc":"Corporate health programs. Optimal nutrition at work. B2B contracts with French VAT 20%.",
+      "comm.c4.name":"Distribution & Network","comm.c4.desc":"Distribution through the Saybar network and approved partners. Distribution contracts under ORIM™ brand license.",
+      "fr.notice.title":"⚠️ Important notice:","fr.notice.text":"Commercial services (supplements, retreats, corporate) are exclusively managed by ORIM SAS France — FR IBAN. Association ORIM Geneva (CH) does not handle commercial orders. ORIM™ brand used under license from Association ORIM Geneva.",
+      "marque.tag":"Intellectual property","marque.title":"Brand & Index",
+      "marque.owner.badge":"Owner · Association CH","marque.owner.title":"🏛️ ORIM™ Brand","marque.owner.text":"The ORIM™ brand is registered at INPI (France) and IGE (Switzerland) by the Association ORIM Geneva. It is licensed to ORIM SAS France for commercial use with an arm's length royalty of 6% of net revenue excl. VAT, minimum €3,000/quarter.",
+      "marque.indice.badge":"R&D · Association CH","marque.indice.title":"🔬 ORIM™ Index","marque.indice.text":"The ORIM™ Index v3.0 (85 foods × 8 metrics) is developed and owned by the Association. ORIM SAS France accesses data via the R&D Services Convention (Contract n°2) — annual fee €8,000–12,000 on CH IBAN.",
+      "marque.v4.badge":"2027 · Microbiome","marque.v4.title":"🧬 Index v4.0","marque.v4.text":"Microbiome development 2027 under Dr. Mahour's supervision. Funded by R&D grants (20 kCHF) on Association account exclusively. Algorithms remain Association property.",
+      "marque.v5.badge":"2028 · AI Nutrigenomics","marque.v5.title":"🤖 Index v5.0","marque.v5.text":"2028 vision: integration of artificial intelligence and nutrigenomics. Exclusive Association ORIM Geneva algorithms. Reinforced archiving and IP protection from R&D phase.",
+      "saybar.tag":"Strategic partnership","saybar.title":"Saybar","saybar.desc":"The tripartite ORIM × Saybar partnership involves both ORIM entities with distinct roles and strictly separated financial flows (Workflow C).","saybar.node.ch":"🏛️ Association CH","saybar.node.ch.sub":"ORIM™ method license\n→ CH IBAN","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Distribution partner\n+ Therapeutic use","saybar.node.fr":"🏢 SAS FR","saybar.node.fr.sub":"Product distribution\n→ FR IBAN","saybar.legal":"Two separate contracts — Contract A (Association → Saybar) & Contract B (SAS → Saybar). Transfers on separate IBANs. 60% Association / 40% SAS split for mixed elements.",
+      "equipe.tag":"Our team","equipe.title":"Directors & Experts","team.oc.r1":"President · Association CH","team.oc.r2":"Partner · SAS FR","team.nc.r1":"CEO · ORIM SAS France","team.nc.r2":"Therapeutic Director · Association","team.km.r1":"R&D Supervisor · ORIM™ Index","team.km.r2":"Mandatory · Association CH",
+      "contact.tag":"Get in touch","contact.title":"Contact","contact.desc":"Contact the entity corresponding to your needs.","contact.ch.title":"🏛️ Association ORIM Geneva (CH)","contact.ch.email.note":"Educational · Therapeutic · Research","contact.ch.address":"Geneva, Switzerland — Swiss law applicable · Geneva jurisdiction","contact.ch.iban":"CH IBAN — Association payments only","contact.fr.title":"🏢 ORIM SAS France (FR)","contact.fr.email.note":"Commercial · Supplements · Partnerships","contact.fr.address":"France — French law · TGI Bourg-en-Bresse jurisdiction","contact.fr.iban":"FR IBAN — SAS payments only","contact.fr.note":"ORIM™ brand used under license from Association ORIM Geneva.",
+      "footer.ch":"Association ORIM Geneva","footer.ch.sub":"Switzerland · Non-profit · Brand & IP","footer.fr":"ORIM SAS France","footer.fr.sub":"France · Commercial · Under ORIM™ license","footer.mentions":"Legal notices","footer.privacy":"Privacy policy","footer.contact":"Contact","footer.conf":"Confidential document"
+    },
+    es: {
+      "nav.tagline":"Inmuno-Metabólico","nav.entites":"Entidades","nav.poles":"Polos","nav.commercial":"Comercial","nav.marque":"Marca ORIM™","nav.equipe":"Equipo","nav.contact":"Contacto","nav.cta":"Contáctenos",
+      "hero.badge":"Ciencia · Innovación · Salud","hero.subtitle":"Optimización Resolutiva Inmuno-Metabólica","hero.desc":"Asociación científica ginebrense y ORIM SAS Francia — dos entidades complementarias al servicio de su salud inmuno-metabólica.","hero.btn1":"Descubrir nuestras entidades","hero.btn2":"Contáctenos","hero.scroll":"Explorar",
+      "stats.entites":"Entidades jurídicas","stats.poles":"Polos Asociación","stats.aliments":"Alimentos indexados ORIM™","stats.indice":"Índice ORIM™ actual","stats.microbiome":"Microbioma v4.0","stats.pays":"Presencia",
+      "gateway.tag":"Nuestras entidades","gateway.title1":"Dos entidades,","gateway.title2":"una visión","gateway.desc":"ORIM™ opera a través de dos estructuras jurídicas distintas y complementarias — la Asociación ORIM Ginebra (CH) y ORIM SAS Francia (FR) — cada una con misiones claramente definidas.",
+      "entity.ch.badge":"Asociación · Ginebra · Suiza","entity.ch.name":"Asociación ORIM Ginebra","entity.ch.tagline":"Entidad científica sin ánimo de lucro. Propietaria de la marca ORIM™ y del Índice ORIM™. Polos Educativo, Terapéutico e Investigación.","entity.ch.s1":"Seminarios y formaciones educativas","entity.ch.s2":"Seguimiento terapéutico individual","entity.ch.s3":"Taller Mayores 55+","entity.ch.s4":"Índice ORIM™ v3.0 (Investigación)","entity.ch.s5":"Subvenciones I+D · Microbioma v4.0","entity.ch.s6":"Vigilancia científica Premium","entity.ch.cta":"Ver polos Asociación →",
+      "entity.fr.badge":"SAS · Francia · Comercial","entity.fr.name":"ORIM SAS Francia","entity.fr.tagline":"Entidad comercial francesa. Distribuidor autorizado bajo licencia ORIM™. Polo Comercial — suplementos, retiros de salud, asociaciones corporativas.","entity.fr.s1":"Suplementos alimentarios ORIM™","entity.fr.s2":"Viajes de Salud y Retiros","entity.fr.s3":"Asociaciones Corporativas","entity.fr.s4":"Distribución red Saybar","entity.fr.s5":"Marca bajo licencia Asociación CH","entity.fr.cta":"Ver polo comercial →",
+      "poles.title":"🏛️ Tres Polos — Asociación CH","poles.desc":"La Asociación ORIM Ginebra estructura sus actividades en tres polos complementarios, de acuerdo con el Flujo de trabajo A (Educativo y Terapéutico) y D (Investigación e IP).",
+      "pole.edu.name":"Polo Educativo","pole.edu.desc":"Formaciones individuales y colectivas en nutrición inmuno-metabólica. Seminarios, contenidos pedagógicos, cuotas de socios Estándar y Bienhechor.","pole.edu.t1":"Seminarios colectivos","pole.edu.t2":"Formación individual","pole.edu.t3":"Taller Mayores 55+","pole.edu.t4":"Contenidos pedagógicos","pole.edu.t5":"Cuotas de socios",
+      "pole.thera.name":"Polo Terapéutico","pole.thera.desc":"Seguimiento terapéutico personalizado bajo mandato Asociación, supervisado por el Dr. Mahour. Aplicación del Índice ORIM™ experimental. Actos médicos exclusivos de la Asociación.","pole.thera.t1":"Seguimiento terapéutico","pole.thera.t2":"Índice ORIM™ experimental","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Derecho suizo · Ginebra",
+      "pole.rech.name":"Polo Investigación e IP","pole.rech.desc":"Desarrollo del Índice ORIM™ v4.0 Microbioma (2027) y v5.0 IA Nutrigenómica (2028). Gestión de subvenciones I+D 20kCHF. Propiedad intelectual y registro de marca.","pole.rech.t1":"Índice v4.0 · 2027","pole.rech.t2":"Índice v5.0 · 2028","pole.rech.t3":"Subvenciones I+D","pole.rech.t4":"Propiedad intelectual","pole.rech.t5":"INPI · IGE",
+      "commercial.title":"🏢 Polo Comercial — SAS FR","commercial.desc":"ORIM SAS Francia opera el polo comercial bajo licencia de marca ORIM™ otorgada por la Asociación ORIM Ginebra (Flujo de trabajo B). Todos los servicios comerciales se facturan en IBAN FR.",
+      "comm.c1.name":"Suplementos Alimentarios","comm.c1.desc":"Gama de suplementos alimentarios bajo la marca ORIM™. Distribución nacional e internacional. Formulaciones basadas en el Índice ORIM™ v3.0.",
+      "comm.c2.name":"Viajes de Salud y Retiros","comm.c2.desc":"Estancias de bienestar y retiros de salud. Programas inmuno-metabólicos en inmersión. Asociaciones hoteleras seleccionadas.",
+      "comm.c3.name":"Asociaciones Corporativas","comm.c3.desc":"Programas de salud empresarial. Nutrición óptima en el trabajo. Contratos B2B con IVA francés 20%.",
+      "comm.c4.name":"Distribución y Red","comm.c4.desc":"Distribución a través de la red Saybar y socios autorizados. Contratos de distribución bajo licencia de marca ORIM™.",
+      "fr.notice.title":"⚠️ Aviso importante:","fr.notice.text":"Los servicios comerciales (suplementos, viajes, corporativos) son gestionados exclusivamente por ORIM SAS Francia — IBAN FR. La Asociación ORIM Ginebra (CH) no gestiona pedidos comerciales. Marca ORIM™ utilizada bajo licencia de la Asociación ORIM Ginebra.",
+      "marque.tag":"Propiedad intelectual","marque.title":"Marca e Índice",
+      "marque.owner.badge":"Propietaria · Asociación CH","marque.owner.title":"🏛️ Marca ORIM™","marque.owner.text":"La marca ORIM™ está registrada en el INPI (Francia) y el IGE (Suiza) por la Asociación ORIM Ginebra. Se licencia a ORIM SAS Francia para uso comercial con regalías arm's length del 6% del ingreso neto sin IVA, mínimo 3.000 EUR/trimestre.",
+      "marque.indice.badge":"I+D · Asociación CH","marque.indice.title":"🔬 Índice ORIM™","marque.indice.text":"El Índice ORIM™ v3.0 (85 alimentos × 8 métricas) es desarrollado y propiedad de la Asociación. ORIM SAS Francia accede a los datos mediante el Convenio de Servicios I+D (Contrato n°2) — tarifa anual 8.000–12.000 EUR en IBAN CH.",
+      "marque.v4.badge":"2027 · Microbioma","marque.v4.title":"🧬 Índice v4.0","marque.v4.text":"Desarrollo Microbioma 2027 bajo supervisión del Dr. Mahour. Financiado por subvenciones I+D (20 kCHF) en cuenta Asociación exclusivamente. Los algoritmos permanecen como propiedad de la Asociación.",
+      "marque.v5.badge":"2028 · IA Nutrigenómica","marque.v5.title":"🤖 Índice v5.0","marque.v5.text":"Visión 2028: integración de inteligencia artificial y nutrigenómica. Algoritmos exclusivos Asociación ORIM Ginebra. Archivo y protección de IP reforzados desde la fase I+D.",
+      "saybar.tag":"Alianza estratégica","saybar.title":"Saybar","saybar.desc":"La alianza tripartita ORIM × Saybar involucra a ambas entidades ORIM con roles distintos y flujos financieros estrictamente separados (Flujo de trabajo C).","saybar.node.ch":"🏛️ Asociación CH","saybar.node.ch.sub":"Licencia método ORIM™\n→ IBAN CH","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Socio distribuidor\n+ Uso terapéutico","saybar.node.fr":"🏢 SAS FR","saybar.node.fr.sub":"Distribución productos\n→ IBAN FR","saybar.legal":"Dos contratos distintos — Contrato A (Asociación → Saybar) y Contrato B (SAS → Saybar). Transferencias en IBAN separados. Clave de reparto 60% Asociación / 40% SAS para elementos mixtos.",
+      "equipe.tag":"Nuestro equipo","equipe.title":"Directivos y Expertos","team.oc.r1":"Presidente · Asociación CH","team.oc.r2":"Socio · SAS FR","team.nc.r1":"DG · ORIM SAS Francia","team.nc.r2":"Director Terapéutico · Asociación","team.km.r1":"Supervisor I+D · Índice ORIM™","team.km.r2":"Mandatario · Asociación CH",
+      "contact.tag":"Contáctenos","contact.title":"Contacto","contact.desc":"Contacte la entidad correspondiente a su necesidad.","contact.ch.title":"🏛️ Asociación ORIM Ginebra (CH)","contact.ch.email.note":"Educativo · Terapéutico · Investigación","contact.ch.address":"Ginebra, Suiza — Derecho suizo aplicable · Jurisdicción Ginebra","contact.ch.iban":"IBAN CH — Pagos Asociación únicamente","contact.fr.title":"🏢 ORIM SAS Francia (FR)","contact.fr.email.note":"Comercial · Suplementos · Alianzas","contact.fr.address":"Francia — Derecho francés · Jurisdicción TGI Bourg-en-Bresse","contact.fr.iban":"IBAN FR — Pagos SAS únicamente","contact.fr.note":"Marca ORIM™ utilizada bajo licencia de la Asociación ORIM Ginebra.",
+      "footer.ch":"Asociación ORIM Ginebra","footer.ch.sub":"Suiza · Sin ánimo de lucro · Marca e IP","footer.fr":"ORIM SAS Francia","footer.fr.sub":"Francia · Comercial · Bajo licencia ORIM™","footer.mentions":"Avisos legales","footer.privacy":"Política de privacidad","footer.contact":"Contacto","footer.conf":"Documento confidencial"
+    },
+    de: {
+      "nav.tagline":"Immuno-Metabolisch","nav.entites":"Einheiten","nav.poles":"Pole","nav.commercial":"Kommerziell","nav.marque":"ORIM™ Marke","nav.equipe":"Team","nav.contact":"Kontakt","nav.cta":"Kontaktieren Sie uns",
+      "hero.badge":"Wissenschaft · Innovation · Gesundheit","hero.subtitle":"Auflösende Immuno-Metabolische Optimierung","hero.desc":"Genfer wissenschaftlicher Verein & ORIM SAS Frankreich — zwei komplementäre Einheiten im Dienst Ihrer immuno-metabolischen Gesundheit.","hero.btn1":"Unsere Einheiten entdecken","hero.btn2":"Kontakt aufnehmen","hero.scroll":"Entdecken",
+      "stats.entites":"Rechtspersonen","stats.poles":"Verein-Pole","stats.aliments":"Indexierte ORIM™-Lebensmittel","stats.indice":"Aktueller ORIM™-Index","stats.microbiome":"Mikrobiom v4.0","stats.pays":"Präsenz",
+      "gateway.tag":"Unsere Einheiten","gateway.title1":"Zwei Einheiten,","gateway.title2":"eine Vision","gateway.desc":"ORIM™ operiert über zwei unterschiedliche und komplementäre Rechtsstrukturen — Verein ORIM Genf (CH) und ORIM SAS Frankreich (FR) — jede mit klar definierten Aufgaben.",
+      "entity.ch.badge":"Verein · Genf · Schweiz","entity.ch.name":"Verein ORIM Genf","entity.ch.tagline":"Gemeinnützige wissenschaftliche Einheit. Eigentümerin der Marke ORIM™ und des ORIM™-Index. Bildungs-, Therapie- & Forschungspole.","entity.ch.s1":"Seminare & Bildungsschulungen","entity.ch.s2":"Individuelle Therapiebegleitung","entity.ch.s3":"Senioren 55+ Workshop","entity.ch.s4":"ORIM™-Index v3.0 (Forschung)","entity.ch.s5":"F&E-Förderungen · Mikrobiom v4.0","entity.ch.s6":"Premium Wissenschaftsmonitoring","entity.ch.cta":"Verein-Pole ansehen →",
+      "entity.fr.badge":"SAS · Frankreich · Kommerziell","entity.fr.name":"ORIM SAS Frankreich","entity.fr.tagline":"Französische Handelsgesellschaft. Zugelassener Distributor unter ORIM™-Lizenz. Kommerzieller Pol — Nahrungsergänzung, Gesundheitsreisen, Corporate-Partnerschaften.","entity.fr.s1":"ORIM™ Nahrungsergänzungsmittel","entity.fr.s2":"Gesundheits- & Wellness-Reisen","entity.fr.s3":"Corporate-Partnerschaften","entity.fr.s4":"Saybar-Netzwerk-Distribution","entity.fr.s5":"Marke unter Lizenz von Verein CH","entity.fr.cta":"Kommerziellen Pol ansehen →",
+      "poles.title":"🏛️ Drei Pole — Verein CH","poles.desc":"Der Verein ORIM Genf strukturiert seine Aktivitäten in drei komplementäre Pole gemäß Workflow A (Bildung & Therapie) und D (Forschung & IP).",
+      "pole.edu.name":"Bildungspol","pole.edu.desc":"Einzel- und Gruppentraining in immuno-metabolischer Ernährung. Seminare, pädagogische Inhalte, Standard- und Förder-Mitgliedsbeiträge.","pole.edu.t1":"Gruppenseminare","pole.edu.t2":"Einzelschulung","pole.edu.t3":"Senioren 55+ Workshop","pole.edu.t4":"Pädagogische Inhalte","pole.edu.t5":"Mitgliedsbeiträge",
+      "pole.thera.name":"Therapiepol","pole.thera.desc":"Persönliche Therapiebegleitung unter Vereinsmandat, betreut von Dr. Mahour. Anwendung des experimentellen ORIM™-Index. Medizinische Leistungen ausschließlich beim Verein.","pole.thera.t1":"Therapiebegleitung","pole.thera.t2":"Experimenteller ORIM™-Index","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Schweizer Recht · Genf",
+      "pole.rech.name":"Forschungs- & IP-Pol","pole.rech.desc":"Entwicklung des ORIM™-Index v4.0 Mikrobiom (2027) & v5.0 KI Nutrigenomik (2028). Verwaltung von F&E-Förderungen 20kCHF. Geistiges Eigentum & Markenanmeldung.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"F&E-Förderungen","pole.rech.t4":"Geistiges Eigentum","pole.rech.t5":"INPI · IGE",
+      "commercial.title":"🏢 Kommerzieller Pol — SAS FR","commercial.desc":"ORIM SAS Frankreich betreibt den kommerziellen Pol unter der ORIM™-Markenlizenz des Vereins ORIM Genf (Workflow B). Alle Handelsleistungen werden auf FR-IBAN fakturiert.",
+      "comm.c1.name":"Nahrungsergänzungsmittel","comm.c1.desc":"Sortiment an Nahrungsergänzungsmitteln unter der Marke ORIM™. Nationale und internationale Distribution. Formulierungen basierend auf ORIM™-Index v3.0.",
+      "comm.c2.name":"Gesundheits- & Wellness-Reisen","comm.c2.desc":"Wellness-Aufenthalte und Gesundheitsretreat. Immersive immuno-metabolische Programme. Ausgewählte Hotelpartnerschaften.",
+      "comm.c3.name":"Corporate-Partnerschaften","comm.c3.desc":"Betriebliche Gesundheitsprogramme. Optimale Ernährung am Arbeitsplatz. B2B-Verträge mit französischer MwSt. 20%.",
+      "comm.c4.name":"Distribution & Netzwerk","comm.c4.desc":"Vertrieb über das Saybar-Netzwerk und zugelassene Partner. Vertriebsverträge unter ORIM™-Markenlizenz.",
+      "fr.notice.title":"⚠️ Wichtiger Hinweis:","fr.notice.text":"Kommerzielle Leistungen (Nahrungsergänzung, Reisen, Corporate) werden ausschließlich von ORIM SAS Frankreich verwaltet — FR-IBAN. Der Verein ORIM Genf (CH) bearbeitet keine kommerziellen Bestellungen. Marke ORIM™ unter Lizenz des Vereins ORIM Genf verwendet.",
+      "marque.tag":"Geistiges Eigentum","marque.title":"Marke & Index",
+      "marque.owner.badge":"Eigentümer · Verein CH","marque.owner.title":"🏛️ ORIM™ Marke","marque.owner.text":"Die Marke ORIM™ ist beim INPI (Frankreich) und beim IGE (Schweiz) vom Verein ORIM Genf eingetragen. Sie wird an ORIM SAS Frankreich für die kommerzielle Nutzung mit einer Arm's-Length-Lizenzgebühr von 6% des Nettoumsatzes exkl. MwSt., mindestens 3.000 EUR/Quartal, lizenziert.",
+      "marque.indice.badge":"F&E · Verein CH","marque.indice.title":"🔬 ORIM™-Index","marque.indice.text":"Der ORIM™-Index v3.0 (85 Lebensmittel × 8 Metriken) wird vom Verein entwickelt und besessen. ORIM SAS Frankreich greift über die F&E-Dienstleistungskonvention (Vertrag Nr. 2) auf Daten zu — Jahresgebühr 8.000–12.000 EUR auf CH-IBAN.",
+      "marque.v4.badge":"2027 · Mikrobiom","marque.v4.title":"🧬 Index v4.0","marque.v4.text":"Mikrobiom-Entwicklung 2027 unter Aufsicht von Dr. Mahour. Finanziert durch F&E-Förderungen (20 kCHF) ausschließlich auf Vereinskonto. Algorithmen bleiben Eigentum des Vereins.",
+      "marque.v5.badge":"2028 · KI Nutrigenomik","marque.v5.title":"🤖 Index v5.0","marque.v5.text":"Vision 2028: Integration von künstlicher Intelligenz und Nutrigenomik. Exklusive Algorithmen des Vereins ORIM Genf. Verstärkte Archivierung und IP-Schutz ab der F&E-Phase.",
+      "saybar.tag":"Strategische Partnerschaft","saybar.title":"Saybar","saybar.desc":"Die dreigliedrige ORIM × Saybar Partnerschaft umfasst beide ORIM-Einheiten mit unterschiedlichen Rollen und strikt getrennten Finanzflüssen (Workflow C).","saybar.node.ch":"🏛️ Verein CH","saybar.node.ch.sub":"ORIM™-Methoden-Lizenz\n→ CH-IBAN","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Distributionspartner\n+ Therapeutische Nutzung","saybar.node.fr":"🏢 SAS FR","saybar.node.fr.sub":"Produktvertrieb\n→ FR-IBAN","saybar.legal":"Zwei separate Verträge — Vertrag A (Verein → Saybar) & Vertrag B (SAS → Saybar). Überweisungen auf separate IBANs. Aufteilungsschlüssel 60% Verein / 40% SAS für gemischte Elemente.",
+      "equipe.tag":"Unser Team","equipe.title":"Direktoren & Experten","team.oc.r1":"Präsident · Verein CH","team.oc.r2":"Gesellschafter · SAS FR","team.nc.r1":"GF · ORIM SAS Frankreich","team.nc.r2":"Therapeutischer Direktor · Verein","team.km.r1":"F&E-Supervisor · ORIM™-Index","team.km.r2":"Beauftragter · Verein CH",
+      "contact.tag":"Kontakt aufnehmen","contact.title":"Kontakt","contact.desc":"Kontaktieren Sie die für Ihr Bedürfnis zuständige Einheit.","contact.ch.title":"🏛️ Verein ORIM Genf (CH)","contact.ch.email.note":"Bildung · Therapie · Forschung","contact.ch.address":"Genf, Schweiz — Schweizer Recht anwendbar · Gerichtsstand Genf","contact.ch.iban":"CH-IBAN — Nur Vereinszahlungen","contact.fr.title":"🏢 ORIM SAS Frankreich (FR)","contact.fr.email.note":"Kommerziell · Nahrungsergänzung · Partnerschaften","contact.fr.address":"Frankreich — Französisches Recht · TGI Bourg-en-Bresse","contact.fr.iban":"FR-IBAN — Nur SAS-Zahlungen","contact.fr.note":"Marke ORIM™ unter Lizenz des Vereins ORIM Genf verwendet.",
+      "footer.ch":"Verein ORIM Genf","footer.ch.sub":"Schweiz · Gemeinnützig · Marke & IP","footer.fr":"ORIM SAS Frankreich","footer.fr.sub":"Frankreich · Kommerziell · Unter ORIM™-Lizenz","footer.mentions":"Impressum","footer.privacy":"Datenschutzrichtlinie","footer.contact":"Kontakt","footer.conf":"Vertrauliches Dokument"
+    }
+  };
 
-function resize() {
-  W = canvas.width  = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', () => { resize(); initParticles(); });
+  let currentLang = 'fr';
 
-function Particle() {
-  this.x = Math.random() * W;
-  this.y = Math.random() * H;
-  this.vx = (Math.random() - .5) * .4;
-  this.vy = (Math.random() - .5) * .4;
-  this.r  = Math.random() * 1.5 + .5;
-  this.alpha = Math.random() * .5 + .1;
-}
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[lang] && i18n[lang][key]) {
+        el.innerHTML = i18n[lang][key];
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById('btn-' + lang).classList.add('active');
+    // Update page title
+    const titles = { fr: 'ORIM™ — Optimisation Résolutive Immuno-Métabolique', en: 'ORIM™ — Resolving Immuno-Metabolic Optimization', es: 'ORIM™ — Optimización Resolutiva Inmuno-Metabólica', de: 'ORIM™ — Auflösende Immuno-Metabolische Optimierung' };
+    document.title = titles[lang];
+  }
 
-function initParticles() {
-  const n = Math.floor(W * H / 9000);
-  particles = Array.from({length: n}, () => new Particle());
-}
-initParticles();
+  // ─── CANVAS PARTICLES ────────────────────────────────────────────────────
+  (function() {
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    for (let i = 0; i < 60; i++) {
+      particles.push({ x: Math.random()*window.innerWidth, y: Math.random()*window.innerHeight, vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3, r: Math.random()*1.5+.5, opacity: Math.random()*.4+.1 });
+    }
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle = `rgba(0,180,216,${p.opacity})`; ctx.fill();
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>canvas.width) p.vx*=-1;
+        if(p.y<0||p.y>canvas.height) p.vy*=-1;
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
 
-function drawParticles() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy;
-    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(0,180,216,${p.alpha})`;
-    ctx.fill();
+  // ─── SCROLL REVEAL ───────────────────────────────────────────────────────
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ─── NAV SCROLL ──────────────────────────────────────────────────────────
+  window.addEventListener('scroll', () => {
+    document.getElementById('main-nav').style.background = window.scrollY > 50 ? 'rgba(13,27,42,.97)' : 'rgba(13,27,42,.88)';
   });
 
-  // Draw connections
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(0,180,216,${.12 * (1 - dist/120)})`;
-        ctx.lineWidth = .5;
-        ctx.stroke();
-      }
-    }
-  }
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
-
-/* ── SCROLL REVEAL ───────────────────────────────────────────────────────── */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: .15 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-/* ── NAV SCROLL SHRINK ───────────────────────────────────────────────────── */
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  nav.style.padding = window.scrollY > 60 ? '.7rem 3rem' : '1rem 3rem';
-});
-</script>
-
+  // ─── MOBILE MENU ─────────────────────────────────────────────────────────
+  document.getElementById('mobile-toggle').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+  </script>
 </body>
 </html>

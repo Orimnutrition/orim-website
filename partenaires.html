@@ -1,647 +1,504 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ORIM™ — Réseau Mondial Partenaires</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIM Nutrition — Carte des Partenaires</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#03080f;--teal:#00d4aa;--teal2:#00b4d8;--gold:#c9a84c;
-  --membrane:#00ffcc;--cell2:#7b2fff;--cell3:#ff6b35;
-  --white:#f0faff;--gray:#7090aa;--panel:#07151f;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#010509;
+  color:#e0f0ec;
+  overflow:hidden;
+  width:100vw;height:100vh;
+  cursor:default;
 }
-html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;font-family:'Inter',system-ui,sans-serif;color:var(--white);}
-#canvas-wrapper{position:fixed;inset:0;z-index:0;}
-canvas#globe{display:block;width:100%!important;height:100%!important;}
+#canvas-container{position:fixed;inset:0;z-index:0}
+canvas{display:block;width:100%;height:100%}
 
-/* ── TOP BAR ── */
-#topbar{
-  position:fixed;top:0;left:0;right:0;z-index:50;
+/* TOP NAV */
+.top-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   padding:.7rem 1.5rem;
-  background:rgba(3,8,15,.8);backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(0,212,170,.12);
-}
-.logo-text{font-size:1.3rem;font-weight:700;letter-spacing:.1em;
-  background:linear-gradient(135deg,var(--teal),var(--teal2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.logo-sub{font-size:.6rem;letter-spacing:.22em;color:var(--gray);margin-left:.3rem;vertical-align:middle;-webkit-text-fill-color:var(--gray);}
-#search-box{
-  display:flex;align-items:center;gap:.6rem;
-  background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.2);
-  border-radius:2rem;padding:.4rem 1rem;width:260px;
-}
-#search-box input{background:none;border:none;outline:none;color:var(--white);font-size:.82rem;width:100%;}
-#search-box input::placeholder{color:var(--gray);}
-.search-icon{color:var(--teal);font-size:.9rem;}
-#controls-right{display:flex;gap:.5rem;align-items:center;}
-.ctrl-btn{
-  background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.2);
-  color:var(--teal);padding:.4rem .8rem;border-radius:.5rem;
-  font-size:.72rem;cursor:pointer;transition:all .2s;letter-spacing:.06em;
-}
-.ctrl-btn:hover{background:rgba(0,212,170,.2);border-color:var(--teal);}
-.ctrl-btn.active{background:rgba(0,212,170,.25);border-color:var(--teal);color:var(--white);}
-
-/* ── FILTER BAR ── */
-#filterbar{
-  position:fixed;top:56px;left:0;right:0;z-index:49;
-  display:flex;gap:.5rem;padding:.5rem 1.5rem;
-  background:rgba(3,8,15,.7);backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(0,212,170,.08);
-  overflow-x:auto;scrollbar-width:none;
-}
-#filterbar::-webkit-scrollbar{display:none;}
-.filter-chip{
-  display:flex;align-items:center;gap:.35rem;white-space:nowrap;
-  background:rgba(0,212,170,.06);border:1px solid rgba(0,212,170,.15);
-  color:var(--gray);padding:.3rem .9rem;border-radius:2rem;
-  font-size:.72rem;cursor:pointer;transition:all .2s;flex-shrink:0;
-}
-.filter-chip:hover{border-color:rgba(0,212,170,.4);color:var(--white);}
-.filter-chip.active{background:rgba(0,212,170,.2);border-color:var(--teal);color:var(--teal);}
-.filter-dot{width:7px;height:7px;border-radius:50%;}
-
-/* ── PARTNER PANEL ── */
-#partner-panel{
-  position:fixed;right:0;top:0;bottom:0;width:340px;z-index:60;
-  background:linear-gradient(135deg,rgba(7,21,31,.97),rgba(3,8,15,.98));
-  border-left:1px solid rgba(0,212,170,.15);
-  transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);
-  display:flex;flex-direction:column;overflow:hidden;
-}
-#partner-panel.open{transform:translateX(0);}
-.panel-glow{
-  position:absolute;top:0;right:0;width:200px;height:200px;
-  background:radial-gradient(circle,rgba(0,212,170,.12),transparent 70%);
+  background:rgba(1,5,9,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,212,170,.1);
   pointer-events:none;
 }
+.top-bar>*{pointer-events:auto}
+.logo{
+  font-size:1.2rem;font-weight:700;letter-spacing:2px;
+  color:#00d4aa;text-shadow:0 0 12px rgba(0,212,170,.3);
+  flex-shrink:0;
+}
+.logo span{color:#e0f0ec;font-weight:300;opacity:.7;font-size:.72rem;margin-left:6px;letter-spacing:1px}
+.nav-links{display:flex;align-items:center;gap:1.2rem;padding-right:9rem;flex-wrap:nowrap}
+.nav-links a{
+  color:#8ab8b0;text-decoration:none;font-size:.72rem;letter-spacing:1px;
+  text-transform:uppercase;transition:color .3s;font-weight:500;
+}
+.nav-links a:hover{color:#00d4aa}
+.btn-contact{
+  background:linear-gradient(135deg,#00d4aa,#00a886);
+  color:#010509;border:none;border-radius:22px;
+  padding:0.45rem 1.2rem;font-size:.7rem;font-weight:700;
+  cursor:pointer;letter-spacing:.6px;
+  text-transform:uppercase;white-space:nowrap;
+  transition:transform .2s,box-shadow .2s;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 0 16px rgba(0,212,170,.2);
+}
+.btn-contact:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 30px rgba(0,212,170,.45);
+}
+.lang-sel{
+  position:fixed;top:0;right:0;z-index:200;
+  display:flex;gap:3px;padding:.45rem .8rem;
+  background:rgba(1,5,9,.85);backdrop-filter:blur(10px);
+  border-bottom-left-radius:.6rem;
+  border-left:1px solid rgba(0,212,170,.12);
+  border-bottom:1px solid rgba(0,212,170,.12);
+}
+.lang-sel button{
+  background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.2);
+  color:#8ab8b0;font-size:.62rem;padding:3px 8px;border-radius:4px;
+  cursor:pointer;font-weight:600;letter-spacing:.5px;
+  transition:all .3s;
+}
+.lang-sel button:hover,.lang-sel button.active{
+  background:rgba(0,212,170,.25);color:#00d4aa;
+  border-color:rgba(0,212,170,.5);
+}
+
+/* TOOLTIP */
+#tooltip{
+  position:fixed;z-index:200;
+  pointer-events:none;
+  background:rgba(3,8,16,.92);
+  border:1px solid rgba(0,212,170,.3);
+  border-radius:8px;
+  padding:8px 14px;
+  font-size:.78rem;
+  color:#e0f0ec;
+  backdrop-filter:blur(8px);
+  white-space:nowrap;
+  opacity:0;transition:opacity .2s;
+  box-shadow:0 4px 20px rgba(0,0,0,.6);
+}
+#tooltip.visible{opacity:1}
+
+/* SIDE PANEL */
+#side-panel{
+  position:fixed;top:0;z-index:150;
+  width:340px;max-width:85vw;height:100vh;
+  background:rgba(3,8,16,.95);
+  backdrop-filter:blur(16px);
+  padding:2rem 1.5rem;
+  overflow-y:auto;
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  border:none;
+}
+#side-panel.open-right{
+  right:0;left:auto;
+  transform:translateX(0);
+  border-left:1px solid rgba(0,212,170,.15);
+}
+#side-panel.open-left{
+  left:0;right:auto;
+  transform:translateX(0);
+  border-right:1px solid rgba(0,212,170,.15);
+}
+#side-panel.closed-right{
+  right:0;left:auto;
+  transform:translateX(100%);
+}
+#side-panel.closed-left{
+  left:0;right:auto;
+  transform:translateX(-100%);
+}
+#side-panel.init{
+  right:0;left:auto;
+  transform:translateX(100%);
+}
+.panel-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.3rem}
+.panel-country{font-size:1.5rem;font-weight:700;color:#00d4aa}
+.panel-flag{font-size:2rem}
+.panel-subtitle{font-size:.72rem;color:#6a9a90;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:1px}
+.panel-partner{
+  background:rgba(0,212,170,.04);
+  border:1px solid rgba(0,212,170,.1);
+  border-radius:10px;
+  padding:1rem;margin-bottom:.8rem;
+  transition:border-color .3s;
+}
+.panel-partner:hover{border-color:rgba(0,212,170,.35)}
+.panel-partner-name{font-weight:600;font-size:.88rem;color:#e0f0ec;margin-bottom:.3rem}
+.panel-partner-type{
+  display:inline-block;
+  font-size:.58rem;text-transform:uppercase;letter-spacing:1px;
+  background:rgba(0,212,170,.15);color:#00d4aa;
+  padding:2px 8px;border-radius:4px;margin-bottom:.5rem;font-weight:600;
+}
+.panel-partner-desc{font-size:.73rem;color:#8ab8b0;line-height:1.5;margin-bottom:.5rem}
+.panel-partner-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.5rem}
+.panel-partner-tags span{
+  font-size:.56rem;background:rgba(0,212,170,.08);
+  border:1px solid rgba(0,212,170,.12);
+  color:#6a9a90;padding:2px 6px;border-radius:3px;
+}
+.panel-partner-links{display:flex;gap:.5rem}
+.panel-partner-links a{
+  font-size:.63rem;color:#00d4aa;text-decoration:none;
+  border:1px solid rgba(0,212,170,.2);padding:3px 10px;
+  border-radius:4px;transition:all .3s;
+}
+.panel-partner-links a:hover{background:rgba(0,212,170,.15)}
 .panel-close{
   position:absolute;top:1rem;right:1rem;
-  background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.3);
-  color:var(--teal);width:30px;height:30px;border-radius:50%;
-  font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:all .2s;z-index:2;
+  background:none;border:1px solid rgba(0,212,170,.2);
+  color:#6a9a90;width:28px;height:28px;border-radius:50%;
+  cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
 }
-.panel-close:hover{background:rgba(0,212,170,.25);}
-.panel-header{padding:2rem 1.5rem 1rem;border-bottom:1px solid rgba(0,212,170,.1);}
-.partner-type-badge{
-  display:inline-block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
-  padding:.2rem .7rem;border-radius:2rem;margin-bottom:.8rem;
-}
-.partner-name{font-size:1.3rem;font-weight:700;font-family:'Rajdhani',system-ui;margin-bottom:.3rem;}
-.partner-location{font-size:.8rem;color:var(--gray);display:flex;align-items:center;gap:.4rem;}
-.panel-body{padding:1.2rem 1.5rem;flex:1;overflow-y:auto;}
-.panel-body::-webkit-scrollbar{width:4px;}
-.panel-body::-webkit-scrollbar-thumb{background:rgba(0,212,170,.2);border-radius:2px;}
-.partner-logo-area{
-  width:100%;height:110px;border-radius:.8rem;
-  background:rgba(0,212,170,.06);border:1px solid rgba(0,212,170,.12);
-  display:flex;align-items:center;justify-content:center;
-  font-size:2.5rem;margin-bottom:1.2rem;
-}
-.partner-desc{font-size:.82rem;color:rgba(176,210,230,.8);line-height:1.65;margin-bottom:1.2rem;}
-.partner-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.2rem;}
-.partner-tag{background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.18);color:var(--teal);font-size:.65rem;padding:.2rem .6rem;border-radius:.3rem;}
-.partner-actions{display:flex;flex-direction:column;gap:.6rem;}
-.btn-panel-primary{
-  background:linear-gradient(135deg,var(--teal),var(--teal2));
-  color:#fff;border:none;padding:.65rem 1.2rem;border-radius:.6rem;
-  font-size:.82rem;font-weight:600;cursor:pointer;text-align:center;
-  text-decoration:none;display:block;transition:opacity .2s;
-}
-.btn-panel-primary:hover{opacity:.85;}
-.btn-panel-secondary{
-  background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.25);
-  color:var(--teal);padding:.6rem 1.2rem;border-radius:.6rem;
-  font-size:.82rem;cursor:pointer;text-align:center;text-decoration:none;
-  display:block;transition:all .2s;
-}
-.btn-panel-secondary:hover{background:rgba(0,212,170,.18);}
+.panel-close:hover{color:#00d4aa;border-color:rgba(0,212,170,.5)}
 
-/* ── TOOLTIP (hover) ── */
-#tooltip{
-  position:fixed;z-index:80;pointer-events:none;
-  background:rgba(7,21,31,.92);backdrop-filter:blur(12px);
-  border:1px solid rgba(0,212,170,.3);border-radius:.6rem;
-  padding:.55rem .9rem;font-size:.78rem;color:var(--white);
-  white-space:nowrap;opacity:0;transition:opacity .2s;
-  box-shadow:0 0 20px rgba(0,212,170,.15);
+/* BOTTOM CTA */
+.bottom-cta{
+  position:fixed;bottom:3.8rem;left:50%;transform:translateX(-50%);
+  z-index:100;text-align:center;pointer-events:none;
+  white-space:nowrap;
 }
-#tooltip.visible{opacity:1;}
-#tooltip .tt-name{font-weight:700;color:var(--teal);}
-#tooltip .tt-loc{color:var(--gray);font-size:.7rem;}
+.bottom-cta>*{pointer-events:auto}
+.cta-text{
+  font-size:.88rem;font-weight:700;color:#e0f0ec;
+  margin-bottom:.6rem;letter-spacing:.8px;
+  text-shadow:0 2px 16px rgba(0,0,0,.95),0 0 40px rgba(0,0,0,.8);
+}
+.cta-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,rgba(0,212,170,.25),rgba(0,168,134,.15));
+  border:1px solid rgba(0,212,170,.4);
+  color:#00d4aa;padding:.7rem 2.2rem;
+  border-radius:25px;font-size:.82rem;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;
+  transition:all .3s;
+  box-shadow:0 0 30px rgba(0,212,170,.15);
+}
+.cta-btn:hover{
+  background:linear-gradient(135deg,rgba(0,212,170,.35),rgba(0,212,170,.15));
+  box-shadow:0 0 25px rgba(0,212,170,.2);
+  transform:scale(1.04);
+}
 
-/* ── JOIN CTA ── */
-#join-cta{
-  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:55;
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+/* CONTACT FOOTER */
+.contact-footer{
+  position:fixed;bottom:0;left:0;right:0;z-index:90;
+  display:flex;justify-content:center;gap:2rem;
+  padding:.6rem 1rem;
+  background:rgba(1,5,9,.92);
+  border-top:1px solid rgba(0,212,170,.08);
+  pointer-events:none;
 }
-.join-btn{
-  background:linear-gradient(135deg,rgba(0,212,170,.9),rgba(0,180,216,.9));
-  border:1px solid rgba(0,255,200,.4);color:#fff;
-  padding:.75rem 2rem;border-radius:2rem;font-size:.88rem;font-weight:700;
-  cursor:pointer;letter-spacing:.07em;box-shadow:0 0 40px rgba(0,212,170,.35);
-  animation:joinPulse 2.5s ease-in-out infinite;
-  text-decoration:none;
+.contact-footer span{
+  pointer-events:auto;
+  font-size:.65rem;color:#5a8a80;letter-spacing:.5px;
 }
-.join-btn:hover{box-shadow:0 0 60px rgba(0,212,170,.6);transform:translateY(-2px);}
-@keyframes joinPulse{0%,100%{box-shadow:0 0 30px rgba(0,212,170,.3);}50%{box-shadow:0 0 60px rgba(0,212,170,.6),0 0 100px rgba(0,212,170,.2);}}
-.join-hint{font-size:.68rem;color:rgba(0,212,170,.6);letter-spacing:.12em;}
+.contact-footer a{color:#00d4aa;text-decoration:none;opacity:.7;transition:opacity .3s}
+.contact-footer a:hover{opacity:1}
 
-/* ── STATS RIBBON ── */
-#stats-ribbon{
-  position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%);z-index:55;
-  display:flex;gap:1.5rem;
-  background:rgba(3,8,15,.75);backdrop-filter:blur(10px);
-  border:1px solid rgba(0,212,170,.12);border-radius:2rem;
-  padding:.4rem 1.5rem;
+/* LOADING */
+#loader{
+  position:fixed;inset:0;z-index:9999;
+  background:#010509;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  transition:opacity .8s;
 }
-.ribbon-stat{text-align:center;}
-.ribbon-num{font-size:1rem;font-weight:700;color:var(--teal);font-family:'Rajdhani',system-ui;}
-.ribbon-label{font-size:.58rem;color:var(--gray);letter-spacing:.08em;}
-
-/* ── LOADING ── */
-#loading{
-  position:fixed;inset:0;z-index:999;
-  background:var(--bg);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:1rem;
-}
-.loading-orb{
-  width:60px;height:60px;border-radius:50%;
-  border:2px solid rgba(0,212,170,.2);
-  border-top:2px solid var(--teal);
+#loader.done{opacity:0;pointer-events:none}
+#loader .spinner{
+  width:40px;height:40px;
+  border:2px solid rgba(0,212,170,.15);
+  border-top-color:#00d4aa;
+  border-radius:50%;
   animation:spin 1s linear infinite;
 }
-@keyframes spin{to{transform:rotate(360deg);}}
-.loading-text{color:var(--teal);font-size:.85rem;letter-spacing:.2em;}
+@keyframes spin{to{transform:rotate(360deg)}}
+#loader p{margin-top:1rem;font-size:.72rem;color:#4a7a70;letter-spacing:2px;text-transform:uppercase}
 
-/* ── MOBILE ── */
-@media(max-width:640px){
-  #partner-panel{width:100%;}
-  #search-box{width:150px;}
-  #stats-ribbon{gap:.8rem;padding:.35rem 1rem;}
-  .logo-sub{display:none;}
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(0,212,170,.2);border-radius:2px}
+
+@media(max-width:700px){
+  .top-bar{padding:.5rem .8rem}
+  .nav-links{gap:.6rem}
+  .nav-links a:not(.btn-contact){font-size:.55rem}
+  .btn-contact{padding:.4rem .9rem;font-size:.65rem}
+  .lang-sel button{font-size:.52rem;padding:2px 5px}
+  #side-panel{width:88vw;padding:1.2rem 1rem}
+  .bottom-cta{bottom:3rem}
+  .cta-text{font-size:.72rem}
+  .cta-btn{font-size:.7rem;padding:.55rem 1.5rem}
+  .contact-footer{gap:.5rem;flex-wrap:wrap;justify-content:center;padding:.5rem .6rem}
+  .contact-footer span{font-size:.5rem}
 }
 </style>
 </head>
 <body>
 
-<div id="loading">
-  <div class="loading-orb"></div>
-  <div class="loading-text">INITIALISATION CELLULE-TERRE…</div>
-</div>
+<div id="loader"><div class="spinner"></div><p>Chargement de la carte...</p></div>
 
-<div id="canvas-wrapper"><canvas id="globe"></canvas></div>
+<div id="canvas-container"></div>
+
+<!-- LANGUAGE SELECTOR (fixed top-right) -->
+<div class="lang-sel">
+  <button class="active">FR</button>
+  <button>EN</button>
+  <button>ES</button>
+  <button>DE</button>
+</div>
 
 <!-- TOP BAR -->
-<div id="topbar">
-  <div style="display:flex;align-items:center;gap:.5rem;">
-    <span class="logo-text">ORIM™</span>
-    <span class="logo-sub">RÉSEAU MONDIAL</span>
-  </div>
-  <div id="search-box">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="search-input" placeholder="Rechercher partenaire, ville…"/>
-  </div>
-  <div id="controls-right">
-    <button class="ctrl-btn" id="btn-reset" title="Recentrer">⟳ Reset</button>
-    <button class="ctrl-btn" id="btn-fullscreen" title="Plein écran">⤢ Fullscreen</button>
-  </div>
-</div>
-
-<!-- FILTER BAR -->
-<div id="filterbar">
-  <div class="filter-chip active" data-filter="all">
-    <span class="filter-dot" style="background:#00d4aa;"></span>Tous
-  </div>
-  <div class="filter-chip" data-filter="therapeute">
-    <span class="filter-dot" style="background:#7b2fff;"></span>Thérapeute
-  </div>
-  <div class="filter-chip" data-filter="medecin">
-    <span class="filter-dot" style="background:#ff6b35;"></span>Médecin
-  </div>
-  <div class="filter-chip" data-filter="naturopathe">
-    <span class="filter-dot" style="background:#00d4aa;"></span>Naturopathe
-  </div>
-  <div class="filter-chip" data-filter="magasin">
-    <span class="filter-dot" style="background:#c9a84c;"></span>Magasin Bio
-  </div>
-  <div class="filter-chip" data-filter="coach">
-    <span class="filter-dot" style="background:#00b4d8;"></span>Coach Sportif
-  </div>
-  <div class="filter-chip" data-filter="laboratoire">
-    <span class="filter-dot" style="background:#ff3d9a;"></span>Laboratoire
-  </div>
-</div>
-
-<!-- PARTNER PANEL -->
-<div id="partner-panel">
-  <div class="panel-glow"></div>
-  <button class="panel-close" id="panel-close">✕</button>
-  <div class="panel-header">
-    <div id="pp-badge" class="partner-type-badge"></div>
-    <div id="pp-name" class="partner-name"></div>
-    <div id="pp-location" class="partner-location"></div>
-  </div>
-  <div class="panel-body">
-    <div id="pp-logo" class="partner-logo-area"></div>
-    <div id="pp-desc" class="partner-desc"></div>
-    <div id="pp-tags" class="partner-tags"></div>
-    <div class="partner-actions">
-      <a id="pp-rdv" href="#" class="btn-panel-primary" target="_blank">📅 Prendre rendez-vous</a>
-      <a id="pp-site" href="#" class="btn-panel-secondary" target="_blank">🌐 Visiter le site</a>
-    </div>
+<div class="top-bar">
+  <div class="logo">ORIM<span>NUTRITION</span></div>
+  <div class="nav-links">
+    <a href="index.html">Science</a>
+    <a href="index.html#marque">Indice ORIM</a>
+    <a href="#">Partenaires</a>
+    <a href="mailto:chevalley@cfmanagement.ch" class="btn-contact">Nous contacter</a>
   </div>
 </div>
 
 <!-- TOOLTIP -->
-<div id="tooltip"><div class="tt-name" id="tt-name"></div><div class="tt-loc" id="tt-loc"></div></div>
+<div id="tooltip"></div>
 
-<!-- STATS -->
-<div id="stats-ribbon">
-  <div class="ribbon-stat"><div class="ribbon-num" id="stat-total">10</div><div class="ribbon-label">Partenaires</div></div>
-  <div class="ribbon-stat"><div class="ribbon-num" id="stat-countries">8</div><div class="ribbon-label">Pays</div></div>
-  <div class="ribbon-stat"><div class="ribbon-num" id="stat-visible">10</div><div class="ribbon-label">Affichés</div></div>
+<!-- SIDE PANEL -->
+<div id="side-panel" class="init"></div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <div class="cta-text">VOUS &Ecirc;TES PROFESSIONNEL DE SANT&Eacute; ?</div>
+  <a href="mailto:chevalley@cfmanagement.ch" class="cta-btn">Rejoindre le r&eacute;seau ORIM&trade;</a>
 </div>
 
-<!-- JOIN CTA -->
-<div id="join-cta">
-  <a href="mailto:info@orimnutrition.com?subject=Devenir partenaire ORIM" class="join-btn">🌿 Rejoindre le réseau ORIM™</a>
-  <div class="join-hint">VOUS ÊTES PROFESSIONNEL DE SANTÉ ?</div>
+<!-- CONTACT FOOTER -->
+<div class="contact-footer">
+  <span>SAS &mdash; <a href="mailto:chevalley@cfmanagement.ch">chevalley@cfmanagement.ch</a></span>
+  <span>Olivier Chevalley: <a href="tel:+41764117926">076 411 79 26</a></span>
+  <span>No&euml;l Calder&oacute;n: <a href="tel:+41787179189">078 717 91 89</a></span>
 </div>
 
-<!-- THREE.JS + GSAP from CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
 <script>
-// ═══════════════════════════════════════════════════════════════════════════
-//  PARTNER DATA — Remplacez par vos vraies données ou connectez une API
-//  Format: { id, name, type, city, country, lat, lon, emoji, desc, tags, rdv, site }
-// ═══════════════════════════════════════════════════════════════════════════
-const PARTNERS = [
-  {
-    id:1, name:"Dr. Sophie Renaud", type:"medecin",
-    city:"Paris", country:"France", lat:48.86, lon:2.35,
-    emoji:"👩‍⚕️",
-    desc:"Médecin nutritionniste spécialisée en immunologie métabolique. Partenaire ORIM™ depuis 2023. Consultations en cabinet et en télémédecine.",
-    tags:["Nutrition","Immunologie","Télémédecine"],
-    rdv:"https://doctolib.fr", site:"https://orimnutrition.com"
-  },
-  {
-    id:2, name:"Centre Vital Genève", type:"therapeute",
-    city:"Genève", country:"Suisse", lat:46.20, lon:6.14,
-    emoji:"🏥",
-    desc:"Centre de thérapies intégratives certifié ORIM™. Équipe pluridisciplinaire : naturopathes, ostéopathes, nutritionnistes.",
-    tags:["Thérapie intégrative","ORIM™ Certifié","Ostéopathie"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  },
-  {
-    id:3, name:"Bio & Sens Montréal", type:"magasin",
-    city:"Montréal", country:"Canada", lat:45.50, lon:-73.57,
-    emoji:"🌿",
-    desc:"Magasin bio premium. Revendeur officiel des compléments ORIM™ au Québec. Conseil nutrition personnalisé en boutique.",
-    tags:["Compléments ORIM™","Bio","Conseil"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  },
-  {
-    id:4, name:"Dr. Carlos Mendez", type:"naturopathe",
-    city:"Madrid", country:"Espagne", lat:40.41, lon:-3.70,
-    emoji:"🌱",
-    desc:"Naturopathe et microbiologiste. Praticien de l'Indice ORIM™ v3.0. Spécialiste en nutrigénomique et médecine fonctionnelle.",
-    tags:["Microbiome","Nutrigénomique","ORIM™ Index"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  },
-  {
-    id:5, name:"Wellness Hub Dubai", type:"coach",
-    city:"Dubai", country:"EAU", lat:25.20, lon:55.27,
-    emoji:"💪",
-    desc:"Hub bien-être de référence à Dubai. Coaching sportif haut de gamme avec protocoles nutritionnels ORIM™ intégrés.",
-    tags:["Performance","Nutrition sportive","Coaching VIP"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  },
-  {
-    id:6, name:"Laboratorio Vita", type:"laboratoire",
-    city:"Milan", country:"Italie", lat:45.46, lon:9.18,
-    emoji:"🔬",
-    desc:"Laboratoire d'analyses fonctionnelles partenaire ORIM™. Tests microbiome, bilan immunitaire complet, panel nutrigénomique.",
-    tags:["Analyses","Microbiome","Immuno-bilan"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  },
-  {
-    id:7, name:"Tokyo Wellness Clinic", type:"therapeute",
-    city:"Tokyo", country:"Japon", lat:35.68, lon:139.69,
-    emoji:"🏯",
-    desc:"Clinique de bien-être intégrative à Tokyo. Fusion médecine traditionnelle japonaise et protocoles ORIM™ modernes.",
-    tags:["Médecine intégrative","Acupuncture","ORIM™"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  },
-  {
-    id:8, name:"Green Life Sao Paulo", type:"magasin",
-    city:"São Paulo", country:"Brésil", lat:-23.55, lon:-46.63,
-    emoji:"🌎",
-    desc:"Leader de la nutrition fonctionnelle au Brésil. Distribution ORIM™ en Amérique latine. Ateliers et conférences mensuels.",
-    tags:["Distribution Latam","Fonctionnel","Ateliers"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  },
-  {
-    id:9, name:"Dr. Amara Diallo", type:"medecin",
-    city:"Dakar", country:"Sénégal", lat:14.69, lon:-17.44,
-    emoji:"🩺",
-    desc:"Pionnier de la nutrition fonctionnelle en Afrique de l'Ouest. Partenaire ORIM™ pour le développement du réseau africain.",
-    tags:["Afrique","Nutrition","Développement"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  },
-  {
-    id:10, name:"Sydney Functional Health", type:"naturopathe",
-    city:"Sydney", country:"Australie", lat:-33.86, lon:151.21,
-    emoji:"🦘",
-    desc:"Centre de santé fonctionnelle de Sydney. Spécialistes en microbiome et immunité. Premiers praticiens ORIM™ certifiés en Océanie.",
-    tags:["Microbiome","Océanie","Certifié ORIM™"],
-    rdv:"https://orimnutrition.com", site:"https://orimnutrition.com"
-  }
+(function(){
+"use strict";
+
+/* ───────────────────────────────── PARTNER DATA ───────────────────────────────── */
+var PARTNERS = [
+  { id:1, name:"Dr. Sophie Renaud", type:"medecin", city:"Paris", country:"France", countryCode:"FRA", lat:48.86, lon:2.35, emoji:"\ud83d\udc69\u200D\u2695\uFE0F", desc:"M\u00e9decin nutritionniste sp\u00e9cialis\u00e9e en immunologie m\u00e9tabolique.", tags:["Nutrition","Immunologie"], rdv:"https://doctolib.fr", site:"https://orimnutrition.com" },
+  { id:2, name:"Centre Vital Gen\u00e8ve", type:"therapeute", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.20, lon:6.14, emoji:"\ud83c\udfe5", desc:"Centre de th\u00e9rapies int\u00e9gratives certifi\u00e9 ORIM\u2122.", tags:["Th\u00e9rapie int\u00e9grative","ORIM\u2122 Certifi\u00e9"], rdv:"#", site:"https://orimnutrition.com" },
+  { id:3, name:"Bio & Sens Montr\u00e9al", type:"magasin", city:"Montr\u00e9al", country:"Canada", countryCode:"CAN", lat:45.50, lon:-73.57, emoji:"\ud83c\udf3f", desc:"Magasin bio premium, revendeur officiel ORIM\u2122 au Qu\u00e9bec.", tags:["Compl\u00e9ments ORIM\u2122","Bio"], rdv:"#", site:"https://orimnutrition.com" },
+  { id:4, name:"Dr. Carlos Mendez", type:"naturopathe", city:"Madrid", country:"Espagne", countryCode:"ESP", lat:40.41, lon:-3.70, emoji:"\ud83c\udf31", desc:"Naturopathe et microbiologiste, praticien Indice ORIM\u2122 v3.0.", tags:["Microbiome","Nutrig\u00e9nomique"], rdv:"#", site:"https://orimnutrition.com" },
+  { id:5, name:"Wellness Hub Dubai", type:"coach", city:"Dubai", country:"EAU", countryCode:"ARE", lat:25.20, lon:55.27, emoji:"\ud83d\udcaa", desc:"Hub bien-\u00eatre avec protocoles nutritionnels ORIM\u2122.", tags:["Performance","Coaching VIP"], rdv:"#", site:"https://orimnutrition.com" },
+  { id:6, name:"Laboratorio Vita", type:"laboratoire", city:"Milan", country:"Italie", countryCode:"ITA", lat:45.46, lon:9.18, emoji:"\ud83d\udd2c", desc:"Laboratoire d\u2019analyses fonctionnelles partenaire ORIM\u2122.", tags:["Analyses","Microbiome"], rdv:"#", site:"https://orimnutrition.com" },
+  { id:7, name:"Tokyo Wellness Clinic", type:"therapeute", city:"Tokyo", country:"Japon", countryCode:"JPN", lat:35.68, lon:139.69, emoji:"\ud83c\udfef", desc:"Clinique de bien-\u00eatre int\u00e9grative fusion ORIM\u2122.", tags:["M\u00e9decine int\u00e9grative","Acupuncture"], rdv:"#", site:"https://orimnutrition.com" },
+  { id:8, name:"Green Life S\u00e3o Paulo", type:"magasin", city:"S\u00e3o Paulo", country:"Br\u00e9sil", countryCode:"BRA", lat:-23.55, lon:-46.63, emoji:"\ud83c\udf0e", desc:"Leader nutrition fonctionnelle au Br\u00e9sil, distribution ORIM\u2122.", tags:["Distribution Latam","Ateliers"], rdv:"#", site:"https://orimnutrition.com" },
+  { id:9, name:"Dr. Amara Diallo", type:"medecin", city:"Dakar", country:"S\u00e9n\u00e9gal", countryCode:"SEN", lat:14.69, lon:-17.44, emoji:"\ud83e\ude7a", desc:"Pionnier nutrition fonctionnelle en Afrique de l\u2019Ouest.", tags:["Afrique","D\u00e9veloppement"], rdv:"#", site:"https://orimnutrition.com" },
+  { id:10, name:"Sydney Functional Health", type:"naturopathe", city:"Sydney", country:"Australie", countryCode:"AUS", lat:-33.86, lon:151.21, emoji:"\ud83e\udd98", desc:"Sp\u00e9cialistes microbiome et immunit\u00e9, certifi\u00e9s ORIM\u2122.", tags:["Microbiome","Certifi\u00e9 ORIM\u2122"], rdv:"#", site:"https://orimnutrition.com" }
 ];
 
-// Couleurs par type de partenaire
-const TYPE_COLORS = {
-  therapeute: {hex:0x7b2fff, css:"#7b2fff", label:"Thérapeute"},
-  medecin:    {hex:0xff6b35, css:"#ff6b35", label:"Médecin"},
-  naturopathe:{hex:0x00d4aa, css:"#00d4aa", label:"Naturopathe"},
-  magasin:    {hex:0xc9a84c, css:"#c9a84c", label:"Magasin Bio"},
-  coach:      {hex:0x00b4d8, css:"#00b4d8", label:"Coach Sportif"},
-  laboratoire:{hex:0xff3d9a, css:"#ff3d9a", label:"Laboratoire"}
+var TYPE_COLORS = {
+  medecin:"#00d4aa", therapeute:"#00b4d8", magasin:"#f4a261",
+  naturopathe:"#90be6d", coach:"#e76f51", laboratoire:"#a78bfa"
+};
+var TYPE_LABELS = {
+  medecin:"M\u00e9decin", therapeute:"Th\u00e9rapeute", magasin:"Magasin",
+  naturopathe:"Naturopathe", coach:"Coach", laboratoire:"Laboratoire"
+};
+var FLAG_MAP = {
+  FRA:"\ud83c\uddeb\ud83c\uddf7", CHE:"\ud83c\udde8\ud83c\udded", CAN:"\ud83c\udde8\ud83c\udde6",
+  ESP:"\ud83c\uddea\ud83c\uddf8", ARE:"\ud83c\udde6\ud83c\uddea", ITA:"\ud83c\uddee\ud83c\uddf9",
+  JPN:"\ud83c\uddef\ud83c\uddf5", BRA:"\ud83c\udde7\ud83c\uddf7", SEN:"\ud83c\uddf8\ud83c\uddf3",
+  AUS:"\ud83c\udde6\ud83c\uddfa"
 };
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  THREE.JS SETUP
-// ═══════════════════════════════════════════════════════════════════════════
-const canvas = document.getElementById('globe');
-const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+/* ─── ISO numeric → alpha-3 mapping ─── */
+var ISO_NUM_TO_A3 = {
+  '4':'AFG','8':'ALB','12':'DZA','16':'ASM','20':'AND','24':'AGO','28':'ATG',
+  '31':'AZE','32':'ARG','36':'AUS','40':'AUT','44':'BHS','48':'BHR','50':'BGD',
+  '51':'ARM','52':'BRB','56':'BEL','60':'BMU','64':'BTN','68':'BOL','70':'BIH',
+  '72':'BWA','76':'BRA','84':'BLZ','90':'SLB','92':'VGB','96':'BRN','100':'BGR',
+  '104':'MMR','108':'BDI','112':'BLR','116':'KHM','120':'CMR','124':'CAN','132':'CPV',
+  '140':'CAF','144':'LKA','148':'TCD','152':'CHL','156':'CHN','158':'TWN','170':'COL',
+  '174':'COM','175':'MYT','178':'COG','180':'COD','184':'COK','188':'CRI','191':'HRV',
+  '192':'CUB','196':'CYP','203':'CZE','204':'BEN','208':'DNK','212':'DMA','214':'DOM',
+  '218':'ECU','222':'SLV','226':'GNQ','231':'ETH','232':'ERI','233':'EST','234':'FRO',
+  '238':'FLK','242':'FJI','246':'FIN','250':'FRA','254':'GUF','258':'PYF','262':'DJI',
+  '266':'GAB','268':'GEO','270':'GMB','275':'PSE','276':'DEU','288':'GHA','296':'KIR',
+  '300':'GRC','304':'GRL','308':'GRD','312':'GLP','316':'GUM','320':'GTM','324':'GIN',
+  '328':'GUY','332':'HTI','336':'VAT','340':'HND','344':'HKG','348':'HUN','352':'ISL',
+  '356':'IND','360':'IDN','364':'IRN','368':'IRQ','372':'IRL','376':'ISR','380':'ITA',
+  '384':'CIV','388':'JAM','392':'JPN','398':'KAZ','400':'JOR','404':'KEN','408':'PRK',
+  '410':'KOR','414':'KWT','417':'KGZ','418':'LAO','422':'LBN','426':'LSO','428':'LVA',
+  '430':'LBR','434':'LBY','438':'LIE','440':'LTU','442':'LUX','446':'MAC','450':'MDG',
+  '454':'MWI','458':'MYS','462':'MDV','466':'MLI','470':'MLT','474':'MTQ','478':'MRT',
+  '480':'MUS','484':'MEX','492':'MCO','496':'MNG','498':'MDA','499':'MNE','504':'MAR',
+  '508':'MOZ','512':'OMN','516':'NAM','520':'NRU','524':'NPL','528':'NLD','540':'NCL',
+  '548':'VUT','554':'NZL','558':'NIC','562':'NER','566':'NGA','570':'NIU','578':'NOR',
+  '583':'FSM','584':'MHL','585':'PLW','586':'PAK','591':'PAN','598':'PNG','600':'PRY',
+  '604':'PER','608':'PHL','616':'POL','620':'PRT','624':'GNB','626':'TLS','630':'PRI',
+  '634':'QAT','638':'REU','642':'ROU','643':'RUS','646':'RWA','652':'BLM','654':'SHN',
+  '659':'KNA','660':'AIA','662':'LCA','666':'SPM','670':'VCT','674':'SMR','678':'STP',
+  '682':'SAU','686':'SEN','688':'SRB','690':'SYC','694':'SLE','702':'SGP','703':'SVK',
+  '704':'VNM','705':'SVN','706':'SOM','710':'ZAF','716':'ZWE','720':'YEM','724':'ESP',
+  '728':'SSD','729':'SDN','732':'ESH','740':'SUR','744':'SJM','748':'SWZ','752':'SWE',
+  '756':'CHE','760':'SYR','762':'TJK','764':'THA','768':'TGO','772':'TKL','776':'TON',
+  '780':'TTO','784':'ARE','788':'TUN','792':'TUR','795':'TKM','798':'TUV','800':'UGA',
+  '804':'UKR','807':'MKD','818':'EGY','826':'GBR','831':'GGY','832':'JEY','833':'IMN',
+  '834':'TZA','840':'USA','854':'BFA','858':'URY','860':'UZB','862':'VEN','876':'WLF',
+  '882':'WSM','887':'YEM','894':'ZMB','900':'XKX','10':'ATA'
+};
+
+function numToAlpha3(n) {
+  return ISO_NUM_TO_A3[String(n)] || ISO_NUM_TO_A3[String(parseInt(n,10))] || null;
+}
+
+/* ───────────────────────────────── THREE.JS SETUP ───────────────────────────────── */
+var container = document.getElementById('canvas-container');
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0.3, 3.2);
+var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x03080f, 1);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x010509, 1);
+container.appendChild(renderer.domElement);
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 2.8);
-
-const controls = new THREE.OrbitControls(camera, canvas);
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.05;
-controls.minDistance = 1.4;
-controls.maxDistance = 5;
+controls.dampingFactor = 0.06;
 controls.rotateSpeed = 0.4;
+controls.enableZoom = true;
+controls.minDistance = 1.8;
+controls.maxDistance = 6;
+controls.enablePan = false;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0.3;
+controls.autoRotateSpeed = 0.15;
 
-// ── GROUP ROOT ──
-const earthGroup = new THREE.Group();
-scene.add(earthGroup);
+/* ─── LIGHTING ─── */
+scene.add(new THREE.AmbientLight(0x406050, 0.15));
+var dimPt = new THREE.PointLight(0x00d4aa, 0.12, 10);
+dimPt.position.set(2, 1, 3);
+scene.add(dimPt);
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  EARTH GLOBE — Shader cell membrane effect
-// ═══════════════════════════════════════════════════════════════════════════
-const globeGeo = new THREE.SphereGeometry(1, 64, 64);
+/* ─── STARS ─── */
+(function(){
+  var geo = new THREE.BufferGeometry();
+  var n = 1200, pos = new Float32Array(n * 3);
+  for (var i = 0; i < n * 3; i += 3) {
+    var r = 25 + Math.random() * 75;
+    var th = Math.random() * Math.PI * 2;
+    var ph = Math.acos(2 * Math.random() - 1);
+    pos[i] = r * Math.sin(ph) * Math.cos(th);
+    pos[i+1] = r * Math.sin(ph) * Math.sin(th);
+    pos[i+2] = r * Math.cos(ph);
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0x354050, size: 0.12, sizeAttenuation: true })));
+})();
 
-// Custom GLSL shader — cellule biologique
-const globeMat = new THREE.ShaderMaterial({
-  uniforms: {
-    uTime:      {value: 0},
-    uResolution:{value: new THREE.Vector2(window.innerWidth, window.innerHeight)},
-  },
-  vertexShader: `
-    varying vec2 vUv;
-    varying vec3 vNormal;
-    varying vec3 vWorldPos;
-    void main(){
-      vUv = uv;
-      vNormal = normalize(normalMatrix * normal);
-      vWorldPos = (modelMatrix * vec4(position,1.)).xyz;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.);
-    }
-  `,
-  fragmentShader: `
-    uniform float uTime;
-    varying vec2 vUv;
-    varying vec3 vNormal;
-    varying vec3 vWorldPos;
+/* ─── GLOBE SPHERE ─── */
+var GLOBE_R = 1.0;
+var globeMesh = new THREE.Mesh(
+  new THREE.SphereGeometry(GLOBE_R, 64, 64),
+  new THREE.MeshPhongMaterial({
+    color: 0x030810,
+    emissive: 0x010408,
+    emissiveIntensity: 0.25,
+    shininess: 5,
+    transparent: true,
+    opacity: 0.97
+  })
+);
+scene.add(globeMesh);
 
-    // Noise helpers
-    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-    float noise(vec2 p){
-      vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);
-      return mix(mix(hash(i),hash(i+vec2(1.,0.)),u.x),
-                 mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),u.x),u.y);
-    }
-    float fbm(vec2 p){
-      float v=0.,a=.5;
-      for(int i=0;i<5;i++){v+=a*noise(p);p*=2.;a*=.5;}
-      return v;
-    }
+/* ─── ATMOSPHERE GLOW ─── */
+(function(){
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(GLOBE_R * 1.04, 64, 64),
+    new THREE.ShaderMaterial({
+      vertexShader: [
+        'varying vec3 vNormal;',
+        'void main(){',
+        '  vNormal = normalize(normalMatrix * normal);',
+        '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'varying vec3 vNormal;',
+        'void main(){',
+        '  float intensity = pow(0.62 - dot(vNormal, vec3(0,0,1.0)), 3.0);',
+        '  gl_FragColor = vec4(0.0, 0.83, 0.67, 1.0) * intensity * 0.1;',
+        '}'
+      ].join('\n'),
+      blending: THREE.AdditiveBlending,
+      side: THREE.BackSide,
+      transparent: true,
+      depthWrite: false
+    })
+  ));
+})();
 
-    void main(){
-      // Base continents from UV procedural
-      float lon = vUv.x * 6.2832;
-      float lat = (vUv.y - .5) * 3.1416;
+/* ─── NUCLEUS ─── */
+(function(){
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(0.055, 24, 24),
+    new THREE.MeshBasicMaterial({ color: 0x00d4aa, transparent: true, opacity: 0.12 })
+  ));
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(0.11, 24, 24),
+    new THREE.ShaderMaterial({
+      vertexShader: 'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+      fragmentShader: 'varying vec3 vN;void main(){float i=pow(0.7-dot(vN,vec3(0,0,1)),2.5);gl_FragColor=vec4(0.,0.83,0.67,1.)*i*0.08;}',
+      blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true, depthWrite: false
+    })
+  ));
+})();
 
-      // Procedural continent blobs
-      vec2 uv2 = vUv * vec2(4.,2.);
-      float continent = fbm(uv2 + .5);
-      continent = smoothstep(.42, .58, continent);
+/* ─── CYTOPLASM PARTICLES ─── */
+var cytoPoints;
+(function(){
+  var n = 50, geo = new THREE.BufferGeometry(), pos = new Float32Array(n * 3);
+  for (var i = 0; i < n; i++) {
+    var r = 0.12 + Math.random() * 0.72;
+    var th = Math.random() * Math.PI * 2;
+    var ph = Math.acos(2 * Math.random() - 1);
+    pos[i*3] = r * Math.sin(ph) * Math.cos(th);
+    pos[i*3+1] = r * Math.sin(ph) * Math.sin(th);
+    pos[i*3+2] = r * Math.cos(ph);
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  cytoPoints = new THREE.Points(geo, new THREE.PointsMaterial({
+    color: 0x00d4aa, size: 0.012, transparent: true, opacity: 0.12,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  }));
+  scene.add(cytoPoints);
+})();
 
-      // Ocean color (cytoplasm)
-      vec3 oceanColor = vec3(0.01, 0.06, 0.12);
-      // Land color (cell membrane patches)
-      vec3 landColor = vec3(0.04, 0.18, 0.14);
-
-      vec3 baseColor = mix(oceanColor, landColor, continent);
-
-      // Membrane glow teal
-      vec3 membraneColor = vec3(0., .83, .67);
-      // Grid lines (latitude/longitude = cellular filaments)
-      float gridLon = abs(sin(lon * 12.)) * .04;
-      float gridLat = abs(sin(lat * 12.)) * .04;
-      baseColor += membraneColor * (gridLon + gridLat) * .6;
-
-      // Organelles — random glowing spots
-      float organelles = fbm(uv2 * 3. + uTime * .05);
-      organelles = smoothstep(.6, .7, organelles) * .25;
-      baseColor += membraneColor * organelles;
-
-      // Fresnel rim — membrane edge glow
-      vec3 viewDir = normalize(cameraPosition - vWorldPos);
-      float fresnel = pow(1. - max(dot(vNormal, viewDir), 0.), 3.5);
-      baseColor += membraneColor * fresnel * 1.4;
-
-      // Pulse breathing
-      float pulse = sin(uTime * .8) * .5 + .5;
-      baseColor += membraneColor * pulse * 0.04;
-
-      // Specular highlight
-      vec3 lightDir = normalize(vec3(1.,1.,1.));
-      float spec = pow(max(dot(reflect(-lightDir,vNormal),viewDir),0.),.5) * .15;
-      baseColor += vec3(spec);
-
-      // Atmosphere glow near edges
-      baseColor += vec3(0.,.3,.25) * fresnel * .5;
-
-      gl_FragColor = vec4(baseColor, 1.);
-    }
-  `,
-  side: THREE.FrontSide
-});
-
-const globe = new THREE.Mesh(globeGeo, globeMat);
-earthGroup.add(globe);
-
-// ── ATMOSPHERE ──
-const atmMat = new THREE.ShaderMaterial({
-  uniforms:{ uTime:{value:0} },
-  vertexShader:`
-    varying vec3 vNormal;
-    varying vec3 vWorldPos;
-    void main(){
-      vNormal=normalize(normalMatrix*normal);
-      vWorldPos=(modelMatrix*vec4(position,1.)).xyz;
-      gl_Position=projectionMatrix*modelViewMatrix*vec4(position*1.02,1.);
-    }
-  `,
-  fragmentShader:`
-    uniform float uTime;
-    varying vec3 vNormal;
-    varying vec3 vWorldPos;
-    void main(){
-      vec3 viewDir=normalize(cameraPosition-vWorldPos);
-      float fresnel=pow(1.-max(dot(vNormal,viewDir),0.),2.5);
-      float pulse=sin(uTime*.6)*.5+.5;
-      vec3 col=mix(vec3(0.,.6,.5),vec3(0.,.9,.7),pulse);
-      gl_FragColor=vec4(col,fresnel*0.45);
-    }
-  `,
-  transparent:true, side:THREE.FrontSide, depthWrite:false
-});
-const atm = new THREE.Mesh(new THREE.SphereGeometry(1, 64, 64), atmMat);
-earthGroup.add(atm);
-
-// ── OUTER MEMBRANE ──
-const membraneMat = new THREE.ShaderMaterial({
-  uniforms:{ uTime:{value:0} },
-  vertexShader:`
-    varying vec3 vNormal;
-    varying vec3 vWorldPos;
-    void main(){
-      vNormal=normalize(normalMatrix*normal);
-      vWorldPos=(modelMatrix*vec4(position,1.)).xyz;
-      gl_Position=projectionMatrix*modelViewMatrix*vec4(position*1.055,1.);
-    }
-  `,
-  fragmentShader:`
-    uniform float uTime;
-    varying vec3 vNormal;
-    varying vec3 vWorldPos;
-    void main(){
-      vec3 viewDir=normalize(cameraPosition-vWorldPos);
-      float fresnel=pow(1.-max(dot(vNormal,viewDir),0.),4.);
-      float pulse=sin(uTime*.5+length(vWorldPos)*3.)*.5+.5;
-      gl_FragColor=vec4(0.,1.,.8,fresnel*0.18*pulse);
-    }
-  `,
-  transparent:true, side:THREE.BackSide, depthWrite:false
-});
-earthGroup.add(new THREE.Mesh(new THREE.SphereGeometry(1, 64, 64), membraneMat));
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  NUCLEUS — ORIM core pulse
-// ═══════════════════════════════════════════════════════════════════════════
-const nucleusGeo = new THREE.SphereGeometry(0.12, 32, 32);
-const nucleusMat = new THREE.ShaderMaterial({
-  uniforms:{ uTime:{value:0} },
-  vertexShader:`
-    varying vec3 vNormal;
-    void main(){vNormal=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}
-  `,
-  fragmentShader:`
-    uniform float uTime;
-    varying vec3 vNormal;
-    void main(){
-      float p=sin(uTime*2.)*.5+.5;
-      vec3 c=mix(vec3(.0,.8,.6),vec3(.5,.0,1.),p);
-      gl_FragColor=vec4(c,1.);
-    }
-  `
-});
-const nucleus = new THREE.Mesh(nucleusGeo, nucleusMat);
-earthGroup.add(nucleus);
-
-// Nucleus glow ring
-const ringGeo = new THREE.RingGeometry(0.14, 0.18, 48);
-const ringMat = new THREE.MeshBasicMaterial({color:0x00ffcc, transparent:true, opacity:.25, side:THREE.DoubleSide});
-const ring = new THREE.Mesh(ringGeo, ringMat);
-ring.rotation.x = Math.PI/2;
-earthGroup.add(ring);
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  SPACE BACKGROUND — Stars + Nebulae
-// ═══════════════════════════════════════════════════════════════════════════
-// Stars
-const starCount = 4000;
-const starGeo = new THREE.BufferGeometry();
-const starPos = new Float32Array(starCount * 3);
-const starCol = new Float32Array(starCount * 3);
-for(let i=0; i<starCount; i++){
-  const r = 80 + Math.random()*200;
-  const theta = Math.random()*Math.PI*2;
-  const phi = Math.acos(2*Math.random()-1);
-  starPos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
-  starPos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-  starPos[i*3+2] = r * Math.cos(phi);
-  const warm = Math.random();
-  starCol[i*3]   = warm > 0.7 ? 0.9 : 0.6 + Math.random()*.3;
-  starCol[i*3+1] = warm > 0.7 ? 0.7 : 0.7 + Math.random()*.3;
-  starCol[i*3+2] = warm > 0.7 ? 0.4 : 0.9 + Math.random()*.1;
-}
-starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-starGeo.setAttribute('color', new THREE.BufferAttribute(starCol, 3));
-const starMat = new THREE.PointsMaterial({size:0.25, vertexColors:true, transparent:true, opacity:.8});
-scene.add(new THREE.Points(starGeo, starMat));
-
-// Nebula particles
-const nebCount = 800;
-const nebGeo = new THREE.BufferGeometry();
-const nebPos = new Float32Array(nebCount * 3);
-const nebCol = new Float32Array(nebCount * 3);
-for(let i=0; i<nebCount; i++){
-  const r = 30 + Math.random()*60;
-  const theta = Math.random()*Math.PI*2;
-  const phi = Math.acos(2*Math.random()-1);
-  nebPos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
-  nebPos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-  nebPos[i*3+2] = r * Math.cos(phi);
-  // Teal/purple nebula
-  const t = Math.random();
-  nebCol[i*3]   = t > .5 ? .4 : .2;
-  nebCol[i*3+1] = t > .5 ? .8 : .1;
-  nebCol[i*3+2] = t > .5 ? .7 : .9;
-}
-nebGeo.setAttribute('position', new THREE.BufferAttribute(nebPos, 3));
-nebGeo.setAttribute('color', new THREE.BufferAttribute(nebCol, 3));
-scene.add(new THREE.Points(nebGeo, new THREE.PointsMaterial({size:1.2, vertexColors:true, transparent:true, opacity:.12})));
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  CYTOPLASM FILAMENTS — connecting partner points to nucleus
-// ═══════════════════════════════════════════════════════════════════════════
-const filamentGroup = new THREE.Group();
-earthGroup.add(filamentGroup);
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  PARTNER POINTS on the Globe
-// ═══════════════════════════════════════════════════════════════════════════
-function latLonToVec3(lat, lon, r=1.02) {
-  const phi   = (90 - lat) * (Math.PI / 180);
-  const theta = (lon + 180) * (Math.PI / 180);
+/* ─── lat/lon → 3D ─── */
+function latLonToVec3(lat, lon, r) {
+  var phi = (90 - lat) * Math.PI / 180;
+  var theta = (lon + 180) * Math.PI / 180;
   return new THREE.Vector3(
     -r * Math.sin(phi) * Math.cos(theta),
      r * Math.cos(phi),
@@ -649,282 +506,364 @@ function latLonToVec3(lat, lon, r=1.02) {
   );
 }
 
-const partnerMeshes = [];
+/* ───────────────────────────────── PARTNER DOTS ───────────────────────────────── */
+var partnerGroup = new THREE.Group();
+scene.add(partnerGroup);
+var partnerDots = [];
 
-function buildPartnerPoints(list) {
-  // Clear old
-  partnerMeshes.forEach(m => earthGroup.remove(m.mesh));
-  partnerMeshes.length = 0;
-  filamentGroup.clear();
+PARTNERS.forEach(function(p, idx) {
+  var col = new THREE.Color(TYPE_COLORS[p.type] || '#00d4aa');
+  var pos = latLonToVec3(p.lat, p.lon, GLOBE_R * 1.015);
 
-  list.forEach(p => {
-    const color = TYPE_COLORS[p.type] || {hex:0x00d4aa};
-    const pos = latLonToVec3(p.lat, p.lon);
+  var dot = new THREE.Mesh(
+    new THREE.SphereGeometry(0.013, 12, 12),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.9 })
+  );
+  dot.position.copy(pos);
+  partnerGroup.add(dot);
 
-    // Outer ring
-    const ringG = new THREE.RingGeometry(0.028, 0.038, 24);
-    const ringM = new THREE.MeshBasicMaterial({color:color.hex, transparent:true, opacity:.5, side:THREE.DoubleSide});
-    const ringMesh = new THREE.Mesh(ringG, ringM);
-    ringMesh.position.copy(pos);
-    ringMesh.lookAt(pos.clone().multiplyScalar(2));
-    earthGroup.add(ringMesh);
+  var glow = new THREE.Mesh(
+    new THREE.SphereGeometry(0.028, 12, 12),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.18, blending: THREE.AdditiveBlending, depthWrite: false })
+  );
+  glow.position.copy(pos);
+  partnerGroup.add(glow);
 
-    // Core dot
-    const dotG = new THREE.SphereGeometry(0.016, 12, 12);
-    const dotM = new THREE.MeshBasicMaterial({color:color.hex});
-    const dot = new THREE.Mesh(dotG, dotM);
-    dot.position.copy(pos);
-    earthGroup.add(dot);
+  var ring = new THREE.Mesh(
+    new THREE.RingGeometry(0.018, 0.023, 32),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.3, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false })
+  );
+  ring.position.copy(pos);
+  ring.lookAt(new THREE.Vector3(0, 0, 0));
+  partnerGroup.add(ring);
 
-    // Glow sphere
-    const glowG = new THREE.SphereGeometry(0.03, 12, 12);
-    const glowM = new THREE.MeshBasicMaterial({color:color.hex, transparent:true, opacity:.18});
-    const glow = new THREE.Mesh(glowG, glowM);
-    glow.position.copy(pos);
-    earthGroup.add(glow);
+  // filament
+  var fGeo = new THREE.BufferGeometry().setFromPoints([pos, new THREE.Vector3(0,0,0)]);
+  partnerGroup.add(new THREE.Line(fGeo, new THREE.LineBasicMaterial({
+    color: col, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending, depthWrite: false
+  })));
 
-    // Filament to nucleus
-    const pts = [];
-    const mid = pos.clone().multiplyScalar(0.4);
-    for(let t=0; t<=1; t+=0.05) {
-      pts.push(new THREE.Vector3().lerpVectors(pos, new THREE.Vector3(0,0,0), t).add(
-        mid.clone().multiplyScalar(Math.sin(t*Math.PI)*.2)
-      ));
-    }
-    const filGeo = new THREE.BufferGeometry().setFromPoints(pts);
-    const filMat = new THREE.LineBasicMaterial({color:color.hex, transparent:true, opacity:.12});
-    filamentGroup.add(new THREE.Line(filGeo, filMat));
+  partnerDots.push({ mesh: dot, ring: ring, glow: glow, partner: p });
+});
 
-    partnerMeshes.push({mesh:dot, ring:ringMesh, glow, data:p, pos:pos.clone()});
+/* ───────────────────────────────── LOAD GeoJSON & DRAW COUNTRIES ───────────────────────────────── */
+var countryLinesGroup = new THREE.Group();
+scene.add(countryLinesGroup);
+
+var countryHitMeshes = [];
+var countryDataMap = {};
+var geoLoaded = false;
+
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+  .then(function(r){ return r.json(); })
+  .then(function(topo){
+    var countries = topojson.feature(topo, topo.objects.countries);
+
+    countries.features.forEach(function(feat){
+      var isoNum = feat.id;
+      var name = (feat.properties && feat.properties.name) ? feat.properties.name : '';
+      var alpha3 = numToAlpha3(isoNum);
+
+      var lineObjs = [];
+      var geom = feat.geometry;
+      var polys = [];
+      if (geom.type === 'Polygon') polys = [geom.coordinates];
+      else if (geom.type === 'MultiPolygon') polys = geom.coordinates;
+
+      polys.forEach(function(poly){
+        poly.forEach(function(ring){
+          if (ring.length < 2) return;
+          var pts = [];
+          for (var i = 0; i < ring.length; i++) {
+            pts.push(latLonToVec3(ring[i][1], ring[i][0], GLOBE_R * 1.005));
+          }
+          var bGeo = new THREE.BufferGeometry().setFromPoints(pts);
+          var line = new THREE.Line(bGeo, new THREE.LineBasicMaterial({
+            color: 0x00d4aa, transparent: true, opacity: 0.3, depthWrite: false
+          }));
+          countryLinesGroup.add(line);
+          lineObjs.push(line);
+        });
+
+        // Hit-test mesh from first ring using fan triangulation
+        try {
+          var hitRing = poly[0];
+          if (hitRing.length >= 4) {
+            var vecs = [];
+            var cx = 0, cy = 0, cz = 0;
+            for (var i = 0; i < hitRing.length; i++) {
+              var v = latLonToVec3(hitRing[i][1], hitRing[i][0], GLOBE_R * 1.008);
+              vecs.push(v);
+              cx += v.x; cy += v.y; cz += v.z;
+            }
+            var cn = vecs.length;
+            cx /= cn; cy /= cn; cz /= cn;
+            // Normalize center onto sphere
+            var cl = Math.sqrt(cx*cx + cy*cy + cz*cz);
+            if (cl > 0.001) {
+              cx = cx/cl * GLOBE_R * 1.008;
+              cy = cy/cl * GLOBE_R * 1.008;
+              cz = cz/cl * GLOBE_R * 1.008;
+            }
+
+            var vertices = [];
+            for (var i = 0; i < cn; i++) {
+              vertices.push(vecs[i].x, vecs[i].y, vecs[i].z);
+            }
+            vertices.push(cx, cy, cz);
+            var centerIdx = cn;
+            var indices = [];
+            for (var i = 0; i < cn; i++) {
+              var next = (i + 1) % cn;
+              indices.push(centerIdx, i, next);
+            }
+            var hGeo = new THREE.BufferGeometry();
+            hGeo.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            hGeo.setIndex(indices);
+            hGeo.computeBoundingSphere();
+            var hMesh = new THREE.Mesh(hGeo, new THREE.MeshBasicMaterial({ visible: false, side: THREE.DoubleSide }));
+            hMesh.userData = { countryCode: alpha3, countryName: name, isoNum: isoNum };
+            scene.add(hMesh);
+            countryHitMeshes.push(hMesh);
+          }
+        } catch(e){}
+      });
+
+      if (alpha3) {
+        if (!countryDataMap[alpha3]) {
+          countryDataMap[alpha3] = { name: name, lines: lineObjs };
+        } else {
+          countryDataMap[alpha3].lines = countryDataMap[alpha3].lines.concat(lineObjs);
+        }
+      }
+    });
+
+    geoLoaded = true;
+    document.getElementById('loader').classList.add('done');
+  })
+  .catch(function(err){
+    console.error('Map load failed:', err);
+    document.getElementById('loader').classList.add('done');
   });
 
-  document.getElementById('stat-visible').textContent = list.length;
+/* ───────────────────────────────── RAYCASTING & INTERACTION ───────────────────────────────── */
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2(-9, -9);
+var tooltipEl = document.getElementById('tooltip');
+var sidePanelEl = document.getElementById('side-panel');
+
+var hoveredCountryCode = null;
+var panelOpen = false;
+var panelTimeout = null;
+var panelMinTimer = null;
+var canClosePanel = false;
+var mouseInPanel = false;
+
+function partnersInCountry(code) {
+  return PARTNERS.filter(function(p){ return p.countryCode === code; });
 }
 
-buildPartnerPoints(PARTNERS);
-document.getElementById('stat-total').textContent = PARTNERS.length;
-document.getElementById('stat-countries').textContent = new Set(PARTNERS.map(p=>p.country)).size;
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  FLOATING CYTOPLASM PARTICLES
-// ═══════════════════════════════════════════════════════════════════════════
-const cytoCount = 200;
-const cytoGeo = new THREE.BufferGeometry();
-const cytoPos = new Float32Array(cytoCount * 3);
-for(let i=0; i<cytoCount; i++){
-  const r = 0.3 + Math.random()*.65;
-  const phi = Math.acos(2*Math.random()-1);
-  const theta = Math.random()*Math.PI*2;
-  cytoPos[i*3]   = r*Math.sin(phi)*Math.cos(theta);
-  cytoPos[i*3+1] = r*Math.sin(phi)*Math.sin(theta);
-  cytoPos[i*3+2] = r*Math.cos(phi);
-}
-cytoGeo.setAttribute('position', new THREE.BufferAttribute(cytoPos, 3));
-const cytoMat = new THREE.PointsMaterial({color:0x00ffcc, size:0.01, transparent:true, opacity:.35});
-earthGroup.add(new THREE.Points(cytoGeo, cytoMat));
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  RAYCASTING — hover + click
-// ═══════════════════════════════════════════════════════════════════════════
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-const tooltip = document.getElementById('tooltip');
-const ttName = document.getElementById('tt-name');
-const ttLoc  = document.getElementById('tt-loc');
-let hoveredIdx = -1;
-let activeFilter = 'all';
-let searchQuery = '';
-
-function getFilteredPartners() {
-  return PARTNERS.filter(p => {
-    const matchFilter = activeFilter === 'all' || p.type === activeFilter;
-    const matchSearch = searchQuery === '' ||
-      p.name.toLowerCase().includes(searchQuery) ||
-      p.city.toLowerCase().includes(searchQuery) ||
-      p.country.toLowerCase().includes(searchQuery);
-    return matchFilter && matchSearch;
-  });
+function highlightCountry(code) {
+  var d = countryDataMap[code];
+  if (d && d.lines) {
+    d.lines.forEach(function(l){
+      l.material.opacity = 0.85;
+      l.material.color.setHex(0x00ffcc);
+    });
+  }
 }
 
-canvas.addEventListener('mousemove', e => {
-  mouse.x = (e.clientX/window.innerWidth)*2-1;
-  mouse.y = -(e.clientY/window.innerHeight)*2+1;
+function unhighlightCountry(code) {
+  var d = countryDataMap[code];
+  if (d && d.lines) {
+    d.lines.forEach(function(l){
+      l.material.opacity = 0.3;
+      l.material.color.setHex(0x00d4aa);
+    });
+  }
+}
+
+function onMouseMove(e) {
+  var cx = e.clientX, cy = e.clientY;
+  mouse.x = (cx / window.innerWidth) * 2 - 1;
+  mouse.y = -(cy / window.innerHeight) * 2 + 1;
+
+  if (!geoLoaded) return;
 
   raycaster.setFromCamera(mouse, camera);
-  const hits = raycaster.intersectObjects(partnerMeshes.map(p=>p.mesh));
+  var hits = raycaster.intersectObjects(countryHitMeshes, false);
 
-  if(hits.length) {
-    const idx = partnerMeshes.findIndex(p=>p.mesh===hits[0].object);
-    if(idx !== hoveredIdx) {
-      hoveredIdx = idx;
-      const d = partnerMeshes[idx].data;
-      ttName.textContent = d.name;
-      ttLoc.textContent  = `${d.emoji} ${d.city}, ${d.country}`;
-      controls.autoRotate = false;
+  if (hits.length > 0) {
+    var ud = hits[0].object.userData;
+    var code = ud.countryCode;
+    var name = ud.countryName;
+
+    if (hoveredCountryCode !== code) {
+      if (hoveredCountryCode) unhighlightCountry(hoveredCountryCode);
+      hoveredCountryCode = code;
+      highlightCountry(code);
     }
-    tooltip.style.left = (e.clientX+14)+'px';
-    tooltip.style.top  = (e.clientY-8)+'px';
-    tooltip.classList.add('visible');
-    canvas.style.cursor = 'pointer';
+
+    var count = partnersInCountry(code).length;
+    var flag = FLAG_MAP[code] || '';
+    var text = (flag ? flag + ' ' : '') + name;
+    if (count > 0) text += ' \u2014 ' + count + ' partenaire' + (count > 1 ? 's' : '');
+    tooltipEl.textContent = text;
+    tooltipEl.classList.add('visible');
+    tooltipEl.style.left = (cx + 16) + 'px';
+    tooltipEl.style.top = (cy - 12) + 'px';
+    renderer.domElement.style.cursor = count > 0 ? 'pointer' : 'default';
   } else {
-    hoveredIdx = -1;
-    tooltip.classList.remove('visible');
-    canvas.style.cursor = 'grab';
-    if(!document.getElementById('partner-panel').classList.contains('open')) {
-      controls.autoRotate = true;
+    if (hoveredCountryCode) {
+      unhighlightCountry(hoveredCountryCode);
+      hoveredCountryCode = null;
     }
-  }
-});
-
-canvas.addEventListener('click', e => {
-  mouse.x = (e.clientX/window.innerWidth)*2-1;
-  mouse.y = -(e.clientY/window.innerHeight)*2+1;
-  raycaster.setFromCamera(mouse, camera);
-  const hits = raycaster.intersectObjects(partnerMeshes.map(p=>p.mesh));
-  if(hits.length) {
-    const pm = partnerMeshes.find(p=>p.mesh===hits[0].object);
-    if(pm) openPanel(pm.data);
-  }
-});
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  PARTNER PANEL
-// ═══════════════════════════════════════════════════════════════════════════
-function openPanel(d) {
-  const tc = TYPE_COLORS[d.type] || {css:'#00d4aa', label:'Partenaire'};
-  document.getElementById('pp-badge').textContent = tc.label;
-  document.getElementById('pp-badge').style.background = tc.css+'22';
-  document.getElementById('pp-badge').style.border = '1px solid '+tc.css+'66';
-  document.getElementById('pp-badge').style.color = tc.css;
-  document.getElementById('pp-name').textContent = d.name;
-  document.getElementById('pp-location').innerHTML = `📍 ${d.city}, ${d.country}`;
-  document.getElementById('pp-logo').innerHTML = `<span style="font-size:3rem;">${d.emoji}</span>`;
-  document.getElementById('pp-desc').textContent = d.desc;
-  const tagsEl = document.getElementById('pp-tags');
-  tagsEl.innerHTML = d.tags.map(t=>`<span class="partner-tag">${t}</span>`).join('');
-  document.getElementById('pp-rdv').href = d.rdv;
-  document.getElementById('pp-site').href = d.site;
-  document.getElementById('partner-panel').classList.add('open');
-  controls.autoRotate = false;
-  // Zoom toward partner
-  const pm = partnerMeshes.find(p=>p.data.id===d.id);
-  if(pm) {
-    const target = pm.pos.clone().multiplyScalar(2.2);
-    gsap.to(camera.position, {x:target.x, y:target.y, z:target.z, duration:1.2, ease:'power2.inOut'});
+    tooltipEl.classList.remove('visible');
+    renderer.domElement.style.cursor = 'default';
   }
 }
 
-document.getElementById('panel-close').addEventListener('click', () => {
-  document.getElementById('partner-panel').classList.remove('open');
-  controls.autoRotate = true;
-});
+function onClickGlobe(e) {
+  if (!geoLoaded) return;
+  var cx = e.clientX, cy = e.clientY;
+  mouse.x = (cx / window.innerWidth) * 2 - 1;
+  mouse.y = -(cy / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  var hits = raycaster.intersectObjects(countryHitMeshes, false);
+  if (hits.length > 0) {
+    var ud = hits[0].object.userData;
+    var code = ud.countryCode;
+    var partners = partnersInCountry(code);
+    if (partners.length > 0) {
+      openSidePanel(code, ud.countryName, partners, cx);
+    }
+  }
+}
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  FILTERS
-// ═══════════════════════════════════════════════════════════════════════════
-document.querySelectorAll('.filter-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
-    chip.classList.add('active');
-    activeFilter = chip.dataset.filter;
-    buildPartnerPoints(getFilteredPartners());
+/* ─── SIDE PANEL ─── */
+function openSidePanel(code, name, partners, clickX) {
+  panelOpen = true;
+  mouseInPanel = false;
+  canClosePanel = false;
+  clearTimeout(panelTimeout);
+  clearTimeout(panelMinTimer);
+
+  var side = clickX < window.innerWidth / 2 ? 'right' : 'left';
+  sidePanelEl.className = 'open-' + side;
+
+  var flag = FLAG_MAP[code] || '';
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<div class="panel-header"><span class="panel-flag">' + flag + '</span><span class="panel-country">' + escHtml(name) + '</span></div>';
+  h += '<div class="panel-subtitle">' + partners.length + ' partenaire' + (partners.length > 1 ? 's' : '') + ' ORIM\u2122</div>';
+
+  partners.forEach(function(p){
+    h += '<div class="panel-partner">';
+    h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
+    h += '<div class="panel-partner-type">' + escHtml(TYPE_LABELS[p.type] || p.type) + '</div>';
+    h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
+    h += '<div class="panel-partner-tags">';
+    p.tags.forEach(function(t){ h += '<span>' + escHtml(t) + '</span>'; });
+    h += '</div>';
+    h += '<div class="panel-partner-links">';
+    h += '<a href="' + p.rdv + '" target="_blank" rel="noopener">Rendez-vous</a>';
+    h += '<a href="' + p.site + '" target="_blank" rel="noopener">Site web</a>';
+    h += '</div></div>';
   });
-});
 
-document.getElementById('search-input').addEventListener('input', e => {
-  searchQuery = e.target.value.toLowerCase().trim();
-  buildPartnerPoints(getFilteredPartners());
-});
+  sidePanelEl.innerHTML = h;
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  CONTROLS
-// ═══════════════════════════════════════════════════════════════════════════
-document.getElementById('btn-reset').addEventListener('click', () => {
-  gsap.to(camera.position, {x:0, y:0, z:2.8, duration:1.2, ease:'power2.inOut'});
-  gsap.to(controls.target, {x:0, y:0, z:0, duration:1.2, ease:'power2.inOut'});
-  document.getElementById('partner-panel').classList.remove('open');
-  controls.autoRotate = true;
-});
+  panelMinTimer = setTimeout(function(){ canClosePanel = true; }, 5000);
+  panelTimeout = setTimeout(function(){
+    if (!mouseInPanel) closeSidePanel();
+  }, 10000);
+}
 
-document.getElementById('btn-fullscreen').addEventListener('click', () => {
-  if(!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().catch(()=>{});
-    document.getElementById('btn-fullscreen').textContent = '⤡ Exit';
-  } else {
-    document.exitFullscreen();
-    document.getElementById('btn-fullscreen').textContent = '⤢ Fullscreen';
+function closeSidePanel() {
+  if (!panelOpen) return;
+  panelOpen = false;
+  clearTimeout(panelTimeout);
+  clearTimeout(panelMinTimer);
+  var cl = sidePanelEl.className;
+  sidePanelEl.className = cl.indexOf('right') !== -1 ? 'closed-right' : 'closed-left';
+}
+
+window.__closePanel = closeSidePanel;
+
+sidePanelEl.addEventListener('mouseenter', function(){
+  mouseInPanel = true;
+  clearTimeout(panelTimeout);
+});
+sidePanelEl.addEventListener('mouseleave', function(){
+  mouseInPanel = false;
+  if (panelOpen && canClosePanel) {
+    closeSidePanel();
+  } else if (panelOpen) {
+    panelTimeout = setTimeout(function(){
+      if (!mouseInPanel) closeSidePanel();
+    }, 3000);
   }
 });
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  AMBIENT LIGHT
-// ═══════════════════════════════════════════════════════════════════════════
-scene.add(new THREE.AmbientLight(0xffffff, 0.3));
-const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-dirLight.position.set(5, 3, 5);
-scene.add(dirLight);
+function escHtml(s) {
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  RESIZE
-// ═══════════════════════════════════════════════════════════════════════════
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth/window.innerHeight;
+renderer.domElement.addEventListener('mousemove', onMouseMove);
+renderer.domElement.addEventListener('click', onClickGlobe);
+
+// Touch
+renderer.domElement.addEventListener('touchend', function(e){
+  if (e.changedTouches.length === 1) {
+    var t = e.changedTouches[0];
+    onClickGlobe({ clientX: t.clientX, clientY: t.clientY });
+  }
+}, { passive: true });
+
+/* ───────────────────────────────── ANIMATION ───────────────────────────────── */
+var clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  var t = clock.getElapsedTime();
+  controls.update();
+
+  partnerDots.forEach(function(pd, i){
+    var s = 1 + 0.3 * Math.sin(t * 1.5 + i * 0.7);
+    pd.ring.scale.set(s, s, s);
+    pd.glow.material.opacity = 0.1 + 0.08 * Math.sin(t * 2 + i);
+  });
+
+  if (cytoPoints) {
+    cytoPoints.rotation.y = t * 0.02;
+    cytoPoints.rotation.x = t * 0.01;
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+/* ─── RESIZE ─── */
+window.addEventListener('resize', function(){
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  ANIMATE LOOP
-// ═══════════════════════════════════════════════════════════════════════════
-let t = 0;
-const RING_SCALES = {};
-
-function animate() {
-  requestAnimationFrame(animate);
-  t += 0.016;
-
-  // Update shader uniforms
-  globeMat.uniforms.uTime.value = t;
-  atmMat.uniforms.uTime.value   = t;
-  membraneMat.uniforms.uTime.value = t;
-  nucleusMat.uniforms.uTime.value  = t;
-
-  // Pulse nucleus ring
-  const pr = 1 + Math.sin(t*2)*.08;
-  ring.scale.setScalar(pr);
-
-  // Pulse partner rings + glow
-  partnerMeshes.forEach((pm, i) => {
-    const pulse = 1 + Math.sin(t*1.5 + i*.7)*.12;
-    pm.ring.scale.setScalar(pulse);
-    pm.glow.material.opacity = 0.1 + Math.sin(t*1.5 + i*.7)*.08;
+/* ─── LANG SELECTOR ─── */
+document.querySelectorAll('.lang-sel button').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.lang-sel button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
   });
-
-  // Slowly rotate nebula
-  scene.children.forEach(c => {
-    if(c.isPoints && c !== scene.children[0]) c.rotation.y += 0.00015;
-  });
-
-  controls.update();
-  renderer.render(scene, camera);
-}
-
-// Hide loading after short delay
-setTimeout(() => {
-  document.getElementById('loading').style.opacity = '0';
-  setTimeout(() => document.getElementById('loading').style.display='none', 600);
-  animate();
-  // Intro animation
-  gsap.from(camera.position, {z:8, duration:3, ease:'power3.out'});
-  gsap.from(earthGroup.rotation, {y: -Math.PI, duration:3, ease:'power3.out'});
-}, 800);
-
-// Touch support for mobile
-canvas.addEventListener('touchstart', () => { controls.autoRotate = false; });
-canvas.addEventListener('touchend', () => {
-  if(!document.getElementById('partner-panel').classList.contains('open'))
-    setTimeout(() => controls.autoRotate = true, 3000);
 });
+
+/* ─── INITIAL CAMERA ANIM ─── */
+gsap.from(camera.position, { z: 6, duration: 2.5, ease: 'power2.out' });
+
+})();
 </script>
 </body>
 </html>

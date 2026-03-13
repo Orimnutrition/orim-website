@@ -62,8 +62,9 @@
     .nav-links { display:flex; gap:1.8rem; list-style:none; }
     .nav-links a { text-decoration:none; color:var(--gray); font-size:.8rem; letter-spacing:.07em; text-transform:uppercase; transition:color .2s; }
     .nav-links a:hover { color:var(--cyan); }
-    .nav-cta { background:linear-gradient(135deg,var(--cyan),var(--blue)); border:none; color:#fff; padding:.5rem 1.3rem; border-radius:2rem; font-size:.78rem; font-weight:600; letter-spacing:.07em; cursor:pointer; transition:opacity .2s; text-decoration:none; }
-    .nav-cta:hover { opacity:.85; }
+    .nav-cta { background:linear-gradient(135deg,#00b4d8,#0077b6); border:none; color:#fff; padding:.6rem 1.6rem; border-radius:2rem; font-size:.82rem; font-weight:700; letter-spacing:.08em; cursor:pointer; transition:transform .2s,box-shadow .2s; text-decoration:none; box-shadow:0 0 20px rgba(0,180,216,.4),0 0 50px rgba(0,119,182,.2); animation:navCtaPulse 2.5s ease-in-out infinite; }
+    @keyframes navCtaPulse{0%,100%{box-shadow:0 0 20px rgba(0,180,216,.4),0 0 50px rgba(0,119,182,.2)}50%{box-shadow:0 0 30px rgba(0,180,216,.65),0 0 70px rgba(0,119,182,.35)}}
+    .nav-cta:hover { transform:scale(1.06); box-shadow:0 0 35px rgba(0,180,216,.6),0 0 70px rgba(0,119,182,.35); }
     .nav-mobile-toggle { display:none; background:none; border:1px solid rgba(0,180,216,.4); color:var(--cyan); padding:.4rem .8rem; border-radius:.4rem; cursor:pointer; font-size:.9rem; }
 
     /* HERO */
@@ -235,14 +236,6 @@
 <body>
   <canvas id="canvas-bg"></canvas>
 
-  <!-- LANG SWITCHER -->
-  <div class="lang-bar" role="navigation" aria-label="Language selector">
-    <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
-    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
-    <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
-    <button class="lang-btn" onclick="setLang('de')" id="btn-de">DE</button>
-  </div>
-
   <!-- NAV -->
   <nav id="main-nav">
     <a href="#hero" class="nav-logo">ORIM<span data-i18n="nav.tagline">Immuno-Métabolique</span></a>
@@ -253,9 +246,16 @@
       <li><a href="#marque" data-i18n="nav.marque">Marque ORIM™</a></li>
       <li><a href="#equipe" data-i18n="nav.equipe">Équipe</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-      <li><a href="partenaires.html" style="color:#00d4aa;font-weight:600;">🌍 Partenaires 3D</a></li>
     </ul>
-    <a href="mailto:info@orimnutrition.com" class="nav-cta" data-i18n="nav.cta">Nous contacter</a>
+    <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0">
+      <a href="mailto:chevalley@cfmanagement.ch" class="nav-cta" data-i18n="nav.cta">Nous contacter</a>
+      <div class="lang-bar" role="navigation" aria-label="Language selector" style="position:static;border:none;padding:0;background:none;backdrop-filter:none;border-radius:0">
+        <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
+        <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+        <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
+        <button class="lang-btn" onclick="setLang('de')" id="btn-de">DE</button>
+      </div>
+    </div>
     <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
   </nav>
 

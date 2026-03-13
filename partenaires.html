@@ -15,55 +15,63 @@ body{
   width:100vw;height:100vh;
   cursor:default;
 }
-#canvas-container{position:fixed;inset:0;z-index:0}
+#bg-video-wrap{position:fixed;inset:0;z-index:0;overflow:hidden}
+#bg-video{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;min-height:100%;width:auto;height:auto;
+  object-fit:cover;opacity:.12;pointer-events:none;
+  filter:hue-rotate(140deg) saturate(.6) brightness(.5);
+}
+#canvas-container{position:fixed;inset:0;z-index:1}
 canvas{display:block;width:100%;height:100%}
 
 /* TOP NAV */
 .top-bar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;
-  padding:.7rem 1.5rem;
-  background:rgba(1,5,9,.85);
+  padding:.6rem 1.2rem;
+  background:rgba(1,5,9,.88);
   backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(0,212,170,.1);
   pointer-events:none;
 }
 .top-bar>*{pointer-events:auto}
 .logo{
-  font-size:1.2rem;font-weight:700;letter-spacing:2px;
+  font-size:1.1rem;font-weight:700;letter-spacing:2px;
   color:#00d4aa;text-shadow:0 0 12px rgba(0,212,170,.3);
   flex-shrink:0;
 }
-.logo span{color:#e0f0ec;font-weight:300;opacity:.7;font-size:.72rem;margin-left:6px;letter-spacing:1px}
-.nav-links{display:flex;align-items:center;gap:1.2rem;padding-right:9rem;flex-wrap:nowrap}
+.logo span{color:#e0f0ec;font-weight:300;opacity:.7;font-size:.65rem;margin-left:5px;letter-spacing:1px}
+.nav-links{display:flex;align-items:center;gap:.8rem;flex-wrap:nowrap}
 .nav-links a{
-  color:#8ab8b0;text-decoration:none;font-size:.72rem;letter-spacing:1px;
-  text-transform:uppercase;transition:color .3s;font-weight:500;
+  color:#8ab8b0;text-decoration:none;font-size:.65rem;letter-spacing:.8px;
+  text-transform:uppercase;transition:color .3s;font-weight:500;white-space:nowrap;
 }
 .nav-links a:hover{color:#00d4aa}
 .btn-contact{
-  background:linear-gradient(135deg,#00d4aa,#00a886);
-  color:#010509;border:none;border-radius:22px;
-  padding:0.45rem 1.2rem;font-size:.7rem;font-weight:700;
+  background:linear-gradient(135deg,#007a5e,#005c46);
+  color:#e0f0ec;border:none;border-radius:22px;
+  padding:0.4rem 1rem;font-size:.65rem;font-weight:700;
   cursor:pointer;letter-spacing:.6px;
   text-transform:uppercase;white-space:nowrap;
   transition:transform .2s,box-shadow .2s;
   text-decoration:none;
   display:inline-block;
-  box-shadow:0 0 16px rgba(0,212,170,.2);
+  box-shadow:0 0 18px rgba(0,212,170,.35),0 0 40px rgba(0,122,94,.25);
+  animation:ctaPulse 2.5s ease-in-out infinite;
+}
+@keyframes ctaPulse{
+  0%,100%{box-shadow:0 0 18px rgba(0,212,170,.35),0 0 40px rgba(0,122,94,.25)}
+  50%{box-shadow:0 0 24px rgba(0,212,170,.55),0 0 60px rgba(0,122,94,.4)}
 }
 .btn-contact:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 30px rgba(0,212,170,.45);
+  transform:scale(1.08);
+  box-shadow:0 0 30px rgba(0,212,170,.6),0 0 60px rgba(0,122,94,.4);
+  background:linear-gradient(135deg,#009070,#007a5e);
 }
-.lang-sel{
-  position:fixed;top:0;right:0;z-index:200;
-  display:flex;gap:3px;padding:.45rem .8rem;
-  background:rgba(1,5,9,.85);backdrop-filter:blur(10px);
-  border-bottom-left-radius:.6rem;
-  border-left:1px solid rgba(0,212,170,.12);
-  border-bottom:1px solid rgba(0,212,170,.12);
-}
+.nav-right{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.lang-sel{display:flex;gap:2px}
 .lang-sel button{
   background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.2);
   color:#8ab8b0;font-size:.62rem;padding:3px 8px;border-radius:4px;
@@ -253,26 +261,34 @@ canvas{display:block;width:100%;height:100%}
 </head>
 <body>
 
-<div id="loader"><div class="spinner"></div><p>Chargement de la carte...</p></div>
+<div id="loader"><div class="spinner"></div><p data-i18n="loader">Chargement de la carte...</p></div>
+
+<!-- BACKGROUND VIDEO -->
+<div id="bg-video-wrap">
+  <video id="bg-video" autoplay muted loop playsinline preload="metadata">
+    <source src="hero-bg.mp4" type="video/mp4" />
+  </video>
+</div>
 
 <div id="canvas-container"></div>
-
-<!-- LANGUAGE SELECTOR (fixed top-right) -->
-<div class="lang-sel">
-  <button class="active">FR</button>
-  <button>EN</button>
-  <button>ES</button>
-  <button>DE</button>
-</div>
 
 <!-- TOP BAR -->
 <div class="top-bar">
   <div class="logo">ORIM<span>NUTRITION</span></div>
   <div class="nav-links">
-    <a href="index.html">Science</a>
-    <a href="index.html#marque">Indice ORIM</a>
-    <a href="#">Partenaires</a>
-    <a href="mailto:chevalley@cfmanagement.ch" class="btn-contact">Nous contacter</a>
+    <a href="index.html" data-i18n="nav.home">Accueil</a>
+    <a href="index.html#gateway" data-i18n="nav.science">Science</a>
+    <a href="index.html#marque" data-i18n="nav.indice">Indice ORIM</a>
+    <a href="#" style="color:#00d4aa;opacity:.7;cursor:default" data-i18n="nav.partners">Partenaires</a>
+  </div>
+  <div class="nav-right">
+    <a href="mailto:chevalley@cfmanagement.ch" class="btn-contact" data-i18n="nav.contact">Nous contacter</a>
+    <div class="lang-sel">
+      <button class="active">FR</button>
+      <button>EN</button>
+      <button>ES</button>
+      <button>DE</button>
+    </div>
   </div>
 </div>
 
@@ -284,8 +300,8 @@ canvas{display:block;width:100%;height:100%}
 
 <!-- BOTTOM CTA -->
 <div class="bottom-cta">
-  <div class="cta-text">VOUS &Ecirc;TES PROFESSIONNEL DE SANT&Eacute; ?</div>
-  <a href="mailto:chevalley@cfmanagement.ch" class="cta-btn">Rejoindre le r&eacute;seau ORIM&trade;</a>
+  <div class="cta-text" data-i18n="cta.text">VOUS &Ecirc;TES PROFESSIONNEL DE SANT&Eacute; ?</div>
+  <a href="mailto:chevalley@cfmanagement.ch" class="cta-btn" data-i18n="cta.btn">Rejoindre le r&eacute;seau ORIM&trade;</a>
 </div>
 
 <!-- CONTACT FOOTER -->
@@ -707,7 +723,7 @@ function onMouseMove(e) {
     var count = partnersInCountry(code).length;
     var flag = FLAG_MAP[code] || '';
     var text = (flag ? flag + ' ' : '') + name;
-    if (count > 0) text += ' \u2014 ' + count + ' partenaire' + (count > 1 ? 's' : '');
+    if (count > 0) text += ' \u2014 ' + count + ' ' + (count > 1 ? t('tooltip.partners.plural') : t('tooltip.partners'));
     tooltipEl.textContent = text;
     tooltipEl.classList.add('visible');
     tooltipEl.style.left = (cx + 16) + 'px';
@@ -755,19 +771,19 @@ function openSidePanel(code, name, partners, clickX) {
   var h = '';
   h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
   h += '<div class="panel-header"><span class="panel-flag">' + flag + '</span><span class="panel-country">' + escHtml(name) + '</span></div>';
-  h += '<div class="panel-subtitle">' + partners.length + ' partenaire' + (partners.length > 1 ? 's' : '') + ' ORIM\u2122</div>';
+  h += '<div class="panel-subtitle">' + partners.length + ' ' + (partners.length > 1 ? t('panel.partners') : t('panel.partner')) + '</div>';
 
   partners.forEach(function(p){
     h += '<div class="panel-partner">';
     h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
-    h += '<div class="panel-partner-type">' + escHtml(TYPE_LABELS[p.type] || p.type) + '</div>';
+    h += '<div class="panel-partner-type">' + escHtml(t('type.' + p.type) || TYPE_LABELS[p.type] || p.type) + '</div>';
     h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
     h += '<div class="panel-partner-tags">';
     p.tags.forEach(function(t){ h += '<span>' + escHtml(t) + '</span>'; });
     h += '</div>';
     h += '<div class="panel-partner-links">';
-    h += '<a href="' + p.rdv + '" target="_blank" rel="noopener">Rendez-vous</a>';
-    h += '<a href="' + p.site + '" target="_blank" rel="noopener">Site web</a>';
+    h += '<a href="' + p.rdv + '" target="_blank" rel="noopener">' + t('panel.rdv') + '</a>';
+    h += '<a href="' + p.site + '" target="_blank" rel="noopener">' + t('panel.site') + '</a>';
     h += '</div></div>';
   });
 
@@ -852,11 +868,65 @@ window.addEventListener('resize', function(){
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+/* ─── i18n TRANSLATIONS ─── */
+var I18N = {
+  fr: {
+    "nav.home":"Accueil","nav.science":"Science","nav.indice":"Indice ORIM","nav.partners":"Partenaires","nav.contact":"Nous contacter",
+    "cta.text":"VOUS \u00CATES PROFESSIONNEL DE SANT\u00C9 ?","cta.btn":"Rejoindre le r\u00e9seau ORIM\u2122",
+    "loader":"Chargement de la carte...","tooltip.partners":"partenaire","tooltip.partners.plural":"partenaires",
+    "panel.partners":"partenaires ORIM\u2122","panel.partner":"partenaire ORIM\u2122",
+    "panel.rdv":"Rendez-vous","panel.site":"Site web",
+    "type.medecin":"M\u00e9decin","type.therapeute":"Th\u00e9rapeute","type.magasin":"Magasin","type.naturopathe":"Naturopathe","type.coach":"Coach","type.laboratoire":"Laboratoire"
+  },
+  en: {
+    "nav.home":"Home","nav.science":"Science","nav.indice":"ORIM Index","nav.partners":"Partners","nav.contact":"Contact us",
+    "cta.text":"ARE YOU A HEALTHCARE PROFESSIONAL?","cta.btn":"Join the ORIM\u2122 Network",
+    "loader":"Loading map...","tooltip.partners":"partner","tooltip.partners.plural":"partners",
+    "panel.partners":"ORIM\u2122 partners","panel.partner":"ORIM\u2122 partner",
+    "panel.rdv":"Book appointment","panel.site":"Website",
+    "type.medecin":"Doctor","type.therapeute":"Therapist","type.magasin":"Store","type.naturopathe":"Naturopath","type.coach":"Coach","type.laboratoire":"Laboratory"
+  },
+  es: {
+    "nav.home":"Inicio","nav.science":"Ciencia","nav.indice":"\u00CDndice ORIM","nav.partners":"Socios","nav.contact":"Cont\u00e1ctenos",
+    "cta.text":"\u00bfES USTED PROFESIONAL DE LA SALUD?","cta.btn":"Unirse a la red ORIM\u2122",
+    "loader":"Cargando mapa...","tooltip.partners":"socio","tooltip.partners.plural":"socios",
+    "panel.partners":"socios ORIM\u2122","panel.partner":"socio ORIM\u2122",
+    "panel.rdv":"Reservar cita","panel.site":"Sitio web",
+    "type.medecin":"M\u00e9dico","type.therapeute":"Terapeuta","type.magasin":"Tienda","type.naturopathe":"Natur\u00f3pata","type.coach":"Coach","type.laboratoire":"Laboratorio"
+  },
+  de: {
+    "nav.home":"Startseite","nav.science":"Wissenschaft","nav.indice":"ORIM-Index","nav.partners":"Partner","nav.contact":"Kontakt",
+    "cta.text":"SIND SIE EIN GESUNDHEITSEXPERTE?","cta.btn":"Dem ORIM\u2122-Netzwerk beitreten",
+    "loader":"Karte wird geladen...","tooltip.partners":"Partner","tooltip.partners.plural":"Partner",
+    "panel.partners":"ORIM\u2122-Partner","panel.partner":"ORIM\u2122-Partner",
+    "panel.rdv":"Termin buchen","panel.site":"Webseite",
+    "type.medecin":"Arzt","type.therapeute":"Therapeut","type.magasin":"Gesch\u00e4ft","type.naturopathe":"Naturheilkundler","type.coach":"Coach","type.laboratoire":"Labor"
+  }
+};
+
+var currentLang = 'fr';
+
+function t(key) {
+  return (I18N[currentLang] && I18N[currentLang][key]) || (I18N.fr[key]) || key;
+}
+
+function applyI18n(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = t(key);
+    if (val) el.textContent = val;
+  });
+  document.documentElement.lang = lang;
+}
+
 /* ─── LANG SELECTOR ─── */
 document.querySelectorAll('.lang-sel button').forEach(function(btn){
   btn.addEventListener('click', function(){
     document.querySelectorAll('.lang-sel button').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
+    var lang = btn.textContent.trim().toLowerCase();
+    applyI18n(lang);
   });
 });
 

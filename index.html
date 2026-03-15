@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ORIM™ — Optimisation Résolutive Immuno-Métabolique</title>
-  <meta name="description" content="ORIM™ — Association scientifique genevoise & ORIM SAS France. Nutrition, Recherche, Thérapeutique, Compléments alimentaires." />
+  <meta name="description" content="ORIM™ — Association scientifique genevoise à but non lucratif. Immunonutrition préventive, Recherche, Éducation, Accompagnement thérapeutique." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -19,10 +19,10 @@
       --lgray:  #1e2d3d;
       --gold:   #c9a84c;
       --green:  #22c55e;
-      --ch-color: #1a6a9a;
-      --fr-color: #8a1a2a;
-      --ch-light: #cce8f4;
-      --fr-light: #f4ccd2;
+      --teal:   #1BA8A6;
+      --teal-light: #E0F5F5;
+      --gold-orim: #E6A817;
+      --dark:   #2D3436;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
@@ -87,48 +87,63 @@
     .stat-num { font-family:'Rajdhani',sans-serif; font-size:2rem; font-weight:700; background:linear-gradient(135deg,var(--cyan),var(--lcyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .stat-label { font-size:.72rem; color:var(--gray); letter-spacing:.1em; text-transform:uppercase; }
 
-    /* GATEWAY — DUAL ENTITY */
-    #gateway { position:relative; z-index:1; padding:5rem 2rem; }
-    .gateway-intro { text-align:center; max-width:700px; margin:0 auto 3.5rem; }
+    /* MISSION */
+    #mission { position:relative; z-index:1; padding:5rem 2rem; }
+    .mission-intro { text-align:center; max-width:700px; margin:0 auto 3.5rem; }
     .section-tag { display:inline-block; color:var(--cyan); font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; margin-bottom:.75rem; }
     .section-tag::before { content:'— '; }
     .section-title { font-family:'Rajdhani',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; }
     .section-title .accent { background:linear-gradient(135deg,var(--cyan),var(--lcyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .section-desc { font-size:.92rem; color:var(--gray); line-height:1.7; margin-top:1rem; }
-    .gateway-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:1100px; margin:0 auto; }
-    .entity-card {
-      border-radius:1.2rem; padding:2.5rem; position:relative; overflow:hidden;
-      transition:transform .3s, box-shadow .3s; cursor:pointer; text-decoration:none;
+    .mission-card {
+      max-width:900px; margin:0 auto;
+      background:linear-gradient(135deg,rgba(26,106,154,.25) 0%,rgba(0,40,70,.4) 100%);
+      border:1px solid rgba(26,106,154,.5); border-radius:1.2rem; padding:3rem;
+      box-shadow:0 0 40px rgba(26,106,154,.15); position:relative; overflow:hidden;
     }
-    .entity-card:hover { transform:translateY(-6px); }
-    .entity-card-ch { background:linear-gradient(135deg,rgba(26,106,154,.25) 0%,rgba(0,40,70,.4) 100%); border:1px solid rgba(26,106,154,.5); box-shadow:0 0 40px rgba(26,106,154,.15); }
-    .entity-card-ch:hover { box-shadow:0 0 60px rgba(26,106,154,.35); }
-    .entity-card-fr { background:linear-gradient(135deg,rgba(138,26,42,.25) 0%,rgba(70,0,15,.4) 100%); border:1px solid rgba(138,26,42,.5); box-shadow:0 0 40px rgba(138,26,42,.15); }
-    .entity-card-fr:hover { box-shadow:0 0 60px rgba(138,26,42,.35); }
-    .entity-flag { font-size:2.5rem; margin-bottom:1rem; }
-    .entity-badge-ch { display:inline-block; background:rgba(26,106,154,.3); border:1px solid rgba(26,106,154,.6); color:#6ec6ea; font-size:.65rem; padding:.25rem .8rem; border-radius:2rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
-    .entity-badge-fr { display:inline-block; background:rgba(138,26,42,.3); border:1px solid rgba(138,26,42,.6); color:#ea8090; font-size:.65rem; padding:.25rem .8rem; border-radius:2rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
-    .entity-name { font-family:'Rajdhani',sans-serif; font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:.5rem; }
-    .entity-tagline { font-size:.82rem; color:var(--gray); line-height:1.6; margin-bottom:1.5rem; }
-    .entity-services { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
-    .entity-services li { font-size:.82rem; color:#b0cce0; display:flex; align-items:center; gap:.7rem; }
-    .entity-services li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
-    .entity-card-fr .entity-services li::before { background:#ea8090; }
-    .entity-card-fr .entity-services li { color:#e0b0b8; }
-    .entity-cta { margin-top:1.8rem; display:inline-block; padding:.6rem 1.5rem; border-radius:2rem; font-size:.8rem; font-weight:600; letter-spacing:.07em; text-decoration:none; transition:all .2s; }
-    .entity-cta-ch { background:rgba(26,106,154,.4); border:1px solid rgba(26,106,154,.7); color:#6ec6ea; }
-    .entity-cta-ch:hover { background:rgba(26,106,154,.7); }
-    .entity-cta-fr { background:rgba(138,26,42,.4); border:1px solid rgba(138,26,42,.7); color:#ea8090; }
-    .entity-cta-fr:hover { background:rgba(138,26,42,.7); }
-    .entity-card-glow-ch { position:absolute; top:-50%; right:-30%; width:200px; height:200px; background:radial-gradient(circle,rgba(26,106,154,.3),transparent 70%); pointer-events:none; }
-    .entity-card-glow-fr { position:absolute; top:-50%; right:-30%; width:200px; height:200px; background:radial-gradient(circle,rgba(138,26,42,.3),transparent 70%); pointer-events:none; }
+    .mission-card-glow { position:absolute; top:-50%; right:-30%; width:200px; height:200px; background:radial-gradient(circle,rgba(26,106,154,.3),transparent 70%); pointer-events:none; }
+    .mission-flag { font-size:2.5rem; margin-bottom:1rem; }
+    .mission-badge { display:inline-block; background:rgba(26,106,154,.3); border:1px solid rgba(26,106,154,.6); color:#6ec6ea; font-size:.65rem; padding:.25rem .8rem; border-radius:2rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
+    .mission-name { font-family:'Rajdhani',sans-serif; font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:.5rem; }
+    .mission-tagline { font-size:.92rem; color:var(--gray); line-height:1.7; margin-bottom:1.5rem; }
+    .mission-services { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+    .mission-services li { font-size:.82rem; color:#b0cce0; display:flex; align-items:center; gap:.7rem; }
+    .mission-services li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
 
-    /* PÔLES — ASSOCIATION CH */
-    #poles { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
+    /* PRESTATIONS 4-COLUMN */
+    #prestations { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
+    .prestations-header { text-align:center; margin-bottom:3.5rem; }
+    .prestations-columns { display:grid; grid-template-columns:repeat(4,1fr); gap:0; max-width:1200px; margin:0 auto; border-radius:1rem; overflow:hidden; border:1px solid rgba(0,180,216,.15); }
+    .prest-col { padding:2rem 1.5rem; position:relative; border-right:1px solid rgba(0,180,216,.08); background:rgba(26,74,122,.08); }
+    .prest-col:last-child { border-right:none; }
+    .prest-col-header { display:flex; align-items:center; gap:.6rem; margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:2px solid; }
+    .prest-col-1 .prest-col-header { border-color:var(--teal); }
+    .prest-col-2 .prest-col-header { border-color:var(--gold-orim); }
+    .prest-col-3 .prest-col-header { border-color:var(--cyan); }
+    .prest-col-4 .prest-col-header { border-color:var(--teal); }
+    .prest-phase { font-size:.6rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; padding:.25rem .7rem; border-radius:2rem; }
+    .prest-col-1 .prest-phase { background:rgba(27,168,166,.15); color:var(--teal); }
+    .prest-col-2 .prest-phase { background:rgba(230,168,23,.15); color:var(--gold-orim); }
+    .prest-col-3 .prest-phase { background:rgba(0,180,216,.12); color:var(--cyan); }
+    .prest-col-4 .prest-phase { background:rgba(27,168,166,.15); color:var(--teal); }
+    .prest-col-title { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; color:var(--white); }
+    .prest-item { display:flex; gap:.8rem; padding:1rem 0; border-bottom:1px solid rgba(255,255,255,.04); align-items:flex-start; }
+    .prest-item:last-child { border-bottom:none; }
+    .prest-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+    .prest-col-1 .prest-icon { background:rgba(27,168,166,.15); }
+    .prest-col-2 .prest-icon { background:rgba(230,168,23,.12); }
+    .prest-col-3 .prest-icon { background:rgba(0,180,216,.1); }
+    .prest-col-4 .prest-icon { background:rgba(27,168,166,.15); }
+    .prest-num { font-size:.6rem; font-weight:800; color:rgba(255,255,255,.25); letter-spacing:.08em; }
+    .prest-name { font-size:.82rem; font-weight:700; color:var(--white); margin:.15rem 0; line-height:1.3; }
+    .prest-desc { font-size:.72rem; color:var(--gray); line-height:1.5; }
+    .prest-arrow { position:absolute; right:-10px; top:50%; transform:translateY(-50%); width:20px; height:20px; background:rgba(13,27,42,.9); border:1px solid rgba(0,180,216,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; z-index:3; font-size:.55rem; color:var(--cyan); }
+
+    /* POLES */
+    #poles { position:relative; z-index:1; padding:5rem 2rem; }
     .poles-header { text-align:center; margin-bottom:3.5rem; }
     .entity-section-title { font-family:'Rajdhani',sans-serif; font-size:clamp(1.5rem,3vw,2.3rem); font-weight:700; margin:.5rem 0; }
     .ch-label { color:#6ec6ea; }
-    .fr-label { color:#ea8090; }
     .poles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem; max-width:1100px; margin:0 auto; }
     .pole-card { background:rgba(26,74,122,.15); border:1px solid rgba(0,180,216,.15); border-radius:1rem; padding:2rem; transition:transform .3s, border-color .3s; }
     .pole-card:hover { transform:translateY(-4px); border-color:rgba(0,180,216,.4); }
@@ -137,17 +152,6 @@
     .pole-desc { font-size:.82rem; color:var(--gray); line-height:1.65; margin-bottom:1rem; }
     .pole-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
     .pole-tag { background:rgba(0,180,216,.1); border:1px solid rgba(0,180,216,.2); color:var(--lcyan); font-size:.65rem; padding:.2rem .6rem; border-radius:.3rem; letter-spacing:.08em; }
-
-    /* PÔLE COMMERCIAL — SAS FR */
-    #commercial { position:relative; z-index:1; padding:5rem 2rem; }
-    .commercial-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.8rem; max-width:1100px; margin:3rem auto 0; }
-    .commercial-card { background:linear-gradient(135deg,rgba(138,26,42,.15),rgba(70,0,15,.2)); border:1px solid rgba(138,26,42,.3); border-radius:1rem; padding:2rem; transition:transform .3s, border-color .3s; }
-    .commercial-card:hover { transform:translateY(-4px); border-color:rgba(200,80,100,.5); }
-    .commercial-icon { font-size:2rem; margin-bottom:.8rem; }
-    .commercial-name { font-family:'Rajdhani',sans-serif; font-size:1.15rem; font-weight:700; color:#ea8090; margin-bottom:.4rem; }
-    .commercial-desc { font-size:.82rem; color:var(--gray); line-height:1.65; }
-    .fr-notice { max-width:1100px; margin:1.5rem auto 0; padding:1rem 1.5rem; background:rgba(138,26,42,.15); border:1px solid rgba(138,26,42,.3); border-radius:.8rem; font-size:.8rem; color:#e0b0b8; }
-    .fr-notice strong { color:#ea8090; }
 
     /* MARQUE / IP */
     #marque { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
@@ -164,7 +168,6 @@
     .saybar-flow { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin:3rem 0 2rem; }
     .saybar-node { background:rgba(26,74,122,.2); border:1px solid rgba(0,180,216,.25); border-radius:.8rem; padding:1rem 1.5rem; font-size:.82rem; font-weight:600; color:var(--white); }
     .saybar-node.ch { background:rgba(26,106,154,.2); border-color:rgba(26,106,154,.5); color:#6ec6ea; }
-    .saybar-node.fr { background:rgba(138,26,42,.2); border-color:rgba(138,26,42,.5); color:#ea8090; }
     .saybar-node.partner { background:rgba(34,197,94,.1); border-color:rgba(34,197,94,.4); color:#4ade80; }
     .saybar-arrow { color:var(--cyan); font-size:1.2rem; }
     .saybar-desc { font-size:.85rem; color:var(--gray); line-height:1.7; }
@@ -179,18 +182,13 @@
     .team-roles { margin-top:.5rem; display:flex; flex-wrap:wrap; gap:.3rem; justify-content:center; }
     .team-role { font-size:.65rem; padding:.2rem .6rem; border-radius:.3rem; letter-spacing:.07em; }
     .team-role.ch { background:rgba(26,106,154,.3); color:#6ec6ea; }
-    .team-role.fr { background:rgba(138,26,42,.3); color:#ea8090; }
     .team-role.sci { background:rgba(0,180,216,.15); color:var(--cyan); }
 
     /* CONTACT */
     #contact { position:relative; z-index:1; padding:5rem 2rem; }
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; max-width:900px; margin:3rem auto 0; }
-    .contact-block { background:rgba(26,74,122,.1); border:1px solid rgba(0,180,216,.15); border-radius:1rem; padding:2rem; }
-    .contact-block.ch-block { border-color:rgba(26,106,154,.4); }
-    .contact-block.fr-block { border-color:rgba(138,26,42,.4); }
-    .contact-block h3 { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:1.2rem; }
-    .contact-block.ch-block h3 { color:#6ec6ea; }
-    .contact-block.fr-block h3 { color:#ea8090; }
+    .contact-center { max-width:600px; margin:3rem auto 0; }
+    .contact-block { background:rgba(26,74,122,.1); border:1px solid rgba(26,106,154,.4); border-radius:1rem; padding:2rem; }
+    .contact-block h3 { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:1.2rem; color:#6ec6ea; }
     .contact-item { display:flex; align-items:flex-start; gap:.7rem; margin-bottom:.9rem; }
     .contact-item-icon { font-size:1rem; min-width:1.3rem; }
     .contact-item-text { font-size:.82rem; color:var(--gray); line-height:1.5; }
@@ -200,9 +198,8 @@
     /* FOOTER */
     footer { position:relative; z-index:1; background:rgba(13,27,42,.9); border-top:1px solid rgba(0,180,216,.1); padding:3rem 2rem 2rem; text-align:center; }
     .footer-logo { font-family:'Rajdhani',sans-serif; font-size:1.6rem; font-weight:700; background:linear-gradient(135deg,#00b4d8,#1a4a7a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:.12em; }
-    .footer-entities { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin:1.5rem 0; }
-    .footer-entity { font-size:.75rem; color:var(--gray); }
-    .footer-entity strong { display:block; color:var(--white); margin-bottom:.2rem; }
+    .footer-entity-line { font-size:.8rem; color:var(--gray); margin:1rem 0; }
+    .footer-entity-line strong { color:var(--white); }
     .footer-links { display:flex; gap:2rem; justify-content:center; margin:1.5rem 0; flex-wrap:wrap; }
     .footer-links a { font-size:.75rem; color:var(--gray); text-decoration:none; transition:color .2s; }
     .footer-links a:hover { color:var(--cyan); }
@@ -211,7 +208,6 @@
     /* ANIMATIONS */
     @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
     @keyframes bounce { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(-8px); } }
-    @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
 
     /* Reveal on scroll */
     .reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
@@ -219,7 +215,10 @@
 
     /* RESPONSIVE */
     @media(max-width:900px) {
-      .gateway-grid, .poles-grid, .marque-grid, .commercial-grid, .contact-grid, .team-grid { grid-template-columns:1fr; }
+      .poles-grid, .marque-grid, .team-grid { grid-template-columns:1fr; }
+      .prestations-columns { grid-template-columns:1fr; }
+      .prest-arrow { display:none; }
+      .mission-services { grid-template-columns:1fr; }
       nav { padding:.8rem 1.5rem; }
       .nav-links, .nav-cta { display:none; }
       .nav-mobile-toggle { display:block; }
@@ -238,18 +237,18 @@
 
   <!-- NAV -->
   <nav id="main-nav">
-    <a href="#hero" class="nav-logo">ORIM<span data-i18n="nav.tagline">Immuno-Métabolique</span></a>
+    <a href="#hero" class="nav-logo">ORIM<span data-i18n="nav.tagline">Immuno-Metabolique</span></a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#gateway" data-i18n="nav.entites">Entités</a></li>
-      <li><a href="#poles" data-i18n="nav.poles">Pôles</a></li>
-      <li><a href="#commercial" data-i18n="nav.commercial">Commercial</a></li>
+      <li><a href="#mission" data-i18n="nav.mission">Notre mission</a></li>
+      <li><a href="#prestations" data-i18n="nav.prestations">12 Prestations</a></li>
+      <li><a href="#poles" data-i18n="nav.poles">Poles</a></li>
       <li><a href="#marque" data-i18n="nav.marque">Marque ORIM™</a></li>
       <li><a href="partenaires.html" data-i18n="nav.partenaires">Nos Partenaires</a></li>
-      <li><a href="#equipe" data-i18n="nav.equipe">Équipe</a></li>
+      <li><a href="#equipe" data-i18n="nav.equipe">Equipe</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0">
-      <a href="mailto:chevalley@cfmanagement.ch" class="nav-cta" data-i18n="nav.cta">Nous contacter</a>
+      <a href="mailto:info@orimnutrition.com" class="nav-cta" data-i18n="nav.cta">Nous contacter</a>
       <div class="lang-bar" role="navigation" aria-label="Language selector" style="position:static;border:none;padding:0;background:none;backdrop-filter:none;border-radius:0">
         <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
         <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
@@ -267,152 +266,233 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge" data-i18n="hero.badge">Science · Innovation · Santé</div>
+      <div class="hero-badge" data-i18n="hero.badge">Association a but non lucratif · Geneve</div>
       <h1 class="hero-title">ORIM™</h1>
-      <p class="hero-subtitle" data-i18n="hero.subtitle">Optimisation Résolutive Immuno-Métabolique</p>
-      <p class="hero-desc" data-i18n="hero.desc">Association scientifique genevoise &amp; ORIM SAS France — deux entités complémentaires au service de votre santé immuno-métabolique.</p>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">Optimisation Resolutive Immuno-Metabolique</p>
+      <p class="hero-desc" data-i18n="hero.desc">Association scientifique genevoise a but non lucratif, dediee a l'immunonutrition preventive. Recherche, education et accompagnement therapeutique au service de votre sante.</p>
       <div class="hero-actions">
-        <a href="#gateway" class="btn-primary" data-i18n="hero.btn1">Découvrir nos entités</a>
+        <a href="#prestations" class="btn-primary" data-i18n="hero.btn1">Nos 12 prestations</a>
         <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Nous contacter</a>
       </div>
     </div>
-    <div class="scroll-hint" data-i18n="hero.scroll">Découvrir</div>
+    <div class="scroll-hint" data-i18n="hero.scroll">Decouvrir</div>
   </section>
 
   <!-- STATS BAR -->
   <div class="stats-bar reveal">
-    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label" data-i18n="stats.entites">Entités juridiques</div></div>
-    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label" data-i18n="stats.poles">Pôles Association</div></div>
-    <div class="stat-item"><div class="stat-num">85</div><div class="stat-label" data-i18n="stats.aliments">Aliments indexés ORIM™</div></div>
+    <div class="stat-item"><div class="stat-num">12</div><div class="stat-label" data-i18n="stats.prestations">Prestations</div></div>
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label" data-i18n="stats.poles">Poles Association</div></div>
+    <div class="stat-item"><div class="stat-num">85+</div><div class="stat-label" data-i18n="stats.aliments">Aliments indexes ORIM™</div></div>
     <div class="stat-item"><div class="stat-num">v3.0</div><div class="stat-label" data-i18n="stats.indice">Indice ORIM™ actuel</div></div>
     <div class="stat-item"><div class="stat-num">2027</div><div class="stat-label" data-i18n="stats.microbiome">Microbiome v4.0</div></div>
-    <div class="stat-item"><div class="stat-num">CH+FR</div><div class="stat-label" data-i18n="stats.pays">Présence</div></div>
+    <div class="stat-item"><div class="stat-num">GE</div><div class="stat-label" data-i18n="stats.lieu">Geneve, Suisse</div></div>
   </div>
 
-  <!-- GATEWAY — DUAL ENTITY -->
-  <section id="gateway">
-    <div class="gateway-intro reveal">
-      <div class="section-tag" data-i18n="gateway.tag">Nos entités</div>
-      <h2 class="section-title"><span class="accent" data-i18n="gateway.title1">Deux entités,</span> <span data-i18n="gateway.title2">une vision</span></h2>
-      <p class="section-desc" data-i18n="gateway.desc">ORIM™ opère via deux structures juridiques distinctes et complémentaires — l'Association ORIM Genève (CH) et ORIM SAS France (FR) — chacune avec des missions clairement définies.</p>
+  <!-- MISSION -->
+  <section id="mission">
+    <div class="mission-intro reveal">
+      <div class="section-tag" data-i18n="mission.tag">Notre mission</div>
+      <h2 class="section-title"><span class="accent" data-i18n="mission.title1">Une association,</span> <span data-i18n="mission.title2">une mission</span></h2>
+      <p class="section-desc" data-i18n="mission.desc">L'Association ORIM Geneve est une organisation a but non lucratif dediee a la recherche, l'education et l'accompagnement en immunonutrition preventive. Notre objectif : rendre accessible une approche scientifique de la nutrition au service de la sante immuno-metabolique.</p>
     </div>
-    <div class="gateway-grid">
-      <!-- CH -->
-      <div class="entity-card entity-card-ch reveal">
-        <div class="entity-card-glow-ch"></div>
-        <div class="entity-flag">🇨🇭</div>
-        <div class="entity-badge-ch" data-i18n="entity.ch.badge">Association · Genève · Suisse</div>
-        <div class="entity-name" data-i18n="entity.ch.name">Association ORIM Genève</div>
-        <p class="entity-tagline" data-i18n="entity.ch.tagline">Entité scientifique à but non lucratif. Propriétaire de la marque ORIM™ et de l'Indice ORIM™. Pôles Éducatif, Thérapeutique &amp; Recherche.</p>
-        <ul class="entity-services">
-          <li data-i18n="entity.ch.s1">Séminaires &amp; formations éducatives</li>
-          <li data-i18n="entity.ch.s2">Suivi thérapeutique individuel</li>
-          <li data-i18n="entity.ch.s3">Atelier Seniors 55+</li>
-          <li data-i18n="entity.ch.s4">Indice ORIM™ v3.0 (Recherche)</li>
-          <li data-i18n="entity.ch.s5">Subventions R&amp;D · Microbiome v4.0</li>
-          <li data-i18n="entity.ch.s6">Veille scientifique Premium</li>
-        </ul>
-        <a href="#poles" class="entity-cta entity-cta-ch" data-i18n="entity.ch.cta">Voir les pôles Association →</a>
+    <div class="mission-card reveal">
+      <div class="mission-card-glow"></div>
+      <div class="mission-flag">🇨🇭</div>
+      <div class="mission-badge" data-i18n="mission.badge">Association a but non lucratif · Geneve · Suisse</div>
+      <div class="mission-name" data-i18n="mission.name">Association ORIM Geneve</div>
+      <p class="mission-tagline" data-i18n="mission.tagline">Organisation scientifique a but non lucratif. Proprietaire de la marque ORIM™ et de l'Indice ORIM™. Poles Educatif, Therapeutique &amp; Recherche.</p>
+      <ul class="mission-services">
+        <li data-i18n="mission.s1">Programme 3 Phases (desinflammation, optimisation, autoregulation)</li>
+        <li data-i18n="mission.s2">Indice ORIM™ 0-100 (scoring 8 metriques)</li>
+        <li data-i18n="mission.s3">Pole R&amp;D Saybar (biomarqueurs, nutrigenomique)</li>
+        <li data-i18n="mission.s4">Certification praticiens (3 niveaux)</li>
+        <li data-i18n="mission.s5">App digitale ORIM (tracking, menus, progression)</li>
+        <li data-i18n="mission.s6">Cabinet ORIM Geneve (fitness, coworking, therapie)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 12 PRESTATIONS (Design C : 4 colonnes narratives) -->
+  <section id="prestations">
+    <div class="prestations-header reveal">
+      <div class="section-tag" data-i18n="prest.tag">12 prestations · 1 mission</div>
+      <h2 class="section-title"><span class="accent" data-i18n="prest.title">Nos prestations</span></h2>
+      <p class="section-desc" style="max-width:700px;margin:.8rem auto 0;" data-i18n="prest.desc">L'Association ORIM Geneve structure ses 12 prestations en 4 piliers complementaires : Science, Prevention, Communaute et Infrastructure digitale.</p>
+    </div>
+    <div class="prestations-columns">
+      <!-- Col 1 : Science & Recherche -->
+      <div class="prest-col prest-col-1 reveal">
+        <div class="prest-col-header">
+          <span class="prest-phase" data-i18n="prest.c1.phase">Science</span>
+          <span class="prest-col-title" data-i18n="prest.c1.title">Recherche</span>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">🧬</div>
+          <div>
+            <div class="prest-num">01</div>
+            <div class="prest-name" data-i18n="prest.01.name">Programme 3 Phases</div>
+            <div class="prest-desc" data-i18n="prest.01.desc">Desinflammation, optimisation metabolique, autoregulation durable</div>
+          </div>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">📊</div>
+          <div>
+            <div class="prest-num">02</div>
+            <div class="prest-name" data-i18n="prest.02.name">Indice ORIM 0-100</div>
+            <div class="prest-desc" data-i18n="prest.02.desc">Scoring alimentaire sur 8 metriques scientifiques</div>
+          </div>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">🔬</div>
+          <div>
+            <div class="prest-num">03</div>
+            <div class="prest-name" data-i18n="prest.03.name">Pole R&amp;D Saybar</div>
+            <div class="prest-desc" data-i18n="prest.03.desc">Biomarqueurs, SPMs, nutrigenomique, IA predictive</div>
+          </div>
+        </div>
+        <div class="prest-arrow">▶</div>
       </div>
-      <!-- FR -->
-      <div class="entity-card entity-card-fr reveal">
-        <div class="entity-card-glow-fr"></div>
-        <div class="entity-flag">🇫🇷</div>
-        <div class="entity-badge-fr" data-i18n="entity.fr.badge">SAS · France · Commercial</div>
-        <div class="entity-name" data-i18n="entity.fr.name">ORIM SAS France</div>
-        <p class="entity-tagline" data-i18n="entity.fr.tagline">Entité commerciale française. Distributeur agréé sous licence ORIM™. Pôle Commercial — compléments, voyages santé, partenariats corporate.</p>
-        <ul class="entity-services">
-          <li data-i18n="entity.fr.s1">Compléments alimentaires ORIM™</li>
-          <li data-i18n="entity.fr.s2">Voyages Santé &amp; Retraite</li>
-          <li data-i18n="entity.fr.s3">Partenariats Corporates</li>
-          <li data-i18n="entity.fr.s4">Distribution réseau Saybar</li>
-          <li data-i18n="entity.fr.s5">Marque utilisée sous licence Association CH</li>
-        </ul>
-        <a href="#commercial" class="entity-cta entity-cta-fr" data-i18n="entity.fr.cta">Voir le pôle commercial →</a>
+      <!-- Col 2 : Prevention & Accompagnement -->
+      <div class="prest-col prest-col-2 reveal">
+        <div class="prest-col-header">
+          <span class="prest-phase" data-i18n="prest.c2.phase">Prevention</span>
+          <span class="prest-col-title" data-i18n="prest.c2.title">Accompagnement</span>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">🤝</div>
+          <div>
+            <div class="prest-num">04</div>
+            <div class="prest-name" data-i18n="prest.04.name">Partenariats sante</div>
+            <div class="prest-desc" data-i18n="prest.04.desc">Reseau de praticiens partenaires, orientation et suivi</div>
+          </div>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">🥗</div>
+          <div>
+            <div class="prest-num">05</div>
+            <div class="prest-name" data-i18n="prest.05.name">Programme nutritionnel ORIM</div>
+            <div class="prest-desc" data-i18n="prest.05.desc">Protocoles personnalises 3 phases, menus Saybar, suivi</div>
+          </div>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">🍳</div>
+          <div>
+            <div class="prest-num">06</div>
+            <div class="prest-name" data-i18n="prest.06.name">Cuisine educative</div>
+            <div class="prest-desc" data-i18n="prest.06.desc">Ateliers culinaires, demonstrations, menus personnalises</div>
+          </div>
+        </div>
+        <div class="prest-arrow">▶</div>
+      </div>
+      <!-- Col 3 : Communaute & Formation -->
+      <div class="prest-col prest-col-3 reveal">
+        <div class="prest-col-header">
+          <span class="prest-phase" data-i18n="prest.c3.phase">Communaute</span>
+          <span class="prest-col-title" data-i18n="prest.c3.title">Formation</span>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">👥</div>
+          <div>
+            <div class="prest-num">07</div>
+            <div class="prest-name" data-i18n="prest.07.name">Communaute membres</div>
+            <div class="prest-desc" data-i18n="prest.07.desc">3 niveaux : Standard, Bienfaiteur, Premium</div>
+          </div>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">🎓</div>
+          <div>
+            <div class="prest-num">08</div>
+            <div class="prest-name" data-i18n="prest.08.name">Certification praticiens</div>
+            <div class="prest-desc" data-i18n="prest.08.desc">Formation 3 niveaux, certification ORIM continue</div>
+          </div>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">🎙️</div>
+          <div>
+            <div class="prest-num">09</div>
+            <div class="prest-name" data-i18n="prest.09.name">Conferences &amp; ateliers</div>
+            <div class="prest-desc" data-i18n="prest.09.desc">Seminaires publics, education nutritionnelle</div>
+          </div>
+        </div>
+        <div class="prest-arrow">▶</div>
+      </div>
+      <!-- Col 4 : Digital & Infrastructure -->
+      <div class="prest-col prest-col-4 reveal">
+        <div class="prest-col-header">
+          <span class="prest-phase" data-i18n="prest.c4.phase">Digital</span>
+          <span class="prest-col-title" data-i18n="prest.c4.title">Infrastructure</span>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">📱</div>
+          <div>
+            <div class="prest-num">10</div>
+            <div class="prest-name" data-i18n="prest.10.name">App digitale ORIM</div>
+            <div class="prest-desc" data-i18n="prest.10.desc">Tracking biomarqueurs, menus, progression membre</div>
+          </div>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">📖</div>
+          <div>
+            <div class="prest-num">11</div>
+            <div class="prest-name" data-i18n="prest.11.name">Publications scientifiques</div>
+            <div class="prest-desc" data-i18n="prest.11.desc">Bulletins trimestriels, veille, articles valides</div>
+          </div>
+        </div>
+        <div class="prest-item">
+          <div class="prest-icon">🏛️</div>
+          <div>
+            <div class="prest-num">12</div>
+            <div class="prest-name" data-i18n="prest.12.name">Cabinet ORIM Geneve</div>
+            <div class="prest-desc" data-i18n="prest.12.desc">Fitness, coworking sante, conference, therapie</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PÔLES ASSOCIATION CH -->
+  <!-- POLES ASSOCIATION -->
   <section id="poles">
     <div class="poles-header reveal">
-      <div class="section-tag">Association ORIM Genève</div>
-      <h2 class="entity-section-title ch-label" data-i18n="poles.title">🏛️ Trois Pôles — Association CH</h2>
-      <p class="section-desc" style="max-width:600px;margin:.8rem auto 0;" data-i18n="poles.desc">L'Association ORIM Genève structure ses activités en trois pôles complémentaires, conformément au Workflow A (Éducatif &amp; Thérapeutique) et D (Recherche &amp; IP).</p>
+      <div class="section-tag" data-i18n="poles.tag">Association ORIM Geneve</div>
+      <h2 class="entity-section-title ch-label" data-i18n="poles.title">🏛️ Trois Poles</h2>
+      <p class="section-desc" style="max-width:600px;margin:.8rem auto 0;" data-i18n="poles.desc">L'Association ORIM Geneve structure ses activites en trois poles complementaires : Educatif, Therapeutique et Recherche.</p>
     </div>
     <div class="poles-grid">
-      <!-- ÉDUCATIF -->
       <div class="pole-card reveal">
         <div class="pole-icon">🎓</div>
-        <div class="pole-name" data-i18n="pole.edu.name">Pôle Éducatif</div>
-        <p class="pole-desc" data-i18n="pole.edu.desc">Formations individuelles et collectives en nutrition immuno-métabolique. Séminaires, contenus pédagogiques, cotisations membres Standard &amp; Bienfaiteur.</p>
+        <div class="pole-name" data-i18n="pole.edu.name">Pole Educatif</div>
+        <p class="pole-desc" data-i18n="pole.edu.desc">Formations individuelles et collectives en nutrition immuno-metabolique. Seminaires, contenus pedagogiques, cotisations membres Standard &amp; Bienfaiteur.</p>
         <div class="pole-tags">
-          <span class="pole-tag" data-i18n="pole.edu.t1">Séminaires collectifs</span>
+          <span class="pole-tag" data-i18n="pole.edu.t1">Seminaires collectifs</span>
           <span class="pole-tag" data-i18n="pole.edu.t2">Formation individuelle</span>
           <span class="pole-tag" data-i18n="pole.edu.t3">Atelier Seniors 55+</span>
-          <span class="pole-tag" data-i18n="pole.edu.t4">Contenus pédagogiques</span>
+          <span class="pole-tag" data-i18n="pole.edu.t4">Contenus pedagogiques</span>
           <span class="pole-tag" data-i18n="pole.edu.t5">Cotisations membres</span>
         </div>
       </div>
-      <!-- THÉRAPEUTIQUE -->
       <div class="pole-card reveal">
         <div class="pole-icon">🩺</div>
-        <div class="pole-name" data-i18n="pole.thera.name">Pôle Thérapeutique</div>
-        <p class="pole-desc" data-i18n="pole.thera.desc">Suivi thérapeutique personnalisé sous mandat Association, supervisé par le Dr. Mahour. Application de l'Indice ORIM™ expérimental. Actes médicaux exclusifs à l'Association.</p>
+        <div class="pole-name" data-i18n="pole.thera.name">Pole Therapeutique</div>
+        <p class="pole-desc" data-i18n="pole.thera.desc">Suivi therapeutique personnalise sous mandat Association, supervise par le Dr. Mahour. Application de l'Indice ORIM™ experimental. Actes medicaux exclusifs a l'Association.</p>
         <div class="pole-tags">
-          <span class="pole-tag" data-i18n="pole.thera.t1">Suivi thérapeutique</span>
-          <span class="pole-tag" data-i18n="pole.thera.t2">Indice ORIM™ expérimental</span>
+          <span class="pole-tag" data-i18n="pole.thera.t1">Suivi therapeutique</span>
+          <span class="pole-tag" data-i18n="pole.thera.t2">Indice ORIM™ experimental</span>
           <span class="pole-tag" data-i18n="pole.thera.t3">Dr. Mahour</span>
-          <span class="pole-tag" data-i18n="pole.thera.t4">Droit suisse · Genève</span>
+          <span class="pole-tag" data-i18n="pole.thera.t4">Droit suisse · Geneve</span>
         </div>
       </div>
-      <!-- RECHERCHE -->
       <div class="pole-card reveal">
         <div class="pole-icon">🔬</div>
-        <div class="pole-name" data-i18n="pole.rech.name">Pôle Recherche &amp; IP</div>
-        <p class="pole-desc" data-i18n="pole.rech.desc">Développement de l'Indice ORIM™ v4.0 Microbiome (2027) &amp; v5.0 IA Nutrigénomique (2028). Gestion des subventions R&amp;D 20kCHF. Propriété intellectuelle &amp; dépôt marque.</p>
+        <div class="pole-name" data-i18n="pole.rech.name">Pole Recherche &amp; IP</div>
+        <p class="pole-desc" data-i18n="pole.rech.desc">Developpement de l'Indice ORIM™ v4.0 Microbiome (2027) &amp; v5.0 IA Nutrigenomique (2028). Gestion des subventions R&amp;D. Propriete intellectuelle &amp; depot marque.</p>
         <div class="pole-tags">
           <span class="pole-tag" data-i18n="pole.rech.t1">Indice v4.0 · 2027</span>
           <span class="pole-tag" data-i18n="pole.rech.t2">Indice v5.0 · 2028</span>
           <span class="pole-tag" data-i18n="pole.rech.t3">Subventions R&amp;D</span>
-          <span class="pole-tag" data-i18n="pole.rech.t4">Propriété intellectuelle</span>
-          <span class="pole-tag" data-i18n="pole.rech.t5">INPI · IGE</span>
+          <span class="pole-tag" data-i18n="pole.rech.t4">Propriete intellectuelle</span>
+          <span class="pole-tag" data-i18n="pole.rech.t5">IPI · Suisse</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- PÔLE COMMERCIAL SAS FR -->
-  <section id="commercial">
-    <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto;">
-      <div class="section-tag">ORIM SAS France</div>
-      <h2 class="entity-section-title fr-label" data-i18n="commercial.title">🏢 Pôle Commercial — SAS FR</h2>
-      <p class="section-desc" data-i18n="commercial.desc">ORIM SAS France opère le pôle commercial sous licence de marque ORIM™ délivrée par l'Association ORIM Genève (Workflow B). Toutes les prestations commerciales sont facturées sur IBAN FR.</p>
-    </div>
-    <div class="commercial-grid">
-      <div class="commercial-card reveal">
-        <div class="commercial-icon">💊</div>
-        <div class="commercial-name" data-i18n="comm.c1.name">Compléments Alimentaires</div>
-        <p class="commercial-desc" data-i18n="comm.c1.desc">Gamme de compléments alimentaires sous marque ORIM™. Distribution nationale et internationale. Formulations basées sur l'Indice ORIM™ v3.0.</p>
-      </div>
-      <div class="commercial-card reveal">
-        <div class="commercial-icon">✈️</div>
-        <div class="commercial-name" data-i18n="comm.c2.name">Voyages Santé &amp; Retraite</div>
-        <p class="commercial-desc" data-i18n="comm.c2.desc">Séjours bien-être et retraites santé. Programmes immuno-métaboliques en immersion. Partenariats hôteliers sélectionnés.</p>
-      </div>
-      <div class="commercial-card reveal">
-        <div class="commercial-icon">🤝</div>
-        <div class="commercial-name" data-i18n="comm.c3.name">Partenariats Corporates</div>
-        <p class="commercial-desc" data-i18n="comm.c3.desc">Programmes santé en entreprise. Nutrition optimale au travail. Contrats B2B avec facturation TVA FR 20%.</p>
-      </div>
-      <div class="commercial-card reveal">
-        <div class="commercial-icon">🔗</div>
-        <div class="commercial-name" data-i18n="comm.c4.name">Distribution &amp; Réseau</div>
-        <p class="commercial-desc" data-i18n="comm.c4.desc">Distribution via le réseau Saybar et partenaires agréés. Contrats de distribution sous licence marque ORIM™.</p>
-      </div>
-    </div>
-    <div class="fr-notice reveal">
-      <strong data-i18n="fr.notice.title">⚠️ Information importante :</strong> <span data-i18n="fr.notice.text">Les prestations commerciales (compléments, voyages, corporate) sont exclusivement gérées par ORIM SAS France — IBAN FR. L'Association ORIM Genève (CH) ne traite aucune commande commerciale. Marque ORIM™ utilisée sous licence de l'Association ORIM Genève.</span>
     </div>
   </section>
 
@@ -420,29 +500,29 @@
   <section id="marque">
     <div class="marque-inner">
       <div class="reveal" style="text-align:center;margin-bottom:1rem;">
-        <div class="section-tag" data-i18n="marque.tag">Propriété intellectuelle</div>
+        <div class="section-tag" data-i18n="marque.tag">Propriete intellectuelle</div>
         <h2 class="section-title"><span class="accent">ORIM™</span> — <span data-i18n="marque.title">Marque &amp; Indice</span></h2>
       </div>
       <div class="marque-grid">
         <div class="marque-block reveal">
-          <div class="marque-badge" data-i18n="marque.owner.badge">Propriétaire · Association CH</div>
+          <div class="marque-badge" data-i18n="marque.owner.badge">Proprietaire · Association ORIM</div>
           <h3 data-i18n="marque.owner.title">🏛️ Marque ORIM™</h3>
-          <p data-i18n="marque.owner.text">La marque ORIM™ est déposée à l'INPI (France) et à l'IGE (Suisse) par l'Association ORIM Genève. Elle est licenciée à ORIM SAS France pour usage commercial avec redevance arm's length de 6% du CA net HT, minimum 3 000 EUR/trimestre.</p>
+          <p data-i18n="marque.owner.text">La marque ORIM™ est en cours d'enregistrement a l'IPI (Suisse) par l'Association ORIM Geneve. Classes NICE 5 (nutraceutiques), 42 (recherche) et 44 (conseil nutrition). La marque reste propriete de l'Association.</p>
         </div>
         <div class="marque-block reveal">
-          <div class="marque-badge" data-i18n="marque.indice.badge">R&amp;D · Association CH</div>
+          <div class="marque-badge" data-i18n="marque.indice.badge">R&amp;D · Association ORIM</div>
           <h3 data-i18n="marque.indice.title">🔬 Indice ORIM™</h3>
-          <p data-i18n="marque.indice.text">L'Indice ORIM™ v3.0 (85 aliments × 8 métriques) est développé et détenu par l'Association. ORIM SAS France accède aux données via la Convention Services R&D (Contrat n°2) — forfait annuel 8 000–12 000 EUR sur IBAN CH.</p>
+          <p data-i18n="marque.indice.text">L'Indice ORIM™ v3.0 (85+ aliments × 8 metriques) est developpe et detenu par l'Association. Il constitue le coeur scientifique du programme d'immunonutrition preventive ORIM.</p>
         </div>
         <div class="marque-block reveal">
           <div class="marque-badge" data-i18n="marque.v4.badge">2027 · Microbiome</div>
           <h3 data-i18n="marque.v4.title">🧬 Indice v4.0</h3>
-          <p data-i18n="marque.v4.text">Développement Microbiome 2027 sous supervision Dr. Mahour. Financé par les subventions R&D (20 kCHF) sur compte Association exclusivement. Les algorithmes restent propriété Association.</p>
+          <p data-i18n="marque.v4.text">Developpement Microbiome 2027 sous supervision Dr. Mahour. Finance par les subventions R&amp;D sur compte Association exclusivement. Les algorithmes restent propriete Association.</p>
         </div>
         <div class="marque-block reveal">
-          <div class="marque-badge" data-i18n="marque.v5.badge">2028 · IA Nutrigénomique</div>
+          <div class="marque-badge" data-i18n="marque.v5.badge">2028 · IA Nutrigenomique</div>
           <h3 data-i18n="marque.v5.title">🤖 Indice v5.0</h3>
-          <p data-i18n="marque.v5.text">Vision 2028 : intégration de l'intelligence artificielle et de la nutrigénomique. Algorithmes exclusifs Association ORIM Genève. Archivage et protection IP renforcés dès la phase R&D.</p>
+          <p data-i18n="marque.v5.text">Vision 2028 : integration de l'intelligence artificielle et de la nutrigenomique. Algorithmes exclusifs Association ORIM Geneve. Protection IP renforcee des la phase R&amp;D.</p>
         </div>
       </div>
     </div>
@@ -451,24 +531,21 @@
   <!-- PARTENARIAT SAYBAR -->
   <section id="saybar">
     <div class="saybar-inner reveal">
-      <div class="section-tag" data-i18n="saybar.tag">Partenariat stratégique</div>
+      <div class="section-tag" data-i18n="saybar.tag">Partenariat strategique</div>
       <h2 class="section-title"><span class="accent">ORIM™ × </span><span data-i18n="saybar.title">Saybar</span></h2>
-      <p class="saybar-desc" data-i18n="saybar.desc">Le partenariat tripartite ORIM × Saybar implique les deux entités ORIM avec des rôles distincts et des flux financiers strictement séparés (Workflow C).</p>
+      <p class="saybar-desc" data-i18n="saybar.desc">Le partenariat ORIM × Saybar combine la methodologie scientifique de l'Association avec l'expertise therapeutique de Saybar, au service d'une nutrition preventive de qualite.</p>
       <div class="saybar-flow">
-        <div class="saybar-node ch" data-i18n="saybar.node.ch">🏛️ Association CH<br><small data-i18n="saybar.node.ch.sub">Licence méthode ORIM™<br>→ IBAN CH</small></div>
+        <div class="saybar-node ch" data-i18n="saybar.node.ch">🏛️ Association ORIM<br><small data-i18n="saybar.node.ch.sub">Methodologie scientifique<br>Indice ORIM™</small></div>
         <div class="saybar-arrow">⟷</div>
-        <div class="saybar-node partner" data-i18n="saybar.node.partner">🤝 Saybar<br><small data-i18n="saybar.node.partner.sub">Partenaire distribution<br>+ Usage thérapeutique</small></div>
-        <div class="saybar-arrow">⟷</div>
-        <div class="saybar-node fr" data-i18n="saybar.node.fr">🏢 SAS FR<br><small data-i18n="saybar.node.fr.sub">Distribution produits<br>→ IBAN FR</small></div>
+        <div class="saybar-node partner" data-i18n="saybar.node.partner">🤝 Saybar<br><small data-i18n="saybar.node.partner.sub">Partenaire therapeutique<br>Recherche &amp; formulation</small></div>
       </div>
-      <p class="saybar-desc" style="font-size:.75rem;color:rgba(148,163,184,.6);" data-i18n="saybar.legal">Deux contrats distincts — Contrat A (Association → Saybar) &amp; Contrat B (SAS → Saybar). Virements sur IBAN distincts. Clé de répartition 60% Association / 40% SAS pour éléments mixtes.</p>
     </div>
   </section>
 
-  <!-- ÉQUIPE -->
+  <!-- EQUIPE -->
   <section id="equipe">
     <div class="reveal" style="text-align:center;margin-bottom:1rem;">
-      <div class="section-tag" data-i18n="equipe.tag">Notre équipe</div>
+      <div class="section-tag" data-i18n="equipe.tag">Notre equipe</div>
       <h2 class="section-title"><span class="accent" data-i18n="equipe.title">Dirigeants &amp; Experts</span></h2>
     </div>
     <div class="team-grid">
@@ -476,16 +553,16 @@
         <div class="team-avatar">OC</div>
         <div class="team-name">Olivier Chevalley</div>
         <div class="team-roles">
-          <span class="team-role ch" data-i18n="team.oc.r1">Président · Association CH</span>
-          <span class="team-role fr" data-i18n="team.oc.r2">Associé · SAS FR</span>
+          <span class="team-role ch" data-i18n="team.oc.r1">President · Association ORIM</span>
+          <span class="team-role sci" data-i18n="team.oc.r2">Fondateur · Titulaire marque ORIM™</span>
         </div>
       </div>
       <div class="team-card reveal">
         <div class="team-avatar">NC</div>
-        <div class="team-name">Noël Calderón</div>
+        <div class="team-name">Noel Calderon</div>
         <div class="team-roles">
-          <span class="team-role fr" data-i18n="team.nc.r1">DG · ORIM SAS France</span>
-          <span class="team-role ch" data-i18n="team.nc.r2">Directeur Thérapeutique · Association</span>
+          <span class="team-role ch" data-i18n="team.nc.r1">Vice-president · Association ORIM</span>
+          <span class="team-role sci" data-i18n="team.nc.r2">Directeur Therapeutique</span>
         </div>
       </div>
       <div class="team-card reveal">
@@ -493,7 +570,7 @@
         <div class="team-name">Dr. Khoutir Mahour</div>
         <div class="team-roles">
           <span class="team-role sci" data-i18n="team.km.r1">Superviseur R&amp;D · Indice ORIM™</span>
-          <span class="team-role ch" data-i18n="team.km.r2">Mandataire · Association CH</span>
+          <span class="team-role ch" data-i18n="team.km.r2">Partenaire medical · Association</span>
         </div>
       </div>
     </div>
@@ -504,22 +581,15 @@
     <div class="reveal" style="text-align:center;margin-bottom:1rem;">
       <div class="section-tag" data-i18n="contact.tag">Nous joindre</div>
       <h2 class="section-title"><span class="accent" data-i18n="contact.title">Contact</span></h2>
-      <p class="section-desc" style="max-width:550px;margin:.8rem auto 0;" data-i18n="contact.desc">Contactez l'entité correspondant à votre besoin.</p>
+      <p class="section-desc" style="max-width:550px;margin:.8rem auto 0;" data-i18n="contact.desc">Association ORIM Geneve — a votre ecoute pour toute question relative a nos prestations.</p>
     </div>
-    <div class="contact-grid">
-      <div class="contact-block ch-block reveal">
-        <h3 data-i18n="contact.ch.title">🏛️ Association ORIM Genève (CH)</h3>
-        <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><a href="mailto:info@orimnutrition.com">info@orimnutrition.com</a><br><span style="font-size:.72rem;color:rgba(148,163,184,.5);" data-i18n="contact.ch.email.note">Éducatif · Thérapeutique · Recherche</span></div></div>
+    <div class="contact-center">
+      <div class="contact-block reveal">
+        <h3 data-i18n="contact.ch.title">🏛️ Association ORIM Geneve</h3>
+        <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><a href="mailto:info@orimnutrition.com">info@orimnutrition.com</a><br><span style="font-size:.72rem;color:rgba(148,163,184,.5);" data-i18n="contact.ch.email.note">Education · Therapeutique · Recherche</span></div></div>
         <div class="contact-item"><div class="contact-item-icon">🌐</div><div class="contact-item-text"><a href="https://www.orimnutrition.com">www.orimnutrition.com</a></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text" data-i18n="contact.ch.address">Genève, Suisse — Droit suisse applicable · For Genève</div></div>
-        <div class="contact-item"><div class="contact-item-icon">🏦</div><div class="contact-item-text" data-i18n="contact.ch.iban">IBAN CH — Paiements Association uniquement</div></div>
-      </div>
-      <div class="contact-block fr-block reveal">
-        <h3 data-i18n="contact.fr.title">🏢 ORIM SAS France (FR)</h3>
-        <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><a href="mailto:chevalley@cfmanagement.ch" style="color:#ea8090;">chevalley@cfmanagement.ch</a><br><span style="font-size:.72rem;color:rgba(148,163,184,.5);" data-i18n="contact.fr.email.note">Commercial · Compléments · Partenariats</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text" data-i18n="contact.fr.address">France — Droit français · Juridiction TGI Bourg-en-Bresse</div></div>
-        <div class="contact-item"><div class="contact-item-icon">🏦</div><div class="contact-item-text" data-i18n="contact.fr.iban">IBAN FR — Paiements SAS uniquement</div></div>
-        <div class="contact-item"><div class="contact-item-icon">ℹ️</div><div class="contact-item-text" style="font-size:.75rem;color:rgba(148,163,184,.6);" data-i18n="contact.fr.note">Marque ORIM™ utilisée sous licence de l'Association ORIM Genève.</div></div>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text" data-i18n="contact.ch.address">Geneve, Suisse — Droit suisse applicable · For Geneve</div></div>
+        <div class="contact-item"><div class="contact-item-icon">ℹ️</div><div class="contact-item-text" style="font-size:.75rem;color:rgba(148,163,184,.6);" data-i18n="contact.ch.note">Association a but non lucratif · Droit suisse · Canton de Geneve</div></div>
       </div>
     </div>
   </section>
@@ -527,130 +597,157 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">ORIM™</div>
-    <div class="footer-entities">
-      <div class="footer-entity"><strong data-i18n="footer.ch">Association ORIM Genève</strong><span data-i18n="footer.ch.sub">Suisse · But non lucratif · Marque &amp; IP</span></div>
-      <div class="footer-entity" style="color:rgba(148,163,184,.3)">|</div>
-      <div class="footer-entity"><strong data-i18n="footer.fr">ORIM SAS France</strong><span data-i18n="footer.fr.sub">France · Commercial · Sous licence ORIM™</span></div>
+    <div class="footer-entity-line">
+      <strong data-i18n="footer.ch">Association ORIM Geneve</strong><br>
+      <span data-i18n="footer.ch.sub">Suisse · But non lucratif · Immunonutrition preventive</span>
     </div>
     <div class="footer-links">
-      <a href="mentions-legales.html" data-i18n="footer.mentions">Mentions légales</a>
-      <a href="politique-confidentialite.html" data-i18n="footer.privacy">Politique de confidentialité</a>
+      <a href="mentions-legales.html" data-i18n="footer.mentions">Mentions legales</a>
+      <a href="politique-confidentialite.html" data-i18n="footer.privacy">Politique de confidentialite</a>
       <a href="mailto:info@orimnutrition.com" data-i18n="footer.contact">Contact</a>
       <a href="https://www.instagram.com/orim_nutrition/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.3rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg> Instagram</a>
     </div>
-    <div class="footer-bottom">© 2026 Association ORIM Genève · ORIM™ est une marque déposée · <span data-i18n="footer.conf">Document confidentiel</span></div>
+    <div class="footer-bottom">© 2026 Association ORIM Geneve · ORIM™ est une marque deposee · info@orimnutrition.com</div>
   </footer>
 
   <script>
   // ─── I18N DATA ─────────────────────────────────────────────────────────────
   const i18n = {
     fr: {
-      "nav.tagline":"Immuno-Métabolique","nav.entites":"Entités","nav.poles":"Pôles","nav.commercial":"Commercial","nav.marque":"Marque ORIM™","nav.partenaires":"Nos Partenaires","nav.equipe":"Équipe","nav.contact":"Contact","nav.cta":"Nous contacter",
-      "hero.badge":"Science · Innovation · Santé","hero.subtitle":"Optimisation Résolutive Immuno-Métabolique","hero.desc":"Association scientifique genevoise & ORIM SAS France — deux entités complémentaires au service de votre santé immuno-métabolique.","hero.btn1":"Découvrir nos entités","hero.btn2":"Nous contacter","hero.scroll":"Découvrir",
-      "stats.entites":"Entités juridiques","stats.poles":"Pôles Association","stats.aliments":"Aliments indexés ORIM™","stats.indice":"Indice ORIM™ actuel","stats.microbiome":"Microbiome v4.0","stats.pays":"Présence",
-      "gateway.tag":"Nos entités","gateway.title1":"Deux entités,","gateway.title2":"une vision","gateway.desc":"ORIM™ opère via deux structures juridiques distinctes et complémentaires — l'Association ORIM Genève (CH) et ORIM SAS France (FR) — chacune avec des missions clairement définies.",
-      "entity.ch.badge":"Association · Genève · Suisse","entity.ch.name":"Association ORIM Genève","entity.ch.tagline":"Entité scientifique à but non lucratif. Propriétaire de la marque ORIM™ et de l'Indice ORIM™. Pôles Éducatif, Thérapeutique & Recherche.","entity.ch.s1":"Séminaires & formations éducatives","entity.ch.s2":"Suivi thérapeutique individuel","entity.ch.s3":"Atelier Seniors 55+","entity.ch.s4":"Indice ORIM™ v3.0 (Recherche)","entity.ch.s5":"Subventions R&D · Microbiome v4.0","entity.ch.s6":"Veille scientifique Premium","entity.ch.cta":"Voir les pôles Association →",
-      "entity.fr.badge":"SAS · France · Commercial","entity.fr.name":"ORIM SAS France","entity.fr.tagline":"Entité commerciale française. Distributeur agréé sous licence ORIM™. Pôle Commercial — compléments, voyages santé, partenariats corporate.","entity.fr.s1":"Compléments alimentaires ORIM™","entity.fr.s2":"Voyages Santé & Retraite","entity.fr.s3":"Partenariats Corporates","entity.fr.s4":"Distribution réseau Saybar","entity.fr.s5":"Marque utilisée sous licence Association CH","entity.fr.cta":"Voir le pôle commercial →",
-      "poles.title":"🏛️ Trois Pôles — Association CH","poles.desc":"L'Association ORIM Genève structure ses activités en trois pôles complémentaires, conformément au Workflow A (Éducatif & Thérapeutique) et D (Recherche & IP).",
-      "pole.edu.name":"Pôle Éducatif","pole.edu.desc":"Formations individuelles et collectives en nutrition immuno-métabolique. Séminaires, contenus pédagogiques, cotisations membres Standard & Bienfaiteur.","pole.edu.t1":"Séminaires collectifs","pole.edu.t2":"Formation individuelle","pole.edu.t3":"Atelier Seniors 55+","pole.edu.t4":"Contenus pédagogiques","pole.edu.t5":"Cotisations membres",
-      "pole.thera.name":"Pôle Thérapeutique","pole.thera.desc":"Suivi thérapeutique personnalisé sous mandat Association, supervisé par le Dr. Mahour. Application de l'Indice ORIM™ expérimental. Actes médicaux exclusifs à l'Association.","pole.thera.t1":"Suivi thérapeutique","pole.thera.t2":"Indice ORIM™ expérimental","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Droit suisse · Genève",
-      "pole.rech.name":"Pôle Recherche & IP","pole.rech.desc":"Développement de l'Indice ORIM™ v4.0 Microbiome (2027) & v5.0 IA Nutrigénomique (2028). Gestion des subventions R&D 20kCHF. Propriété intellectuelle & dépôt marque.","pole.rech.t1":"Indice v4.0 · 2027","pole.rech.t2":"Indice v5.0 · 2028","pole.rech.t3":"Subventions R&D","pole.rech.t4":"Propriété intellectuelle","pole.rech.t5":"INPI · IGE",
-      "commercial.title":"🏢 Pôle Commercial — SAS FR","commercial.desc":"ORIM SAS France opère le pôle commercial sous licence de marque ORIM™ délivrée par l'Association ORIM Genève (Workflow B). Toutes les prestations commerciales sont facturées sur IBAN FR.",
-      "comm.c1.name":"Compléments Alimentaires","comm.c1.desc":"Gamme de compléments alimentaires sous marque ORIM™. Distribution nationale et internationale. Formulations basées sur l'Indice ORIM™ v3.0.",
-      "comm.c2.name":"Voyages Santé & Retraite","comm.c2.desc":"Séjours bien-être et retraites santé. Programmes immuno-métaboliques en immersion. Partenariats hôteliers sélectionnés.",
-      "comm.c3.name":"Partenariats Corporates","comm.c3.desc":"Programmes santé en entreprise. Nutrition optimale au travail. Contrats B2B avec facturation TVA FR 20%.",
-      "comm.c4.name":"Distribution & Réseau","comm.c4.desc":"Distribution via le réseau Saybar et partenaires agréés. Contrats de distribution sous licence marque ORIM™.",
-      "fr.notice.title":"⚠️ Information importante :","fr.notice.text":"Les prestations commerciales (compléments, voyages, corporate) sont exclusivement gérées par ORIM SAS France — IBAN FR. L'Association ORIM Genève (CH) ne traite aucune commande commerciale. Marque ORIM™ utilisée sous licence de l'Association ORIM Genève.",
-      "marque.tag":"Propriété intellectuelle","marque.title":"Marque & Indice",
-      "marque.owner.badge":"Propriétaire · Association CH","marque.owner.title":"🏛️ Marque ORIM™","marque.owner.text":"La marque ORIM™ est déposée à l'INPI (France) et à l'IGE (Suisse) par l'Association ORIM Genève. Elle est licenciée à ORIM SAS France pour usage commercial avec redevance arm's length de 6% du CA net HT, minimum 3 000 EUR/trimestre.",
-      "marque.indice.badge":"R&D · Association CH","marque.indice.title":"🔬 Indice ORIM™","marque.indice.text":"L'Indice ORIM™ v3.0 (85 aliments × 8 métriques) est développé et détenu par l'Association. ORIM SAS France accède aux données via la Convention Services R&D (Contrat n°2) — forfait annuel 8 000–12 000 EUR sur IBAN CH.",
-      "marque.v4.badge":"2027 · Microbiome","marque.v4.title":"🧬 Indice v4.0","marque.v4.text":"Développement Microbiome 2027 sous supervision Dr. Mahour. Financé par les subventions R&D (20 kCHF) sur compte Association exclusivement. Les algorithmes restent propriété Association.",
-      "marque.v5.badge":"2028 · IA Nutrigénomique","marque.v5.title":"🤖 Indice v5.0","marque.v5.text":"Vision 2028 : intégration de l'intelligence artificielle et de la nutrigénomique. Algorithmes exclusifs Association ORIM Genève. Archivage et protection IP renforcés dès la phase R&D.",
-      "saybar.tag":"Partenariat stratégique","saybar.title":"Saybar","saybar.desc":"Le partenariat tripartite ORIM × Saybar implique les deux entités ORIM avec des rôles distincts et des flux financiers strictement séparés (Workflow C).","saybar.node.ch":"🏛️ Association CH","saybar.node.ch.sub":"Licence méthode ORIM™\n→ IBAN CH","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Partenaire distribution\n+ Usage thérapeutique","saybar.node.fr":"🏢 SAS FR","saybar.node.fr.sub":"Distribution produits\n→ IBAN FR","saybar.legal":"Deux contrats distincts — Contrat A (Association → Saybar) & Contrat B (SAS → Saybar). Virements sur IBAN distincts. Clé de répartition 60% Association / 40% SAS pour éléments mixtes.",
-      "equipe.tag":"Notre équipe","equipe.title":"Dirigeants & Experts","team.oc.r1":"Président · Association CH","team.oc.r2":"Associé · SAS FR","team.nc.r1":"DG · ORIM SAS France","team.nc.r2":"Directeur Thérapeutique · Association","team.km.r1":"Superviseur R&D · Indice ORIM™","team.km.r2":"Mandataire · Association CH",
-      "contact.tag":"Nous joindre","contact.title":"Contact","contact.desc":"Contactez l'entité correspondant à votre besoin.","contact.ch.title":"🏛️ Association ORIM Genève (CH)","contact.ch.email.note":"Éducatif · Thérapeutique · Recherche","contact.ch.address":"Genève, Suisse — Droit suisse applicable · For Genève","contact.ch.iban":"IBAN CH — Paiements Association uniquement","contact.fr.title":"🏢 ORIM SAS France (FR)","contact.fr.email.note":"Commercial · Compléments · Partenariats","contact.fr.address":"France — Droit français · Juridiction TGI Bourg-en-Bresse","contact.fr.iban":"IBAN FR — Paiements SAS uniquement","contact.fr.note":"Marque ORIM™ utilisée sous licence de l'Association ORIM Genève.",
-      "footer.ch":"Association ORIM Genève","footer.ch.sub":"Suisse · But non lucratif · Marque & IP","footer.fr":"ORIM SAS France","footer.fr.sub":"France · Commercial · Sous licence ORIM™","footer.mentions":"Mentions légales","footer.privacy":"Politique de confidentialité","footer.contact":"Contact","footer.conf":"Document confidentiel"
+      "nav.tagline":"Immuno-Metabolique","nav.mission":"Notre mission","nav.prestations":"12 Prestations","nav.poles":"Poles","nav.marque":"Marque ORIM™","nav.partenaires":"Nos Partenaires","nav.equipe":"Equipe","nav.contact":"Contact","nav.cta":"Nous contacter",
+      "hero.badge":"Association a but non lucratif · Geneve","hero.subtitle":"Optimisation Resolutive Immuno-Metabolique","hero.desc":"Association scientifique genevoise a but non lucratif, dediee a l'immunonutrition preventive. Recherche, education et accompagnement therapeutique au service de votre sante.","hero.btn1":"Nos 12 prestations","hero.btn2":"Nous contacter","hero.scroll":"Decouvrir",
+      "stats.prestations":"Prestations","stats.poles":"Poles Association","stats.aliments":"Aliments indexes ORIM™","stats.indice":"Indice ORIM™ actuel","stats.microbiome":"Microbiome v4.0","stats.lieu":"Geneve, Suisse",
+      "mission.tag":"Notre mission","mission.title1":"Une association,","mission.title2":"une mission","mission.desc":"L'Association ORIM Geneve est une organisation a but non lucratif dediee a la recherche, l'education et l'accompagnement en immunonutrition preventive. Notre objectif : rendre accessible une approche scientifique de la nutrition au service de la sante immuno-metabolique.",
+      "mission.badge":"Association a but non lucratif · Geneve · Suisse","mission.name":"Association ORIM Geneve","mission.tagline":"Organisation scientifique a but non lucratif. Proprietaire de la marque ORIM™ et de l'Indice ORIM™. Poles Educatif, Therapeutique & Recherche.","mission.s1":"Programme 3 Phases (desinflammation, optimisation, autoregulation)","mission.s2":"Indice ORIM™ 0-100 (scoring 8 metriques)","mission.s3":"Pole R&D Saybar (biomarqueurs, nutrigenomique)","mission.s4":"Certification praticiens (3 niveaux)","mission.s5":"App digitale ORIM (tracking, menus, progression)","mission.s6":"Cabinet ORIM Geneve (fitness, coworking, therapie)",
+      "prest.tag":"12 prestations · 1 mission","prest.title":"Nos prestations","prest.desc":"L'Association ORIM Geneve structure ses 12 prestations en 4 piliers complementaires : Science, Prevention, Communaute et Infrastructure digitale.",
+      "prest.c1.phase":"Science","prest.c1.title":"Recherche","prest.c2.phase":"Prevention","prest.c2.title":"Accompagnement","prest.c3.phase":"Communaute","prest.c3.title":"Formation","prest.c4.phase":"Digital","prest.c4.title":"Infrastructure",
+      "prest.01.name":"Programme 3 Phases","prest.01.desc":"Desinflammation, optimisation metabolique, autoregulation durable",
+      "prest.02.name":"Indice ORIM 0-100","prest.02.desc":"Scoring alimentaire sur 8 metriques scientifiques",
+      "prest.03.name":"Pole R&D Saybar","prest.03.desc":"Biomarqueurs, SPMs, nutrigenomique, IA predictive",
+      "prest.04.name":"Partenariats sante","prest.04.desc":"Reseau de praticiens partenaires, orientation et suivi",
+      "prest.05.name":"Programme nutritionnel ORIM","prest.05.desc":"Protocoles personnalises 3 phases, menus Saybar, suivi",
+      "prest.06.name":"Cuisine educative","prest.06.desc":"Ateliers culinaires, demonstrations, menus personnalises",
+      "prest.07.name":"Communaute membres","prest.07.desc":"3 niveaux : Standard, Bienfaiteur, Premium",
+      "prest.08.name":"Certification praticiens","prest.08.desc":"Formation 3 niveaux, certification ORIM continue",
+      "prest.09.name":"Conferences & ateliers","prest.09.desc":"Seminaires publics, education nutritionnelle",
+      "prest.10.name":"App digitale ORIM","prest.10.desc":"Tracking biomarqueurs, menus, progression membre",
+      "prest.11.name":"Publications scientifiques","prest.11.desc":"Bulletins trimestriels, veille, articles valides",
+      "prest.12.name":"Cabinet ORIM Geneve","prest.12.desc":"Fitness, coworking sante, conference, therapie",
+      "poles.tag":"Association ORIM Geneve","poles.title":"🏛️ Trois Poles","poles.desc":"L'Association ORIM Geneve structure ses activites en trois poles complementaires : Educatif, Therapeutique et Recherche.",
+      "pole.edu.name":"Pole Educatif","pole.edu.desc":"Formations individuelles et collectives en nutrition immuno-metabolique. Seminaires, contenus pedagogiques, cotisations membres Standard & Bienfaiteur.","pole.edu.t1":"Seminaires collectifs","pole.edu.t2":"Formation individuelle","pole.edu.t3":"Atelier Seniors 55+","pole.edu.t4":"Contenus pedagogiques","pole.edu.t5":"Cotisations membres",
+      "pole.thera.name":"Pole Therapeutique","pole.thera.desc":"Suivi therapeutique personnalise sous mandat Association, supervise par le Dr. Mahour. Application de l'Indice ORIM™ experimental. Actes medicaux exclusifs a l'Association.","pole.thera.t1":"Suivi therapeutique","pole.thera.t2":"Indice ORIM™ experimental","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Droit suisse · Geneve",
+      "pole.rech.name":"Pole Recherche & IP","pole.rech.desc":"Developpement de l'Indice ORIM™ v4.0 Microbiome (2027) & v5.0 IA Nutrigenomique (2028). Gestion des subventions R&D. Propriete intellectuelle & depot marque.","pole.rech.t1":"Indice v4.0 · 2027","pole.rech.t2":"Indice v5.0 · 2028","pole.rech.t3":"Subventions R&D","pole.rech.t4":"Propriete intellectuelle","pole.rech.t5":"IPI · Suisse",
+      "marque.tag":"Propriete intellectuelle","marque.title":"Marque & Indice",
+      "marque.owner.badge":"Proprietaire · Association ORIM","marque.owner.title":"🏛️ Marque ORIM™","marque.owner.text":"La marque ORIM™ est en cours d'enregistrement a l'IPI (Suisse) par l'Association ORIM Geneve. Classes NICE 5 (nutraceutiques), 42 (recherche) et 44 (conseil nutrition). La marque reste propriete de l'Association.",
+      "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 Indice ORIM™","marque.indice.text":"L'Indice ORIM™ v3.0 (85+ aliments × 8 metriques) est developpe et detenu par l'Association. Il constitue le coeur scientifique du programme d'immunonutrition preventive ORIM.",
+      "marque.v4.badge":"2027 · Microbiome","marque.v4.title":"🧬 Indice v4.0","marque.v4.text":"Developpement Microbiome 2027 sous supervision Dr. Mahour. Finance par les subventions R&D sur compte Association exclusivement. Les algorithmes restent propriete Association.",
+      "marque.v5.badge":"2028 · IA Nutrigenomique","marque.v5.title":"🤖 Indice v5.0","marque.v5.text":"Vision 2028 : integration de l'intelligence artificielle et de la nutrigenomique. Algorithmes exclusifs Association ORIM Geneve. Protection IP renforcee des la phase R&D.",
+      "saybar.tag":"Partenariat strategique","saybar.title":"Saybar","saybar.desc":"Le partenariat ORIM × Saybar combine la methodologie scientifique de l'Association avec l'expertise therapeutique de Saybar, au service d'une nutrition preventive de qualite.","saybar.node.ch":"🏛️ Association ORIM","saybar.node.ch.sub":"Methodologie scientifique\nIndice ORIM™","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Partenaire therapeutique\nRecherche & formulation",
+      "equipe.tag":"Notre equipe","equipe.title":"Dirigeants & Experts","team.oc.r1":"President · Association ORIM","team.oc.r2":"Fondateur · Titulaire marque ORIM™","team.nc.r1":"Vice-president · Association ORIM","team.nc.r2":"Directeur Therapeutique","team.km.r1":"Superviseur R&D · Indice ORIM™","team.km.r2":"Partenaire medical · Association",
+      "contact.tag":"Nous joindre","contact.title":"Contact","contact.desc":"Association ORIM Geneve — a votre ecoute pour toute question relative a nos prestations.","contact.ch.title":"🏛️ Association ORIM Geneve","contact.ch.email.note":"Education · Therapeutique · Recherche","contact.ch.address":"Geneve, Suisse — Droit suisse applicable · For Geneve","contact.ch.note":"Association a but non lucratif · Droit suisse · Canton de Geneve",
+      "footer.ch":"Association ORIM Geneve","footer.ch.sub":"Suisse · But non lucratif · Immunonutrition preventive","footer.mentions":"Mentions legales","footer.privacy":"Politique de confidentialite","footer.contact":"Contact"
     },
     en: {
-      "nav.tagline":"Immuno-Metabolic","nav.entites":"Entities","nav.poles":"Poles","nav.commercial":"Commercial","nav.marque":"ORIM™ Brand","nav.partenaires":"Our Partners","nav.equipe":"Team","nav.contact":"Contact","nav.cta":"Contact us",
-      "hero.badge":"Science · Innovation · Health","hero.subtitle":"Resolving Immuno-Metabolic Optimization","hero.desc":"Geneva scientific association & ORIM SAS France — two complementary entities dedicated to your immuno-metabolic health.","hero.btn1":"Discover our entities","hero.btn2":"Contact us","hero.scroll":"Explore",
-      "stats.entites":"Legal entities","stats.poles":"Association poles","stats.aliments":"ORIM™ indexed foods","stats.indice":"Current ORIM™ Index","stats.microbiome":"Microbiome v4.0","stats.pays":"Presence",
-      "gateway.tag":"Our entities","gateway.title1":"Two entities,","gateway.title2":"one vision","gateway.desc":"ORIM™ operates through two distinct and complementary legal structures — Association ORIM Geneva (CH) and ORIM SAS France (FR) — each with clearly defined missions.",
-      "entity.ch.badge":"Association · Geneva · Switzerland","entity.ch.name":"Association ORIM Geneva","entity.ch.tagline":"Non-profit scientific entity. Owner of the ORIM™ brand and ORIM™ Index. Educational, Therapeutic & Research poles.","entity.ch.s1":"Seminars & educational training","entity.ch.s2":"Individual therapeutic follow-up","entity.ch.s3":"Seniors 55+ Workshop","entity.ch.s4":"ORIM™ Index v3.0 (Research)","entity.ch.s5":"R&D grants · Microbiome v4.0","entity.ch.s6":"Premium scientific monitoring","entity.ch.cta":"View Association poles →",
-      "entity.fr.badge":"SAS · France · Commercial","entity.fr.name":"ORIM SAS France","entity.fr.tagline":"French commercial entity. Approved distributor under ORIM™ license. Commercial pole — supplements, health retreats, corporate partnerships.","entity.fr.s1":"ORIM™ dietary supplements","entity.fr.s2":"Health & Wellness Retreats","entity.fr.s3":"Corporate Partnerships","entity.fr.s4":"Saybar network distribution","entity.fr.s5":"Brand used under Association CH license","entity.fr.cta":"View commercial pole →",
-      "poles.title":"🏛️ Three Poles — Association CH","poles.desc":"The Association ORIM Geneva structures its activities into three complementary poles, in accordance with Workflow A (Educational & Therapeutic) and D (Research & IP).",
+      "nav.tagline":"Immuno-Metabolic","nav.mission":"Our mission","nav.prestations":"12 Services","nav.poles":"Poles","nav.marque":"ORIM™ Brand","nav.partenaires":"Our Partners","nav.equipe":"Team","nav.contact":"Contact","nav.cta":"Contact us",
+      "hero.badge":"Non-profit association · Geneva","hero.subtitle":"Resolving Immuno-Metabolic Optimization","hero.desc":"Geneva-based non-profit scientific association dedicated to preventive immunonutrition. Research, education and therapeutic support for your health.","hero.btn1":"Our 12 services","hero.btn2":"Contact us","hero.scroll":"Explore",
+      "stats.prestations":"Services","stats.poles":"Association poles","stats.aliments":"ORIM™ indexed foods","stats.indice":"Current ORIM™ Index","stats.microbiome":"Microbiome v4.0","stats.lieu":"Geneva, Switzerland",
+      "mission.tag":"Our mission","mission.title1":"One association,","mission.title2":"one mission","mission.desc":"Association ORIM Geneva is a non-profit organization dedicated to research, education and support in preventive immunonutrition. Our goal: making a scientific approach to nutrition accessible for immuno-metabolic health.",
+      "mission.badge":"Non-profit association · Geneva · Switzerland","mission.name":"Association ORIM Geneva","mission.tagline":"Non-profit scientific organization. Owner of the ORIM™ brand and ORIM™ Index. Educational, Therapeutic & Research poles.","mission.s1":"3-Phase Program (anti-inflammation, optimization, self-regulation)","mission.s2":"ORIM™ Index 0-100 (8-metric scoring)","mission.s3":"Saybar R&D Hub (biomarkers, nutrigenomics)","mission.s4":"Practitioner certification (3 levels)","mission.s5":"ORIM digital app (tracking, menus, progress)","mission.s6":"ORIM Geneva Center (fitness, coworking, therapy)",
+      "prest.tag":"12 services · 1 mission","prest.title":"Our services","prest.desc":"Association ORIM Geneva structures its 12 services into 4 complementary pillars: Science, Prevention, Community, and Digital Infrastructure.",
+      "prest.c1.phase":"Science","prest.c1.title":"Research","prest.c2.phase":"Prevention","prest.c2.title":"Support","prest.c3.phase":"Community","prest.c3.title":"Training","prest.c4.phase":"Digital","prest.c4.title":"Infrastructure",
+      "prest.01.name":"3-Phase Program","prest.01.desc":"Anti-inflammation, metabolic optimization, lasting self-regulation",
+      "prest.02.name":"ORIM Index 0-100","prest.02.desc":"Food scoring across 8 scientific metrics",
+      "prest.03.name":"Saybar R&D Hub","prest.03.desc":"Biomarkers, SPMs, nutrigenomics, predictive AI",
+      "prest.04.name":"Health partnerships","prest.04.desc":"Network of partner practitioners, referral and follow-up",
+      "prest.05.name":"ORIM nutritional program","prest.05.desc":"Personalized 3-phase protocols, Saybar menus, support",
+      "prest.06.name":"Educational cooking","prest.06.desc":"Culinary workshops, demonstrations, personalized menus",
+      "prest.07.name":"Member community","prest.07.desc":"3 levels: Standard, Benefactor, Premium",
+      "prest.08.name":"Practitioner certification","prest.08.desc":"3-level training, ongoing ORIM certification",
+      "prest.09.name":"Conferences & workshops","prest.09.desc":"Public seminars, nutritional education",
+      "prest.10.name":"ORIM digital app","prest.10.desc":"Biomarker tracking, menus, member progress",
+      "prest.11.name":"Scientific publications","prest.11.desc":"Quarterly bulletins, monitoring, validated articles",
+      "prest.12.name":"ORIM Geneva Center","prest.12.desc":"Fitness, health coworking, conference, therapy",
+      "poles.tag":"Association ORIM Geneva","poles.title":"🏛️ Three Poles","poles.desc":"Association ORIM Geneva structures its activities into three complementary poles: Educational, Therapeutic and Research.",
       "pole.edu.name":"Educational Pole","pole.edu.desc":"Individual and collective training in immuno-metabolic nutrition. Seminars, educational content, Standard & Benefactor member subscriptions.","pole.edu.t1":"Group seminars","pole.edu.t2":"Individual training","pole.edu.t3":"Seniors 55+ Workshop","pole.edu.t4":"Educational content","pole.edu.t5":"Member subscriptions",
       "pole.thera.name":"Therapeutic Pole","pole.thera.desc":"Personalized therapeutic follow-up under Association mandate, supervised by Dr. Mahour. Application of the experimental ORIM™ Index. Medical acts exclusive to the Association.","pole.thera.t1":"Therapeutic follow-up","pole.thera.t2":"Experimental ORIM™ Index","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Swiss law · Geneva",
-      "pole.rech.name":"Research & IP Pole","pole.rech.desc":"Development of ORIM™ Index v4.0 Microbiome (2027) & v5.0 AI Nutrigenomics (2028). Management of R&D grants 20kCHF. Intellectual property & brand registration.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"R&D grants","pole.rech.t4":"Intellectual property","pole.rech.t5":"INPI · IGE",
-      "commercial.title":"🏢 Commercial Pole — SAS FR","commercial.desc":"ORIM SAS France operates the commercial pole under the ORIM™ brand license granted by Association ORIM Geneva (Workflow B). All commercial services are invoiced on FR IBAN.",
-      "comm.c1.name":"Dietary Supplements","comm.c1.desc":"Range of dietary supplements under the ORIM™ brand. National and international distribution. Formulations based on ORIM™ Index v3.0.",
-      "comm.c2.name":"Health & Wellness Retreats","comm.c2.desc":"Wellness stays and health retreats. Immersive immuno-metabolic programs. Selected hotel partnerships.",
-      "comm.c3.name":"Corporate Partnerships","comm.c3.desc":"Corporate health programs. Optimal nutrition at work. B2B contracts with French VAT 20%.",
-      "comm.c4.name":"Distribution & Network","comm.c4.desc":"Distribution through the Saybar network and approved partners. Distribution contracts under ORIM™ brand license.",
-      "fr.notice.title":"⚠️ Important notice:","fr.notice.text":"Commercial services (supplements, retreats, corporate) are exclusively managed by ORIM SAS France — FR IBAN. Association ORIM Geneva (CH) does not handle commercial orders. ORIM™ brand used under license from Association ORIM Geneva.",
+      "pole.rech.name":"Research & IP Pole","pole.rech.desc":"Development of ORIM™ Index v4.0 Microbiome (2027) & v5.0 AI Nutrigenomics (2028). R&D grant management. Intellectual property & brand registration.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"R&D grants","pole.rech.t4":"Intellectual property","pole.rech.t5":"IPI · Switzerland",
       "marque.tag":"Intellectual property","marque.title":"Brand & Index",
-      "marque.owner.badge":"Owner · Association CH","marque.owner.title":"🏛️ ORIM™ Brand","marque.owner.text":"The ORIM™ brand is registered at INPI (France) and IGE (Switzerland) by the Association ORIM Geneva. It is licensed to ORIM SAS France for commercial use with an arm's length royalty of 6% of net revenue excl. VAT, minimum €3,000/quarter.",
-      "marque.indice.badge":"R&D · Association CH","marque.indice.title":"🔬 ORIM™ Index","marque.indice.text":"The ORIM™ Index v3.0 (85 foods × 8 metrics) is developed and owned by the Association. ORIM SAS France accesses data via the R&D Services Convention (Contract n°2) — annual fee €8,000–12,000 on CH IBAN.",
-      "marque.v4.badge":"2027 · Microbiome","marque.v4.title":"🧬 Index v4.0","marque.v4.text":"Microbiome development 2027 under Dr. Mahour's supervision. Funded by R&D grants (20 kCHF) on Association account exclusively. Algorithms remain Association property.",
-      "marque.v5.badge":"2028 · AI Nutrigenomics","marque.v5.title":"🤖 Index v5.0","marque.v5.text":"2028 vision: integration of artificial intelligence and nutrigenomics. Exclusive Association ORIM Geneva algorithms. Reinforced archiving and IP protection from R&D phase.",
-      "saybar.tag":"Strategic partnership","saybar.title":"Saybar","saybar.desc":"The tripartite ORIM × Saybar partnership involves both ORIM entities with distinct roles and strictly separated financial flows (Workflow C).","saybar.node.ch":"🏛️ Association CH","saybar.node.ch.sub":"ORIM™ method license\n→ CH IBAN","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Distribution partner\n+ Therapeutic use","saybar.node.fr":"🏢 SAS FR","saybar.node.fr.sub":"Product distribution\n→ FR IBAN","saybar.legal":"Two separate contracts — Contract A (Association → Saybar) & Contract B (SAS → Saybar). Transfers on separate IBANs. 60% Association / 40% SAS split for mixed elements.",
-      "equipe.tag":"Our team","equipe.title":"Directors & Experts","team.oc.r1":"President · Association CH","team.oc.r2":"Partner · SAS FR","team.nc.r1":"CEO · ORIM SAS France","team.nc.r2":"Therapeutic Director · Association","team.km.r1":"R&D Supervisor · ORIM™ Index","team.km.r2":"Mandatory · Association CH",
-      "contact.tag":"Get in touch","contact.title":"Contact","contact.desc":"Contact the entity corresponding to your needs.","contact.ch.title":"🏛️ Association ORIM Geneva (CH)","contact.ch.email.note":"Educational · Therapeutic · Research","contact.ch.address":"Geneva, Switzerland — Swiss law applicable · Geneva jurisdiction","contact.ch.iban":"CH IBAN — Association payments only","contact.fr.title":"🏢 ORIM SAS France (FR)","contact.fr.email.note":"Commercial · Supplements · Partnerships","contact.fr.address":"France — French law · TGI Bourg-en-Bresse jurisdiction","contact.fr.iban":"FR IBAN — SAS payments only","contact.fr.note":"ORIM™ brand used under license from Association ORIM Geneva.",
-      "footer.ch":"Association ORIM Geneva","footer.ch.sub":"Switzerland · Non-profit · Brand & IP","footer.fr":"ORIM SAS France","footer.fr.sub":"France · Commercial · Under ORIM™ license","footer.mentions":"Legal notices","footer.privacy":"Privacy policy","footer.contact":"Contact","footer.conf":"Confidential document"
+      "marque.owner.badge":"Owner · Association ORIM","marque.owner.title":"🏛️ ORIM™ Brand","marque.owner.text":"The ORIM™ brand is being registered at the IPI (Switzerland) by Association ORIM Geneva. NICE classes 5 (nutraceuticals), 42 (research) and 44 (nutrition consulting). The brand remains Association property.",
+      "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 ORIM™ Index","marque.indice.text":"The ORIM™ Index v3.0 (85+ foods × 8 metrics) is developed and owned by the Association. It constitutes the scientific core of the ORIM preventive immunonutrition program.",
+      "marque.v4.badge":"2027 · Microbiome","marque.v4.title":"🧬 Index v4.0","marque.v4.text":"Microbiome development 2027 under Dr. Mahour's supervision. Funded by R&D grants on Association account exclusively. Algorithms remain Association property.",
+      "marque.v5.badge":"2028 · AI Nutrigenomics","marque.v5.title":"🤖 Index v5.0","marque.v5.text":"2028 vision: integration of artificial intelligence and nutrigenomics. Exclusive Association ORIM Geneva algorithms. Reinforced IP protection from R&D phase.",
+      "saybar.tag":"Strategic partnership","saybar.title":"Saybar","saybar.desc":"The ORIM × Saybar partnership combines the Association's scientific methodology with Saybar's therapeutic expertise, in service of quality preventive nutrition.","saybar.node.ch":"🏛️ Association ORIM","saybar.node.ch.sub":"Scientific methodology\nORIM™ Index","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Therapeutic partner\nResearch & formulation",
+      "equipe.tag":"Our team","equipe.title":"Directors & Experts","team.oc.r1":"President · Association ORIM","team.oc.r2":"Founder · ORIM™ brand holder","team.nc.r1":"Vice-president · Association ORIM","team.nc.r2":"Therapeutic Director","team.km.r1":"R&D Supervisor · ORIM™ Index","team.km.r2":"Medical partner · Association",
+      "contact.tag":"Get in touch","contact.title":"Contact","contact.desc":"Association ORIM Geneva — here to answer your questions about our services.","contact.ch.title":"🏛️ Association ORIM Geneva","contact.ch.email.note":"Education · Therapeutic · Research","contact.ch.address":"Geneva, Switzerland — Swiss law applicable · Geneva jurisdiction","contact.ch.note":"Non-profit association · Swiss law · Canton of Geneva",
+      "footer.ch":"Association ORIM Geneva","footer.ch.sub":"Switzerland · Non-profit · Preventive immunonutrition","footer.mentions":"Legal notices","footer.privacy":"Privacy policy","footer.contact":"Contact"
     },
     es: {
-      "nav.tagline":"Inmuno-Metabólico","nav.entites":"Entidades","nav.poles":"Polos","nav.commercial":"Comercial","nav.marque":"Marca ORIM™","nav.partenaires":"Nuestros Socios","nav.equipe":"Equipo","nav.contact":"Contacto","nav.cta":"Contáctenos",
-      "hero.badge":"Ciencia · Innovación · Salud","hero.subtitle":"Optimización Resolutiva Inmuno-Metabólica","hero.desc":"Asociación científica ginebrense y ORIM SAS Francia — dos entidades complementarias al servicio de su salud inmuno-metabólica.","hero.btn1":"Descubrir nuestras entidades","hero.btn2":"Contáctenos","hero.scroll":"Explorar",
-      "stats.entites":"Entidades jurídicas","stats.poles":"Polos Asociación","stats.aliments":"Alimentos indexados ORIM™","stats.indice":"Índice ORIM™ actual","stats.microbiome":"Microbioma v4.0","stats.pays":"Presencia",
-      "gateway.tag":"Nuestras entidades","gateway.title1":"Dos entidades,","gateway.title2":"una visión","gateway.desc":"ORIM™ opera a través de dos estructuras jurídicas distintas y complementarias — la Asociación ORIM Ginebra (CH) y ORIM SAS Francia (FR) — cada una con misiones claramente definidas.",
-      "entity.ch.badge":"Asociación · Ginebra · Suiza","entity.ch.name":"Asociación ORIM Ginebra","entity.ch.tagline":"Entidad científica sin ánimo de lucro. Propietaria de la marca ORIM™ y del Índice ORIM™. Polos Educativo, Terapéutico e Investigación.","entity.ch.s1":"Seminarios y formaciones educativas","entity.ch.s2":"Seguimiento terapéutico individual","entity.ch.s3":"Taller Mayores 55+","entity.ch.s4":"Índice ORIM™ v3.0 (Investigación)","entity.ch.s5":"Subvenciones I+D · Microbioma v4.0","entity.ch.s6":"Vigilancia científica Premium","entity.ch.cta":"Ver polos Asociación →",
-      "entity.fr.badge":"SAS · Francia · Comercial","entity.fr.name":"ORIM SAS Francia","entity.fr.tagline":"Entidad comercial francesa. Distribuidor autorizado bajo licencia ORIM™. Polo Comercial — suplementos, retiros de salud, asociaciones corporativas.","entity.fr.s1":"Suplementos alimentarios ORIM™","entity.fr.s2":"Viajes de Salud y Retiros","entity.fr.s3":"Asociaciones Corporativas","entity.fr.s4":"Distribución red Saybar","entity.fr.s5":"Marca bajo licencia Asociación CH","entity.fr.cta":"Ver polo comercial →",
-      "poles.title":"🏛️ Tres Polos — Asociación CH","poles.desc":"La Asociación ORIM Ginebra estructura sus actividades en tres polos complementarios, de acuerdo con el Flujo de trabajo A (Educativo y Terapéutico) y D (Investigación e IP).",
-      "pole.edu.name":"Polo Educativo","pole.edu.desc":"Formaciones individuales y colectivas en nutrición inmuno-metabólica. Seminarios, contenidos pedagógicos, cuotas de socios Estándar y Bienhechor.","pole.edu.t1":"Seminarios colectivos","pole.edu.t2":"Formación individual","pole.edu.t3":"Taller Mayores 55+","pole.edu.t4":"Contenidos pedagógicos","pole.edu.t5":"Cuotas de socios",
-      "pole.thera.name":"Polo Terapéutico","pole.thera.desc":"Seguimiento terapéutico personalizado bajo mandato Asociación, supervisado por el Dr. Mahour. Aplicación del Índice ORIM™ experimental. Actos médicos exclusivos de la Asociación.","pole.thera.t1":"Seguimiento terapéutico","pole.thera.t2":"Índice ORIM™ experimental","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Derecho suizo · Ginebra",
-      "pole.rech.name":"Polo Investigación e IP","pole.rech.desc":"Desarrollo del Índice ORIM™ v4.0 Microbioma (2027) y v5.0 IA Nutrigenómica (2028). Gestión de subvenciones I+D 20kCHF. Propiedad intelectual y registro de marca.","pole.rech.t1":"Índice v4.0 · 2027","pole.rech.t2":"Índice v5.0 · 2028","pole.rech.t3":"Subvenciones I+D","pole.rech.t4":"Propiedad intelectual","pole.rech.t5":"INPI · IGE",
-      "commercial.title":"🏢 Polo Comercial — SAS FR","commercial.desc":"ORIM SAS Francia opera el polo comercial bajo licencia de marca ORIM™ otorgada por la Asociación ORIM Ginebra (Flujo de trabajo B). Todos los servicios comerciales se facturan en IBAN FR.",
-      "comm.c1.name":"Suplementos Alimentarios","comm.c1.desc":"Gama de suplementos alimentarios bajo la marca ORIM™. Distribución nacional e internacional. Formulaciones basadas en el Índice ORIM™ v3.0.",
-      "comm.c2.name":"Viajes de Salud y Retiros","comm.c2.desc":"Estancias de bienestar y retiros de salud. Programas inmuno-metabólicos en inmersión. Asociaciones hoteleras seleccionadas.",
-      "comm.c3.name":"Asociaciones Corporativas","comm.c3.desc":"Programas de salud empresarial. Nutrición óptima en el trabajo. Contratos B2B con IVA francés 20%.",
-      "comm.c4.name":"Distribución y Red","comm.c4.desc":"Distribución a través de la red Saybar y socios autorizados. Contratos de distribución bajo licencia de marca ORIM™.",
-      "fr.notice.title":"⚠️ Aviso importante:","fr.notice.text":"Los servicios comerciales (suplementos, viajes, corporativos) son gestionados exclusivamente por ORIM SAS Francia — IBAN FR. La Asociación ORIM Ginebra (CH) no gestiona pedidos comerciales. Marca ORIM™ utilizada bajo licencia de la Asociación ORIM Ginebra.",
-      "marque.tag":"Propiedad intelectual","marque.title":"Marca e Índice",
-      "marque.owner.badge":"Propietaria · Asociación CH","marque.owner.title":"🏛️ Marca ORIM™","marque.owner.text":"La marca ORIM™ está registrada en el INPI (Francia) y el IGE (Suiza) por la Asociación ORIM Ginebra. Se licencia a ORIM SAS Francia para uso comercial con regalías arm's length del 6% del ingreso neto sin IVA, mínimo 3.000 EUR/trimestre.",
-      "marque.indice.badge":"I+D · Asociación CH","marque.indice.title":"🔬 Índice ORIM™","marque.indice.text":"El Índice ORIM™ v3.0 (85 alimentos × 8 métricas) es desarrollado y propiedad de la Asociación. ORIM SAS Francia accede a los datos mediante el Convenio de Servicios I+D (Contrato n°2) — tarifa anual 8.000–12.000 EUR en IBAN CH.",
-      "marque.v4.badge":"2027 · Microbioma","marque.v4.title":"🧬 Índice v4.0","marque.v4.text":"Desarrollo Microbioma 2027 bajo supervisión del Dr. Mahour. Financiado por subvenciones I+D (20 kCHF) en cuenta Asociación exclusivamente. Los algoritmos permanecen como propiedad de la Asociación.",
-      "marque.v5.badge":"2028 · IA Nutrigenómica","marque.v5.title":"🤖 Índice v5.0","marque.v5.text":"Visión 2028: integración de inteligencia artificial y nutrigenómica. Algoritmos exclusivos Asociación ORIM Ginebra. Archivo y protección de IP reforzados desde la fase I+D.",
-      "saybar.tag":"Alianza estratégica","saybar.title":"Saybar","saybar.desc":"La alianza tripartita ORIM × Saybar involucra a ambas entidades ORIM con roles distintos y flujos financieros estrictamente separados (Flujo de trabajo C).","saybar.node.ch":"🏛️ Asociación CH","saybar.node.ch.sub":"Licencia método ORIM™\n→ IBAN CH","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Socio distribuidor\n+ Uso terapéutico","saybar.node.fr":"🏢 SAS FR","saybar.node.fr.sub":"Distribución productos\n→ IBAN FR","saybar.legal":"Dos contratos distintos — Contrato A (Asociación → Saybar) y Contrato B (SAS → Saybar). Transferencias en IBAN separados. Clave de reparto 60% Asociación / 40% SAS para elementos mixtos.",
-      "equipe.tag":"Nuestro equipo","equipe.title":"Directivos y Expertos","team.oc.r1":"Presidente · Asociación CH","team.oc.r2":"Socio · SAS FR","team.nc.r1":"DG · ORIM SAS Francia","team.nc.r2":"Director Terapéutico · Asociación","team.km.r1":"Supervisor I+D · Índice ORIM™","team.km.r2":"Mandatario · Asociación CH",
-      "contact.tag":"Contáctenos","contact.title":"Contacto","contact.desc":"Contacte la entidad correspondiente a su necesidad.","contact.ch.title":"🏛️ Asociación ORIM Ginebra (CH)","contact.ch.email.note":"Educativo · Terapéutico · Investigación","contact.ch.address":"Ginebra, Suiza — Derecho suizo aplicable · Jurisdicción Ginebra","contact.ch.iban":"IBAN CH — Pagos Asociación únicamente","contact.fr.title":"🏢 ORIM SAS Francia (FR)","contact.fr.email.note":"Comercial · Suplementos · Alianzas","contact.fr.address":"Francia — Derecho francés · Jurisdicción TGI Bourg-en-Bresse","contact.fr.iban":"IBAN FR — Pagos SAS únicamente","contact.fr.note":"Marca ORIM™ utilizada bajo licencia de la Asociación ORIM Ginebra.",
-      "footer.ch":"Asociación ORIM Ginebra","footer.ch.sub":"Suiza · Sin ánimo de lucro · Marca e IP","footer.fr":"ORIM SAS Francia","footer.fr.sub":"Francia · Comercial · Bajo licencia ORIM™","footer.mentions":"Avisos legales","footer.privacy":"Política de privacidad","footer.contact":"Contacto","footer.conf":"Documento confidencial"
+      "nav.tagline":"Inmuno-Metabolico","nav.mission":"Nuestra mision","nav.prestations":"12 Prestaciones","nav.poles":"Polos","nav.marque":"Marca ORIM™","nav.partenaires":"Nuestros Socios","nav.equipe":"Equipo","nav.contact":"Contacto","nav.cta":"Contactenos",
+      "hero.badge":"Asociacion sin animo de lucro · Ginebra","hero.subtitle":"Optimizacion Resolutiva Inmuno-Metabolica","hero.desc":"Asociacion cientifica ginebrense sin animo de lucro, dedicada a la inmunonutricion preventiva. Investigacion, educacion y acompanamiento terapeutico al servicio de su salud.","hero.btn1":"Nuestras 12 prestaciones","hero.btn2":"Contactenos","hero.scroll":"Explorar",
+      "stats.prestations":"Prestaciones","stats.poles":"Polos Asociacion","stats.aliments":"Alimentos indexados ORIM™","stats.indice":"Indice ORIM™ actual","stats.microbiome":"Microbioma v4.0","stats.lieu":"Ginebra, Suiza",
+      "mission.tag":"Nuestra mision","mission.title1":"Una asociacion,","mission.title2":"una mision","mission.desc":"La Asociacion ORIM Ginebra es una organizacion sin animo de lucro dedicada a la investigacion, educacion y acompanamiento en inmunonutricion preventiva.",
+      "mission.badge":"Asociacion sin animo de lucro · Ginebra · Suiza","mission.name":"Asociacion ORIM Ginebra","mission.tagline":"Organizacion cientifica sin animo de lucro. Propietaria de la marca ORIM™ y del Indice ORIM™. Polos Educativo, Terapeutico e Investigacion.","mission.s1":"Programa 3 Fases (desinflamacion, optimizacion, autorregulacion)","mission.s2":"Indice ORIM™ 0-100 (scoring 8 metricas)","mission.s3":"Polo I+D Saybar (biomarcadores, nutrigenomica)","mission.s4":"Certificacion de profesionales (3 niveles)","mission.s5":"App digital ORIM (tracking, menus, progreso)","mission.s6":"Gabinete ORIM Ginebra (fitness, coworking, terapia)",
+      "prest.tag":"12 prestaciones · 1 mision","prest.title":"Nuestras prestaciones","prest.desc":"La Asociacion ORIM Ginebra estructura sus 12 prestaciones en 4 pilares complementarios: Ciencia, Prevencion, Comunidad e Infraestructura digital.",
+      "prest.c1.phase":"Ciencia","prest.c1.title":"Investigacion","prest.c2.phase":"Prevencion","prest.c2.title":"Acompanamiento","prest.c3.phase":"Comunidad","prest.c3.title":"Formacion","prest.c4.phase":"Digital","prest.c4.title":"Infraestructura",
+      "prest.01.name":"Programa 3 Fases","prest.01.desc":"Desinflamacion, optimizacion metabolica, autorregulacion durable",
+      "prest.02.name":"Indice ORIM 0-100","prest.02.desc":"Puntuacion alimentaria sobre 8 metricas cientificas",
+      "prest.03.name":"Polo I+D Saybar","prest.03.desc":"Biomarcadores, SPMs, nutrigenomica, IA predictiva",
+      "prest.04.name":"Alianzas salud","prest.04.desc":"Red de profesionales asociados, orientacion y seguimiento",
+      "prest.05.name":"Programa nutricional ORIM","prest.05.desc":"Protocolos personalizados 3 fases, menus Saybar, seguimiento",
+      "prest.06.name":"Cocina educativa","prest.06.desc":"Talleres culinarios, demostraciones, menus personalizados",
+      "prest.07.name":"Comunidad miembros","prest.07.desc":"3 niveles: Estandar, Bienhechor, Premium",
+      "prest.08.name":"Certificacion profesionales","prest.08.desc":"Formacion 3 niveles, certificacion ORIM continua",
+      "prest.09.name":"Conferencias y talleres","prest.09.desc":"Seminarios publicos, educacion nutricional",
+      "prest.10.name":"App digital ORIM","prest.10.desc":"Tracking biomarcadores, menus, progreso miembro",
+      "prest.11.name":"Publicaciones cientificas","prest.11.desc":"Boletines trimestrales, vigilancia, articulos validados",
+      "prest.12.name":"Gabinete ORIM Ginebra","prest.12.desc":"Fitness, coworking salud, conferencia, terapia",
+      "poles.tag":"Asociacion ORIM Ginebra","poles.title":"🏛️ Tres Polos","poles.desc":"La Asociacion ORIM Ginebra estructura sus actividades en tres polos complementarios: Educativo, Terapeutico e Investigacion.",
+      "pole.edu.name":"Polo Educativo","pole.edu.desc":"Formaciones individuales y colectivas en nutricion inmuno-metabolica. Seminarios, contenidos pedagogicos, cuotas de socios Estandar y Bienhechor.","pole.edu.t1":"Seminarios colectivos","pole.edu.t2":"Formacion individual","pole.edu.t3":"Taller Mayores 55+","pole.edu.t4":"Contenidos pedagogicos","pole.edu.t5":"Cuotas de socios",
+      "pole.thera.name":"Polo Terapeutico","pole.thera.desc":"Seguimiento terapeutico personalizado bajo mandato Asociacion, supervisado por el Dr. Mahour. Aplicacion del Indice ORIM™ experimental.","pole.thera.t1":"Seguimiento terapeutico","pole.thera.t2":"Indice ORIM™ experimental","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Derecho suizo · Ginebra",
+      "pole.rech.name":"Polo Investigacion e IP","pole.rech.desc":"Desarrollo del Indice ORIM™ v4.0 Microbioma (2027) y v5.0 IA Nutrigenomica (2028). Gestion de subvenciones I+D. Propiedad intelectual y registro de marca.","pole.rech.t1":"Indice v4.0 · 2027","pole.rech.t2":"Indice v5.0 · 2028","pole.rech.t3":"Subvenciones I+D","pole.rech.t4":"Propiedad intelectual","pole.rech.t5":"IPI · Suiza",
+      "marque.tag":"Propiedad intelectual","marque.title":"Marca e Indice",
+      "marque.owner.badge":"Propietaria · Asociacion ORIM","marque.owner.title":"🏛️ Marca ORIM™","marque.owner.text":"La marca ORIM™ esta en proceso de registro en el IPI (Suiza) por la Asociacion ORIM Ginebra. Clases NICE 5, 42 y 44. La marca permanece como propiedad de la Asociacion.",
+      "marque.indice.badge":"I+D · Asociacion ORIM","marque.indice.title":"🔬 Indice ORIM™","marque.indice.text":"El Indice ORIM™ v3.0 (85+ alimentos × 8 metricas) es desarrollado y propiedad de la Asociacion. Constituye el nucleo cientifico del programa ORIM.",
+      "marque.v4.badge":"2027 · Microbioma","marque.v4.title":"🧬 Indice v4.0","marque.v4.text":"Desarrollo Microbioma 2027 bajo supervision del Dr. Mahour. Financiado por subvenciones I+D en cuenta Asociacion exclusivamente.",
+      "marque.v5.badge":"2028 · IA Nutrigenomica","marque.v5.title":"🤖 Indice v5.0","marque.v5.text":"Vision 2028: integracion de inteligencia artificial y nutrigenomica. Algoritmos exclusivos Asociacion ORIM Ginebra.",
+      "saybar.tag":"Alianza estrategica","saybar.title":"Saybar","saybar.desc":"La alianza ORIM × Saybar combina la metodologia cientifica de la Asociacion con la experiencia terapeutica de Saybar.","saybar.node.ch":"🏛️ Asociacion ORIM","saybar.node.ch.sub":"Metodologia cientifica\nIndice ORIM™","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Socio terapeutico\nInvestigacion y formulacion",
+      "equipe.tag":"Nuestro equipo","equipe.title":"Directivos y Expertos","team.oc.r1":"Presidente · Asociacion ORIM","team.oc.r2":"Fundador · Titular marca ORIM™","team.nc.r1":"Vicepresidente · Asociacion ORIM","team.nc.r2":"Director Terapeutico","team.km.r1":"Supervisor I+D · Indice ORIM™","team.km.r2":"Socio medico · Asociacion",
+      "contact.tag":"Contactenos","contact.title":"Contacto","contact.desc":"Asociacion ORIM Ginebra — a su disposicion para cualquier consulta sobre nuestras prestaciones.","contact.ch.title":"🏛️ Asociacion ORIM Ginebra","contact.ch.email.note":"Educacion · Terapeutico · Investigacion","contact.ch.address":"Ginebra, Suiza — Derecho suizo aplicable · Jurisdiccion Ginebra","contact.ch.note":"Asociacion sin animo de lucro · Derecho suizo · Canton de Ginebra",
+      "footer.ch":"Asociacion ORIM Ginebra","footer.ch.sub":"Suiza · Sin animo de lucro · Inmunonutricion preventiva","footer.mentions":"Avisos legales","footer.privacy":"Politica de privacidad","footer.contact":"Contacto"
     },
     de: {
-      "nav.tagline":"Immuno-Metabolisch","nav.entites":"Einheiten","nav.poles":"Pole","nav.commercial":"Kommerziell","nav.marque":"ORIM™ Marke","nav.partenaires":"Unsere Partner","nav.equipe":"Team","nav.contact":"Kontakt","nav.cta":"Kontaktieren Sie uns",
-      "hero.badge":"Wissenschaft · Innovation · Gesundheit","hero.subtitle":"Auflösende Immuno-Metabolische Optimierung","hero.desc":"Genfer wissenschaftlicher Verein & ORIM SAS Frankreich — zwei komplementäre Einheiten im Dienst Ihrer immuno-metabolischen Gesundheit.","hero.btn1":"Unsere Einheiten entdecken","hero.btn2":"Kontakt aufnehmen","hero.scroll":"Entdecken",
-      "stats.entites":"Rechtspersonen","stats.poles":"Verein-Pole","stats.aliments":"Indexierte ORIM™-Lebensmittel","stats.indice":"Aktueller ORIM™-Index","stats.microbiome":"Mikrobiom v4.0","stats.pays":"Präsenz",
-      "gateway.tag":"Unsere Einheiten","gateway.title1":"Zwei Einheiten,","gateway.title2":"eine Vision","gateway.desc":"ORIM™ operiert über zwei unterschiedliche und komplementäre Rechtsstrukturen — Verein ORIM Genf (CH) und ORIM SAS Frankreich (FR) — jede mit klar definierten Aufgaben.",
-      "entity.ch.badge":"Verein · Genf · Schweiz","entity.ch.name":"Verein ORIM Genf","entity.ch.tagline":"Gemeinnützige wissenschaftliche Einheit. Eigentümerin der Marke ORIM™ und des ORIM™-Index. Bildungs-, Therapie- & Forschungspole.","entity.ch.s1":"Seminare & Bildungsschulungen","entity.ch.s2":"Individuelle Therapiebegleitung","entity.ch.s3":"Senioren 55+ Workshop","entity.ch.s4":"ORIM™-Index v3.0 (Forschung)","entity.ch.s5":"F&E-Förderungen · Mikrobiom v4.0","entity.ch.s6":"Premium Wissenschaftsmonitoring","entity.ch.cta":"Verein-Pole ansehen →",
-      "entity.fr.badge":"SAS · Frankreich · Kommerziell","entity.fr.name":"ORIM SAS Frankreich","entity.fr.tagline":"Französische Handelsgesellschaft. Zugelassener Distributor unter ORIM™-Lizenz. Kommerzieller Pol — Nahrungsergänzung, Gesundheitsreisen, Corporate-Partnerschaften.","entity.fr.s1":"ORIM™ Nahrungsergänzungsmittel","entity.fr.s2":"Gesundheits- & Wellness-Reisen","entity.fr.s3":"Corporate-Partnerschaften","entity.fr.s4":"Saybar-Netzwerk-Distribution","entity.fr.s5":"Marke unter Lizenz von Verein CH","entity.fr.cta":"Kommerziellen Pol ansehen →",
-      "poles.title":"🏛️ Drei Pole — Verein CH","poles.desc":"Der Verein ORIM Genf strukturiert seine Aktivitäten in drei komplementäre Pole gemäß Workflow A (Bildung & Therapie) und D (Forschung & IP).",
-      "pole.edu.name":"Bildungspol","pole.edu.desc":"Einzel- und Gruppentraining in immuno-metabolischer Ernährung. Seminare, pädagogische Inhalte, Standard- und Förder-Mitgliedsbeiträge.","pole.edu.t1":"Gruppenseminare","pole.edu.t2":"Einzelschulung","pole.edu.t3":"Senioren 55+ Workshop","pole.edu.t4":"Pädagogische Inhalte","pole.edu.t5":"Mitgliedsbeiträge",
-      "pole.thera.name":"Therapiepol","pole.thera.desc":"Persönliche Therapiebegleitung unter Vereinsmandat, betreut von Dr. Mahour. Anwendung des experimentellen ORIM™-Index. Medizinische Leistungen ausschließlich beim Verein.","pole.thera.t1":"Therapiebegleitung","pole.thera.t2":"Experimenteller ORIM™-Index","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Schweizer Recht · Genf",
-      "pole.rech.name":"Forschungs- & IP-Pol","pole.rech.desc":"Entwicklung des ORIM™-Index v4.0 Mikrobiom (2027) & v5.0 KI Nutrigenomik (2028). Verwaltung von F&E-Förderungen 20kCHF. Geistiges Eigentum & Markenanmeldung.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"F&E-Förderungen","pole.rech.t4":"Geistiges Eigentum","pole.rech.t5":"INPI · IGE",
-      "commercial.title":"🏢 Kommerzieller Pol — SAS FR","commercial.desc":"ORIM SAS Frankreich betreibt den kommerziellen Pol unter der ORIM™-Markenlizenz des Vereins ORIM Genf (Workflow B). Alle Handelsleistungen werden auf FR-IBAN fakturiert.",
-      "comm.c1.name":"Nahrungsergänzungsmittel","comm.c1.desc":"Sortiment an Nahrungsergänzungsmitteln unter der Marke ORIM™. Nationale und internationale Distribution. Formulierungen basierend auf ORIM™-Index v3.0.",
-      "comm.c2.name":"Gesundheits- & Wellness-Reisen","comm.c2.desc":"Wellness-Aufenthalte und Gesundheitsretreat. Immersive immuno-metabolische Programme. Ausgewählte Hotelpartnerschaften.",
-      "comm.c3.name":"Corporate-Partnerschaften","comm.c3.desc":"Betriebliche Gesundheitsprogramme. Optimale Ernährung am Arbeitsplatz. B2B-Verträge mit französischer MwSt. 20%.",
-      "comm.c4.name":"Distribution & Netzwerk","comm.c4.desc":"Vertrieb über das Saybar-Netzwerk und zugelassene Partner. Vertriebsverträge unter ORIM™-Markenlizenz.",
-      "fr.notice.title":"⚠️ Wichtiger Hinweis:","fr.notice.text":"Kommerzielle Leistungen (Nahrungsergänzung, Reisen, Corporate) werden ausschließlich von ORIM SAS Frankreich verwaltet — FR-IBAN. Der Verein ORIM Genf (CH) bearbeitet keine kommerziellen Bestellungen. Marke ORIM™ unter Lizenz des Vereins ORIM Genf verwendet.",
+      "nav.tagline":"Immuno-Metabolisch","nav.mission":"Unsere Mission","nav.prestations":"12 Leistungen","nav.poles":"Pole","nav.marque":"ORIM™ Marke","nav.partenaires":"Unsere Partner","nav.equipe":"Team","nav.contact":"Kontakt","nav.cta":"Kontaktieren Sie uns",
+      "hero.badge":"Gemeinnuetziger Verein · Genf","hero.subtitle":"Aufloesende Immuno-Metabolische Optimierung","hero.desc":"Genfer gemeinnuetziger wissenschaftlicher Verein fuer praeventive Immunoernaehrung. Forschung, Bildung und therapeutische Begleitung fuer Ihre Gesundheit.","hero.btn1":"Unsere 12 Leistungen","hero.btn2":"Kontakt aufnehmen","hero.scroll":"Entdecken",
+      "stats.prestations":"Leistungen","stats.poles":"Verein-Pole","stats.aliments":"Indexierte ORIM™-Lebensmittel","stats.indice":"Aktueller ORIM™-Index","stats.microbiome":"Mikrobiom v4.0","stats.lieu":"Genf, Schweiz",
+      "mission.tag":"Unsere Mission","mission.title1":"Ein Verein,","mission.title2":"eine Mission","mission.desc":"Der Verein ORIM Genf ist eine gemeinnuetzige Organisation fuer Forschung, Bildung und Begleitung in praeventiver Immunoernaehrung.",
+      "mission.badge":"Gemeinnuetziger Verein · Genf · Schweiz","mission.name":"Verein ORIM Genf","mission.tagline":"Gemeinnuetzige wissenschaftliche Organisation. Eigentuemerin der Marke ORIM™ und des ORIM™-Index. Bildungs-, Therapie- und Forschungspole.","mission.s1":"3-Phasen-Programm (Entzuendungshemmung, Optimierung, Selbstregulation)","mission.s2":"ORIM™-Index 0-100 (8-Metriken-Scoring)","mission.s3":"Saybar F&E-Hub (Biomarker, Nutrigenomik)","mission.s4":"Praktizierende-Zertifizierung (3 Stufen)","mission.s5":"ORIM digitale App (Tracking, Menues, Fortschritt)","mission.s6":"ORIM Genf Zentrum (Fitness, Coworking, Therapie)",
+      "prest.tag":"12 Leistungen · 1 Mission","prest.title":"Unsere Leistungen","prest.desc":"Der Verein ORIM Genf strukturiert seine 12 Leistungen in 4 komplementaere Saeulen: Wissenschaft, Praevention, Gemeinschaft und digitale Infrastruktur.",
+      "prest.c1.phase":"Wissenschaft","prest.c1.title":"Forschung","prest.c2.phase":"Praevention","prest.c2.title":"Begleitung","prest.c3.phase":"Gemeinschaft","prest.c3.title":"Ausbildung","prest.c4.phase":"Digital","prest.c4.title":"Infrastruktur",
+      "prest.01.name":"3-Phasen-Programm","prest.01.desc":"Entzuendungshemmung, metabolische Optimierung, dauerhafte Selbstregulation",
+      "prest.02.name":"ORIM-Index 0-100","prest.02.desc":"Lebensmittel-Scoring ueber 8 wissenschaftliche Metriken",
+      "prest.03.name":"Saybar F&E-Hub","prest.03.desc":"Biomarker, SPMs, Nutrigenomik, praediktive KI",
+      "prest.04.name":"Gesundheitspartnerschaften","prest.04.desc":"Netzwerk von Partner-Praktizierenden, Orientierung und Nachsorge",
+      "prest.05.name":"ORIM Ernaehrungsprogramm","prest.05.desc":"Personalisierte 3-Phasen-Protokolle, Saybar-Menues, Begleitung",
+      "prest.06.name":"Bildungskueche","prest.06.desc":"Kulinarische Workshops, Demonstrationen, personalisierte Menues",
+      "prest.07.name":"Mitglieder-Gemeinschaft","prest.07.desc":"3 Stufen: Standard, Foerderer, Premium",
+      "prest.08.name":"Praktizierenden-Zertifizierung","prest.08.desc":"3-Stufen-Ausbildung, fortlaufende ORIM-Zertifizierung",
+      "prest.09.name":"Konferenzen & Workshops","prest.09.desc":"Oeffentliche Seminare, Ernaehrungsbildung",
+      "prest.10.name":"ORIM digitale App","prest.10.desc":"Biomarker-Tracking, Menues, Mitglieder-Fortschritt",
+      "prest.11.name":"Wissenschaftliche Publikationen","prest.11.desc":"Quartalsbulletins, Monitoring, validierte Artikel",
+      "prest.12.name":"ORIM Zentrum Genf","prest.12.desc":"Fitness, Gesundheits-Coworking, Konferenz, Therapie",
+      "poles.tag":"Verein ORIM Genf","poles.title":"🏛️ Drei Pole","poles.desc":"Der Verein ORIM Genf strukturiert seine Aktivitaeten in drei komplementaere Pole: Bildung, Therapie und Forschung.",
+      "pole.edu.name":"Bildungspol","pole.edu.desc":"Einzel- und Gruppentraining in immuno-metabolischer Ernaehrung. Seminare, paedagogische Inhalte, Standard- und Foerder-Mitgliedsbeitraege.","pole.edu.t1":"Gruppenseminare","pole.edu.t2":"Einzelschulung","pole.edu.t3":"Senioren 55+ Workshop","pole.edu.t4":"Paedagogische Inhalte","pole.edu.t5":"Mitgliedsbeitraege",
+      "pole.thera.name":"Therapiepol","pole.thera.desc":"Persoenliche Therapiebegleitung unter Vereinsmandat, betreut von Dr. Mahour. Anwendung des experimentellen ORIM™-Index.","pole.thera.t1":"Therapiebegleitung","pole.thera.t2":"Experimenteller ORIM™-Index","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Schweizer Recht · Genf",
+      "pole.rech.name":"Forschungs- & IP-Pol","pole.rech.desc":"Entwicklung des ORIM™-Index v4.0 Mikrobiom (2027) & v5.0 KI Nutrigenomik (2028). F&E-Foerderungsverwaltung. Geistiges Eigentum & Markenanmeldung.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"F&E-Foerderungen","pole.rech.t4":"Geistiges Eigentum","pole.rech.t5":"IPI · Schweiz",
       "marque.tag":"Geistiges Eigentum","marque.title":"Marke & Index",
-      "marque.owner.badge":"Eigentümer · Verein CH","marque.owner.title":"🏛️ ORIM™ Marke","marque.owner.text":"Die Marke ORIM™ ist beim INPI (Frankreich) und beim IGE (Schweiz) vom Verein ORIM Genf eingetragen. Sie wird an ORIM SAS Frankreich für die kommerzielle Nutzung mit einer Arm's-Length-Lizenzgebühr von 6% des Nettoumsatzes exkl. MwSt., mindestens 3.000 EUR/Quartal, lizenziert.",
-      "marque.indice.badge":"F&E · Verein CH","marque.indice.title":"🔬 ORIM™-Index","marque.indice.text":"Der ORIM™-Index v3.0 (85 Lebensmittel × 8 Metriken) wird vom Verein entwickelt und besessen. ORIM SAS Frankreich greift über die F&E-Dienstleistungskonvention (Vertrag Nr. 2) auf Daten zu — Jahresgebühr 8.000–12.000 EUR auf CH-IBAN.",
-      "marque.v4.badge":"2027 · Mikrobiom","marque.v4.title":"🧬 Index v4.0","marque.v4.text":"Mikrobiom-Entwicklung 2027 unter Aufsicht von Dr. Mahour. Finanziert durch F&E-Förderungen (20 kCHF) ausschließlich auf Vereinskonto. Algorithmen bleiben Eigentum des Vereins.",
-      "marque.v5.badge":"2028 · KI Nutrigenomik","marque.v5.title":"🤖 Index v5.0","marque.v5.text":"Vision 2028: Integration von künstlicher Intelligenz und Nutrigenomik. Exklusive Algorithmen des Vereins ORIM Genf. Verstärkte Archivierung und IP-Schutz ab der F&E-Phase.",
-      "saybar.tag":"Strategische Partnerschaft","saybar.title":"Saybar","saybar.desc":"Die dreigliedrige ORIM × Saybar Partnerschaft umfasst beide ORIM-Einheiten mit unterschiedlichen Rollen und strikt getrennten Finanzflüssen (Workflow C).","saybar.node.ch":"🏛️ Verein CH","saybar.node.ch.sub":"ORIM™-Methoden-Lizenz\n→ CH-IBAN","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Distributionspartner\n+ Therapeutische Nutzung","saybar.node.fr":"🏢 SAS FR","saybar.node.fr.sub":"Produktvertrieb\n→ FR-IBAN","saybar.legal":"Zwei separate Verträge — Vertrag A (Verein → Saybar) & Vertrag B (SAS → Saybar). Überweisungen auf separate IBANs. Aufteilungsschlüssel 60% Verein / 40% SAS für gemischte Elemente.",
-      "equipe.tag":"Unser Team","equipe.title":"Direktoren & Experten","team.oc.r1":"Präsident · Verein CH","team.oc.r2":"Gesellschafter · SAS FR","team.nc.r1":"GF · ORIM SAS Frankreich","team.nc.r2":"Therapeutischer Direktor · Verein","team.km.r1":"F&E-Supervisor · ORIM™-Index","team.km.r2":"Beauftragter · Verein CH",
-      "contact.tag":"Kontakt aufnehmen","contact.title":"Kontakt","contact.desc":"Kontaktieren Sie die für Ihr Bedürfnis zuständige Einheit.","contact.ch.title":"🏛️ Verein ORIM Genf (CH)","contact.ch.email.note":"Bildung · Therapie · Forschung","contact.ch.address":"Genf, Schweiz — Schweizer Recht anwendbar · Gerichtsstand Genf","contact.ch.iban":"CH-IBAN — Nur Vereinszahlungen","contact.fr.title":"🏢 ORIM SAS Frankreich (FR)","contact.fr.email.note":"Kommerziell · Nahrungsergänzung · Partnerschaften","contact.fr.address":"Frankreich — Französisches Recht · TGI Bourg-en-Bresse","contact.fr.iban":"FR-IBAN — Nur SAS-Zahlungen","contact.fr.note":"Marke ORIM™ unter Lizenz des Vereins ORIM Genf verwendet.",
-      "footer.ch":"Verein ORIM Genf","footer.ch.sub":"Schweiz · Gemeinnützig · Marke & IP","footer.fr":"ORIM SAS Frankreich","footer.fr.sub":"Frankreich · Kommerziell · Unter ORIM™-Lizenz","footer.mentions":"Impressum","footer.privacy":"Datenschutzrichtlinie","footer.contact":"Kontakt","footer.conf":"Vertrauliches Dokument"
+      "marque.owner.badge":"Eigentuemer · Verein ORIM","marque.owner.title":"🏛️ ORIM™ Marke","marque.owner.text":"Die Marke ORIM™ wird beim IPI (Schweiz) vom Verein ORIM Genf eingetragen. NICE-Klassen 5, 42 und 44. Die Marke bleibt Eigentum des Vereins.",
+      "marque.indice.badge":"F&E · Verein ORIM","marque.indice.title":"🔬 ORIM™-Index","marque.indice.text":"Der ORIM™-Index v3.0 (85+ Lebensmittel × 8 Metriken) wird vom Verein entwickelt und besessen. Er bildet den wissenschaftlichen Kern des ORIM-Programms.",
+      "marque.v4.badge":"2027 · Mikrobiom","marque.v4.title":"🧬 Index v4.0","marque.v4.text":"Mikrobiom-Entwicklung 2027 unter Aufsicht von Dr. Mahour. Finanziert durch F&E-Foerderungen ausschliesslich auf Vereinskonto.",
+      "marque.v5.badge":"2028 · KI Nutrigenomik","marque.v5.title":"🤖 Index v5.0","marque.v5.text":"Vision 2028: Integration von kuenstlicher Intelligenz und Nutrigenomik. Exklusive Algorithmen des Vereins ORIM Genf.",
+      "saybar.tag":"Strategische Partnerschaft","saybar.title":"Saybar","saybar.desc":"Die ORIM × Saybar Partnerschaft verbindet die wissenschaftliche Methodik des Vereins mit Saybars therapeutischer Expertise.","saybar.node.ch":"🏛️ Verein ORIM","saybar.node.ch.sub":"Wissenschaftliche Methodik\nORIM™-Index","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Therapeutischer Partner\nForschung & Formulierung",
+      "equipe.tag":"Unser Team","equipe.title":"Direktoren & Experten","team.oc.r1":"Praesident · Verein ORIM","team.oc.r2":"Gruender · ORIM™-Markeninhaber","team.nc.r1":"Vizepraesident · Verein ORIM","team.nc.r2":"Therapeutischer Direktor","team.km.r1":"F&E-Supervisor · ORIM™-Index","team.km.r2":"Medizinischer Partner · Verein",
+      "contact.tag":"Kontakt aufnehmen","contact.title":"Kontakt","contact.desc":"Verein ORIM Genf — fuer alle Fragen zu unseren Leistungen.","contact.ch.title":"🏛️ Verein ORIM Genf","contact.ch.email.note":"Bildung · Therapie · Forschung","contact.ch.address":"Genf, Schweiz — Schweizer Recht anwendbar · Gerichtsstand Genf","contact.ch.note":"Gemeinnuetziger Verein · Schweizer Recht · Kanton Genf",
+      "footer.ch":"Verein ORIM Genf","footer.ch.sub":"Schweiz · Gemeinnuetzig · Praeventive Immunoernaehrung","footer.mentions":"Impressum","footer.privacy":"Datenschutzrichtlinie","footer.contact":"Kontakt"
     }
   };
 
@@ -667,8 +764,7 @@
     });
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-' + lang).classList.add('active');
-    // Update page title
-    const titles = { fr: 'ORIM™ — Optimisation Résolutive Immuno-Métabolique', en: 'ORIM™ — Resolving Immuno-Metabolic Optimization', es: 'ORIM™ — Optimización Resolutiva Inmuno-Metabólica', de: 'ORIM™ — Auflösende Immuno-Metabolische Optimierung' };
+    const titles = { fr: 'ORIM™ — Optimisation Resolutive Immuno-Metabolique', en: 'ORIM™ — Resolving Immuno-Metabolic Optimization', es: 'ORIM™ — Optimizacion Resolutiva Inmuno-Metabolica', de: 'ORIM™ — Aufloesende Immuno-Metabolische Optimierung' };
     document.title = titles[lang];
   }
 

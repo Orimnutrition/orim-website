@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 body{
   font-family:'Inter',system-ui,sans-serif;
-  background:#010509;
+  background:#020810;
   color:#e0f0ec;
   overflow:hidden;
   width:100vw;height:100vh;
@@ -223,7 +223,7 @@ canvas{display:block;width:100%;height:100%}
 /* LOADING */
 #loader{
   position:fixed;inset:0;z-index:9999;
-  background:#010509;
+  background:#020810;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   transition:opacity .8s;
@@ -316,6 +316,7 @@ canvas{display:block;width:100%;height:100%}
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/earcut@2.2.4/dist/earcut.min.js"></script>
 <script>
 (function(){
 "use strict";
@@ -331,16 +332,27 @@ var PARTNERS = [
   { id:7, name:"Tokyo Wellness Clinic", type:"therapeute", city:"Tokyo", country:"Japon", countryCode:"JPN", lat:35.68, lon:139.69, emoji:"\ud83c\udfef", desc:"Clinique de bien-\u00eatre int\u00e9grative fusion ORIM\u2122.", tags:["M\u00e9decine int\u00e9grative","Acupuncture"], rdv:"#", site:"https://orimnutrition.com" },
   { id:8, name:"Green Life S\u00e3o Paulo", type:"magasin", city:"S\u00e3o Paulo", country:"Br\u00e9sil", countryCode:"BRA", lat:-23.55, lon:-46.63, emoji:"\ud83c\udf0e", desc:"Leader nutrition fonctionnelle au Br\u00e9sil, distribution ORIM\u2122.", tags:["Distribution Latam","Ateliers"], rdv:"#", site:"https://orimnutrition.com" },
   { id:9, name:"Dr. Amara Diallo", type:"medecin", city:"Dakar", country:"S\u00e9n\u00e9gal", countryCode:"SEN", lat:14.69, lon:-17.44, emoji:"\ud83e\ude7a", desc:"Pionnier nutrition fonctionnelle en Afrique de l\u2019Ouest.", tags:["Afrique","D\u00e9veloppement"], rdv:"#", site:"https://orimnutrition.com" },
-  { id:10, name:"Sydney Functional Health", type:"naturopathe", city:"Sydney", country:"Australie", countryCode:"AUS", lat:-33.86, lon:151.21, emoji:"\ud83e\udd98", desc:"Sp\u00e9cialistes microbiome et immunit\u00e9, certifi\u00e9s ORIM\u2122.", tags:["Microbiome","Certifi\u00e9 ORIM\u2122"], rdv:"#", site:"https://orimnutrition.com" }
+  { id:10, name:"Sydney Functional Health", type:"naturopathe", city:"Sydney", country:"Australie", countryCode:"AUS", lat:-33.86, lon:151.21, emoji:"\ud83e\udd98", desc:"Sp\u00e9cialistes microbiome et immunit\u00e9, certifi\u00e9s ORIM\u2122.", tags:["Microbiome","Certifi\u00e9 ORIM\u2122"], rdv:"#", site:"https://orimnutrition.com" },
+  // ── NON-PARTENAIRES (annuaire local) ──
+  { id:101, name:"Pharmacie du Molard", type:"non-partenaire", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.203, lon:6.152, emoji:"\ud83d\udc8a", desc:"Pharmacie au c\u0153ur de Gen\u00e8ve. Compl\u00e9ments alimentaires et conseil.", tags:["Pharmacie","Compl\u00e9ments"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:102, name:"March\u00e9 Bio Plainpalais", type:"non-partenaire", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.197, lon:6.142, emoji:"\ud83e\udd6c", desc:"March\u00e9 de producteurs bio, Plaine de Plainpalais.", tags:["Bio","March\u00e9","Producteurs"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:103, name:"Ferme des Evaux", type:"non-partenaire", city:"Onex", country:"Suisse", countryCode:"CHE", lat:46.183, lon:6.102, emoji:"\ud83c\udf3e", desc:"Exploitation agricole urbaine. Vente directe l\u00e9gumes de saison.", tags:["Agriculture","Permaculture"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:104, name:"Herboristerie du Lac", type:"non-partenaire", city:"Lausanne", country:"Suisse", countryCode:"CHE", lat:46.519, lon:6.633, emoji:"\ud83c\udf3f", desc:"Herboristerie artisanale. Plantes m\u00e9dicinales et tisanes.", tags:["Herboristerie","Plantes"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:105, name:"Bio Markt Bern", type:"non-partenaire", city:"Berne", country:"Suisse", countryCode:"CHE", lat:46.948, lon:7.447, emoji:"\ud83d\uded2", desc:"Supermarch\u00e9 bio au centre de Berne. Produits biologiques et locaux.", tags:["Bio","Supermarch\u00e9"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:106, name:"Alpenk\u00e4serei Z\u00fcrich", type:"non-partenaire", city:"Z\u00fcrich", country:"Suisse", countryCode:"CHE", lat:47.376, lon:8.541, emoji:"\u26f0\ufe0f", desc:"Fromagerie alpine. Produits riches en probiotiques naturels.", tags:["Fromagerie","Probiotiques"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:107, name:"Domaine Bio du Lavaux", type:"non-partenaire", city:"Lutry", country:"Suisse", countryCode:"CHE", lat:46.505, lon:6.685, emoji:"\ud83c\udf47", desc:"Domaine viticole bio en Lavaux. Vins naturels riches en polyph\u00e9nols.", tags:["Viticulture","Bio"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:108, name:"Reformhaus Basel", type:"non-partenaire", city:"B\u00e2le", country:"Suisse", countryCode:"CHE", lat:47.559, lon:7.588, emoji:"\ud83c\udf31", desc:"Magasin di\u00e9t\u00e9tique \u00e0 B\u00e2le. Compl\u00e9ments et alimentation naturelle.", tags:["Di\u00e9t\u00e9tique","Naturel"], rdv:"#", site:"https://local.ch", source:"local.ch" }
 ];
 
 var TYPE_COLORS = {
   medecin:"#00d4aa", therapeute:"#00b4d8", magasin:"#f4a261",
-  naturopathe:"#90be6d", coach:"#e76f51", laboratoire:"#a78bfa"
+  naturopathe:"#90be6d", coach:"#e76f51", laboratoire:"#a78bfa",
+  "non-partenaire":"#6a7a8a"
 };
 var TYPE_LABELS = {
   medecin:"M\u00e9decin", therapeute:"Th\u00e9rapeute", magasin:"Magasin",
-  naturopathe:"Naturopathe", coach:"Coach", laboratoire:"Laboratoire"
+  naturopathe:"Naturopathe", coach:"Coach", laboratoire:"Laboratoire",
+  "non-partenaire":"Non-partenaire"
 };
 var FLAG_MAP = {
   FRA:"\ud83c\uddeb\ud83c\uddf7", CHE:"\ud83c\udde8\ud83c\udded", CAN:"\ud83c\udde8\ud83c\udde6",
@@ -398,7 +410,7 @@ camera.position.set(0, 0.3, 3.2);
 var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setClearColor(0x010509, 1);
+renderer.setClearColor(0x020810, 1);
 container.appendChild(renderer.domElement);
 
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -414,7 +426,7 @@ controls.autoRotateSpeed = 0.15;
 
 /* ─── LIGHTING ─── */
 scene.add(new THREE.AmbientLight(0x406050, 0.15));
-var dimPt = new THREE.PointLight(0x00d4aa, 0.12, 10);
+var dimPt = new THREE.PointLight(0x1a8aaa, 0.18, 10);
 dimPt.position.set(2, 1, 3);
 scene.add(dimPt);
 
@@ -431,20 +443,40 @@ scene.add(dimPt);
     pos[i+2] = r * Math.cos(ph);
   }
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0x354050, size: 0.12, sizeAttenuation: true })));
+  scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0x2a4565, size: 0.12, sizeAttenuation: true })));
 })();
 
 /* ─── GLOBE SPHERE ─── */
 var GLOBE_R = 1.0;
 var globeMesh = new THREE.Mesh(
   new THREE.SphereGeometry(GLOBE_R, 64, 64),
-  new THREE.MeshPhongMaterial({
-    color: 0x030810,
-    emissive: 0x010408,
-    emissiveIntensity: 0.25,
-    shininess: 5,
-    transparent: true,
-    opacity: 0.97
+  new THREE.ShaderMaterial({
+    vertexShader: [
+      'varying vec3 vNormal;',
+      'varying vec3 vPos;',
+      'void main(){',
+      '  vNormal = normalize(normalMatrix * normal);',
+      '  vPos = position;',
+      '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);',
+      '}'
+    ].join('\n'),
+    fragmentShader: [
+      'varying vec3 vNormal;',
+      'varying vec3 vPos;',
+      'void main(){',
+      '  vec3 deepBlue = vec3(0.015, 0.055, 0.13);',
+      '  vec3 midBlue = vec3(0.03, 0.09, 0.19);',
+      '  vec3 lightBlue = vec3(0.05, 0.14, 0.25);',
+      '  float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 2.2);',
+      '  float wave = sin(vPos.x * 12.0 + vPos.y * 8.0 + vPos.z * 6.0) * 0.5 + 0.5;',
+      '  float wave2 = sin(vPos.x * 5.0 - vPos.z * 7.0) * 0.5 + 0.5;',
+      '  vec3 col = mix(deepBlue, midBlue, wave * 0.3 + wave2 * 0.15);',
+      '  col = mix(col, lightBlue, fresnel * 0.5);',
+      '  col += vec3(0.0, 0.025, 0.02) * fresnel;',
+      '  gl_FragColor = vec4(col, 0.97);',
+      '}'
+    ].join('\n'),
+    transparent: true
   })
 );
 scene.add(globeMesh);
@@ -465,7 +497,8 @@ scene.add(globeMesh);
         'varying vec3 vNormal;',
         'void main(){',
         '  float intensity = pow(0.62 - dot(vNormal, vec3(0,0,1.0)), 3.0);',
-        '  gl_FragColor = vec4(0.0, 0.83, 0.67, 1.0) * intensity * 0.1;',
+        '  vec3 atmosCol = mix(vec3(0.0, 0.55, 0.82), vec3(0.0, 0.83, 0.67), 0.4);',
+        '  gl_FragColor = vec4(atmosCol, 1.0) * intensity * 0.12;',
         '}'
       ].join('\n'),
       blending: THREE.AdditiveBlending,
@@ -476,20 +509,83 @@ scene.add(globeMesh);
   ));
 })();
 
-/* ─── NUCLEUS ─── */
+/* ─── NUCLEUS (core light) ─── */
+var nucleusCore, nucleusGlow, nucleusHalo, coreLight;
 (function(){
-  scene.add(new THREE.Mesh(
-    new THREE.SphereGeometry(0.055, 24, 24),
-    new THREE.MeshBasicMaterial({ color: 0x00d4aa, transparent: true, opacity: 0.12 })
-  ));
-  scene.add(new THREE.Mesh(
-    new THREE.SphereGeometry(0.11, 24, 24),
+  // Bright inner core
+  nucleusCore = new THREE.Mesh(
+    new THREE.SphereGeometry(0.06, 32, 32),
+    new THREE.MeshBasicMaterial({ color: 0x00ffcc, transparent: true, opacity: 0.45 })
+  );
+  scene.add(nucleusCore);
+
+  // Medium glow ring
+  nucleusGlow = new THREE.Mesh(
+    new THREE.SphereGeometry(0.14, 32, 32),
     new THREE.ShaderMaterial({
       vertexShader: 'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-      fragmentShader: 'varying vec3 vN;void main(){float i=pow(0.7-dot(vN,vec3(0,0,1)),2.5);gl_FragColor=vec4(0.,0.83,0.67,1.)*i*0.08;}',
+      fragmentShader: 'varying vec3 vN;void main(){float i=pow(0.72-dot(vN,vec3(0,0,1)),2.0);gl_FragColor=vec4(0.0,0.9,0.7,1.0)*i*0.2;}',
       blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true, depthWrite: false
     })
-  ));
+  );
+  scene.add(nucleusGlow);
+
+  // Large radial halo — light that reaches the surface
+  nucleusHalo = new THREE.Mesh(
+    new THREE.SphereGeometry(0.65, 32, 32),
+    new THREE.ShaderMaterial({
+      vertexShader: 'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+      fragmentShader: [
+        'varying vec3 vN;',
+        'void main(){',
+        '  float i = pow(0.55 - dot(vN, vec3(0,0,1)), 1.8);',
+        '  vec3 col = mix(vec3(0.0,0.85,0.65), vec3(0.1,0.5,0.9), 0.3);',
+        '  gl_FragColor = vec4(col, 1.0) * i * 0.06;',
+        '}'
+      ].join('\n'),
+      blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true, depthWrite: false
+    })
+  );
+  scene.add(nucleusHalo);
+
+  // Point light at center — illuminates continent meshes from inside
+  coreLight = new THREE.PointLight(0x00d4aa, 0.6, 3.0, 2);
+  coreLight.position.set(0, 0, 0);
+  scene.add(coreLight);
+})();
+
+/* ─── INNER GLOW LAYER (subsurface light leaking through continents) ─── */
+var innerGlowMesh;
+(function(){
+  innerGlowMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(GLOBE_R * 0.995, 64, 64),
+    new THREE.ShaderMaterial({
+      vertexShader: [
+        'varying vec3 vNormal;',
+        'varying vec3 vWorldPos;',
+        'void main(){',
+        '  vNormal = normalize(normalMatrix * normal);',
+        '  vWorldPos = (modelMatrix * vec4(position, 1.0)).xyz;',
+        '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'varying vec3 vNormal;',
+        'varying vec3 vWorldPos;',
+        'void main(){',
+        '  float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 1.5);',
+        '  vec3 glowCol = mix(vec3(0.0, 0.83, 0.55), vec3(0.05, 0.45, 0.8), fresnel);',
+        '  float edge = smoothstep(0.2, 0.8, fresnel);',
+        '  gl_FragColor = vec4(glowCol, 1.0) * edge * 0.08;',
+        '}'
+      ].join('\n'),
+      blending: THREE.AdditiveBlending,
+      side: THREE.FrontSide,
+      transparent: true,
+      depthWrite: false
+    })
+  );
+  scene.add(innerGlowMesh);
 })();
 
 /* ─── CYTOPLASM PARTICLES ─── */
@@ -530,35 +626,38 @@ var partnerDots = [];
 
 PARTNERS.forEach(function(p, idx) {
   var col = new THREE.Color(TYPE_COLORS[p.type] || '#00d4aa');
+  var isNP = p.type === 'non-partenaire';
   var pos = latLonToVec3(p.lat, p.lon, GLOBE_R * 1.015);
 
   var dot = new THREE.Mesh(
-    new THREE.SphereGeometry(0.013, 12, 12),
-    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.9 })
+    new THREE.SphereGeometry(isNP ? 0.008 : 0.013, 12, 12),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.6 : 0.9 })
   );
   dot.position.copy(pos);
   partnerGroup.add(dot);
 
   var glow = new THREE.Mesh(
-    new THREE.SphereGeometry(0.028, 12, 12),
-    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.18, blending: THREE.AdditiveBlending, depthWrite: false })
+    new THREE.SphereGeometry(isNP ? 0.016 : 0.028, 12, 12),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.08 : 0.18, blending: THREE.AdditiveBlending, depthWrite: false })
   );
   glow.position.copy(pos);
   partnerGroup.add(glow);
 
   var ring = new THREE.Mesh(
-    new THREE.RingGeometry(0.018, 0.023, 32),
-    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.3, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false })
+    new THREE.RingGeometry(isNP ? 0.012 : 0.018, isNP ? 0.016 : 0.023, 32),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.15 : 0.3, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false })
   );
   ring.position.copy(pos);
   ring.lookAt(new THREE.Vector3(0, 0, 0));
   partnerGroup.add(ring);
 
-  // filament
-  var fGeo = new THREE.BufferGeometry().setFromPoints([pos, new THREE.Vector3(0,0,0)]);
-  partnerGroup.add(new THREE.Line(fGeo, new THREE.LineBasicMaterial({
-    color: col, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending, depthWrite: false
-  })));
+  // filament (only for real partners)
+  if (!isNP) {
+    var fGeo = new THREE.BufferGeometry().setFromPoints([pos, new THREE.Vector3(0,0,0)]);
+    partnerGroup.add(new THREE.Line(fGeo, new THREE.LineBasicMaterial({
+      color: col, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending, depthWrite: false
+    })));
+  }
 
   partnerDots.push({ mesh: dot, ring: ring, glow: glow, partner: p });
 });
@@ -596,7 +695,8 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
           }
           var bGeo = new THREE.BufferGeometry().setFromPoints(pts);
           var line = new THREE.Line(bGeo, new THREE.LineBasicMaterial({
-            color: 0x00d4aa, transparent: true, opacity: 0.3, depthWrite: false
+            color: 0x00d4aa, transparent: true, opacity: 0.4, depthWrite: false,
+            blending: THREE.AdditiveBlending
           }));
           countryLinesGroup.add(line);
           lineObjs.push(line);
@@ -648,10 +748,47 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
 
       if (alpha3) {
         if (!countryDataMap[alpha3]) {
-          countryDataMap[alpha3] = { name: name, lines: lineObjs };
+          countryDataMap[alpha3] = { name: name, lines: lineObjs, reliefMeshes: [], elevated: false, rings: [] };
         } else {
           countryDataMap[alpha3].lines = countryDataMap[alpha3].lines.concat(lineObjs);
         }
+      }
+
+      // Build relief meshes (filled country polygons for elevation)
+      if (alpha3 && countryDataMap[alpha3]) {
+        polys.forEach(function(poly){
+          try {
+            var outerRing = poly[0];
+            if (outerRing.length < 4) return;
+            var flat = [];
+            outerRing.forEach(function(c){ flat.push(c[0], c[1]); });
+            var holeIndices = [];
+            for (var hi = 1; hi < poly.length; hi++) {
+              holeIndices.push(flat.length / 2);
+              poly[hi].forEach(function(c){ flat.push(c[0], c[1]); });
+            }
+            var tris = earcut(flat, holeIndices.length ? holeIndices : null);
+            if (!tris.length) return;
+            var positions = new Float32Array((flat.length / 2) * 3);
+            for (var i = 0; i < flat.length; i += 2) {
+              var pos = latLonToVec3(flat[i+1], flat[i], GLOBE_R * 1.004);
+              var idx3 = (i / 2) * 3;
+              positions[idx3] = pos.x; positions[idx3+1] = pos.y; positions[idx3+2] = pos.z;
+            }
+            var rGeo = new THREE.BufferGeometry();
+            rGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            rGeo.setIndex(tris);
+            rGeo.computeVertexNormals();
+            rGeo.userData = { flatCoords: flat };
+            var rMat = new THREE.MeshBasicMaterial({
+              color: 0x00d4aa, transparent: true, opacity: 0.04, side: THREE.DoubleSide,
+              depthWrite: false, blending: THREE.AdditiveBlending
+            });
+            var rMesh = new THREE.Mesh(rGeo, rMat);
+            scene.add(rMesh);
+            countryDataMap[alpha3].reliefMeshes.push(rMesh);
+          } catch(e){}
+        });
       }
     });
 
@@ -680,6 +817,58 @@ function partnersInCountry(code) {
   return PARTNERS.filter(function(p){ return p.countryCode === code; });
 }
 
+/* ─── COUNTRY RELIEF ─── */
+var elevatedCountryCode = null;
+
+function setCountryRadius(code, radius) {
+  var d = countryDataMap[code];
+  if (!d || !d.reliefMeshes) return;
+  d.reliefMeshes.forEach(function(mesh){
+    var flat = mesh.geometry.userData.flatCoords;
+    var positions = mesh.geometry.attributes.position.array;
+    for (var i = 0; i < flat.length; i += 2) {
+      var pos = latLonToVec3(flat[i+1], flat[i], radius);
+      var idx3 = (i / 2) * 3;
+      positions[idx3] = pos.x; positions[idx3+1] = pos.y; positions[idx3+2] = pos.z;
+    }
+    mesh.geometry.attributes.position.needsUpdate = true;
+  });
+}
+
+function elevateCountry(code, up) {
+  var d = countryDataMap[code];
+  if (!d) return;
+  var obj = { radius: up ? GLOBE_R * 1.004 : GLOBE_R * 1.035 };
+  var target = up ? GLOBE_R * 1.035 : GLOBE_R * 1.004;
+  var targetOpacity = up ? 0.15 : 0;
+  gsap.to(obj, { radius: target, duration: 0.5, ease: 'power2.out',
+    onUpdate: function(){ setCountryRadius(code, obj.radius); }
+  });
+  d.reliefMeshes.forEach(function(mesh){
+    gsap.to(mesh.material, { opacity: targetOpacity, duration: 0.4 });
+  });
+  // Also brighten country lines when elevated
+  if (up) {
+    d.lines.forEach(function(l){ l.material.opacity = 0.9; l.material.color.setHex(0x00ffee); });
+  } else {
+    d.lines.forEach(function(l){ l.material.opacity = 0.4; l.material.color.setHex(0x00d4aa); });
+  }
+  d.elevated = up;
+}
+
+function selectCountry(code) {
+  if (elevatedCountryCode && elevatedCountryCode !== code) {
+    elevateCountry(elevatedCountryCode, false);
+  }
+  if (elevatedCountryCode === code) {
+    elevateCountry(code, false);
+    elevatedCountryCode = null;
+    return;
+  }
+  elevatedCountryCode = code;
+  elevateCountry(code, true);
+}
+
 function highlightCountry(code) {
   var d = countryDataMap[code];
   if (d && d.lines) {
@@ -694,7 +883,7 @@ function unhighlightCountry(code) {
   var d = countryDataMap[code];
   if (d && d.lines) {
     d.lines.forEach(function(l){
-      l.material.opacity = 0.3;
+      l.material.opacity = 0.4;
       l.material.color.setHex(0x00d4aa);
     });
   }
@@ -721,15 +910,18 @@ function onMouseMove(e) {
       highlightCountry(code);
     }
 
-    var count = partnersInCountry(code).length;
+    var allEntries = partnersInCountry(code);
+    var partnerCount = allEntries.filter(function(p){ return p.type !== 'non-partenaire'; }).length;
+    var nonPartnerCount = allEntries.filter(function(p){ return p.type === 'non-partenaire'; }).length;
     var flag = FLAG_MAP[code] || '';
     var text = (flag ? flag + ' ' : '') + name;
-    if (count > 0) text += ' \u2014 ' + count + ' ' + (count > 1 ? t('tooltip.partners.plural') : t('tooltip.partners'));
+    if (partnerCount > 0) text += ' \u2014 ' + partnerCount + ' ' + (partnerCount > 1 ? t('tooltip.partners.plural') : t('tooltip.partners'));
+    if (nonPartnerCount > 0) text += (partnerCount > 0 ? ' + ' : ' \u2014 ') + nonPartnerCount + ' ' + t('tooltip.nonpartners');
     tooltipEl.textContent = text;
     tooltipEl.classList.add('visible');
     tooltipEl.style.left = (cx + 16) + 'px';
     tooltipEl.style.top = (cy - 12) + 'px';
-    renderer.domElement.style.cursor = count > 0 ? 'pointer' : 'default';
+    renderer.domElement.style.cursor = 'pointer';
   } else {
     if (hoveredCountryCode) {
       unhighlightCountry(hoveredCountryCode);
@@ -750,9 +942,12 @@ function onClickGlobe(e) {
   if (hits.length > 0) {
     var ud = hits[0].object.userData;
     var code = ud.countryCode;
-    var partners = partnersInCountry(code);
-    if (partners.length > 0) {
-      openSidePanel(code, ud.countryName, partners, cx);
+    // Always trigger relief
+    selectCountry(code);
+    // Open panel with partners + non-partners
+    var entries = partnersInCountry(code);
+    if (entries.length > 0) {
+      openSidePanel(code, ud.countryName, entries, cx);
     }
   }
 }
@@ -774,19 +969,43 @@ function openSidePanel(code, name, partners, clickX) {
   h += '<div class="panel-header"><span class="panel-flag">' + flag + '</span><span class="panel-country">' + escHtml(name) + '</span></div>';
   h += '<div class="panel-subtitle">' + partners.length + ' ' + (partners.length > 1 ? t('panel.partners') : t('panel.partner')) + '</div>';
 
-  partners.forEach(function(p){
-    h += '<div class="panel-partner">';
-    h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
-    h += '<div class="panel-partner-type">' + escHtml(t('type.' + p.type) || TYPE_LABELS[p.type] || p.type) + '</div>';
-    h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
-    h += '<div class="panel-partner-tags">';
-    p.tags.forEach(function(t){ h += '<span>' + escHtml(t) + '</span>'; });
-    h += '</div>';
-    h += '<div class="panel-partner-links">';
-    h += '<a href="' + p.rdv + '" target="_blank" rel="noopener">' + t('panel.rdv') + '</a>';
-    h += '<a href="' + p.site + '" target="_blank" rel="noopener">' + t('panel.site') + '</a>';
-    h += '</div></div>';
-  });
+  // Separate partners and non-partners
+  var realPartners = partners.filter(function(p){ return p.type !== 'non-partenaire'; });
+  var nonPartners = partners.filter(function(p){ return p.type === 'non-partenaire'; });
+
+  if (realPartners.length > 0) {
+    h += '<div style="font-size:.62rem;color:#00d4aa;letter-spacing:1px;text-transform:uppercase;margin-bottom:.6rem;font-weight:600">' + t('panel.section.partners') + '</div>';
+    realPartners.forEach(function(p){
+      h += '<div class="panel-partner">';
+      h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
+      h += '<div class="panel-partner-type">' + escHtml(t('type.' + p.type) || TYPE_LABELS[p.type] || p.type) + '</div>';
+      h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
+      h += '<div class="panel-partner-tags">';
+      p.tags.forEach(function(tg){ h += '<span>' + escHtml(tg) + '</span>'; });
+      h += '</div>';
+      h += '<div class="panel-partner-links">';
+      h += '<a href="' + p.rdv + '" target="_blank" rel="noopener">' + t('panel.rdv') + '</a>';
+      h += '<a href="' + p.site + '" target="_blank" rel="noopener">' + t('panel.site') + '</a>';
+      h += '</div></div>';
+    });
+  }
+
+  if (nonPartners.length > 0) {
+    h += '<div style="font-size:.62rem;color:#6a7a8a;letter-spacing:1px;text-transform:uppercase;margin:1.2rem 0 .6rem;font-weight:600;border-top:1px solid rgba(106,122,138,.2);padding-top:.8rem">' + t('panel.section.nonpartners') + '</div>';
+    nonPartners.forEach(function(p){
+      h += '<div class="panel-partner" style="border-color:rgba(106,122,138,.15);background:rgba(106,122,138,.04)">';
+      h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
+      h += '<div class="panel-partner-type" style="background:rgba(106,122,138,.15);color:#8a9aaa">' + escHtml(t('type.non-partenaire')) + '</div>';
+      h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
+      if (p.source) h += '<div style="font-size:.56rem;color:#5a6a7a;font-style:italic;margin-bottom:.4rem">' + t('panel.source') + ' ' + escHtml(p.source) + '</div>';
+      h += '<div class="panel-partner-tags">';
+      p.tags.forEach(function(tg){ h += '<span style="border-color:rgba(106,122,138,.15);color:#6a8a80">' + escHtml(tg) + '</span>'; });
+      h += '</div>';
+      h += '<div class="panel-partner-links">';
+      h += '<a href="' + p.site + '" target="_blank" rel="noopener" style="border-color:rgba(106,122,138,.2);color:#6a7a8a">' + t('panel.site') + '</a>';
+      h += '</div></div>';
+    });
+  }
 
   sidePanelEl.innerHTML = h;
 
@@ -858,6 +1077,38 @@ function animate() {
     cytoPoints.rotation.x = t * 0.01;
   }
 
+  // ── NUCLEUS PULSE ──
+  if (nucleusCore) {
+    var pulse = 0.35 + 0.15 * Math.sin(t * 1.2);
+    nucleusCore.material.opacity = pulse;
+    var cs = 1.0 + 0.12 * Math.sin(t * 1.2);
+    nucleusCore.scale.set(cs, cs, cs);
+  }
+  if (nucleusGlow) {
+    var gs = 1.0 + 0.08 * Math.sin(t * 0.8 + 0.5);
+    nucleusGlow.scale.set(gs, gs, gs);
+  }
+  if (nucleusHalo) {
+    var hs = 1.0 + 0.05 * Math.sin(t * 0.6);
+    nucleusHalo.scale.set(hs, hs, hs);
+  }
+  if (coreLight) {
+    coreLight.intensity = 0.5 + 0.2 * Math.sin(t * 1.2);
+  }
+
+  // ── CONTINENT GLOW PULSE (light breathing through the land) ──
+  if (geoLoaded) {
+    var glowPulse = 0.03 + 0.02 * Math.sin(t * 0.9);
+    for (var code in countryDataMap) {
+      var d = countryDataMap[code];
+      if (d.reliefMeshes && !d.elevated) {
+        d.reliefMeshes.forEach(function(m){
+          m.material.opacity = glowPulse;
+        });
+      }
+    }
+  }
+
   renderer.render(scene, camera);
 }
 animate();
@@ -877,7 +1128,9 @@ var I18N = {
     "loader":"Chargement de la carte...","tooltip.partners":"partenaire","tooltip.partners.plural":"partenaires",
     "panel.partners":"partenaires ORIM\u2122","panel.partner":"partenaire ORIM\u2122",
     "panel.rdv":"Rendez-vous","panel.site":"Site web",
-    "type.medecin":"M\u00e9decin","type.therapeute":"Th\u00e9rapeute","type.magasin":"Magasin","type.naturopathe":"Naturopathe","type.coach":"Coach","type.laboratoire":"Laboratoire"
+    "type.medecin":"M\u00e9decin","type.therapeute":"Th\u00e9rapeute","type.magasin":"Magasin","type.naturopathe":"Naturopathe","type.coach":"Coach","type.laboratoire":"Laboratoire",
+    "type.non-partenaire":"Non-partenaire","tooltip.nonpartners":"non-partenaire(s)",
+    "panel.section.partners":"Partenaires ORIM\u2122","panel.section.nonpartners":"Annuaire local","panel.source":"Source :"
   },
   en: {
     "nav.home":"Home","nav.science":"Science","nav.indice":"ORIM Index","nav.partners":"Partners","nav.contact":"Contact us",
@@ -885,7 +1138,9 @@ var I18N = {
     "loader":"Loading map...","tooltip.partners":"partner","tooltip.partners.plural":"partners",
     "panel.partners":"ORIM\u2122 partners","panel.partner":"ORIM\u2122 partner",
     "panel.rdv":"Book appointment","panel.site":"Website",
-    "type.medecin":"Doctor","type.therapeute":"Therapist","type.magasin":"Store","type.naturopathe":"Naturopath","type.coach":"Coach","type.laboratoire":"Laboratory"
+    "type.medecin":"Doctor","type.therapeute":"Therapist","type.magasin":"Store","type.naturopathe":"Naturopath","type.coach":"Coach","type.laboratoire":"Laboratory",
+    "type.non-partenaire":"Non-partner","tooltip.nonpartners":"non-partner(s)",
+    "panel.section.partners":"ORIM\u2122 Partners","panel.section.nonpartners":"Local directory","panel.source":"Source:"
   },
   es: {
     "nav.home":"Inicio","nav.science":"Ciencia","nav.indice":"\u00CDndice ORIM","nav.partners":"Socios","nav.contact":"Cont\u00e1ctenos",
@@ -893,7 +1148,9 @@ var I18N = {
     "loader":"Cargando mapa...","tooltip.partners":"socio","tooltip.partners.plural":"socios",
     "panel.partners":"socios ORIM\u2122","panel.partner":"socio ORIM\u2122",
     "panel.rdv":"Reservar cita","panel.site":"Sitio web",
-    "type.medecin":"M\u00e9dico","type.therapeute":"Terapeuta","type.magasin":"Tienda","type.naturopathe":"Natur\u00f3pata","type.coach":"Coach","type.laboratoire":"Laboratorio"
+    "type.medecin":"M\u00e9dico","type.therapeute":"Terapeuta","type.magasin":"Tienda","type.naturopathe":"Natur\u00f3pata","type.coach":"Coach","type.laboratoire":"Laboratorio",
+    "type.non-partenaire":"No asociado","tooltip.nonpartners":"no asociado(s)",
+    "panel.section.partners":"Socios ORIM\u2122","panel.section.nonpartners":"Directorio local","panel.source":"Fuente:"
   },
   de: {
     "nav.home":"Startseite","nav.science":"Wissenschaft","nav.indice":"ORIM-Index","nav.partners":"Partner","nav.contact":"Kontakt",
@@ -901,7 +1158,9 @@ var I18N = {
     "loader":"Karte wird geladen...","tooltip.partners":"Partner","tooltip.partners.plural":"Partner",
     "panel.partners":"ORIM\u2122-Partner","panel.partner":"ORIM\u2122-Partner",
     "panel.rdv":"Termin buchen","panel.site":"Webseite",
-    "type.medecin":"Arzt","type.therapeute":"Therapeut","type.magasin":"Gesch\u00e4ft","type.naturopathe":"Naturheilkundler","type.coach":"Coach","type.laboratoire":"Labor"
+    "type.medecin":"Arzt","type.therapeute":"Therapeut","type.magasin":"Gesch\u00e4ft","type.naturopathe":"Naturheilkundler","type.coach":"Coach","type.laboratoire":"Labor",
+    "type.non-partenaire":"Nicht-Partner","tooltip.nonpartners":"Nicht-Partner",
+    "panel.section.partners":"ORIM\u2122-Partner","panel.section.nonpartners":"Lokales Verzeichnis","panel.source":"Quelle:"
   }
 };
 

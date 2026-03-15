@@ -158,6 +158,13 @@
     #marque { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
     .marque-inner { max-width:900px; margin:0 auto; }
     .marque-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:3rem; }
+    .marque-grid-5 { grid-template-columns:repeat(3,1fr); }
+    .marque-grid-5 .marque-block:nth-child(4),
+    .marque-grid-5 .marque-block:nth-child(5) { }
+    @media(min-width:901px) { .marque-grid-5 { grid-template-columns:repeat(3,1fr); }
+      .marque-grid-5 .marque-block:nth-child(4) { grid-column: 1 / 2; margin-left:auto; margin-right:0; }
+      .marque-grid-5 .marque-block:nth-child(5) { grid-column: 3 / 4; margin-left:0; margin-right:auto; }
+    }
     .marque-block { background:rgba(26,74,122,.1); border:1px solid rgba(0,180,216,.1); border-radius:1rem; padding:1.8rem; }
     .marque-block h3 { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; color:var(--cyan); margin-bottom:.8rem; }
     .marque-block p { font-size:.82rem; color:var(--gray); line-height:1.65; }
@@ -284,7 +291,7 @@
   <div class="stats-bar reveal">
     <div class="stat-item"><div class="stat-num">12</div><div class="stat-label" data-i18n="stats.prestations">Prestations</div></div>
     <div class="stat-item"><div class="stat-num">3</div><div class="stat-label" data-i18n="stats.poles">Poles Association</div></div>
-    <div class="stat-item"><div class="stat-num">85+</div><div class="stat-label" data-i18n="stats.aliments">Aliments indexes ORIM™</div></div>
+    <div class="stat-item"><div class="stat-num">500</div><div class="stat-label" data-i18n="stats.aliments">Aliments indexes ORIM™</div></div>
     <div class="stat-item"><div class="stat-num">v3.0</div><div class="stat-label" data-i18n="stats.indice">Indice ORIM™ actuel</div></div>
     <div class="stat-item"><div class="stat-num">2027</div><div class="stat-label" data-i18n="stats.microbiome">Microbiome v4.0</div></div>
     <div class="stat-item"><div class="stat-num">GE</div><div class="stat-label" data-i18n="stats.lieu">Geneve, Suisse</div></div>
@@ -503,28 +510,33 @@
     <div class="marque-inner">
       <div class="reveal" style="text-align:center;margin-bottom:1rem;">
         <div class="section-tag" data-i18n="marque.tag">Propriete intellectuelle</div>
-        <h2 class="section-title"><span class="accent">ORIM™</span> — <span data-i18n="marque.title">Marque &amp; Indice</span></h2>
+        <h2 class="section-title"><span class="accent">ORIM™</span> — <span data-i18n="marque.title">Marque, Lexique &amp; Indice</span></h2>
       </div>
-      <div class="marque-grid">
+      <div class="marque-grid marque-grid-5">
         <div class="marque-block reveal">
           <div class="marque-badge" data-i18n="marque.owner.badge">Proprietaire · Olivier Chevalley</div>
           <h3 data-i18n="marque.owner.title">🏛️ Marque ORIM™</h3>
           <p data-i18n="marque.owner.text">La marque ORIM™ est en cours d'enregistrement a l'IPI (Suisse) par Olivier Chevalley (personne physique). Classes NICE 42 (recherche scientifique) et 44 (conseil en nutrition). L'Association ORIM Geneve beneficie d'une licence d'usage non exclusive, conformement a l'art. 17 des Statuts.</p>
         </div>
         <div class="marque-block reveal">
+          <div class="marque-badge" data-i18n="marque.lexique.badge">R&amp;D · Association ORIM</div>
+          <h3 data-i18n="marque.lexique.title">📚 Lexique ORIM™</h3>
+          <p data-i18n="marque.lexique.text">Le Lexique ORIM™ v3.0 catalogue 500 aliments indexes selon leurs proprietes immuno-metaboliques. Base de donnees educative et scientifique, developpee et detenue par l'Association.</p>
+        </div>
+        <div class="marque-block reveal">
           <div class="marque-badge" data-i18n="marque.indice.badge">R&amp;D · Association ORIM</div>
-          <h3 data-i18n="marque.indice.title">🔬 Indice ORIM™</h3>
-          <p data-i18n="marque.indice.text">L'Indice ORIM™ v3.0 (85+ aliments × 8 metriques) est la version operationnelle actuelle, developpee et detenue par l'Association. Il constitue le coeur scientifique du programme d'immunonutrition preventive ORIM.</p>
+          <h3 data-i18n="marque.indice.title">🔬 Indice ORIM™ v3.0</h3>
+          <p data-i18n="marque.indice.text">L'Indice ORIM™ v3.0 applique 8 metriques de scoring immuno-metabolique aux 500 aliments du Lexique. Algorithme operationnel, propriete exclusive de l'Association.</p>
         </div>
         <div class="marque-block reveal">
           <div class="marque-badge" data-i18n="marque.v4.badge">Projection R&amp;D · 2027</div>
           <h3 data-i18n="marque.v4.title">🧬 Indice v4.0 — Microbiome</h3>
-          <p data-i18n="marque.v4.text">Extension prevue : integration du microbiome intestinal, elargissement a 250+ aliments. Sous supervision Dr. Mahour. Finance par subventions R&amp;D. Algorithmes propriete Association.</p>
+          <p data-i18n="marque.v4.text">Extension prevue : integration du microbiome intestinal. Sous supervision Dr. Mahour. Finance par subventions R&amp;D. Algorithmes propriete Association.</p>
         </div>
         <div class="marque-block reveal">
           <div class="marque-badge" data-i18n="marque.v5.badge">Projection R&amp;D · 2028</div>
           <h3 data-i18n="marque.v5.title">🤖 Indice v5.0 — IA Nutrigenomique</h3>
-          <p data-i18n="marque.v5.text">Vision 2028 : integration de l'intelligence artificielle et de la nutrigenomique, objectif 500+ aliments. Algorithmes exclusifs Association ORIM Geneve. Protection IP renforcee des la phase R&amp;D.</p>
+          <p data-i18n="marque.v5.text">Vision 2028 : integration de l'intelligence artificielle et de la nutrigenomique. Algorithmes exclusifs Association ORIM Geneve. Protection IP renforcee des la phase R&amp;D.</p>
         </div>
       </div>
     </div>
@@ -639,11 +651,12 @@
       "pole.edu.name":"Pole Educatif","pole.edu.desc":"Formations individuelles et collectives en nutrition immuno-metabolique. Seminaires, contenus pedagogiques, cotisations membres Standard & Bienfaiteur.","pole.edu.t1":"Seminaires collectifs","pole.edu.t2":"Formation individuelle","pole.edu.t3":"Atelier Seniors 55+","pole.edu.t4":"Contenus pedagogiques","pole.edu.t5":"Cotisations membres",
       "pole.thera.name":"Pole Accompagnement","pole.thera.desc":"Accompagnement personnalise sous mandat Association, supervise par le Dr. Mahour. Application de l'Indice ORIM™ v3.0. Orientation vers les professionnels de sante habilites.","pole.thera.t1":"Accompagnement personnalise","pole.thera.t2":"Indice ORIM™ v3.0","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Droit suisse · Geneve",
       "pole.rech.name":"Pole Recherche & IP","pole.rech.desc":"Developpement de l'Indice ORIM™ v4.0 Microbiome (2027) & v5.0 IA Nutrigenomique (2028). Gestion des subventions R&D. Propriete intellectuelle.","pole.rech.t1":"Indice v4.0 · 2027","pole.rech.t2":"Indice v5.0 · 2028","pole.rech.t3":"Subventions R&D","pole.rech.t4":"Propriete intellectuelle","pole.rech.t5":"IPI · Suisse",
-      "marque.tag":"Propriete intellectuelle","marque.title":"Marque & Indice",
+      "marque.tag":"Propriete intellectuelle","marque.title":"Marque, Lexique & Indice",
       "marque.owner.badge":"Proprietaire · Olivier Chevalley","marque.owner.title":"🏛️ Marque ORIM™","marque.owner.text":"La marque ORIM™ est en cours d'enregistrement a l'IPI (Suisse) par Olivier Chevalley (personne physique). Classes NICE 42 (recherche scientifique) et 44 (conseil en nutrition). L'Association ORIM Geneve beneficie d'une licence d'usage non exclusive, conformement a l'art. 17 des Statuts.",
-      "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 Indice ORIM™","marque.indice.text":"L'Indice ORIM™ v3.0 (85+ aliments × 8 metriques) est la version operationnelle actuelle, developpee et detenue par l'Association. Il constitue le coeur scientifique du programme d'immunonutrition preventive ORIM.",
-      "marque.v4.badge":"Projection R&D · 2027","marque.v4.title":"🧬 Indice v4.0 — Microbiome","marque.v4.text":"Extension prevue : integration du microbiome intestinal, elargissement a 250+ aliments. Sous supervision Dr. Mahour. Finance par subventions R&D. Algorithmes propriete Association.",
-      "marque.v5.badge":"Projection R&D · 2028","marque.v5.title":"🤖 Indice v5.0 — IA Nutrigenomique","marque.v5.text":"Vision 2028 : integration de l'intelligence artificielle et de la nutrigenomique, objectif 500+ aliments. Algorithmes exclusifs Association ORIM Geneve. Protection IP renforcee des la phase R&D.",
+      "marque.lexique.badge":"R&D · Association ORIM","marque.lexique.title":"📚 Lexique ORIM™","marque.lexique.text":"Le Lexique ORIM™ v3.0 catalogue 500 aliments indexes selon leurs proprietes immuno-metaboliques. Base de donnees educative et scientifique, developpee et detenue par l'Association.",
+      "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 Indice ORIM™ v3.0","marque.indice.text":"L'Indice ORIM™ v3.0 applique 8 metriques de scoring immuno-metabolique aux 500 aliments du Lexique. Algorithme operationnel, propriete exclusive de l'Association.",
+      "marque.v4.badge":"Projection R&D · 2027","marque.v4.title":"🧬 Indice v4.0 — Microbiome","marque.v4.text":"Extension prevue : integration du microbiome intestinal. Sous supervision Dr. Mahour. Finance par subventions R&D. Algorithmes propriete Association.",
+      "marque.v5.badge":"Projection R&D · 2028","marque.v5.title":"🤖 Indice v5.0 — IA Nutrigenomique","marque.v5.text":"Vision 2028 : integration de l'intelligence artificielle et de la nutrigenomique. Algorithmes exclusifs Association ORIM Geneve. Protection IP renforcee des la phase R&D.",
       "saybar.tag":"Partenariat strategique","saybar.title":"Saybar","saybar.desc":"Le partenariat ORIM × Saybar combine la methodologie scientifique de l'Association avec l'expertise nutritionnelle de Saybar, au service d'une nutrition preventive de qualite.","saybar.node.ch":"🏛️ Association ORIM","saybar.node.ch.sub":"Methodologie scientifique\nIndice ORIM™","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Partenaire R&D\nRecherche & formulation",
       "equipe.tag":"Notre equipe","equipe.title":"Dirigeants & Experts","team.oc.r1":"President · Association ORIM","team.oc.r2":"Fondateur · Titulaire marque ORIM™","team.nc.r1":"Vice-president · Association ORIM","team.nc.r2":"Directeur Accompagnement","team.km.r1":"Superviseur R&D · Indice ORIM™","team.km.r2":"Partenaire medical · Association",
       "contact.tag":"Nous joindre","contact.title":"Contact","contact.desc":"Association ORIM Geneve — a votre ecoute pour toute question relative a nos prestations.","contact.ch.title":"🏛️ Association ORIM Geneve","contact.ch.email.note":"Education · Accompagnement · Recherche","contact.ch.address":"Geneve, Suisse — Droit suisse applicable · For Geneve","contact.ch.note":"Association a but non lucratif · Droit suisse · Canton de Geneve",
@@ -673,11 +686,12 @@
       "pole.edu.name":"Educational Pole","pole.edu.desc":"Individual and collective training in immuno-metabolic nutrition. Seminars, educational content, Standard & Benefactor member subscriptions.","pole.edu.t1":"Group seminars","pole.edu.t2":"Individual training","pole.edu.t3":"Seniors 55+ Workshop","pole.edu.t4":"Educational content","pole.edu.t5":"Member subscriptions",
       "pole.thera.name":"Support Pole","pole.thera.desc":"Personalized support under Association mandate, supervised by Dr. Mahour. Application of the ORIM™ Index v3.0. Referral to qualified health professionals.","pole.thera.t1":"Personalized support","pole.thera.t2":"ORIM™ Index v3.0","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Swiss law · Geneva",
       "pole.rech.name":"Research & IP Pole","pole.rech.desc":"Development of ORIM™ Index v4.0 Microbiome (2027) & v5.0 AI Nutrigenomics (2028). R&D grant management. Intellectual property.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"R&D grants","pole.rech.t4":"Intellectual property","pole.rech.t5":"IPI · Switzerland",
-      "marque.tag":"Intellectual property","marque.title":"Brand & Index",
+      "marque.tag":"Intellectual property","marque.title":"Brand, Lexicon & Index",
       "marque.owner.badge":"Owner · Olivier Chevalley","marque.owner.title":"🏛️ ORIM™ Brand","marque.owner.text":"The ORIM™ brand is being registered at the IPI (Switzerland) by Olivier Chevalley (natural person). NICE classes 42 (scientific research) and 44 (nutrition consulting). Association ORIM Geneva holds a non-exclusive usage license, in accordance with Art. 17 of the Statutes.",
-      "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 ORIM™ Index","marque.indice.text":"The ORIM™ Index v3.0 (85+ foods × 8 metrics) is the current operational version, developed and owned by the Association. It constitutes the scientific core of the ORIM preventive immunonutrition program.",
-      "marque.v4.badge":"R&D Projection · 2027","marque.v4.title":"🧬 Index v4.0 — Microbiome","marque.v4.text":"Planned extension: gut microbiome integration, expansion to 250+ foods. Under Dr. Mahour's supervision. Funded by R&D grants. Algorithms remain Association property.",
-      "marque.v5.badge":"R&D Projection · 2028","marque.v5.title":"🤖 Index v5.0 — AI Nutrigenomics","marque.v5.text":"2028 vision: integration of artificial intelligence and nutrigenomics, target 500+ foods. Exclusive Association ORIM Geneva algorithms. Reinforced IP protection from R&D phase.",
+      "marque.lexique.badge":"R&D · Association ORIM","marque.lexique.title":"📚 ORIM™ Lexicon","marque.lexique.text":"The ORIM™ Lexicon v3.0 catalogs 500 foods indexed by their immuno-metabolic properties. Educational and scientific database, developed and owned by the Association.",
+      "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 ORIM™ Index v3.0","marque.indice.text":"The ORIM™ Index v3.0 applies 8 immuno-metabolic scoring metrics to the 500 foods in the Lexicon. Operational algorithm, exclusive property of the Association.",
+      "marque.v4.badge":"R&D Projection · 2027","marque.v4.title":"🧬 Index v4.0 — Microbiome","marque.v4.text":"Planned extension: gut microbiome integration. Under Dr. Mahour's supervision. Funded by R&D grants. Algorithms remain Association property.",
+      "marque.v5.badge":"R&D Projection · 2028","marque.v5.title":"🤖 Index v5.0 — AI Nutrigenomics","marque.v5.text":"2028 vision: integration of artificial intelligence and nutrigenomics. Exclusive Association ORIM Geneva algorithms. Reinforced IP protection from R&D phase.",
       "saybar.tag":"Strategic partnership","saybar.title":"Saybar","saybar.desc":"The ORIM × Saybar partnership combines the Association's scientific methodology with Saybar's nutritional expertise, in service of quality preventive nutrition.","saybar.node.ch":"🏛️ Association ORIM","saybar.node.ch.sub":"Scientific methodology\nORIM™ Index","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"R&D partner\nResearch & formulation",
       "equipe.tag":"Our team","equipe.title":"Directors & Experts","team.oc.r1":"President · Association ORIM","team.oc.r2":"Founder · ORIM™ brand holder","team.nc.r1":"Vice-president · Association ORIM","team.nc.r2":"Support Director","team.km.r1":"R&D Supervisor · ORIM™ Index","team.km.r2":"Medical partner · Association",
       "contact.tag":"Get in touch","contact.title":"Contact","contact.desc":"Association ORIM Geneva — here to answer your questions about our services.","contact.ch.title":"🏛️ Association ORIM Geneva","contact.ch.email.note":"Education · Support · Research","contact.ch.address":"Geneva, Switzerland — Swiss law applicable · Geneva jurisdiction","contact.ch.note":"Non-profit association · Swiss law · Canton of Geneva",
@@ -707,10 +721,11 @@
       "pole.edu.name":"Polo Educativo","pole.edu.desc":"Formaciones individuales y colectivas en nutricion inmuno-metabolica. Seminarios, contenidos pedagogicos, cuotas de socios Estandar y Bienhechor.","pole.edu.t1":"Seminarios colectivos","pole.edu.t2":"Formacion individual","pole.edu.t3":"Taller Mayores 55+","pole.edu.t4":"Contenidos pedagogicos","pole.edu.t5":"Cuotas de socios",
       "pole.thera.name":"Polo Acompanamiento","pole.thera.desc":"Acompanamiento personalizado bajo mandato Asociacion, supervisado por el Dr. Mahour. Aplicacion del Indice ORIM™ v3.0. Orientacion hacia profesionales de salud habilitados.","pole.thera.t1":"Acompanamiento personalizado","pole.thera.t2":"Indice ORIM™ v3.0","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Derecho suizo · Ginebra",
       "pole.rech.name":"Polo Investigacion e IP","pole.rech.desc":"Desarrollo del Indice ORIM™ v4.0 Microbioma (2027) y v5.0 IA Nutrigenomica (2028). Gestion de subvenciones I+D. Propiedad intelectual.","pole.rech.t1":"Indice v4.0 · 2027","pole.rech.t2":"Indice v5.0 · 2028","pole.rech.t3":"Subvenciones I+D","pole.rech.t4":"Propiedad intelectual","pole.rech.t5":"IPI · Suiza",
-      "marque.tag":"Propiedad intelectual","marque.title":"Marca e Indice",
+      "marque.tag":"Propiedad intelectual","marque.title":"Marca, Lexico e Indice",
       "marque.owner.badge":"Propietario · Olivier Chevalley","marque.owner.title":"🏛️ Marca ORIM™","marque.owner.text":"La marca ORIM™ esta en proceso de registro en el IPI (Suiza) por Olivier Chevalley (persona fisica). Clases NICE 42 (investigacion cientifica) y 44 (consultoria nutricional). La Asociacion ORIM Ginebra dispone de una licencia de uso no exclusiva, conforme al art. 17 de los Estatutos.",
-      "marque.indice.badge":"I+D · Asociacion ORIM","marque.indice.title":"🔬 Indice ORIM™","marque.indice.text":"El Indice ORIM™ v3.0 (85+ alimentos × 8 metricas) es la version operativa actual, desarrollada y propiedad de la Asociacion. Constituye el nucleo cientifico del programa ORIM.",
-      "marque.v4.badge":"Proyeccion I+D · 2027","marque.v4.title":"🧬 Indice v4.0 — Microbioma","marque.v4.text":"Extension prevista: integracion del microbioma intestinal, ampliacion a 250+ alimentos. Bajo supervision del Dr. Mahour. Financiado por subvenciones I+D. Algoritmos propiedad Asociacion.",
+      "marque.lexique.badge":"I+D · Asociacion ORIM","marque.lexique.title":"📚 Lexico ORIM™","marque.lexique.text":"El Lexico ORIM™ v3.0 cataloga 500 alimentos indexados segun sus propiedades inmuno-metabolicas. Base de datos educativa y cientifica, desarrollada y propiedad de la Asociacion.",
+      "marque.indice.badge":"I+D · Asociacion ORIM","marque.indice.title":"🔬 Indice ORIM™ v3.0","marque.indice.text":"El Indice ORIM™ v3.0 aplica 8 metricas de scoring inmuno-metabolico a los 500 alimentos del Lexico. Algoritmo operacional, propiedad exclusiva de la Asociacion.",
+      "marque.v4.badge":"Proyeccion I+D · 2027","marque.v4.title":"🧬 Indice v4.0 — Microbioma","marque.v4.text":"Extension prevista: integracion del microbioma intestinal. Bajo supervision del Dr. Mahour. Financiado por subvenciones I+D. Algoritmos propiedad Asociacion.",
       "marque.v5.badge":"Proyeccion I+D · 2028","marque.v5.title":"🤖 Indice v5.0 — IA Nutrigenomica","marque.v5.text":"Vision 2028: integracion de inteligencia artificial y nutrigenomica, objetivo 500+ alimentos. Algoritmos exclusivos Asociacion ORIM Ginebra.",
       "saybar.tag":"Alianza estrategica","saybar.title":"Saybar","saybar.desc":"La alianza ORIM × Saybar combina la metodologia cientifica de la Asociacion con la experiencia nutricional de Saybar.","saybar.node.ch":"🏛️ Asociacion ORIM","saybar.node.ch.sub":"Metodologia cientifica\nIndice ORIM™","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Socio I+D\nInvestigacion y formulacion",
       "equipe.tag":"Nuestro equipo","equipe.title":"Directivos y Expertos","team.oc.r1":"Presidente · Asociacion ORIM","team.oc.r2":"Fundador · Titular marca ORIM™","team.nc.r1":"Vicepresidente · Asociacion ORIM","team.nc.r2":"Director Acompanamiento","team.km.r1":"Supervisor I+D · Indice ORIM™","team.km.r2":"Socio medico · Asociacion",
@@ -741,11 +756,12 @@
       "pole.edu.name":"Bildungspol","pole.edu.desc":"Einzel- und Gruppentraining in immuno-metabolischer Ernaehrung. Seminare, paedagogische Inhalte, Standard- und Foerder-Mitgliedsbeitraege.","pole.edu.t1":"Gruppenseminare","pole.edu.t2":"Einzelschulung","pole.edu.t3":"Senioren 55+ Workshop","pole.edu.t4":"Paedagogische Inhalte","pole.edu.t5":"Mitgliedsbeitraege",
       "pole.thera.name":"Begleitungspol","pole.thera.desc":"Persoenliche Begleitung unter Vereinsmandat, betreut von Dr. Mahour. Anwendung des ORIM™-Index v3.0. Weiterleitung an qualifizierte Gesundheitsfachleute.","pole.thera.t1":"Persoenliche Begleitung","pole.thera.t2":"ORIM™-Index v3.0","pole.thera.t3":"Dr. Mahour","pole.thera.t4":"Schweizer Recht · Genf",
       "pole.rech.name":"Forschungs- & IP-Pol","pole.rech.desc":"Entwicklung des ORIM™-Index v4.0 Mikrobiom (2027) & v5.0 KI Nutrigenomik (2028). F&E-Foerderungsverwaltung. Geistiges Eigentum.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"F&E-Foerderungen","pole.rech.t4":"Geistiges Eigentum","pole.rech.t5":"IPI · Schweiz",
-      "marque.tag":"Geistiges Eigentum","marque.title":"Marke & Index",
+      "marque.tag":"Geistiges Eigentum","marque.title":"Marke, Lexikon & Index",
       "marque.owner.badge":"Eigentuemer · Olivier Chevalley","marque.owner.title":"🏛️ ORIM™ Marke","marque.owner.text":"Die Marke ORIM™ wird beim IPI (Schweiz) von Olivier Chevalley (natuerliche Person) eingetragen. NICE-Klassen 42 (wissenschaftliche Forschung) und 44 (Ernaehrungsberatung). Der Verein ORIM Genf verfuegt ueber eine nicht-exklusive Nutzungslizenz gemaess Art. 17 der Statuten.",
-      "marque.indice.badge":"F&E · Verein ORIM","marque.indice.title":"🔬 ORIM™-Index","marque.indice.text":"Der ORIM™-Index v3.0 (85+ Lebensmittel × 8 Metriken) ist die aktuelle operative Version, entwickelt und im Besitz des Vereins. Er bildet den wissenschaftlichen Kern des ORIM-Programms.",
-      "marque.v4.badge":"F&E-Projektion · 2027","marque.v4.title":"🧬 Index v4.0 — Mikrobiom","marque.v4.text":"Geplante Erweiterung: Integration des Darmmikrobioms, Erweiterung auf 250+ Lebensmittel. Unter Aufsicht von Dr. Mahour. Finanziert durch F&E-Foerderungen. Algorithmen Vereinseigentum.",
-      "marque.v5.badge":"F&E-Projektion · 2028","marque.v5.title":"🤖 Index v5.0 — KI Nutrigenomik","marque.v5.text":"Vision 2028: Integration von kuenstlicher Intelligenz und Nutrigenomik, Ziel 500+ Lebensmittel. Exklusive Algorithmen des Vereins ORIM Genf.",
+      "marque.lexique.badge":"F&E · Verein ORIM","marque.lexique.title":"📚 ORIM™-Lexikon","marque.lexique.text":"Das ORIM™-Lexikon v3.0 katalogisiert 500 Lebensmittel, indexiert nach ihren immuno-metabolischen Eigenschaften. Bildungs- und wissenschaftliche Datenbank, entwickelt und im Besitz des Vereins.",
+      "marque.indice.badge":"F&E · Verein ORIM","marque.indice.title":"🔬 ORIM™-Index v3.0","marque.indice.text":"Der ORIM™-Index v3.0 wendet 8 immuno-metabolische Scoring-Metriken auf die 500 Lebensmittel des Lexikons an. Operativer Algorithmus, exklusives Eigentum des Vereins.",
+      "marque.v4.badge":"F&E-Projektion · 2027","marque.v4.title":"🧬 Index v4.0 — Mikrobiom","marque.v4.text":"Geplante Erweiterung: Integration des Darmmikrobioms. Unter Aufsicht von Dr. Mahour. Finanziert durch F&E-Foerderungen. Algorithmen Vereinseigentum.",
+      "marque.v5.badge":"F&E-Projektion · 2028","marque.v5.title":"🤖 Index v5.0 — KI Nutrigenomik","marque.v5.text":"Vision 2028: Integration von kuenstlicher Intelligenz und Nutrigenomik. Exklusive Algorithmen des Vereins ORIM Genf. Verstaerkter IP-Schutz ab der F&E-Phase.",
       "saybar.tag":"Strategische Partnerschaft","saybar.title":"Saybar","saybar.desc":"Die ORIM × Saybar Partnerschaft verbindet die wissenschaftliche Methodik des Vereins mit Saybars Ernaehrungsexpertise.","saybar.node.ch":"🏛️ Verein ORIM","saybar.node.ch.sub":"Wissenschaftliche Methodik\nORIM™-Index","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"F&E-Partner\nForschung & Formulierung",
       "equipe.tag":"Unser Team","equipe.title":"Direktoren & Experten","team.oc.r1":"Praesident · Verein ORIM","team.oc.r2":"Gruender · ORIM™-Markeninhaber","team.nc.r1":"Vizepraesident · Verein ORIM","team.nc.r2":"Begleitungsdirektor","team.km.r1":"F&E-Supervisor · ORIM™-Index","team.km.r2":"Medizinischer Partner · Verein",
       "contact.tag":"Kontakt aufnehmen","contact.title":"Kontakt","contact.desc":"Verein ORIM Genf — fuer alle Fragen zu unseren Leistungen.","contact.ch.title":"🏛️ Verein ORIM Genf","contact.ch.email.note":"Bildung · Begleitung · Forschung","contact.ch.address":"Genf, Schweiz — Schweizer Recht anwendbar · Gerichtsstand Genf","contact.ch.note":"Gemeinnuetziger Verein · Schweizer Recht · Kanton Genf",

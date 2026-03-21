@@ -222,16 +222,6 @@
     .marque-block p { font-size:.82rem; color:var(--gray); line-height:1.65; }
     .marque-badge { display:inline-block; background:rgba(201,168,76,.15); border:1px solid rgba(201,168,76,.4); color:var(--gold); font-size:.65rem; padding:.2rem .7rem; border-radius:.3rem; letter-spacing:.1em; margin-bottom:1rem; }
 
-    /* SAYBAR */
-    #saybar { position:relative; z-index:1; padding:5rem 2rem; }
-    .saybar-inner { max-width:900px; margin:0 auto; text-align:center; }
-    .saybar-flow { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin:3rem 0 2rem; }
-    .saybar-node { background:rgba(26,74,122,.2); border:1px solid rgba(0,180,216,.25); border-radius:.8rem; padding:1rem 1.5rem; font-size:.82rem; font-weight:600; color:var(--white); }
-    .saybar-node.ch { background:rgba(26,106,154,.2); border-color:rgba(26,106,154,.5); color:#6ec6ea; }
-    .saybar-node.partner { background:rgba(34,197,94,.1); border-color:rgba(34,197,94,.4); color:#4ade80; }
-    .saybar-arrow { color:var(--cyan); font-size:1.2rem; }
-    .saybar-desc { font-size:.85rem; color:var(--gray); line-height:1.7; }
-
     /* TEAM */
     #equipe { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
     .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:1000px; margin:3rem auto 0; }
@@ -400,7 +390,6 @@
     @media(max-width:600px) {
       .lang-bar { padding:.4rem .7rem; }
       .lang-btn { font-size:.6rem; padding:.25rem .5rem; }
-      .saybar-flow { flex-direction:column; }
       .stats-bar { padding:1.5rem 1rem; }
     }
   </style>
@@ -486,7 +475,7 @@
       <ul class="mission-services">
         <li data-i18n="mission.s1">Programme 3 Phases (désinflammation, optimisation, autorégulation)</li>
         <li data-i18n="mission.s2">Indice ORIM™ 0-100 (scoring 8 métriques)</li>
-        <li data-i18n="mission.s3">Pôle R&amp;D Saybar (biomarqueurs, nutrigénomique)</li>
+        <li data-i18n="mission.s3">Pôle R&amp;D ORIM (biomarqueurs, nutrigénomique)</li>
         <li data-i18n="mission.s4">Certification praticiens (3 niveaux)</li>
         <li data-i18n="mission.s5">App digitale ORIM (tracking, menus, progression)</li>
         <li data-i18n="mission.s6">Centre ORIM Genève (fitness, coworking santé, bien-être)</li>
@@ -528,7 +517,7 @@
           <div class="prest-icon">🔬</div>
           <div>
             <div class="prest-num">03</div>
-            <div class="prest-name" data-i18n="prest.03.name">Pôle R&amp;D Saybar</div>
+            <div class="prest-name" data-i18n="prest.03.name">Pôle R&amp;D ORIM</div>
             <div class="prest-desc" data-i18n="prest.03.desc">Biomarqueurs, SPMs, nutrigénomique, IA prédictive</div>
           </div>
         </div>
@@ -553,7 +542,7 @@
           <div>
             <div class="prest-num">05</div>
             <div class="prest-name" data-i18n="prest.05.name">Lexique ORIM™ 500 aliments</div>
-            <div class="prest-desc" data-i18n="prest.05.desc">Protocoles personnalisés 3 phases, menus Saybar, suivi</div>
+            <div class="prest-desc" data-i18n="prest.05.desc">Protocoles personnalisés 3 phases, menus ORIM, suivi</div>
           </div>
         </div>
         <div class="prest-item">
@@ -721,19 +710,6 @@
     </div>
   </section>
 
-  <!-- PARTENARIAT SAYBAR -->
-  <section id="saybar">
-    <div class="saybar-inner reveal">
-      <div class="section-tag" data-i18n="saybar.tag">Partenariat stratégique</div>
-      <h2 class="section-title"><span class="accent">ORIM™ × </span><span data-i18n="saybar.title">Saybar</span></h2>
-      <p class="saybar-desc" data-i18n="saybar.desc">Le partenariat ORIM × Saybar combine la méthodologie scientifique de l'Association avec l'expertise nutritionnelle de Saybar, au service d'une nutrition préventive de qualité.</p>
-      <div class="saybar-flow">
-        <div class="saybar-node ch" data-i18n="saybar.node.ch">🏛️ Association ORIM<br><small data-i18n="saybar.node.ch.sub">Méthodologie scientifique<br>Indice ORIM™</small></div>
-        <div class="saybar-arrow">⟷</div>
-        <div class="saybar-node partner" data-i18n="saybar.node.partner">🤝 Saybar<br><small data-i18n="saybar.node.partner.sub">Partenaire R&amp;D<br>Recherche &amp; formulation</small></div>
-      </div>
-    </div>
-  </section>
 
   <!-- EQUIPE -->
   <section id="equipe">
@@ -935,14 +911,14 @@
       "hero.badge":"Association à but non lucratif · Genève","hero.subtitle":"Optimisation Résolutive Immuno-Métabolique","hero.desc":"Association scientifique genevoise à but non lucratif, dédiée à l'immunonutrition préventive. Recherche, éducation et accompagnement au service de votre santé.","hero.btn1":"Nos 12 prestations","hero.btn2":"Nous contacter","hero.btn3":"Soutenir ORIM","hero.scroll":"Découvrir",
       "stats.prestations":"Prestations","stats.poles":"Pôles Association","stats.aliments":"Aliments indexés ORIM™","stats.indice":"Indice ORIM™ actuel","stats.microbiome":"Microbiome v4.0","stats.lieu":"Genève, Suisse",
       "mission.tag":"Notre mission","mission.title1":"Une association,","mission.title2":"une mission","mission.desc":"L'Association ORIM Genève est une organisation à but non lucratif dédiée à la recherche, l'éducation et l'accompagnement en immunonutrition préventive. Notre objectif : rendre accessible une approche scientifique de la nutrition au service de la santé immuno-métabolique.",
-      "mission.badge":"Association à but non lucratif · Genève · Suisse","mission.name":"Association ORIM Genève","mission.tagline":"Organisation scientifique à but non lucratif. Licenciée de la marque ORIM™, propriétaire de l'Indice ORIM™. Pôles Éducatif, Accompagnement & Recherche.","mission.s1":"Programme 3 Phases (désinflammation, optimisation, autorégulation)","mission.s2":"Indice ORIM™ 0-100 (scoring 8 métriques)","mission.s3":"Pôle R&D Saybar (biomarqueurs, nutrigénomique)","mission.s4":"Certification praticiens (3 niveaux)","mission.s5":"App digitale ORIM (tracking, menus, progression)","mission.s6":"Centre ORIM Genève (fitness, coworking santé, bien-être)",
+      "mission.badge":"Association à but non lucratif · Genève · Suisse","mission.name":"Association ORIM Genève","mission.tagline":"Organisation scientifique à but non lucratif. Licenciée de la marque ORIM™, propriétaire de l'Indice ORIM™. Pôles Éducatif, Accompagnement & Recherche.","mission.s1":"Programme 3 Phases (désinflammation, optimisation, autorégulation)","mission.s2":"Indice ORIM™ 0-100 (scoring 8 métriques)","mission.s3":"Pôle R&D ORIM (biomarqueurs, nutrigénomique)","mission.s4":"Certification praticiens (3 niveaux)","mission.s5":"App digitale ORIM (tracking, menus, progression)","mission.s6":"Centre ORIM Genève (fitness, coworking santé, bien-être)",
       "prest.tag":"12 prestations · 1 mission","prest.title":"Nos prestations","prest.desc":"L'Association ORIM Genève structure ses 12 prestations en 4 piliers complémentaires : Science, Prévention, Communauté et Infrastructuré digitale.",
       "prest.c1.phase":"Science","prest.c1.title":"Recherche","prest.c2.phase":"Prévention","prest.c2.title":"Accompagnement","prest.c3.phase":"Communauté","prest.c3.title":"Formation","prest.c4.phase":"Digital","prest.c4.title":"Infrastructure",
       "prest.01.name":"Programme 3 Phases","prest.01.desc":"Désinflammation, optimisation métabolique, autorégulation durable",
       "prest.02.name":"Indice ORIM 0-100","prest.02.desc":"Scoring alimentaire sur 8 métriques scientifiques",
-      "prest.03.name":"Pôle R&D Saybar","prest.03.desc":"Biomarqueurs, SPMs, nutrigénomique, IA prédictive",
+      "prest.03.name":"Pôle R&D ORIM","prest.03.desc":"Biomarqueurs, SPMs, nutrigénomique, IA prédictive",
       "prest.04.name":"Partenariats santé","prest.04.desc":"Réseau de praticiens partenaires, orientation et suivi",
-      "prest.05.name":"Lexique ORIM™ 500 aliments","prest.05.desc":"Protocoles personnalisés 3 phases, menus Saybar, suivi",
+      "prest.05.name":"Lexique ORIM™ 500 aliments","prest.05.desc":"Protocoles personnalisés 3 phases, menus ORIM, suivi",
       "prest.06.name":"Cuisine éducative","prest.06.desc":"Ateliers culinaires, demonstrations, menus personnalisés",
       "prest.07.name":"Communauté membres","prest.07.desc":"3 niveaux : Standard, Bienfaiteur, Premium",
       "prest.08.name":"Certification praticiens","prest.08.desc":"Formation 3 niveaux, certification ORIM continue",
@@ -960,7 +936,7 @@
       "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 Indice ORIM™ v3.0","marque.indice.text":"L'Indice ORIM™ v3.0 applique 8 métriques de scoring immuno-métabolique aux 500 aliments du Lexique. Algorithme opérationnel, propriété exclusive de l'Association.",
       "marque.v4.badge":"Projection R&D · 2027","marque.v4.title":"🧬 Indice v4.0 — Microbiome","marque.v4.text":"Extension prévue : intégration du microbiome intestinal. Sous supervision du comité scientifique ORIM. Financé par subventions R&D. Algorithmes propriété Association.",
       "marque.v5.badge":"Projection R&D · 2028","marque.v5.title":"🤖 Indice v5.0 — IA Nutrigénomique","marque.v5.text":"Vision 2028 : intégration de l'intelligence artificielle et de la nutrigénomique. Algorithmes exclusifs Association ORIM Genève. Protection IP renforcée dès la phase R&D.",
-      "saybar.tag":"Partenariat stratégique","saybar.title":"Saybar","saybar.desc":"Le partenariat ORIM × Saybar combine la méthodologie scientifique de l'Association avec l'expertise nutritionnelle de Saybar, au service d'une nutrition préventive de qualité.","saybar.node.ch":"🏛️ Association ORIM","saybar.node.ch.sub":"Méthodologie scientifique\nIndice ORIM™","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Partenaire R&D\nRecherche & formulation",
+
       "equipe.tag":"Notre équipe","equipe.title":"Fondateur","team.oc.r1":"President · Association ORIM","team.oc.r2":"Fondateur · Titulaire marque ORIM™","team.oc.r3":"Spécialiste en ingénierie QHSE",
       "donation.tag":"Soutenez notre mission","donation.title":"Faire un don","donation.desc":"Votre soutien permet à l'Association ORIM Genève de poursuivre sa mission de recherche, d'éducation et d'accompagnement en immunonutrition préventive.","donation.amount":"Chaque don compte","donation.text":"Scannez le QR code ou cliquez sur le bouton ci-dessous pour soutenir l'Association ORIM Genève via Happypot. 100% des dons financent la recherche, l'éducation et le futur cabinet ORIM.","donation.btn":"Faire un don — Happypot","donation.note":"Association à but non lucratif · Droit suisse · Canton de Genève",
       "nav.newsletter":"Newsletter","nl.tag":"Restez connectés","nl.title":"Newsletter TEAM ORIM","nl.desc":"Rejoignez la communauté ORIM et recevez nos avancées scientifiques, événements et actualités directement dans votre boîte mail.","nl.card.title":"Rejoignez TEAM ORIM","nl.card.text":"Recevez chaque mois nos bulletins scientifiques, les résultats de nos recherches en immunonutrition, les prochains événements et les avancées du programme ORIM.","nl.placeholder":"votre@email.com","nl.btn":"S'inscrire","nl.success":"Bienvenue dans TEAM ORIM ! Vous recevrez bientôt notre prochaine newsletter.","nl.b1":"Bulletins scientifiques","nl.b2":"Événements & ateliers","nl.b3":"Avancées R&D","nl.b4":"Gratuit & sans spam","nl.archives.btn":"Newsletters 2025 (PDF)","nl.arc.jan":"Janvier 2025","nl.arc.feb":"Février 2025","nl.arc.mar":"Mars 2025","nl.arc.apr":"Avril 2025","nl.arc.may":"Mai 2025","nl.arc.jun":"Juin 2025","nl.arc.jul":"Juillet 2025","nl.arc.aug":"Août 2025","nl.arc.sep":"Septembre 2025","nl.arc.oct":"Octobre 2025","nl.arc.nov":"Novembre 2025","nl.arc.dec":"Décembre 2025","nl.privacy":"Vos données restent confidentielles · Désabonnement en un clic · Conforme RGPD",
@@ -972,14 +948,14 @@
       "hero.badge":"Non-profit association · Geneva","hero.subtitle":"Resolving Immuno-Metabolic Optimization","hero.desc":"Geneva-based non-profit scientific association dedicated to préventive immunonutrition. Research, éducation and support for your health.","hero.btn1":"Our 12 services","hero.btn2":"Contact us","hero.btn3":"Support ORIM","hero.scroll":"Explore",
       "stats.prestations":"Services","stats.poles":"Association pôles","stats.aliments":"ORIM™ indexed foods","stats.indice":"Current ORIM™ Index","stats.microbiome":"Microbiome v4.0","stats.lieu":"Geneva, Switzerland",
       "mission.tag":"Our mission","mission.title1":"One association,","mission.title2":"one mission","mission.desc":"Association ORIM Geneva is a non-profit organization dedicated to research, éducation and support in préventive immunonutrition. Our goal: making a scientific approach to nutrition accessible for immuno-metabolic health.",
-      "mission.badge":"Non-profit association · Geneva · Switzerland","mission.name":"Association ORIM Geneva","mission.tagline":"Non-profit scientific organization. Licensee of the ORIM™ brand, owner of the ORIM™ Index. Éducational, Support & Research pôles.","mission.s1":"3-Phase Program (anti-inflammation, optimization, self-regulation)","mission.s2":"ORIM™ Index 0-100 (8-metric scoring)","mission.s3":"Saybar R&D Hub (biomarkers, nutrigenomics)","mission.s4":"Practitioner certification (3 levels)","mission.s5":"ORIM digital app (tracking, menus, progrèss)","mission.s6":"ORIM Geneva Center (fitness, health coworking, wellness)",
+      "mission.badge":"Non-profit association · Geneva · Switzerland","mission.name":"Association ORIM Geneva","mission.tagline":"Non-profit scientific organization. Licensee of the ORIM™ brand, owner of the ORIM™ Index. Éducational, Support & Research pôles.","mission.s1":"3-Phase Program (anti-inflammation, optimization, self-regulation)","mission.s2":"ORIM™ Index 0-100 (8-metric scoring)","mission.s3":"ORIM R&D Hub (biomarkers, nutrigenomics)","mission.s4":"Practitioner certification (3 levels)","mission.s5":"ORIM digital app (tracking, menus, progrèss)","mission.s6":"ORIM Geneva Center (fitness, health coworking, wellness)",
       "prest.tag":"12 services · 1 mission","prest.title":"Our services","prest.desc":"Association ORIM Geneva structures its 12 services into 4 complementary pillars: Science, Prévention, Community, and Digital Infrastructure.",
       "prest.c1.phase":"Science","prest.c1.title":"Research","prest.c2.phase":"Prévention","prest.c2.title":"Support","prest.c3.phase":"Community","prest.c3.title":"Training","prest.c4.phase":"Digital","prest.c4.title":"Infrastructure",
       "prest.01.name":"3-Phase Program","prest.01.desc":"Anti-inflammation, metabolic optimization, lasting self-regulation",
       "prest.02.name":"ORIM Index 0-100","prest.02.desc":"Food scoring across 8 scientific metrics",
-      "prest.03.name":"Saybar R&D Hub","prest.03.desc":"Biomarkers, SPMs, nutrigenomics, prédictive AI",
+      "prest.03.name":"ORIM R&D Hub","prest.03.desc":"Biomarkers, SPMs, nutrigenomics, prédictive AI",
       "prest.04.name":"Health partnerships","prest.04.desc":"Network of partner practitioners, referral and follow-up",
-      "prest.05.name":"ORIM nutritional program","prest.05.desc":"Personalized 3-phase protocols, Saybar menus, support",
+      "prest.05.name":"ORIM nutritional program","prest.05.desc":"Personalized 3-phase protocols, ORIM menus, support",
       "prest.06.name":"Éducational cooking","prest.06.desc":"Culinary workshops, demonstrations, personalized menus",
       "prest.07.name":"Member community","prest.07.desc":"3 levels: Standard, Benefactor, Premium",
       "prest.08.name":"Practitioner certification","prest.08.desc":"3-level training, ongoing ORIM certification",
@@ -997,7 +973,7 @@
       "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 ORIM™ Index v3.0","marque.indice.text":"The ORIM™ Index v3.0 applies 8 immuno-metabolic scoring metrics to the 500 foods in the Lexicon. Operational algorithm, exclusive property of the Association.",
       "marque.v4.badge":"R&D Projection · 2027","marque.v4.title":"🧬 Index v4.0 — Microbiome","marque.v4.text":"Planned extension: gut microbiome intégration. Under ORIM Scientific Committee supervision. Funded by R&D grants. Algorithms remain Association property.",
       "marque.v5.badge":"R&D Projection · 2028","marque.v5.title":"🤖 Index v5.0 — AI Nutrigenomics","marque.v5.text":"2028 vision: intégration of artificial intelligence and nutrigenomics. Exclusive Association ORIM Geneva algorithms. Reinforced IP protection from R&D phase.",
-      "saybar.tag":"Strategic partnership","saybar.title":"Saybar","saybar.desc":"The ORIM × Saybar partnership combines the Association's scientific methodology with Saybar's nutritional expertise, in service of quality préventive nutrition.","saybar.node.ch":"🏛️ Association ORIM","saybar.node.ch.sub":"Scientific methodology\nORIM™ Index","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"R&D partner\nResearch & formulation",
+
       "equipe.tag":"Our team","equipe.title":"Founder","team.oc.r1":"President · Association ORIM","team.oc.r2":"Founder · ORIM™ brand holder","team.oc.r3":"QHSE Engineering Specialist",
       "donation.tag":"Support our mission","donation.title":"Make a donation","donation.desc":"Your support enables Association ORIM Geneva to pursue its mission of research, éducation and support in préventive immunonutrition.","donation.amount":"Every donation counts","donation.text":"Scan the QR code or click the button below to support Association ORIM Geneva via Happypot. 100% of donations fund research, éducation and the future ORIM center.","donation.btn":"Donate — Happypot","donation.note":"Non-profit association · Swiss law · Canton of Geneva",
       "nav.newsletter":"Newsletter","nl.tag":"Stay connected","nl.title":"TEAM ORIM Newsletter","nl.desc":"Join the ORIM community and receive our scientific advances, events and news directly in your inbox.","nl.card.title":"Join TEAM ORIM","nl.card.text":"Receive monthly scientific bulletins, immunonutrition research results, upcoming events and ORIM program advances.","nl.placeholder":"your@email.com","nl.btn":"Subscribe","nl.success":"Welcome to TEAM ORIM! You will soon receive our next newsletter.","nl.b1":"Scientific bulletins","nl.b2":"Events & workshops","nl.b3":"R&D advances","nl.b4":"Free & spam-free","nl.archives.btn":"Newsletters 2025 (PDF)","nl.arc.jan":"January 2025","nl.arc.feb":"February 2025","nl.arc.mar":"March 2025","nl.arc.apr":"April 2025","nl.arc.may":"May 2025","nl.arc.jun":"June 2025","nl.arc.jul":"July 2025","nl.arc.aug":"August 2025","nl.arc.sep":"September 2025","nl.arc.oct":"October 2025","nl.arc.nov":"November 2025","nl.arc.dec":"December 2025","nl.privacy":"Your data remains confidential · One-click unsubscribe · GDPR compliant",
@@ -1009,14 +985,14 @@
       "hero.badge":"Asociacion sin animo de lucro · Ginebra","hero.subtitle":"Optimizacion Resolutiva Inmuno-Metabolica","hero.desc":"Asociacion cientifica ginebrense sin animo de lucro, dedicada a la inmunonutricion preventiva. Investigacion, educacion y acompanamiento al servicio de su salud.","hero.btn1":"Nuestras 12 prestaciones","hero.btn2":"Contactenos","hero.scroll":"Explorar",
       "stats.prestations":"Prestaciones","stats.poles":"Polos Asociacion","stats.aliments":"Alimentos indexados ORIM™","stats.indice":"Indice ORIM™ actual","stats.microbiome":"Microbioma v4.0","stats.lieu":"Ginebra, Suiza",
       "mission.tag":"Nuestra mision","mission.title1":"Una asociacion,","mission.title2":"una mision","mission.desc":"La Asociacion ORIM Ginebra es una organizacion sin animo de lucro dedicada a la investigacion, educacion y acompanamiento en inmunonutricion preventiva.",
-      "mission.badge":"Asociacion sin animo de lucro · Ginebra · Suiza","mission.name":"Asociacion ORIM Ginebra","mission.tagline":"Organizacion cientifica sin animo de lucro. Licenciataria de la marca ORIM™, propietaria del Indice ORIM™. Polos Educativo, Acompanamiento e Investigacion.","mission.s1":"Programa 3 Fases (desinflamacion, optimizacion, autorregulacion)","mission.s2":"Indice ORIM™ 0-100 (scoring 8 metricas)","mission.s3":"Polo I+D Saybar (biomarcadores, nutrigenomica)","mission.s4":"Certificacion de profesionales (3 niveles)","mission.s5":"App digital ORIM (tracking, menus, progrèso)","mission.s6":"Centro ORIM Ginebra (fitness, coworking salud, bienestar)",
+      "mission.badge":"Asociacion sin animo de lucro · Ginebra · Suiza","mission.name":"Asociacion ORIM Ginebra","mission.tagline":"Organizacion cientifica sin animo de lucro. Licenciataria de la marca ORIM™, propietaria del Indice ORIM™. Polos Educativo, Acompanamiento e Investigacion.","mission.s1":"Programa 3 Fases (desinflamacion, optimizacion, autorregulacion)","mission.s2":"Indice ORIM™ 0-100 (scoring 8 metricas)","mission.s3":"Polo I+D ORIM (biomarcadores, nutrigenomica)","mission.s4":"Certificacion de profesionales (3 niveles)","mission.s5":"App digital ORIM (tracking, menus, progrèso)","mission.s6":"Centro ORIM Ginebra (fitness, coworking salud, bienestar)",
       "prest.tag":"12 prestaciones · 1 mision","prest.title":"Nuestras prestaciones","prest.desc":"La Asociacion ORIM Ginebra estructura sus 12 prestaciones en 4 pilares complementarios: Ciencia, Prevencion, Comunidad e Infraestructura digital.",
       "prest.c1.phase":"Ciencia","prest.c1.title":"Investigacion","prest.c2.phase":"Prevencion","prest.c2.title":"Acompanamiento","prest.c3.phase":"Comunidad","prest.c3.title":"Formacion","prest.c4.phase":"Digital","prest.c4.title":"Infraestructura",
       "prest.01.name":"Programa 3 Fases","prest.01.desc":"Desinflamacion, optimizacion metabolica, autorregulacion durable",
       "prest.02.name":"Indice ORIM 0-100","prest.02.desc":"Puntuacion alimentaria sobre 8 metricas cientificas",
-      "prest.03.name":"Polo I+D Saybar","prest.03.desc":"Biomarcadores, SPMs, nutrigenomica, IA predictiva",
+      "prest.03.name":"Polo I+D ORIM","prest.03.desc":"Biomarcadores, SPMs, nutrigenomica, IA predictiva",
       "prest.04.name":"Alianzas salud","prest.04.desc":"Red de profesionales asociados, orientacion y seguimiento",
-      "prest.05.name":"Lexique ORIM™ 500 alimentos","prest.05.desc":"Protocolos personalizados 3 fases, menus Saybar, seguimiento",
+      "prest.05.name":"Lexique ORIM™ 500 alimentos","prest.05.desc":"Protocolos personalizados 3 fases, menus ORIM, seguimiento",
       "prest.06.name":"Cocina educativa","prest.06.desc":"Talleres culinarios, demostraciones, menus personalizados",
       "prest.07.name":"Comunidad miembros","prest.07.desc":"3 niveles: Estandar, Bienhechor, Premium",
       "prest.08.name":"Certificacion profesionales","prest.08.desc":"Formacion 3 niveles, certificacion ORIM continua",
@@ -1034,7 +1010,7 @@
       "marque.indice.badge":"I+D · Asociacion ORIM","marque.indice.title":"🔬 Indice ORIM™ v3.0","marque.indice.text":"El Indice ORIM™ v3.0 aplica 8 metricas de scoring inmuno-metabolico a los 500 alimentos del Lexico. Algoritmo operacional, propiedad exclusiva de la Asociacion.",
       "marque.v4.badge":"Proyeccion I+D · 2027","marque.v4.title":"🧬 Indice v4.0 — Microbioma","marque.v4.text":"Extension prevista: integracion del microbioma intestinal. Bajo supervision del comité cientifico ORIM. Financiado por subvenciones I+D. Algoritmos propiedad Asociacion.",
       "marque.v5.badge":"Proyeccion I+D · 2028","marque.v5.title":"🤖 Indice v5.0 — IA Nutrigenomica","marque.v5.text":"Vision 2028: integracion de inteligencia artificial y nutrigenomica, objetivo 500+ alimentos. Algoritmos exclusivos Asociacion ORIM Ginebra.",
-      "saybar.tag":"Alianza estrategica","saybar.title":"Saybar","saybar.desc":"La alianza ORIM × Saybar combina la metodologia cientifica de la Asociacion con la experiencia nutricional de Saybar.","saybar.node.ch":"🏛️ Asociacion ORIM","saybar.node.ch.sub":"Metodologia cientifica\nIndice ORIM™","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"Socio I+D\nInvestigacion y formulacion",
+
       "equipe.tag":"Nuestro equipo","equipe.title":"Fundador","team.oc.r1":"Presidente · Asociacion ORIM","team.oc.r2":"Fundador · Titular marca ORIM™","team.oc.r3":"Especialista en ingenieria QHSE",
       "donation.tag":"Apoye nuestra mision","donation.title":"Hacer una donacion","donation.desc":"Su apoyo permite a la Asociacion ORIM Ginebra continuar su mision de investigacion, educacion y acompanamiento en inmunonutricion preventiva.","donation.amount":"Cada donacion cuenta","donation.text":"Escanee el codigo QR o haga clic en el boton para apoyar a la Asociacion ORIM Ginebra via Happypot. 100% de las donaciones financian investigacion, educacion y el futuro centro ORIM.","donation.btn":"Donar — Happypot","donation.note":"Asociacion sin animo de lucro · Derecho suizo · Canton de Ginebra",
       "nav.newsletter":"Newsletter","nl.tag":"Mantengase conectado","nl.title":"Newsletter TEAM ORIM","nl.desc":"Unase a la comunidad ORIM y reciba nuestros avances cientificos, eventos y noticias directamente en su correo.","nl.card.title":"Unase a TEAM ORIM","nl.card.text":"Reciba cada mes boletines cientificos, resultados de investigacion en inmunonutricion, proximos eventos y avances del programa ORIM.","nl.placeholder":"su@email.com","nl.btn":"Suscribirse","nl.success":"Bienvenido a TEAM ORIM! Pronto recibira nuestro proximo boletin.","nl.b1":"Boletines cientificos","nl.b2":"Eventos y talleres","nl.b3":"Avances I+D","nl.b4":"Gratuito y sin spam","nl.archives.btn":"Newsletters 2025 (PDF)","nl.arc.jan":"Enero 2025","nl.arc.feb":"Febrero 2025","nl.arc.mar":"Marzo 2025","nl.arc.apr":"Abril 2025","nl.arc.may":"Mayo 2025","nl.arc.jun":"Junio 2025","nl.arc.jul":"Julio 2025","nl.arc.aug":"Agosto 2025","nl.arc.sep":"Septiembre 2025","nl.arc.oct":"Octubre 2025","nl.arc.nov":"Noviembre 2025","nl.arc.dec":"Diciembre 2025","nl.privacy":"Sus datos son confidenciales · Desuscripcion en un clic · Conforme RGPD",
@@ -1046,14 +1022,14 @@
       "hero.badge":"Gemeinnuetziger Verein · Genf","hero.subtitle":"Aufloesende Immuno-Metabolische Optimierung","hero.desc":"Genfer gemeinnuetziger wissenschaftlicher Verein fuer praeventive Immunoernaehrung. Forschung, Bildung und Begleitung fuer Ihre Gesundheit.","hero.btn1":"Unsere 12 Leistungen","hero.btn2":"Kontakt aufnehmen","hero.scroll":"Entdecken",
       "stats.prestations":"Leistungen","stats.poles":"Verein-Pôle","stats.aliments":"Indexierte ORIM™-Lebensmittel","stats.indice":"Aktueller ORIM™-Index","stats.microbiome":"Mikrobiom v4.0","stats.lieu":"Genf, Schweiz",
       "mission.tag":"Unsere Mission","mission.title1":"Ein Verein,","mission.title2":"eine Mission","mission.desc":"Der Verein ORIM Genf ist eine gemeinnuetzige Organisation fuer Forschung, Bildung und Begleitung in praeventiver Immunoernaehrung.",
-      "mission.badge":"Gemeinnuetziger Verein · Genf · Schweiz","mission.name":"Verein ORIM Genf","mission.tagline":"Gemeinnuetzige wissenschaftliche Organisation. Lizenznehmerin der Marke ORIM™, Eigentuemerin des ORIM™-Index. Bildungs-, Begleitungs- und Forschungspôle.","mission.s1":"3-Phasen-Programm (Entzuendungshemmung, Optimierung, Selbstregulation)","mission.s2":"ORIM™-Index 0-100 (8-Metriken-Scoring)","mission.s3":"Saybar F&E-Hub (Biomarker, Nutrigenomik)","mission.s4":"Praktizierende-Zertifizierung (3 Stufen)","mission.s5":"ORIM digitale App (Tracking, Menues, Fortschritt)","mission.s6":"ORIM Genf Zentrum (Fitness, Gesundheits-Coworking, Wohlbefinden)",
+      "mission.badge":"Gemeinnuetziger Verein · Genf · Schweiz","mission.name":"Verein ORIM Genf","mission.tagline":"Gemeinnuetzige wissenschaftliche Organisation. Lizenznehmerin der Marke ORIM™, Eigentuemerin des ORIM™-Index. Bildungs-, Begleitungs- und Forschungspôle.","mission.s1":"3-Phasen-Programm (Entzuendungshemmung, Optimierung, Selbstregulation)","mission.s2":"ORIM™-Index 0-100 (8-Metriken-Scoring)","mission.s3":"ORIM F&E-Hub (Biomarker, Nutrigenomik)","mission.s4":"Praktizierende-Zertifizierung (3 Stufen)","mission.s5":"ORIM digitale App (Tracking, Menues, Fortschritt)","mission.s6":"ORIM Genf Zentrum (Fitness, Gesundheits-Coworking, Wohlbefinden)",
       "prest.tag":"12 Leistungen · 1 Mission","prest.title":"Unsere Leistungen","prest.desc":"Der Verein ORIM Genf strukturiert seine 12 Leistungen in 4 komplementaere Saeulen: Wissenschaft, Praevention, Gemeinschaft und digitale Infrastruktur.",
       "prest.c1.phase":"Wissenschaft","prest.c1.title":"Forschung","prest.c2.phase":"Praevention","prest.c2.title":"Begleitung","prest.c3.phase":"Gemeinschaft","prest.c3.title":"Ausbildung","prest.c4.phase":"Digital","prest.c4.title":"Infrastruktur",
       "prest.01.name":"3-Phasen-Programm","prest.01.desc":"Entzuendungshemmung, metabolische Optimierung, dauerhafte Selbstregulation",
       "prest.02.name":"ORIM-Index 0-100","prest.02.desc":"Lebensmittel-Scoring ueber 8 wissenschaftliche Metriken",
-      "prest.03.name":"Saybar F&E-Hub","prest.03.desc":"Biomarker, SPMs, Nutrigenomik, praediktive KI",
+      "prest.03.name":"ORIM F&E-Hub","prest.03.desc":"Biomarker, SPMs, Nutrigenomik, praediktive KI",
       "prest.04.name":"Gesundheitspartnerschaften","prest.04.desc":"Netzwerk von Partner-Praktizierenden, Orientierung und Nachsorge",
-      "prest.05.name":"ORIM Ernaehrungsprogramm","prest.05.desc":"Personalisierte 3-Phasen-Protokolle, Saybar-Menues, Begleitung",
+      "prest.05.name":"ORIM Ernaehrungsprogramm","prest.05.desc":"Personalisierte 3-Phasen-Protokolle, ORIM-Menues, Begleitung",
       "prest.06.name":"Bildungskueche","prest.06.desc":"Kulinarische Workshops, Demonstrationen, personalisierte Menues",
       "prest.07.name":"Mitglieder-Gemeinschaft","prest.07.desc":"3 Stufen: Standard, Foerderer, Premium",
       "prest.08.name":"Praktizierenden-Zertifizierung","prest.08.desc":"3-Stufen-Ausbildung, fortlaufende ORIM-Zertifizierung",
@@ -1071,7 +1047,6 @@
       "marque.indice.badge":"F&E · Verein ORIM","marque.indice.title":"🔬 ORIM™-Index v3.0","marque.indice.text":"Der ORIM™-Index v3.0 wendet 8 immuno-metabolische Scoring-Metriken auf die 500 Lebensmittel des Lexikons an. Operativer Algorithmus, exklusives Eigentum des Vereins.",
       "marque.v4.badge":"F&E-Projektion · 2027","marque.v4.title":"🧬 Index v4.0 — Mikrobiom","marque.v4.text":"Geplante Erweiterung: Intégration des Darmmikrobioms. Unter Aufsicht des wissenschaftlichen Komitees ORIM. Finanziert durch F&E-Foerderungen. Algorithmen Vereinseigentum.",
       "marque.v5.badge":"F&E-Projektion · 2028","marque.v5.title":"🤖 Index v5.0 — KI Nutrigenomik","marque.v5.text":"Vision 2028: Intégration von kuenstlicher Intelligenz und Nutrigenomik. Exklusive Algorithmen des Vereins ORIM Genf. Verstaerkter IP-Schutz ab der F&E-Phase.",
-      "saybar.tag":"Strategische Partnerschaft","saybar.title":"Saybar","saybar.desc":"Die ORIM × Saybar Partnerschaft verbindet die wissenschaftliche Methodik des Vereins mit Saybars Ernaehrungsexpertise.","saybar.node.ch":"🏛️ Verein ORIM","saybar.node.ch.sub":"Wissenschaftliche Methodik\nORIM™-Index","saybar.node.partner":"🤝 Saybar","saybar.node.partner.sub":"F&E-Partner\nForschung & Formulierung",
       "equipe.tag":"Unser Team","equipe.title":"Gruender","team.oc.r1":"Praesident · Verein ORIM","team.oc.r2":"Gruender · ORIM™-Markeninhaber","team.oc.r3":"QHSE-Ingenieur-Spezialist",
       "donation.tag":"Unterstuetzen Sie unsere Mission","donation.title":"Spenden","donation.desc":"Ihre Unterstuetzung ermoeglicht dem Verein ORIM Genf, seine Mission in Forschung, Bildung und Begleitung in praeventiver Immunoernaehrung fortzusetzen.","donation.amount":"Jede Spende zaehlt","donation.text":"Scannen Sie den QR-Code oder klicken Sie auf die Schaltflaeche, um den Verein ORIM Genf ueber Happypot zu unterstuetzen. 100% der Spenden finanzieren Forschung, Bildung und das zukuenftige ORIM-Zentrum.","donation.btn":"Spenden — Happypot","donation.note":"Gemeinnuetziger Verein · Schweizer Recht · Kanton Genf",
       "nav.newsletter":"Newsletter","nl.tag":"Bleiben Sie verbunden","nl.title":"Newsletter TEAM ORIM","nl.desc":"Treten Sie der ORIM-Community bei und erhalten Sie unsere wissenschaftlichen Fortschritte, Veranstaltungen und Neuigkeiten direkt in Ihr Postfach.","nl.card.title":"TEAM ORIM beitreten","nl.card.text":"Erhalten Sie monatlich wissenschaftliche Bulletins, Forschungsergebnisse zur Immunoernaehrung, kommende Veranstaltungen und Fortschritte des ORIM-Programms.","nl.placeholder":"ihre@email.com","nl.btn":"Abonnieren","nl.success":"Willkommen bei TEAM ORIM! Sie erhalten bald unseren naechsten Newsletter.","nl.b1":"Wissenschaftliche Bulletins","nl.b2":"Veranstaltungen & Workshops","nl.b3":"F&E-Fortschritte","nl.b4":"Kostenlos & spamfrei","nl.archives.btn":"Newsletters 2025 (PDF)","nl.arc.jan":"Januar 2025","nl.arc.feb":"Februar 2025","nl.arc.mar":"Maerz 2025","nl.arc.apr":"April 2025","nl.arc.may":"Mai 2025","nl.arc.jun":"Juni 2025","nl.arc.jul":"Juli 2025","nl.arc.aug":"August 2025","nl.arc.sep":"September 2025","nl.arc.oct":"Oktober 2025","nl.arc.nov":"November 2025","nl.arc.dec":"Dezember 2025","nl.privacy":"Ihre Daten bleiben vertraulich · Abmeldung mit einem Klick · DSGVO-konform",

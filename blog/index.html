@@ -223,38 +223,7 @@
   </style>
 </head>
 <body>
-<!-- ORIM Access Gate -->
-<div id="orim-gate" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d1b2a;z-index:999999;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;">
-  <div style="text-align:center;max-width:400px;padding:2rem;">
-    <div style="font-size:3rem;color:#1BA8A6;font-weight:bold;letter-spacing:0.3em;margin-bottom:0.5rem;">ORIM™</div>
-    <div style="color:#E6A817;font-size:0.85rem;letter-spacing:0.2em;margin-bottom:2rem;">ACCES RESTREINT</div>
-    <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-bottom:1.5rem;">Ce site est actuellement en maintenance.<br>Veuillez entrer votre code d'accès.</div>
-    <input id="orim-gate-input" type="password" placeholder="Code d'accès" autocomplete="off"
-      style="width:100%;padding:14px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(27,168,166,0.3);border-radius:8px;color:#fff;font-size:1rem;text-align:center;letter-spacing:0.15em;outline:none;box-sizing:border-box;margin-bottom:1rem;"
-      onfocus="this.style.borderColor='#1BA8A6'" onblur="this.style.borderColor='rgba(27,168,166,0.3)'" />
-    <button id="orim-gate-btn" onclick="orimGateCheck()"
-      style="width:100%;padding:14px;background:linear-gradient(135deg,#1BA8A6,#15918f);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;letter-spacing:0.05em;">
-      Accéder au site
-    </button>
-    <div id="orim-gate-error" style="color:#e74c3c;font-size:0.8rem;margin-top:1rem;display:none;">Code incorrect. Veuillez réessayer.</div>
-    <div style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:2rem;">Association ORIM · Genève, Suisse</div>
-  </div>
-</div>
-<script>
-(function(){
-  var HASH='aac96125fe5a648f45b9bb12ad2f6ed08effccdc6d6e3ffab3b4048e6a081e50';
-  if(sessionStorage.getItem('orim-auth')===HASH){document.getElementById('orim-gate').style.display='none';}
-  document.getElementById('orim-gate-input').addEventListener('keydown',function(e){if(e.key==='Enter')orimGateCheck();});
-  window.orimGateCheck=async function(){
-    var v=document.getElementById('orim-gate-input').value;
-    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));
-    var h=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    if(h===HASH){sessionStorage.setItem('orim-auth',HASH);document.getElementById('orim-gate').style.display='none';}
-    else{document.getElementById('orim-gate-error').style.display='block';document.getElementById('orim-gate-input').value='';document.getElementById('orim-gate-input').style.borderColor='#e74c3c';}
-  };
-})();
-</script>
-<!-- /ORIM Access Gate -->
+<!-- Access gate removed - site is now public -->
 
 
   <!-- NAV -->

@@ -23,38 +23,7 @@
     .ref-list{background:rgba(13,27,42,.5);border:1px solid rgba(0,180,216,.1);border-radius:.8rem;padding:1.5rem;margin:2rem 0}.ref-list h3{color:var(--cyan);margin-top:0}.ref-list ol{margin-left:1.2rem}.ref-list li{font-size:.78rem;color:rgba(148,163,184,.7);margin-bottom:.4rem;line-height:1.5}.author-box{display:flex;gap:1.5rem;align-items:flex-start;background:rgba(26,74,122,.1);border:1px solid rgba(0,180,216,.15);border-radius:1rem;padding:2rem;margin:3rem 0 2rem}.author-avatar{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;border:2px solid rgba(0,180,216,.3)}.author-info h4{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700}.author-info .author-role{font-size:.78rem;color:var(--cyan);margin:.2rem 0 .6rem}.author-info p{font-size:.82rem;color:var(--gray);line-height:1.6}.article-cta{background:linear-gradient(135deg,rgba(27,168,166,.1),rgba(26,74,122,.2));border:1px solid rgba(27,168,166,.3);border-radius:1rem;padding:2.5rem;text-align:center;margin:2rem 0}.article-cta h3{font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.8rem}.article-cta p{font-size:.88rem;color:var(--gray);margin-bottom:1.5rem}.article-cta .btn-primary{display:inline-block;background:linear-gradient(135deg,var(--teal),#0d8a88);color:#fff;padding:.8rem 2rem;border-radius:2rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 0 30px rgba(27,168,166,.3)}.related-articles{max-width:860px;margin:0 auto;padding:2rem}.related-articles h3{font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1.5rem}.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}.related-card{background:rgba(26,74,122,.1);border:1px solid rgba(0,180,216,.12);border-radius:.8rem;padding:1.2rem;transition:transform .3s}.related-card:hover{transform:translateY(-3px)}.related-card h4{font-family:'Rajdhani',sans-serif;font-size:.95rem;font-weight:600;margin-bottom:.4rem}.related-card h4 a{color:var(--white);text-decoration:none}.related-card h4 a:hover{color:var(--cyan)}.related-card p{font-size:.75rem;color:var(--gray);line-height:1.5}footer{text-align:center;padding:3rem 2rem;margin-top:4rem;border-top:1px solid rgba(0,180,216,.1);background:rgba(13,27,42,.5)}.footer-logo img{height:30px;margin-bottom:1rem;filter:drop-shadow(0 0 8px rgba(0,180,216,.3))}.footer-entity-line{font-size:.82rem;color:var(--gray);margin-bottom:1.5rem}.footer-links{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}.footer-links a{color:var(--gray);font-size:.75rem;text-decoration:none}.footer-links a:hover{color:var(--cyan)}.footer-bottom{font-size:.68rem;color:rgba(148,163,184,.4)}@media(max-width:768px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(13,27,42,.97);padding:1rem 2rem;gap:.8rem}.nav-links.open{display:flex}.nav-mobile-toggle{display:block}.author-box{flex-direction:column;align-items:center;text-align:center}}</style>
 </head>
 <body>
-<!-- ORIM Access Gate -->
-<div id="orim-gate" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d1b2a;z-index:999999;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;">
-  <div style="text-align:center;max-width:400px;padding:2rem;">
-    <div style="font-size:3rem;color:#1BA8A6;font-weight:bold;letter-spacing:0.3em;margin-bottom:0.5rem;">ORIM™</div>
-    <div style="color:#E6A817;font-size:0.85rem;letter-spacing:0.2em;margin-bottom:2rem;">ACCÈS RESTREINT</div>
-    <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-bottom:1.5rem;">Ce site est actuellement en maintenance.<br>Veuillez entrer votre code d'accès.</div>
-    <input id="orim-gate-input" type="password" placeholder="Code d'accès" autocomplete="off"
-      style="width:100%;padding:14px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(27,168,166,0.3);border-radius:8px;color:#fff;font-size:1rem;text-align:center;letter-spacing:0.15em;outline:none;box-sizing:border-box;margin-bottom:1rem;"
-      onfocus="this.style.borderColor='#1BA8A6'" onblur="this.style.borderColor='rgba(27,168,166,0.3)'" />
-    <button id="orim-gate-btn" onclick="orimGateCheck()"
-      style="width:100%;padding:14px;background:linear-gradient(135deg,#1BA8A6,#15918f);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;letter-spacing:0.05em;">
-      Accéder au site
-    </button>
-    <div id="orim-gate-error" style="color:#e74c3c;font-size:0.8rem;margin-top:1rem;display:none;">Code incorrect. Veuillez réessayer.</div>
-    <div style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:2rem;">Association ORIM · Genève, Suisse</div>
-  </div>
-</div>
-<script>
-(function(){
-  var HASH='aac96125fe5a648f45b9bb12ad2f6ed08effccdc6d6e3ffab3b4048e6a081e50';
-  if(sessionStorage.getItem('orim-auth')===HASH){document.getElementById('orim-gate').style.display='none';}
-  document.getElementById('orim-gate-input').addEventListener('keydown',function(e){if(e.key==='Enter')orimGateCheck();});
-  window.orimGateCheck=async function(){
-    var v=document.getElementById('orim-gate-input').value;
-    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));
-    var h=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    if(h===HASH){sessionStorage.setItem('orim-auth',HASH);document.getElementById('orim-gate').style.display='none';}
-    else{document.getElementById('orim-gate-error').style.display='block';document.getElementById('orim-gate-input').value='';document.getElementById('orim-gate-input').style.borderColor='#e74c3c';}
-  };
-})();
-</script>
-<!-- /ORIM Access Gate -->
+<!-- Access gate removed - site is now public -->
 
   <nav id="main-nav"><a href="../index.html" class="nav-logo"><img src="../orim-logo.png" alt="ORIM" class="nav-logo-img" /><span>OPTIMISATION RÉSOLUTIVE<br>IMMUNO-MÉTABOLIQUE</span></a><button class="nav-mobile-toggle" id="mobile-toggle">&#9776;</button><ul class="nav-links" id="nav-links"><li><a href="../index.html#mission">Notre mission</a></li><li><a href="../index.html#prestations">12 Prestations</a></li><li><a href="../index.html#poles">Pôles</a></li><li><a href="../index.html#marque">Marque ORIM</a></li><li><a href="../partenaires.html">Nos Partenaires</a></li><li><a href="../index.html#equipe">Équipe</a></li><li><a href="../index.html#donation">Donation</a></li><li><a href="../index.html#contact">Contact</a></li><li><a href="index.html" class="active">Blog</a></li><li><a href="../index.html#contact" class="nav-cta">Nous contacter</a></li></ul></nav>
 

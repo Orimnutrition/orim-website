@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIM™ — 12 Prestations Interactives</title>
+<meta name="description" content="Découvrez les 12 prestations de l'Association ORIM Genève — immunonutrition préventive, recherche, éducation, accompagnement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1b2a;--blue:#1a4a7a;--cyan:#00b4d8;--lcyan:#90e0ef;--white:#f8fafc;--gray:#94a3b8;--teal:#1BA8A6;--gold:#E6A817;--dark:#2D3436}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;min-height:100vh}
+
+/* BACK BUTTON */
+.back-btn{position:fixed;top:1.5rem;left:1.5rem;z-index:200;display:inline-flex;align-items:center;gap:.5rem;background:rgba(13,27,42,.85);backdrop-filter:blur(12px);border:1px solid rgba(0,180,216,.2);color:var(--cyan);padding:.6rem 1.2rem;border-radius:2rem;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-decoration:none;transition:all .3s}
+.back-btn:hover{background:rgba(0,180,216,.15);border-color:var(--cyan);transform:translateX(-3px)}
+.back-btn svg{width:16px;height:16px}
+
+/* HERO */
+.page-hero{text-align:center;padding:6rem 2rem 3rem;position:relative}
+.page-hero h1{font-family:'Rajdhani',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;background:linear-gradient(135deg,#fff 0%,#00b4d8 50%,#90e0ef 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem}
+.page-hero .subtitle{font-size:.85rem;color:var(--gray);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem}
+.page-hero .desc{font-size:.95rem;color:var(--gray);line-height:1.7;max-width:650px;margin:0 auto}
+
+/* ORBITAL WHEEL */
+.orbital-section{position:relative;width:100%;max-width:900px;margin:2rem auto;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.orbital-section{display:none}}
+
+.orbit-ring{position:absolute;border-radius:50%;border:1px solid rgba(0,180,216,.08)}
+.ring-sm{width:30%;height:30%;border-color:rgba(27,168,166,.15)}
+.ring-md{width:55%;height:55%;border-color:rgba(27,168,166,.1)}
+.ring-lg{width:82%;height:82%;border-color:rgba(27,168,166,.06)}
+.ring-xl{width:100%;height:100%;border-color:rgba(27,168,166,.03)}
+
+/* Center hub */
+.center-hub{width:140px;height:140px;background:linear-gradient(145deg,#1BA8A6,#0d8a88);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;box-shadow:0 0 0 8px rgba(27,168,166,.12),0 0 0 20px rgba(27,168,166,.06),0 0 60px rgba(27,168,166,.2);cursor:default;transition:all .4s}
+.center-hub h2{font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:700;color:#fff;letter-spacing:3px}
+.center-hub span{font-size:.55rem;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase;font-weight:600}
+
+/* Orbital nodes */
+.orbit-node{position:absolute;z-index:15;cursor:pointer;transition:all .4s cubic-bezier(.23,1,.32,1)}
+.orbit-node:hover{transform:scale(1.15);z-index:20}
+.orbit-node.active{transform:scale(1.2);z-index:25}
+.orbit-node-inner{width:62px;height:62px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 6px 24px rgba(0,0,0,.15);transition:all .4s;position:relative}
+.orbit-node.active .orbit-node-inner{box-shadow:0 0 0 4px rgba(27,168,166,.5),0 8px 32px rgba(27,168,166,.3)}
+.orbit-node-label{position:absolute;white-space:nowrap;font-size:.65rem;font-weight:700;color:var(--gray);letter-spacing:.05em;transition:color .3s}
+.orbit-node:hover .orbit-node-label,.orbit-node.active .orbit-node-label{color:var(--cyan)}
+.orbit-node-num{position:absolute;top:-6px;right:-6px;width:20px;height:20px;background:var(--teal);border-radius:50%;font-size:.55rem;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid var(--navy)}
+.cat-science .orbit-node-inner{background:linear-gradient(135deg,rgba(27,168,166,.2),rgba(27,168,166,.08));border:1px solid rgba(27,168,166,.3)}
+.cat-prévention .orbit-node-inner{background:linear-gradient(135deg,rgba(230,168,23,.18),rgba(230,168,23,.06));border:1px solid rgba(230,168,23,.3)}
+.cat-community .orbit-node-inner{background:linear-gradient(135deg,rgba(0,180,216,.15),rgba(0,180,216,.05));border:1px solid rgba(0,180,216,.3)}
+.cat-digital .orbit-node-inner{background:linear-gradient(135deg,rgba(27,168,166,.15),rgba(45,52,54,.08));border:1px solid rgba(27,168,166,.2)}
+
+/* Connection lines */
+.conn-line{position:absolute;top:50%;left:50%;width:1px;transform-origin:top center;z-index:2;opacity:.15;transition:opacity .4s}
+.conn-line.active{opacity:.5}
+
+/* MOBILE GRID */
+.mobile-grid{display:none;padding:0 1.5rem}
+@media(max-width:768px){.mobile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:2rem auto;max-width:500px}}
+.mobile-card{background:rgba(26,74,122,.1);border:1px solid rgba(0,180,216,.15);border-radius:1rem;padding:1.2rem;text-align:center;cursor:pointer;transition:all .3s}
+.mobile-card:hover,.mobile-card.active{border-color:var(--teal);background:rgba(27,168,166,.1)}
+.mobile-card-icon{font-size:1.8rem;margin-bottom:.5rem}
+.mobile-card-num{font-size:.6rem;font-weight:800;color:var(--teal);letter-spacing:.1em}
+.mobile-card-name{font-size:.75rem;font-weight:700;color:var(--white);margin-top:.2rem}
+
+/* DETAIL PANEL */
+.detail-panel{max-width:900px;margin:3rem auto;padding:0 2rem;min-height:500px}
+.detail-card{background:rgba(14,30,50,.92);border:1px solid rgba(0,180,216,.25);border-radius:1.5rem;padding:3rem;opacity:0;transform:translateY(20px);transition:all .5s cubic-bezier(.23,1,.32,1);display:none;box-shadow:0 8px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(0,180,216,.1)}
+.detail-card.visible{opacity:1;transform:translateY(0);display:block}
+.detail-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.detail-icon{width:80px;height:80px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0}
+.detail-icon.sci{background:linear-gradient(135deg,rgba(27,168,166,.2),rgba(27,168,166,.08));border:1px solid rgba(27,168,166,.3)}
+.detail-icon.prev{background:linear-gradient(135deg,rgba(230,168,23,.18),rgba(230,168,23,.06));border:1px solid rgba(230,168,23,.3)}
+.detail-icon.comm{background:linear-gradient(135deg,rgba(0,180,216,.15),rgba(0,180,216,.05));border:1px solid rgba(0,180,216,.3)}
+.detail-icon.digi{background:linear-gradient(135deg,rgba(27,168,166,.15),rgba(45,52,54,.08));border:1px solid rgba(27,168,166,.2)}
+.detail-meta{flex:1;min-width:200px}
+.detail-phase{font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem}
+.detail-title{font-family:'Rajdhani',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:var(--white);line-height:1.2}
+.detail-status{display:inline-block;margin-top:.5rem;font-size:.65rem;font-weight:700;padding:.25rem .8rem;border-radius:2rem;letter-spacing:.08em}
+.status-active{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);color:#4ade80}
+.status-beta{background:rgba(230,168,23,.15);border:1px solid rgba(230,168,23,.4);color:#E6A817}
+.status-roadmap{background:rgba(0,180,216,.12);border:1px solid rgba(0,180,216,.3);color:var(--cyan)}
+.detail-body{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:600px){.detail-body{grid-template-columns:1fr}}
+.detail-desc{font-size:.88rem;color:var(--gray);line-height:1.8}
+.detail-desc strong{color:var(--lcyan);font-weight:600}
+.detail-features{list-style:none}
+.detail-features li{display:flex;align-items:flex-start;gap:.6rem;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem;color:var(--gray);line-height:1.5}
+.detail-features li:last-child{border:none}
+.detail-features li::before{content:'';width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.feat-sci::before{background:var(--teal)}
+.feat-prev::before{background:var(--gold)}
+.feat-comm::before{background:var(--cyan)}
+.feat-digi::before{background:var(--teal)}
+.detail-highlight{margin-top:1.5rem;padding:1.2rem;background:rgba(27,168,166,.08);border:1px solid rgba(27,168,166,.2);border-radius:1rem;grid-column:1/-1}
+.detail-highlight h4{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;color:var(--teal);margin-bottom:.5rem}
+.detail-highlight p{font-size:.8rem;color:var(--gray);line-height:1.7}
+.detail-highlight .beta-tag{display:inline-block;background:rgba(230,168,23,.2);border:1px solid rgba(230,168,23,.4);color:var(--gold);font-size:.6rem;font-weight:800;padding:.15rem .5rem;border-radius:.3rem;letter-spacing:.1em;vertical-align:middle;margin-left:.4rem}
+
+/* PROGRESS TRACKER */
+.progress-bar{max-width:900px;margin:2rem auto;padding:0 2rem}
+.progress-track{height:4px;background:rgba(255,255,255,.05);border-radius:2px;position:relative;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--cyan));border-radius:2px;transition:width .6s cubic-bezier(.23,1,.32,1);width:8.33%}
+.progress-label{display:flex;justify-content:space-between;margin-top:.5rem;font-size:.65rem;color:var(--gray)}
+
+/* FOOTER */
+.page-footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(0,180,216,.08);margin-top:3rem}
+.page-footer a{color:var(--cyan);text-decoration:none;font-size:.82rem;font-weight:600}
+.page-footer p{font-size:.7rem;color:rgba(148,163,184,.4);margin-top:.8rem}
+
+/* PARTICLES */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.content-wrap{position:relative;z-index:1}
+
+/* ELECTRON CANVAS — O₂ molecule */
+#electron-canvas{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:9}
+
+/* ANIMATIONS */
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 8px rgba(27,168,166,.12),0 0 0 20px rgba(27,168,166,.06),0 0 60px rgba(27,168,166,.2)}50%{box-shadow:0 0 0 10px rgba(27,168,166,.18),0 0 0 25px rgba(27,168,166,.1),0 0 80px rgba(27,168,166,.3)}}
+.center-hub{animation:pulseGlow 3s ease-in-out infinite}
+</style>
+</head>
+<body>
+<!-- ORIM Access Gate -->
+<div id="orim-gate" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d1b2a;z-index:999999;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;">
+  <div style="text-align:center;max-width:400px;padding:2rem;">
+    <div style="font-size:3rem;color:#1BA8A6;font-weight:bold;letter-spacing:0.3em;margin-bottom:0.5rem;">ORIM™</div>
+    <div style="color:#E6A817;font-size:0.85rem;letter-spacing:0.2em;margin-bottom:2rem;">ACCÈS RESTREINT</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-bottom:1.5rem;">Ce site est actuellement en maintenance.<br>Veuillez entrer votre code d'accès.</div>
+    <input id="orim-gate-input" type="password" placeholder="Code d'accès" autocomplete="off"
+      style="width:100%;padding:14px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(27,168,166,0.3);border-radius:8px;color:#fff;font-size:1rem;text-align:center;letter-spacing:0.15em;outline:none;box-sizing:border-box;margin-bottom:1rem;"
+      onfocus="this.style.borderColor='#1BA8A6'" onblur="this.style.borderColor='rgba(27,168,166,0.3)'" />
+    <button id="orim-gate-btn" onclick="orimGateCheck()"
+      style="width:100%;padding:14px;background:linear-gradient(135deg,#1BA8A6,#15918f);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;letter-spacing:0.05em;">
+      Accéder au site
+    </button>
+    <div id="orim-gate-error" style="color:#e74c3c;font-size:0.8rem;margin-top:1rem;display:none;">Code incorrect. Veuillez réessayer.</div>
+    <div style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:2rem;">Association ORIM · Genève, Suisse</div>
+  </div>
+</div>
+<script>
+(function(){
+  var HASH='aac96125fe5a648f45b9bb12ad2f6ed08effccdc6d6e3ffab3b4048e6a081e50';
+  if(sessionStorage.getItem('orim-auth')===HASH){document.getElementById('orim-gate').style.display='none';}
+  document.getElementById('orim-gate-input').addEventListener('keydown',function(e){if(e.key==='Enter')orimGateCheck();});
+  window.orimGateCheck=async function(){
+    var v=document.getElementById('orim-gate-input').value;
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));
+    var h=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(h===HASH){sessionStorage.setItem('orim-auth',HASH);document.getElementById('orim-gate').style.display='none';}
+    else{document.getElementById('orim-gate-error').style.display='block';document.getElementById('orim-gate-input').value='';document.getElementById('orim-gate-input').style.borderColor='#e74c3c';}
+  };
+})();
+</script>
+<!-- /ORIM Access Gate -->
+
+<canvas id="particles"></canvas>
+<div class="content-wrap">
+
+<a href="index.html" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Retour au site</a>
+
+<div class="page-hero" style="animation:fadeIn .8s ease both">
+  <div class="subtitle">Association ORIM Genève · 12 Prestations</div>
+  <h1>Notre écosystème</h1>
+  <p class="desc">Cliquez sur une prestation pour explorer en détail le contenu, les objectifs et le parcours proposé. Chaque service s'intègre dans le programme global d'immunonutrition préventive ORIM.</p>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-bar">
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="progress-label"><span id="progress-text">Prestation 1 / 12</span><span id="progress-phase">Science</span></div>
+</div>
+
+<!-- ORBITAL WHEEL (desktop) -->
+<div class="orbital-section" id="orbital">
+  <div class="orbit-ring ring-sm"></div>
+  <div class="orbit-ring ring-md"></div>
+  <div class="orbit-ring ring-lg"></div>
+  <div class="orbit-ring ring-xl"></div>
+  <div class="center-hub"><h2>ORIM</h2><span>Genève · Suisse</span></div>
+  <!-- 8 electrons — O₂ molecule, la base de la vie -->
+  <canvas id="electron-canvas" width="600" height="600"></canvas>
+</div>
+
+<!-- MOBILE GRID -->
+<div class="mobile-grid" id="mobile-grid"></div>
+
+<!-- DETAIL PANEL -->
+<div class="detail-panel" id="detail-panel"></div>
+
+<div class="page-footer">
+  <a href="index.html">← Retour à orimnutrition.org</a>
+  <p>© 2026 Association ORIM Genève · ORIM™ est une marque déposée</p>
+</div>
+</div>
+
+<script>
+const PRESTATIONS = [
+  {
+    id:1, icon:"🧬", name:"Programme 3 Phases", phase:"Science", cat:"science",
+    status:"active", statusLabel:"Opérationnel",
+    desc:"Le programme ORIM se déroule en <strong>3 phases progressives</strong> adaptées à votre profil immuno-métabolique. Chaque phase dure de 4 a 8 semaines, avec un suivi personnalisé et des ajustements continus basés sur vos biomarqueurs et votre ressenti.",
+    features:["Phase 1 — Désinflammation (4-6 sem.) : élimination des déclencheurs inflammatoires, alimentation anti-inflammatoire ciblée","Phase 2 — Optimisation métabolique (6-8 sem.) : renforcement mitochondrial, équilibre hormonal, nutrition de précision","Phase 3 — Autorégulation durable : autonomie nutritionnelle, maintenance biomarqueurs, prévention long terme","Bilan initial complet (questionnaire + analyses recommandées)","Points de contrôle bimensuels avec ajustement du protocole","Accès au tableau de bord personnel via l'app ORIM"],
+    highlight:{title:"Parcours intégré",text:"Chaque patient reçoit un protocole unique généré à partir de l'Indice ORIM™ et du Lexique ORIM™ 500 aliments. Le programme intègre nutrition, supplémentation ciblée et accompagnement psycho-éducatif."}
+  },
+  {
+    id:2, icon:"📊", name:"Indice ORIM™ 0-100", phase:"Science", cat:"science",
+    status:"active", statusLabel:"v3.0",
+    desc:"L'Indice ORIM™ est un <strong>score composite de 0 à 100</strong> qui évalue chaque aliment selon 8 métriques immuno-métaboliques. Il constitue le cœur algorithmique du programme et guide toutes les recommandations nutritionnelles personnalisées.",
+    features:["8 métriques : densité nutritionnelle, charge inflammatoire, index glycémique, potentiel antioxydant, impact microbiome, biodisponibilité, ratio omega 3/6, charge toxique","Score 0-100 : 0 = fortement pro-inflammatoire, 100 = optimal immuno-métabolique","Basé sur 500 aliments du Lexique ORIM™ v3.0","Algorithme validé par le comité scientifique ORIM","Mise à jour trimestrielle selon les dernières publications","Accessible via l'app membre en temps réel"],
+    highlight:{title:"Scoring personnalisé",text:"L'Indice ne se contente pas de noter un aliment de façon universelle — il prend en compte votre profil personnel (phase du programme, intolerance, objectifs) pour générer un score contextuel. Votre saumon peut avoir un score de 92 en Phase 2 et 78 en Phase 1."}
+  },
+  {
+    id:3, icon:"🔬", name:"Pôle R&D Saybar", phase:"Science", cat:"science",
+    status:"beta", statusLabel:"R&D Active",
+    desc:"Le Pôle R&D est le laboratoire scientifique de l'Association ORIM, en partenariat avec Saybar. Il développe les <strong>futures versions de l'Indice ORIM™</strong>, explore les biomarqueurs de nouvelle génération et pilote les études cliniques.",
+    features:["Recherche sur les SPMs (Specialized Pro-resolving Mediators)","Intégration biomarqueurs inflammatoires (CRP-us, IL-6, TNF-alpha)","Pipeline nutrigénomique : adaptation selon le profil génétique","Partenariat avec Medical Center Notre Dame Genève","Publication trimestrielle des avancées R&D","Collaboration internationale pour validation multi-cohortes"],
+    highlight:{title:"Feuille de route R&D",text:"v4.0 Microbiome (2027) : intégration du séquençage du microbiome intestinal pour un scoring encore plus précis. v5.0 IA Nutrigénomique (2028) : intelligence artificielle prédictive combinée aux données génétiques individuelles. Tous les algorithmes restent propriété exclusive de l'Association."}
+  },
+  {
+    id:4, icon:"🤝", name:"Partenariats santé", phase:"Prévention", cat:"prévention",
+    status:"active", statusLabel:"Opérationnel",
+    desc:"L'Association ORIM construit un <strong>réseau de praticiens partenaires</strong> formés à la méthode ORIM™. Médecins, nutritionnistes, naturopathes et thérapeutes integratifs collaborent pour offrir un accompagnement global à chaque membre.",
+    features:["Réseau certifié de praticiens formés ORIM (3 niveaux)","Orientation personnalisée selon votre profil et localisation","Protocoles standardisés pour une qualité constante","Supervision médicale par le comité scientifique ORIM","Consultations en cabinet et téléconsultations","Retour d'experience partage entre praticiens via la plateforme"],
+    highlight:{title:"Carte interactive des partenaires",text:"Consultez notre carte mondiale des partenaires sur orimnutrition.org/partenaires.html — un globe 3D interactif montrant nos praticiens certifiés, les annuaires locaux et les centres affiliés."}
+  },
+  {
+    id:5, icon:"🥗", name:"Lexique ORIM™ 500 aliments", phase:"Prévention", cat:"prévention",
+    status:"active", statusLabel:"Opérationnel",
+    desc:"Des <strong>protocoles nutritionnels personnalisés</strong> élaborés à partir de l'Indice ORIM™ et du Lexique 500 aliments. Chaque programme est adapté à votre phase, vos objectifs et vos contraintes alimentaires.",
+    features:["Menus hebdomadaires personnalisés générés par l'algorithme","Liste de courses optimisée par score ORIM","Recettes adaptées à chaque phase (anti-inflammatoire → optimisation → maintenance)","Intégration des complements Saybar quand indiques","Suivi macros et micronutriments via l'app","Alternatives pour régimes spécifiques (végétarien, sans gluten, keto adapté)"],
+    highlight:{title:"Synergie Saybar",text:"Les menus intègrent les formulations Saybar validées scientifiquement. Chaque recommandation de supplémentation est basée sur vos biomarqueurs et votre progression dans le programme — jamais de supplémentation générique."}
+  },
+  {
+    id:6, icon:"🍳", name:"Cuisine éducative", phase:"Prévention", cat:"prévention",
+    status:"active", statusLabel:"Opérationnel",
+    desc:"Des <strong>ateliers culinaires immersifs</strong> où les membres apprennent à préparer des repas immuno-métaboliques optimaux. Animé par l'équipe ORIM.",
+    features:["Ateliers mensuels en présentiel au futur Centre ORIM Genève","Demonstrations en direct : techniques de cuisson préservant les nutriments","Menus saisonniers adaptés à chaque phase du programme","Master classes thématiques : fermentation, bouillons, germination","Recettes scorées en temps réel par l'Indice ORIM™","Accès replay video pour les membres Premium"],
+    highlight:{title:"BETA — FoodLab ORIM™",text:"Programme experimental ou des menus orthomoléculaires complets sont conçus, analysés nutritivement par l'algorithme ORIM™, préparés en cuisine par l'équipe ORIM, puis testés sur des cohortes de membres volontaires. Chaque menu FoodLab est scoré, documenté et publié avec ses résultats biomarqueurs avant/après. Objectif : constituer la première base de données de menus thérapeutiques validés scientifiquement.",beta:true}
+  },
+  {
+    id:7, icon:"👥", name:"Communauté membres", phase:"Communauté", cat:"community",
+    status:"active", statusLabel:"3 Niveaux",
+    desc:"Rejoignez une <strong>communauté engagée</strong> de personnes investies dans leur santé immuno-métabolique. Trois niveaux de cotisation offrent un accès progressif aux services ORIM.",
+    features:["Standard (150 CHF/an) : accès app, menus de base, newsletter","Bienfaiteur (500 CHF/an) : + ateliers, webinaires, communauté privée","Premium (950 CHF/an) : + consultations, FoodLab, veille personnalisée","Forum d'entraide entre membres","Événements exclusifs (conférences, retraites)","Parrainage : -10% pour chaque nouveau membre recommandé"],
+    highlight:{title:"Intelligence collective",text:"Chaque membre contribue anonymement à la base de données ORIM. Vos retours sur les menus, vos biomarqueurs (si partages) et votre progression enrichissent l'algorithme pour tous. Plus la communauté grandit, plus l'Indice ORIM™ devient précis."}
+  },
+  {
+    id:8, icon:"🎓", name:"Certification praticiens", phase:"Communauté", cat:"community",
+    status:"roadmap", statusLabel:"2026-2027",
+    desc:"Un <strong>programme de certification en 3 niveaux</strong> permettant aux professionnels de santé d'intégrer la méthode ORIM™ dans leur pratique clinique.",
+    features:["Niveau 1 — Fondamentaux (40h) : Indice ORIM™, principes immuno-métaboliques","Niveau 2 — Praticien (80h) : protocoles personnalisés, utilisation avancée du Lexique","Niveau 3 — Expert (120h) : supervision R&D, contribution algorithme, formation de formateurs","Examen pratique + théorique pour chaque niveau","Certification continue avec re-certification annuelle","Label qualité ORIM affiche dans l'annuaire partenaires"],
+    highlight:{title:"Reconnaissance professionnelle",text:"La certification ORIM sera reconnue par les associations professionnelles de nutrition intégrative. Les praticiens certifiés bénéficient d'un flux de patients via la plateforme, d'outils cliniques exclusifs et d'une visibilité sur la carte mondiale des partenaires."}
+  },
+  {
+    id:9, icon:"🎙️", name:"Conférences & ateliers", phase:"Communauté", cat:"community",
+    status:"active", statusLabel:"En cours",
+    desc:"Des <strong>événements éducatifs réguliers</strong> ouverts au public et aux membres, pour démocratiser l'immunonutrition préventive et créer du lien avec la communauté scientifique.",
+    features:["Conférences trimestrielles avec intervenants experts","Webinaires mensuels réservés aux membres","Ateliers pratiques : lecture d'étiquettes, gestion du stress oxydatif","Participation à des colloques scientifiques (poster / communications)","Lives Instagram/YouTube avec Q&A en direct","Programmes spécifiques Seniors 55+ en partenariat local"],
+    highlight:{title:"Prochains événements",text:"Séminaire de lancement ORIM Genève (2026) — Conférence inaugurale présentant les 12 prestations, le programme 3 Phases et les premiers résultats du FoodLab. Inscription ouverte aux membres et au public."}
+  },
+  {
+    id:10, icon:"📱", name:"App digitale ORIM", phase:"Digital", cat:"digital",
+    status:"roadmap", statusLabel:"Dev 2026",
+    desc:"Une <strong>application mobile et web</strong> offrant un tableau de bord complet pour suivre votre progression, vos biomarqueurs, vos menus et votre score ORIM™ en temps réel.",
+    features:["Dashboard personnel avec score ORIM™ quotidien","Tracking biomarqueurs (saisie manuelle + intégration labo)","Menus personnalisés avec liste de courses","Journal alimentaire avec scoring automatique","Progression Phase 1 → 2 → 3 visualisée","Messagerie avec votre praticien ORIM certifié"],
+    highlight:{title:"Architecture technique",text:"App React Native (iOS/Android) + webapp Next.js. Backend API avec algorithme ORIM™ en Python. Base de données PostgreSQL pour le Lexique 500 aliments. Conformité GDPR/nLPD des la conception. Hébergement suisse (Infomaniak)."}
+  },
+  {
+    id:11, icon:"📖", name:"Publications scientifiques", phase:"Digital", cat:"digital",
+    status:"active", statusLabel:"Trimestriel",
+    desc:"Des <strong>bulletins scientifiques validés</strong> partageant les avancées de la recherche ORIM, les analyses du Pôle R&D et la veille des dernières publications en immunonutrition.",
+    features:["Bulletin trimestriel ORIM Research (réservé membres Bienfaiteur+)","Articles de vulgarisation sur le blog public","Revue systématique des études clés en immuno-métabolisme","Fiches pratiques : décoder une étude, comprendre un biomarqueur","Base de données bibliographique ORIM (500+ références)","Contributions des praticiens certifiés et du comité scientifique"],
+    highlight:{title:"Open Science",text:"L'Association ORIM s'engage pour la science ouverte. Les données agreges (anonymisees) du programme sont publiées pour bénéficier à la communauté scientifique. Les algorithmes de base de l'Indice ORIM™ seront documentés dans des publications peer-reviewed."}
+  },
+  {
+    id:12, icon:"🏛️", name:"Centre ORIM Genève", phase:"Digital", cat:"digital",
+    status:"roadmap", statusLabel:"Projet 2026-2027",
+    desc:"Un <strong>espace physique polyvalent</strong> à Genève réunissant toutes les prestations ORIM sous un même toit : consultations, cuisine éducative, fitness, coworking santé et conférences.",
+    features:["Espace consultation : bureau praticiens, téléconsultation","Cuisine éducative équipee (ateliers, FoodLab, demonstrations)","Salle fitness : programmes d'activité physique immuno-métabolique","Coworking santé : espace de travail pour praticiens et chercheurs","Salle de conference (40 places) : séminaires, formations","Espace bien-être : relaxation, meditation, thérapies complémentaires"],
+    highlight:{title:"Campagne GoFundMe",text:"Le Centre ORIM Genève est finance par les dons et cotisations de la communauté. Soutenez le projet sur GoFundMe et participez à la création du premier centre d'immunonutrition préventive de Suisse. Chaque don compte."}
+  }
+];
+
+const PHASES = {Science:'var(--teal)',Prévention:'var(--gold)',Communauté:'var(--cyan)',Digital:'var(--teal)'};
+const FEAT_CLASS = {science:'feat-sci',prévention:'feat-prev',community:'feat-comm',digital:'feat-digi'};
+const ICON_CLASS = {science:'sci',prévention:'prev',community:'comm',digital:'digi'};
+
+let activeId = 1;
+let isInitLoad = true;
+
+// Build orbital nodes
+function buildOrbital() {
+  const container = document.getElementById('orbital');
+  const cx = 450, cy = 450, r = 360;
+  PRESTATIONS.forEach((p, i) => {
+    const angle = (i * 30 - 90) * Math.PI / 180;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    // Connection line
+    const line = document.createElement('div');
+    line.className = 'conn-line' + (p.id === activeId ? ' active' : '');
+    line.id = 'line-' + p.id;
+    const dx = x - cx, dy = y - cy;
+    const len = Math.sqrt(dx*dx + dy*dy);
+    const deg = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+    line.style.cssText = `height:${len}px;transform:rotate(${deg}deg);background:linear-gradient(to bottom,rgba(27,168,166,.25),rgba(27,168,166,.03))`;
+    container.appendChild(line);
+    // Node
+    const node = document.createElement('div');
+    node.className = `orbit-node cat-${p.cat}` + (p.id === activeId ? ' active' : '');
+    node.id = 'node-' + p.id;
+    const labelPos = x > cx ? 'left:calc(100% + 8px);text-align:left' : 'right:calc(100% + 8px);text-align:right';
+    const topLabel = (i === 0 || i === 6) ? 'left:50%;transform:translateX(-50%);' + (i===0?'bottom:calc(100% + 8px)':'top:calc(100% + 8px)') : `top:50%;transform:translateY(-50%);${labelPos}`;
+    node.innerHTML = `<div class="orbit-node-inner">${p.icon}<div class="orbit-node-num">${String(p.id).padStart(2,'0')}</div></div><div class="orbit-node-label" style="position:absolute;${topLabel}">${p.name}</div>`;
+    node.style.cssText = `left:${x}px;top:${y}px;transform:translate(-50%,-50%)`;
+    node.onclick = () => selectPrestation(p.id);
+    container.appendChild(node);
+  });
+}
+
+// Build mobile grid
+function buildMobileGrid() {
+  const grid = document.getElementById('mobile-grid');
+  PRESTATIONS.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'mobile-card' + (p.id === activeId ? ' active' : '');
+    card.id = 'mcard-' + p.id;
+    card.innerHTML = `<div class="mobile-card-icon">${p.icon}</div><div class="mobile-card-num">${String(p.id).padStart(2,'0')}</div><div class="mobile-card-name">${p.name}</div>`;
+    card.onclick = () => selectPrestation(p.id);
+    grid.appendChild(card);
+  });
+}
+
+// Render detail
+function renderDetail(p) {
+  const panel = document.getElementById('detail-panel');
+  const statusClass = p.status === 'active' ? 'status-active' : p.status === 'beta' ? 'status-beta' : 'status-roadmap';
+  const featClass = FEAT_CLASS[p.cat];
+  const iconClass = ICON_CLASS[p.cat];
+  let highlightHtml = '';
+  if (p.highlight) {
+    const betaTag = p.highlight.beta ? '<span class="beta-tag">BETA</span>' : '';
+    highlightHtml = `<div class="detail-highlight"><h4>${p.highlight.title}${betaTag}</h4><p>${p.highlight.text}</p></div>`;
+  }
+  panel.innerHTML = `<div class="detail-card visible">
+    <div class="detail-header">
+      <div class="detail-icon ${iconClass}">${p.icon}</div>
+      <div class="detail-meta">
+        <div class="detail-phase">${p.phase} · Prestation ${String(p.id).padStart(2,'0')}</div>
+        <div class="detail-title">${p.name}</div>
+        <div class="detail-status ${statusClass}">${p.statusLabel}</div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="detail-desc">${p.desc}</div>
+      <ul class="detail-features">${p.features.map(f => `<li class="${featClass}">${f}</li>`).join('')}</ul>
+      ${highlightHtml}
+    </div>
+  </div>`;
+  // Animate in
+  requestAnimationFrame(() => {
+    const card = panel.querySelector('.detail-card');
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    requestAnimationFrame(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; });
+  });
+}
+
+function selectPrestation(id) {
+  activeId = id;
+  const p = PRESTATIONS.find(x => x.id === id);
+  // Update orbital
+  document.querySelectorAll('.orbit-node').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.conn-line').forEach(l => l.classList.remove('active'));
+  const node = document.getElementById('node-' + id);
+  const line = document.getElementById('line-' + id);
+  if (node) node.classList.add('active');
+  if (line) line.classList.add('active');
+  // Update mobile
+  document.querySelectorAll('.mobile-card').forEach(c => c.classList.remove('active'));
+  const mcard = document.getElementById('mcard-' + id);
+  if (mcard) mcard.classList.add('active');
+  // Update progrèss
+  document.getElementById('progress-fill').style.width = (id / 12 * 100) + '%';
+  document.getElementById('progress-text').textContent = `Prestation ${id} / 12`;
+  document.getElementById('progress-phase').textContent = p.phase;
+  // Render detail
+  renderDetail(p);
+  // Auto-scroll to detail panel (skip on initial page load)
+  if (!isInitLoad) {
+    setTimeout(() => {
+      document.getElementById('detail-panel').scrollIntoView({behavior:'smooth',block:'start'});
+    }, 150);
+  }
+  isInitLoad = false;
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); selectPrestation(activeId < 12 ? activeId + 1 : 1); }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); selectPrestation(activeId > 1 ? activeId - 1 : 12); }
+});
+
+// Particles
+(function(){
+  const c = document.getElementById('particles'), ctx = c.getContext('2d');
+  let pts = [];
+  function resize(){ c.width = innerWidth; c.height = innerHeight; }
+  resize(); addEventListener('resize', resize);
+  for(let i=0;i<40;i++) pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()*1.2+.3,o:Math.random()*.3+.05});
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(0,180,216,${p.o})`;ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1});
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── ELECTRON ATOM RENDERER (O₂ — 8 electrons) ─────────────────────
+(function(){
+  const ec = document.getElementById('electron-canvas');
+  if (!ec) return;
+  const ctx = ec.getContext('2d');
+  const W = 600, H = 600, CX = W/2, CY = H/2;
+
+  // 4 orbital planes, each with 2 electrons (= 8 total for O₂)
+  const orbits = [
+    { rx:230, ry:80,  tilt: 0,    speed: 0.013, color:[27,168,166]  },
+    { rx:215, ry:75,  tilt: 55,   speed:-0.010, color:[0,180,216]   },
+    { rx:240, ry:70,  tilt: 115,  speed: 0.016, color:[230,168,23]  },
+    { rx:205, ry:78,  tilt: 160,  speed:-0.012, color:[144,224,239] },
+  ];
+
+  const electrons = [];
+  orbits.forEach((orb, i) => {
+    electrons.push({ orbit: i, angle: Math.random()*Math.PI*2 });
+    electrons.push({ orbit: i, angle: Math.random()*Math.PI*2 + Math.PI });
+  });
+
+  function ellipsePos(orb, angle) {
+    const tR = orb.tilt * Math.PI / 180;
+    const ex = orb.rx * Math.cos(angle);
+    const ey = orb.ry * Math.sin(angle);
+    return {
+      x: ex * Math.cos(tR) - ey * Math.sin(tR) + CX,
+      y: ex * Math.sin(tR) + ey * Math.cos(tR) + CY,
+      depth: Math.sin(angle) // -1 back, +1 front
+    };
+  }
+
+  function drawOrbitGlow(orb) {
+    const tR = orb.tilt * Math.PI / 180;
+    const [r,g,b] = orb.color;
+    ctx.save();
+    ctx.translate(CX, CY);
+    ctx.rotate(tR);
+    // Outer glow (thick, soft)
+    ctx.beginPath();
+    ctx.ellipse(0, 0, orb.rx, orb.ry, 0, 0, Math.PI*2);
+    ctx.strokeStyle = `rgba(${r},${g},${b},0.06)`;
+    ctx.lineWidth = 6;
+    ctx.stroke();
+    // Mid path
+    ctx.beginPath();
+    ctx.ellipse(0, 0, orb.rx, orb.ry, 0, 0, Math.PI*2);
+    ctx.strokeStyle = `rgba(${r},${g},${b},0.12)`;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    // Bright core path
+    ctx.beginPath();
+    ctx.ellipse(0, 0, orb.rx, orb.ry, 0, 0, Math.PI*2);
+    ctx.strokeStyle = `rgba(${r},${g},${b},0.2)`;
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawTrail(e, steps) {
+    const orb = orbits[e.orbit];
+    const [r,g,b] = orb.color;
+    const dir = orb.speed > 0 ? 1 : -1;
+    for (let s = steps; s > 0; s--) {
+      const a = e.angle - dir * s * 0.04;
+      const pos = ellipsePos(orb, a);
+      const frac = 1 - s / steps;
+      const alpha = frac * 0.4;
+      const sz = frac * 4;
+      // Glow blob
+      const tg = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, sz + 3);
+      tg.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
+      tg.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      ctx.fillStyle = tg;
+      ctx.fillRect(pos.x - sz - 3, pos.y - sz - 3, (sz+3)*2, (sz+3)*2);
+    }
+  }
+
+  function drawElectron(x, y, color, depth) {
+    const brightness = Math.max(0.35, 0.55 + depth * 0.45);
+    const [r,g,b] = color;
+    const sz = 5 + depth * 2; // 3 to 7
+
+    // Large outer halo
+    const g4 = ctx.createRadialGradient(x, y, 0, x, y, 45);
+    g4.addColorStop(0, `rgba(${r},${g},${b},${0.2 * brightness})`);
+    g4.addColorStop(0.4, `rgba(${r},${g},${b},${0.06 * brightness})`);
+    g4.addColorStop(1, `rgba(${r},${g},${b},0)`);
+    ctx.fillStyle = g4;
+    ctx.beginPath(); ctx.arc(x, y, 45, 0, Math.PI*2); ctx.fill();
+
+    // Medium glow
+    const g3 = ctx.createRadialGradient(x, y, 0, x, y, 20);
+    g3.addColorStop(0, `rgba(${r},${g},${b},${0.6 * brightness})`);
+    g3.addColorStop(0.5, `rgba(${r},${g},${b},${0.15 * brightness})`);
+    g3.addColorStop(1, `rgba(${r},${g},${b},0)`);
+    ctx.fillStyle = g3;
+    ctx.beginPath(); ctx.arc(x, y, 20, 0, Math.PI*2); ctx.fill();
+
+    // Bright core
+    const g1 = ctx.createRadialGradient(x, y, 0, x, y, sz);
+    g1.addColorStop(0, `rgba(255,255,255,${0.95 * brightness})`);
+    g1.addColorStop(0.35, `rgba(255,240,220,${0.7 * brightness})`);
+    g1.addColorStop(0.7, `rgba(${r},${g},${b},${0.5 * brightness})`);
+    g1.addColorStop(1, `rgba(${r},${g},${b},0)`);
+    ctx.fillStyle = g1;
+    ctx.beginPath(); ctx.arc(x, y, sz, 0, Math.PI*2); ctx.fill();
+
+    // Cross lens flare
+    ctx.save();
+    ctx.globalAlpha = 0.35 * brightness;
+    const lg = ctx.createLinearGradient(x-20, y, x+20, y);
+    lg.addColorStop(0, 'rgba(255,255,255,0)');
+    lg.addColorStop(0.5, `rgba(255,255,255,${0.8 * brightness})`);
+    lg.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.strokeStyle = lg;
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x-20, y); ctx.lineTo(x+20, y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, y-18); ctx.lineTo(x, y+18); ctx.stroke();
+    // Diagonal flares
+    ctx.globalAlpha = 0.15 * brightness;
+    ctx.beginPath(); ctx.moveTo(x-12, y-12); ctx.lineTo(x+12, y+12); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x+12, y-12); ctx.lineTo(x-12, y+12); ctx.stroke();
+    ctx.restore();
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Ambient core glow
+    const cg = ctx.createRadialGradient(CX, CY, 30, CX, CY, 130);
+    cg.addColorStop(0, 'rgba(27,168,166,0.1)');
+    cg.addColorStop(0.5, 'rgba(27,168,166,0.04)');
+    cg.addColorStop(1, 'rgba(27,168,166,0)');
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(CX, CY, 130, 0, Math.PI*2); ctx.fill();
+
+    // Draw glowing orbit paths
+    orbits.forEach(drawOrbitGlow);
+
+    // Update angles
+    electrons.forEach(e => { e.angle += orbits[e.orbit].speed; });
+
+    // Sort back-to-front
+    const sorted = electrons.map(e => {
+      const pos = ellipsePos(orbits[e.orbit], e.angle);
+      return { ...e, ...pos };
+    }).sort((a, b) => a.depth - b.depth);
+
+    // Draw trails then electrons
+    sorted.forEach(ed => {
+      drawTrail(ed, 30);
+      drawElectron(ed.x, ed.y, orbits[ed.orbit].color, ed.depth);
+    });
+
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+// Init
+buildOrbital();
+buildMobileGrid();
+selectPrestation(1);
+</script>
+</body>
+</html>

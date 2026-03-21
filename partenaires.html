@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIM Nutrition — Carte des Partenaires</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#020810;
+  color:#e0f0ec;
+  overflow:hidden;
+  width:100vw;height:100vh;
+  cursor:default;
+}
+#bg-video-wrap{position:fixed;inset:0;z-index:0;overflow:hidden}
+#bg-video{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;min-height:100%;width:auto;height:auto;
+  object-fit:cover;opacity:.12;pointer-events:none;
+  filter:hue-rotate(140deg) saturate(.6) brightness(.5);
+}
+#canvas-container{position:fixed;inset:0;z-index:1}
+canvas{display:block;width:100%;height:100%}
+
+/* TOP NAV */
+.top-bar{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.6rem 1.2rem;
+  background:rgba(1,5,9,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,212,170,.1);
+  pointer-events:none;
+}
+.top-bar>*{pointer-events:auto}
+.logo{
+  font-size:1.1rem;font-weight:700;letter-spacing:2px;
+  color:#00d4aa;text-shadow:0 0 12px rgba(0,212,170,.3);
+  flex-shrink:0;
+}
+.logo span{color:#e0f0ec;font-weight:300;opacity:.7;font-size:.65rem;margin-left:5px;letter-spacing:1px}
+.nav-links{display:flex;align-items:center;gap:.8rem;flex-wrap:nowrap}
+.nav-links a{
+  color:#8ab8b0;text-decoration:none;font-size:.65rem;letter-spacing:.8px;
+  text-transform:uppercase;transition:color .3s;font-weight:500;white-space:nowrap;
+}
+.nav-links a:hover{color:#00d4aa}
+.btn-contact{
+  background:linear-gradient(135deg,#007a5e,#005c46);
+  color:#e0f0ec;border:none;border-radius:22px;
+  padding:0.4rem 1rem;font-size:.65rem;font-weight:700;
+  cursor:pointer;letter-spacing:.6px;
+  text-transform:uppercase;white-space:nowrap;
+  transition:transform .2s,box-shadow .2s;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 0 18px rgba(0,212,170,.35),0 0 40px rgba(0,122,94,.25);
+  animation:ctaPulse 2.5s ease-in-out infinite;
+}
+@keyframes ctaPulse{
+  0%,100%{box-shadow:0 0 18px rgba(0,212,170,.35),0 0 40px rgba(0,122,94,.25)}
+  50%{box-shadow:0 0 24px rgba(0,212,170,.55),0 0 60px rgba(0,122,94,.4)}
+}
+.btn-contact:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 30px rgba(0,212,170,.6),0 0 60px rgba(0,122,94,.4);
+  background:linear-gradient(135deg,#009070,#007a5e);
+}
+.nav-right{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.lang-sel{display:flex;gap:2px}
+.lang-sel button{
+  background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.2);
+  color:#8ab8b0;font-size:.62rem;padding:3px 8px;border-radius:4px;
+  cursor:pointer;font-weight:600;letter-spacing:.5px;
+  transition:all .3s;
+}
+.lang-sel button:hover,.lang-sel button.active{
+  background:rgba(0,212,170,.25);color:#00d4aa;
+  border-color:rgba(0,212,170,.5);
+}
+
+/* TOOLTIP */
+#tooltip{
+  position:fixed;z-index:200;
+  pointer-events:none;
+  background:rgba(3,8,16,.92);
+  border:1px solid rgba(0,212,170,.3);
+  border-radius:8px;
+  padding:8px 14px;
+  font-size:.78rem;
+  color:#e0f0ec;
+  backdrop-filter:blur(8px);
+  white-space:nowrap;
+  opacity:0;transition:opacity .2s;
+  box-shadow:0 4px 20px rgba(0,0,0,.6);
+}
+#tooltip.visible{opacity:1}
+
+/* SIDE PANEL */
+#side-panel{
+  position:fixed;top:0;z-index:150;
+  width:340px;max-width:85vw;height:100vh;
+  background:rgba(3,8,16,.95);
+  backdrop-filter:blur(16px);
+  padding:2rem 1.5rem;
+  overflow-y:auto;
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  border:none;
+}
+#side-panel.open-right{
+  right:0;left:auto;
+  transform:translateX(0);
+  border-left:1px solid rgba(0,212,170,.15);
+}
+#side-panel.open-left{
+  left:0;right:auto;
+  transform:translateX(0);
+  border-right:1px solid rgba(0,212,170,.15);
+}
+#side-panel.closed-right{
+  right:0;left:auto;
+  transform:translateX(100%);
+}
+#side-panel.closed-left{
+  left:0;right:auto;
+  transform:translateX(-100%);
+}
+#side-panel.init{
+  right:0;left:auto;
+  transform:translateX(100%);
+}
+.panel-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.3rem}
+.panel-country{font-size:1.5rem;font-weight:700;color:#00d4aa}
+.panel-flag{font-size:2rem}
+.panel-subtitle{font-size:.72rem;color:#6a9a90;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:1px}
+.panel-partner{
+  background:rgba(0,212,170,.04);
+  border:1px solid rgba(0,212,170,.1);
+  border-radius:10px;
+  padding:1rem;margin-bottom:.8rem;
+  transition:border-color .3s;
+}
+.panel-partner:hover{border-color:rgba(0,212,170,.35)}
+.panel-partner-name{font-weight:600;font-size:.88rem;color:#e0f0ec;margin-bottom:.3rem}
+.panel-partner-type{
+  display:inline-block;
+  font-size:.58rem;text-transform:uppercase;letter-spacing:1px;
+  background:rgba(0,212,170,.15);color:#00d4aa;
+  padding:2px 8px;border-radius:4px;margin-bottom:.5rem;font-weight:600;
+}
+.panel-partner-desc{font-size:.73rem;color:#8ab8b0;line-height:1.5;margin-bottom:.5rem}
+.panel-partner-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.5rem}
+.panel-partner-tags span{
+  font-size:.56rem;background:rgba(0,212,170,.08);
+  border:1px solid rgba(0,212,170,.12);
+  color:#6a9a90;padding:2px 6px;border-radius:3px;
+}
+.panel-partner-links{display:flex;gap:.5rem}
+.panel-partner-links a{
+  font-size:.63rem;color:#00d4aa;text-decoration:none;
+  border:1px solid rgba(0,212,170,.2);padding:3px 10px;
+  border-radius:4px;transition:all .3s;
+}
+.panel-partner-links a:hover{background:rgba(0,212,170,.15)}
+.panel-close{
+  position:absolute;top:1rem;right:1rem;
+  background:none;border:1px solid rgba(0,212,170,.2);
+  color:#6a9a90;width:28px;height:28px;border-radius:50%;
+  cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.panel-close:hover{color:#00d4aa;border-color:rgba(0,212,170,.5)}
+
+/* BOTTOM CTA */
+.bottom-cta{
+  position:fixed;bottom:3.8rem;left:50%;transform:translateX(-50%);
+  z-index:100;text-align:center;pointer-events:none;
+  white-space:nowrap;
+}
+.bottom-cta>*{pointer-events:auto}
+.cta-text{
+  font-size:.88rem;font-weight:700;color:#e0f0ec;
+  margin-bottom:.6rem;letter-spacing:.8px;
+  text-shadow:0 2px 16px rgba(0,0,0,.95),0 0 40px rgba(0,0,0,.8);
+}
+.cta-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,rgba(0,212,170,.25),rgba(0,168,134,.15));
+  border:1px solid rgba(0,212,170,.4);
+  color:#00d4aa;padding:.7rem 2.2rem;
+  border-radius:25px;font-size:.82rem;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;
+  transition:all .3s;
+  box-shadow:0 0 30px rgba(0,212,170,.15);
+}
+.cta-btn:hover{
+  background:linear-gradient(135deg,rgba(0,212,170,.35),rgba(0,212,170,.15));
+  box-shadow:0 0 25px rgba(0,212,170,.2);
+  transform:scale(1.04);
+}
+
+/* CONTACT FOOTER */
+.contact-footer{
+  position:fixed;bottom:0;left:0;right:0;z-index:90;
+  display:flex;justify-content:center;gap:2rem;
+  padding:.6rem 1rem;
+  background:rgba(1,5,9,.92);
+  border-top:1px solid rgba(0,212,170,.08);
+  pointer-events:none;
+}
+.contact-footer span{
+  pointer-events:auto;
+  font-size:.65rem;color:#5a8a80;letter-spacing:.5px;
+}
+.contact-footer a{color:#00d4aa;text-decoration:none;opacity:.7;transition:opacity .3s}
+.contact-footer a:hover{opacity:1}
+
+/* LOADING */
+#loader{
+  position:fixed;inset:0;z-index:9999;
+  background:#020810;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  transition:opacity .8s;
+}
+#loader.done{opacity:0;pointer-events:none}
+#loader .spinner{
+  width:40px;height:40px;
+  border:2px solid rgba(0,212,170,.15);
+  border-top-color:#00d4aa;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+#loader p{margin-top:1rem;font-size:.72rem;color:#4a7a70;letter-spacing:2px;text-transform:uppercase}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(0,212,170,.2);border-radius:2px}
+
+@media(max-width:700px){
+  .top-bar{padding:.5rem .8rem}
+  .nav-links{gap:.6rem}
+  .nav-links a:not(.btn-contact){font-size:.55rem}
+  .btn-contact{padding:.4rem .9rem;font-size:.65rem}
+  .lang-sel button{font-size:.52rem;padding:2px 5px}
+  #side-panel{width:88vw;padding:1.2rem 1rem}
+  .bottom-cta{bottom:3rem}
+  .cta-text{font-size:.72rem}
+  .cta-btn{font-size:.7rem;padding:.55rem 1.5rem}
+  .contact-footer{gap:.5rem;flex-wrap:wrap;justify-content:center;padding:.5rem .6rem}
+  .contact-footer span{font-size:.5rem}
+}
+</style>
+</head>
+<body>
+<!-- ORIM Access Gate -->
+<div id="orim-gate" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d1b2a;z-index:999999;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;">
+  <div style="text-align:center;max-width:400px;padding:2rem;">
+    <div style="font-size:3rem;color:#1BA8A6;font-weight:bold;letter-spacing:0.3em;margin-bottom:0.5rem;">ORIM™</div>
+    <div style="color:#E6A817;font-size:0.85rem;letter-spacing:0.2em;margin-bottom:2rem;">ACCÈS RESTREINT</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-bottom:1.5rem;">Ce site est actuellement en maintenance.<br>Veuillez entrer votre code d'accès.</div>
+    <input id="orim-gate-input" type="password" placeholder="Code d'accès" autocomplete="off"
+      style="width:100%;padding:14px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(27,168,166,0.3);border-radius:8px;color:#fff;font-size:1rem;text-align:center;letter-spacing:0.15em;outline:none;box-sizing:border-box;margin-bottom:1rem;"
+      onfocus="this.style.borderColor='#1BA8A6'" onblur="this.style.borderColor='rgba(27,168,166,0.3)'" />
+    <button id="orim-gate-btn" onclick="orimGateCheck()"
+      style="width:100%;padding:14px;background:linear-gradient(135deg,#1BA8A6,#15918f);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;letter-spacing:0.05em;">
+      Accéder au site
+    </button>
+    <div id="orim-gate-error" style="color:#e74c3c;font-size:0.8rem;margin-top:1rem;display:none;">Code incorrect. Veuillez réessayer.</div>
+    <div style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:2rem;">Association ORIM · Genève, Suisse</div>
+  </div>
+</div>
+<script>
+(function(){
+  var HASH='aac96125fe5a648f45b9bb12ad2f6ed08effccdc6d6e3ffab3b4048e6a081e50';
+  if(sessionStorage.getItem('orim-auth')===HASH){document.getElementById('orim-gate').style.display='none';}
+  document.getElementById('orim-gate-input').addEventListener('keydown',function(e){if(e.key==='Enter')orimGateCheck();});
+  window.orimGateCheck=async function(){
+    var v=document.getElementById('orim-gate-input').value;
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));
+    var h=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(h===HASH){sessionStorage.setItem('orim-auth',HASH);document.getElementById('orim-gate').style.display='none';}
+    else{document.getElementById('orim-gate-error').style.display='block';document.getElementById('orim-gate-input').value='';document.getElementById('orim-gate-input').style.borderColor='#e74c3c';}
+  };
+})();
+</script>
+<!-- /ORIM Access Gate -->
+
+
+<div id="loader"><div class="spinner"></div><p data-i18n="loader">Chargement de la carte...</p></div>
+
+<!-- BACKGROUND VIDEO -->
+<div id="bg-video-wrap">
+  <video id="bg-video" autoplay muted loop playsinline preload="metadata">
+    <source src="hero-bg.mp4" type="video/mp4" />
+  </video>
+</div>
+
+<div id="canvas-container"></div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="logo">ORIM<span>NUTRITION</span></div>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Accueil</a>
+    <a href="index.html#gateway" data-i18n="nav.science">Science</a>
+    <a href="index.html#marque" data-i18n="nav.indice">Indice ORIM</a>
+    <a href="#" style="color:#00d4aa;opacity:.7;cursor:default" data-i18n="nav.partners">Partenaires</a>
+  </div>
+  <div class="nav-right">
+    <a href="mailto:info@orimnutrition.org" class="btn-contact" data-i18n="nav.contact">Nous contacter</a>
+    <div class="lang-sel">
+      <button class="active">FR</button>
+      <button>EN</button>
+      <button>ES</button>
+      <button>DE</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLTIP -->
+<div id="tooltip"></div>
+
+<!-- SIDE PANEL -->
+<div id="side-panel" class="init"></div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <div class="cta-text" data-i18n="cta.text">VOUS &Ecirc;TES PROFESSIONNEL DE SANT&Eacute; ?</div>
+  <a href="mailto:info@orimnutrition.org" class="cta-btn" data-i18n="cta.btn">Rejoindre le r&eacute;seau ORIM&trade;</a>
+  <a href="https://happypot.ch/fr/cagnotte/orim-premier-centre-dimmunonutrition-a-geneve-899372903126800" target="_blank" rel="noopener" class="cta-btn" style="background:linear-gradient(135deg,#E6A817,#c9a84c);box-shadow:0 0 18px rgba(230,168,23,.35),0 0 40px rgba(201,168,76,.25);margin-left:.5rem;" data-i18n="cta.donate">&#x2764;&#xFE0F; Soutenir ORIM</a>
+</div>
+
+<!-- CONTACT FOOTER -->
+<div class="contact-footer">
+  <span>Association ORIM &mdash; Gen&egrave;ve, Suisse &mdash; <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></span>
+  <span>R&eacute;seau en construction &mdash; <a href="mailto:info@orimnutrition.org">Rejoindre le r&eacute;seau ORIM&trade;</a></span>
+  <span><a href="https://www.instagram.com/orim_nutrition/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.3rem;color:#00d4aa;text-decoration:none;opacity:.7;transition:opacity .3s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg> orim_nutrition</a></span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/earcut@2.2.4/dist/earcut.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* ───────────────────────────────── PARTNER DATA ───────────────────────────────── */
+var PARTNERS = [
+  // ── NON-PARTENAIRES (annuaire local) ──
+  { id:101, name:"Pharmacie du Molard", type:"non-partenaire", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.203, lon:6.152, emoji:"\ud83d\udc8a", desc:"Pharmacie au c\u0153ur de Gen\u00e8ve. Compl\u00e9ments alimentaires et conseil.", tags:["Pharmacie","Compl\u00e9ments"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:102, name:"March\u00e9 Bio Plainpalais", type:"non-partenaire", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.197, lon:6.142, emoji:"\ud83e\udd6c", desc:"March\u00e9 de producteurs bio, Plaine de Plainpalais.", tags:["Bio","March\u00e9","Producteurs"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:103, name:"Ferme des Evaux", type:"non-partenaire", city:"Onex", country:"Suisse", countryCode:"CHE", lat:46.183, lon:6.102, emoji:"\ud83c\udf3e", desc:"Exploitation agricole urbaine. Vente directe l\u00e9gumes de saison.", tags:["Agriculture","Permaculture"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:104, name:"Herboristerie du Lac", type:"non-partenaire", city:"Lausanne", country:"Suisse", countryCode:"CHE", lat:46.519, lon:6.633, emoji:"\ud83c\udf3f", desc:"Herboristerie artisanale. Plantes m\u00e9dicinales et tisanes.", tags:["Herboristerie","Plantes"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:105, name:"Bio Markt Bern", type:"non-partenaire", city:"Berne", country:"Suisse", countryCode:"CHE", lat:46.948, lon:7.447, emoji:"\ud83d\uded2", desc:"Supermarch\u00e9 bio au centre de Berne. Produits biologiques et locaux.", tags:["Bio","Supermarch\u00e9"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:106, name:"Alpenk\u00e4serei Z\u00fcrich", type:"non-partenaire", city:"Z\u00fcrich", country:"Suisse", countryCode:"CHE", lat:47.376, lon:8.541, emoji:"\u26f0\ufe0f", desc:"Fromagerie alpine. Produits riches en probiotiques naturels.", tags:["Fromagerie","Probiotiques"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:107, name:"Domaine Bio du Lavaux", type:"non-partenaire", city:"Lutry", country:"Suisse", countryCode:"CHE", lat:46.505, lon:6.685, emoji:"\ud83c\udf47", desc:"Domaine viticole bio en Lavaux. Vins naturels riches en polyph\u00e9nols.", tags:["Viticulture","Bio"], rdv:"#", site:"https://local.ch", source:"local.ch" },
+  { id:108, name:"Reformhaus Basel", type:"non-partenaire", city:"B\u00e2le", country:"Suisse", countryCode:"CHE", lat:47.559, lon:7.588, emoji:"\ud83c\udf31", desc:"Magasin di\u00e9t\u00e9tique \u00e0 B\u00e2le. Compl\u00e9ments et alimentation naturelle.", tags:["Di\u00e9t\u00e9tique","Naturel"], rdv:"#", site:"https://local.ch", source:"local.ch" }
+];
+
+var TYPE_COLORS = {
+  médecin:"#00d4aa", therapeute:"#00b4d8", magasin:"#f4a261",
+  naturopathe:"#90be6d", coach:"#e76f51", laboratoire:"#a78bfa",
+  "non-partenaire":"#6a7a8a"
+};
+var TYPE_LABELS = {
+  médecin:"M\u00e9decin", therapeute:"Th\u00e9rapeute", magasin:"Magasin",
+  naturopathe:"Naturopathe", coach:"Coach", laboratoire:"Laboratoire",
+  "non-partenaire":"Non-partenaire"
+};
+var FLAG_MAP = {
+  FRA:"\ud83c\uddeb\ud83c\uddf7", CHE:"\ud83c\udde8\ud83c\udded", CAN:"\ud83c\udde8\ud83c\udde6",
+  ESP:"\ud83c\uddea\ud83c\uddf8", ARE:"\ud83c\udde6\ud83c\uddea", ITA:"\ud83c\uddee\ud83c\uddf9",
+  JPN:"\ud83c\uddef\ud83c\uddf5", BRA:"\ud83c\udde7\ud83c\uddf7", SEN:"\ud83c\uddf8\ud83c\uddf3",
+  AUS:"\ud83c\udde6\ud83c\uddfa"
+};
+
+/* ─── ISO numeric → alpha-3 mapping ─── */
+var ISO_NUM_TO_A3 = {
+  '4':'AFG','8':'ALB','12':'DZA','16':'ASM','20':'AND','24':'AGO','28':'ATG',
+  '31':'AZE','32':'ARG','36':'AUS','40':'AUT','44':'BHS','48':'BHR','50':'BGD',
+  '51':'ARM','52':'BRB','56':'BEL','60':'BMU','64':'BTN','68':'BOL','70':'BIH',
+  '72':'BWA','76':'BRA','84':'BLZ','90':'SLB','92':'VGB','96':'BRN','100':'BGR',
+  '104':'MMR','108':'BDI','112':'BLR','116':'KHM','120':'CMR','124':'CAN','132':'CPV',
+  '140':'CAF','144':'LKA','148':'TCD','152':'CHL','156':'CHN','158':'TWN','170':'COL',
+  '174':'COM','175':'MYT','178':'COG','180':'COD','184':'COK','188':'CRI','191':'HRV',
+  '192':'CUB','196':'CYP','203':'CZE','204':'BEN','208':'DNK','212':'DMA','214':'DOM',
+  '218':'ECU','222':'SLV','226':'GNQ','231':'ETH','232':'ERI','233':'EST','234':'FRO',
+  '238':'FLK','242':'FJI','246':'FIN','250':'FRA','254':'GUF','258':'PYF','262':'DJI',
+  '266':'GAB','268':'GEO','270':'GMB','275':'PSE','276':'DEU','288':'GHA','296':'KIR',
+  '300':'GRC','304':'GRL','308':'GRD','312':'GLP','316':'GUM','320':'GTM','324':'GIN',
+  '328':'GUY','332':'HTI','336':'VAT','340':'HND','344':'HKG','348':'HUN','352':'ISL',
+  '356':'IND','360':'IDN','364':'IRN','368':'IRQ','372':'IRL','376':'ISR','380':'ITA',
+  '384':'CIV','388':'JAM','392':'JPN','398':'KAZ','400':'JOR','404':'KEN','408':'PRK',
+  '410':'KOR','414':'KWT','417':'KGZ','418':'LAO','422':'LBN','426':'LSO','428':'LVA',
+  '430':'LBR','434':'LBY','438':'LIE','440':'LTU','442':'LUX','446':'MAC','450':'MDG',
+  '454':'MWI','458':'MYS','462':'MDV','466':'MLI','470':'MLT','474':'MTQ','478':'MRT',
+  '480':'MUS','484':'MEX','492':'MCO','496':'MNG','498':'MDA','499':'MNE','504':'MAR',
+  '508':'MOZ','512':'OMN','516':'NAM','520':'NRU','524':'NPL','528':'NLD','540':'NCL',
+  '548':'VUT','554':'NZL','558':'NIC','562':'NER','566':'NGA','570':'NIU','578':'NOR',
+  '583':'FSM','584':'MHL','585':'PLW','586':'PAK','591':'PAN','598':'PNG','600':'PRY',
+  '604':'PER','608':'PHL','616':'POL','620':'PRT','624':'GNB','626':'TLS','630':'PRI',
+  '634':'QAT','638':'REU','642':'ROU','643':'RUS','646':'RWA','652':'BLM','654':'SHN',
+  '659':'KNA','660':'AIA','662':'LCA','666':'SPM','670':'VCT','674':'SMR','678':'STP',
+  '682':'SAU','686':'SEN','688':'SRB','690':'SYC','694':'SLE','702':'SGP','703':'SVK',
+  '704':'VNM','705':'SVN','706':'SOM','710':'ZAF','716':'ZWE','720':'YEM','724':'ESP',
+  '728':'SSD','729':'SDN','732':'ESH','740':'SUR','744':'SJM','748':'SWZ','752':'SWE',
+  '756':'CHE','760':'SYR','762':'TJK','764':'THA','768':'TGO','772':'TKL','776':'TON',
+  '780':'TTO','784':'ARE','788':'TUN','792':'TUR','795':'TKM','798':'TUV','800':'UGA',
+  '804':'UKR','807':'MKD','818':'EGY','826':'GBR','831':'GGY','832':'JEY','833':'IMN',
+  '834':'TZA','840':'USA','854':'BFA','858':'URY','860':'UZB','862':'VEN','876':'WLF',
+  '882':'WSM','887':'YEM','894':'ZMB','900':'XKX','10':'ATA'
+};
+
+function numToAlpha3(n) {
+  return ISO_NUM_TO_A3[String(n)] || ISO_NUM_TO_A3[String(parseInt(n,10))] || null;
+}
+
+/* ───────────────────────────────── THREE.JS SETUP ───────────────────────────────── */
+var container = document.getElementById('canvas-container');
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0.3, 3.2);
+var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x020810, 1);
+container.appendChild(renderer.domElement);
+
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.rotateSpeed = 0.4;
+controls.enableZoom = true;
+controls.minDistance = 1.8;
+controls.maxDistance = 6;
+controls.enablePan = false;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.15;
+
+/* ─── LIGHTING ─── */
+scene.add(new THREE.AmbientLight(0x406050, 0.15));
+var dimPt = new THREE.PointLight(0x1a8aaa, 0.18, 10);
+dimPt.position.set(2, 1, 3);
+scene.add(dimPt);
+
+/* ─── STARS ─── */
+(function(){
+  var geo = new THREE.BufferGeometry();
+  var n = 1200, pos = new Float32Array(n * 3);
+  for (var i = 0; i < n * 3; i += 3) {
+    var r = 25 + Math.random() * 75;
+    var th = Math.random() * Math.PI * 2;
+    var ph = Math.acos(2 * Math.random() - 1);
+    pos[i] = r * Math.sin(ph) * Math.cos(th);
+    pos[i+1] = r * Math.sin(ph) * Math.sin(th);
+    pos[i+2] = r * Math.cos(ph);
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0x2a4565, size: 0.12, sizeAttenuation: true })));
+})();
+
+/* ─── GLOBE SPHERE ─── */
+var GLOBE_R = 1.0;
+var globeMesh = new THREE.Mesh(
+  new THREE.SphereGeometry(GLOBE_R, 64, 64),
+  new THREE.ShaderMaterial({
+    vertexShader: [
+      'varying vec3 vNormal;',
+      'varying vec3 vPos;',
+      'void main(){',
+      '  vNormal = normalize(normalMatrix * normal);',
+      '  vPos = position;',
+      '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);',
+      '}'
+    ].join('\n'),
+    fragmentShader: [
+      'varying vec3 vNormal;',
+      'varying vec3 vPos;',
+      'void main(){',
+      '  vec3 deepBlue = vec3(0.015, 0.055, 0.13);',
+      '  vec3 midBlue = vec3(0.03, 0.09, 0.19);',
+      '  vec3 lightBlue = vec3(0.05, 0.14, 0.25);',
+      '  float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 2.2);',
+      '  float wave = sin(vPos.x * 12.0 + vPos.y * 8.0 + vPos.z * 6.0) * 0.5 + 0.5;',
+      '  float wave2 = sin(vPos.x * 5.0 - vPos.z * 7.0) * 0.5 + 0.5;',
+      '  vec3 col = mix(deepBlue, midBlue, wave * 0.3 + wave2 * 0.15);',
+      '  col = mix(col, lightBlue, fresnel * 0.5);',
+      '  col += vec3(0.0, 0.025, 0.02) * fresnel;',
+      '  gl_FragColor = vec4(col, 0.97);',
+      '}'
+    ].join('\n'),
+    transparent: true
+  })
+);
+scene.add(globeMesh);
+
+/* ─── ATMOSPHERE GLOW ─── */
+(function(){
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(GLOBE_R * 1.04, 64, 64),
+    new THREE.ShaderMaterial({
+      vertexShader: [
+        'varying vec3 vNormal;',
+        'void main(){',
+        '  vNormal = normalize(normalMatrix * normal);',
+        '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'varying vec3 vNormal;',
+        'void main(){',
+        '  float intensity = pow(0.62 - dot(vNormal, vec3(0,0,1.0)), 3.0);',
+        '  vec3 atmosCol = mix(vec3(0.0, 0.55, 0.82), vec3(0.0, 0.83, 0.67), 0.4);',
+        '  gl_FragColor = vec4(atmosCol, 1.0) * intensity * 0.12;',
+        '}'
+      ].join('\n'),
+      blending: THREE.AdditiveBlending,
+      side: THREE.BackSide,
+      transparent: true,
+      depthWrite: false
+    })
+  ));
+})();
+
+/* ─── NUCLEUS (core light) ─── */
+var nucleusCore, nucleusGlow, nucleusHalo, coreLight;
+(function(){
+  // Bright inner core
+  nucleusCore = new THREE.Mesh(
+    new THREE.SphereGeometry(0.06, 32, 32),
+    new THREE.MeshBasicMaterial({ color: 0x00ffcc, transparent: true, opacity: 0.45 })
+  );
+  scene.add(nucleusCore);
+
+  // Medium glow ring
+  nucleusGlow = new THREE.Mesh(
+    new THREE.SphereGeometry(0.14, 32, 32),
+    new THREE.ShaderMaterial({
+      vertexShader: 'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+      fragmentShader: 'varying vec3 vN;void main(){float i=pow(0.72-dot(vN,vec3(0,0,1)),2.0);gl_FragColor=vec4(0.0,0.9,0.7,1.0)*i*0.2;}',
+      blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true, depthWrite: false
+    })
+  );
+  scene.add(nucleusGlow);
+
+  // Large radial halo — light that reaches the surface
+  nucleusHalo = new THREE.Mesh(
+    new THREE.SphereGeometry(0.65, 32, 32),
+    new THREE.ShaderMaterial({
+      vertexShader: 'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+      fragmentShader: [
+        'varying vec3 vN;',
+        'void main(){',
+        '  float i = pow(0.55 - dot(vN, vec3(0,0,1)), 1.8);',
+        '  vec3 col = mix(vec3(0.0,0.85,0.65), vec3(0.1,0.5,0.9), 0.3);',
+        '  gl_FragColor = vec4(col, 1.0) * i * 0.06;',
+        '}'
+      ].join('\n'),
+      blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true, depthWrite: false
+    })
+  );
+  scene.add(nucleusHalo);
+
+  // Point light at center — illuminates continent meshes from inside
+  coreLight = new THREE.PointLight(0x00d4aa, 0.6, 3.0, 2);
+  coreLight.position.set(0, 0, 0);
+  scene.add(coreLight);
+})();
+
+/* ─── INNER GLOW LAYER (subsurface light leaking through continents) ─── */
+var innerGlowMesh;
+(function(){
+  innerGlowMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(GLOBE_R * 0.995, 64, 64),
+    new THREE.ShaderMaterial({
+      vertexShader: [
+        'varying vec3 vNormal;',
+        'varying vec3 vWorldPos;',
+        'void main(){',
+        '  vNormal = normalize(normalMatrix * normal);',
+        '  vWorldPos = (modelMatrix * vec4(position, 1.0)).xyz;',
+        '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'varying vec3 vNormal;',
+        'varying vec3 vWorldPos;',
+        'void main(){',
+        '  float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 1.5);',
+        '  vec3 glowCol = mix(vec3(0.0, 0.83, 0.55), vec3(0.05, 0.45, 0.8), fresnel);',
+        '  float edge = smoothstep(0.2, 0.8, fresnel);',
+        '  gl_FragColor = vec4(glowCol, 1.0) * edge * 0.08;',
+        '}'
+      ].join('\n'),
+      blending: THREE.AdditiveBlending,
+      side: THREE.FrontSide,
+      transparent: true,
+      depthWrite: false
+    })
+  );
+  scene.add(innerGlowMesh);
+})();
+
+/* ─── CYTOPLASM PARTICLES ─── */
+var cytoPoints;
+(function(){
+  var n = 50, geo = new THREE.BufferGeometry(), pos = new Float32Array(n * 3);
+  for (var i = 0; i < n; i++) {
+    var r = 0.12 + Math.random() * 0.72;
+    var th = Math.random() * Math.PI * 2;
+    var ph = Math.acos(2 * Math.random() - 1);
+    pos[i*3] = r * Math.sin(ph) * Math.cos(th);
+    pos[i*3+1] = r * Math.sin(ph) * Math.sin(th);
+    pos[i*3+2] = r * Math.cos(ph);
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  cytoPoints = new THREE.Points(geo, new THREE.PointsMaterial({
+    color: 0x00d4aa, size: 0.012, transparent: true, opacity: 0.12,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  }));
+  scene.add(cytoPoints);
+})();
+
+/* ─── lat/lon → 3D ─── */
+function latLonToVec3(lat, lon, r) {
+  var phi = (90 - lat) * Math.PI / 180;
+  var theta = (lon + 180) * Math.PI / 180;
+  return new THREE.Vector3(
+    -r * Math.sin(phi) * Math.cos(theta),
+     r * Math.cos(phi),
+     r * Math.sin(phi) * Math.sin(theta)
+  );
+}
+
+/* ───────────────────────────────── PARTNER DOTS ───────────────────────────────── */
+var partnerGroup = new THREE.Group();
+scene.add(partnerGroup);
+var partnerDots = [];
+
+PARTNERS.forEach(function(p, idx) {
+  var col = new THREE.Color(TYPE_COLORS[p.type] || '#00d4aa');
+  var isNP = p.type === 'non-partenaire';
+  var pos = latLonToVec3(p.lat, p.lon, GLOBE_R * 1.015);
+
+  var dot = new THREE.Mesh(
+    new THREE.SphereGeometry(isNP ? 0.008 : 0.013, 12, 12),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.6 : 0.9 })
+  );
+  dot.position.copy(pos);
+  partnerGroup.add(dot);
+
+  var glow = new THREE.Mesh(
+    new THREE.SphereGeometry(isNP ? 0.016 : 0.028, 12, 12),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.08 : 0.18, blending: THREE.AdditiveBlending, depthWrite: false })
+  );
+  glow.position.copy(pos);
+  partnerGroup.add(glow);
+
+  var ring = new THREE.Mesh(
+    new THREE.RingGeometry(isNP ? 0.012 : 0.018, isNP ? 0.016 : 0.023, 32),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.15 : 0.3, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false })
+  );
+  ring.position.copy(pos);
+  ring.lookAt(new THREE.Vector3(0, 0, 0));
+  partnerGroup.add(ring);
+
+  // filament (only for real partners)
+  if (!isNP) {
+    var fGeo = new THREE.BufferGeometry().setFromPoints([pos, new THREE.Vector3(0,0,0)]);
+    partnerGroup.add(new THREE.Line(fGeo, new THREE.LineBasicMaterial({
+      color: col, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending, depthWrite: false
+    })));
+  }
+
+  partnerDots.push({ mesh: dot, ring: ring, glow: glow, partner: p });
+});
+
+/* ───────────────────────────────── LOAD GeoJSON & DRAW COUNTRIES ───────────────────────────────── */
+var countryLinesGroup = new THREE.Group();
+scene.add(countryLinesGroup);
+
+var countryHitMeshes = [];
+var countryDataMap = {};
+var geoLoaded = false;
+
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+  .then(function(r){ return r.json(); })
+  .then(function(topo){
+    var countries = topojson.feature(topo, topo.objects.countries);
+
+    countries.features.forEach(function(feat){
+      var isoNum = feat.id;
+      var name = (feat.properties && feat.properties.name) ? feat.properties.name : '';
+      var alpha3 = numToAlpha3(isoNum);
+
+      var lineObjs = [];
+      var geom = feat.geometry;
+      var polys = [];
+      if (geom.type === 'Polygon') polys = [geom.coordinates];
+      else if (geom.type === 'MultiPolygon') polys = geom.coordinates;
+
+      polys.forEach(function(poly){
+        poly.forEach(function(ring){
+          if (ring.length < 2) return;
+          var pts = [];
+          for (var i = 0; i < ring.length; i++) {
+            pts.push(latLonToVec3(ring[i][1], ring[i][0], GLOBE_R * 1.005));
+          }
+          var bGeo = new THREE.BufferGeometry().setFromPoints(pts);
+          var line = new THREE.Line(bGeo, new THREE.LineBasicMaterial({
+            color: 0x00d4aa, transparent: true, opacity: 0.4, depthWrite: false,
+            blending: THREE.AdditiveBlending
+          }));
+          countryLinesGroup.add(line);
+          lineObjs.push(line);
+        });
+
+        // Hit-test mesh from first ring using fan triangulation
+        try {
+          var hitRing = poly[0];
+          if (hitRing.length >= 4) {
+            var vecs = [];
+            var cx = 0, cy = 0, cz = 0;
+            for (var i = 0; i < hitRing.length; i++) {
+              var v = latLonToVec3(hitRing[i][1], hitRing[i][0], GLOBE_R * 1.008);
+              vecs.push(v);
+              cx += v.x; cy += v.y; cz += v.z;
+            }
+            var cn = vecs.length;
+            cx /= cn; cy /= cn; cz /= cn;
+            // Normalize center onto sphere
+            var cl = Math.sqrt(cx*cx + cy*cy + cz*cz);
+            if (cl > 0.001) {
+              cx = cx/cl * GLOBE_R * 1.008;
+              cy = cy/cl * GLOBE_R * 1.008;
+              cz = cz/cl * GLOBE_R * 1.008;
+            }
+
+            var vertices = [];
+            for (var i = 0; i < cn; i++) {
+              vertices.push(vecs[i].x, vecs[i].y, vecs[i].z);
+            }
+            vertices.push(cx, cy, cz);
+            var centerIdx = cn;
+            var indices = [];
+            for (var i = 0; i < cn; i++) {
+              var next = (i + 1) % cn;
+              indices.push(centerIdx, i, next);
+            }
+            var hGeo = new THREE.BufferGeometry();
+            hGeo.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            hGeo.setIndex(indices);
+            hGeo.computeBoundingSphere();
+            var hMesh = new THREE.Mesh(hGeo, new THREE.MeshBasicMaterial({ visible: false, side: THREE.DoubleSide }));
+            hMesh.userData = { countryCode: alpha3, countryName: name, isoNum: isoNum };
+            scene.add(hMesh);
+            countryHitMeshes.push(hMesh);
+          }
+        } catch(e){}
+      });
+
+      if (alpha3) {
+        if (!countryDataMap[alpha3]) {
+          countryDataMap[alpha3] = { name: name, lines: lineObjs, reliéfMeshes: [], elevated: false, rings: [] };
+        } else {
+          countryDataMap[alpha3].lines = countryDataMap[alpha3].lines.concat(lineObjs);
+        }
+      }
+
+      // Build reliéf meshes (filled country polygons for élévation)
+      if (alpha3 && countryDataMap[alpha3]) {
+        polys.forEach(function(poly){
+          try {
+            var outerRing = poly[0];
+            if (outerRing.length < 4) return;
+            var flat = [];
+            outerRing.forEach(function(c){ flat.push(c[0], c[1]); });
+            var holeIndices = [];
+            for (var hi = 1; hi < poly.length; hi++) {
+              holeIndices.push(flat.length / 2);
+              poly[hi].forEach(function(c){ flat.push(c[0], c[1]); });
+            }
+            var tris = earcut(flat, holeIndices.length ? holeIndices : null);
+            if (!tris.length) return;
+            var positions = new Float32Array((flat.length / 2) * 3);
+            for (var i = 0; i < flat.length; i += 2) {
+              var pos = latLonToVec3(flat[i+1], flat[i], GLOBE_R * 1.004);
+              var idx3 = (i / 2) * 3;
+              positions[idx3] = pos.x; positions[idx3+1] = pos.y; positions[idx3+2] = pos.z;
+            }
+            var rGeo = new THREE.BufferGeometry();
+            rGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            rGeo.setIndex(tris);
+            rGeo.computeVertexNormals();
+            rGeo.userData = { flatCoords: flat };
+            var rMat = new THREE.MeshBasicMaterial({
+              color: 0x00d4aa, transparent: true, opacity: 0.04, side: THREE.DoubleSide,
+              depthWrite: false, blending: THREE.AdditiveBlending
+            });
+            var rMesh = new THREE.Mesh(rGeo, rMat);
+            scene.add(rMesh);
+            countryDataMap[alpha3].reliéfMeshes.push(rMesh);
+          } catch(e){}
+        });
+      }
+    });
+
+    geoLoaded = true;
+    document.getElementById('loader').classList.add('done');
+  })
+  .catch(function(err){
+    console.error('Map load failed:', err);
+    document.getElementById('loader').classList.add('done');
+  });
+
+/* ───────────────────────────────── RAYCASTING & INTERACTION ───────────────────────────────── */
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2(-9, -9);
+var tooltipEl = document.getElementById('tooltip');
+var sidePanelEl = document.getElementById('side-panel');
+
+var hoveredCountryCode = null;
+var panelOpen = false;
+var panelTimeout = null;
+var panelMinTimer = null;
+var canClosePanel = false;
+var mouseInPanel = false;
+
+function partnersInCountry(code) {
+  return PARTNERS.filter(function(p){ return p.countryCode === code; });
+}
+
+/* ─── COUNTRY RELIEF ─── */
+var elevatedCountryCode = null;
+
+function setCountryRadius(code, radius) {
+  var d = countryDataMap[code];
+  if (!d || !d.reliéfMeshes) return;
+  d.reliéfMeshes.forEach(function(mesh){
+    var flat = mesh.geometry.userData.flatCoords;
+    var positions = mesh.geometry.attributes.position.array;
+    for (var i = 0; i < flat.length; i += 2) {
+      var pos = latLonToVec3(flat[i+1], flat[i], radius);
+      var idx3 = (i / 2) * 3;
+      positions[idx3] = pos.x; positions[idx3+1] = pos.y; positions[idx3+2] = pos.z;
+    }
+    mesh.geometry.attributes.position.needsUpdate = true;
+  });
+}
+
+function elevateCountry(code, up) {
+  var d = countryDataMap[code];
+  if (!d) return;
+  var obj = { radius: up ? GLOBE_R * 1.004 : GLOBE_R * 1.035 };
+  var target = up ? GLOBE_R * 1.035 : GLOBE_R * 1.004;
+  var targetOpacity = up ? 0.15 : 0;
+  gsap.to(obj, { radius: target, duration: 0.5, ease: 'power2.out',
+    onUpdate: function(){ setCountryRadius(code, obj.radius); }
+  });
+  d.reliéfMeshes.forEach(function(mesh){
+    gsap.to(mesh.material, { opacity: targetOpacity, duration: 0.4 });
+  });
+  // Also brighten country lines when elevated
+  if (up) {
+    d.lines.forEach(function(l){ l.material.opacity = 0.9; l.material.color.setHex(0x00ffee); });
+  } else {
+    d.lines.forEach(function(l){ l.material.opacity = 0.4; l.material.color.setHex(0x00d4aa); });
+  }
+  d.elevated = up;
+}
+
+function selectCountry(code) {
+  if (elevatedCountryCode && elevatedCountryCode !== code) {
+    elevateCountry(elevatedCountryCode, false);
+  }
+  if (elevatedCountryCode === code) {
+    elevateCountry(code, false);
+    elevatedCountryCode = null;
+    return;
+  }
+  elevatedCountryCode = code;
+  elevateCountry(code, true);
+}
+
+function highlightCountry(code) {
+  var d = countryDataMap[code];
+  if (d && d.lines) {
+    d.lines.forEach(function(l){
+      l.material.opacity = 0.85;
+      l.material.color.setHex(0x00ffcc);
+    });
+  }
+}
+
+function unhighlightCountry(code) {
+  var d = countryDataMap[code];
+  if (d && d.lines) {
+    d.lines.forEach(function(l){
+      l.material.opacity = 0.4;
+      l.material.color.setHex(0x00d4aa);
+    });
+  }
+}
+
+function onMouseMove(e) {
+  var cx = e.clientX, cy = e.clientY;
+  mouse.x = (cx / window.innerWidth) * 2 - 1;
+  mouse.y = -(cy / window.innerHeight) * 2 + 1;
+
+  if (!geoLoaded) return;
+
+  raycaster.setFromCamera(mouse, camera);
+  var hits = raycaster.intersectObjects(countryHitMeshes, false);
+
+  if (hits.length > 0) {
+    var ud = hits[0].object.userData;
+    var code = ud.countryCode;
+    var name = ud.countryName;
+
+    if (hoveredCountryCode !== code) {
+      if (hoveredCountryCode) unhighlightCountry(hoveredCountryCode);
+      hoveredCountryCode = code;
+      highlightCountry(code);
+    }
+
+    var allEntries = partnersInCountry(code);
+    var partnerCount = allEntries.filter(function(p){ return p.type !== 'non-partenaire'; }).length;
+    var nonPartnerCount = allEntries.filter(function(p){ return p.type === 'non-partenaire'; }).length;
+    var flag = FLAG_MAP[code] || '';
+    var text = (flag ? flag + ' ' : '') + name;
+    if (partnerCount > 0) text += ' \u2014 ' + partnerCount + ' ' + (partnerCount > 1 ? t('tooltip.partners.plural') : t('tooltip.partners'));
+    if (nonPartnerCount > 0) text += (partnerCount > 0 ? ' + ' : ' \u2014 ') + nonPartnerCount + ' ' + t('tooltip.nonpartners');
+    tooltipEl.textContent = text;
+    tooltipEl.classList.add('visible');
+    tooltipEl.style.left = (cx + 16) + 'px';
+    tooltipEl.style.top = (cy - 12) + 'px';
+    renderer.domElement.style.cursor = 'pointer';
+  } else {
+    if (hoveredCountryCode) {
+      unhighlightCountry(hoveredCountryCode);
+      hoveredCountryCode = null;
+    }
+    tooltipEl.classList.remove('visible');
+    renderer.domElement.style.cursor = 'default';
+  }
+}
+
+function onClickGlobe(e) {
+  if (!geoLoaded) return;
+  var cx = e.clientX, cy = e.clientY;
+  mouse.x = (cx / window.innerWidth) * 2 - 1;
+  mouse.y = -(cy / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  var hits = raycaster.intersectObjects(countryHitMeshes, false);
+  if (hits.length > 0) {
+    var ud = hits[0].object.userData;
+    var code = ud.countryCode;
+    // Always trigger reliéf
+    selectCountry(code);
+    // Open panel with partners + non-partners
+    var entries = partnersInCountry(code);
+    if (entries.length > 0) {
+      openSidePanel(code, ud.countryName, entries, cx);
+    }
+  }
+}
+
+/* ─── SIDE PANEL ─── */
+function openSidePanel(code, name, partners, clickX) {
+  panelOpen = true;
+  mouseInPanel = false;
+  canClosePanel = false;
+  clearTimeout(panelTimeout);
+  clearTimeout(panelMinTimer);
+
+  var side = clickX < window.innerWidth / 2 ? 'right' : 'left';
+  sidePanelEl.className = 'open-' + side;
+
+  var flag = FLAG_MAP[code] || '';
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<div class="panel-header"><span class="panel-flag">' + flag + '</span><span class="panel-country">' + escHtml(name) + '</span></div>';
+  h += '<div class="panel-subtitle">' + partners.length + ' ' + (partners.length > 1 ? t('panel.partners') : t('panel.partner')) + '</div>';
+
+  // Separate partners and non-partners
+  var realPartners = partners.filter(function(p){ return p.type !== 'non-partenaire'; });
+  var nonPartners = partners.filter(function(p){ return p.type === 'non-partenaire'; });
+
+  if (realPartners.length > 0) {
+    h += '<div style="font-size:.62rem;color:#00d4aa;letter-spacing:1px;text-transform:uppercase;margin-bottom:.6rem;font-weight:600">' + t('panel.section.partners') + '</div>';
+    realPartners.forEach(function(p){
+      h += '<div class="panel-partner">';
+      h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
+      h += '<div class="panel-partner-type">' + escHtml(t('type.' + p.type) || TYPE_LABELS[p.type] || p.type) + '</div>';
+      h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
+      h += '<div class="panel-partner-tags">';
+      p.tags.forEach(function(tg){ h += '<span>' + escHtml(tg) + '</span>'; });
+      h += '</div>';
+      h += '<div class="panel-partner-links">';
+      h += '<a href="' + p.rdv + '" target="_blank" rel="noopener">' + t('panel.rdv') + '</a>';
+      h += '<a href="' + p.site + '" target="_blank" rel="noopener">' + t('panel.site') + '</a>';
+      h += '</div></div>';
+    });
+  }
+
+  if (nonPartners.length > 0) {
+    h += '<div style="font-size:.62rem;color:#6a7a8a;letter-spacing:1px;text-transform:uppercase;margin:1.2rem 0 .6rem;font-weight:600;border-top:1px solid rgba(106,122,138,.2);padding-top:.8rem">' + t('panel.section.nonpartners') + '</div>';
+    nonPartners.forEach(function(p){
+      h += '<div class="panel-partner" style="border-color:rgba(106,122,138,.15);background:rgba(106,122,138,.04)">';
+      h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
+      h += '<div class="panel-partner-type" style="background:rgba(106,122,138,.15);color:#8a9aaa">' + escHtml(t('type.non-partenaire')) + '</div>';
+      h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
+      if (p.source) h += '<div style="font-size:.56rem;color:#5a6a7a;font-style:italic;margin-bottom:.4rem">' + t('panel.source') + ' ' + escHtml(p.source) + '</div>';
+      h += '<div class="panel-partner-tags">';
+      p.tags.forEach(function(tg){ h += '<span style="border-color:rgba(106,122,138,.15);color:#6a8a80">' + escHtml(tg) + '</span>'; });
+      h += '</div>';
+      h += '<div class="panel-partner-links">';
+      h += '<a href="' + p.site + '" target="_blank" rel="noopener" style="border-color:rgba(106,122,138,.2);color:#6a7a8a">' + t('panel.site') + '</a>';
+      h += '</div></div>';
+    });
+  }
+
+  sidePanelEl.innerHTML = h;
+
+  panelMinTimer = setTimeout(function(){ canClosePanel = true; }, 5000);
+  panelTimeout = setTimeout(function(){
+    if (!mouseInPanel) closeSidePanel();
+  }, 10000);
+}
+
+function closeSidePanel() {
+  if (!panelOpen) return;
+  panelOpen = false;
+  clearTimeout(panelTimeout);
+  clearTimeout(panelMinTimer);
+  var cl = sidePanelEl.className;
+  sidePanelEl.className = cl.indexOf('right') !== -1 ? 'closed-right' : 'closed-left';
+}
+
+window.__closePanel = closeSidePanel;
+
+sidePanelEl.addEventListener('mouseenter', function(){
+  mouseInPanel = true;
+  clearTimeout(panelTimeout);
+});
+sidePanelEl.addEventListener('mouseleave', function(){
+  mouseInPanel = false;
+  if (panelOpen && canClosePanel) {
+    closeSidePanel();
+  } else if (panelOpen) {
+    panelTimeout = setTimeout(function(){
+      if (!mouseInPanel) closeSidePanel();
+    }, 3000);
+  }
+});
+
+function escHtml(s) {
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+renderer.domElement.addEventListener('mousemove', onMouseMove);
+renderer.domElement.addEventListener('click', onClickGlobe);
+
+// Touch
+renderer.domElement.addEventListener('touchend', function(e){
+  if (e.changedTouches.length === 1) {
+    var t = e.changedTouches[0];
+    onClickGlobe({ clientX: t.clientX, clientY: t.clientY });
+  }
+}, { passive: true });
+
+/* ───────────────────────────────── ANIMATION ───────────────────────────────── */
+var clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  var t = clock.getElapsedTime();
+  controls.update();
+
+  partnerDots.forEach(function(pd, i){
+    var s = 1 + 0.3 * Math.sin(t * 1.5 + i * 0.7);
+    pd.ring.scale.set(s, s, s);
+    pd.glow.material.opacity = 0.1 + 0.08 * Math.sin(t * 2 + i);
+  });
+
+  if (cytoPoints) {
+    cytoPoints.rotation.y = t * 0.02;
+    cytoPoints.rotation.x = t * 0.01;
+  }
+
+  // ── NUCLEUS PULSE ──
+  if (nucleusCore) {
+    var pulse = 0.35 + 0.15 * Math.sin(t * 1.2);
+    nucleusCore.material.opacity = pulse;
+    var cs = 1.0 + 0.12 * Math.sin(t * 1.2);
+    nucleusCore.scale.set(cs, cs, cs);
+  }
+  if (nucleusGlow) {
+    var gs = 1.0 + 0.08 * Math.sin(t * 0.8 + 0.5);
+    nucleusGlow.scale.set(gs, gs, gs);
+  }
+  if (nucleusHalo) {
+    var hs = 1.0 + 0.05 * Math.sin(t * 0.6);
+    nucleusHalo.scale.set(hs, hs, hs);
+  }
+  if (coreLight) {
+    coreLight.intensity = 0.5 + 0.2 * Math.sin(t * 1.2);
+  }
+
+  // ── CONTINENT GLOW PULSE (light breathing through the land) ──
+  if (geoLoaded) {
+    var glowPulse = 0.03 + 0.02 * Math.sin(t * 0.9);
+    for (var code in countryDataMap) {
+      var d = countryDataMap[code];
+      if (d.reliéfMeshes && !d.elevated) {
+        d.reliéfMeshes.forEach(function(m){
+          m.material.opacity = glowPulse;
+        });
+      }
+    }
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+/* ─── RESIZE ─── */
+window.addEventListener('resize', function(){
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+/* ─── i18n TRANSLATIONS ─── */
+var I18N = {
+  fr: {
+    "nav.home":"Accueil","nav.science":"Science","nav.indice":"Indice ORIM","nav.partners":"Partenaires","nav.contact":"Nous contacter",
+    "cta.text":"VOUS \u00CATES PROFESSIONNEL DE SANT\u00C9 ?","cta.btn":"Rejoindre le r\u00e9seau ORIM\u2122",
+    "loader":"Chargement de la carte...","tooltip.partners":"partenaire","tooltip.partners.plural":"partenaires",
+    "panel.partners":"partenaires ORIM\u2122","panel.partner":"partenaire ORIM\u2122",
+    "panel.rdv":"Rendez-vous","panel.site":"Site web",
+    "type.médecin":"M\u00e9decin","type.therapeute":"Th\u00e9rapeute","type.magasin":"Magasin","type.naturopathe":"Naturopathe","type.coach":"Coach","type.laboratoire":"Laboratoire",
+    "type.non-partenaire":"Non-partenaire","tooltip.nonpartners":"non-partenaire(s)",
+    "panel.section.partners":"Partenaires ORIM\u2122","panel.section.nonpartners":"Annuaire local","panel.source":"Source :"
+  },
+  en: {
+    "nav.home":"Home","nav.science":"Science","nav.indice":"ORIM Index","nav.partners":"Partners","nav.contact":"Contact us",
+    "cta.text":"ARE YOU A HEALTHCARE PROFESSIONAL?","cta.btn":"Join the ORIM\u2122 Network",
+    "loader":"Loading map...","tooltip.partners":"partner","tooltip.partners.plural":"partners",
+    "panel.partners":"ORIM\u2122 partners","panel.partner":"ORIM\u2122 partner",
+    "panel.rdv":"Book appointment","panel.site":"Website",
+    "type.médecin":"Doctor","type.therapeute":"Therapist","type.magasin":"Store","type.naturopathe":"Naturopath","type.coach":"Coach","type.laboratoire":"Laboratory",
+    "type.non-partenaire":"Non-partner","tooltip.nonpartners":"non-partner(s)",
+    "panel.section.partners":"ORIM\u2122 Partners","panel.section.nonpartners":"Local directory","panel.source":"Source:"
+  },
+  es: {
+    "nav.home":"Inicio","nav.science":"Ciencia","nav.indice":"\u00CDndice ORIM","nav.partners":"Socios","nav.contact":"Cont\u00e1ctenos",
+    "cta.text":"\u00bfES USTED PROFESIONAL DE LA SALUD?","cta.btn":"Unirse à la red ORIM\u2122",
+    "loader":"Cargando mapa...","tooltip.partners":"socio","tooltip.partners.plural":"socios",
+    "panel.partners":"socios ORIM\u2122","panel.partner":"socio ORIM\u2122",
+    "panel.rdv":"Reservar cita","panel.site":"Sitio web",
+    "type.médecin":"M\u00e9dico","type.therapeute":"Terapeuta","type.magasin":"Tienda","type.naturopathe":"Natur\u00f3pata","type.coach":"Coach","type.laboratoire":"Laboratorio",
+    "type.non-partenaire":"No asociado","tooltip.nonpartners":"no asociado(s)",
+    "panel.section.partners":"Socios ORIM\u2122","panel.section.nonpartners":"Directorio local","panel.source":"Fuente:"
+  },
+  de: {
+    "nav.home":"Startseite","nav.science":"Wissenschaft","nav.indice":"ORIM-Index","nav.partners":"Partner","nav.contact":"Kontakt",
+    "cta.text":"SIND SIE EIN GESUNDHEITSEXPERTE?","cta.btn":"Dem ORIM\u2122-Netzwerk beitreten",
+    "loader":"Karte wird geladen...","tooltip.partners":"Partner","tooltip.partners.plural":"Partner",
+    "panel.partners":"ORIM\u2122-Partner","panel.partner":"ORIM\u2122-Partner",
+    "panel.rdv":"Termin buchen","panel.site":"Webseite",
+    "type.médecin":"Arzt","type.therapeute":"Therapeut","type.magasin":"Gesch\u00e4ft","type.naturopathe":"Naturheilkundler","type.coach":"Coach","type.laboratoire":"Labor",
+    "type.non-partenaire":"Nicht-Partner","tooltip.nonpartners":"Nicht-Partner",
+    "panel.section.partners":"ORIM\u2122-Partner","panel.section.nonpartners":"Lokales Verzeichnis","panel.source":"Quelle:"
+  }
+};
+
+var currentLang = 'fr';
+
+function t(key) {
+  return (I18N[currentLang] && I18N[currentLang][key]) || (I18N.fr[key]) || key;
+}
+
+function applyI18n(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = t(key);
+    if (val) el.textContent = val;
+  });
+  document.documentElement.lang = lang;
+}
+
+/* ─── LANG SELECTOR ─── */
+document.querySelectorAll('.lang-sel button').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.lang-sel button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var lang = btn.textContent.trim().toLowerCase();
+    applyI18n(lang);
+  });
+});
+
+/* ─── INITIAL CAMERA ANIM ─── */
+gsap.from(camera.position, { z: 6, duration: 2.5, ease: 'power2.out' });
+
+})();
+</script>
+</body>
+</html>

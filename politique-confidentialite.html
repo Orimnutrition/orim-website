@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité — ORIM</title>
+  <meta name="description" content="Politique de confidentialité et de cookies du site orimnutrition.org — conforme RGPD, nLPD et CNIL." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #0d1b2a;
+      --blue:  #1a4a7a;
+      --cyan:  #00b4d8;
+      --white: #f8fafc;
+      --gray:  #94a3b8;
+      --lgray: #1e2d3d;
+      --gold:  #c9a84c;
+      --green: #22c55e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    #canvas-bg {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0; pointer-events: none;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(13, 27, 42, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 180, 216, 0.15);
+    }
+    .nav-logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem; font-weight: 700;
+      background: linear-gradient(135deg, #00b4d8, #1a4a7a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: .12em; text-decoration: none;
+    }
+    .nav-logo span { font-size: .7rem; display: block; letter-spacing: .25em; color: var(--gray); -webkit-text-fill-color: var(--gray); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      border: none; color: #fff; padding: .55rem 1.4rem;
+      border-radius: 2rem; font-size: .8rem; font-weight: 600;
+      letter-spacing: .08em; cursor: pointer; transition: opacity .2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ── PAGE CONTENT ── */
+    .page-wrapper {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 8rem 2rem 6rem;
+    }
+
+    .breadcrumb {
+      font-size: .78rem; color: var(--gray);
+      letter-spacing: .06em; margin-bottom: 2rem;
+    }
+    .breadcrumb a { color: var(--cyan); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .page-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--white), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: .5rem;
+    }
+    .page-updated {
+      font-size: .8rem; color: var(--gray);
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(0,180,216,.15);
+    }
+
+    /* Table of contents */
+    .toc {
+      background: rgba(0,180,216,.05);
+      border: 1px solid rgba(0,180,216,.18);
+      border-radius: .75rem;
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 3rem;
+    }
+    .toc h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .85rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 1rem;
+    }
+    .toc ol { padding-left: 1.2rem; }
+    .toc li { margin-bottom: .4rem; }
+    .toc a { color: var(--gray); font-size: .85rem; text-decoration: none; transition: color .2s; }
+    .toc a:hover { color: var(--cyan); }
+
+    .legal-section {
+      margin-bottom: 2.8rem;
+      scroll-margin-top: 6rem;
+    }
+    .legal-section h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.25rem; font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-left: .8rem;
+      border-left: 3px solid var(--cyan);
+    }
+    .legal-section h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      color: var(--gold);
+      letter-spacing: .08em; text-transform: uppercase;
+      margin: 1.4rem 0 .6rem;
+    }
+    .legal-section p {
+      font-size: .9rem; line-height: 1.8;
+      color: rgba(248,250,252,.82);
+      margin-bottom: .8rem;
+    }
+    .legal-section ul, .legal-section ol {
+      margin: .6rem 0 .8rem 0;
+    }
+    .legal-section ul { list-style: none; }
+    .legal-section ul li {
+      font-size: .9rem; line-height: 1.8;
+      color: rgba(248,250,252,.82);
+      padding-left: 1.2rem;
+      position: relative; margin-bottom: .3rem;
+    }
+    .legal-section ul li::before {
+      content: '›'; position: absolute; left: 0;
+      color: var(--cyan); font-weight: 700;
+    }
+    .legal-section ol { padding-left: 1.4rem; }
+    .legal-section ol li {
+      font-size: .9rem; line-height: 1.8;
+      color: rgba(248,250,252,.82);
+      margin-bottom: .4rem;
+    }
+    a { color: var(--cyan); }
+    a:hover { text-decoration: underline; }
+
+    .info-box {
+      background: rgba(0,180,216,.06);
+      border: 1px solid rgba(0,180,216,.2);
+      border-radius: .75rem;
+      padding: 1.4rem 1.6rem;
+      margin: 1rem 0;
+    }
+    .info-box p { margin-bottom: .4rem; }
+    .info-box p:last-child { margin-bottom: 0; }
+
+    /* Cookie table */
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: .83rem;
+    }
+    .cookie-table th {
+      background: rgba(0,180,216,.12);
+      color: var(--cyan);
+      font-family: 'Rajdhani', sans-serif;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: .7rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(0,180,216,.25);
+    }
+    .cookie-table td {
+      padding: .65rem 1rem;
+      color: rgba(248,250,252,.8);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      vertical-align: top;
+    }
+    .cookie-table tr:last-child td { border-bottom: none; }
+
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .right-card {
+      background: rgba(0,180,216,.06);
+      border: 1px solid rgba(0,180,216,.18);
+      border-radius: .6rem;
+      padding: 1rem 1.2rem;
+    }
+    .right-card strong {
+      display: block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .9rem;
+      letter-spacing: .06em;
+      color: var(--cyan);
+      margin-bottom: .4rem;
+    }
+    .right-card p { font-size: .82rem; margin: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      background: rgba(8,16,24,.95);
+      border-top: 1px solid rgba(0,180,216,.1);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .nav-logo-foot {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      background: linear-gradient(135deg, #00b4d8, #1a4a7a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: .12em;
+    }
+    .footer-brand p { font-size: .82rem; color: var(--gray); line-height: 1.7; margin-top: .8rem; max-width: 260px; }
+    .footer-col h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .8rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: .6rem; }
+    .footer-col a { color: var(--gray); text-decoration: none; font-size: .82rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      max-width: 1200px; margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.05);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .75rem; color: var(--gray);
+      flex-wrap: wrap; gap: .5rem;
+    }
+    .footer-entities { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .cookie-table { font-size: .75rem; }
+      .cookie-table th, .cookie-table td { padding: .5rem .6rem; }
+    }
+  </style>
+</head>
+<body>
+<!-- ORIM Access Gate -->
+<div id="orim-gate" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d1b2a;z-index:999999;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;">
+  <div style="text-align:center;max-width:400px;padding:2rem;">
+    <div style="font-size:3rem;color:#1BA8A6;font-weight:bold;letter-spacing:0.3em;margin-bottom:0.5rem;">ORIM™</div>
+    <div style="color:#E6A817;font-size:0.85rem;letter-spacing:0.2em;margin-bottom:2rem;">ACCÈS RESTREINT</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-bottom:1.5rem;">Ce site est actuellement en maintenance.<br>Veuillez entrer votre code d'accès.</div>
+    <input id="orim-gate-input" type="password" placeholder="Code d'accès" autocomplete="off"
+      style="width:100%;padding:14px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(27,168,166,0.3);border-radius:8px;color:#fff;font-size:1rem;text-align:center;letter-spacing:0.15em;outline:none;box-sizing:border-box;margin-bottom:1rem;"
+      onfocus="this.style.borderColor='#1BA8A6'" onblur="this.style.borderColor='rgba(27,168,166,0.3)'" />
+    <button id="orim-gate-btn" onclick="orimGateCheck()"
+      style="width:100%;padding:14px;background:linear-gradient(135deg,#1BA8A6,#15918f);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;letter-spacing:0.05em;">
+      Accéder au site
+    </button>
+    <div id="orim-gate-error" style="color:#e74c3c;font-size:0.8rem;margin-top:1rem;display:none;">Code incorrect. Veuillez réessayer.</div>
+    <div style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:2rem;">Association ORIM · Genève, Suisse</div>
+  </div>
+</div>
+<script>
+(function(){
+  var HASH='aac96125fe5a648f45b9bb12ad2f6ed08effccdc6d6e3ffab3b4048e6a081e50';
+  if(sessionStorage.getItem('orim-auth')===HASH){document.getElementById('orim-gate').style.display='none';}
+  document.getElementById('orim-gate-input').addEventListener('keydown',function(e){if(e.key==='Enter')orimGateCheck();});
+  window.orimGateCheck=async function(){
+    var v=document.getElementById('orim-gate-input').value;
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));
+    var h=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(h===HASH){sessionStorage.setItem('orim-auth',HASH);document.getElementById('orim-gate').style.display='none';}
+    else{document.getElementById('orim-gate-error').style.display='block';document.getElementById('orim-gate-input').value='';document.getElementById('orim-gate-input').style.borderColor='#e74c3c';}
+  };
+})();
+</script>
+<!-- /ORIM Access Gate -->
+
+
+<canvas id="canvas-bg"></canvas>
+
+<nav>
+  <a href="index.html" class="nav-logo">ORIM<span>Immuno-Métabolique</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#mission">Notre Mission</a></li>
+    <li><a href="index.html#prestations">Prestations</a></li>
+    <li><a href="index.html#poles">Pôles</a></li>
+    <li><a href="index.html#marque">Marque ORIM™</a></li>
+    <li><a href="index.html#equipe">Équipe</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Nous contacter</a>
+</nav>
+
+<main class="page-wrapper">
+
+  <p class="breadcrumb"><a href="index.html">Accueil</a> › Politique de confidentialité</p>
+
+  <h1 class="page-title">Politique de confidentialité</h1>
+  <p class="page-updated">Dernière mise à jour : 16 mars 2026 — conforme au RGPD (UE 2016/679), à la nLPD (Suisse) et aux recommandations CNIL</p>
+
+  <!-- TABLE DES MATIÈRES -->
+  <nav class="toc" aria-label="Sommaire">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#responsable">Responsable du traitement</a></li>
+      <li><a href="#donnees">Données collectées</a></li>
+      <li><a href="#finalites">Finalités et bases légales</a></li>
+      <li><a href="#conservation">Durée de conservation</a></li>
+      <li><a href="#destinataires">Destinataires et transferts</a></li>
+      <li><a href="#droits">Vos droits</a></li>
+      <li><a href="#cookies">Politique cookies</a></li>
+      <li><a href="#sécurité">Sécurité</a></li>
+      <li><a href="#modifications">Modifications</a></li>
+      <li><a href="#contact-dpo">Contact</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. RESPONSABLE -->
+  <div class="legal-section" id="responsable">
+    <h2>1. Responsable du traitement</h2>
+    <div class="info-box">
+      <p><strong>Association ORIM</strong> — Genève, Suisse</p>
+      <p>Responsable : Olivier Chevalley, Président</p>
+      <p>Email : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></p>
+      <p>Site : <a href="https://www.orimnutrition.org">www.orimnutrition.org</a></p>
+    </div>
+    <p>L'Association ORIM, de droit suisse (art. 60 CC), est l'unique responsable du traitement des données collectées via ce site.</p>
+  </div>
+
+  <!-- 2. DONNÉES COLLECTÉES -->
+  <div class="legal-section" id="donnees">
+    <h2>2. Données collectées</h2>
+
+    <h3>Données que vous nous fournissez</h3>
+    <ul>
+      <li>Nom et prénom</li>
+      <li>Adresse email</li>
+      <li>Message et objet de la demande (formulaire de contact)</li>
+      <li>Données relatives à une inscription ou à un programme (si applicable)</li>
+    </ul>
+
+    <h3>Données collectées automatiquement</h3>
+    <ul>
+      <li>Adresse IP (anonymisée)</li>
+      <li>Type et version du navigateur</li>
+      <li>Pages visitées et durée de visite (données d'analyse)</li>
+      <li>Référent (page depuis laquelle vous êtes arrivé)</li>
+    </ul>
+
+    <p>Nous ne collectons pas de données de santé au sens des données sensibles (article 9 du RGPD) via ce site. Les informations partagées dans le cadre de nos programmes sont traitées avec un niveau de protection renforcé et sur base du consentement explicite.</p>
+  </div>
+
+  <!-- 3. FINALITÉS -->
+  <div class="legal-section" id="finalites">
+    <h2>3. Finalités et bases légales</h2>
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Finalité</th>
+          <th>Base légale (RGPD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Répondre à vos demandes de contact</td>
+          <td>Intérêt légitime / exécution d'un contrat</td>
+        </tr>
+        <tr>
+          <td>Gestion des inscriptions aux programmes ORIM</td>
+          <td>Exécution d'un contrat</td>
+        </tr>
+        <tr>
+          <td>Envoi de la newsletter (si souscrite)</td>
+          <td>Consentement explicite</td>
+        </tr>
+        <tr>
+          <td>Statistiques de fréquentation (anonymisées)</td>
+          <td>Intérêt légitime</td>
+        </tr>
+        <tr>
+          <td>Conformité légale et comptable</td>
+          <td>Obligation légale</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. CONSERVATION -->
+  <div class="legal-section" id="conservation">
+    <h2>4. Durée de conservation</h2>
+    <ul>
+      <li><strong>Formulaire de contact :</strong> 3 ans à compter du dernier contact</li>
+      <li><strong>Données clients (contrats, factures) :</strong> 10 ans (obligations comptables)</li>
+      <li><strong>Newsletter :</strong> jusqu'au désabonnement ou 3 ans sans ouverture</li>
+      <li><strong>Logs de connexion :</strong> 12 mois maximum</li>
+      <li><strong>Cookies :</strong> selon leur nature (voir section 7)</li>
+    </ul>
+    <p>À l'expiration de ces délais, vos données sont supprimées ou anonymisées de manière sécurisée.</p>
+  </div>
+
+  <!-- 5. DESTINATAIRES -->
+  <div class="legal-section" id="destinataires">
+    <h2>5. Destinataires et transferts</h2>
+    <p>Vos données peuvent être transmises aux sous-traitants suivants, dans le cadre strict des finalités décrites ci-dessus :</p>
+    <ul>
+      <li><strong>GitHub, Inc.</strong> — hébergement du site (États-Unis, couvert par les clauses contractuelles types de l'UE)</li>
+      <li><strong>Prestataire d'emailing</strong> — en cas de newsletter (à préciser lors de la mise en place)</li>
+    </ul>
+    <p>Vos données ne sont jamais vendues ni louées à des tiers. Tout transfert hors Union Européenne est encadré par les garanties appropriées prévues par le RGPD (clauses contractuelles types, décision d'adéquation).</p>
+    <p>En cas de transfert vers la Suisse, ce pays bénéficie d'une décision d'adéquation de la Commission Européenne.</p>
+  </div>
+
+  <!-- 6. VOS DROITS -->
+  <div class="legal-section" id="droits">
+    <h2>6. Vos droits</h2>
+    <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <strong>Droit d'accès</strong>
+        <p>Obtenir une copie de vos données personnelles que nous détenons.</p>
+      </div>
+      <div class="right-card">
+        <strong>Droit de rectification</strong>
+        <p>Corriger des données inexactes ou incomplètes.</p>
+      </div>
+      <div class="right-card">
+        <strong>Droit à l'effacement</strong>
+        <p>Demander la suppression de vos données (« droit à l'oubli »).</p>
+      </div>
+      <div class="right-card">
+        <strong>Droit à la portabilité</strong>
+        <p>Recevoir vos données dans un format structuré et lisible.</p>
+      </div>
+      <div class="right-card">
+        <strong>Droit d'opposition</strong>
+        <p>Vous opposer à un traitement fondé sur l'intérêt légitime.</p>
+      </div>
+      <div class="right-card">
+        <strong>Droit à la limitation</strong>
+        <p>Suspendre temporairement le traitement de vos données.</p>
+      </div>
+    </div>
+    <p>Pour exercer ces droits, contactez-nous à <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a> avec une pièce d'identité. Nous répondrons dans un délai d'un mois (prolongeable de deux mois pour les demandes complexes).</p>
+    <p>Vous avez également le droit d'introduire une réclamation auprès de la <strong>CNIL</strong> : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a> — ou auprès du <strong>PFPDT</strong> (Préposé fédéral à la protection des données et à la transparence) si vous résidez en Suisse : <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">www.edoeb.admin.ch</a></p>
+
+    <h3>Conformité nLPD (Suisse)</h3>
+    <p>L'Association ORIM étant de droit suisse, le traitement des données est également conforme à la nouvelle Loi fédérale sur la protection des données (nLPD), entrée en vigueur le 1er septembre 2023. En particulier :</p>
+    <ul>
+      <li>Les personnes concernées sont informées de manière transparente avant tout traitement</li>
+      <li>Le traitement est limité aux finalités communiquées (principe de finalité)</li>
+      <li>Les données ne sont conservées que le temps nécessaire (principe de proportionnalité)</li>
+      <li>Les mesures techniques et organisationnelles garantissent la sécurité des données (art. 8 nLPD)</li>
+      <li>Toute violation de la sécurité des données est annoncée au PFPDT dans les meilleurs délais (art. 24 nLPD)</li>
+    </ul>
+  </div>
+
+  <!-- 7. COOKIES -->
+  <div class="legal-section" id="cookies">
+    <h2>7. Politique cookies</h2>
+    <p>Un cookie est un petit fichier texte déposé sur votre terminal. Nous utilisons uniquement les cookies suivants :</p>
+
+    <h3>Cookies strictement nécessaires (pas de consentement requis)</h3>
+    <table class="cookie-table">
+      <thead>
+        <tr><th>Nom</th><th>Finalité</th><th>Durée</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>orim_cookie_consent</td>
+          <td>Mémoriser votre choix de consentement aux cookies</td>
+          <td>12 mois</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Cookies analytiques (avec consentement)</h3>
+    <p>Si vous y consentez, nous utilisons des outils d'analyse d'audience pour améliorer le site. Ces outils anonymisent votre adresse IP et ne permettent pas de vous identifier personnellement.</p>
+
+    <h3>Cookies tiers</h3>
+    <p>Ce site peut charger des ressources depuis Google Fonts (polices de caractères). Ces chargements peuvent déposer des cookies ou collecter des données techniques. Consultez la politique de confidentialité de Google pour plus d'informations.</p>
+
+    <h3>Gérer vos préférences</h3>
+    <p>Vous pouvez à tout moment modifier vos préférences cookies via les paramètres de votre navigateur, ou en cliquant sur le lien « Gérer mes cookies » en bas de page lorsqu'il est disponible.</p>
+  </div>
+
+  <!-- 8. SÉCURITÉ -->
+  <div class="legal-section" id="sécurité">
+    <h2>8. Sécurité</h2>
+    <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, destruction ou altération :</p>
+    <ul>
+      <li>Connexion sécurisée HTTPS (TLS) sur l'ensemble du site</li>
+      <li>Accès aux données restreint aux personnes habilitées</li>
+      <li>Aucune donnée de paiement stockée sur nos serveurs</li>
+    </ul>
+    <p>En cas de violation de données susceptible d'engendrer un risque élevé pour vos droits et libertés, nous vous en informerons dans les meilleurs délais conformément à l'article 34 du RGPD.</p>
+  </div>
+
+  <!-- 9. MODIFICATIONS -->
+  <div class="legal-section" id="modifications">
+    <h2>9. Modifications de la politique</h2>
+    <p>Nous nous réservons le droit de modifier cette politique à tout moment, notamment pour nous conformer à l'évolution de la réglementation. La date de dernière mise à jour est indiquée en haut de page.</p>
+    <p>En cas de modification substantielle, nous vous en informerons par email (si vous êtes abonné à notre newsletter) ou par un avis visible sur le site.</p>
+  </div>
+
+  <!-- 10. CONTACT DPO -->
+  <div class="legal-section" id="contact-dpo">
+    <h2>10. Contact</h2>
+    <p>Pour toute question relative à cette politique ou pour exercer vos droits :</p>
+    <div class="info-box">
+      <p><strong>Responsable protection des données — ORIM</strong></p>
+      <p>Email : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></p>
+      <p>Site : <a href="https://www.orimnutrition.org">www.orimnutrition.org</a></p>
+      <p>Délai de réponse : 30 jours maximum (article 12 RGPD)</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo-foot">ORIM</div>
+      <p>Optimisation Résolutive Immuno-Métabolique — Association genevoise de recherche et éducation en immunonutrition préventive.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html#mission">Notre Mission</a></li>
+        <li><a href="index.html#prestations">Prestations</a></li>
+        <li><a href="index.html#poles">Pôles</a></li>
+        <li><a href="index.html#marque">Marque ORIM™</a></li>
+        <li><a href="index.html#equipe">Équipe</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Association</h4>
+      <ul>
+        <li><a href="#">Association ORIM Genève</a></li>
+        <li><a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        <li><a href="#">Statuts de l'association</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Association ORIM — Tous droits réservés</span>
+    <div class="footer-entities">
+      <span>Association ORIM — Genève, Suisse</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const canvas = document.getElementById('canvas-bg');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', () => { resize(); initParticles(); });
+function Particle() {
+  this.x = Math.random() * W; this.y = Math.random() * H;
+  this.vx = (Math.random() - .5) * .4; this.vy = (Math.random() - .5) * .4;
+  this.r = Math.random() * 1.5 + .5; this.alpha = Math.random() * .5 + .1;
+}
+function initParticles() { particles = Array.from({length: Math.floor(W * H / 9000)}, () => new Particle()); }
+initParticles();
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,180,216,${p.alpha})`; ctx.fill();
+  });
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(0,180,216,${.12*(1-dist/120)})`; ctx.lineWidth = .5; ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+</script>
+
+</body>
+</html>

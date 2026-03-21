@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Brasil | ORIM - Imunonutri&ccedil;&atilde;o Preventiva</title>
+  <meta name="description" content="Blog Brasil da Associa&ccedil;&atilde;o ORIM. Artigos cient&iacute;ficos em portugu&ecirc;s sobre imunonutri&ccedil;&atilde;o, nutri&ccedil;&atilde;o preventiva e recursos alimentares brasileiros." />
+  <link rel="canonical" href="https://orimnutrition.org/blog-brasil/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d1b2a; --cyan: #00b4d8; --lcyan: #90e0ef; --white: #f8fafc; --gray: #94a3b8; --teal: #1BA8A6; --gold-orim: #E6A817; --dark: #2D3436; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: .5rem 2rem; background: rgba(13,27,42,.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,180,216,.15); }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .nav-logo-img { height: 34px; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .nav-logo span { font-size: .5rem; letter-spacing: .15em; color: var(--gray); line-height: 1.3; }
+    .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+    .blog-hero { padding: 7rem 2rem 3rem; text-align: center; background: linear-gradient(180deg, rgba(13,27,42,1) 0%, rgba(26,74,122,.15) 50%, rgba(13,27,42,1) 100%); border-bottom: 1px solid rgba(0,180,216,.1); }
+    .blog-hero-badge { display: inline-block; background: rgba(27,168,166,.12); border: 1px solid rgba(27,168,166,.3); color: var(--teal); font-size: .72rem; padding: .35rem 1rem; border-radius: 2rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .blog-hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; background: linear-gradient(135deg,#ffffff 0%,var(--teal) 50%,#90e0ef 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+    .blog-hero p { font-size: .92rem; color: var(--gray); max-width: 650px; margin: 0 auto; line-height: 1.7; }
+    .region-nav { display: flex; gap: .6rem; justify-content: center; padding: 2rem 2rem 1rem; flex-wrap: wrap; }
+    .region-btn { background: rgba(0,180,216,.08); border: 1px solid rgba(0,180,216,.2); color: var(--lcyan); font-size: .75rem; padding: .4rem 1.2rem; border-radius: 2rem; cursor: pointer; transition: all .2s; text-decoration: none; }
+    .region-btn:hover, .region-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .articles-list { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+    .article-item { display: flex; gap: 1rem; padding: 1.2rem 1.5rem; margin-bottom: .8rem; background: rgba(26,74,122,.08); border: 1px solid rgba(0,180,216,.1); border-radius: .8rem; transition: border-color .3s, transform .2s; align-items: flex-start; }
+    .article-item:hover { border-color: rgba(27,168,166,.4); transform: translateX(4px); }
+    .article-num { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; color: rgba(27,168,166,.4); min-width: 2.5rem; text-align: center; flex-shrink: 0; }
+    .article-info h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: .3rem; }
+    .article-info h3 a { color: var(--white); text-decoration: none; transition: color .2s; }
+    .article-info h3 a:hover { color: var(--teal); }
+    .article-info p { font-size: .78rem; color: var(--gray); line-height: 1.5; }
+    footer { text-align: center; padding: 3rem 2rem; margin-top: 4rem; border-top: 1px solid rgba(0,180,216,.1); background: rgba(13,27,42,.5); }
+    .footer-logo img { height: 30px; margin-bottom: 1rem; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .footer-bottom { font-size: .68rem; color: rgba(148,163,184,.4); }
+    @media(max-width:768px) { .nav-links { display: none; } .articles-list { padding: 0 1rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../orim-logo.png" alt="ORIM" class="nav-logo-img" />
+      <span>OPTIMISATION R&Eacute;SOLUTIVE<br>IMMUNO-M&Eacute;TABOLIQUE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog/">Blog FR</a></li>
+      <li><a href="../blog-afrique/">Afrique</a></li>
+      <li><a href="../blog-brasil/" class="active">Brasil</a></li>
+      <li><a href="../blog-europe/">Europe</a></li>
+      <li><a href="../blog-asia/">Asia</a></li>
+      <li><a href="../blog-canada/">Canada</a></li>
+      <li><a href="../newsletters/">Newsletters</a></li>
+    </ul>
+  </nav>
+
+  <section class="blog-hero">
+    <div class="blog-hero-badge">Blog Brasil</div>
+    <h1>Imunonutri&ccedil;&atilde;o Brasil</h1>
+    <p>50 artigos cient&iacute;ficos em portugu&ecirc;s dedicados &agrave; nutri&ccedil;&atilde;o preventiva, biodiversidade alimentar brasileira e sa&uacute;de imuno-metab&oacute;lica. Pesquisa, tradi&ccedil;&otilde;es culin&aacute;rias e ci&ecirc;ncia.</p>
+  </section>
+
+  <div class="region-nav">
+    <a href="../blog/" class="region-btn">Blog FR</a>
+    <a href="../blog-afrique/" class="region-btn">Afrique</a>
+    <a href="../blog-brasil/" class="region-btn active">Brasil</a>
+    <a href="../blog-europe/" class="region-btn">Europe</a>
+    <a href="../blog-asia/" class="region-btn">Asie-Pacifique</a>
+    <a href="../blog-canada/" class="region-btn">Canada</a>
+  </div>
+
+  <div class="articles-list">
+    <div class="article-item"><div class="article-num">01</div><div class="article-info"><h3><a href="acai-amazonia-antioxidantes.html">A&ccedil;a&iacute; da Amaz&ocirc;nia: antioxidantes e energia</a></h3><p>Perfil nutricional do a&ccedil;a&iacute;, rico em antocianinas e &aacute;cidos graxos essenciais.</p></div></div>
+    <div class="article-item"><div class="article-num">02</div><div class="article-info"><h3><a href="castanha-para-selenio-imunidade.html">Castanha-do-Par&aacute;: sel&ecirc;nio e imunidade</a></h3><p>A castanha-do-Par&aacute; como fonte concentrada de sel&ecirc;nio e seus efeitos na fun&ccedil;&atilde;o tireoidiana.</p></div></div>
+    <div class="article-item"><div class="article-num">03</div><div class="article-info"><h3><a href="guarana-cafeina-metabolismo.html">Guaran&aacute;: cafe&iacute;na natural e metabolismo</a></h3><p>Composi&ccedil;&atilde;o fitoqu&iacute;mica do guaran&aacute; e efeitos sobre o metabolismo energ&eacute;tico.</p></div></div>
+    <div class="article-item"><div class="article-num">04</div><div class="article-info"><h3><a href="mandioca-brasil-seguranca-alimentar.html">Mandioca no Brasil: seguran&ccedil;a alimentar</a></h3><p>Import&acirc;ncia da mandioca na alimenta&ccedil;&atilde;o brasileira e m&eacute;todos de processamento.</p></div></div>
+    <div class="article-item"><div class="article-num">05</div><div class="article-info"><h3><a href="acerola-vitamina-c-concentrada.html">Acerola: a maior fonte de vitamina C</a></h3><p>A acerola brasileira e seu conte&uacute;do excepcional de &aacute;cido asc&oacute;rbico biodispon&iacute;vel.</p></div></div>
+    <div class="article-item"><div class="article-num">06</div><div class="article-info"><h3><a href="feijao-preto-proteina-ferro.html">Feij&atilde;o preto: prote&iacute;na e ferro</a></h3><p>O feij&atilde;o preto na dieta brasileira, fonte de prote&iacute;nas, ferro e antocianinas.</p></div></div>
+    <div class="article-item"><div class="article-num">07</div><div class="article-info"><h3><a href="cupuacu-gorduras-saudaveis.html">Cupua&ccedil;u: gorduras saud&aacute;veis da Amaz&ocirc;nia</a></h3><p>Composi&ccedil;&atilde;o lip&iacute;dica do cupua&ccedil;u e potencial como substituto do cacau.</p></div></div>
+    <div class="article-item"><div class="article-num">08</div><div class="article-info"><h3><a href="camu-camu-vitamina-c-amazonia.html">Camu-camu: vitamina C da Amaz&ocirc;nia</a></h3><p>O camu-camu amaz&ocirc;nico e seu conte&uacute;do recorde de &aacute;cido asc&oacute;rbico.</p></div></div>
+    <div class="article-item"><div class="article-num">09</div><div class="article-info"><h3><a href="erva-mate-polifenois-energia.html">Erva-mate: polifen&oacute;is e energia sustentada</a></h3><p>Composi&ccedil;&atilde;o fitoqu&iacute;mica da erva-mate e efeitos sobre o metabolismo.</p></div></div>
+    <div class="article-item"><div class="article-num">10</div><div class="article-info"><h3><a href="buriti-betacaroteno-cerrado.html">Buriti: betacaroteno do Cerrado</a></h3><p>O buriti como fonte de provitamina A e &aacute;cidos graxos insaturados.</p></div></div>
+    <div class="article-item"><div class="article-num">11</div><div class="article-info"><h3><a href="jabuticaba-antocianinas-casca.html">Jabuticaba: antocianinas na casca</a></h3><p>Polifen&oacute;is da jabuticaba e propriedades anti-inflamat&oacute;rias.</p></div></div>
+    <div class="article-item"><div class="article-num">12</div><div class="article-info"><h3><a href="pequi-cerrado-carotenoides.html">Pequi do Cerrado: caroten&oacute;ides e vitamina A</a></h3><p>Perfil nutricional do pequi e seu papel na culin&aacute;ria do Centro-Oeste.</p></div></div>
+    <div class="article-item"><div class="article-num">13</div><div class="article-info"><h3><a href="bacuri-amazonia-anti-inflamatorio.html">Bacuri: fruta amaz&ocirc;nica anti-inflamat&oacute;ria</a></h3><p>Compostos bioativos do bacuri e suas propriedades farmacol&oacute;gicas.</p></div></div>
+    <div class="article-item"><div class="article-num">14</div><div class="article-info"><h3><a href="tucuma-omega-amazonia.html">Tucum&atilde;: &ocirc;mega da Amaz&ocirc;nia</a></h3><p>O tucum&atilde; como fonte de &aacute;cidos graxos e betacaroteno na dieta amaz&ocirc;nica.</p></div></div>
+    <div class="article-item"><div class="article-num">15</div><div class="article-info"><h3><a href="pupunha-palmito-proteinas.html">Pupunha e palmito: prote&iacute;nas vegetais</a></h3><p>Valor nutricional da pupunha e do palmito cultivado de forma sustent&aacute;vel.</p></div></div>
+    <div class="article-item"><div class="article-num">16</div><div class="article-info"><h3><a href="farinha-baru-cerrado-proteina.html">Baru do Cerrado: prote&iacute;na e minerais</a></h3><p>A castanha de baru, rica em prote&iacute;nas, zinco e &aacute;cidos graxos monoinsaturados.</p></div></div>
+    <div class="article-item"><div class="article-num">17</div><div class="article-info"><h3><a href="pitaya-brasil-fibras-antioxidantes.html">Pitaya: fibras e antioxidantes</a></h3><p>Cultivo de pitaya no Brasil e seus benef&iacute;cios nutricionais.</p></div></div>
+    <div class="article-item"><div class="article-num">18</div><div class="article-info"><h3><a href="goiaba-vitamina-c-licopeno.html">Goiaba: vitamina C e licopeno</a></h3><p>A goiaba brasileira, fonte de vitamina C, licopeno e fibras diet&eacute;ticas.</p></div></div>
+    <div class="article-item"><div class="article-num">19</div><div class="article-info"><h3><a href="graviola-acetogeninas-imunidade.html">Graviola: acetogeninas e imunidade</a></h3><p>Compostos bioativos da graviola e pesquisas sobre atividade imunomoduladora.</p></div></div>
+    <div class="article-item"><div class="article-num">20</div><div class="article-info"><h3><a href="mel-abelhas-nativas-brasil.html">Mel de abelhas nativas brasileiras</a></h3><p>Propriedades antimicrobianas e antioxidantes dos m&eacute;is de abelhas sem ferr&atilde;o.</p></div></div>
+    <div class="article-item"><div class="article-num">21</div><div class="article-info"><h3><a href="pinhao-araucaria-amido-resistente.html">Pinh&atilde;o: amido resistente da Arauc&aacute;ria</a></h3><p>O pinh&atilde;o do Sul do Brasil e seu conte&uacute;do de amido resistente prebi&oacute;tico.</p></div></div>
+    <div class="article-item"><div class="article-num">22</div><div class="article-info"><h3><a href="cacau-bahia-flavanois.html">Cacau da Bahia: flavan&oacute;is e sa&uacute;de cardiovascular</a></h3><p>Polifen&oacute;is do cacau baiano e efeitos na press&atilde;o arterial.</p></div></div>
+    <div class="article-item"><div class="article-num">23</div><div class="article-info"><h3><a href="tapioca-fermentada-probioticos.html">Tapioca fermentada: prebi&oacute;ticos naturais</a></h3><p>A fermenta&ccedil;&atilde;o da mandioca e a produ&ccedil;&atilde;o de compostos bioativos.</p></div></div>
+    <div class="article-item"><div class="article-num">24</div><div class="article-info"><h3><a href="dendê-oleo-palma-brasil.html">Dend&ecirc;: &oacute;leo de palma brasileiro</a></h3><p>O azeite de dend&ecirc; na culin&aacute;ria baiana e seu perfil de caroten&oacute;ides.</p></div></div>
+    <div class="article-item"><div class="article-num">25</div><div class="article-info"><h3><a href="umbu-sertao-vitaminas.html">Umbu do Sert&atilde;o: vitaminas e adapta&ccedil;&atilde;o</a></h3><p>O umbu nordestino, fruta resiliente rica em vitamina C e minerais.</p></div></div>
+    <div class="article-item"><div class="article-num">26</div><div class="article-info"><h3><a href="cajá-manga-nordeste.html">Caj&aacute;-manga: caroten&oacute;ides do Nordeste</a></h3><p>Perfil nutricional de frutas tropicais nordestinas subutilizadas.</p></div></div>
+    <div class="article-item"><div class="article-num">27</div><div class="article-info"><h3><a href="inhame-tuberculo-imunidade.html">Inhame: tub&eacute;rculo e imunidade</a></h3><p>Compostos bioativos do inhame e tradi&ccedil;&atilde;o popular como imunoestimulante.</p></div></div>
+    <div class="article-item"><div class="article-num">28</div><div class="article-info"><h3><a href="propolis-verde-brasil-artepillin.html">Pr&oacute;polis verde brasileira: artepilina C</a></h3><p>A pr&oacute;polis verde brasileira e suas propriedades imunomoduladoras &uacute;nicas.</p></div></div>
+    <div class="article-item"><div class="article-num">29</div><div class="article-info"><h3><a href="chia-linhaça-omega3-vegetais.html">Chia e linha&ccedil;a: &ocirc;mega-3 vegetais</a></h3><p>Fontes vegetais de &aacute;cido alfa-linol&ecirc;nico e sua import&acirc;ncia na dieta brasileira.</p></div></div>
+    <div class="article-item"><div class="article-num">30</div><div class="article-info"><h3><a href="jatoba-fibras-ferro-cerrado.html">Jatob&aacute;: fibras e ferro do Cerrado</a></h3><p>A farinha de jatob&aacute; como fonte de fibras, ferro e compostos fen&oacute;licos.</p></div></div>
+    <div class="article-item"><div class="article-num">31</div><div class="article-info"><h3><a href="cogumelos-medicinais-brasil.html">Cogumelos medicinais cultivados no Brasil</a></h3><p>Cultivo de Agaricus blazei e outros cogumelos funcionais no Brasil.</p></div></div>
+    <div class="article-item"><div class="article-num">32</div><div class="article-info"><h3><a href="abacaxi-bromelina-digestao.html">Abacaxi: bromelina e digest&atilde;o</a></h3><p>A bromelina do abacaxi e suas propriedades anti-inflamat&oacute;rias e digestivas.</p></div></div>
+    <div class="article-item"><div class="article-num">33</div><div class="article-info"><h3><a href="maracuja-passiflora-calmante.html">Maracuj&aacute;: passiflora e efeito calmante</a></h3><p>Compostos ansiol&iacute;ticos do maracuj&aacute; e influ&ecirc;ncia na qualidade do sono.</p></div></div>
+    <div class="article-item"><div class="article-num">34</div><div class="article-info"><h3><a href="arroz-feijao-combinacao-perfeita.html">Arroz e feij&atilde;o: a combina&ccedil;&atilde;o perfeita</a></h3><p>Complementaridade amino&aacute;cida do arroz com feij&atilde;o na dieta brasileira.</p></div></div>
+    <div class="article-item"><div class="article-num">35</div><div class="article-info"><h3><a href="cajueiro-castanha-caju-anacardico.html">Castanha de caju: &aacute;cido anacard&iacute;co</a></h3><p>Compostos fen&oacute;licos da castanha de caju e l&iacute;quido da casca.</p></div></div>
+    <div class="article-item"><div class="article-num">36</div><div class="article-info"><h3><a href="ora-pro-nobis-proteina-vegetal.html">Ora-pro-n&oacute;bis: prote&iacute;na vegetal</a></h3><p>Pereskia aculeata, a planta alimentar n&atilde;o convencional rica em prote&iacute;nas.</p></div></div>
+    <div class="article-item"><div class="article-num">37</div><div class="article-info"><h3><a href="taioba-caruru-folhas-nutritivas.html">Taioba e caruru: folhas nutritivas</a></h3><p>Plantas aliment&iacute;cias n&atilde;o convencionais brasileiras ricas em micronutrientes.</p></div></div>
+    <div class="article-item"><div class="article-num">38</div><div class="article-info"><h3><a href="peixes-amazonia-omega3.html">Peixes da Amaz&ocirc;nia: &ocirc;mega-3 fluvial</a></h3><p>Perfil de &aacute;cidos graxos dos peixes amaz&ocirc;nicos e import&acirc;ncia nutricional.</p></div></div>
+    <div class="article-item"><div class="article-num">39</div><div class="article-info"><h3><a href="farinha-banana-verde-prebiotico.html">Farinha de banana verde: prebi&oacute;tico natural</a></h3><p>Amido resistente da banana verde e efeitos sobre o microbiota intestinal.</p></div></div>
+    <div class="article-item"><div class="article-num">40</div><div class="article-info"><h3><a href="kefir-kombucha-fermentados-brasil.html">Kefir e kombucha no Brasil</a></h3><p>A expans&atilde;o dos alimentos fermentados no Brasil e benef&iacute;cios probi&oacute;ticos.</p></div></div>
+    <div class="article-item"><div class="article-num">41</div><div class="article-info"><h3><a href="macauba-oleo-biodiversidade.html">Maca&uacute;ba: &oacute;leo e biodiversidade</a></h3><p>Potencial nutricional e econ&ocirc;mico da macauba no Cerrado brasileiro.</p></div></div>
+    <div class="article-item"><div class="article-num">42</div><div class="article-info"><h3><a href="urucum-bixina-antioxidante.html">Urucum: bixina antioxidante natural</a></h3><p>O urucum brasileiro como fonte de caroten&oacute;ides e corante natural.</p></div></div>
+    <div class="article-item"><div class="article-num">43</div><div class="article-info"><h3><a href="copaiba-anti-inflamatorio-amazonia.html">Copa&iacute;ba: anti-inflamat&oacute;rio da Amaz&ocirc;nia</a></h3><p>O &oacute;leo de copa&iacute;ba e suas propriedades anti-inflamat&oacute;rias validadas.</p></div></div>
+    <div class="article-item"><div class="article-num">44</div><div class="article-info"><h3><a href="amendoim-brasil-resveratrol.html">Amendoim brasileiro: resveratrol</a></h3><p>Conte&uacute;do de resveratrol e compostos fen&oacute;licos no amendoim cultivado no Brasil.</p></div></div>
+    <div class="article-item"><div class="article-num">45</div><div class="article-info"><h3><a href="jenipapo-compostos-bioativos.html">Jenipapo: compostos bioativos</a></h3><p>Irid&oacute;ides e compostos fen&oacute;licos do jenipapo brasileiro.</p></div></div>
+    <div class="article-item"><div class="article-num">46</div><div class="article-info"><h3><a href="mangaba-vitamina-c-nordeste.html">Mangaba: vitamina C do Nordeste</a></h3><p>A mangaba como fruta nativa rica em &aacute;cido asc&oacute;rbico e fibras.</p></div></div>
+    <div class="article-item"><div class="article-num">47</div><div class="article-info"><h3><a href="transicao-nutricional-brasil-obesidade.html">Transi&ccedil;&atilde;o nutricional no Brasil</a></h3><p>Evolu&ccedil;&atilde;o da dieta brasileira e aumento das doen&ccedil;as cr&ocirc;nicas n&atilde;o transmiss&iacute;veis.</p></div></div>
+    <div class="article-item"><div class="article-num">48</div><div class="article-info"><h3><a href="alimentacao-indigena-diversidade.html">Alimenta&ccedil;&atilde;o ind&iacute;gena: diversidade nutricional</a></h3><p>Saberes alimentares ind&iacute;genas e biodiversidade nutricional tradicional.</p></div></div>
+    <div class="article-item"><div class="article-num">49</div><div class="article-info"><h3><a href="alimentos-ultraprocessados-brasil.html">Ultraprocessados no Brasil: riscos metab&oacute;licos</a></h3><p>Impacto dos alimentos ultraprocessados na sa&uacute;de metab&oacute;lica dos brasileiros.</p></div></div>
+    <div class="article-item"><div class="article-num">50</div><div class="article-info"><h3><a href="guia-alimentar-brasil-imunidade.html">Guia alimentar brasileiro e imunidade</a></h3><p>Como aplicar as recomenda&ccedil;&otilde;es do Guia Alimentar para fortalecer a imunidade.</p></div></div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="../orim-logo.png" alt="ORIM" /></div>
+    <div class="footer-bottom">&copy; 2026 Association ORIM Gen&egrave;ve &middot; ORIM&#8482; &eacute; uma marca registrada &middot; info@orimnutrition.org</div>
+  </footer>
+</body>
+</html>

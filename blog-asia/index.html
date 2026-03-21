@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Asia-Pacific | ORIM - Preventive Immunonutrition</title>
+  <meta name="description" content="ORIM Asia-Pacific Blog. Scientific articles in English on immunonutrition, traditional Asian medicine, and preventive nutrition across Asia-Pacific." />
+  <link rel="canonical" href="https://orimnutrition.org/blog-asia/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d1b2a; --cyan: #00b4d8; --lcyan: #90e0ef; --white: #f8fafc; --gray: #94a3b8; --teal: #1BA8A6; --gold-orim: #E6A817; --dark: #2D3436; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: .5rem 2rem; background: rgba(13,27,42,.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,180,216,.15); }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .nav-logo-img { height: 34px; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .nav-logo span { font-size: .5rem; letter-spacing: .15em; color: var(--gray); line-height: 1.3; }
+    .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+    .blog-hero { padding: 7rem 2rem 3rem; text-align: center; background: linear-gradient(180deg, rgba(13,27,42,1) 0%, rgba(26,74,122,.15) 50%, rgba(13,27,42,1) 100%); border-bottom: 1px solid rgba(0,180,216,.1); }
+    .blog-hero-badge { display: inline-block; background: rgba(230,168,23,.12); border: 1px solid rgba(230,168,23,.3); color: var(--gold-orim); font-size: .72rem; padding: .35rem 1rem; border-radius: 2rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .blog-hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; background: linear-gradient(135deg,#ffffff 0%,var(--gold-orim) 50%,#c9a84c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+    .blog-hero p { font-size: .92rem; color: var(--gray); max-width: 650px; margin: 0 auto; line-height: 1.7; }
+    .region-nav { display: flex; gap: .6rem; justify-content: center; padding: 2rem 2rem 1rem; flex-wrap: wrap; }
+    .region-btn { background: rgba(0,180,216,.08); border: 1px solid rgba(0,180,216,.2); color: var(--lcyan); font-size: .75rem; padding: .4rem 1.2rem; border-radius: 2rem; cursor: pointer; transition: all .2s; text-decoration: none; }
+    .region-btn:hover, .region-btn.active { background: var(--gold-orim); color: #fff; border-color: var(--gold-orim); }
+    .articles-list { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+    .article-item { display: flex; gap: 1rem; padding: 1.2rem 1.5rem; margin-bottom: .8rem; background: rgba(26,74,122,.08); border: 1px solid rgba(0,180,216,.1); border-radius: .8rem; transition: border-color .3s, transform .2s; align-items: flex-start; }
+    .article-item:hover { border-color: rgba(230,168,23,.4); transform: translateX(4px); }
+    .article-num { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; color: rgba(230,168,23,.4); min-width: 2.5rem; text-align: center; flex-shrink: 0; }
+    .article-info h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: .3rem; }
+    .article-info h3 a { color: var(--white); text-decoration: none; transition: color .2s; }
+    .article-info h3 a:hover { color: var(--gold-orim); }
+    .article-info p { font-size: .78rem; color: var(--gray); line-height: 1.5; }
+    footer { text-align: center; padding: 3rem 2rem; margin-top: 4rem; border-top: 1px solid rgba(0,180,216,.1); background: rgba(13,27,42,.5); }
+    .footer-logo img { height: 30px; margin-bottom: 1rem; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .footer-bottom { font-size: .68rem; color: rgba(148,163,184,.4); }
+    @media(max-width:768px) { .nav-links { display: none; } .articles-list { padding: 0 1rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../orim-logo.png" alt="ORIM" class="nav-logo-img" />
+      <span>OPTIMISATION R&Eacute;SOLUTIVE<br>IMMUNO-M&Eacute;TABOLIQUE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog/">Blog FR</a></li>
+      <li><a href="../blog-afrique/">Afrique</a></li>
+      <li><a href="../blog-brasil/">Brasil</a></li>
+      <li><a href="../blog-europe/">Europe</a></li>
+      <li><a href="../blog-asia/" class="active">Asia</a></li>
+      <li><a href="../blog-canada/">Canada</a></li>
+      <li><a href="../newsletters/">Newsletters</a></li>
+    </ul>
+  </nav>
+
+  <section class="blog-hero">
+    <div class="blog-hero-badge">Blog Asie-Pacifique</div>
+    <h1>Immunonutrition Asia-Pacific</h1>
+    <p>30 scientific articles in English exploring Asian traditional medicine, food-as-medicine philosophies, and cutting-edge immunonutrition research across the Asia-Pacific region.</p>
+  </section>
+
+  <div class="region-nav">
+    <a href="../blog/" class="region-btn">Blog FR</a>
+    <a href="../blog-afrique/" class="region-btn">Afrique</a>
+    <a href="../blog-brasil/" class="region-btn">Brasil</a>
+    <a href="../blog-europe/" class="region-btn">Europe</a>
+    <a href="../blog-asia/" class="region-btn active">Asia-Pacific</a>
+    <a href="../blog-canada/" class="region-btn">Canada</a>
+  </div>
+
+  <div class="articles-list">
+    <div class="article-item"><div class="article-num">01</div><div class="article-info"><h3><a href="turmeric-ayurveda-immunonutrition.html">Turmeric in Ayurveda: Immunonutrition Roots</a></h3><p>Curcumin and traditional Ayurvedic use of turmeric for immune modulation.</p></div></div>
+    <div class="article-item"><div class="article-num">02</div><div class="article-info"><h3><a href="green-tea-catechins-japan.html">Japanese Green Tea: Catechins and Longevity</a></h3><p>EGCG from Japanese green tea and its role in Okinawan longevity traditions.</p></div></div>
+    <div class="article-item"><div class="article-num">03</div><div class="article-info"><h3><a href="fermented-soy-natto-miso.html">Natto and Miso: Fermented Soy in Japan</a></h3><p>Nattokinase, vitamin K2, and isoflavones from traditional Japanese fermented soy.</p></div></div>
+    <div class="article-item"><div class="article-num">04</div><div class="article-info"><h3><a href="ginger-zingiber-immunity.html">Ginger (Zingiber): Anti-Inflammatory Powerhouse</a></h3><p>Gingerols, shogaols, and the immunomodulatory properties of ginger across Asia.</p></div></div>
+    <div class="article-item"><div class="article-num">05</div><div class="article-info"><h3><a href="ashwagandha-adaptogen-india.html">Ashwagandha: India's Adaptogenic Herb</a></h3><p>Withanolides from Withania somnifera and stress-immune axis modulation.</p></div></div>
+    <div class="article-item"><div class="article-num">06</div><div class="article-info"><h3><a href="reishi-medicinal-mushrooms.html">Reishi and Medicinal Mushrooms of Asia</a></h3><p>Ganoderma lucidum beta-glucans and triterpenes for immune support.</p></div></div>
+    <div class="article-item"><div class="article-num">07</div><div class="article-info"><h3><a href="seaweed-iodine-thyroid-japan.html">Seaweed: Iodine and Thyroid Health in Japan</a></h3><p>Nori, wakame, and kombu: Japanese seaweed nutrition and thyroid function.</p></div></div>
+    <div class="article-item"><div class="article-num">08</div><div class="article-info"><h3><a href="coconut-oil-medium-chain.html">Coconut Oil: Medium-Chain Triglycerides</a></h3><p>MCTs from tropical coconut and their rapid energy metabolism pathway.</p></div></div>
+    <div class="article-item"><div class="article-num">09</div><div class="article-info"><h3><a href="moringa-oleifera-asia.html">Moringa Oleifera in Southeast Asia</a></h3><p>Complete nutritional profile of moringa leaves widely cultivated across Asia.</p></div></div>
+    <div class="article-item"><div class="article-num">10</div><div class="article-info"><h3><a href="rice-bran-oil-antioxidants.html">Rice Bran Oil: Gamma-Oryzanol Antioxidants</a></h3><p>Unique antioxidant compounds in rice bran oil used across Asian cuisines.</p></div></div>
+    <div class="article-item"><div class="article-num">11</div><div class="article-info"><h3><a href="ginseng-panax-korean-adaptogen.html">Korean Ginseng (Panax): Adaptogenic Immunity</a></h3><p>Ginsenosides from Panax ginseng and their immunostimulatory mechanisms.</p></div></div>
+    <div class="article-item"><div class="article-num">12</div><div class="article-info"><h3><a href="matcha-l-theanine-calm-energy.html">Matcha: L-Theanine for Calm Energy</a></h3><p>The synergy of L-theanine and caffeine in ceremonial-grade Japanese matcha.</p></div></div>
+    <div class="article-item"><div class="article-num">13</div><div class="article-info"><h3><a href="kimchi-korean-fermented-vegetables.html">Kimchi: Korean Fermented Vegetable Tradition</a></h3><p>Lactobacillus strains in kimchi and gut-immune axis modulation.</p></div></div>
+    <div class="article-item"><div class="article-num">14</div><div class="article-info"><h3><a href="shiitake-lentinan-immune-defense.html">Shiitake Lentinan: Immune Defense Polysaccharide</a></h3><p>Beta-glucan lentinan from shiitake mushrooms and NK cell activation.</p></div></div>
+    <div class="article-item"><div class="article-num">15</div><div class="article-info"><h3><a href="bitter-melon-blood-sugar-asia.html">Bitter Melon: Blood Sugar Regulation in Asia</a></h3><p>Charantin and polypeptide-p from Momordica charantia for glycemic control.</p></div></div>
+    <div class="article-item"><div class="article-num">16</div><div class="article-info"><h3><a href="holy-basil-tulsi-stress-immunity.html">Holy Basil (Tulsi): Stress and Immunity</a></h3><p>Ocimum tenuiflorum in Indian traditional medicine and cortisol modulation.</p></div></div>
+    <div class="article-item"><div class="article-num">17</div><div class="article-info"><h3><a href="miso-soup-gut-health-japan.html">Miso Soup and Daily Gut Health in Japan</a></h3><p>How daily miso consumption supports gut microbiome diversity and immunity.</p></div></div>
+    <div class="article-item"><div class="article-num">18</div><div class="article-info"><h3><a href="amla-indian-gooseberry-vitamin-c.html">Amla (Indian Gooseberry): Concentrated Vitamin C</a></h3><p>Phyllanthus emblica and its exceptional ascorbic acid content in Ayurveda.</p></div></div>
+    <div class="article-item"><div class="article-num">19</div><div class="article-info"><h3><a href="cordyceps-sinensis-energy-endurance.html">Cordyceps: Energy and Endurance</a></h3><p>Tibetan cordyceps mushroom and its effects on cellular ATP production.</p></div></div>
+    <div class="article-item"><div class="article-num">20</div><div class="article-info"><h3><a href="okinawa-diet-longevity-secrets.html">Okinawa Diet: Secrets of Longevity</a></h3><p>Caloric restriction, sweet potato, and the Okinawan centenarian dietary pattern.</p></div></div>
+    <div class="article-item"><div class="article-num">21</div><div class="article-info"><h3><a href="neem-azadirachta-antimicrobial.html">Neem (Azadirachta): Antimicrobial Properties</a></h3><p>Traditional Indian use of neem and validated antimicrobial compounds.</p></div></div>
+    <div class="article-item"><div class="article-num">22</div><div class="article-info"><h3><a href="black-cumin-nigella-sativa-asia.html">Black Cumin (Nigella sativa): Thymoquinone</a></h3><p>Immunomodulatory and anti-inflammatory properties of black seed oil.</p></div></div>
+    <div class="article-item"><div class="article-num">23</div><div class="article-info"><h3><a href="jackfruit-artocarpus-nutrition.html">Jackfruit: A Sustainable Protein Alternative</a></h3><p>Nutritional profile of jackfruit and its growing role in plant-based diets.</p></div></div>
+    <div class="article-item"><div class="article-num">24</div><div class="article-info"><h3><a href="traditional-chinese-medicine-food-therapy.html">Traditional Chinese Medicine and Food Therapy</a></h3><p>Yin-yang balance, qi nourishing foods, and TCM dietary principles.</p></div></div>
+    <div class="article-item"><div class="article-num">25</div><div class="article-info"><h3><a href="astragalus-membranaceus-immune-tonic.html">Astragalus: The Immune Tonic of TCM</a></h3><p>Astragaloside IV and polysaccharides from Huang Qi for immune enhancement.</p></div></div>
+    <div class="article-item"><div class="article-num">26</div><div class="article-info"><h3><a href="tamarind-digestive-health-southeast-asia.html">Tamarind: Digestive Health in Southeast Asia</a></h3><p>Organic acids and polyphenols in tamarind fruit across Asian cuisines.</p></div></div>
+    <div class="article-item"><div class="article-num">27</div><div class="article-info"><h3><a href="wasabi-isothiocyanates-antimicrobial.html">Wasabi Isothiocyanates: Antimicrobial Action</a></h3><p>6-MITC from real wasabi and its potent antimicrobial properties.</p></div></div>
+    <div class="article-item"><div class="article-num">28</div><div class="article-info"><h3><a href="mung-bean-sprouting-nutrition.html">Mung Bean Sprouts: Nutrition Through Germination</a></h3><p>How sprouting enhances mung bean bioavailability and antioxidant content.</p></div></div>
+    <div class="article-item"><div class="article-num">29</div><div class="article-info"><h3><a href="gobi-berries-lycium-barbarum.html">Goji Berries: Lycium barbarum Polysaccharides</a></h3><p>LBP immunostimulatory compounds from traditional Chinese goji berries.</p></div></div>
+    <div class="article-item"><div class="article-num">30</div><div class="article-info"><h3><a href="ayurvedic-spice-blends-immunity.html">Ayurvedic Spice Blends for Immunity</a></h3><p>Synergistic bioactive compounds in traditional Indian spice combinations.</p></div></div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="../orim-logo.png" alt="ORIM" /></div>
+    <div class="footer-bottom">&copy; 2026 Association ORIM Geneva &middot; ORIM&#8482; is a registered trademark &middot; info@orimnutrition.org</div>
+  </footer>
+</body>
+</html>

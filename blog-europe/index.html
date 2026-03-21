@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Europe | ORIM - Preventive Immunonutrition</title>
+  <meta name="description" content="ORIM Europe Blog. Scientific articles in English on immunonutrition, preventive nutrition, and European food resources." />
+  <link rel="canonical" href="https://orimnutrition.org/blog-europe/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d1b2a; --cyan: #00b4d8; --lcyan: #90e0ef; --white: #f8fafc; --gray: #94a3b8; --teal: #1BA8A6; --gold-orim: #E6A817; --dark: #2D3436; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: .5rem 2rem; background: rgba(13,27,42,.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,180,216,.15); }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .nav-logo-img { height: 34px; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .nav-logo span { font-size: .5rem; letter-spacing: .15em; color: var(--gray); line-height: 1.3; }
+    .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+    .blog-hero { padding: 7rem 2rem 3rem; text-align: center; background: linear-gradient(180deg, rgba(13,27,42,1) 0%, rgba(26,74,122,.15) 50%, rgba(13,27,42,1) 100%); border-bottom: 1px solid rgba(0,180,216,.1); }
+    .blog-hero-badge { display: inline-block; background: rgba(0,180,216,.12); border: 1px solid rgba(0,180,216,.3); color: var(--cyan); font-size: .72rem; padding: .35rem 1rem; border-radius: 2rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .blog-hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; background: linear-gradient(135deg,#ffffff 0%,var(--cyan) 50%,#90e0ef 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+    .blog-hero p { font-size: .92rem; color: var(--gray); max-width: 650px; margin: 0 auto; line-height: 1.7; }
+    .region-nav { display: flex; gap: .6rem; justify-content: center; padding: 2rem 2rem 1rem; flex-wrap: wrap; }
+    .region-btn { background: rgba(0,180,216,.08); border: 1px solid rgba(0,180,216,.2); color: var(--lcyan); font-size: .75rem; padding: .4rem 1.2rem; border-radius: 2rem; cursor: pointer; transition: all .2s; text-decoration: none; }
+    .region-btn:hover, .region-btn.active { background: var(--cyan); color: #fff; border-color: var(--cyan); }
+    .articles-list { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+    .article-item { display: flex; gap: 1rem; padding: 1.2rem 1.5rem; margin-bottom: .8rem; background: rgba(26,74,122,.08); border: 1px solid rgba(0,180,216,.1); border-radius: .8rem; transition: border-color .3s, transform .2s; align-items: flex-start; }
+    .article-item:hover { border-color: rgba(0,180,216,.4); transform: translateX(4px); }
+    .article-num { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; color: rgba(0,180,216,.4); min-width: 2.5rem; text-align: center; flex-shrink: 0; }
+    .article-info h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: .3rem; }
+    .article-info h3 a { color: var(--white); text-decoration: none; transition: color .2s; }
+    .article-info h3 a:hover { color: var(--cyan); }
+    .article-info p { font-size: .78rem; color: var(--gray); line-height: 1.5; }
+    footer { text-align: center; padding: 3rem 2rem; margin-top: 4rem; border-top: 1px solid rgba(0,180,216,.1); background: rgba(13,27,42,.5); }
+    .footer-logo img { height: 30px; margin-bottom: 1rem; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .footer-bottom { font-size: .68rem; color: rgba(148,163,184,.4); }
+    @media(max-width:768px) { .nav-links { display: none; } .articles-list { padding: 0 1rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../orim-logo.png" alt="ORIM" class="nav-logo-img" />
+      <span>OPTIMISATION R&Eacute;SOLUTIVE<br>IMMUNO-M&Eacute;TABOLIQUE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog/">Blog FR</a></li>
+      <li><a href="../blog-afrique/">Afrique</a></li>
+      <li><a href="../blog-brasil/">Brasil</a></li>
+      <li><a href="../blog-europe/" class="active">Europe</a></li>
+      <li><a href="../blog-asia/">Asia</a></li>
+      <li><a href="../blog-canada/">Canada</a></li>
+      <li><a href="../newsletters/">Newsletters</a></li>
+    </ul>
+  </nav>
+
+  <section class="blog-hero">
+    <div class="blog-hero-badge">Blog Europe</div>
+    <h1>Immunonutrition Europe</h1>
+    <p>50 scientific articles in English dedicated to preventive nutrition, European food traditions, and immuno-metabolic health. Evidence-based research and practical guidance.</p>
+  </section>
+
+  <div class="region-nav">
+    <a href="../blog/" class="region-btn">Blog FR</a>
+    <a href="../blog-afrique/" class="region-btn">Afrique</a>
+    <a href="../blog-brasil/" class="region-btn">Brasil</a>
+    <a href="../blog-europe/" class="region-btn active">Europe</a>
+    <a href="../blog-asia/" class="region-btn">Asia-Pacific</a>
+    <a href="../blog-canada/" class="region-btn">Canada</a>
+  </div>
+
+  <div class="articles-list">
+    <div class="article-item"><div class="article-num">01</div><div class="article-info"><h3><a href="mediterranean-diet-immunity-evidence.html">Mediterranean Diet and Immunity: The Evidence</a></h3><p>Comprehensive review of the Mediterranean dietary pattern and its immunomodulatory effects.</p></div></div>
+    <div class="article-item"><div class="article-num">02</div><div class="article-info"><h3><a href="olive-oil-polyphenols-inflammation.html">Extra Virgin Olive Oil: Polyphenols and Inflammation</a></h3><p>Oleocanthal, hydroxytyrosol, and other olive oil polyphenols with anti-inflammatory properties.</p></div></div>
+    <div class="article-item"><div class="article-num">03</div><div class="article-info"><h3><a href="fermented-dairy-europe-probiotics.html">Fermented Dairy in Europe: Probiotics and Gut Health</a></h3><p>From kefir to skyr: European fermented dairy traditions and their probiotic content.</p></div></div>
+    <div class="article-item"><div class="article-num">04</div><div class="article-info"><h3><a href="nordic-diet-berries-omega3.html">Nordic Diet: Berries, Omega-3, and Longevity</a></h3><p>The Scandinavian dietary model rich in wild berries, fatty fish, and whole grains.</p></div></div>
+    <div class="article-item"><div class="article-num">05</div><div class="article-info"><h3><a href="red-wine-resveratrol-cardiovascular.html">Red Wine Resveratrol: Cardiovascular Benefits</a></h3><p>The French paradox revisited: polyphenols in European wines and heart health.</p></div></div>
+    <div class="article-item"><div class="article-num">06</div><div class="article-info"><h3><a href="sauerkraut-kimchi-fermented-vegetables.html">Sauerkraut and Fermented Vegetables in Europe</a></h3><p>Traditional European lacto-fermented vegetables and their impact on gut microbiome.</p></div></div>
+    <div class="article-item"><div class="article-num">07</div><div class="article-info"><h3><a href="swiss-alpine-herbs-phytochemicals.html">Swiss Alpine Herbs: Phytochemicals at Altitude</a></h3><p>Bioactive compounds in Alpine medicinal plants used in Swiss traditional medicine.</p></div></div>
+    <div class="article-item"><div class="article-num">08</div><div class="article-info"><h3><a href="omega3-atlantic-salmon-epa-dha.html">Atlantic Salmon: EPA, DHA, and Brain Health</a></h3><p>Omega-3 fatty acids in European farmed and wild salmon and cognitive benefits.</p></div></div>
+    <div class="article-item"><div class="article-num">09</div><div class="article-info"><h3><a href="dark-chocolate-flavanols-europe.html">Dark Chocolate Flavanols: European Cacao Science</a></h3><p>Swiss and Belgian chocolate research on cocoa flavanols and vascular function.</p></div></div>
+    <div class="article-item"><div class="article-num">10</div><div class="article-info"><h3><a href="turmeric-curcumin-bioavailability.html">Turmeric and Curcumin: Bioavailability Challenges</a></h3><p>European clinical trials on curcumin absorption and novel delivery systems.</p></div></div>
+    <div class="article-item"><div class="article-num">11</div><div class="article-info"><h3><a href="blueberries-anthocyanins-cognitive.html">Blueberries: Anthocyanins and Cognitive Function</a></h3><p>European studies on wild blueberry consumption and neuroprotective effects.</p></div></div>
+    <div class="article-item"><div class="article-num">12</div><div class="article-info"><h3><a href="gut-microbiome-european-diets.html">Gut Microbiome Diversity Across European Diets</a></h3><p>How dietary patterns across Europe shape distinct microbiome profiles.</p></div></div>
+    <div class="article-item"><div class="article-num">13</div><div class="article-info"><h3><a href="vitamin-d-deficiency-northern-europe.html">Vitamin D Deficiency in Northern Europe</a></h3><p>Prevalence, causes, and supplementation strategies for vitamin D in high-latitude countries.</p></div></div>
+    <div class="article-item"><div class="article-num">14</div><div class="article-info"><h3><a href="beetroot-nitrates-blood-pressure.html">Beetroot Nitrates and Blood Pressure</a></h3><p>Dietary nitrates from beetroot and their vasodilatory effects on cardiovascular health.</p></div></div>
+    <div class="article-item"><div class="article-num">15</div><div class="article-info"><h3><a href="oats-beta-glucan-cholesterol.html">Oats and Beta-Glucan: Cholesterol Reduction</a></h3><p>EFSA-approved health claims for oat beta-glucan and LDL cholesterol lowering.</p></div></div>
+    <div class="article-item"><div class="article-num">16</div><div class="article-info"><h3><a href="propolis-european-bee-products.html">Propolis and European Bee Products</a></h3><p>Immunomodulatory compounds in European propolis varieties and royal jelly.</p></div></div>
+    <div class="article-item"><div class="article-num">17</div><div class="article-info"><h3><a href="green-tea-egcg-metabolism.html">Green Tea EGCG: Metabolism and Immunity</a></h3><p>Epigallocatechin gallate mechanisms of action on metabolic and immune pathways.</p></div></div>
+    <div class="article-item"><div class="article-num">18</div><div class="article-info"><h3><a href="garlic-allicin-antimicrobial.html">Garlic Allicin: Antimicrobial Properties</a></h3><p>European research on garlic organosulfur compounds and innate immunity.</p></div></div>
+    <div class="article-item"><div class="article-num">19</div><div class="article-info"><h3><a href="walnuts-polyphenols-brain-health.html">Walnuts: Polyphenols and Brain Health</a></h3><p>Ellagitannins in walnuts and their role in neuroprotection and gut health.</p></div></div>
+    <div class="article-item"><div class="article-num">20</div><div class="article-info"><h3><a href="intermittent-fasting-european-studies.html">Intermittent Fasting: European Clinical Evidence</a></h3><p>Time-restricted eating research from European universities and metabolic outcomes.</p></div></div>
+    <div class="article-item"><div class="article-num">21</div><div class="article-info"><h3><a href="cruciferous-vegetables-sulforaphane.html">Cruciferous Vegetables: Sulforaphane and Detox</a></h3><p>Broccoli, Brussels sprouts, and the Nrf2 pathway activation for cellular protection.</p></div></div>
+    <div class="article-item"><div class="article-num">22</div><div class="article-info"><h3><a href="magnesium-deficiency-modern-diet.html">Magnesium Deficiency in the Modern European Diet</a></h3><p>Subclinical magnesium deficiency prevalence and supplementation approaches.</p></div></div>
+    <div class="article-item"><div class="article-num">23</div><div class="article-info"><h3><a href="selenium-brazil-nuts-thyroid.html">Selenium and Thyroid Function</a></h3><p>Role of selenium in thyroid hormone metabolism and autoimmune thyroiditis.</p></div></div>
+    <div class="article-item"><div class="article-num">24</div><div class="article-info"><h3><a href="pomegranate-punicalagin-inflammation.html">Pomegranate Punicalagins and Inflammation</a></h3><p>Mediterranean pomegranate polyphenols and their urolithin metabolites.</p></div></div>
+    <div class="article-item"><div class="article-num">25</div><div class="article-info"><h3><a href="zinc-immunity-european-intake.html">Zinc and Immunity: European Intake Patterns</a></h3><p>Zinc status across European populations and implications for immune defense.</p></div></div>
+    <div class="article-item"><div class="article-num">26</div><div class="article-info"><h3><a href="flaxseed-lignans-hormones.html">Flaxseed Lignans and Hormone Balance</a></h3><p>Secoisolariciresinol diglucoside from flaxseed and estrogenic activity.</p></div></div>
+    <div class="article-item"><div class="article-num">27</div><div class="article-info"><h3><a href="mushrooms-vitamin-d-beta-glucan.html">Medicinal Mushrooms: Vitamin D and Beta-Glucan</a></h3><p>Shiitake, maitake, and reishi mushrooms grown in European research facilities.</p></div></div>
+    <div class="article-item"><div class="article-num">28</div><div class="article-info"><h3><a href="omega6-omega3-ratio-inflammation.html">Omega-6/Omega-3 Ratio and Chronic Inflammation</a></h3><p>Western European dietary imbalance of essential fatty acids and disease risk.</p></div></div>
+    <div class="article-item"><div class="article-num">29</div><div class="article-info"><h3><a href="lycopene-tomatoes-prostate-health.html">Lycopene in Tomatoes: Prostate and Heart Health</a></h3><p>Italian and Spanish studies on cooked tomato lycopene bioavailability.</p></div></div>
+    <div class="article-item"><div class="article-num">30</div><div class="article-info"><h3><a href="iron-deficiency-european-women.html">Iron Deficiency in European Women</a></h3><p>Prevalence of iron deficiency anemia and bioavailability of heme vs non-heme iron.</p></div></div>
+    <div class="article-item"><div class="article-num">31</div><div class="article-info"><h3><a href="coenzyme-q10-mitochondria-aging.html">Coenzyme Q10: Mitochondria and Aging</a></h3><p>Ubiquinol supplementation research and cellular energy production.</p></div></div>
+    <div class="article-item"><div class="article-num">32</div><div class="article-info"><h3><a href="prebiotics-inulin-fos-gut.html">Prebiotics: Inulin, FOS, and Gut Health</a></h3><p>European prebiotic research on chicory inulin and fructooligosaccharides.</p></div></div>
+    <div class="article-item"><div class="article-num">33</div><div class="article-info"><h3><a href="quercetin-onions-apples-allergy.html">Quercetin from Onions and Apples: Anti-Allergy</a></h3><p>Mast cell stabilization by quercetin and its role in allergic rhinitis management.</p></div></div>
+    <div class="article-item"><div class="article-num">34</div><div class="article-info"><h3><a href="vitamin-k2-bone-cardiovascular.html">Vitamin K2: Bone and Cardiovascular Health</a></h3><p>Menaquinone-7 from fermented foods and calcium metabolism.</p></div></div>
+    <div class="article-item"><div class="article-num">35</div><div class="article-info"><h3><a href="gluten-celiac-ncgs-europe.html">Gluten Sensitivity and Celiac Disease in Europe</a></h3><p>Prevalence data, diagnostic advances, and gluten-free nutrition in Europe.</p></div></div>
+    <div class="article-item"><div class="article-num">36</div><div class="article-info"><h3><a href="astaxanthin-microalgae-antioxidant.html">Astaxanthin from Microalgae: Super-Antioxidant</a></h3><p>Haematococcus pluvialis cultivation and astaxanthin clinical evidence.</p></div></div>
+    <div class="article-item"><div class="article-num">37</div><div class="article-info"><h3><a href="collagen-peptides-skin-joints.html">Collagen Peptides: Skin and Joint Health</a></h3><p>European clinical trials on hydrolyzed collagen supplementation outcomes.</p></div></div>
+    <div class="article-item"><div class="article-num">38</div><div class="article-info"><h3><a href="circadian-rhythm-meal-timing.html">Circadian Rhythm and Meal Timing</a></h3><p>Chrononutrition research: how meal timing affects metabolic health.</p></div></div>
+    <div class="article-item"><div class="article-num">39</div><div class="article-info"><h3><a href="ultra-processed-food-europe-risk.html">Ultra-Processed Foods: European Health Risks</a></h3><p>NOVA classification and large-scale European cohort studies on UPF consumption.</p></div></div>
+    <div class="article-item"><div class="article-num">40</div><div class="article-info"><h3><a href="adaptogens-ashwagandha-rhodiola.html">Adaptogens: Ashwagandha and Rhodiola in Europe</a></h3><p>Stress-modulating herbs and their growing use in European integrative medicine.</p></div></div>
+    <div class="article-item"><div class="article-num">41</div><div class="article-info"><h3><a href="iodine-thyroid-european-deficiency.html">Iodine and Thyroid: European Deficiency Patterns</a></h3><p>Iodine nutrition across Europe and its impact on thyroid autoimmunity.</p></div></div>
+    <div class="article-item"><div class="article-num">42</div><div class="article-info"><h3><a href="boswellia-frankincense-inflammation.html">Boswellia (Frankincense): Anti-Inflammatory Resin</a></h3><p>Boswellic acids and their use in European phytotherapy for joint inflammation.</p></div></div>
+    <div class="article-item"><div class="article-num">43</div><div class="article-info"><h3><a href="NAD-nicotinamide-longevity.html">NAD+ and Nicotinamide: Longevity Research</a></h3><p>European studies on NAD+ precursors (NMN, NR) and cellular aging.</p></div></div>
+    <div class="article-item"><div class="article-num">44</div><div class="article-info"><h3><a href="sleep-melatonin-nutrition-link.html">Sleep, Melatonin, and Nutrition</a></h3><p>Dietary factors influencing melatonin synthesis and sleep quality.</p></div></div>
+    <div class="article-item"><div class="article-num">45</div><div class="article-info"><h3><a href="spermidine-autophagy-longevity.html">Spermidine: Autophagy and Longevity</a></h3><p>Austrian research on spermidine-rich foods and cellular renewal mechanisms.</p></div></div>
+    <div class="article-item"><div class="article-num">46</div><div class="article-info"><h3><a href="insulin-resistance-prevention-diet.html">Insulin Resistance Prevention Through Diet</a></h3><p>Dietary strategies to maintain insulin sensitivity and prevent type 2 diabetes.</p></div></div>
+    <div class="article-item"><div class="article-num">47</div><div class="article-info"><h3><a href="epigenetics-nutrition-gene-expression.html">Epigenetics: How Nutrition Shapes Gene Expression</a></h3><p>Nutriepigenomics research from European molecular biology institutes.</p></div></div>
+    <div class="article-item"><div class="article-num">48</div><div class="article-info"><h3><a href="leaky-gut-zonulin-permeability.html">Leaky Gut: Zonulin and Intestinal Permeability</a></h3><p>Mechanisms of intestinal barrier dysfunction and nutritional restoration strategies.</p></div></div>
+    <div class="article-item"><div class="article-num">49</div><div class="article-info"><h3><a href="personalized-nutrition-nutrigenomics.html">Personalized Nutrition and Nutrigenomics</a></h3><p>European precision nutrition initiatives and genetic-based dietary recommendations.</p></div></div>
+    <div class="article-item"><div class="article-num">50</div><div class="article-info"><h3><a href="european-food-regulations-health-claims.html">European Food Regulations and Health Claims</a></h3><p>EFSA framework for nutraceutical health claims and consumer protection.</p></div></div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="../orim-logo.png" alt="ORIM" /></div>
+    <div class="footer-bottom">&copy; 2026 Association ORIM Geneva &middot; ORIM&#8482; is a registered trademark &middot; info@orimnutrition.org</div>
+  </footer>
+</body>
+</html>

@@ -73,20 +73,35 @@
     #hero-video { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; z-index:0; object-fit:cover; opacity:.35; pointer-events:none; }
     .hero-overlay { position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(13,27,42,.6) 0%,rgba(13,27,42,.3) 40%,rgba(13,27,42,.9) 100%); }
 
-    /* LANG SWITCHER */
-    .lang-bar {
-      position:fixed; top:0; right:0; z-index:200;
-      display:flex; gap:.3rem; padding:.5rem 1rem;
-      background:rgba(13,27,42,.85); backdrop-filter:blur(10px);
-      border-bottom-left-radius:.8rem;
-      border:1px solid rgba(0,180,216,.15); border-top:none; border-right:none;
+    /* LANG DROPDOWN */
+    .lang-dropdown { position:relative; z-index:200; }
+    .lang-dropdown-btn {
+      display:flex; align-items:center; gap:.35rem;
+      background:rgba(13,27,42,.92); backdrop-filter:blur(10px);
+      border:1px solid rgba(0,180,216,.25); color:var(--white);
+      font-size:.72rem; font-weight:600; letter-spacing:.05em;
+      padding:.35rem .7rem; border-radius:.5rem; cursor:pointer; transition:all .2s;
     }
-    .lang-btn {
-      background:transparent; border:1px solid rgba(0,180,216,.3);
-      color:var(--gray); font-size:.6rem; font-weight:600; letter-spacing:.05em;
-      padding:.2rem .45rem; border-radius:.4rem; cursor:pointer; transition:all .2s;
+    .lang-dropdown-btn:hover { border-color:var(--cyan); background:rgba(13,27,42,.97); }
+    .lang-arrow { font-size:.6rem; color:var(--gray); transition:transform .3s; }
+    .lang-dropdown.open .lang-arrow { transform:rotate(180deg); }
+    .lang-dropdown-menu {
+      position:absolute; top:calc(100% + .4rem); right:0; min-width:150px;
+      background:rgba(13,27,42,.95); backdrop-filter:blur(14px);
+      border:1px solid rgba(0,180,216,.2); border-radius:.6rem;
+      overflow:hidden; opacity:0; transform:translateY(-8px);
+      pointer-events:none; transition:opacity .25s ease, transform .25s ease;
+      box-shadow:0 8px 32px rgba(0,0,0,.4);
     }
-    .lang-btn.active, .lang-btn:hover { background:var(--cyan); color:#fff; border-color:var(--cyan); }
+    .lang-dropdown.open .lang-dropdown-menu { opacity:1; transform:translateY(0); pointer-events:auto; }
+    .lang-dropdown-menu button {
+      display:flex; align-items:center; gap:.5rem; width:100%;
+      background:none; border:none; color:var(--gray);
+      font-size:.78rem; padding:.55rem 1rem; cursor:pointer; transition:all .15s;
+      text-align:left;
+    }
+    .lang-dropdown-menu button:hover { background:rgba(0,180,216,.1); color:var(--white); }
+    .lang-dropdown-menu button.active { color:var(--teal); background:rgba(27,168,166,.1); }
 
     /* NAV */
     nav {
@@ -388,8 +403,7 @@
       .nav-links.open { display:flex; flex-direction:column; position:fixed; top:60px; left:0; right:0; background:rgba(13,27,42,.97); padding:2rem; gap:1.5rem; z-index:99; }
     }
     @media(max-width:600px) {
-      .lang-bar { padding:.4rem .7rem; }
-      .lang-btn { font-size:.6rem; padding:.25rem .5rem; }
+      .lang-dropdown-btn { font-size:.68rem; padding:.3rem .6rem; }
       .stats-bar { padding:1.5rem 1rem; }
     }
   </style>
@@ -416,11 +430,17 @@
     </ul>
     <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0">
       <a href="mailto:info@orimnutrition.org" class="nav-cta" data-i18n="nav.cta">Nous contacter</a>
-      <div class="lang-bar" rôle="navigation" aria-label="Language selector" style="position:static;border:none;padding:0;background:none;backdrop-filter:none;border-radius:0">
-        <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
-        <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
-        <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
-        <button class="lang-btn" onclick="setLang('de')" id="btn-de">DE</button>
+      <div class="lang-dropdown" id="lang-dropdown" role="navigation" aria-label="Language selector">
+        <button class="lang-dropdown-btn" onclick="toggleLangMenu()">
+          <span id="current-lang-flag">🇫🇷</span> <span id="current-lang-code">FR</span> <span class="lang-arrow">▾</span>
+        </button>
+        <div class="lang-dropdown-menu" id="lang-menu">
+          <button onclick="setLang('fr')" class="active" id="btn-fr">🇫🇷 Français</button>
+          <button onclick="setLang('en')" id="btn-en">🇬🇧 English</button>
+          <button onclick="setLang('es')" id="btn-es">🇪🇸 Español</button>
+          <button onclick="setLang('de')" id="btn-de">🇩🇪 Deutsch</button>
+          <button onclick="setLang('pt')" id="btn-pt">🇧🇷 Português</button>
+        </div>
       </div>
     </div>
     <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
@@ -1080,10 +1100,50 @@
       "nav.newsletter":"Newsletter","nl.tag":"Bleiben Sie verbunden","nl.title":"Newsletter TEAM ORIM","nl.desc":"Treten Sie der ORIM-Community bei und erhalten Sie unsere wissenschaftlichen Fortschritte, Veranstaltungen und Neuigkeiten direkt in Ihr Postfach.","nl.card.title":"TEAM ORIM beitreten","nl.card.text":"Erhalten Sie monatlich wissenschaftliche Bulletins, Forschungsergebnisse zur Immunoernaehrung, kommende Veranstaltungen und Fortschritte des ORIM-Programms.","nl.placeholder":"ihre@email.com","nl.btn":"Abonnieren","nl.success":"Willkommen bei TEAM ORIM! Sie erhalten bald unseren naechsten Newsletter.","nl.b1":"Wissenschaftliche Bulletins","nl.b2":"Veranstaltungen & Workshops","nl.b3":"F&E-Fortschritte","nl.b4":"Kostenlos & spamfrei","nl.archives.btn":"Newsletters 2025 (PDF)","nl.arc.jan":"Januar 2025","nl.arc.feb":"Februar 2025","nl.arc.mar":"Maerz 2025","nl.arc.apr":"April 2025","nl.arc.may":"Mai 2025","nl.arc.jun":"Juni 2025","nl.arc.jul":"Juli 2025","nl.arc.aug":"August 2025","nl.arc.sep":"September 2025","nl.arc.oct":"Oktober 2025","nl.arc.nov":"November 2025","nl.arc.dec":"Dezember 2025","nl.privacy":"Ihre Daten bleiben vertraulich · Abmeldung mit einem Klick · DSGVO-konform",
       "contact.tag":"Kontakt aufnehmen","contact.title":"Kontakt","contact.desc":"Verein ORIM Genf — fuer alle Fragen zu unseren Leistungen.","contact.ch.title":"🏛️ Verein ORIM Genf","contact.ch.email.note":"Bildung · Begleitung · Forschung","contact.ch.address":"Genf, Schweiz — Schweizer Recht anwendbar · Gerichtsstand Genf","contact.ch.note":"Gemeinnuetziger Verein · Schweizer Recht · Kanton Genf",
       "footer.ch":"Verein ORIM Genf","footer.ch.sub":"Schweiz · Gemeinnuetzig · Praeventive Immunoernaehrung","footer.mentions":"Impressum","footer.privacy":"Datenschutzrichtlinie","footer.contact":"Kontakt"
+    },
+    pt: {
+      "nav.tagline":"Imuno-Metabólica","nav.mission":"Nossa missão","nav.prestations":"12 Serviços","nav.poles":"Polos","nav.marque":"Marca ORIM™","nav.partenaires":"Nossos Parceiros","nav.equipe":"Equipe","nav.contact":"Contato","nav.donation":"Doação","nav.cta":"Entre em contato",
+      "hero.badge":"Associação sem fins lucrativos · Genebra","hero.subtitle":"Otimização Resolutiva Imuno-Metabólica","hero.desc":"Associação científica de Genebra sem fins lucrativos, dedicada à imunonutrição preventiva. Pesquisa, educação e acompanhamento a serviço da sua saúde.","hero.btn1":"Nossos 12 serviços","hero.btn2":"Entre em contato","hero.btn3":"Apoiar ORIM","hero.scroll":"Descobrir",
+      "stats.prestations":"Serviços","stats.poles":"Polos da Associação","stats.aliments":"Alimentos indexados ORIM™","stats.indice":"Índice ORIM™ atual","stats.microbiome":"Microbioma v4.0","stats.lieu":"Genebra, Suíça",
+      "mission.tag":"Nossa missão","mission.title1":"Uma associação,","mission.title2":"uma missão","mission.desc":"A Associação ORIM Genebra é uma organização sem fins lucrativos dedicada à pesquisa, educação e acompanhamento em imunonutrição preventiva. Nosso objetivo: tornar acessível uma abordagem científica da nutrição a serviço da saúde imuno-metabólica.",
+      "mission.badge":"Associação sem fins lucrativos · Genebra · Suíça","mission.name":"Associação ORIM Genebra","mission.tagline":"Organização científica sem fins lucrativos. Licenciada da marca ORIM™, proprietária do Índice ORIM™. Polos Educativo, Acompanhamento e Pesquisa.","mission.s1":"Programa 3 Fases (desinflamação, otimização, autorregulação)","mission.s2":"Índice ORIM™ 0-100 (scoring 8 métricas)","mission.s3":"Polo P&D ORIM (biomarcadores, nutrigenômica)","mission.s4":"Certificação de profissionais (3 níveis)","mission.s5":"App digital ORIM (rastreamento, menus, progresso)","mission.s6":"Centro ORIM Genebra (fitness, coworking saúde, bem-estar)",
+      "prest.tag":"12 serviços · 1 missão","prest.title":"Nossos serviços","prest.desc":"A Associação ORIM Genebra estrutura seus 12 serviços em 4 pilares complementares: Ciência, Prevenção, Comunidade e Infraestrutura digital.",
+      "prest.c1.phase":"Ciência","prest.c1.title":"Pesquisa","prest.c2.phase":"Prevenção","prest.c2.title":"Acompanhamento","prest.c3.phase":"Comunidade","prest.c3.title":"Formação","prest.c4.phase":"Digital","prest.c4.title":"Infraestrutura",
+      "prest.01.name":"Programa 3 Fases","prest.01.desc":"Desinflamação, otimização metabólica, autorregulação duradoura",
+      "prest.02.name":"Índice ORIM 0-100","prest.02.desc":"Pontuação alimentar em 8 métricas científicas",
+      "prest.03.name":"Polo P&D ORIM","prest.03.desc":"Biomarcadores, SPMs, nutrigenômica, IA preditiva",
+      "prest.04.name":"Parcerias de saúde","prest.04.desc":"Rede de profissionais parceiros, orientação e acompanhamento",
+      "prest.05.name":"Léxico ORIM™ 500 alimentos","prest.05.desc":"Protocolos personalizados 3 fases, menus ORIM, acompanhamento",
+      "prest.06.name":"Cozinha educativa","prest.06.desc":"Oficinas culinárias, demonstrações, menus personalizados",
+      "prest.07.name":"Comunidade de membros","prest.07.desc":"3 níveis: Padrão, Benfeitor, Premium",
+      "prest.08.name":"Certificação de profissionais","prest.08.desc":"Formação em 3 níveis, certificação ORIM contínua",
+      "prest.09.name":"Conferências e oficinas","prest.09.desc":"Seminários públicos, educação nutricional",
+      "prest.10.name":"App digital ORIM","prest.10.desc":"Rastreamento de biomarcadores, menus, progresso do membro",
+      "prest.11.name":"Publicações científicas","prest.11.desc":"Boletins trimestrais, monitoramento, artigos validados",
+      "prest.12.name":"Centro ORIM Genebra","prest.12.desc":"Fitness, coworking saúde, conferência, bem-estar","prest.btn.details":"Ver mais detalhes →",
+      "poles.tag":"Associação ORIM Genebra","poles.title":"🏛️ Três Polos","poles.desc":"A Associação ORIM Genebra estrutura suas atividades em três polos complementares: Educativo, Acompanhamento e Pesquisa.",
+      "pole.edu.name":"Polo Educativo","pole.edu.desc":"Formações individuais e coletivas em nutrição imuno-metabólica. Seminários, conteúdos pedagógicos, contribuições de membros Padrão e Benfeitor.","pole.edu.t1":"Seminários coletivos","pole.edu.t2":"Formação individual","pole.edu.t3":"Oficina Seniores 55+","pole.edu.t4":"Conteúdos pedagógicos","pole.edu.t5":"Contribuições de membros",
+      "pole.thera.name":"Polo Acompanhamento","pole.thera.desc":"Acompanhamento personalizado sob mandato da Associação, supervisionado pelo comitê científico ORIM. Aplicação do Índice ORIM™ v3.0. Encaminhamento para profissionais de saúde habilitados.","pole.thera.t1":"Acompanhamento personalizado","pole.thera.t2":"Índice ORIM™ v3.0","pole.thera.t3":"Comitê científico","pole.thera.t4":"Direito suíço · Genebra",
+      "pole.rech.name":"Polo Pesquisa e PI","pole.rech.desc":"Desenvolvimento do Índice ORIM™ v4.0 Microbioma (2027) e v5.0 IA Nutrigenômica (2028). Gestão de subsídios de P&D. Propriedade intelectual.","pole.rech.t1":"Índice v4.0 · 2027","pole.rech.t2":"Índice v5.0 · 2028","pole.rech.t3":"Subsídios P&D","pole.rech.t4":"Propriedade intelectual","pole.rech.t5":"IPI · Suíça",
+      "marque.tag":"Propriedade intelectual","marque.title":"Marca, Léxico e Índice",
+      "marque.owner.badge":"Proprietário · Olivier Chevalley","marque.owner.title":"🏛️ Marca ORIM™","marque.owner.text":"A marca ORIM™ está em processo de registro no IPI (Suíça) por Olivier Chevalley (pessoa física). Classes NICE 42 (pesquisa científica) e 44 (consultoria em nutrição). A Associação ORIM Genebra detém uma licença de uso não exclusiva, conforme o art. 17 dos Estatutos.",
+      "marque.lexique.badge":"P&D · Associação ORIM","marque.lexique.title":"📚 Léxico ORIM™","marque.lexique.text":"O Léxico ORIM™ v3.0 cataloga 500 alimentos indexados por suas propriedades imuno-metabólicas. Base de dados educativa e científica, desenvolvida e de propriedade da Associação.",
+      "marque.indice.badge":"P&D · Associação ORIM","marque.indice.title":"🔬 Índice ORIM™ v3.0","marque.indice.text":"O Índice ORIM™ v3.0 aplica 8 métricas de pontuação imuno-metabólica aos 500 alimentos do Léxico. Algoritmo operacional, propriedade exclusiva da Associação.",
+      "marque.v4.badge":"Projeção P&D · 2027","marque.v4.title":"🧬 Índice v4.0 — Microbioma","marque.v4.text":"Extensão prevista: integração do microbioma intestinal. Sob supervisão do comitê científico ORIM. Financiado por subsídios de P&D. Algoritmos de propriedade da Associação.",
+      "marque.v5.badge":"Projeção P&D · 2028","marque.v5.title":"🤖 Índice v5.0 — IA Nutrigenômica","marque.v5.text":"Visão 2028: integração de inteligência artificial e nutrigenômica. Algoritmos exclusivos da Associação ORIM Genebra. Proteção de PI reforçada desde a fase de P&D.",
+      "communaute.tag":"Ecossistema ORIM","communaute.title":"Comunidade científica","communaute.desc":"ORIM constrói uma rede de profissionais de saúde comprometidos com a nutrição preventiva e a imunonutrição, a serviço de um acompanhamento global e personalizado.","communaute.node.orim":"Associação ORIM","communaute.node.orim.sub":"Metodologia científica\nÍndice ORIM™","communaute.node.pro":"Profissionais de saúde","communaute.node.pro.sub":"Médicos especializados, naturopatas,\nnutricionistas, nutriólogos","communaute.footer":"Uma rede multidisciplinar a serviço da sua saúde, guiada pela ciência e evidência clínica.",
+      "equipe.tag":"Nossa equipe","equipe.title":"Fundador","team.oc.r1":"Presidente · Associação ORIM","team.oc.r2":"Fundador · Titular da marca ORIM™","team.oc.r3":"Especialista em engenharia QHSE",
+      "donation.tag":"Apoie nossa missão","donation.title":"Fazer uma doação","donation.desc":"Seu apoio permite à Associação ORIM Genebra prosseguir sua missão de pesquisa, educação e acompanhamento em imunonutrição preventiva.","donation.amount":"Cada doação conta","donation.text":"Escaneie o código QR ou clique no botão abaixo para apoiar a Associação ORIM Genebra via Happypot. 100% das doações financiam pesquisa, educação e o futuro centro ORIM.","donation.btn":"Fazer uma doação — Happypot","donation.note":"Associação sem fins lucrativos · Direito suíço · Cantão de Genebra",
+      "nav.newsletter":"Newsletter","nl.tag":"Fique conectado","nl.title":"Newsletter TEAM ORIM","nl.desc":"Junte-se à comunidade ORIM e receba nossos avanços científicos, eventos e novidades diretamente na sua caixa de entrada.","nl.card.title":"Junte-se ao TEAM ORIM","nl.card.text":"Receba mensalmente boletins científicos, resultados de pesquisa em imunonutrição, próximos eventos e avanços do programa ORIM.","nl.placeholder":"seu@email.com","nl.btn":"Inscrever-se","nl.success":"Bem-vindo ao TEAM ORIM! Você receberá em breve nossa próxima newsletter.","nl.b1":"Boletins científicos","nl.b2":"Eventos e oficinas","nl.b3":"Avanços P&D","nl.b4":"Gratuito e sem spam","nl.archives.btn":"Newsletters 2025 (PDF)","nl.arc.jan":"Janeiro 2025","nl.arc.feb":"Fevereiro 2025","nl.arc.mar":"Março 2025","nl.arc.apr":"Abril 2025","nl.arc.may":"Maio 2025","nl.arc.jun":"Junho 2025","nl.arc.jul":"Julho 2025","nl.arc.aug":"Agosto 2025","nl.arc.sep":"Setembro 2025","nl.arc.oct":"Outubro 2025","nl.arc.nov":"Novembro 2025","nl.arc.dec":"Dezembro 2025","nl.privacy":"Seus dados permanecem confidenciais · Cancelamento com um clique · Conforme RGPD",
+      "contact.tag":"Fale conosco","contact.title":"Contato","contact.desc":"Associação ORIM Genebra — à sua disposição para qualquer dúvida sobre nossos serviços.","contact.ch.title":"🏛️ Associação ORIM Genebra","contact.ch.email.note":"Educação · Acompanhamento · Pesquisa","contact.ch.address":"Genebra, Suíça — Direito suíço aplicável · Foro de Genebra","contact.ch.note":"Associação sem fins lucrativos · Direito suíço · Cantão de Genebra",
+      "footer.ch":"Associação ORIM Genebra","footer.ch.sub":"Suíça · Sem fins lucrativos · Imunonutrição preventiva","footer.mentions":"Avisos legais","footer.privacy":"Política de privacidade","footer.contact":"Contato"
     }
   };
 
   let currentLang = 'fr';
+
+  const langFlags = { fr:'🇫🇷', en:'🇬🇧', es:'🇪🇸', de:'🇩🇪', pt:'🇧🇷' };
+  const langCodes = { fr:'FR', en:'EN', es:'ES', de:'DE', pt:'PT' };
 
   function setLang(lang) {
     currentLang = lang;
@@ -1098,11 +1158,30 @@
       const key = el.getAttribute('data-i18n-placeholder');
       if (i18n[lang] && i18n[lang][key]) el.placeholder = i18n[lang][key];
     });
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById('btn-' + lang).classList.add('active');
-    const titles = { fr: 'ORIM™ — Optimisation Résolutive Immuno-Métabolique', en: 'ORIM™ — Resolving Immuno-Metabolic Optimization', es: 'ORIM™ — Optimizacion Resolutiva Inmuno-Metabolica', de: 'ORIM™ — Aufloesende Immuno-Metabolische Optimierung' };
-    document.title = titles[lang];
+    // Update dropdown display
+    document.getElementById('current-lang-flag').textContent = langFlags[lang] || langFlags.fr;
+    document.getElementById('current-lang-code').textContent = langCodes[lang] || langCodes.fr;
+    // Highlight active language in menu
+    document.querySelectorAll('.lang-dropdown-menu button').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.getElementById('btn-' + lang);
+    if (activeBtn) activeBtn.classList.add('active');
+    // Close dropdown
+    document.getElementById('lang-dropdown').classList.remove('open');
+    const titles = { fr:'ORIM™ — Optimisation Résolutive Immuno-Métabolique', en:'ORIM™ — Resolving Immuno-Metabolic Optimization', es:'ORIM™ — Optimizacion Resolutiva Inmuno-Metabolica', de:'ORIM™ — Aufloesende Immuno-Metabolische Optimierung', pt:'ORIM™ — Otimização Resolutiva Imuno-Metabólica' };
+    document.title = titles[lang] || titles.fr;
   }
+
+  function toggleLangMenu() {
+    document.getElementById('lang-dropdown').classList.toggle('open');
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('lang-dropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
 
   // ─── CANVAS PARTICLES ────────────────────────────────────────────────────
   (function() {

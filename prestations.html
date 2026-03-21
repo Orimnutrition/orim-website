@@ -34,10 +34,34 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);ov
 .ring-lg{width:82%;height:82%;border-color:rgba(27,168,166,.06)}
 .ring-xl{width:100%;height:100%;border-color:rgba(27,168,166,.03)}
 
-/* Center hub */
-.center-hub{width:140px;height:140px;background:linear-gradient(145deg,#1BA8A6,#0d8a88);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;box-shadow:0 0 0 8px rgba(27,168,166,.12),0 0 0 20px rgba(27,168,166,.06),0 0 60px rgba(27,168,166,.2);cursor:default;transition:all .4s}
-.center-hub h2{font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:700;color:#fff;letter-spacing:3px}
-.center-hub span{font-size:.55rem;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase;font-weight:600}
+/* Center hub — Diamond */
+.center-hub{width:160px;height:180px;clip-path:polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%);background:linear-gradient(135deg,rgba(255,255,255,.95) 0%,rgba(220,240,240,.9) 15%,rgba(200,230,230,.85) 25%,rgba(27,168,166,.3) 40%,rgba(255,255,255,.9) 50%,rgba(200,220,230,.8) 60%,rgba(27,168,166,.25) 70%,rgba(240,248,248,.92) 85%,rgba(255,255,255,.95) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;cursor:default;transition:all .4s;position:relative;filter:drop-shadow(0 0 15px rgba(27,168,166,.4)) drop-shadow(0 0 40px rgba(27,168,166,.2)) drop-shadow(0 0 80px rgba(255,255,255,.15))}
+.center-hub::before{content:'';position:absolute;inset:0;clip-path:polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%);background:linear-gradient(110deg,transparent 0%,transparent 35%,rgba(255,255,255,.7) 42%,rgba(255,255,255,.95) 45%,rgba(255,255,255,.7) 48%,transparent 55%,transparent 100%);background-size:300% 100%;animation:diamond-shimmer 4s ease-in-out infinite;z-index:1}
+.center-hub::after{content:'';position:absolute;inset:3px;clip-path:polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%);background:linear-gradient(160deg,rgba(255,255,255,.1) 0%,rgba(27,168,166,.08) 30%,transparent 50%,rgba(27,168,166,.05) 70%,rgba(255,255,255,.08) 100%);z-index:2}
+/* Diamond facet lines */
+.diamond-facets{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:visible}
+.diamond-facets::before{content:'';position:absolute;top:35%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(27,168,166,.2) 20%,rgba(255,255,255,.3) 50%,rgba(27,168,166,.2) 80%,transparent)}
+.diamond-facets::after{content:'';position:absolute;top:0;left:50%;width:1px;height:35%;background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(27,168,166,.15))}
+.center-hub h2{font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;background:linear-gradient(180deg,#fff 0%,#d0d0d0 40%,#b0b8b8 70%,#e0e0e0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:4px;text-shadow:none;position:relative;z-index:5;line-height:1}
+.center-hub span{font-size:.5rem;color:rgba(27,168,166,.85);letter-spacing:1.8px;text-transform:uppercase;font-weight:700;position:relative;z-index:5;margin-top:2px}
+
+/* Diamond shimmer animation */
+@keyframes diamond-shimmer{0%,100%{background-position:-200% center}50%{background-position:200% center}}
+
+/* Sparkle particles around diamond */
+.sparkle{position:absolute;width:4px;height:4px;border-radius:50%;pointer-events:none;z-index:8}
+.sparkle::before,.sparkle::after{content:'';position:absolute;background:rgba(255,255,255,.9)}
+.sparkle::before{width:100%;height:1px;top:50%;left:0;transform:translateY(-50%)}
+.sparkle::after{width:1px;height:100%;left:50%;top:0;transform:translateX(-50%)}
+@keyframes sparkle-pop{0%{opacity:0;transform:scale(0)}30%{opacity:1;transform:scale(1.2)}60%{opacity:.8;transform:scale(.8)}100%{opacity:0;transform:scale(0)}}
+.sparkle-1{top:-12px;left:50%;animation:sparkle-pop 2.5s ease-in-out infinite}
+.sparkle-2{top:20%;right:-10px;animation:sparkle-pop 3s ease-in-out .7s infinite}
+.sparkle-3{bottom:15%;right:5%;animation:sparkle-pop 2.8s ease-in-out 1.4s infinite}
+.sparkle-4{bottom:-8px;left:40%;animation:sparkle-pop 3.2s ease-in-out 2.1s infinite}
+.sparkle-5{top:25%;left:-8px;animation:sparkle-pop 2.6s ease-in-out .3s infinite}
+.sparkle-6{top:5%;right:15%;width:3px;height:3px;animation:sparkle-pop 3.5s ease-in-out 1.8s infinite}
+.sparkle-7{bottom:30%;left:8%;width:3px;height:3px;animation:sparkle-pop 2.9s ease-in-out 2.5s infinite}
+.sparkle-8{top:40%;right:-5px;width:2px;height:2px;animation:sparkle-pop 3.1s ease-in-out 1s infinite}
 
 /* Orbital nodes */
 .orbit-node{position:absolute;z-index:15;cursor:pointer;transition:all .4s cubic-bezier(.23,1,.32,1)}
@@ -120,8 +144,8 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);ov
 
 /* ANIMATIONS */
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 8px rgba(27,168,166,.12),0 0 0 20px rgba(27,168,166,.06),0 0 60px rgba(27,168,166,.2)}50%{box-shadow:0 0 0 10px rgba(27,168,166,.18),0 0 0 25px rgba(27,168,166,.1),0 0 80px rgba(27,168,166,.3)}}
-.center-hub{animation:pulseGlow 3s ease-in-out infinite}
+@keyframes diamondGlow{0%,100%{filter:drop-shadow(0 0 15px rgba(27,168,166,.4)) drop-shadow(0 0 40px rgba(27,168,166,.2)) drop-shadow(0 0 80px rgba(255,255,255,.15))}50%{filter:drop-shadow(0 0 20px rgba(27,168,166,.55)) drop-shadow(0 0 50px rgba(27,168,166,.3)) drop-shadow(0 0 100px rgba(255,255,255,.25))}}
+.center-hub{animation:diamondGlow 3s ease-in-out infinite}
 </style>
 </head>
 <body>
@@ -150,7 +174,18 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);ov
   <div class="orbit-ring ring-md"></div>
   <div class="orbit-ring ring-lg"></div>
   <div class="orbit-ring ring-xl"></div>
-  <div class="center-hub"><h2>ORIM</h2><span>Genève · Suisse</span></div>
+  <div class="center-hub">
+    <div class="diamond-facets"></div>
+    <h2>ORIM</h2><span>Genève · Suisse</span>
+    <div class="sparkle sparkle-1"></div>
+    <div class="sparkle sparkle-2"></div>
+    <div class="sparkle sparkle-3"></div>
+    <div class="sparkle sparkle-4"></div>
+    <div class="sparkle sparkle-5"></div>
+    <div class="sparkle sparkle-6"></div>
+    <div class="sparkle sparkle-7"></div>
+    <div class="sparkle sparkle-8"></div>
+  </div>
   <!-- 8 electrons — O₂ molecule, la base de la vie -->
   <canvas id="electron-canvas" width="600" height="600"></canvas>
 </div>

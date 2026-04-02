@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditions Générales de Vente V2.0 | ORIM™</title>
+<meta name="description" content="Conditions Générales de Vente (CGV V2.0) de CF Management pour orimnutrition.com. Nutraceutiques ORIM, eBooks, abonnements myORIM, programme ambassadeur CHRONOS.">
+<meta name="keywords" content="CGV, conditions générales de vente, ORIM, CF Management, nutraceutiques, Suisse, Genève">
+<meta property="og:title" content="Conditions Générales de Vente | ORIM™">
+<meta property="og:description" content="CGV V2.0 | CF Management. Nutraceutiques de précision ORIM formulés en Suisse.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orimnutrition.com/cgv.html">
+<meta property="og:locale" content="fr_CH">
+<meta property="og:site_name" content="ORIM Nutrition">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Conditions Générales de Vente | ORIM™">
+<meta name="twitter:description" content="CGV V2.0 | CF Management, Genève, Suisse.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://orimnutrition.com/cgv.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --navy:       #0d1b2a;
+  --blue:       #1a4a7a;
+  --cyan:       #00b4d8;
+  --lcyan:      #90e0ef;
+  --white:      #f8fafc;
+  --gray:       #94a3b8;
+  --lgray:      #1e2d3d;
+  --gold:       #c9a84c;
+  --green:      #22c55e;
+  --teal:       #1BA8A6;
+  --teal-light: #E0F5F5;
+  --gold-orim:  #E6A817;
+  --dark:       #2D3436;
+
+  --font-title: 'Rajdhani', sans-serif;
+  --font-body:  'Inter', sans-serif;
+
+  --glow-cyan: 0 0 20px rgba(0, 180, 216, 0.45), 0 0 60px rgba(0, 180, 216, 0.2);
+  --glow-gold: 0 0 20px rgba(201, 168, 76, 0.45),  0 0 60px rgba(201, 168, 76, 0.2);
+  --glow-teal: 0 0 20px rgba(27, 168, 166, 0.45),  0 0 60px rgba(27, 168, 166, 0.2);
+
+  --border-card: 1px solid rgba(0, 180, 216, 0.15);
+  --bg-card:     rgba(30, 45, 61, 0.6);
+  --radius-lg:   20px;
+  --radius-md:   12px;
+  --radius-sm:   8px;
+
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, var(--cyan) 50%, var(--lcyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #ffffff 0%, var(--gold-orim) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ============================================================
+   NAV BAR
+   ============================================================ */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 16px 0;
+  transition: var(--transition);
+}
+
+#navbar.scrolled {
+  background: rgba(13, 27, 42, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.15);
+  padding: 10px 0;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-title);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--cyan);
+  text-shadow: 0 0 30px rgba(0, 180, 216, 0.6);
+}
+
+.nav-logo sup {
+  font-size: 12px;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 100%;
+  height: 1px;
+  background: var(--cyan);
+  transition: right 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { right: 0; }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--cyan), var(--teal));
+  color: var(--navy) !important;
+  font-weight: 700 !important;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 13px !important;
+  letter-spacing: 1px !important;
+  box-shadow: var(--glow-cyan);
+  transition: var(--transition) !important;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 180, 216, 0.7), 0 0 80px rgba(0, 180, 216, 0.3) !important;
+}
+.nav-cta::after { display: none !important; }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.nav-hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--cyan);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ============================================================
+   PAGE HERO — CGV
+   ============================================================ */
+.page-hero {
+  padding: 140px 0 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse at center, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero-eyebrow {
+  font-family: var(--font-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold-orim);
+  margin-bottom: 16px;
+}
+
+.page-hero-title {
+  font-family: var(--font-title);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.page-hero-sub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--gray);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+
+.version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(230, 168, 23, 0.35);
+  background: rgba(230, 168, 23, 0.08);
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--gold-orim);
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS
+   ============================================================ */
+.toc-wrapper {
+  max-width: 860px;
+  margin: 0 auto 70px;
+  padding: 36px 40px;
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+}
+
+.toc-title {
+  font-family: var(--font-title);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: var(--transition);
+  color: var(--gray);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.toc-item:hover {
+  color: var(--white);
+  background: rgba(0, 180, 216, 0.07);
+  border-color: rgba(0, 180, 216, 0.2);
+}
+
+.toc-num {
+  font-family: var(--font-title);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cyan);
+  min-width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   CGV CONTENT AREA
+   ============================================================ */
+.cgv-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+.cgv-article {
+  margin-bottom: 32px;
+  padding: 36px 40px;
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  scroll-margin-top: 90px;
+}
+
+.cgv-article:hover {
+  border-color: rgba(0, 180, 216, 0.3);
+  box-shadow: 0 8px 40px rgba(0, 180, 216, 0.06);
+}
+
+.cgv-article-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.cgv-article-num {
+  font-family: var(--font-title);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy);
+  background: linear-gradient(135deg, var(--cyan), var(--teal));
+  padding: 6px 12px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.cgv-article-num.gold {
+  background: linear-gradient(135deg, var(--gold-orim), var(--gold));
+  color: var(--navy);
+}
+
+.cgv-article-title {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.cgv-article-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.8;
+  padding-left: 0;
+}
+
+.cgv-article-body p + p {
+  margin-top: 12px;
+}
+
+.cgv-article-body strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.cgv-article-body a {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.cgv-article-body a:hover { color: var(--white); }
+
+.cgv-highlight {
+  margin-top: 14px;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 180, 216, 0.06);
+  border-left: 3px solid var(--cyan);
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+.cgv-highlight.gold {
+  background: rgba(230, 168, 23, 0.06);
+  border-left-color: var(--gold-orim);
+}
+
+.cgv-highlight.teal {
+  background: rgba(27, 168, 166, 0.06);
+  border-left-color: var(--teal);
+}
+
+.cgv-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cgv-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.cgv-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.cgv-list.gold li::before { background: var(--gold-orim); }
+.cgv-list.teal li::before { background: var(--teal); }
+
+.cgv-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 180, 216, 0.2), transparent);
+  margin: 50px 0;
+}
+
+/* ============================================================
+   INFO BANNER
+   ============================================================ */
+.info-banner {
+  max-width: 860px;
+  margin: 0 auto 50px;
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  background: rgba(230, 168, 23, 0.07);
+  border: 1px solid rgba(230, 168, 23, 0.25);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info-banner-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(230, 168, 23, 0.12);
+  border: 1px solid rgba(230, 168, 23, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-banner-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+.info-banner-text strong {
+  color: var(--gold-orim);
+  font-weight: 600;
+}
+
+/* ============================================================
+   BACK TO TOP + BREADCRUMB
+   ============================================================ */
+.breadcrumb {
+  max-width: 860px;
+  margin: 0 auto 30px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb a {
+  color: var(--cyan);
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover { color: var(--white); }
+
+.breadcrumb-sep {
+  color: rgba(148, 163, 184, 0.4);
+  font-size: 10px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+#footer {
+  background: rgba(13, 27, 42, 0.98);
+  border-top: 1px solid rgba(0, 180, 216, 0.1);
+  padding: 70px 0 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.footer-brand-logo {
+  font-family: var(--font-title);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0, 180, 216, 0.5);
+  margin-bottom: 14px;
+}
+
+.footer-brand-logo sup {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.footer-brand-tagline {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  max-width: 280px;
+}
+
+.footer-entity {
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-orim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.footer-contact {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.9;
+}
+
+.footer-contact a {
+  color: var(--cyan);
+  transition: color 0.2s;
+}
+
+.footer-contact a:hover { color: var(--white); }
+
+.footer-col-title {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--cyan); }
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  background: rgba(0, 180, 216, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  color: var(--cyan);
+  border-color: rgba(0, 180, 216, 0.5);
+  box-shadow: var(--glow-cyan);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 180, 216, 0.1);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-copyright {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal-links a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--gray);
+  transition: color 0.2s;
+}
+
+.footer-legal-links a:hover { color: var(--cyan); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .toc-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .page-hero { padding: 120px 0 50px; }
+  .page-hero-title { font-size: 36px; }
+
+  .cgv-article { padding: 24px 20px; }
+  .cgv-article-header { flex-direction: column; gap: 10px; }
+  .cgv-article-title { font-size: 18px; }
+  .toc-wrapper { padding: 24px 20px; }
+
+  .info-banner { flex-direction: column; gap: 12px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-legal-links { flex-wrap: wrap; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV BAR
+     ============================================================ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">ORIM<sup>&#8482;</sup></a>
+      <ul class="nav-links">
+        <li><a href="index.html#eveil">L'&#233;veil ORIM</a></li>
+        <li><a href="index.html#science">La science</a></li>
+        <li><a href="index.html#products">Produits</a></li>
+        <li><a href="app/" class="nav-cta" style="background:linear-gradient(135deg,#1BA8A6,#0077b6);">myORIM&#8482;</a></li>
+        <li><a href="boutique.html" class="nav-cta">Boutique</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:8px;margin-right:12px;">
+        <a href="index.html" title="Fran&#231;ais" style="font-size:18px;text-decoration:none;opacity:1;transition:opacity 0.2s;">&#127467;&#127479;</a>
+        <a href="index-en.html" title="English" style="font-size:18px;text-decoration:none;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">&#127468;&#127463;</a>
+        <a href="index-es.html" title="Espa&#241;ol" style="font-size:18px;text-decoration:none;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">&#127466;&#127480;</a>
+        <a href="index-de.html" title="Deutsch" style="font-size:18px;text-decoration:none;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">&#127465;&#127466;</a>
+        <a href="index-it.html" title="Italiano" style="font-size:18px;text-decoration:none;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">&#127470;&#127481;</a>
+        <a href="index-pt.html" title="Portugu&#234;s" style="font-size:18px;text-decoration:none;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">&#127463;&#127479;</a>
+      </div>
+      <div class="nav-hamburger" id="hamburger" aria-label="Menu" role="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-eyebrow reveal">Documents Légaux</div>
+    <h1 class="page-hero-title gradient-text reveal reveal-delay-1">
+      Conditions Générales de Vente
+    </h1>
+    <p class="page-hero-sub reveal reveal-delay-2">
+      Toutes les conditions applicables aux achats effectués sur orimnutrition.com. Droit suisse applicable.
+    </p>
+    <div class="reveal reveal-delay-3">
+      <span class="version-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Version V2.0 &nbsp;&#183;&nbsp; 29 mars 2026
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main>
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb reveal" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="breadcrumb-sep">&#9656;</span>
+      <span>Conditions Générales de Vente</span>
+    </nav>
+
+    <!-- Info banner -->
+    <div class="info-banner reveal">
+      <div class="info-banner-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E6A817" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="info-banner-text">
+        <strong>Vendeur :</strong> CF Management, Olivier Chevalley, personne physique, Genève, Suisse.
+        En passant commande sur orimnutrition.com, vous acceptez sans réserve les présentes Conditions Générales de Vente.
+        Pour toute question : <strong><a href="mailto:info@cfmanagement.ch" style="color:var(--gold-orim);text-decoration:underline;text-underline-offset:3px;">info@cfmanagement.ch</a></strong>
+      </div>
+    </div>
+
+    <!-- Table des matières -->
+    <div class="toc-wrapper reveal">
+      <div class="toc-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Table des matières
+      </div>
+      <div class="toc-grid">
+        <a href="#art-01" class="toc-item"><span class="toc-num">01</span>Objet</a>
+        <a href="#art-02" class="toc-item"><span class="toc-num">02</span>Identité du Vendeur</a>
+        <a href="#art-03" class="toc-item"><span class="toc-num">03</span>Produits et Services</a>
+        <a href="#art-04" class="toc-item"><span class="toc-num">04</span>Prix</a>
+        <a href="#art-05" class="toc-item"><span class="toc-num">05</span>Commande</a>
+        <a href="#art-06" class="toc-item"><span class="toc-num">06</span>Paiement</a>
+        <a href="#art-07" class="toc-item"><span class="toc-num">07</span>Livraison</a>
+        <a href="#art-08" class="toc-item"><span class="toc-num">08</span>Droit de Rétractation</a>
+        <a href="#art-09" class="toc-item"><span class="toc-num">09</span>Garantie</a>
+        <a href="#art-10" class="toc-item"><span class="toc-num">10</span>Responsabilité</a>
+        <a href="#art-11" class="toc-item"><span class="toc-num">11</span>Propriété Intellectuelle</a>
+        <a href="#art-12" class="toc-item"><span class="toc-num">12</span>Données Personnelles</a>
+        <a href="#art-13" class="toc-item"><span class="toc-num">13</span>Programme Ambassadeur</a>
+        <a href="#art-14" class="toc-item"><span class="toc-num">14</span>Droit Applicable</a>
+        <a href="#art-15" class="toc-item"><span class="toc-num">15</span>Modification</a>
+      </div>
+    </div>
+
+    <!-- Articles CGV -->
+    <div class="cgv-content">
+
+      <!-- Article 1 -->
+      <article class="cgv-article reveal" id="art-01">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 01</span>
+          <h2 class="cgv-article-title">Objet</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Les présentes Conditions Générales de Vente (ci-après "CGV") ont pour objet de définir les droits et obligations des parties dans le cadre des ventes de produits et services réalisées par CF Management (ci-après "le Vendeur") via le site internet orimnutrition.com.</p>
+          <p>Elles s'appliquent à toute commande passée par une personne physique ou morale (ci-après "le Client") sur le site orimnutrition.com.</p>
+          <div class="cgv-highlight">
+            Toute commande implique l'acceptation pleine et entière des présentes CGV. Le Vendeur se réserve le droit d'adapter ou de modifier ces CGV à tout moment. La version applicable est celle en vigueur au moment de la commande.
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="cgv-article reveal" id="art-02">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 02</span>
+          <h2 class="cgv-article-title">Identité du Vendeur</h2>
+        </div>
+        <div class="cgv-article-body">
+          <ul class="cgv-list">
+            <li><strong>Raison sociale :</strong> CF Management</li>
+            <li><strong>Forme juridique :</strong> Personne physique</li>
+            <li><strong>Siège social :</strong> Genève, Suisse</li>
+            <li><strong>Email :</strong> <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a></li>
+            <li><strong>Site web :</strong> <a href="https://orimnutrition.com" target="_blank" rel="noopener">orimnutrition.com</a></li>
+          </ul>
+          <div class="cgv-highlight teal">
+            ORIM&#8482; est une marque déposée dont la titularité appartient à Marcel Olivier Chevalley, personne physique, Genève, Suisse. La gestion commerciale et la distribution sont assurées par CF Management.
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="cgv-article reveal" id="art-03">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 03</span>
+          <h2 class="cgv-article-title">Produits et Services</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Le Vendeur propose à la vente les catégories de produits et services suivantes :</p>
+          <ul class="cgv-list">
+            <li><strong>Nutraceutiques ORIM&#8482; :</strong> compléments alimentaires formulés en Suisse, conformes aux réglementations OFSP et UE.</li>
+            <li><strong>eBooks numériques :</strong> contenus éducatifs téléchargeables, notamment la collection "Du Carbone au Diamant".</li>
+            <li><strong>Abonnements myORIM&#8482; :</strong> accès à l'application de suivi immuno-métabolique personnel.</li>
+            <li><strong>Programme Ambassadeur CHRONOS :</strong> programme commercial avec commissions sur ventes (voir Article 13).</li>
+          </ul>
+          <div class="cgv-highlight">
+            Les descriptions, photographies et informations relatives aux produits sont fournies à titre indicatif. Le Vendeur s'engage à présenter les produits avec la plus grande exactitude possible.
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="cgv-article reveal" id="art-04">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 04</span>
+          <h2 class="cgv-article-title">Prix</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Les prix sont affichés en Francs Suisses (CHF) pour les commandes depuis la Suisse et en Euros (EUR) pour les commandes depuis l'Union Européenne. Tous les prix sont indiqués toutes taxes comprises (TTC).</p>
+          <ul class="cgv-list gold">
+            <li>Le Vendeur se réserve le droit de modifier ses prix à tout moment et sans préavis.</li>
+            <li>Le prix applicable est celui affiché sur le site au moment de la validation de la commande par le Client.</li>
+            <li>Les frais de livraison, s'ils s'appliquent, sont indiqués séparément avant la validation définitive de la commande.</li>
+            <li>En cas de différence de prix entre le moment de la mise au panier et la validation finale, le prix affiché lors de la validation prévaut.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="cgv-article reveal" id="art-05">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 05</span>
+          <h2 class="cgv-article-title">Commande</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>La passation d'une commande sur orimnutrition.com se déroule selon les étapes suivantes :</p>
+          <ul class="cgv-list">
+            <li>Sélection des produits et ajout au panier.</li>
+            <li>Vérification du contenu du panier et indication des coordonnées de livraison.</li>
+            <li>Choix du mode de paiement et validation.</li>
+            <li>Confirmation de la commande par email dans les délais usuels.</li>
+          </ul>
+          <div class="cgv-highlight">
+            La validation de la commande vaut acceptation sans réserve des présentes CGV. Le Vendeur se réserve le droit de refuser toute commande pour tout motif légitime, notamment en cas de litige antérieur, de commande anormalement volumineuse ou de suspicion de fraude. En cas de refus, le Client sera informé et remboursé intégralement si un paiement a déjà été effectué.
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 6 -->
+      <article class="cgv-article reveal" id="art-06">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 06</span>
+          <h2 class="cgv-article-title">Paiement</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Le règlement des commandes s'effectue exclusivement en ligne, au moment de la validation de la commande.</p>
+          <ul class="cgv-list">
+            <li><strong>Moyens de paiement acceptés :</strong> carte bancaire Visa, Mastercard, American Express.</li>
+            <li><strong>Prestataire de paiement :</strong> Stripe Inc. Les transactions sont sécurisées par chiffrement SSL/TLS.</li>
+            <li><strong>Données bancaires :</strong> les coordonnées bancaires du Client ne sont jamais stockées par le Vendeur. Elles sont traitées exclusivement par Stripe selon ses propres normes de sécurité (PCI DSS).</li>
+            <li>Le paiement est exigible intégralement au moment de la commande.</li>
+          </ul>
+          <div class="cgv-highlight teal">
+            En cas de refus d'autorisation de paiement par les organismes habilités, le Vendeur se réserve le droit d'annuler la commande correspondante. Aucune responsabilité ne pourra être imputée au Vendeur dans ce cas.
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 7 -->
+      <article class="cgv-article reveal" id="art-07">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 07</span>
+          <h2 class="cgv-article-title">Livraison</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Les modalités de livraison varient selon la nature des produits commandés.</p>
+
+          <p><strong>Produits physiques (nutraceutiques) :</strong></p>
+          <ul class="cgv-list">
+            <li>Livraison en Suisse : 5 à 10 jours ouvrables à compter de la confirmation de la commande.</li>
+            <li>Livraison dans l'Union Européenne : 7 à 14 jours ouvrables.</li>
+            <li>Les frais de livraison sont indiqués et acceptés par le Client avant la validation finale de la commande.</li>
+          </ul>
+
+          <p style="margin-top:14px;"><strong>Produits numériques (eBooks) :</strong></p>
+          <ul class="cgv-list gold">
+            <li>Livraison par email immédiate après confirmation du paiement, à l'adresse email indiquée lors de la commande.</li>
+            <li>Un lien de téléchargement est fourni dans l'email de confirmation.</li>
+          </ul>
+
+          <div class="cgv-highlight">
+            En cas de retard de livraison imputable à un tiers (transporteur, douane, force majeure), le Vendeur s'engage à informer le Client dans les meilleurs délais. Le Vendeur ne pourra être tenu responsable des retards causés par des événements hors de son contrôle.
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 8 -->
+      <article class="cgv-article reveal" id="art-08">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num gold">ART. 08</span>
+          <h2 class="cgv-article-title">Droit de Rétractation</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Conformément aux dispositions légales en vigueur, le Client dispose d'un droit de rétractation pour les commandes passées à distance.</p>
+
+          <p><strong>Conditions d'exercice :</strong></p>
+          <ul class="cgv-list">
+            <li>Délai : 14 jours calendaires à compter de la réception physique du produit pour les produits physiques.</li>
+            <li>Le produit doit être retourné dans son emballage d'origine, non ouvert, non utilisé et en parfait état.</li>
+            <li>Le Client doit notifier sa décision de rétractation par email à <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a> avant l'expiration du délai.</li>
+            <li>Les frais de retour sont à la charge du Client.</li>
+          </ul>
+
+          <p style="margin-top:14px;"><strong>Exclusions du droit de rétractation :</strong></p>
+          <ul class="cgv-list gold">
+            <li>Produits numériques (eBooks) téléchargés ou dont l'accès a été activé après acceptation expresse du Client.</li>
+            <li>Compléments alimentaires dont l'emballage a été ouvert après livraison, pour des raisons d'hygiène et de protection de la santé.</li>
+            <li>Abonnements myORIM&#8482; dont la période d'essai gratuit a été consommée.</li>
+          </ul>
+
+          <div class="cgv-highlight gold">
+            Remboursement : en cas de rétractation valide, le Vendeur procède au remboursement intégral du prix payé dans un délai de 14 jours suivant la réception effective du retour, par le même moyen de paiement que celui utilisé lors de la commande.
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 9 -->
+      <article class="cgv-article reveal" id="art-09">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 09</span>
+          <h2 class="cgv-article-title">Garantie</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>L'ensemble des produits ORIM&#8482; commercialisés par CF Management sont conformes aux réglementations applicables en matière de compléments alimentaires :</p>
+          <ul class="cgv-list">
+            <li><strong>OFSP :</strong> Office Fédéral de la Santé Publique, Suisse.</li>
+            <li><strong>Réglementation UE :</strong> Directive 2002/46/CE relative aux compléments alimentaires et règlements dérivés.</li>
+          </ul>
+          <div class="cgv-highlight teal">
+            Le Client bénéficie de la garantie légale de conformité. En cas de défaut de conformité avéré, le Client peut demander le remplacement du produit ou, à défaut, un remboursement intégral. Les réclamations doivent être adressées à <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a> dans les meilleurs délais après constatation du défaut.
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 10 -->
+      <article class="cgv-article reveal" id="art-10">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num gold">ART. 10</span>
+          <h2 class="cgv-article-title">Responsabilité</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Les nutraceutiques et compléments alimentaires ORIM&#8482; ne sont pas des médicaments. Ils ne sont pas destinés à diagnostiquer, traiter, guérir ou prévenir une maladie quelconque.</p>
+          <ul class="cgv-list gold">
+            <li>Le Vendeur décline toute responsabilité en cas d'utilisation non conforme aux recommandations figurant sur les emballages ou sur le site.</li>
+            <li>En cas de traitement médical en cours, de grossesse ou d'allaitement, le Client est invité à consulter un professionnel de santé avant utilisation.</li>
+            <li>Le Vendeur ne peut être tenu responsable des dommages indirects résultant de l'utilisation de ses produits.</li>
+          </ul>
+          <div class="cgv-highlight gold">
+            Pour l'intégralité des mentions légales et du disclaimer médical, veuillez consulter la page dédiée : <a href="legal.html">legal.html</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 11 -->
+      <article class="cgv-article reveal" id="art-11">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 11</span>
+          <h2 class="cgv-article-title">Propriété Intellectuelle</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>La marque ORIM&#8482; est une marque déposée dont la titularité appartient à Marcel Olivier Chevalley, personne physique, Genève, Suisse. Enregistrement IPI Suisse en cours (classes NICE 5, 42, 44). Dépôt EUIPO prévu pour l'expansion dans l'Union Européenne.</p>
+          <ul class="cgv-list">
+            <li>L'ensemble du contenu du site orimnutrition.com (textes, images, vidéos, logos, graphiques, formules, algorithmes) est protégé par le droit d'auteur et les droits de propriété intellectuelle.</li>
+            <li>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, sans autorisation écrite préalable, est strictement interdite.</li>
+            <li>Le programme ORIM&#8482;, l'Index ORIM, AGRORIM&#8482; et GENOBANK constituent des inventions en cours de brevetage. Toute exploitation non autorisée engage la responsabilité civile et pénale de son auteur.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Article 12 -->
+      <article class="cgv-article reveal" id="art-12">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 12</span>
+          <h2 class="cgv-article-title">Données Personnelles</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Dans le cadre du traitement des commandes, CF Management collecte et traite des données personnelles relatives au Client (nom, prénom, adresse email, adresse de livraison, données de paiement via Stripe).</p>
+          <ul class="cgv-list teal">
+            <li><strong>LPD (Suisse) :</strong> traitement conforme à la Loi fédérale sur la Protection des Données, en vigueur depuis septembre 2023.</li>
+            <li><strong>RGPD (UE) :</strong> traitement conforme au Règlement Général sur la Protection des Données pour les clients résidant dans l'Union Européenne.</li>
+            <li>Les données sont utilisées exclusivement pour le traitement des commandes, la communication commerciale (avec consentement) et les obligations légales.</li>
+            <li>Elles ne sont jamais revendues à des tiers à des fins commerciales.</li>
+          </ul>
+          <div class="cgv-highlight teal">
+            Pour exercer vos droits d'accès, de rectification, de suppression ou d'opposition, consultez la Politique de Confidentialité complète : <a href="privacy.html">privacy.html</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 13 -->
+      <article class="cgv-article reveal" id="art-13">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num gold">ART. 13</span>
+          <h2 class="cgv-article-title">Programme Ambassadeur CHRONOS</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Le programme CHRONOS est un programme ambassadeur commercial proposé exclusivement par CF Management via orimnutrition.com.</p>
+          <ul class="cgv-list gold">
+            <li>Les conditions spécifiques de participation (niveaux, taux de commission, règles de parrainage) sont détaillées dans le contrat ambassadeur remis à chaque participant lors de son inscription.</li>
+            <li>Les commissions sont calculées sur les ventes réalisées et versées mensuellement selon les modalités définies dans le contrat ambassadeur.</li>
+            <li>Le Vendeur se réserve le droit de suspendre ou résilier un compte ambassadeur en cas de non-respect de la Charte Ethique ORIM&#8482;, de pratiques commerciales déloyales ou de toute violation des présentes CGV.</li>
+            <li>La participation au programme CHRONOS ne confère aucun statut salarié ni aucune relation de travail avec CF Management.</li>
+          </ul>
+          <div class="cgv-highlight gold">
+            Le programme CHRONOS est une offre strictement commerciale de CF Management (orimnutrition.com). Il n'est en aucun cas associé aux activités non lucratives de l'Association ORIM Genève (orimnutrition.org).
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 14 -->
+      <article class="cgv-article reveal" id="art-14">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 14</span>
+          <h2 class="cgv-article-title">Droit Applicable et For Juridique</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Les présentes CGV sont régies par le droit suisse, à l'exclusion de toute règle de conflit de lois.</p>
+          <ul class="cgv-list">
+            <li>En cas de litige relatif à l'interprétation, l'exécution ou la résiliation des présentes CGV, les parties s'engagent à rechercher une solution amiable dans un délai de 30 jours.</li>
+            <li>A défaut d'accord amiable, tout différend sera soumis à la juridiction compétente du canton de Genève, Suisse.</li>
+            <li>Pour les consommateurs résidant dans l'Union Européenne, les dispositions impératives de protection du consommateur du pays de résidence du Client demeurent applicables si elles sont plus favorables.</li>
+          </ul>
+          <div class="cgv-highlight">
+            <strong>For juridique exclusif :</strong> Genève, Suisse (sous réserve des dispositions impératives applicables aux consommateurs UE).
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 15 -->
+      <article class="cgv-article reveal" id="art-15">
+        <div class="cgv-article-header">
+          <span class="cgv-article-num">ART. 15</span>
+          <h2 class="cgv-article-title">Modification des CGV</h2>
+        </div>
+        <div class="cgv-article-body">
+          <p>Le Vendeur se réserve le droit de modifier les présentes Conditions Générales de Vente à tout moment et sans préavis.</p>
+          <ul class="cgv-list">
+            <li>La version en vigueur est celle publiée sur le site orimnutrition.com au moment de la passation de la commande.</li>
+            <li>Les modifications prennent effet dès leur publication sur le site.</li>
+            <li>Il appartient au Client de consulter régulièrement les CGV disponibles sur le site.</li>
+            <li>La poursuite de l'utilisation du site et des services après modification des CGV vaut acceptation des nouvelles conditions.</li>
+          </ul>
+          <div class="cgv-highlight teal">
+            <strong>Version actuelle :</strong> V2.0 &nbsp;&#183;&nbsp; Date de mise à jour : 29 mars 2026
+            <br>
+            Pour toute question relative aux présentes CGV : <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Signature / Footer doc -->
+      <div class="reveal" style="text-align:center; padding: 40px 0 20px;">
+        <div style="display:inline-flex; flex-direction:column; align-items:center; gap:12px; padding:32px 48px; border-radius:var(--radius-lg); border:1px solid rgba(0,180,216,0.15); background:var(--bg-card);">
+          <div style="font-family:var(--font-title); font-size:32px; font-weight:700; letter-spacing:6px; color:var(--cyan); text-shadow:0 0 20px rgba(0,180,216,0.4);">ORIM<sup style="font-size:14px;color:var(--gray);">&#8482;</sup></div>
+          <div style="font-family:var(--font-title); font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold-orim);">CF Management</div>
+          <div style="width:60px; height:1px; background:linear-gradient(90deg, transparent, var(--cyan), transparent);"></div>
+          <div style="font-family:var(--font-body); font-size:12px; color:var(--gray); line-height:1.8;">
+            Genève, Suisse<br>
+            <a href="mailto:info@cfmanagement.ch" style="color:var(--cyan);">info@cfmanagement.ch</a> &nbsp;&#183;&nbsp; <a href="https://orimnutrition.com" style="color:var(--cyan);">orimnutrition.com</a>
+          </div>
+          <div style="font-family:var(--font-body); font-size:11px; color:rgba(148,163,184,0.6); letter-spacing:1px; text-transform:uppercase;">CGV V2.0 &nbsp;&#183;&nbsp; 29 mars 2026</div>
+        </div>
+      </div>
+
+    </div><!-- /cgv-content -->
+  </div><!-- /container -->
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div>
+        <div class="footer-brand-logo">ORIM<sup>&#8482;</sup></div>
+        <p class="footer-brand-tagline">ORIM existe en toi. Réactive ton code. Nutraceutiques de précision, formulés en Suisse, fondés sur la science du vivant.</p>
+        <div class="footer-entity">CF Management</div>
+        <div class="footer-contact">
+          Genève, Suisse<br>
+          <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a><br>
+          <a href="https://orimnutrition.com" target="_blank" rel="noopener">orimnutrition.com</a>
+        </div>
+        <div class="footer-social" style="margin-top:20px;">
+          <a href="https://instagram.com/orimnutrition" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://linkedin.com/company/orimnutrition" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://youtube.com/@orimnutrition" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Boutique -->
+      <div>
+        <h4 class="footer-col-title">Boutique</h4>
+        <ul class="footer-links">
+          <li><a href="boutique.html">Curcumin Bio-Active</a></li>
+          <li><a href="boutique.html">Omega-3 Algae</a></li>
+          <li><a href="boutique.html">Adaptogen Blend</a></li>
+          <li><a href="boutique.html">NAD+ Precursors</a></li>
+          <li><a href="boutique.html">Voir tout</a></li>
+        </ul>
+      </div>
+
+      <!-- Science -->
+      <div>
+        <h4 class="footer-col-title">Science</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.orimnutrition.org" target="_blank" rel="noopener">orimnutrition.org</a></li>
+          <li><a href="https://www.orimnutrition.org" target="_blank" rel="noopener">Pôle R&amp;D</a></li>
+          <li><a href="https://www.orimnutrition.org" target="_blank" rel="noopener">Publications</a></li>
+          <li><a href="https://www.orimnutrition.org" target="_blank" rel="noopener">Protocoles</a></li>
+          <li><a href="index.html#eveil">L'éveil ORIM</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="footer-col-title">Informations</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:info@cfmanagement.ch">Contact</a></li>
+          <li><a href="cgv.html" style="color:var(--cyan);">Conditions générales</a></li>
+          <li><a href="privacy.html">Politique de confidentialité</a></li>
+          <li><a href="legal.html">Mentions légales</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; 2026 CF Management, Genève, Suisse. ORIM&#8482; est une marque déposée. Tous droits réservés.
+      </p>
+      <div class="footer-legal-links">
+        <a href="cgv.html" style="color:var(--cyan);">CGV</a>
+        <a href="privacy.html">Confidentialité</a>
+        <a href="privacy.html">Cookies</a>
+        <a href="legal.html">Disclaimer médical</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+/* ----------------------------------------------------------
+   NAVBAR SCROLL
+   ---------------------------------------------------------- */
+(function() {
+  var navbar = document.getElementById('navbar');
+  if (!navbar) return;
+
+  function onScroll() {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ----------------------------------------------------------
+   MOBILE MENU (hamburger toggle)
+   ---------------------------------------------------------- */
+(function() {
+  var btn = document.getElementById('hamburger');
+  var nav = document.querySelector('.nav-links');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function() {
+    var open = nav.style.display === 'flex';
+    if (open) {
+      nav.style.display = 'none';
+    } else {
+      nav.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(13,27,42,0.98);backdrop-filter:blur(20px);padding:32px 24px;gap:24px;border-bottom:1px solid rgba(0,180,216,0.15);z-index:9998;';
+    }
+  });
+
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        nav.style.display = 'none';
+      }
+    });
+  });
+})();
+
+/* ----------------------------------------------------------
+   SCROLL REVEAL
+   ---------------------------------------------------------- */
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  els.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

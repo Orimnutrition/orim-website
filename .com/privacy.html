@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de Confidentialité | ORIM™</title>
+<meta name="description" content="Politique de confidentialité ORIM™. Découvrez comment CF Management traite vos données personnelles conformément à la LPD suisse et au RGPD européen.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Politique de Confidentialité | ORIM™">
+<meta property="og:description" content="CF Management s'engage à protéger vos données personnelles. Politique conforme LPD suisse et RGPD UE.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orimnutrition.com/privacy.html">
+<meta property="og:locale" content="fr_CH">
+<meta property="og:site_name" content="ORIM Nutrition">
+<link rel="canonical" href="https://orimnutrition.com/privacy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --navy:       #0d1b2a;
+  --blue:       #1a4a7a;
+  --cyan:       #00b4d8;
+  --lcyan:      #90e0ef;
+  --white:      #f8fafc;
+  --gray:       #94a3b8;
+  --lgray:      #1e2d3d;
+  --gold:       #c9a84c;
+  --green:      #22c55e;
+  --teal:       #1BA8A6;
+  --teal-light: #E0F5F5;
+  --gold-orim:  #E6A817;
+  --dark:       #2D3436;
+
+  --font-title: 'Rajdhani', sans-serif;
+  --font-body:  'Inter', sans-serif;
+
+  --glow-cyan: 0 0 20px rgba(0, 180, 216, 0.45), 0 0 60px rgba(0, 180, 216, 0.2);
+  --glow-gold: 0 0 20px rgba(201, 168, 76, 0.45),  0 0 60px rgba(201, 168, 76, 0.2);
+  --glow-teal: 0 0 20px rgba(27, 168, 166, 0.45),  0 0 60px rgba(27, 168, 166, 0.2);
+
+  --border-card: 1px solid rgba(0, 180, 216, 0.15);
+  --bg-card:     rgba(30, 45, 61, 0.6);
+  --radius-lg:   20px;
+  --radius-md:   12px;
+  --radius-sm:   8px;
+
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, var(--cyan) 50%, var(--lcyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #ffffff 0%, var(--gold-orim) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ============================================================
+   NAV BAR
+   ============================================================ */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 16px 0;
+  transition: var(--transition);
+}
+
+#navbar.scrolled {
+  background: rgba(13, 27, 42, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.15);
+  padding: 10px 0;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-title);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--cyan);
+  text-shadow: 0 0 30px rgba(0, 180, 216, 0.6);
+}
+
+.nav-logo sup {
+  font-size: 12px;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 100%;
+  height: 1px;
+  background: var(--cyan);
+  transition: right 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--white);
+}
+
+.nav-links a:hover::after {
+  right: 0;
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--cyan), var(--teal));
+  color: var(--navy) !important;
+  font-weight: 700 !important;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 13px !important;
+  letter-spacing: 1px !important;
+  box-shadow: var(--glow-cyan);
+  transition: var(--transition) !important;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 180, 216, 0.7), 0 0 80px rgba(0, 180, 216, 0.3) !important;
+}
+
+.nav-cta::after { display: none !important; }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.nav-hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--cyan);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ============================================================
+   PAGE HERO — PRIVACY
+   ============================================================ */
+.page-hero {
+  position: relative;
+  padding: 160px 0 80px;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero-label {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 16px;
+}
+
+.page-hero h1 {
+  font-family: var(--font-title);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.page-hero-meta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.page-hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ============================================================
+   PRIVACY CONTENT LAYOUT
+   ============================================================ */
+.privacy-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  padding: 0 0 100px;
+  align-items: start;
+}
+
+/* Sticky table of contents */
+.privacy-toc {
+  position: sticky;
+  top: 100px;
+}
+
+.toc-card {
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  backdrop-filter: blur(10px);
+}
+
+.toc-title {
+  font-family: var(--font-title);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 20px;
+}
+
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toc-list a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.toc-list a::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: var(--cyan);
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+.toc-list a:hover {
+  color: var(--white);
+  background: rgba(0, 180, 216, 0.08);
+}
+
+.toc-list a:hover::before {
+  opacity: 1;
+}
+
+.toc-list a.active {
+  color: var(--cyan);
+  background: rgba(0, 180, 216, 0.1);
+}
+
+.toc-list a.active::before {
+  opacity: 1;
+  background: var(--cyan);
+}
+
+/* Privacy content sections */
+.privacy-content {
+  min-width: 0;
+}
+
+.privacy-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 100px;
+}
+
+.section-number {
+  font-family: var(--font-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+.privacy-section h2 {
+  font-family: var(--font-title);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+}
+
+.privacy-section p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: rgba(148, 163, 184, 0.9);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.privacy-section p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-section strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.privacy-section a {
+  color: var(--cyan);
+  transition: color 0.3s ease;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 180, 216, 0.3);
+  text-underline-offset: 3px;
+}
+
+.privacy-section a:hover {
+  color: var(--lcyan);
+  text-decoration-color: var(--lcyan);
+}
+
+/* Data cards */
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.data-card {
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: var(--transition);
+}
+
+.data-card:hover {
+  border-color: rgba(0, 180, 216, 0.3);
+  transform: translateY(-2px);
+}
+
+.data-card-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 180, 216, 0.1);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: var(--cyan);
+}
+
+.data-card h4 {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.data-card p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Legal basis badges */
+.basis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.basis-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+}
+
+.basis-badge {
+  font-family: var(--font-title);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.basis-badge.consent {
+  background: rgba(0, 180, 216, 0.15);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 180, 216, 0.25);
+}
+
+.basis-badge.contract {
+  background: rgba(27, 168, 166, 0.15);
+  color: var(--teal);
+  border: 1px solid rgba(27, 168, 166, 0.25);
+}
+
+.basis-badge.interest {
+  background: rgba(201, 168, 76, 0.15);
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+.basis-item p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* Recipient table */
+.recipient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.recipient-table th {
+  font-family: var(--font-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.2);
+}
+
+.recipient-table td {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--gray);
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.06);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.recipient-table tr:hover td {
+  background: rgba(0, 180, 216, 0.04);
+}
+
+.recipient-table td:first-child {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.recipient-table td .tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  margin-top: 4px;
+}
+
+/* Rights cards */
+.rights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.right-card {
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.right-card:hover {
+  border-color: rgba(27, 168, 166, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(27, 168, 166, 0.1);
+}
+
+.right-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(27, 168, 166, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  color: var(--teal);
+}
+
+.right-card h4 {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.right-card p {
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Duration info box */
+.info-box {
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-box::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--cyan), var(--teal));
+}
+
+.info-box h4 {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.info-box p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.info-box strong {
+  color: var(--cyan);
+}
+
+/* Cookie section */
+.cookie-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.cookie-card {
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.cookie-card h4 {
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cookie-card.functional h4 { color: var(--teal); }
+.cookie-card.analytics h4 { color: var(--gold); }
+
+.cookie-card p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Contact DPO box */
+.dpo-box {
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.08) 0%, rgba(27, 168, 166, 0.06) 100%);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.dpo-box h3 {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.dpo-box p {
+  font-size: 15px;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+
+.dpo-email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--cyan), var(--teal));
+  color: var(--navy);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: 50px;
+  box-shadow: var(--glow-cyan);
+  transition: var(--transition);
+}
+
+.dpo-email-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 180, 216, 0.7), 0 0 80px rgba(0, 180, 216, 0.3);
+  color: var(--navy);
+}
+
+/* Divider line */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 180, 216, 0.2), transparent);
+  margin: 0 0 48px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+#footer {
+  padding: 60px 0 36px;
+  border-top: 1px solid rgba(0, 180, 216, 0.1);
+  position: relative;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+
+.footer-brand-logo {
+  font-family: var(--font-title);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0, 180, 216, 0.4);
+  margin-bottom: 12px;
+}
+
+.footer-brand-logo sup {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.footer-brand-tagline {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+
+.footer-entity {
+  font-family: var(--font-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.footer-contact {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(148, 163, 184, 0.7);
+  line-height: 1.7;
+}
+
+.footer-contact a:hover {
+  color: var(--cyan);
+}
+
+.footer-col-title {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--gray);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links a::before {
+  content: '';
+  width: 6px;
+  height: 1px;
+  background: var(--cyan);
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--cyan);
+}
+
+.footer-links a:hover::before {
+  width: 12px;
+  opacity: 1;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  border-color: rgba(0, 180, 216, 0.6);
+  color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(148, 163, 184, 0.08);
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copyright {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(148, 163, 184, 0.5);
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal-links a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(148, 163, 184, 0.5);
+  transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover {
+  color: var(--gray);
+}
+
+/* ============================================================
+   RESPONSIVE — 1200px
+   ============================================================ */
+@media (max-width: 1200px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 1024px
+   ============================================================ */
+@media (max-width: 1024px) {
+  .privacy-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-toc {
+    position: static;
+  }
+
+  .toc-card {
+    padding: 20px;
+  }
+
+  .toc-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .toc-list a {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 768px
+   ============================================================ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .page-hero {
+    padding: 130px 0 60px;
+  }
+
+  .cookie-row {
+    grid-template-columns: 1fr;
+  }
+
+  .rights-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .data-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-legal-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .dpo-box {
+    padding: 24px;
+  }
+
+  .recipient-table {
+    font-size: 13px;
+  }
+
+  .recipient-table th,
+  .recipient-table td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero h1 {
+    font-size: 32px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV BAR
+     ============================================================ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">ORIM<sup>&#8482;</sup></a>
+      <ul class="nav-links">
+        <li><a href="index.html#programme">Programme</a></li>
+        <li><a href="https://orimnutrition.org" target="_blank" rel="noopener">Science</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="mailto:info@cfmanagement.ch">Contact</a></li>
+        <li><a href="index.html#score" class="nav-cta">Mon Score ORIM</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger" aria-label="Menu" role="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="reveal">
+      <span class="page-hero-label">Légal &amp; Conformité</span>
+      <h1><span class="gradient-text">Politique de</span><br>Confidentialité</h1>
+      <div class="page-hero-meta">
+        <span><span class="meta-dot"></span>CF Management &mdash; Genève, Suisse</span>
+        <span><span class="meta-dot"></span>Conforme LPD suisse + RGPD UE</span>
+        <span><span class="meta-dot"></span>Mise à jour : 29 mars 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main>
+  <div class="container">
+    <div class="privacy-layout">
+
+      <!-- ======================================================
+           TABLE DES MATIERES
+           ====================================================== -->
+      <aside class="privacy-toc reveal">
+        <div class="toc-card">
+          <p class="toc-title">Sommaire</p>
+          <nav class="toc-list" aria-label="Table des matières">
+            <a href="#introduction">Introduction</a>
+            <a href="#donnees-collectees">Données collectées</a>
+            <a href="#finalites">Finalités du traitement</a>
+            <a href="#base-legale">Base légale</a>
+            <a href="#destinataires">Destinataires</a>
+            <a href="#transferts">Transferts hors Suisse</a>
+            <a href="#conservation">Durée de conservation</a>
+            <a href="#droits">Vos droits</a>
+            <a href="#cookies">Cookies</a>
+            <a href="#securite">Sécurité</a>
+            <a href="#modifications">Modifications</a>
+            <a href="#contact">Contact DPO</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- ======================================================
+           CONTENU
+           ====================================================== -->
+      <div class="privacy-content">
+
+        <!-- 1. INTRODUCTION -->
+        <section class="privacy-section reveal" id="introduction">
+          <p class="section-number">Article 01</p>
+          <h2>Introduction</h2>
+          <p>
+            La présente politique de confidentialité décrit la manière dont <strong>CF Management</strong>,
+            dont le siège est établi à Genève, Suisse,
+            traite les données personnelles collectées dans le cadre de l'utilisation du site <strong>orimnutrition.com</strong>,
+            de l'application <strong>myORIM</strong>, et des services associés au programme ORIM&#8482;.
+          </p>
+          <p>
+            CF Management agit en qualité de <strong>responsable du traitement</strong> au sens de la loi fédérale suisse sur
+            la protection des données (LPD) et, le cas échéant, du règlement général sur la protection des données de l'Union
+            européenne (RGPD, règlement 2016/679).
+          </p>
+          <p>
+            Nous accordons la plus haute importance à la protection de votre vie privée. Cette politique vous informe de
+            manière transparente sur les données que nous collectons, les raisons pour lesquelles nous les traitons, la
+            durée de leur conservation et les droits dont vous disposez à leur égard.
+          </p>
+          <p>
+            En utilisant nos services, vous reconnaissez avoir pris connaissance de la présente politique et acceptez les
+            pratiques qui y sont décrites. Pour toute question, notre équipe reste disponible à l'adresse
+            <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a>.
+          </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 2. DONNEES COLLECTEES -->
+        <section class="privacy-section reveal" id="donnees-collectees">
+          <p class="section-number">Article 02</p>
+          <h2>Données collectées</h2>
+          <p>
+            Nous collectons uniquement les données strictement nécessaires à la fourniture de nos services. Ces données
+            sont regroupées en trois catégories principales.
+          </p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <div class="data-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <h4>Données d'identité</h4>
+              <p>Nom, prénom, adresse e-mail, langue de préférence, et informations de compte utilisateur.</p>
+            </div>
+            <div class="data-card">
+              <div class="data-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+              </div>
+              <h4>Données de santé</h4>
+              <p>Via myORIM uniquement, avec <strong>consentement explicite</strong> préalable : scores immuno-métaboliques, bilans nutritionnels, objectifs de santé.</p>
+            </div>
+            <div class="data-card">
+              <div class="data-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </div>
+              <h4>Données techniques</h4>
+              <p>Adresse IP, type de navigateur, système d'exploitation, pages consultées, durée de session (données anonymisées).</p>
+            </div>
+            <div class="data-card">
+              <div class="data-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+                </svg>
+              </div>
+              <h4>Données transactionnelles</h4>
+              <p>Informations de commande, historique d'achats, données de facturation traitées via Stripe (sans conservation des numéros de carte).</p>
+            </div>
+          </div>
+
+          <p>
+            Les données de santé constituent une catégorie particulière de données sensibles. Leur collecte via myORIM
+            est conditionnée à l'obtention de votre <strong>consentement explicite, libre, éclairé et spécifique</strong>,
+            conformément à l'article 6 LPD et à l'article 9 RGPD. Vous pouvez retirer ce consentement à tout moment sans
+            que cela n'affecte la licéité du traitement antérieur.
+          </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 3. FINALITES -->
+        <section class="privacy-section reveal" id="finalites">
+          <p class="section-number">Article 03</p>
+          <h2>Finalités du traitement</h2>
+          <p>
+            Vos données personnelles sont traitées exclusivement aux fins suivantes, dans le respect du principe de
+            limitation des finalités.
+          </p>
+
+          <div class="basis-list">
+            <div class="basis-item">
+              <span class="basis-badge consent">Compte</span>
+              <p><strong>Gestion de votre compte utilisateur</strong> : création, authentification, modification et suppression de votre espace personnel sur orimnutrition.com et myORIM.</p>
+            </div>
+            <div class="basis-item">
+              <span class="basis-badge contract">Programme</span>
+              <p><strong>Exécution du programme ORIM</strong> : personnalisation de votre parcours immuno-métabolique, génération de votre Score ORIM, suivi nutritionnel et recommandations adaptées.</p>
+            </div>
+            <div class="basis-item">
+              <span class="basis-badge consent">Newsletter</span>
+              <p><strong>Communications marketing via Brevo</strong> : envoi de la newsletter ORIM, informations sur les nouveaux produits et les actualités scientifiques. Uniquement avec votre consentement, désinscription possible à tout moment.</p>
+            </div>
+            <div class="basis-item">
+              <span class="basis-badge interest">Amélioration</span>
+              <p><strong>Amélioration de nos services</strong> : analyse des usages de manière agrégée et anonymisée pour optimiser l'expérience utilisateur, corriger les erreurs et développer de nouvelles fonctionnalités.</p>
+            </div>
+            <div class="basis-item">
+              <span class="basis-badge contract">Commerce</span>
+              <p><strong>Traitement des commandes et facturation</strong> : gestion des achats effectués sur notre boutique, émission des justificatifs fiscaux, gestion du service après-vente.</p>
+            </div>
+            <div class="basis-item">
+              <span class="basis-badge interest">Conformité</span>
+              <p><strong>Obligations légales et réglementaires</strong> : conservation des données requises par la loi suisse en matière comptable, fiscale et de santé publique.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 4. BASE LEGALE -->
+        <section class="privacy-section reveal" id="base-legale">
+          <p class="section-number">Article 04</p>
+          <h2>Base légale</h2>
+          <p>
+            Tout traitement de vos données personnelles repose sur une base légale identifiée conformément à la LPD
+            suisse (loi révisée en vigueur depuis le 1er septembre 2023) et au RGPD européen.
+          </p>
+
+          <div class="info-box">
+            <h4>Consentement explicite</h4>
+            <p>Pour les données de santé collectées via myORIM, ainsi que pour l'envoi de communications marketing par
+            e-mail. Vous pouvez retirer votre consentement à tout moment en nous contactant ou via les paramètres de
+            votre compte.</p>
+          </div>
+
+          <div class="info-box">
+            <h4>Exécution du contrat</h4>
+            <p>Pour toutes les données nécessaires à la fourniture des services auxquels vous avez souscrit : accès au
+            programme ORIM, traitement des commandes, accès à myORIM, téléchargement de l'eBook.</p>
+          </div>
+
+          <div class="info-box">
+            <h4>Intérêt légitime</h4>
+            <p>Pour l'analyse anonymisée de l'utilisation du site, la prévention des fraudes, la sécurité informatique et
+            l'amélioration de nos services. Cet intérêt légitime est mis en balance avec vos droits fondamentaux et ne
+            prévaut pas sur ces derniers.</p>
+          </div>
+
+          <div class="info-box">
+            <h4>Obligation légale</h4>
+            <p>Pour la conservation de certaines données comptables et fiscales conformément aux obligations légales
+            suisses (CO, LIFD), indépendamment de votre consentement.</p>
+          </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 5. DESTINATAIRES -->
+        <section class="privacy-section reveal" id="destinataires">
+          <p class="section-number">Article 05</p>
+          <h2>Destinataires</h2>
+          <p>
+            Vos données ne sont jamais vendues à des tiers. Elles peuvent être transmises aux sous-traitants techniques
+            suivants, tous sélectionnés pour leur conformité aux standards de protection des données les plus exigeants.
+          </p>
+
+          <table class="recipient-table">
+            <thead>
+              <tr>
+                <th>Prestataire</th>
+                <th>Rôle</th>
+                <th>Localisation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Supabase<br><span class="tag">Conforme RGPD</span></td>
+                <td>Base de données utilisateurs, authentification, stockage sécurisé des données myORIM</td>
+                <td>UE (régions AWS)</td>
+              </tr>
+              <tr>
+                <td>Brevo (ex-Sendinblue)<br><span class="tag">Conforme RGPD</span></td>
+                <td>Envoi et gestion des newsletters, e-mails transactionnels</td>
+                <td>France (UE)</td>
+              </tr>
+              <tr>
+                <td>Stripe<br><span class="tag">Conforme RGPD</span></td>
+                <td>Traitement sécurisé des paiements en ligne, conformément à la norme PCI-DSS</td>
+                <td>UE (Irlande)</td>
+              </tr>
+              <tr>
+                <td>Vercel<br><span class="tag">Conforme RGPD</span></td>
+                <td>Hébergement de l'application myORIM et des pages web</td>
+                <td>UE (régions disponibles)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            Chaque sous-traitant est lié par un accord de traitement des données (ATD) garantissant le respect des
+            obligations en matière de protection des données et limitant strictement l'utilisation des données aux
+            seules finalités convenues.
+          </p>
+          <p>
+            CF Management reste responsable du traitement et s'assure que ses sous-traitants offrent des garanties
+            suffisantes quant à la mise en oeuvre des mesures techniques et organisationnelles appropriées.
+          </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 6. TRANSFERTS HORS SUISSE -->
+        <section class="privacy-section reveal" id="transferts">
+          <p class="section-number">Article 06</p>
+          <h2>Transferts hors Suisse</h2>
+          <p>
+            Certains de nos prestataires techniques peuvent traiter vos données en dehors de la Suisse, notamment au
+            sein de l'Espace économique européen (EEE) ou aux États-Unis.
+          </p>
+          <p>
+            Concernant les transferts vers des pays membres de l'UE et de l'EEE, le Conseil fédéral suisse reconnaît le
+            niveau de protection adéquat offert par ces pays. Ces transferts s'effectuent donc sans mesures supplémentaires
+            requises.
+          </p>
+          <p>
+            Pour tout transfert vers des pays tiers (notamment les États-Unis dans le cadre des services cloud), nous
+            recourons aux <strong>clauses contractuelles types</strong> (CCT) adoptées par la Commission européenne et
+            reconnues par les autorités suisses, garantissant un niveau de protection équivalent à celui exigé par la
+            législation suisse et européenne.
+          </p>
+          <p>
+            Vous pouvez obtenir copie des garanties applicables aux transferts en nous contactant à
+            <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a>.
+          </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 7. DUREE DE CONSERVATION -->
+        <section class="privacy-section reveal" id="conservation">
+          <p class="section-number">Article 07</p>
+          <h2>Durée de conservation</h2>
+          <p>
+            Vos données sont conservées uniquement le temps nécessaire aux finalités pour lesquelles elles ont été
+            collectées, puis supprimées ou anonymisées de manière irréversible.
+          </p>
+
+          <div class="info-box">
+            <h4>Données de compte et données personnelles générales</h4>
+            <p><strong>Durée du compte actif + 3 ans</strong> après la clôture ou la suppression du compte, afin de répondre
+            aux éventuelles réclamations, litiges ou obligations légales résiduelles.</p>
+            <p>En cas d'inactivité prolongée (supérieure à 24 mois consécutifs), vous recevrez une notification préalable
+            avant toute suppression de vos données.</p>
+          </div>
+
+          <div class="info-box">
+            <h4>Données de santé (myORIM)</h4>
+            <p><strong>10 ans</strong> à compter de leur collecte, conformément aux obligations légales applicables aux
+            données de santé en droit suisse et aux recommandations des autorités sanitaires.</p>
+            <p>Passé ce délai, vos données de santé sont supprimées définitivement ou anonymisées à des fins de
+            recherche statistique agrégée, avec votre accord préalable.</p>
+          </div>
+
+          <div class="info-box">
+            <h4>Données transactionnelles et comptables</h4>
+            <p><strong>10 ans</strong> à compter de l'exercice concerné, conformément aux obligations comptables et
+            fiscales suisses (article 962 CO).</p>
+          </div>
+
+          <div class="info-box">
+            <h4>Cookies analytiques et données de navigation</h4>
+            <p><strong>13 mois maximum</strong> à compter du dépôt, conformément aux recommandations des autorités de
+            protection des données.</p>
+          </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 8. DROITS -->
+        <section class="privacy-section reveal" id="droits">
+          <p class="section-number">Article 08</p>
+          <h2>Vos droits</h2>
+          <p>
+            Conformément à la LPD suisse (révisée) et au RGPD européen, vous disposez des droits suivants concernant
+            vos données personnelles. Ces droits s'exercent sans frais, dans un délai de 30 jours suivant votre demande.
+          </p>
+
+          <div class="rights-grid">
+            <div class="right-card">
+              <div class="right-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+              </div>
+              <h4>Droit d'accès</h4>
+              <p>Obtenir une copie de l'ensemble de vos données personnelles que nous détenons.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+              </div>
+              <h4>Droit de rectification</h4>
+              <p>Corriger ou mettre à jour des données inexactes, obsolètes ou incomplètes.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m5 0V4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2"/>
+                </svg>
+              </div>
+              <h4>Droit à l'effacement</h4>
+              <p>Demander la suppression de vos données dans les cas prévus par la loi.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+              </div>
+              <h4>Droit à la portabilité</h4>
+              <p>Recevoir vos données dans un format structuré, lisible par machine, et les transmettre à un autre responsable.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                </svg>
+              </div>
+              <h4>Droit d'opposition</h4>
+              <p>Vous opposer au traitement de vos données à des fins de marketing direct ou fondé sur l'intérêt légitime.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <h4>Droit à la limitation</h4>
+              <p>Demander la suspension temporaire du traitement dans certaines circonstances définies par la loi.</p>
+            </div>
+          </div>
+
+          <p>
+            Pour exercer l'un de ces droits, adressez votre demande écrite accompagnée d'une copie de votre pièce
+            d'identité à <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a>. Nous répondrons dans un délai
+            maximum de 30 jours.
+          </p>
+          <p>
+            Si vous estimez que le traitement de vos données porte atteinte à vos droits, vous avez la possibilité
+            d'introduire une réclamation auprès du <strong>Préposé fédéral à la protection des données et à la
+            transparence (PFPDT)</strong> en Suisse (<a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">www.edoeb.admin.ch</a>),
+            ou auprès de l'autorité de contrôle compétente de votre État membre si vous résidez dans l'Union européenne.
+          </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 9. COOKIES -->
+        <section class="privacy-section reveal" id="cookies">
+          <p class="section-number">Article 09</p>
+          <h2>Cookies</h2>
+          <p>
+            Notre site utilise des cookies et technologies similaires (pixels, balises web). Un cookie est un petit
+            fichier texte déposé sur votre terminal lors de votre visite. Vous pouvez à tout moment configurer votre
+            navigateur pour refuser les cookies non essentiels.
+          </p>
+
+          <div class="cookie-row">
+            <div class="cookie-card functional">
+              <h4>Cookies fonctionnels</h4>
+              <p>
+                Strictement nécessaires au fonctionnement du site. Maintien de votre session authentifiée, conservation
+                de vos préférences de langue et de votre panier d'achat. Ces cookies ne requièrent pas votre
+                consentement et ne peuvent pas être désactivés sans altérer l'expérience de navigation.
+              </p>
+            </div>
+            <div class="cookie-card analytics">
+              <h4>Cookies analytiques</h4>
+              <p>
+                Déposés uniquement avec votre consentement explicite. Ils nous permettent de mesurer l'audience du site
+                de manière anonymisée, d'identifier les pages les plus visitées et d'améliorer notre contenu. Vous
+                pouvez retirer votre consentement à tout moment via le gestionnaire de cookies.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Nous n'utilisons pas de cookies de ciblage publicitaire ou de cookies de profilage à des fins commerciales
+            pour le compte de tiers. Lors de votre première visite, un bandeau de consentement vous permet de choisir
+            les cookies que vous autorisez.
+          </p>
+          <p>
+            Pour en savoir plus sur la gestion des cookies selon votre navigateur, consultez les guides officiels :
+            <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a>,
+            <a href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies" target="_blank" rel="noopener">Mozilla Firefox</a>,
+            <a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a>.
+          </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 10. SECURITE -->
+        <section class="privacy-section reveal" id="securite">
+          <p class="section-number">Article 10</p>
+          <h2>Sécurité</h2>
+          <p>
+            CF Management met en oeuvre des mesures techniques et organisationnelles appropriées pour protéger vos
+            données personnelles contre tout accès non autorisé, divulgation, altération, perte accidentelle ou destruction.
+          </p>
+
+          <div class="data-grid">
+            <div class="data-card">
+              <div class="data-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <h4>Chiffrement</h4>
+              <p>Toutes les communications transitent via des protocoles TLS 1.3. Les données sensibles sont chiffrées au repos (AES-256).</p>
+            </div>
+            <div class="data-card">
+              <div class="data-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h4>Contrôle d'accès</h4>
+              <p>Accès aux données strictement limité aux personnes autorisées, avec authentification forte et journalisation des accès.</p>
+            </div>
+            <div class="data-card">
+              <div class="data-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                </svg>
+              </div>
+              <h4>Sauvegardes</h4>
+              <p>Sauvegardes automatiques quotidiennes avec tests de restauration réguliers pour garantir la disponibilité des données.</p>
+            </div>
+          </div>
+
+          <p>
+            En cas de violation de données susceptible d'engendrer un risque pour vos droits et libertés, CF Management
+            s'engage à notifier le <strong>Préposé fédéral à la protection des données et à la transparence (PFPDT)</strong>
+            dans un délai de 72 heures conformément aux dispositions de la LPD révisée, et à vous en informer sans délai
+            indu si cette violation est susceptible de présenter un risque élevé.
+          </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 11. MODIFICATIONS -->
+        <section class="privacy-section reveal" id="modifications">
+          <p class="section-number">Article 11</p>
+          <h2>Modifications de la politique</h2>
+          <p>
+            CF Management se réserve le droit de modifier la présente politique de confidentialité à tout moment,
+            notamment pour l'adapter aux évolutions législatives et réglementaires, aux nouvelles pratiques de
+            traitement des données ou aux nouvelles fonctionnalités de nos services.
+          </p>
+          <p>
+            En cas de modification substantielle, vous serez informé par e-mail à l'adresse associée à votre compte
+            et/ou par une notification visible sur le site, au moins 30 jours avant l'entrée en vigueur des nouvelles
+            dispositions. La date de dernière mise à jour figurera toujours en haut de cette page.
+          </p>
+          <p>
+            L'utilisation continue de nos services après l'entrée en vigueur des modifications vaut acceptation de la
+            politique révisée. Si vous n'acceptez pas les nouvelles dispositions, vous pouvez supprimer votre compte
+            avant leur entrée en vigueur en contactant <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a>.
+          </p>
+          <p>
+            La version archivée de la politique précédente reste disponible sur demande pendant une durée de 2 ans.
+          </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 12. CONTACT DPO -->
+        <section class="privacy-section reveal" id="contact">
+          <p class="section-number">Article 12</p>
+          <h2>Contact et délégué à la protection des données</h2>
+          <p>
+            Pour toute question relative au traitement de vos données personnelles, à l'exercice de vos droits ou pour
+            toute réclamation, vous pouvez contacter notre responsable de la protection des données.
+          </p>
+
+          <div class="dpo-box">
+            <h3>Responsable Protection des Données</h3>
+            <p>CF Management &mdash; Genève, Suisse</p>
+            <a href="mailto:info@cfmanagement.ch" class="dpo-email-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+              info@cfmanagement.ch
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /privacy-content -->
+    </div><!-- /privacy-layout -->
+  </div><!-- /container -->
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div>
+        <div class="footer-brand-logo">ORIM<sup>&#8482;</sup></div>
+        <p class="footer-brand-tagline">ORIM existe en toi. R&#233;active ton code. Nutraceutiques de pr&#233;cision, formul&#233;s en Suisse, fond&#233;s sur la science du vivant.</p>
+        <div class="footer-entity">CF Management</div>
+        <div class="footer-contact">
+          Gen&#232;ve, Suisse<br>
+          <a href="mailto:info@cfmanagement.ch">info@cfmanagement.ch</a><br>
+          <a href="https://orimnutrition.com" target="_blank" rel="noopener">orimnutrition.com</a>
+        </div>
+        <div class="footer-social" style="margin-top:20px;">
+          <a href="https://instagram.com/orimnutrition" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://linkedin.com/company/orimnutrition" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://youtube.com/@orimnutrition" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Boutique -->
+      <div>
+        <h4 class="footer-col-title">Boutique</h4>
+        <ul class="footer-links">
+          <li><a href="boutique.html">Curcumin Bio-Active</a></li>
+          <li><a href="boutique.html">Omega-3 Algae</a></li>
+          <li><a href="boutique.html">Adaptogen Blend</a></li>
+          <li><a href="boutique.html">NAD+ Precursors</a></li>
+          <li><a href="boutique.html">Voir tout</a></li>
+        </ul>
+      </div>
+
+      <!-- Science -->
+      <div>
+        <h4 class="footer-col-title">Science</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.orimnutrition.org" target="_blank" rel="noopener">orimnutrition.org</a></li>
+          <li><a href="https://www.orimnutrition.org" target="_blank" rel="noopener">P&#244;le R&amp;D</a></li>
+          <li><a href="https://www.orimnutrition.org" target="_blank" rel="noopener">Publications</a></li>
+          <li><a href="https://www.orimnutrition.org" target="_blank" rel="noopener">Protocoles</a></li>
+          <li><a href="index.html#eveil">L'&#233;veil ORIM</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="footer-col-title">Informations</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:info@cfmanagement.ch">Contact</a></li>
+          <li><a href="cgv.html">Conditions g&#233;n&#233;rales</a></li>
+          <li><a href="privacy.html">Politique de confidentialit&#233;</a></li>
+          <li><a href="legal.html">Mentions l&#233;gales</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; 2026 CF Management, Gen&#232;ve, Suisse. ORIM&#8482; est une marque d&#233;pos&#233;e. Tous droits r&#233;serv&#233;s.
+      </p>
+      <div class="footer-legal-links">
+        <a href="cgv.html">CGV</a>
+        <a href="privacy.html">Confidentialit&#233;</a>
+        <a href="privacy.html">Cookies</a>
+        <a href="legal.html">Disclaimer m&#233;dical</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ----------------------------------------------------------
+   NAVBAR SCROLL
+   ---------------------------------------------------------- */
+(function() {
+  var navbar = document.getElementById('navbar');
+  /* On a legal page the navbar starts scrolled for legibility */
+  navbar.classList.add('scrolled');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+})();
+
+/* ----------------------------------------------------------
+   INTERSECTION OBSERVER — SCROLL REVEAL
+   ---------------------------------------------------------- */
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+/* ----------------------------------------------------------
+   TABLE OF CONTENTS — ACTIVE LINK HIGHLIGHT
+   ---------------------------------------------------------- */
+(function() {
+  var sections = document.querySelectorAll('.privacy-section');
+  var links    = document.querySelectorAll('.toc-list a');
+
+  if (!sections.length || !links.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.getAttribute('id');
+        links.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -75% 0px' });
+
+  sections.forEach(function(section) {
+    observer.observe(section);
+  });
+})();
+
+/* ----------------------------------------------------------
+   MOBILE MENU (hamburger toggle)
+   ---------------------------------------------------------- */
+(function() {
+  var btn = document.getElementById('hamburger');
+  var nav = document.querySelector('.nav-links');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function() {
+    var open = nav.style.display === 'flex';
+    if (open) {
+      nav.style.display = 'none';
+    } else {
+      nav.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(13,27,42,0.98);backdrop-filter:blur(20px);padding:32px 24px;gap:24px;border-bottom:1px solid rgba(0,180,216,0.15);z-index:9998;';
+    }
+  });
+
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        nav.style.display = 'none';
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

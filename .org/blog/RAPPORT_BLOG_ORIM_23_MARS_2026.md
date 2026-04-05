@@ -141,7 +141,7 @@ ORIM SA/05_COMMERCIAL_MARKETING/05.3_Marketing_Digital/
 ### Priorite 2 (cette semaine)
 - [ ] Associer les 83 images aux produits Shopify
 - [ ] Verifier catalogue Pinterest (validation 24-48h)
-- [ ] Revendiquer orimnutrition.com sur Pinterest
+- [ ] Revendiquer orimnutrition.org sur Pinterest
 - [ ] Configurer Google Search Console + GA4
 
 ### Priorite 3 (ce mois)
@@ -175,5 +175,5 @@ ORIM SA/05_COMMERCIAL_MARKETING/05.3_Marketing_Digital/
 ---
 
 *Rapport genere le 23 mars 2026*
-*ORIM Nutrition - orimnutrition.com*
+*ORIM Nutrition - orimnutrition.org*
 *CF Management, Geneve, Suisse*

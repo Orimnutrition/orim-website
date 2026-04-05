@@ -1,7 +1,7 @@
 ORIM BLOG ARTICLES - SPANISH (LATINOAMÉRICA) COLLECTION
 ========================================================
 
-Project: 4 SEO Blog Articles for orimnutrition.com (Latin American Market)
+Project: 4 SEO Blog Articles for orimnutrition.org (Latin American Market)
 Language: Spanish (Latin American)
 Format: HTML for Shopify integration
 Target: High-ranking long-form content (1800-2000 words per article)
@@ -15,9 +15,9 @@ ARTICLE COLLECTION
    Keyword: "zinc selenio inmunidad"
    Word Count: 1,952 words
    Products Featured:
-     - ORIM Zinc Bisglicinato (https://orimnutrition.com/products/orim-71-zinc-bisglycinate)
-     - Multivitaminas Complejas ORIM (https://orimnutrition.com/products/orim-24-multivitamines-complexe)
-   CTA: eBook "Du Carbone au Diamant" 50 CHF (https://orimnutrition.com/products/orim-du-carbone-au-diamant)
+     - ORIM Zinc Bisglicinato (https://orimnutrition.org/products/orim-71-zinc-bisglycinate)
+     - Multivitaminas Complejas ORIM (https://orimnutrition.org/products/orim-24-multivitamines-complexe)
+   CTA: eBook "Du Carbone au Diamant" 50 CHF (https://orimnutrition.org/products/orim-du-carbone-au-diamant)
    FAQ Count: 5 questions
    Disclaimer: Medical disclaimer included
    SEO Optimization: Meta tags, H2-H3 hierarchy, internal product links, structured content
@@ -27,8 +27,8 @@ ARTICLE COLLECTION
    Keyword: "curcumina antiinflamatorio"
    Word Count: 1,876 words
    Products Featured:
-     - ORIM Curcumina 95% (https://orimnutrition.com/products/orim-12-curcumine-95)
-     - ORIM Cúrcuma Piperina (https://orimnutrition.com/products/orim-33-curcuma-piperine)
+     - ORIM Curcumina 95% (https://orimnutrition.org/products/orim-12-curcumine-95)
+     - ORIM Cúrcuma Piperina (https://orimnutrition.org/products/orim-33-curcuma-piperine)
    CTA: eBook "Du Carbone au Diamant" 50 CHF
    FAQ Count: 5 questions
    Disclaimer: Medical disclaimer included
@@ -39,8 +39,8 @@ ARTICLE COLLECTION
    Keyword: "salud digestiva"
    Word Count: 1,924 words
    Products Featured:
-     - ORIM Vinagre de Sidra (https://orimnutrition.com/products/orim-14-vinaigre-de-cidre-gelules)
-     - ORIM Complejo Electrolitos (https://orimnutrition.com/products/orim-16-complexe-electrolytes)
+     - ORIM Vinagre de Sidra (https://orimnutrition.org/products/orim-14-vinaigre-de-cidre-gelules)
+     - ORIM Complejo Electrolitos (https://orimnutrition.org/products/orim-16-complexe-electrolytes)
    CTA: eBook "Du Carbone au Diamant" 50 CHF
    FAQ Count: 5 questions
    Disclaimer: Medical disclaimer included
@@ -51,9 +51,9 @@ ARTICLE COLLECTION
    Keyword: "nutracéuticos calidad europea"
    Word Count: 1,988 words
    Products Featured:
-     - Multivitaminas Complejas ORIM (https://orimnutrition.com/products/orim-24-multivitamines-complexe)
-     - Vitamina D3 4000 UI (https://orimnutrition.com/products/orim-20-vitamine-d3-4000-ui)
-     - Ashwagandha (https://orimnutrition.com/products/orim-10-ashwagandha)
+     - Multivitaminas Complejas ORIM (https://orimnutrition.org/products/orim-24-multivitamines-complexe)
+     - Vitamina D3 4000 UI (https://orimnutrition.org/products/orim-20-vitamine-d3-4000-ui)
+     - Ashwagandha (https://orimnutrition.org/products/orim-10-ashwagandha)
    CTA: eBook "Du Carbone au Diamant" 50 CHF
    FAQ Count: 5 questions
    Disclaimer: Medical disclaimer included
@@ -145,7 +145,7 @@ COMPLIANCE NOTES
 ✓ CONFIDENTIEL marking: Not added (public blog articles)
 ✓ ORIM branding: Association footer with non-profit messaging
 ✓ Domain: .org (Association ORIM, not commercial)
-✓ Footer: info@orimnutrition.com (correct for blog)
+✓ Footer: info@orimnutrition.org (correct for blog)
 ✓ Quality standards: Adheres to ORIM charte graphique (Teal #1BA8A6, Gold #E6A817, Dark #2D3436)
 ✓ Orthography: French/Spanish accents throughout (é, è, ç, ú, í, ó, etc.)
 ✓ No medical claims: Includes disclaimers on all articles

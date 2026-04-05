@@ -12,34 +12,34 @@ ARTICLES CREATED
    Keyword: nutrients for energy fatigue
    Word Count: 1,850 words
    Products Featured:
-   - ORIM CoQ10 (https://orimnutrition.com/products/orim-31-coenzyme-q10)
-   - ORIM Iron + Vitamin C (https://orimnutrition.com/products/orim-17-fer-vitamine-c)
-   - ORIM Spirulina (https://orimnutrition.com/products/orim-69-spiruline)
+   - ORIM CoQ10 (https://orimnutrition.org/products/orim-31-coenzyme-q10)
+   - ORIM Iron + Vitamin C (https://orimnutrition.org/products/orim-17-fer-vitamine-c)
+   - ORIM Spirulina (https://orimnutrition.org/products/orim-69-spiruline)
 
 2. ARTICLE_EN_10_Collagen.html
    Title: Collagen: Benefits for Skin, Joints and Overall Health
    Keyword: collagen benefits
    Word Count: 1,920 words
    Products Featured:
-   - ORIM Marine Collagen Peptides (https://orimnutrition.com/products/orim-23-peptides-de-collagene-marin)
-   - ORIM Collagen Plus (https://orimnutrition.com/products/orim-19-collagene-hydrolyse-plus)
-   - ORIM Collagen Powder (https://orimnutrition.com/products/orim-76-collagene-poudre)
+   - ORIM Marine Collagen Peptides (https://orimnutrition.org/products/orim-23-peptides-de-collagene-marin)
+   - ORIM Collagen Plus (https://orimnutrition.org/products/orim-19-collagene-hydrolyse-plus)
+   - ORIM Collagen Powder (https://orimnutrition.org/products/orim-76-collagene-poudre)
 
 3. ARTICLE_EN_11_Vitamin_D_Sun.html
    Title: Vitamin D: Supplementation or Sunlight, Which to Choose?
    Keyword: vitamin D sun supplement
    Word Count: 1,890 words
    Products Featured:
-   - ORIM Vitamin D3 4000 IU (https://orimnutrition.com/products/orim-20-vitamine-d3-4000-ui)
-   - ORIM Vitamin D3 Vegan (https://orimnutrition.com/products/orim-34-vitamine-d3-vegan)
+   - ORIM Vitamin D3 4000 IU (https://orimnutrition.org/products/orim-20-vitamine-d3-4000-ui)
+   - ORIM Vitamin D3 Vegan (https://orimnutrition.org/products/orim-34-vitamine-d3-vegan)
 
 4. ARTICLE_EN_12_Protein.html
    Title: Protein Powder Guide: How to Choose the Right One for Your Health
    Keyword: protein powder guide
    Word Count: 1,875 words
    Products Featured:
-   - ORIM Whey Protein Chocolate (https://orimnutrition.com/products/orim-47-proteine-whey-chocolat)
-   - ORIM Creatine (https://orimnutrition.com/products/orim-06-creatine)
+   - ORIM Whey Protein Chocolate (https://orimnutrition.org/products/orim-47-proteine-whey-chocolat)
+   - ORIM Creatine (https://orimnutrition.org/products/orim-06-creatine)
 
 ===============================================
 SPECIFICATIONS MET
@@ -52,7 +52,7 @@ SPECIFICATIONS MET
 ✓ SEO Meta Tags: Title, Description, Keywords
 ✓ Product Links: 2-3 ORIM products per article
 ✓ eBook CTA: All articles include "Du Carbone au Diamant" call-to-action
-✓ eBook Link: https://orimnutrition.com/products/orim-du-carbone-au-diamant
+✓ eBook Link: https://orimnutrition.org/products/orim-du-carbone-au-diamant
 ✓ eBook Price: 50 CHF
 ✓ Disclaimers: Standard medical disclaimer included in each article
 ✓ FAQ Sections: 5 frequently asked questions per article

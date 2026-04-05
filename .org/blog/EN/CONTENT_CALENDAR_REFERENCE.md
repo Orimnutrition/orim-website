@@ -2,7 +2,7 @@
 ## March 2026 Release
 
 ### Publishing Strategy
-- **Target Platform:** orimnutrition.com Blog
+- **Target Platform:** orimnutrition.org Blog
 - **Format:** HTML (Shopify-ready)
 - **Language:** English (International)
 - **Target Audience:** Global health-conscious consumers, 25-65 years old
@@ -224,7 +224,7 @@ Monitor these competitors' strategies:
 
 ## DISTRIBUTION CHECKLIST
 
-- [ ] Articles published to orimnutrition.com Blog
+- [ ] Articles published to orimnutrition.org Blog
 - [ ] Featured images added (1200x600px recommended)
 - [ ] Internal links established
 - [ ] Meta descriptions optimized

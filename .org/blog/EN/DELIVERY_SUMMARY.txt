@@ -82,7 +82,7 @@ COMPLIANCE:
 
 CALL-TO-ACTION:
 ✓ eBook CTA present in all 4 articles
-✓ eBook link correct: https://orimnutrition.com/products/orim-du-carbone-au-diamant
+✓ eBook link correct: https://orimnutrition.org/products/orim-du-carbone-au-diamant
 ✓ eBook price listed: 50 CHF
 ✓ CTA visually styled (background #f5f5f5)
 ✓ Benefit-driven CTA messaging
@@ -386,7 +386,7 @@ CONTACT & SUPPORT
 ================================================================================
 
 For questions regarding these articles:
-- Email: info@orimnutrition.com
+- Email: info@orimnutrition.org
 - Platform: Shopify Blog Editor
 - Analytics: Google Analytics 4
 
@@ -410,7 +410,7 @@ Overall Deliverable: ✓ APPROVED FOR PUBLICATION
 Status: READY FOR IMMEDIATE PUBLICATION
 
 All articles are production-ready and can be published immediately to
-orimnutrition.com blog without further modifications required.
+orimnutrition.org blog without further modifications required.
 
 ================================================================================
 END OF DELIVERY SUMMARY

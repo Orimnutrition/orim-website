@@ -112,26 +112,26 @@
 ## PRODUCT LINKS REFERENCE
 
 ### Energy Article (EN-09)
-1. ORIM CoQ10: https://orimnutrition.com/products/orim-31-coenzyme-q10
-2. ORIM Iron + Vitamin C: https://orimnutrition.com/products/orim-17-fer-vitamine-c
-3. ORIM Spirulina: https://orimnutrition.com/products/orim-69-spiruline
+1. ORIM CoQ10: https://orimnutrition.org/products/orim-31-coenzyme-q10
+2. ORIM Iron + Vitamin C: https://orimnutrition.org/products/orim-17-fer-vitamine-c
+3. ORIM Spirulina: https://orimnutrition.org/products/orim-69-spiruline
 
 ### Collagen Article (EN-10)
-1. ORIM Marine Collagen Peptides: https://orimnutrition.com/products/orim-23-peptides-de-collagene-marin
-2. ORIM Collagen Plus: https://orimnutrition.com/products/orim-19-collagene-hydrolyse-plus
-3. ORIM Collagen Powder: https://orimnutrition.com/products/orim-76-collagene-poudre
+1. ORIM Marine Collagen Peptides: https://orimnutrition.org/products/orim-23-peptides-de-collagene-marin
+2. ORIM Collagen Plus: https://orimnutrition.org/products/orim-19-collagene-hydrolyse-plus
+3. ORIM Collagen Powder: https://orimnutrition.org/products/orim-76-collagene-poudre
 
 ### Vitamin D Article (EN-11)
-1. ORIM Vitamin D3 4000 IU: https://orimnutrition.com/products/orim-20-vitamine-d3-4000-ui
-2. ORIM Vitamin D3 Vegan: https://orimnutrition.com/products/orim-34-vitamine-d3-vegan
+1. ORIM Vitamin D3 4000 IU: https://orimnutrition.org/products/orim-20-vitamine-d3-4000-ui
+2. ORIM Vitamin D3 Vegan: https://orimnutrition.org/products/orim-34-vitamine-d3-vegan
 
 ### Protein Article (EN-12)
-1. ORIM Whey Protein Chocolate: https://orimnutrition.com/products/orim-47-proteine-whey-chocolat
-2. ORIM Creatine: https://orimnutrition.com/products/orim-06-creatine
+1. ORIM Whey Protein Chocolate: https://orimnutrition.org/products/orim-47-proteine-whey-chocolat
+2. ORIM Creatine: https://orimnutrition.org/products/orim-06-creatine
 
 ### eBook CTA (All Articles)
 - **eBook:** Du Carbone au Diamant
-- **Link:** https://orimnutrition.com/products/orim-du-carbone-au-diamant
+- **Link:** https://orimnutrition.org/products/orim-du-carbone-au-diamant
 - **Price:** 50 CHF
 
 ---
@@ -364,7 +364,7 @@
 ## CONTACT & SUPPORT
 
 **For Content Questions:**
-- Email: info@orimnutrition.com
+- Email: info@orimnutrition.org
 - Platform: Shopify Blog Editor
 
 **For Analytics & Optimization:**

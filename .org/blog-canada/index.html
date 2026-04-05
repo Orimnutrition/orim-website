@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Canada | ORIM - Immunonutrition Pr&eacute;ventive</title>
+  <meta name="description" content="Blog Canada de l'Association ORIM. Articles scientifiques en fran&ccedil;ais sur l'immunonutrition, la nutrition pr&eacute;ventive et les ressources alimentaires canadiennes." />
+  <link rel="canonical" href="https://orimnutrition.com/blog-canada/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d1b2a; --cyan: #00b4d8; --lcyan: #90e0ef; --white: #f8fafc; --gray: #94a3b8; --teal: #1BA8A6; --gold-orim: #E6A817; --dark: #2D3436; --red: #e74c3c; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: .5rem 2rem; background: rgba(13,27,42,.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,180,216,.15); }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .nav-logo-img { height: 34px; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .nav-logo span { font-size: .5rem; letter-spacing: .15em; color: var(--gray); line-height: 1.3; }
+    .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+    .blog-hero { padding: 7rem 2rem 3rem; text-align: center; background: linear-gradient(180deg, rgba(13,27,42,1) 0%, rgba(26,74,122,.15) 50%, rgba(13,27,42,1) 100%); border-bottom: 1px solid rgba(0,180,216,.1); }
+    .blog-hero-badge { display: inline-block; background: rgba(231,76,60,.12); border: 1px solid rgba(231,76,60,.3); color: #e74c3c; font-size: .72rem; padding: .35rem 1rem; border-radius: 2rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .blog-hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; background: linear-gradient(135deg,#ffffff 0%,#e74c3c 50%,#c0392b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+    .blog-hero p { font-size: .92rem; color: var(--gray); max-width: 650px; margin: 0 auto; line-height: 1.7; }
+    .region-nav { display: flex; gap: .6rem; justify-content: center; padding: 2rem 2rem 1rem; flex-wrap: wrap; }
+    .region-btn { background: rgba(0,180,216,.08); border: 1px solid rgba(0,180,216,.2); color: var(--lcyan); font-size: .75rem; padding: .4rem 1.2rem; border-radius: 2rem; cursor: pointer; transition: all .2s; text-decoration: none; }
+    .region-btn:hover, .region-btn.active { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+    .articles-list { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+    .article-item { display: flex; gap: 1rem; padding: 1.2rem 1.5rem; margin-bottom: .8rem; background: rgba(26,74,122,.08); border: 1px solid rgba(0,180,216,.1); border-radius: .8rem; transition: border-color .3s, transform .2s; align-items: flex-start; }
+    .article-item:hover { border-color: rgba(231,76,60,.4); transform: translateX(4px); }
+    .article-num { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; color: rgba(231,76,60,.4); min-width: 2.5rem; text-align: center; flex-shrink: 0; }
+    .article-info h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: .3rem; }
+    .article-info h3 a { color: var(--white); text-decoration: none; transition: color .2s; }
+    .article-info h3 a:hover { color: #e74c3c; }
+    .article-info p { font-size: .78rem; color: var(--gray); line-height: 1.5; }
+    footer { text-align: center; padding: 3rem 2rem; margin-top: 4rem; border-top: 1px solid rgba(0,180,216,.1); background: rgba(13,27,42,.5); }
+    .footer-logo img { height: 30px; margin-bottom: 1rem; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .footer-bottom { font-size: .68rem; color: rgba(148,163,184,.4); }
+    @media(max-width:768px) { .nav-links { display: none; } .articles-list { padding: 0 1rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../orim-logo.png" alt="ORIM" class="nav-logo-img" />
+      <span>OPTIMISATION R&Eacute;SOLUTIVE<br>IMMUNO-M&Eacute;TABOLIQUE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../blog/">Blog FR</a></li>
+      <li><a href="../blog-afrique/">Afrique</a></li>
+      <li><a href="../blog-brasil/">Brasil</a></li>
+      <li><a href="../blog-europe/">Europe</a></li>
+      <li><a href="../blog-asia/">Asie</a></li>
+      <li><a href="../blog-canada/" class="active">Canada</a></li>
+      <li><a href="../newsletters/">Newsletters</a></li>
+    </ul>
+  </nav>
+
+  <section class="blog-hero">
+    <div class="blog-hero-badge">Blog Canada</div>
+    <h1>Immunonutrition Canada</h1>
+    <p>30 articles scientifiques en fran&ccedil;ais d&eacute;di&eacute;s &agrave; la nutrition pr&eacute;ventive, aux ressources alimentaires canadiennes et &agrave; la sant&eacute; immuno-m&eacute;tabolique. Recherche, traditions autochtones et innovations.</p>
+  </section>
+
+  <div class="region-nav">
+    <a href="../blog/" class="region-btn">Blog FR</a>
+    <a href="../blog-afrique/" class="region-btn">Afrique</a>
+    <a href="../blog-brasil/" class="region-btn">Brasil</a>
+    <a href="../blog-europe/" class="region-btn">Europe</a>
+    <a href="../blog-asia/" class="region-btn">Asie-Pacifique</a>
+    <a href="../blog-canada/" class="region-btn active">Canada</a>
+  </div>
+
+  <div class="articles-list">
+    <div class="article-item"><div class="article-num">01</div><div class="article-info"><h3><a href="sirop-erable-polyphenols-quebecois.html">Sirop d'&eacute;rable : polyphen&ocirc;les qu&eacute;b&eacute;cois</a></h3><p>Qu&eacute;brecol et autres compos&eacute;s ph&eacute;noliques uniques du sirop d'&eacute;rable canadien.</p></div></div>
+    <div class="article-item"><div class="article-num">02</div><div class="article-info"><h3><a href="saumon-pacifique-omega3-colombie-britannique.html">Saumon du Pacifique : om&eacute;ga-3 de Colombie-Britannique</a></h3><p>EPA et DHA du saumon sauvage canadien et b&eacute;n&eacute;fices cardiovasculaires.</p></div></div>
+    <div class="article-item"><div class="article-num">03</div><div class="article-info"><h3><a href="bleuets-sauvages-antioxydants-quebec.html">Bleuets sauvages : antioxydants du Qu&eacute;bec</a></h3><p>Anthocyanines des bleuets sauvages du Lac-Saint-Jean et neuroprotection.</p></div></div>
+    <div class="article-item"><div class="article-num">04</div><div class="article-info"><h3><a href="lin-prairies-canadiennes-omega3.html">Lin des Prairies : om&eacute;ga-3 v&eacute;g&eacute;taux</a></h3><p>Le Canada, premier producteur mondial de lin, et l'acide alpha-linol&eacute;nique.</p></div></div>
+    <div class="article-item"><div class="article-num">05</div><div class="article-info"><h3><a href="canneberge-cranberry-infections-urinaires.html">Canneberge : pr&eacute;vention des infections urinaires</a></h3><p>Proanthocyanidines de la canneberge canadienne et adh&eacute;sion bact&eacute;rienne.</p></div></div>
+    <div class="article-item"><div class="article-num">06</div><div class="article-info"><h3><a href="vitamine-d-hiver-canadien.html">Vitamine D et l'hiver canadien</a></h3><p>Carence en vitamine D au Canada et strat&eacute;gies de suppl&eacute;mentation hivernale.</p></div></div>
+    <div class="article-item"><div class="article-num">07</div><div class="article-info"><h3><a href="champignons-chaga-boreal.html">Chaga bor&eacute;al : champignon m&eacute;dicinal</a></h3><p>Inonotus obliquus des for&ecirc;ts bor&eacute;ales et ses polysaccharides immunostimulants.</p></div></div>
+    <div class="article-item"><div class="article-num">08</div><div class="article-info"><h3><a href="algues-maritimes-atlantique.html">Algues des Maritimes : iode et min&eacute;raux</a></h3><p>R&eacute;colte durable d'algues en Atlantique canadien et profil nutritionnel.</p></div></div>
+    <div class="article-item"><div class="article-num">09</div><div class="article-info"><h3><a href="avoine-prairies-beta-glucane.html">Avoine des Prairies : b&eacute;ta-glucane et cholest&eacute;rol</a></h3><p>L'avoine canadienne, source de b&eacute;ta-glucane pour la r&eacute;duction du cholest&eacute;rol LDL.</p></div></div>
+    <div class="article-item"><div class="article-num">10</div><div class="article-info"><h3><a href="miel-manuka-canadien-antibacterien.html">Miel canadien : propri&eacute;t&eacute;s antibact&eacute;riennes</a></h3><p>Diversit&eacute; des miels canadiens et activit&eacute; antimicrobienne naturelle.</p></div></div>
+    <div class="article-item"><div class="article-num">11</div><div class="article-info"><h3><a href="lentilles-saskatchewan-proteines.html">Lentilles de Saskatchewan : prot&eacute;ines v&eacute;g&eacute;tales</a></h3><p>Le Canada, premier exportateur mondial de lentilles, et leur valeur nutritionnelle.</p></div></div>
+    <div class="article-item"><div class="article-num">12</div><div class="article-info"><h3><a href="alimentation-autochtone-traditions.html">Alimentation autochtone : traditions nutritionnelles</a></h3><p>Savoirs alimentaires des Premi&egrave;res Nations et biodiversit&eacute; nutritionnelle.</p></div></div>
+    <div class="article-item"><div class="article-num">13</div><div class="article-info"><h3><a href="canola-huile-omega-prairies.html">Huile de canola : om&eacute;ga des Prairies</a></h3><p>Profil lipidique de l'huile de canola canadienne et sant&eacute; cardiovasculaire.</p></div></div>
+    <div class="article-item"><div class="article-num">14</div><div class="article-info"><h3><a href="gibier-sauvage-viande-maigre.html">Gibier sauvage : viande maigre et fer h&eacute;minique</a></h3><p>Profil nutritionnel du gibier canadien (orignal, caribou, cerf) et fer biodisponible.</p></div></div>
+    <div class="article-item"><div class="article-num">15</div><div class="article-info"><h3><a href="sureau-sambucus-immunite-quebec.html">Sureau (Sambucus) : immunit&eacute; au Qu&eacute;bec</a></h3><p>Culture du sureau au Qu&eacute;bec et propri&eacute;t&eacute;s antivirales des anthocyanines.</p></div></div>
+    <div class="article-item"><div class="article-num">16</div><div class="article-info"><h3><a href="riz-sauvage-premieres-nations.html">Riz sauvage : c&eacute;r&eacute;ale des Premi&egrave;res Nations</a></h3><p>Le riz sauvage (Zizania), aliment sacr&eacute; autochtone riche en prot&eacute;ines et fibres.</p></div></div>
+    <div class="article-item"><div class="article-num">17</div><div class="article-info"><h3><a href="pois-chiches-legumineuses-canada.html">Pois chiches et l&eacute;gumineuses canadiennes</a></h3><p>Le Canada dans la production mondiale de l&eacute;gumineuses et leurs b&eacute;n&eacute;fices.</p></div></div>
+    <div class="article-item"><div class="article-num">18</div><div class="article-info"><h3><a href="graines-chanvre-canada-omega.html">Graines de chanvre canadien : om&eacute;ga &eacute;quilibr&eacute;s</a></h3><p>Ratio id&eacute;al om&eacute;ga-6/om&eacute;ga-3 des graines de chanvre cultiv&eacute;es au Canada.</p></div></div>
+    <div class="article-item"><div class="article-num">19</div><div class="article-info"><h3><a href="pommes-verger-quebec-quercetine.html">Pommes du Qu&eacute;bec : querc&eacute;tine et fibres</a></h3><p>Vari&eacute;t&eacute;s de pommes qu&eacute;b&eacute;coises et leur contenu en polyphen&ocirc;les.</p></div></div>
+    <div class="article-item"><div class="article-num">20</div><div class="article-info"><h3><a href="fromages-artisanaux-quebec-probiotiques.html">Fromages artisanaux du Qu&eacute;bec : probiotiques</a></h3><p>Micro-organismes b&eacute;n&eacute;fiques dans les fromages au lait cru qu&eacute;b&eacute;cois.</p></div></div>
+    <div class="article-item"><div class="article-num">21</div><div class="article-info"><h3><a href="spiruline-culture-canada.html">Spiruline cultiv&eacute;e au Canada</a></h3><p>Production canadienne de spiruline en milieu contr&ocirc;l&eacute; et valeur nutritionnelle.</p></div></div>
+    <div class="article-item"><div class="article-num">22</div><div class="article-info"><h3><a href="astaxanthine-saumon-colombie-britannique.html">Astaxanthine du saumon de Colombie-Britannique</a></h3><p>Le caro&eacute;no&iuml;de le plus puissant et sa pr&eacute;sence dans le saumon sauvage canadien.</p></div></div>
+    <div class="article-item"><div class="article-num">23</div><div class="article-info"><h3><a href="camerise-honeberry-antioxydants.html">Camerise (honeberry) : antioxydants bor&eacute;aux</a></h3><p>Lonicera caerulea, petit fruit bor&eacute;al canadien riche en anthocyanines.</p></div></div>
+    <div class="article-item"><div class="article-num">24</div><div class="article-info"><h3><a href="guide-alimentaire-canadien-immunite.html">Guide alimentaire canadien et immunit&eacute;</a></h3><p>Comment appliquer les recommandations du Guide alimentaire canadien 2019 pour l'immunit&eacute;.</p></div></div>
+    <div class="article-item"><div class="article-num">25</div><div class="article-info"><h3><a href="seigle-cereale-nordique-fibres.html">Seigle : c&eacute;r&eacute;ale nordique riche en fibres</a></h3><p>Le seigle canadien et son contenu exceptionnel en fibres solubles et insolubles.</p></div></div>
+    <div class="article-item"><div class="article-num">26</div><div class="article-info"><h3><a href="epinette-bourgeons-vitamine-c-boreal.html">&Eacute;pinette : bourgeons et vitamine C bor&eacute;ale</a></h3><p>Usage traditionnel des bourgeons d'&eacute;pinette par les peuples autochtones.</p></div></div>
+    <div class="article-item"><div class="article-num">27</div><div class="article-info"><h3><a href="sarrasin-quebec-rutine-flavonoide.html">Sarrasin du Qu&eacute;bec : rutine et flavono&iuml;des</a></h3><p>Le sarrasin qu&eacute;b&eacute;cois, pseudo-c&eacute;r&eacute;ale sans gluten riche en rutine.</p></div></div>
+    <div class="article-item"><div class="article-num">28</div><div class="article-info"><h3><a href="ultraprocesses-alimentation-canadienne.html">Aliments ultraprocesses dans l'alimentation canadienne</a></h3><p>Impact des aliments ultraprocesses sur la sant&eacute; m&eacute;tabolique des Canadiens.</p></div></div>
+    <div class="article-item"><div class="article-num">29</div><div class="article-info"><h3><a href="sante-intestinale-hiver-canadien.html">Sant&eacute; intestinale durant l'hiver canadien</a></h3><p>Strat&eacute;gies nutritionnelles pour maintenir un microbiote sain en climat froid.</p></div></div>
+    <div class="article-item"><div class="article-num">30</div><div class="article-info"><h3><a href="recherche-immunonutrition-universites-canada.html">Recherche en immunonutrition dans les universit&eacute;s canadiennes</a></h3><p>Panorama de la recherche canadienne en nutrition pr&eacute;ventive et immunonutrition.</p></div></div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="../orim-logo.png" alt="ORIM" /></div>
+    <div class="footer-bottom">&copy; 2026 Association ORIM Gen&egrave;ve &middot; ORIM&#8482; est une marque d&eacute;pos&eacute;e &middot; chevalley@orimnutrition.com</div>
+  </footer>
+
+<div style="background:linear-gradient(135deg,#1BA8A6,#E6A817);padding:40px;border-radius:12px;text-align:center;margin:40px 20px;">
+  <h3 style="color:#fff;font-size:24px;margin-bottom:10px;">Your body is carbon. This book turns it into diamond.</h3>
+  <p style="color:#fff;opacity:0.9;">ORIM eBook "From Carbon to Diamond" - Complete preventive immunonutrition program</p>
+  <a href="https://www.paypal.com/ncp/payment/ZLRKERX2FK33W" target="_blank" style="display:inline-block;padding:15px 40px;background:#fff;color:#2D3436;font-weight:bold;text-decoration:none;border-radius:8px;margin-top:15px;font-size:16px;">Get the eBook - 50 CHF</a>
+  <p style="color:#fff;opacity:0.7;font-size:12px;margin-top:10px;">chevalley@orimnutrition.com | orimnutrition.com</p>
+</div>
+</body>
+</html>

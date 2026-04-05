@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Afrique | ORIM - Immunonutrition Pr&eacute;ventive</title>
+  <meta name="description" content="Blog Afrique de l'Association ORIM. Articles scientifiques en fran&ccedil;ais sur l'immunonutrition, la nutrition pr&eacute;ventive et les ressources alimentaires africaines." />
+  <link rel="canonical" href="https://orimnutrition.com/blog-afrique/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d1b2a; --cyan: #00b4d8; --lcyan: #90e0ef; --white: #f8fafc; --gray: #94a3b8; --teal: #1BA8A6; --gold-orim: #E6A817; --dark: #2D3436; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: .5rem 2rem; background: rgba(13,27,42,.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,180,216,.15); }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .nav-logo-img { height: 34px; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .nav-logo span { font-size: .5rem; letter-spacing: .15em; color: var(--gray); line-height: 1.3; }
+    .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+    .blog-hero { padding: 7rem 2rem 3rem; text-align: center; background: linear-gradient(180deg, rgba(13,27,42,1) 0%, rgba(26,74,122,.15) 50%, rgba(13,27,42,1) 100%); border-bottom: 1px solid rgba(0,180,216,.1); }
+    .blog-hero-badge { display: inline-block; background: rgba(230,168,23,.12); border: 1px solid rgba(230,168,23,.3); color: var(--gold-orim); font-size: .72rem; padding: .35rem 1rem; border-radius: 2rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .blog-hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; background: linear-gradient(135deg,#ffffff 0%,var(--gold-orim) 50%,#c9a84c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+    .blog-hero p { font-size: .92rem; color: var(--gray); max-width: 650px; margin: 0 auto; line-height: 1.7; }
+    .region-nav { display: flex; gap: .6rem; justify-content: center; padding: 2rem 2rem 1rem; flex-wrap: wrap; }
+    .region-btn { background: rgba(0,180,216,.08); border: 1px solid rgba(0,180,216,.2); color: var(--lcyan); font-size: .75rem; padding: .4rem 1.2rem; border-radius: 2rem; cursor: pointer; transition: all .2s; text-decoration: none; }
+    .region-btn:hover, .region-btn.active { background: var(--gold-orim); color: #fff; border-color: var(--gold-orim); }
+    .articles-list { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+    .article-item { display: flex; gap: 1rem; padding: 1.2rem 1.5rem; margin-bottom: .8rem; background: rgba(26,74,122,.08); border: 1px solid rgba(0,180,216,.1); border-radius: .8rem; transition: border-color .3s, transform .2s; align-items: flex-start; }
+    .article-item:hover { border-color: rgba(230,168,23,.4); transform: translateX(4px); }
+    .article-num { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; color: rgba(230,168,23,.4); min-width: 2.5rem; text-align: center; flex-shrink: 0; }
+    .article-info h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: .3rem; }
+    .article-info h3 a { color: var(--white); text-decoration: none; transition: color .2s; }
+    .article-info h3 a:hover { color: var(--gold-orim); }
+    .article-info p { font-size: .78rem; color: var(--gray); line-height: 1.5; }
+    footer { text-align: center; padding: 3rem 2rem; margin-top: 4rem; border-top: 1px solid rgba(0,180,216,.1); background: rgba(13,27,42,.5); }
+    .footer-logo img { height: 30px; margin-bottom: 1rem; filter: drop-shadow(0 0 8px rgba(0,180,216,.3)); }
+    .footer-bottom { font-size: .68rem; color: rgba(148,163,184,.4); }
+    @media(max-width:768px) { .nav-links { display: none; } .articles-list { padding: 0 1rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../orim-logo.png" alt="ORIM" class="nav-logo-img" />
+      <span>OPTIMISATION R&Eacute;SOLUTIVE<br>IMMUNO-M&Eacute;TABOLIQUE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../blog/">Blog FR</a></li>
+      <li><a href="../blog-afrique/" class="active">Afrique</a></li>
+      <li><a href="../blog-brasil/">Brasil</a></li>
+      <li><a href="../blog-europe/">Europe</a></li>
+      <li><a href="../blog-asia/">Asie</a></li>
+      <li><a href="../blog-canada/">Canada</a></li>
+      <li><a href="../newsletters/">Newsletters</a></li>
+    </ul>
+  </nav>
+
+  <section class="blog-hero">
+    <div class="blog-hero-badge">Blog Afrique</div>
+    <h1>Immunonutrition Afrique</h1>
+    <p>50 articles scientifiques en fran&ccedil;ais d&eacute;di&eacute;s &agrave; la nutrition pr&eacute;ventive et aux ressources alimentaires du continent africain. Recherche, traditions culinaires et sant&eacute; immuno-m&eacute;tabolique.</p>
+  </section>
+
+  <div class="region-nav">
+    <a href="../blog/" class="region-btn">Blog FR</a>
+    <a href="../blog-afrique/" class="region-btn active">Afrique</a>
+    <a href="../blog-brasil/" class="region-btn">Brasil</a>
+    <a href="../blog-europe/" class="region-btn">Europe</a>
+    <a href="../blog-asia/" class="region-btn">Asie-Pacifique</a>
+    <a href="../blog-canada/" class="region-btn">Canada</a>
+  </div>
+
+  <div class="articles-list">
+    <div class="article-item"><div class="article-num">01</div><div class="article-info"><h3><a href="moringa-oleifera-nutrition-afrique.html">Moringa oleifera : le superaliment africain</a></h3><p>Profil nutritionnel complet du moringa et son r&ocirc;le dans la lutte contre la malnutrition en Afrique subsaharienne.</p></div></div>
+    <div class="article-item"><div class="article-num">02</div><div class="article-info"><h3><a href="baobab-adansonia-immunite.html">Baobab et immunit&eacute; : un fruit ancestral</a></h3><p>La pulpe de baobab, riche en vitamine C et polyphen&ocirc;les, et ses effets sur le syst&egrave;me immunitaire.</p></div></div>
+    <div class="article-item"><div class="article-num">03</div><div class="article-info"><h3><a href="fonio-cereale-sans-gluten.html">Fonio : la c&eacute;r&eacute;ale sans gluten du Sahel</a></h3><p>Red&eacute;couverte du fonio, c&eacute;r&eacute;ale ancestrale &agrave; faible indice glyc&eacute;mique et riche en acides amin&eacute;s.</p></div></div>
+    <div class="article-item"><div class="article-num">04</div><div class="article-info"><h3><a href="teff-ethiopie-fer-calcium.html">Teff d'&Eacute;thiopie : fer, calcium et fibres</a></h3><p>Le teff, base de l'injera &eacute;thiopien, source exceptionnelle de min&eacute;raux et de prot&eacute;ines compl&egrave;tes.</p></div></div>
+    <div class="article-item"><div class="article-num">05</div><div class="article-info"><h3><a href="hibiscus-bissap-antioxydants.html">Hibiscus (bissap) : antioxydants et pression art&eacute;rielle</a></h3><p>&Eacute;tudes cliniques sur l'effet hypotenseur et antioxydant de l'infusion d'hibiscus sabdariffa.</p></div></div>
+    <div class="article-item"><div class="article-num">06</div><div class="article-info"><h3><a href="karite-acides-gras-peau.html">Karit&eacute; : acides gras et sant&eacute; cutan&eacute;e</a></h3><p>Le beurre de karit&eacute;, source d'acides gras essentiels et de vitamines liposolubles pour la peau.</p></div></div>
+    <div class="article-item"><div class="article-num">07</div><div class="article-info"><h3><a href="mil-sorgho-cereales-resilientes.html">Mil et sorgho : c&eacute;r&eacute;ales r&eacute;silientes au changement climatique</a></h3><p>Profil nutritionnel et r&eacute;silience agronomique des c&eacute;r&eacute;ales traditionnelles africaines.</p></div></div>
+    <div class="article-item"><div class="article-num">08</div><div class="article-info"><h3><a href="niebe-haricot-proteines-vegetales.html">Ni&eacute;b&eacute; : la prot&eacute;ine v&eacute;g&eacute;tale africaine</a></h3><p>Le ni&eacute;b&eacute; (Vigna unguiculata), l&eacute;gumineuse cl&eacute; pour la s&eacute;curit&eacute; alimentaire et la sant&eacute;.</p></div></div>
+    <div class="article-item"><div class="article-num">09</div><div class="article-info"><h3><a href="rooibos-afrique-sud-polyphenols.html">Rooibos d'Afrique du Sud : polyphen&ocirc;les uniques</a></h3><p>Le rooibos, riche en aspalathine, et ses propri&eacute;t&eacute;s anti-inflammatoires et antioxydantes.</p></div></div>
+    <div class="article-item"><div class="article-num">10</div><div class="article-info"><h3><a href="huile-argan-maroc-omega.html">Huile d'argan du Maroc : om&eacute;ga-9 et vitamine E</a></h3><p>Composition en acides gras et tocoph&eacute;rols de l'huile d'argan et b&eacute;n&eacute;fices cardiovasculaires.</p></div></div>
+    <div class="article-item"><div class="article-num">11</div><div class="article-info"><h3><a href="igname-dioscorea-glucides-complexes.html">Igname : glucides complexes et diosc&eacute;nine</a></h3><p>L'igname africaine, tubercule riche en amidon r&eacute;sistant et compos&eacute;s bioactifs.</p></div></div>
+    <div class="article-item"><div class="article-num">12</div><div class="article-info"><h3><a href="spiruline-tchad-proteines.html">Spiruline du Tchad : la prot&eacute;ine du d&eacute;sert</a></h3><p>Production traditionnelle de spiruline au lac Tchad et son potentiel nutritionnel exceptionnel.</p></div></div>
+    <div class="article-item"><div class="article-num">13</div><div class="article-info"><h3><a href="gombo-okra-fibres-mucilage.html">Gombo (okra) : fibres, mucilage et micronutriments</a></h3><p>Le gombo, l&eacute;gume-fruit africain riche en fibres solubles et en vitamines du groupe B.</p></div></div>
+    <div class="article-item"><div class="article-num">14</div><div class="article-info"><h3><a href="manioc-cassava-securite-alimentaire.html">Manioc : s&eacute;curit&eacute; alimentaire et transformation</a></h3><p>Le manioc, source calorique majeure en Afrique, et les m&eacute;thodes de r&eacute;duction des cyanures.</p></div></div>
+    <div class="article-item"><div class="article-num">15</div><div class="article-info"><h3><a href="datte-sahara-energie-mineraux.html">Datte du Sahara : &eacute;nergie et min&eacute;raux</a></h3><p>Profil nutritionnel des dattes, source naturelle de potassium, magn&eacute;sium et fibres.</p></div></div>
+    <div class="article-item"><div class="article-num">16</div><div class="article-info"><h3><a href="graines-courge-egusi-proteines.html">Graines de courge (egusi) : prot&eacute;ines et zinc</a></h3><p>Les graines d'egusi, ingr&eacute;dient cl&eacute; de la cuisine ouest-africaine et source de zinc biodisponible.</p></div></div>
+    <div class="article-item"><div class="article-num">17</div><div class="article-info"><h3><a href="amarante-afrique-superfood.html">Amarante en Afrique : un superaliment oubli&eacute;</a></h3><p>L'amarante, pseudo-c&eacute;r&eacute;ale riche en lysine et en calcium, cultiv&eacute;e en Afrique de l'Est.</p></div></div>
+    <div class="article-item"><div class="article-num">18</div><div class="article-info"><h3><a href="cafe-ethiopie-polyphenols-metabolisme.html">Caf&eacute; d'&Eacute;thiopie : polyphen&ocirc;les et m&eacute;tabolisme</a></h3><p>L'acide chlorog&eacute;nique du caf&eacute; et ses effets sur le m&eacute;tabolisme glucidique et lipidique.</p></div></div>
+    <div class="article-item"><div class="article-num">19</div><div class="article-info"><h3><a href="noix-cola-cafeine-traditionnelle.html">Noix de cola : caf&eacute;ine et usage traditionnel</a></h3><p>Composition en m&eacute;thylxanthines de la noix de cola et son r&ocirc;le dans les cultures ouest-africaines.</p></div></div>
+    <div class="article-item"><div class="article-num">20</div><div class="article-info"><h3><a href="piment-capsaicine-afrique-ouest.html">Piment et capsaicine en Afrique de l'Ouest</a></h3><p>Effets thermog&eacute;niques et anti-inflammatoires de la capsaicine dans l'alimentation africaine.</p></div></div>
+    <div class="article-item"><div class="article-num">21</div><div class="article-info"><h3><a href="graines-sesame-calcium-afrique.html">Graines de s&eacute;same : calcium et lignanes</a></h3><p>Le s&eacute;same africain, source majeure de calcium et de s&eacute;samol aux propri&eacute;t&eacute;s antioxydantes.</p></div></div>
+    <div class="article-item"><div class="article-num">22</div><div class="article-info"><h3><a href="tamarin-acide-tartrique-digestion.html">Tamarin : acide tartrique et digestion</a></h3><p>Le tamarin dans la pharmacop&eacute;e africaine, ses acides organiques et effets laxatifs naturels.</p></div></div>
+    <div class="article-item"><div class="article-num">23</div><div class="article-info"><h3><a href="patate-douce-orange-vitamine-a.html">Patate douce &agrave; chair orange : vitamine A</a></h3><p>Biofortification en b&ecirc;ta-carot&egrave;ne et impact sur la carence en vitamine A en Afrique.</p></div></div>
+    <div class="article-item"><div class="article-num">24</div><div class="article-info"><h3><a href="cacao-ghana-flavanols.html">Cacao du Ghana : flavanols et sant&eacute; cardiovasculaire</a></h3><p>Les flavanols du cacao ghan&eacute;en et leur effet sur la pression art&eacute;rielle et la fonction endoth&eacute;liale.</p></div></div>
+    <div class="article-item"><div class="article-num">25</div><div class="article-info"><h3><a href="arachide-afrique-proteines-lipides.html">Arachide en Afrique : prot&eacute;ines et lipides sains</a></h3><p>L'arachide, l&eacute;gumineuse oleagineuse cl&eacute; dans la di&egrave;te africaine et source de resv&eacute;ratrol.</p></div></div>
+    <div class="article-item"><div class="article-num">26</div><div class="article-info"><h3><a href="feuilles-manioc-proteines-mineraux.html">Feuilles de manioc : prot&eacute;ines et min&eacute;raux</a></h3><p>Les feuilles de manioc, sous-produit nutritif riche en prot&eacute;ines, fer et vitamine C.</p></div></div>
+    <div class="article-item"><div class="article-num">27</div><div class="article-info"><h3><a href="huile-palme-rouge-carotenoides.html">Huile de palme rouge : caro&eacute;no&iuml;des et tocotri&eacute;nols</a></h3><p>L'huile de palme rouge non raffin&eacute;e, source de b&ecirc;ta-carot&egrave;ne et de vitamine E.</p></div></div>
+    <div class="article-item"><div class="article-num">28</div><div class="article-info"><h3><a href="kinkeliba-senegal-antidiabetique.html">Kinkeliba du S&eacute;n&eacute;gal : tisane antidiab&eacute;tique</a></h3><p>Combretum micranthum, plante m&eacute;dicinale traditionnelle et ses propri&eacute;t&eacute;s hypoglycemiantes.</p></div></div>
+    <div class="article-item"><div class="article-num">29</div><div class="article-info"><h3><a href="taro-colocase-amidon-resistant.html">Taro (colocase) : amidon r&eacute;sistant et pr&eacute;biotiques</a></h3><p>Le taro, tubercule riche en amidon r&eacute;sistant favorable au microbiote intestinal.</p></div></div>
+    <div class="article-item"><div class="article-num">30</div><div class="article-info"><h3><a href="kinkelia-plantes-medicinales-mali.html">Plantes m&eacute;dicinales du Mali : tradition et science</a></h3><p>Inventaire des plantes m&eacute;dicinales maliennes valid&eacute;es par la recherche scientifique moderne.</p></div></div>
+    <div class="article-item"><div class="article-num">31</div><div class="article-info"><h3><a href="banane-plantain-glucides-potassium.html">Banane plantain : glucides lents et potassium</a></h3><p>La banane plantain, base alimentaire en Afrique centrale et source d'&eacute;nergie durable.</p></div></div>
+    <div class="article-item"><div class="article-num">32</div><div class="article-info"><h3><a href="nere-fermente-soumbala-probiotique.html">N&eacute;r&eacute; ferment&eacute; (soumbala) : condiment probiotique</a></h3><p>Le soumbala, condiment ferment&eacute; riche en acides amin&eacute;s et micro-organismes b&eacute;n&eacute;fiques.</p></div></div>
+    <div class="article-item"><div class="article-num">33</div><div class="article-info"><h3><a href="miel-afrique-antibacterien.html">Miel africain : propri&eacute;t&eacute;s antibact&eacute;riennes</a></h3><p>Vari&eacute;t&eacute;s de miel africain et activit&eacute; antimicrobienne compar&eacute;e au miel de manuka.</p></div></div>
+    <div class="article-item"><div class="article-num">34</div><div class="article-info"><h3><a href="oseille-guinee-acide-folique.html">Oseille de Guin&eacute;e : acide folique et fer</a></h3><p>Les feuilles d'oseille de Guin&eacute;e, l&eacute;gume-feuille riche en micronutriments essentiels.</p></div></div>
+    <div class="article-item"><div class="article-num">35</div><div class="article-info"><h3><a href="mangue-afrique-vitamine-c-betacarotene.html">Mangue africaine : vitamine C et b&ecirc;ta-carot&egrave;ne</a></h3><p>La mangue, fruit tropical majeur en Afrique et source de caro&eacute;no&iuml;des provitaminiques.</p></div></div>
+    <div class="article-item"><div class="article-num">36</div><div class="article-info"><h3><a href="lait-fermente-afrique-probiotiques.html">Laits ferment&eacute;s africains : probiotiques naturels</a></h3><p>Diversit&eacute; des laits ferment&eacute;s traditionnels africains et leur contenu en bact&eacute;ries lactiques.</p></div></div>
+    <div class="article-item"><div class="article-num">37</div><div class="article-info"><h3><a href="poisson-seche-afrique-omega3.html">Poisson s&eacute;ch&eacute; d'Afrique : om&eacute;ga-3 et prot&eacute;ines</a></h3><p>Le poisson s&eacute;ch&eacute;, source cruciale de prot&eacute;ines et d'acides gras om&eacute;ga-3 en Afrique int&eacute;rieure.</p></div></div>
+    <div class="article-item"><div class="article-num">38</div><div class="article-info"><h3><a href="gingembre-afrique-ouest-anti-inflammatoire.html">Gingembre d'Afrique de l'Ouest : anti-inflammatoire naturel</a></h3><p>Usage du gingembre dans la m&eacute;decine traditionnelle africaine et validation scientifique.</p></div></div>
+    <div class="article-item"><div class="article-num">39</div><div class="article-info"><h3><a href="ail-afrique-nord-allicine.html">Ail d'Afrique du Nord : allicine et immunit&eacute;</a></h3><p>L'ail dans la cuisine nord-africaine, ses compos&eacute;s soufr&eacute;s et effets immunomodulateurs.</p></div></div>
+    <div class="article-item"><div class="article-num">40</div><div class="article-info"><h3><a href="madd-saba-senegalensis-vitamine-c.html">Madd (Saba senegalensis) : fruit sauvage riche en vitamine C</a></h3><p>Le madd, fruit sauvage s&eacute;n&eacute;galais, et son potentiel nutritionnel inexploit&eacute;.</p></div></div>
+    <div class="article-item"><div class="article-num">41</div><div class="article-info"><h3><a href="chenilles-insectes-comestibles-rdc.html">Chenilles et insectes comestibles en RDC</a></h3><p>Entomophagie en Afrique centrale : profil nutritionnel et durabilit&eacute; environnementale.</p></div></div>
+    <div class="article-item"><div class="article-num">42</div><div class="article-info"><h3><a href="pain-singe-fruits-sauvages.html">Pain de singe et fruits sauvages africains</a></h3><p>Inventaire nutritionnel des fruits sauvages consomm&eacute;s en Afrique subsaharienne.</p></div></div>
+    <div class="article-item"><div class="article-num">43</div><div class="article-info"><h3><a href="epices-berberes-ras-el-hanout.html">&Eacute;pices berb&egrave;res et ras el-hanout : phytochimie</a></h3><p>Composition en polyphen&ocirc;ls et terp&eacute;no&iuml;des des m&eacute;langes d'&eacute;pices nord-africains.</p></div></div>
+    <div class="article-item"><div class="article-num">44</div><div class="article-info"><h3><a href="noix-coco-afrique-est-mcta.html">Noix de coco en Afrique de l'Est : MCT et &eacute;nergie</a></h3><p>Les acides gras &agrave; cha&icirc;ne moyenne du coco et leur r&ocirc;le &eacute;nerg&eacute;tique dans l'alimentation c&ocirc;ti&egrave;re.</p></div></div>
+    <div class="article-item"><div class="article-num">45</div><div class="article-info"><h3><a href="aloe-vera-afrique-gel-digestif.html">Alo&eacute; vera en Afrique : gel digestif et immunit&eacute;</a></h3><p>L'alo&eacute; vera dans la m&eacute;decine traditionnelle africaine et ses polysaccharides immunostimulants.</p></div></div>
+    <div class="article-item"><div class="article-num">46</div><div class="article-info"><h3><a href="carences-micronutriments-afrique.html">Carences en micronutriments en Afrique : solutions locales</a></h3><p>Strat&eacute;gies de biofortification et d'&eacute;ducation nutritionnelle pour combattre les carences.</p></div></div>
+    <div class="article-item"><div class="article-num">47</div><div class="article-info"><h3><a href="regime-mediterraneen-maghreb.html">R&eacute;gime m&eacute;diterran&eacute;en au Maghreb : adaptation locale</a></h3><p>L'alimentation nord-africaine comme variante du r&eacute;gime m&eacute;diterran&eacute;en prot&eacute;cteur.</p></div></div>
+    <div class="article-item"><div class="article-num">48</div><div class="article-info"><h3><a href="kwashiorkor-marasme-immunonutrition.html">Kwashiorkor et marasme : approche immunonutritionnelle</a></h3><p>Prise en charge nutritionnelle de la malnutrition s&eacute;v&egrave;re et r&eacute;habilitation immunitaire.</p></div></div>
+    <div class="article-item"><div class="article-num">49</div><div class="article-info"><h3><a href="agriculture-urbaine-afrique-nutrition.html">Agriculture urbaine en Afrique et nutrition</a></h3><p>L'essor des jardins urbains et p&eacute;riurbains pour la s&eacute;curit&eacute; nutritionnelle en ville.</p></div></div>
+    <div class="article-item"><div class="article-num">50</div><div class="article-info"><h3><a href="transition-nutritionnelle-afrique-maladies.html">Transition nutritionnelle en Afrique et maladies chroniques</a></h3><p>L'&eacute;volution des habitudes alimentaires et l'augmentation des maladies m&eacute;taboliques en Afrique.</p></div></div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="../orim-logo.png" alt="ORIM" /></div>
+    <div class="footer-bottom">&copy; 2026 Association ORIM Gen&egrave;ve &middot; ORIM&#8482; est une marque d&eacute;pos&eacute;e &middot; chevalley@orimnutrition.com</div>
+  </footer>
+
+<div style="background:linear-gradient(135deg,#1BA8A6,#E6A817);padding:40px;border-radius:12px;text-align:center;margin:40px 20px;">
+  <h3 style="color:#fff;font-size:24px;margin-bottom:10px;">Votre corps est du carbone. Ce livre le transforme en diamant.</h3>
+  <p style="color:#fff;opacity:0.9;">eBook ORIM "Du Carbone au Diamant" - Programme complet d'immunonutrition pr&#233;ventive</p>
+  <a href="https://www.paypal.com/ncp/payment/ZLRKERX2FK33W" target="_blank" style="display:inline-block;padding:15px 40px;background:#fff;color:#2D3436;font-weight:bold;text-decoration:none;border-radius:8px;margin-top:15px;font-size:16px;">Obtenir l'eBook - 50 CHF</a>
+  <p style="color:#fff;opacity:0.7;font-size:12px;margin-top:10px;">chevalley@orimnutrition.com | orimnutrition.com</p>
+</div>
+</body>
+</html>

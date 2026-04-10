@@ -103,7 +103,7 @@ canvas{display:block;width:100%;height:100%}
 /* SIDE PANEL */
 #side-panel{
   position:fixed;top:0;z-index:150;
-  width:340px;max-width:85vw;height:100vh;
+  width:380px;max-width:88vw;height:100vh;
   background:rgba(3,8,16,.95);
   backdrop-filter:blur(16px);
   padding:2rem 1.5rem;
@@ -159,7 +159,7 @@ canvas{display:block;width:100%;height:100%}
   border:1px solid rgba(0,212,170,.12);
   color:#6a9a90;padding:2px 6px;border-radius:3px;
 }
-.panel-partner-links{display:flex;gap:.5rem}
+.panel-partner-links{display:flex;gap:.5rem;flex-wrap:wrap}
 .panel-partner-links a{
   font-size:.63rem;color:#00d4aa;text-decoration:none;
   border:1px solid rgba(0,212,170,.2);padding:3px 10px;
@@ -171,9 +171,111 @@ canvas{display:block;width:100%;height:100%}
   background:none;border:1px solid rgba(0,212,170,.2);
   color:#6a9a90;width:28px;height:28px;border-radius:50%;
   cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;
-  transition:all .3s;
+  transition:all .3s;z-index:10;
 }
 .panel-close:hover{color:#00d4aa;border-color:rgba(0,212,170,.5)}
+
+/* ── SWISS CANTON NAVIGATOR ── */
+.swiss-intro{
+  font-size:.7rem;color:#8ab8b0;line-height:1.6;margin-bottom:1.2rem;
+  padding:.8rem;background:rgba(0,212,170,.03);border-radius:8px;
+  border:1px solid rgba(0,212,170,.08);
+}
+.swiss-search{
+  width:100%;padding:.5rem .8rem;margin-bottom:1rem;
+  background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.15);
+  border-radius:8px;color:#e0f0ec;font-size:.75rem;
+  font-family:'Inter',system-ui,sans-serif;
+  outline:none;transition:border-color .3s;
+}
+.swiss-search::placeholder{color:#4a7a70}
+.swiss-search:focus{border-color:rgba(0,212,170,.4)}
+.canton-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+  margin-bottom:1rem;
+}
+.canton-btn{
+  background:rgba(0,212,170,.04);
+  border:1px solid rgba(0,212,170,.1);
+  border-radius:8px;padding:.6rem .4rem;
+  cursor:pointer;text-align:center;
+  transition:all .3s;position:relative;
+}
+.canton-btn:hover{
+  background:rgba(0,212,170,.12);
+  border-color:rgba(0,212,170,.35);
+  transform:translateY(-1px);
+}
+.canton-btn .canton-code{
+  font-size:.8rem;font-weight:700;color:#00d4aa;
+  display:block;margin-bottom:2px;
+}
+.canton-btn .canton-name{
+  font-size:.52rem;color:#6a9a90;display:block;
+  letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.canton-btn .canton-count{
+  position:absolute;top:4px;right:6px;
+  font-size:.5rem;font-weight:700;color:#020810;
+  background:#00d4aa;border-radius:50%;
+  width:16px;height:16px;display:flex;align-items:center;justify-content:center;
+}
+.canton-btn.empty{opacity:.35;cursor:default}
+.canton-btn.empty:hover{background:rgba(0,212,170,.04);border-color:rgba(0,212,170,.1);transform:none}
+
+.swiss-back{
+  display:flex;align-items:center;gap:.4rem;
+  background:none;border:1px solid rgba(0,212,170,.2);
+  color:#00d4aa;padding:.4rem .8rem;border-radius:6px;
+  cursor:pointer;font-size:.68rem;font-weight:600;
+  margin-bottom:1rem;transition:all .3s;
+  font-family:'Inter',system-ui,sans-serif;
+}
+.swiss-back:hover{background:rgba(0,212,170,.1);border-color:rgba(0,212,170,.4)}
+
+.canton-header{
+  display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem;
+}
+.canton-header-name{font-size:1.2rem;font-weight:700;color:#00d4aa}
+.canton-header-count{font-size:.65rem;color:#6a9a90}
+
+.shop-type-badge{
+  display:inline-block;font-size:.54rem;text-transform:uppercase;
+  letter-spacing:.8px;padding:2px 8px;border-radius:4px;
+  font-weight:600;margin-bottom:.4rem;
+}
+.shop-type-bio{background:rgba(144,190,109,.15);color:#90be6d}
+.shop-type-pharmacie{background:rgba(0,180,216,.15);color:#00b4d8}
+.shop-type-droguerie{background:rgba(167,139,250,.15);color:#a78bfa}
+.shop-type-herboristerie{background:rgba(244,162,97,.15);color:#f4a261}
+.shop-type-reformhaus{background:rgba(0,212,170,.15);color:#00d4aa}
+
+.shop-card{
+  background:rgba(0,212,170,.03);
+  border:1px solid rgba(0,212,170,.08);
+  border-radius:10px;padding:.8rem;margin-bottom:.6rem;
+  transition:border-color .3s;
+}
+.shop-card:hover{border-color:rgba(0,212,170,.25)}
+.shop-card-name{font-weight:600;font-size:.82rem;color:#e0f0ec;margin-bottom:.3rem}
+.shop-card-address{font-size:.68rem;color:#6a9a90;margin-bottom:.5rem;line-height:1.4}
+.shop-card-note{font-size:.62rem;color:#5a8a80;font-style:italic;margin-bottom:.5rem;line-height:1.4}
+.shop-card-links{display:flex;gap:.4rem;flex-wrap:wrap}
+.shop-card-links a{
+  font-size:.6rem;color:#00d4aa;text-decoration:none;
+  border:1px solid rgba(0,212,170,.18);padding:3px 8px;
+  border-radius:4px;transition:all .3s;display:inline-flex;align-items:center;gap:3px;
+}
+.shop-card-links a:hover{background:rgba(0,212,170,.12)}
+
+.swiss-legend{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;
+  padding:.6rem;background:rgba(0,212,170,.02);border-radius:6px;
+}
+.swiss-legend-item{
+  display:flex;align-items:center;gap:4px;font-size:.55rem;color:#6a9a90;
+}
+.swiss-legend-dot{width:8px;height:8px;border-radius:50%}
 
 /* BOTTOM CTA */
 .bottom-cta{
@@ -250,12 +352,15 @@ canvas{display:block;width:100%;height:100%}
   .nav-links a:not(.btn-contact){font-size:.55rem}
   .btn-contact{padding:.4rem .9rem;font-size:.65rem}
   .lang-sel button{font-size:.52rem;padding:2px 5px}
-  #side-panel{width:88vw;padding:1.2rem 1rem}
+  #side-panel{width:92vw;padding:1.2rem 1rem}
   .bottom-cta{bottom:3rem}
   .cta-text{font-size:.72rem}
   .cta-btn{font-size:.7rem;padding:.55rem 1.5rem}
   .contact-footer{gap:.5rem;flex-wrap:wrap;justify-content:center;padding:.5rem .6rem}
   .contact-footer span{font-size:.5rem}
+  .canton-grid{grid-template-columns:repeat(3,1fr);gap:5px}
+  .canton-btn{padding:.5rem .3rem}
+  .canton-btn .canton-code{font-size:.7rem}
 }
 </style>
 </head>
@@ -323,29 +428,164 @@ canvas{display:block;width:100%;height:100%}
 (function(){
 "use strict";
 
-/* ───────────────────────────────── PARTNER DATA ───────────────────────────────── */
+/* ───────────────────────────────── PARTNER DATA (globe dots) ───────────────────────────────── */
 var PARTNERS = [
-  // ── NON-PARTENAIRES (annuaire local) ──
-  { id:101, name:"Pharmacie du Molard", type:"non-partenaire", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.203, lon:6.152, emoji:"\ud83d\udc8a", desc:"Pharmacie au c\u0153ur de Gen\u00e8ve. Compl\u00e9ments alimentaires et conseil.", tags:["Pharmacie","Compl\u00e9ments"], rdv:"#", site:"https://local.ch", source:"local.ch" },
-  { id:102, name:"March\u00e9 Bio Plainpalais", type:"non-partenaire", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.197, lon:6.142, emoji:"\ud83e\udd6c", desc:"March\u00e9 de producteurs bio, Plaine de Plainpalais.", tags:["Bio","March\u00e9","Producteurs"], rdv:"#", site:"https://local.ch", source:"local.ch" },
-  { id:103, name:"Ferme des Evaux", type:"non-partenaire", city:"Onex", country:"Suisse", countryCode:"CHE", lat:46.183, lon:6.102, emoji:"\ud83c\udf3e", desc:"Exploitation agricole urbaine. Vente directe l\u00e9gumes de saison.", tags:["Agriculture","Permaculture"], rdv:"#", site:"https://local.ch", source:"local.ch" },
-  { id:104, name:"Herboristerie du Lac", type:"non-partenaire", city:"Lausanne", country:"Suisse", countryCode:"CHE", lat:46.519, lon:6.633, emoji:"\ud83c\udf3f", desc:"Herboristerie artisanale. Plantes m\u00e9dicinales et tisanes.", tags:["Herboristerie","Plantes"], rdv:"#", site:"https://local.ch", source:"local.ch" },
-  { id:105, name:"Bio Markt Bern", type:"non-partenaire", city:"Berne", country:"Suisse", countryCode:"CHE", lat:46.948, lon:7.447, emoji:"\ud83d\uded2", desc:"Supermarch\u00e9 bio au centre de Berne. Produits biologiques et locaux.", tags:["Bio","Supermarch\u00e9"], rdv:"#", site:"https://local.ch", source:"local.ch" },
-  { id:106, name:"Alpenk\u00e4serei Z\u00fcrich", type:"non-partenaire", city:"Z\u00fcrich", country:"Suisse", countryCode:"CHE", lat:47.376, lon:8.541, emoji:"\u26f0\ufe0f", desc:"Fromagerie alpine. Produits riches en probiotiques naturels.", tags:["Fromagerie","Probiotiques"], rdv:"#", site:"https://local.ch", source:"local.ch" },
-  { id:107, name:"Domaine Bio du Lavaux", type:"non-partenaire", city:"Lutry", country:"Suisse", countryCode:"CHE", lat:46.505, lon:6.685, emoji:"\ud83c\udf47", desc:"Domaine viticole bio en Lavaux. Vins naturels riches en polyph\u00e9nols.", tags:["Viticulture","Bio"], rdv:"#", site:"https://local.ch", source:"local.ch" },
-  { id:108, name:"Reformhaus Basel", type:"non-partenaire", city:"B\u00e2le", country:"Suisse", countryCode:"CHE", lat:47.559, lon:7.588, emoji:"\ud83c\udf31", desc:"Magasin di\u00e9t\u00e9tique \u00e0 B\u00e2le. Compl\u00e9ments et alimentation naturelle.", tags:["Di\u00e9t\u00e9tique","Naturel"], rdv:"#", site:"https://local.ch", source:"local.ch" }
+  { id:1, name:"Kiss the Ground", type:"bio", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.204, lon:6.143, emoji:"\ud83c\udf31", desc:"Supermarch\u00e9 bio hyper-local, produits dans un rayon de 40 km.", tags:["Bio","Local"], rdv:"#", site:"https://kisstheground.ch" },
+  { id:2, name:"MagBio", type:"bio", city:"Lausanne", country:"Suisse", countryCode:"CHE", lat:46.520, lon:6.633, emoji:"\ud83c\udf31", desc:"Plus grand supermarch\u00e9 bio de Romandie, +6000 articles.", tags:["Bio","Supermarch\u00e9"], rdv:"#", site:"https://magbio.ch" },
+  { id:3, name:"Hallerladen", type:"bio", city:"Berne", country:"Suisse", countryCode:"CHE", lat:46.948, lon:7.447, emoji:"\ud83c\udf31", desc:"Coop\u00e9rative 100% bio certifi\u00e9e Demeter.", tags:["Bio","Demeter"], rdv:"#", site:"#" },
+  { id:4, name:"R\u00e4geboge Biomarkt", type:"bio", city:"Winterthur", country:"Suisse", countryCode:"CHE", lat:47.500, lon:8.724, emoji:"\ud83c\udf31", desc:"+10 000 produits bio, 2 \u00e9tages, bistro bio int\u00e9gr\u00e9.", tags:["Bio","Bistro"], rdv:"#", site:"https://raegeboge.com" },
+  { id:5, name:"H\u00f6heners", type:"bio", city:"B\u00e2le", country:"Suisse", countryCode:"CHE", lat:47.559, lon:7.588, emoji:"\ud83c\udf31", desc:"Magasin Bio Partner. Produits biologiques et r\u00e9gionaux.", tags:["Bio","R\u00e9gional"], rdv:"#", site:"https://biopartner.ch" },
+  { id:6, name:"Bio Casa Lugano", type:"bio", city:"Lugano", country:"Suisse", countryCode:"CHE", lat:46.003, lon:8.951, emoji:"\ud83c\udf31", desc:"R\u00e9seau Bio Partner au Tessin.", tags:["Bio","Tessin"], rdv:"#", site:"https://biocasa.ch" },
+  { id:7, name:"Stadtladen", type:"bio", city:"Saint-Gall", country:"Suisse", countryCode:"CHE", lat:47.424, lon:9.376, emoji:"\ud83c\udf31", desc:"R\u00e9f\u00e9rence bio en Suisse orientale, certifi\u00e9 Demeter.", tags:["Bio","Demeter"], rdv:"#", site:"https://stadtladen.ch" },
+  { id:8, name:"Bio shop Viktoria", type:"bio", city:"Lucerne", country:"Suisse", countryCode:"CHE", lat:47.050, lon:8.310, emoji:"\ud83c\udf31", desc:"Reformhaus sp\u00e9cialis\u00e9, Naturkosmetik et produits bio.", tags:["Reformhaus","Bio"], rdv:"#", site:"https://bioshop-luzern.ch" },
+  { id:9, name:"Droguerie de Val\u00e8re", type:"herboristerie", city:"Sion", country:"Suisse", countryCode:"CHE", lat:46.233, lon:7.360, emoji:"\ud83c\udf3f", desc:"Herboristerie, phytoth\u00e9rapie, aroma. R\u00e9f\u00e9rence valaisanne.", tags:["Herboristerie","Plantes"], rdv:"#", site:"https://droguerie-valere.ch" },
+  { id:10, name:"Bio26", type:"bio", city:"Fribourg", country:"Suisse", countryCode:"CHE", lat:46.806, lon:7.152, emoji:"\ud83c\udf31", desc:"Grand march\u00e9 bio coop\u00e9ratif au centre-ville.", tags:["Bio","Coop\u00e9rative"], rdv:"#", site:"https://bio26.ch" },
+  { id:11, name:"Bioladen R\u00e4gawurm", type:"bio", city:"Coire", country:"Suisse", countryCode:"CHE", lat:46.850, lon:9.533, emoji:"\ud83c\udf31", desc:"Bio depuis 1982, caves vo\u00fbt\u00e9es historiques.", tags:["Bio","Historique"], rdv:"#", site:"https://bioladen-raegawurm.ch" },
+  { id:12, name:"Viva Natura", type:"bio", city:"Schaffhouse", country:"Suisse", countryCode:"CHE", lat:47.696, lon:8.636, emoji:"\ud83c\udf31", desc:"Bio depuis 1980, cosmétiques naturels, studio.", tags:["Bio","Naturkosmetik"], rdv:"#", site:"https://vivanatura.ch" },
+  { id:13, name:"DROPA Baar", type:"droguerie", city:"Baar", country:"Suisse", countryCode:"CHE", lat:47.172, lon:8.517, emoji:"\ud83d\udc8a", desc:"Droguerie et pharmacie, phytoth\u00e9rapie, Naturkosmetik.", tags:["Droguerie","Pharmacie"], rdv:"#", site:"https://dropa.ch" },
+  { id:14, name:"Pharmacie du Bourg-de-Four", type:"herboristerie", city:"Gen\u00e8ve", country:"Suisse", countryCode:"CHE", lat:46.200, lon:6.155, emoji:"\ud83c\udf3f", desc:"Fond\u00e9e en 1851. Herboristerie, hom\u00e9opathie, phytoth\u00e9rapie.", tags:["Herboristerie","Pharmacie"], rdv:"#", site:"https://pharmacie-bourg-de-four.ch" }
 ];
 
 var TYPE_COLORS = {
-  médecin:"#00d4aa", therapeute:"#00b4d8", magasin:"#f4a261",
+  "m\u00e9decin":"#00d4aa", therapeute:"#00b4d8", magasin:"#f4a261",
   naturopathe:"#90be6d", coach:"#e76f51", laboratoire:"#a78bfa",
+  bio:"#90be6d", pharmacie:"#00b4d8", droguerie:"#a78bfa", herboristerie:"#f4a261", reformhaus:"#00d4aa",
   "non-partenaire":"#6a7a8a"
 };
 var TYPE_LABELS = {
-  médecin:"M\u00e9decin", therapeute:"Th\u00e9rapeute", magasin:"Magasin",
+  "m\u00e9decin":"M\u00e9decin", therapeute:"Th\u00e9rapeute", magasin:"Magasin",
   naturopathe:"Naturopathe", coach:"Coach", laboratoire:"Laboratoire",
+  bio:"Bio", pharmacie:"Pharmacie", droguerie:"Droguerie", herboristerie:"Herboristerie", reformhaus:"Reformhaus",
   "non-partenaire":"Non-partenaire"
 };
+
+/* ─── SWISS SHOPS DATABASE (by canton) ─── */
+var SWISS_SHOPS = {
+  GE: { name:"Gen\u00e8ve", shops:[
+    {n:"Kiss the Ground Eaux-Vives",t:"bio",a:"Rue des Eaux-Vives 6, 1207 Gen\u00e8ve",s:"https://kisstheground.ch",note:"Supermarch\u00e9 bio hyper-local, produits dans un rayon de 40 km"},
+    {n:"Kiss the Ground Augustins",t:"bio",a:"Rue de Carouge 76, 1205 Gen\u00e8ve",s:"https://kisstheground.ch"},
+    {n:"Le March\u00e9 de Vie",t:"bio",a:"Rue des Eaux-Vives 25, 1207 Gen\u00e8ve",s:"#",note:"Produits biologiques et di\u00e9t\u00e9tiques"},
+    {n:"Nature en Vrac",t:"bio",a:"Place des Grottes 1, 1201 Gen\u00e8ve",s:"#",note:"\u00c9picerie vrac bio, z\u00e9ro d\u00e9chet"},
+    {n:"Pharmacie du Bourg-de-Four",t:"herboristerie",a:"Place du Bourg-de-Four 10-12, 1204 Gen\u00e8ve",s:"https://pharmacie-bourg-de-four.ch",note:"Fond\u00e9e en 1851. Plantes, huiles essentielles, hom\u00e9opathie, Bach"},
+    {n:"Amavita Conf\u00e9d\u00e9ration",t:"pharmacie",a:"Rue de la Conf\u00e9d\u00e9ration 10, 1204 Gen\u00e8ve",s:"https://amavita.ch"},
+    {n:"Amavita Gare Cornavin",t:"pharmacie",a:"Gare Cornavin, 1201 Gen\u00e8ve",s:"https://amavita.ch",note:"Ouvert 365 jours/an"},
+    {n:"Sun Store A\u00e9roport",t:"pharmacie",a:"Route de l\u2019A\u00e9roport 25, 1215 Le Grand-Saconnex",s:"https://sunstore.ch"}
+  ]},
+  VD: { name:"Vaud", shops:[
+    {n:"MagBio",t:"bio",a:"Route de Neuch\u00e2tel 2, 1032 Romanel-sur-Lausanne",s:"https://magbio.ch",note:"Plus grand supermarch\u00e9 bio de Romandie, +6000 articles"},
+    {n:"ART\u00e9BIO",t:"bio",a:"Avenue de Riant-Mont 2, 1003 Lausanne",s:"#",note:"Fond\u00e9 en 2003. Alimentation biologique et di\u00e9t\u00e9tique"},
+    {n:"Le Topinambour",t:"bio",a:"Avenue William-Fraisse 9, 1006 Lausanne",s:"#",note:"Plus ancien magasin bio de Lausanne, pr\u00e9curseur du vrac"},
+    {n:"Kiss the Ground Grancy",t:"bio",a:"Boulevard de Grancy 8, 1006 Lausanne",s:"https://kisstheground.ch"},
+    {n:"Kiss the Ground Nyon",t:"bio",a:"Rue de la Mor\u00e2che 17/19, 1260 Nyon",s:"https://kisstheground.ch"},
+    {n:"Kiss the Ground Morges",t:"bio",a:"Rue de la Gare 30, 1110 Morges",s:"https://kisstheground.ch"},
+    {n:"Kiss the Ground Yverdon",t:"bio",a:"Yverdon-les-Bains",s:"https://kisstheground.ch"},
+    {n:"Herboristerie Ari\u00e8s SA",t:"herboristerie",a:"Route de Bettens 4, 1042 Bioley-Orjulaz",s:"https://aries-herboristerie.com",note:"Herboristerie depuis 1979. Tisanes, pr\u00e9parations magistrales"},
+    {n:"Sun Store Riponne",t:"pharmacie",a:"Angle Riponne-Haldimand 1, 1003 Lausanne",s:"https://sunstore.ch"},
+    {n:"Coop Vitality Crissier",t:"pharmacie",a:"Centre commercial, 1023 Crissier",s:"https://coopvitality.ch"}
+  ]},
+  VS: { name:"Valais", shops:[
+    {n:"Kiss the Ground Martigny",t:"bio",a:"Avenue de la Gare 10, 1920 Martigny",s:"https://kisstheground.ch"},
+    {n:"Kiss the Ground Monthey",t:"bio",a:"Avenue de la Gare 12, 1870 Monthey",s:"https://kisstheground.ch"},
+    {n:"Droguerie de Val\u00e8re",t:"herboristerie",a:"Rue de la Dent-Blanche 8, 1950 Sion",s:"https://droguerie-valere.ch",note:"Phytoth\u00e9rapie, hom\u00e9opathie, aromathérapie. R\u00e9f\u00e9rence valaisanne"},
+    {n:"Droguerie l\u2019Alchimiste",t:"herboristerie",a:"Rue du Rh\u00f4ne 1, 1920 Martigny",s:"https://droguerie-alchimiste.ch",note:"La sant\u00e9 par les plantes depuis 1974"},
+    {n:"Droguerie Sierroise",t:"droguerie",a:"Sierre (pr\u00e8s de la gare)",s:"https://droguerie-sierroise.ch",note:"Phytoth\u00e9rapie, hom\u00e9opathie, spagyrie"},
+    {n:"Droguerie Garrone",t:"droguerie",a:"Avenue de l\u2019Industrie 8, 1870 Monthey",s:"https://droguerie-garrone.ch",note:"Active depuis 1974"}
+  ]},
+  FR: { name:"Fribourg", shops:[
+    {n:"Bio26",t:"bio",a:"Route du Jura 10, 1700 Fribourg",s:"https://bio26.ch",note:"Coop\u00e9rative de producteurs, exclusivement bio et local"},
+    {n:"Sun Store Fribourg",t:"pharmacie",a:"Rue de Romont 26, 1700 Fribourg",s:"https://sunstore.ch"},
+    {n:"Droguerie Roggen",t:"droguerie",a:"Rue de l\u2019\u00c9glise 82, 1680 Romont",s:"https://roggen.ch",note:"Bien-\u00eatre au naturel"},
+    {n:"DROPA Kerzers",t:"droguerie",a:"Murtenstrasse 10, 3210 Kerzers",s:"https://dropa.ch"}
+  ]},
+  NE: { name:"Neuch\u00e2tel", shops:[
+    {n:"Kiss the Ground Neuch\u00e2tel",t:"bio",a:"Neuch\u00e2tel",s:"https://kisstheground.ch"},
+    {n:"Kiss the Ground La Chaux-de-Fonds",t:"bio",a:"Place du March\u00e9, 2300 La Chaux-de-Fonds",s:"https://kisstheground.ch",note:"Plus grand mini-supermarch\u00e9 bio de Neuch\u00e2tel"}
+  ]},
+  BE: { name:"Berne", shops:[
+    {n:"Kiss the Ground Berne",t:"bio",a:"Aarbergergasse 21, 3011 Berne",s:"https://kisstheground.ch",note:"Ouverture mars 2026, 2 \u00e9tages, +6000 articles"},
+    {n:"Hallerladen",t:"bio",a:"L\u00e4nggassstrasse 30, 3012 Berne",s:"#",note:"Coop\u00e9rative 100% bio, certifi\u00e9 Demeter"},
+    {n:"Lola Lorraine",t:"bio",a:"Lorrainestrasse 23, 3013 Berne",s:"#",note:"Bio, saisonnier, vrac, v\u00e9gan"},
+    {n:"Lola Brunnmatt",t:"bio",a:"Brunnmattstrasse 57, 3007 Berne",s:"#"},
+    {n:"Biodelikat",t:"bio",a:"Ryfflig\u00e4sschen 5, 3011 Berne",s:"#",note:"\u00c9picerie bio fine"},
+    {n:"DROPA Flamatt",t:"droguerie",a:"Bernstrasse 12, 3175 Flamatt",s:"https://dropa.ch"},
+    {n:"DROPA Lyss",t:"droguerie",a:"Hirschenplatz 10, 3250 Lyss",s:"https://dropa.ch"}
+  ]},
+  ZH: { name:"Zurich", shops:[
+    {n:"R\u00e4geboge Biomarkt",t:"bio",a:"Rudolfstrasse 13, 8400 Winterthur",s:"https://raegeboge.com",note:"2 \u00e9tages, +10 000 produits bio, bistro int\u00e9gr\u00e9"},
+    {n:"BachserM\u00e4rt Kalkbreite",t:"bio",a:"Z\u00fcrich Kalkbreite",s:"#",note:"Produits r\u00e9gionaux et bio de quartier"},
+    {n:"BachserM\u00e4rt Seefeld",t:"bio",a:"Z\u00fcrich Seefeld",s:"#"},
+    {n:"Bioladen Vitus",t:"bio",a:"Z\u00fcrich",s:"#",note:"S\u00e9lection unique, produits probiotiques, qualit\u00e9 premium"},
+    {n:"Reformhaus Vier Linden",t:"reformhaus",a:"Gemeindestrasse 51, Z\u00fcrich",s:"#",note:"Bio, fromages, boulangerie au feu de bois"},
+    {n:"Liv Nature",t:"reformhaus",a:"Stockerstrasse 38, Z\u00fcrich",s:"#",note:"Mode de vie sain, take-away durable"},
+    {n:"Dr\u00fcegg (Bio Partner)",t:"bio",a:"Gerbestrasse 6, 8820 W\u00e4denswil",s:"https://biopartner.ch"},
+    {n:"\u00d6pfelbaum (Bio Partner)",t:"bio",a:"Braschlergasse 8, 8610 Uster",s:"https://biopartner.ch"},
+    {n:"L\u2019Ultimo Bacio Winterthur",t:"bio",a:"Obertor 5, 8400 Winterthur",s:"#"},
+    {n:"DROPA Limmatplatz",t:"droguerie",a:"Limmatplatz 7, 8005 Z\u00fcrich",s:"https://dropa.ch"}
+  ]},
+  BS: { name:"B\u00e2le-Ville", shops:[
+    {n:"H\u00f6heners (Bio Partner)",t:"bio",a:"Sch\u00fctzenmattstrasse 30, 4054 Basel",s:"https://biopartner.ch"},
+    {n:"L\u2019Ultimo Bacio Basel",t:"bio",a:"G\u00fcterstrasse 199, 4053 Basel",s:"#"},
+    {n:"Drogerie Bielmann",t:"droguerie",a:"Stadthausgasse 15, 4051 Basel",s:"https://drogerie-bielmann.ch",note:"Droguerie ind\u00e9pendante sp\u00e9cialis\u00e9e"},
+    {n:"DROPA Dreispitz",t:"droguerie",a:"M\u00fcnchensteinerstrasse 200, 4053 Basel",s:"https://dropa.ch"}
+  ]},
+  LU: { name:"Lucerne", shops:[
+    {n:"Bio shop Viktoria",t:"reformhaus",a:"Pilatusstrasse 19, 6003 Luzern",s:"https://bioshop-luzern.ch",note:"Reformhaus, Naturkosmetik. Lu-Ve 8h-18h30, Sa 8h-16h"},
+    {n:"BIO VIVO",t:"bio",a:"Bruchstrasse 16, 6003 Luzern",s:"https://bio-vivo.ch",note:"Huiles bio premium, sels nobles, bar \u00e0 d\u00e9gustation"},
+    {n:"Kochtopf (Bio Partner)",t:"bio",a:"Rathausplatz 5, 6210 Sursee",s:"https://biopartner.ch"}
+  ]},
+  TI: { name:"Tessin", shops:[
+    {n:"Bio Casa Lugano",t:"bio",a:"Piazza Cioccaro 8, 6900 Lugano",s:"https://biocasa.ch"},
+    {n:"Bio Casa Bellinzona",t:"bio",a:"Piazza Nosetto 6, 6500 Bellinzona",s:"https://biocasa.ch"},
+    {n:"Bio Casa Losone",t:"bio",a:"Via Emmaus 1, 6616 Losone",s:"https://biocasa.ch"},
+    {n:"Bio Casa Agno",t:"bio",a:"Via Lugano 21, 6982 Agno",s:"https://biocasa.ch"},
+    {n:"Sun Store Locarno",t:"pharmacie",a:"Via Luini 23, 6600 Locarno",s:"https://sunstore.ch"}
+  ]},
+  SG: { name:"Saint-Gall", shops:[
+    {n:"Stadtladen St.Gallen",t:"bio",a:"Katharinengasse 12, 9000 St. Gallen",s:"https://stadtladen.ch",note:"R\u00e9f\u00e9rence bio, certifi\u00e9 Demeter"},
+    {n:"L\u2019Ultimo Bacio St.Gallen",t:"bio",a:"Poststrasse 14, 9000 St. Gallen",s:"#"},
+    {n:"KORN.HAUS",t:"bio",a:"Wil (SG)",s:"#",note:"Naturkost, certifi\u00e9 Demeter"},
+    {n:"Dill & Rosmarie",t:"bio",a:"Gossau SG",s:"https://bioladen-gossau.ch",note:"Bioladen + Bio-Caf\u00e9"}
+  ]},
+  AG: { name:"Argovie", shops:[
+    {n:"biopartnerLaden Seon",t:"bio",a:"Staufferstrasse 2, 5703 Seon",s:"https://biopartner.ch",note:"Si\u00e8ge de Bio Partner Schweiz AG"},
+    {n:"portanatura (Bio Partner)",t:"bio",a:"Kirchplatz 6, 4800 Zofingen",s:"https://biopartner.ch"},
+    {n:"Bio Peter",t:"bio",a:"Lenzburg (AG)",s:"#",note:"Certifi\u00e9 Demeter"}
+  ]},
+  GR: { name:"Grisons", shops:[
+    {n:"Bioladen R\u00e4gawurm",t:"bio",a:"Comandergasse 3, 7000 Chur",s:"https://bioladen-raegawurm.ch",note:"Depuis 1982, caves vo\u00fbt\u00e9es historiques"}
+  ]},
+  ZG: { name:"Zoug", shops:[
+    {n:"DROPA Gotthard Baar",t:"droguerie",a:"Bahnhofstrasse 17, 6340 Baar",s:"https://dropa.ch",note:"Naturkosmetik, phytoth\u00e9rapie, parfumerie"}
+  ]},
+  SZ: { name:"Schwyz", shops:[
+    {n:"Regenbogen Bio Reformhaus",t:"reformhaus",a:"Oberer Steisteg 10, 6430 Schwyz",s:"https://bioreformhaus.ch",note:"Bio, commerce \u00e9quitable. Lu-Ve 8h30-18h30, Sa 8h-16h"}
+  ]},
+  GL: { name:"Glaris", shops:[
+    {n:"Bioladen Ulme",t:"bio",a:"Bankstrasse 30, 8750 Glarus",s:"https://bioladenulme.ch",note:"Plus de 30 ans d\u2019activit\u00e9, produits r\u00e9gionaux et \u00e9quitables"}
+  ]},
+  SH: { name:"Schaffhouse", shops:[
+    {n:"Viva Natura",t:"bio",a:"Vorstadt 27, 8200 Schaffhausen",s:"https://vivanatura.ch",note:"Depuis 1980. Cosmétiques naturels, studio"}
+  ]},
+  TG: { name:"Thurgovie", shops:[
+    {n:"Nat\u00fcrli Arbon",t:"bio",a:"Hauptstrasse 5, 9320 Arbon",s:"#"}
+  ]},
+  SO: { name:"Soleure", shops:[
+    {n:"DROPA Grenchen",t:"droguerie",a:"Marktplatz 14, 2540 Grenchen",s:"https://dropa.ch"}
+  ]},
+  AR: { name:"Appenzell RE", shops:[
+    {n:"DROPA Herisau",t:"droguerie",a:"Platz 10, 9100 Herisau",s:"https://dropa.ch",note:"Apotheke zur Eiche, r\u00e9seau DROPA"}
+  ]},
+  BL: { name:"B\u00e2le-Campagne", shops:[]},
+  JU: { name:"Jura", shops:[]},
+  AI: { name:"Appenzell RI", shops:[]},
+  UR: { name:"Uri", shops:[]},
+  OW: { name:"Obwald", shops:[]},
+  NW: { name:"Nidwald", shops:[]}
+};
+
+/* ── Canton display order (Romandie first, then Deutschschweiz, then Tessin) ── */
+var CANTON_ORDER = ["GE","VD","VS","FR","NE","JU","BE","ZH","BS","BL","LU","AG","SO","SG","TG","GR","ZG","SZ","GL","SH","AR","AI","TI","UR","OW","NW"];
+
 var FLAG_MAP = {
   FRA:"\ud83c\uddeb\ud83c\uddf7", CHE:"\ud83c\udde8\ud83c\udded", CAN:"\ud83c\udde8\ud83c\udde6",
   ESP:"\ud83c\uddea\ud83c\uddf8", ARE:"\ud83c\udde6\ud83c\uddea", ITA:"\ud83c\uddee\ud83c\uddf9",
@@ -504,14 +744,12 @@ scene.add(globeMesh);
 /* ─── NUCLEUS (core light) ─── */
 var nucleusCore, nucleusGlow, nucleusHalo, coreLight;
 (function(){
-  // Bright inner core
   nucleusCore = new THREE.Mesh(
     new THREE.SphereGeometry(0.06, 32, 32),
     new THREE.MeshBasicMaterial({ color: 0x00ffcc, transparent: true, opacity: 0.45 })
   );
   scene.add(nucleusCore);
 
-  // Medium glow ring
   nucleusGlow = new THREE.Mesh(
     new THREE.SphereGeometry(0.14, 32, 32),
     new THREE.ShaderMaterial({
@@ -522,7 +760,6 @@ var nucleusCore, nucleusGlow, nucleusHalo, coreLight;
   );
   scene.add(nucleusGlow);
 
-  // Large radial halo — light that reaches the surface
   nucleusHalo = new THREE.Mesh(
     new THREE.SphereGeometry(0.65, 32, 32),
     new THREE.ShaderMaterial({
@@ -540,13 +777,12 @@ var nucleusCore, nucleusGlow, nucleusHalo, coreLight;
   );
   scene.add(nucleusHalo);
 
-  // Point light at center — illuminates continent meshes from inside
   coreLight = new THREE.PointLight(0x00d4aa, 0.6, 3.0, 2);
   coreLight.position.set(0, 0, 0);
   scene.add(coreLight);
 })();
 
-/* ─── INNER GLOW LAYER (subsurface light leaking through continents) ─── */
+/* ─── INNER GLOW LAYER ─── */
 var innerGlowMesh;
 (function(){
   innerGlowMesh = new THREE.Mesh(
@@ -600,7 +836,7 @@ var cytoPoints;
   scene.add(cytoPoints);
 })();
 
-/* ─── lat/lon → 3D ─── */
+/* ─── lat/lon to 3D ─── */
 function latLonToVec3(lat, lon, r) {
   var phi = (90 - lat) * Math.PI / 180;
   var theta = (lon + 180) * Math.PI / 180;
@@ -618,38 +854,34 @@ var partnerDots = [];
 
 PARTNERS.forEach(function(p, idx) {
   var col = new THREE.Color(TYPE_COLORS[p.type] || '#00d4aa');
-  var isNP = p.type === 'non-partenaire';
   var pos = latLonToVec3(p.lat, p.lon, GLOBE_R * 1.015);
 
   var dot = new THREE.Mesh(
-    new THREE.SphereGeometry(isNP ? 0.008 : 0.013, 12, 12),
-    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.6 : 0.9 })
+    new THREE.SphereGeometry(0.011, 12, 12),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.85 })
   );
   dot.position.copy(pos);
   partnerGroup.add(dot);
 
   var glow = new THREE.Mesh(
-    new THREE.SphereGeometry(isNP ? 0.016 : 0.028, 12, 12),
-    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.08 : 0.18, blending: THREE.AdditiveBlending, depthWrite: false })
+    new THREE.SphereGeometry(0.024, 12, 12),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending, depthWrite: false })
   );
   glow.position.copy(pos);
   partnerGroup.add(glow);
 
   var ring = new THREE.Mesh(
-    new THREE.RingGeometry(isNP ? 0.012 : 0.018, isNP ? 0.016 : 0.023, 32),
-    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: isNP ? 0.15 : 0.3, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false })
+    new THREE.RingGeometry(0.016, 0.021, 32),
+    new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.25, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false })
   );
   ring.position.copy(pos);
   ring.lookAt(new THREE.Vector3(0, 0, 0));
   partnerGroup.add(ring);
 
-  // filament (only for real partners)
-  if (!isNP) {
-    var fGeo = new THREE.BufferGeometry().setFromPoints([pos, new THREE.Vector3(0,0,0)]);
-    partnerGroup.add(new THREE.Line(fGeo, new THREE.LineBasicMaterial({
-      color: col, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending, depthWrite: false
-    })));
-  }
+  var fGeo = new THREE.BufferGeometry().setFromPoints([pos, new THREE.Vector3(0,0,0)]);
+  partnerGroup.add(new THREE.Line(fGeo, new THREE.LineBasicMaterial({
+    color: col, transparent: true, opacity: 0.04, blending: THREE.AdditiveBlending, depthWrite: false
+  })));
 
   partnerDots.push({ mesh: dot, ring: ring, glow: glow, partner: p });
 });
@@ -694,7 +926,6 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
           lineObjs.push(line);
         });
 
-        // Hit-test mesh from first ring using fan triangulation
         try {
           var hitRing = poly[0];
           if (hitRing.length >= 4) {
@@ -707,7 +938,6 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
             }
             var cn = vecs.length;
             cx /= cn; cy /= cn; cz /= cn;
-            // Normalize center onto sphere
             var cl = Math.sqrt(cx*cx + cy*cy + cz*cz);
             if (cl > 0.001) {
               cx = cx/cl * GLOBE_R * 1.008;
@@ -740,13 +970,12 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
 
       if (alpha3) {
         if (!countryDataMap[alpha3]) {
-          countryDataMap[alpha3] = { name: name, lines: lineObjs, reliéfMeshes: [], elevated: false, rings: [] };
+          countryDataMap[alpha3] = { name: name, lines: lineObjs, reliefMeshes: [], elevated: false, rings: [] };
         } else {
           countryDataMap[alpha3].lines = countryDataMap[alpha3].lines.concat(lineObjs);
         }
       }
 
-      // Build reliéf meshes (filled country polygons for élévation)
       if (alpha3 && countryDataMap[alpha3]) {
         polys.forEach(function(poly){
           try {
@@ -778,7 +1007,7 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
             });
             var rMesh = new THREE.Mesh(rGeo, rMat);
             scene.add(rMesh);
-            countryDataMap[alpha3].reliéfMeshes.push(rMesh);
+            countryDataMap[alpha3].reliefMeshes.push(rMesh);
           } catch(e){}
         });
       }
@@ -814,8 +1043,8 @@ var elevatedCountryCode = null;
 
 function setCountryRadius(code, radius) {
   var d = countryDataMap[code];
-  if (!d || !d.reliéfMeshes) return;
-  d.reliéfMeshes.forEach(function(mesh){
+  if (!d || !d.reliefMeshes) return;
+  d.reliefMeshes.forEach(function(mesh){
     var flat = mesh.geometry.userData.flatCoords;
     var positions = mesh.geometry.attributes.position.array;
     for (var i = 0; i < flat.length; i += 2) {
@@ -836,10 +1065,9 @@ function elevateCountry(code, up) {
   gsap.to(obj, { radius: target, duration: 0.5, ease: 'power2.out',
     onUpdate: function(){ setCountryRadius(code, obj.radius); }
   });
-  d.reliéfMeshes.forEach(function(mesh){
+  d.reliefMeshes.forEach(function(mesh){
     gsap.to(mesh.material, { opacity: targetOpacity, duration: 0.4 });
   });
-  // Also brighten country lines when elevated
   if (up) {
     d.lines.forEach(function(l){ l.material.opacity = 0.9; l.material.color.setHex(0x00ffee); });
   } else {
@@ -902,13 +1130,19 @@ function onMouseMove(e) {
       highlightCountry(code);
     }
 
-    var allEntries = partnersInCountry(code);
-    var partnerCount = allEntries.filter(function(p){ return p.type !== 'non-partenaire'; }).length;
-    var nonPartnerCount = allEntries.filter(function(p){ return p.type === 'non-partenaire'; }).length;
     var flag = FLAG_MAP[code] || '';
     var text = (flag ? flag + ' ' : '') + name;
-    if (partnerCount > 0) text += ' \u2014 ' + partnerCount + ' ' + (partnerCount > 1 ? t('tooltip.partners.plural') : t('tooltip.partners'));
-    if (nonPartnerCount > 0) text += (partnerCount > 0 ? ' + ' : ' \u2014 ') + nonPartnerCount + ' ' + t('tooltip.nonpartners');
+
+    if (code === 'CHE') {
+      var totalShops = 0;
+      CANTON_ORDER.forEach(function(c){ totalShops += SWISS_SHOPS[c].shops.length; });
+      text += ' \u2014 ' + totalShops + ' ' + t('swiss.shops');
+    } else {
+      var allEntries = partnersInCountry(code);
+      var partnerCount = allEntries.length;
+      if (partnerCount > 0) text += ' \u2014 ' + partnerCount + ' ' + (partnerCount > 1 ? t('tooltip.partners.plural') : t('tooltip.partners'));
+    }
+
     tooltipEl.textContent = text;
     tooltipEl.classList.add('visible');
     tooltipEl.style.left = (cx + 16) + 'px';
@@ -934,17 +1168,20 @@ function onClickGlobe(e) {
   if (hits.length > 0) {
     var ud = hits[0].object.userData;
     var code = ud.countryCode;
-    // Always trigger reliéf
     selectCountry(code);
-    // Open panel with partners + non-partners
-    var entries = partnersInCountry(code);
-    if (entries.length > 0) {
-      openSidePanel(code, ud.countryName, entries, cx);
+
+    if (code === 'CHE') {
+      openSwissPanel(cx);
+    } else {
+      var entries = partnersInCountry(code);
+      if (entries.length > 0) {
+        openSidePanel(code, ud.countryName, entries, cx);
+      }
     }
   }
 }
 
-/* ─── SIDE PANEL ─── */
+/* ─── SIDE PANEL (standard countries) ─── */
 function openSidePanel(code, name, partners, clickX) {
   panelOpen = true;
   mouseInPanel = false;
@@ -961,43 +1198,19 @@ function openSidePanel(code, name, partners, clickX) {
   h += '<div class="panel-header"><span class="panel-flag">' + flag + '</span><span class="panel-country">' + escHtml(name) + '</span></div>';
   h += '<div class="panel-subtitle">' + partners.length + ' ' + (partners.length > 1 ? t('panel.partners') : t('panel.partner')) + '</div>';
 
-  // Separate partners and non-partners
-  var realPartners = partners.filter(function(p){ return p.type !== 'non-partenaire'; });
-  var nonPartners = partners.filter(function(p){ return p.type === 'non-partenaire'; });
-
-  if (realPartners.length > 0) {
-    h += '<div style="font-size:.62rem;color:#00d4aa;letter-spacing:1px;text-transform:uppercase;margin-bottom:.6rem;font-weight:600">' + t('panel.section.partners') + '</div>';
-    realPartners.forEach(function(p){
-      h += '<div class="panel-partner">';
-      h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
-      h += '<div class="panel-partner-type">' + escHtml(t('type.' + p.type) || TYPE_LABELS[p.type] || p.type) + '</div>';
-      h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
-      h += '<div class="panel-partner-tags">';
-      p.tags.forEach(function(tg){ h += '<span>' + escHtml(tg) + '</span>'; });
-      h += '</div>';
-      h += '<div class="panel-partner-links">';
-      h += '<a href="' + p.rdv + '" target="_blank" rel="noopener">' + t('panel.rdv') + '</a>';
-      h += '<a href="' + p.site + '" target="_blank" rel="noopener">' + t('panel.site') + '</a>';
-      h += '</div></div>';
-    });
-  }
-
-  if (nonPartners.length > 0) {
-    h += '<div style="font-size:.62rem;color:#6a7a8a;letter-spacing:1px;text-transform:uppercase;margin:1.2rem 0 .6rem;font-weight:600;border-top:1px solid rgba(106,122,138,.2);padding-top:.8rem">' + t('panel.section.nonpartners') + '</div>';
-    nonPartners.forEach(function(p){
-      h += '<div class="panel-partner" style="border-color:rgba(106,122,138,.15);background:rgba(106,122,138,.04)">';
-      h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
-      h += '<div class="panel-partner-type" style="background:rgba(106,122,138,.15);color:#8a9aaa">' + escHtml(t('type.non-partenaire')) + '</div>';
-      h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
-      if (p.source) h += '<div style="font-size:.56rem;color:#5a6a7a;font-style:italic;margin-bottom:.4rem">' + t('panel.source') + ' ' + escHtml(p.source) + '</div>';
-      h += '<div class="panel-partner-tags">';
-      p.tags.forEach(function(tg){ h += '<span style="border-color:rgba(106,122,138,.15);color:#6a8a80">' + escHtml(tg) + '</span>'; });
-      h += '</div>';
-      h += '<div class="panel-partner-links">';
-      h += '<a href="' + p.site + '" target="_blank" rel="noopener" style="border-color:rgba(106,122,138,.2);color:#6a7a8a">' + t('panel.site') + '</a>';
-      h += '</div></div>';
-    });
-  }
+  partners.forEach(function(p){
+    h += '<div class="panel-partner">';
+    h += '<div class="panel-partner-name">' + p.emoji + ' ' + escHtml(p.name) + '</div>';
+    h += '<div class="panel-partner-type">' + escHtml(TYPE_LABELS[p.type] || p.type) + '</div>';
+    h += '<div class="panel-partner-desc">' + escHtml(p.desc) + '</div>';
+    h += '<div class="panel-partner-tags">';
+    p.tags.forEach(function(tg){ h += '<span>' + escHtml(tg) + '</span>'; });
+    h += '</div>';
+    h += '<div class="panel-partner-links">';
+    h += '<a href="' + p.rdv + '" target="_blank" rel="noopener">' + t('panel.rdv') + '</a>';
+    h += '<a href="' + p.site + '" target="_blank" rel="noopener">' + t('panel.site') + '</a>';
+    h += '</div></div>';
+  });
 
   sidePanelEl.innerHTML = h;
 
@@ -1007,6 +1220,114 @@ function openSidePanel(code, name, partners, clickX) {
   }, 10000);
 }
 
+/* ───────────────────────────────── SWISS CANTON NAVIGATOR ───────────────────────────────── */
+function openSwissPanel(clickX) {
+  panelOpen = true;
+  mouseInPanel = false;
+  canClosePanel = false;
+  clearTimeout(panelTimeout);
+  clearTimeout(panelMinTimer);
+
+  var side = clickX < window.innerWidth / 2 ? 'right' : 'left';
+  sidePanelEl.className = 'open-' + side;
+
+  var totalShops = 0;
+  CANTON_ORDER.forEach(function(c){ totalShops += SWISS_SHOPS[c].shops.length; });
+
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<div class="panel-header"><span class="panel-flag">\ud83c\udde8\ud83c\udded</span><span class="panel-country">Suisse</span></div>';
+  h += '<div class="panel-subtitle">' + totalShops + ' ' + t('swiss.shops') + '</div>';
+
+  h += '<div class="swiss-intro">' + t('swiss.intro') + '</div>';
+
+  // Legend
+  h += '<div class="swiss-legend">';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#90be6d"></span>' + t('type.bio') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#00b4d8"></span>' + t('type.pharmacie') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#a78bfa"></span>' + t('type.droguerie') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#f4a261"></span>' + t('type.herboristerie') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#00d4aa"></span>' + t('type.reformhaus') + '</div>';
+  h += '</div>';
+
+  // Search
+  h += '<input type="text" class="swiss-search" placeholder="' + t('swiss.search') + '" oninput="window.__filterCantons(this.value)" />';
+
+  // Canton grid
+  h += '<div class="canton-grid" id="canton-grid">';
+  CANTON_ORDER.forEach(function(code){
+    var canton = SWISS_SHOPS[code];
+    var count = canton.shops.length;
+    var cls = count === 0 ? ' empty' : '';
+    h += '<div class="canton-btn' + cls + '" ' + (count > 0 ? 'onclick="window.__openCanton(\'' + code + '\')"' : '') + '>';
+    if (count > 0) h += '<span class="canton-count">' + count + '</span>';
+    h += '<span class="canton-code">' + code + '</span>';
+    h += '<span class="canton-name">' + escHtml(canton.name) + '</span>';
+    h += '</div>';
+  });
+  h += '</div>';
+
+  sidePanelEl.innerHTML = h;
+
+  panelMinTimer = setTimeout(function(){ canClosePanel = true; }, 30000);
+  clearTimeout(panelTimeout);
+}
+
+function openCantonPanel(cantonCode) {
+  var canton = SWISS_SHOPS[cantonCode];
+  if (!canton) return;
+
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<button class="swiss-back" onclick="window.__backToCantons()">\u2190 ' + t('swiss.back') + '</button>';
+  h += '<div class="canton-header"><span class="canton-header-name">' + escHtml(canton.name) + '</span></div>';
+  h += '<div class="panel-subtitle">' + canton.shops.length + ' ' + t('swiss.commerces') + '</div>';
+
+  canton.shops.forEach(function(shop){
+    var typeClass = 'shop-type-' + shop.t;
+    var typeLabel = t('type.' + shop.t) || shop.t;
+    h += '<div class="shop-card">';
+    h += '<div class="shop-card-name">' + escHtml(shop.n) + '</div>';
+    h += '<span class="shop-type-badge ' + typeClass + '">' + escHtml(typeLabel) + '</span>';
+    h += '<div class="shop-card-address">' + escHtml(shop.a) + '</div>';
+    if (shop.note) h += '<div class="shop-card-note">' + escHtml(shop.note) + '</div>';
+    h += '<div class="shop-card-links">';
+    var mapsQuery = encodeURIComponent(shop.n + ' ' + shop.a);
+    h += '<a href="https://www.google.com/maps/search/?api=1&query=' + mapsQuery + '" target="_blank" rel="noopener">\ud83d\udccd Maps</a>';
+    if (shop.s && shop.s !== '#') h += '<a href="' + shop.s + '" target="_blank" rel="noopener">\ud83c\udf10 ' + t('panel.site') + '</a>';
+    h += '</div></div>';
+  });
+
+  sidePanelEl.innerHTML = h;
+  sidePanelEl.scrollTop = 0;
+}
+
+window.__openCanton = function(code){ openCantonPanel(code); };
+window.__backToCantons = function(){
+  openSwissPanel(window.innerWidth);
+  sidePanelEl.scrollTop = 0;
+};
+window.__filterCantons = function(query){
+  var q = query.toLowerCase().trim();
+  var grid = document.getElementById('canton-grid');
+  if (!grid) return;
+  var btns = grid.children;
+  for (var i = 0; i < btns.length; i++) {
+    var btn = btns[i];
+    var code = CANTON_ORDER[i];
+    var canton = SWISS_SHOPS[code];
+    if (!q) { btn.style.display = ''; continue; }
+    var match = code.toLowerCase().indexOf(q) !== -1 || canton.name.toLowerCase().indexOf(q) !== -1;
+    if (!match) {
+      canton.shops.forEach(function(s){
+        if (s.n.toLowerCase().indexOf(q) !== -1 || s.a.toLowerCase().indexOf(q) !== -1) match = true;
+      });
+    }
+    btn.style.display = match ? '' : 'none';
+  }
+};
+
+/* ─── CLOSE PANEL ─── */
 function closeSidePanel() {
   if (!panelOpen) return;
   panelOpen = false;
@@ -1088,13 +1409,13 @@ function animate() {
     coreLight.intensity = 0.5 + 0.2 * Math.sin(t * 1.2);
   }
 
-  // ── CONTINENT GLOW PULSE (light breathing through the land) ──
+  // ── CONTINENT GLOW PULSE ──
   if (geoLoaded) {
     var glowPulse = 0.03 + 0.02 * Math.sin(t * 0.9);
     for (var code in countryDataMap) {
       var d = countryDataMap[code];
-      if (d.reliéfMeshes && !d.elevated) {
-        d.reliéfMeshes.forEach(function(m){
+      if (d.reliefMeshes && !d.elevated) {
+        d.reliefMeshes.forEach(function(m){
           m.material.opacity = glowPulse;
         });
       }
@@ -1116,43 +1437,47 @@ window.addEventListener('resize', function(){
 var I18N = {
   fr: {
     "nav.home":"Accueil","nav.science":"Science","nav.indice":"Indice ORIM","nav.partners":"Partenaires","nav.contact":"Nous contacter",
-    "cta.text":"VOUS \u00CATES PROFESSIONNEL DE SANT\u00C9 ?","cta.btn":"Rejoindre le r\u00e9seau ORIM\u2122",
+    "cta.text":"VOUS \u00CATES PROFESSIONNEL DE SANT\u00C9 ?","cta.btn":"Rejoindre le r\u00e9seau ORIM\u2122","cta.donate":"\u2764\uFE0F Soutenir ORIM",
     "loader":"Chargement de la carte...","tooltip.partners":"partenaire","tooltip.partners.plural":"partenaires",
     "panel.partners":"partenaires ORIM\u2122","panel.partner":"partenaire ORIM\u2122",
     "panel.rdv":"Rendez-vous","panel.site":"Site web",
-    "type.médecin":"M\u00e9decin","type.therapeute":"Th\u00e9rapeute","type.magasin":"Magasin","type.naturopathe":"Naturopathe","type.coach":"Coach","type.laboratoire":"Laboratoire",
-    "type.non-partenaire":"Non-partenaire","tooltip.nonpartners":"non-partenaire(s)",
-    "panel.section.partners":"Partenaires ORIM\u2122","panel.section.nonpartners":"Annuaire local","panel.source":"Source :"
+    "type.m\u00e9decin":"M\u00e9decin","type.therapeute":"Th\u00e9rapeute","type.magasin":"Magasin","type.naturopathe":"Naturopathe","type.coach":"Coach","type.laboratoire":"Laboratoire",
+    "type.bio":"Bio","type.pharmacie":"Pharmacie","type.droguerie":"Droguerie","type.herboristerie":"Herboristerie","type.reformhaus":"Reformhaus",
+    "swiss.shops":"points de vente","swiss.intro":"D\u00e9couvrez les magasins bio, pharmacies, drogueries et herboristeries partenaires en Suisse. Cliquez sur un canton pour voir les commerces disponibles.",
+    "swiss.search":"Rechercher un canton ou un magasin...","swiss.back":"Tous les cantons","swiss.commerces":"commerces"
   },
   en: {
     "nav.home":"Home","nav.science":"Science","nav.indice":"ORIM Index","nav.partners":"Partners","nav.contact":"Contact us",
-    "cta.text":"ARE YOU A HEALTHCARE PROFESSIONAL?","cta.btn":"Join the ORIM\u2122 Network",
+    "cta.text":"ARE YOU A HEALTHCARE PROFESSIONAL?","cta.btn":"Join the ORIM\u2122 Network","cta.donate":"\u2764\uFE0F Support ORIM",
     "loader":"Loading map...","tooltip.partners":"partner","tooltip.partners.plural":"partners",
     "panel.partners":"ORIM\u2122 partners","panel.partner":"ORIM\u2122 partner",
     "panel.rdv":"Book appointment","panel.site":"Website",
-    "type.médecin":"Doctor","type.therapeute":"Therapist","type.magasin":"Store","type.naturopathe":"Naturopath","type.coach":"Coach","type.laboratoire":"Laboratory",
-    "type.non-partenaire":"Non-partner","tooltip.nonpartners":"non-partner(s)",
-    "panel.section.partners":"ORIM\u2122 Partners","panel.section.nonpartners":"Local directory","panel.source":"Source:"
+    "type.m\u00e9decin":"Doctor","type.therapeute":"Therapist","type.magasin":"Store","type.naturopathe":"Naturopath","type.coach":"Coach","type.laboratoire":"Laboratory",
+    "type.bio":"Organic","type.pharmacie":"Pharmacy","type.droguerie":"Drugstore","type.herboristerie":"Herbalist","type.reformhaus":"Health Store",
+    "swiss.shops":"retail locations","swiss.intro":"Discover organic shops, pharmacies, drugstores and herbalists across Switzerland. Click a canton to browse available stores.",
+    "swiss.search":"Search a canton or store...","swiss.back":"All cantons","swiss.commerces":"stores"
   },
   es: {
     "nav.home":"Inicio","nav.science":"Ciencia","nav.indice":"\u00CDndice ORIM","nav.partners":"Socios","nav.contact":"Cont\u00e1ctenos",
-    "cta.text":"\u00bfES USTED PROFESIONAL DE LA SALUD?","cta.btn":"Unirse à la red ORIM\u2122",
+    "cta.text":"\u00bfES USTED PROFESIONAL DE LA SALUD?","cta.btn":"Unirse a la red ORIM\u2122","cta.donate":"\u2764\uFE0F Apoyar ORIM",
     "loader":"Cargando mapa...","tooltip.partners":"socio","tooltip.partners.plural":"socios",
     "panel.partners":"socios ORIM\u2122","panel.partner":"socio ORIM\u2122",
     "panel.rdv":"Reservar cita","panel.site":"Sitio web",
-    "type.médecin":"M\u00e9dico","type.therapeute":"Terapeuta","type.magasin":"Tienda","type.naturopathe":"Natur\u00f3pata","type.coach":"Coach","type.laboratoire":"Laboratorio",
-    "type.non-partenaire":"No asociado","tooltip.nonpartners":"no asociado(s)",
-    "panel.section.partners":"Socios ORIM\u2122","panel.section.nonpartners":"Directorio local","panel.source":"Fuente:"
+    "type.m\u00e9decin":"M\u00e9dico","type.therapeute":"Terapeuta","type.magasin":"Tienda","type.naturopathe":"Natur\u00f3pata","type.coach":"Coach","type.laboratoire":"Laboratorio",
+    "type.bio":"Bio","type.pharmacie":"Farmacia","type.droguerie":"Droguería","type.herboristerie":"Herbolario","type.reformhaus":"Tienda naturista",
+    "swiss.shops":"puntos de venta","swiss.intro":"Descubra tiendas bio, farmacias, droguer\u00edas y herbolarios en Suiza. Haga clic en un cant\u00f3n para ver las tiendas disponibles.",
+    "swiss.search":"Buscar un cant\u00f3n o tienda...","swiss.back":"Todos los cantones","swiss.commerces":"comercios"
   },
   de: {
     "nav.home":"Startseite","nav.science":"Wissenschaft","nav.indice":"ORIM-Index","nav.partners":"Partner","nav.contact":"Kontakt",
-    "cta.text":"SIND SIE EIN GESUNDHEITSEXPERTE?","cta.btn":"Dem ORIM\u2122-Netzwerk beitreten",
+    "cta.text":"SIND SIE EIN GESUNDHEITSEXPERTE?","cta.btn":"Dem ORIM\u2122-Netzwerk beitreten","cta.donate":"\u2764\uFE0F ORIM unterst\u00fctzen",
     "loader":"Karte wird geladen...","tooltip.partners":"Partner","tooltip.partners.plural":"Partner",
     "panel.partners":"ORIM\u2122-Partner","panel.partner":"ORIM\u2122-Partner",
     "panel.rdv":"Termin buchen","panel.site":"Webseite",
-    "type.médecin":"Arzt","type.therapeute":"Therapeut","type.magasin":"Gesch\u00e4ft","type.naturopathe":"Naturheilkundler","type.coach":"Coach","type.laboratoire":"Labor",
-    "type.non-partenaire":"Nicht-Partner","tooltip.nonpartners":"Nicht-Partner",
-    "panel.section.partners":"ORIM\u2122-Partner","panel.section.nonpartners":"Lokales Verzeichnis","panel.source":"Quelle:"
+    "type.m\u00e9decin":"Arzt","type.therapeute":"Therapeut","type.magasin":"Gesch\u00e4ft","type.naturopathe":"Naturheilkundler","type.coach":"Coach","type.laboratoire":"Labor",
+    "type.bio":"Bio","type.pharmacie":"Apotheke","type.droguerie":"Drogerie","type.herboristerie":"Kr\u00e4uterladen","type.reformhaus":"Reformhaus",
+    "swiss.shops":"Verkaufsstellen","swiss.intro":"Entdecken Sie Bio-L\u00e4den, Apotheken, Drogerien und Kr\u00e4uterl\u00e4den in der Schweiz. Klicken Sie auf einen Kanton, um die verf\u00fcgbaren Gesch\u00e4fte zu sehen.",
+    "swiss.search":"Kanton oder Gesch\u00e4ft suchen...","swiss.back":"Alle Kantone","swiss.commerces":"Gesch\u00e4fte"
   }
 };
 

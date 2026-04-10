@@ -362,6 +362,61 @@ canvas{display:block;width:100%;height:100%}
   .canton-btn{padding:.5rem .3rem}
   .canton-btn .canton-code{font-size:.7rem}
 }
+
+/* ── OPTION C : SECTION PARTENAIRES OFFICIELS + RESEAU REFERENCE ── */
+.partner-section-title{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.3px;
+  margin:1.2rem 0 .6rem;padding-bottom:.4rem;
+  border-bottom:1px solid rgba(0,212,170,.12);
+}
+.partner-section-title.official{
+  color:#E6A817;
+  border-bottom-color:rgba(230,168,23,.3);
+  text-shadow:0 0 10px rgba(230,168,23,.25);
+}
+.partner-section-title.network{color:#00d4aa}
+.partner-section-title .section-icon{font-size:.9rem}
+
+.official-partner-empty{
+  padding:.9rem 1rem;
+  background:linear-gradient(135deg,rgba(230,168,23,.06),rgba(230,168,23,.02));
+  border:1px dashed rgba(230,168,23,.3);
+  border-radius:10px;
+  font-size:.68rem;color:#a8896c;
+  text-align:center;line-height:1.6;
+  margin-bottom:1rem;
+}
+.official-partner-empty strong{
+  color:#E6A817;display:block;
+  margin-bottom:.3rem;font-size:.72rem;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.official-partner-empty a{
+  color:#E6A817;text-decoration:none;
+  border-bottom:1px dotted rgba(230,168,23,.5);
+}
+.official-partner-empty a:hover{border-bottom-style:solid}
+
+.shop-card.official-partner{
+  background:linear-gradient(135deg,rgba(230,168,23,.09) 0%,rgba(230,168,23,.03) 100%);
+  border-color:rgba(230,168,23,.4);
+  box-shadow:0 0 20px rgba(230,168,23,.08);
+  position:relative;
+}
+.shop-card.official-partner::before{
+  content:'\2605';
+  position:absolute;top:10px;right:12px;
+  font-size:.9rem;color:#E6A817;
+  text-shadow:0 0 8px rgba(230,168,23,.5);
+}
+.shop-card.official-partner .shop-card-name{
+  color:#E6A817;padding-right:20px;
+}
+.shop-card.official-partner:hover{
+  border-color:rgba(230,168,23,.6);
+  box-shadow:0 0 30px rgba(230,168,23,.15);
+}
 </style>
 </head>
 <body>
@@ -1447,6 +1502,472 @@ var EUROPE_COUNTRIES = {
 
 var EUROPE_COUNTRY_ORDER = ["DEU","ITA","AUT","BEL","ESP","PRT","GBR","NLD","POL","NOR","SWE"];
 
+/* ─── AMERICAS SHOPS DATABASE (18 countries, Equateur priorite Gregory Monfardino) ─── */
+var AMERICAS_COUNTRIES = {
+  ECU: { name:"Equateur", flag:"\ud83c\uddea\ud83c\udde8", regions:{
+    "PCH":{name:"Pichincha (Quito)",shops:[
+      {n:"Camari FEPP Quito",t:"bio",a:"Antonio de Marchena OE2-38 y Versalles, Santa Clara, Quito",s:"https://www.camari.org",note:"Reseau FEPP commerce equitable national"},
+      {n:"Endemica Tienda Organica",t:"bio",a:"Madrid E16-89 y Tolosa, La Floresta, Quito",s:"https://endemicaec.com",note:"Incontournable La Floresta - cible expats/bobos"},
+      {n:"MegaOrganik",t:"bio",a:"Av. De los Shyris N40-49, Quito",s:"https://megaorganik.com"},
+      {n:"NatuOrganic",t:"bio",a:"Av. Tnte. Hugo Ortiz S16-85, Quito",s:"https://www.mynatuorganic.com"},
+      {n:"Natural Day Sangolqui",t:"reformhaus",a:"Luis Felipe Borja N12-39, Sangolqui",s:"#"},
+      {n:"Natural Vitality Mall El Jardin",t:"reformhaus",a:"Av. Amazonas N6-144, Mall El Jardin, Quito",s:"https://naturalvitality.com.ec",note:"Chaine nationale premium"},
+      {n:"Natural Vitality Republica",t:"reformhaus",a:"Av. Republica OE3-30, Quito",s:"https://naturalvitality.com.ec",note:"Siege Matriz"},
+      {n:"Natural Vitality Scala Cumbaya",t:"reformhaus",a:"Av. Interoceanica Km 12, Scala Shopping, Cumbaya",s:"https://naturalvitality.com.ec"},
+      {n:"Natural Vitality Condado",t:"reformhaus",a:"Condado Shopping Local 429, Av. de la Prensa, Quito",s:"https://naturalvitality.com.ec"},
+      {n:"Natural Vitality El Recreo",t:"reformhaus",a:"CC El Recreo S-229, Av. Pedro Vicente Maldonado, Quito",s:"https://naturalvitality.com.ec"},
+      {n:"Natural Vitality Quicentro Sur",t:"reformhaus",a:"Quicentro Sur PB 70-71, Av. Moran Valverde, Quito",s:"https://naturalvitality.com.ec"},
+      {n:"Natural Vitality Eko Park",t:"reformhaus",a:"Eko Park via Nayon, Quito",s:"https://naturalvitality.com.ec"},
+      {n:"La Bargue Centro Naturista",t:"herboristerie",a:"CC Multicentro Local 209, Quito",s:"#",note:"Un des plus anciens de Quito"},
+      {n:"Punto Natura Conocoto",t:"reformhaus",a:"CC Plaza Del Valle A-09, Conocoto, Quito",s:"#"},
+      {n:"Paccari La Floresta",t:"bio",a:"Julio Zaldumbide N24-713, La Floresta, Quito",s:"https://paccari.com",note:"Cacao bio Arriba Nacional Demeter - partenaire co-branding ORIM"},
+      {n:"Paccari Quicentro",t:"bio",a:"Quicentro Shopping, Quito",s:"https://paccari.com",note:"Cacao bio certifie biodynamique"},
+      {n:"Chez Tiff Artesanal",t:"bio",a:"Juan de Dios Morales Oe3-89, La Ronda, Quito",s:"https://cheztiff.net",note:"Chocolaterie suisse-ecuatorienne Bertrand Indemini"},
+      {n:"Feria Agroecologica La Carolina",t:"bio",a:"Parking Jardin Botanique, Parque La Carolina, Quito",s:"#",note:"Dimanche 08h-14h - Historique, clientele expats"},
+      {n:"Feria Agroecologica La Floresta",t:"bio",a:"Francisco Galavis y Isabel La Catolica, La Floresta, Quito",s:"#",note:"Dimanche 07h30-16h - Public cible ORIM ideal"},
+      {n:"Feria Parque Bicentenario",t:"bio",a:"Parque Bicentenario, acces Amazonas, Quito",s:"#",note:"Samedi 08h-12h - Programme municipal"},
+      {n:"Feria Parque La Armenia",t:"bio",a:"Parking Parque La Armenia, Valle de los Chillos, Quito",s:"#",note:"Dimanche 08h-12h"},
+      {n:"Fybeca Quito",t:"pharmacie",a:"Av. America 3037, Quito (+90 sucursales nationales)",s:"https://www.fybeca.com",note:"Chaine nationale pharmaceutique leader"}
+    ]},
+    "GUA":{name:"Guayas (Guayaquil)",shops:[
+      {n:"Biomarket Las Terrazas",t:"bio",a:"CC Las Terrazas PB Local 3, Km 1.5 Via Samborondon",s:"https://www.biomarket.com.ec",note:"Concept store premium zone aisee"},
+      {n:"La Molienda Urdesa",t:"bio",a:"Datiles 416 y 6ta Urdesa Central, Guayaquil",s:"#",note:"Pionnier bio Guayaquil depuis 2016, 70+ microentreprises"},
+      {n:"La Molienda Samborondon",t:"bio",a:"Samborondon, Guayaquil",s:"#",note:"2e local ouvert 2018"},
+      {n:"RunaKay Alhambra",t:"bio",a:"Alhambra Shopping P3 Local 304, Av. Samborondon",s:"#",note:"Marche + restaurant detox"},
+      {n:"Comisariato Naturista Centro",t:"reformhaus",a:"Aguirre 411 entre Chile y Chimborazo, Centro, Guayaquil",s:"https://comisariatonaturista.com",note:"Grande enseigne naturiste nationale"},
+      {n:"Comisariato Naturista Alborada",t:"reformhaus",a:"1er Retorno 18 NE, Alborada, Guayaquil",s:"https://comisariatonaturista.com"},
+      {n:"Comisariato Naturista Daule",t:"reformhaus",a:"Paseo Shopping, Daule",s:"https://comisariatonaturista.com"},
+      {n:"Natural Vitality Mall Del Sol",t:"reformhaus",a:"Mall Del Sol, Av. Juan Tanca Marengo 100, Guayaquil",s:"https://naturalvitality.com.ec"},
+      {n:"Natural Vitality City Mall",t:"reformhaus",a:"City Mall, Av. Benjamin Carrion Mora, Guayaquil",s:"https://naturalvitality.com.ec"},
+      {n:"Natural Vitality Plaza Quil",t:"reformhaus",a:"CC Plaza Quil Local 4, Av. Plaza Danin, Guayaquil",s:"https://naturalvitality.com.ec"},
+      {n:"Natural Vitality Village Plaza",t:"reformhaus",a:"Village Plaza, Samborondon",s:"https://naturalvitality.com.ec"},
+      {n:"Mercado Sanito",t:"bio",a:"Mercado del Rio, Malecon 2000, Guayaquil",s:"#",note:"Samedi 09h-15h - 26 producteurs certifies"}
+    ]},
+    "AZU":{name:"Azuay (Cuenca)",shops:[
+      {n:"La Primavera Vargas Machuca",t:"herboristerie",a:"Vargas Machuca 11-37, Cuenca",s:"https://en.laprimaveraproductosnaturales.com",note:"Reference Cuenca - vitamines, homeopathie"},
+      {n:"La Primavera Remigio Crespo",t:"herboristerie",a:"Av. Remigio Crespo y Av. Solano, Cuenca",s:"https://en.laprimaveraproductosnaturales.com"},
+      {n:"Natural Vitality Monay",t:"reformhaus",a:"Monay Shopping B13, Gonzalez Suarez, Cuenca",s:"https://naturalvitality.com.ec"},
+      {n:"Natural Vitality Mall del Rio",t:"reformhaus",a:"Mall del Rio, Av. Felipe II 1, Cuenca",s:"https://naturalvitality.com.ec"},
+      {n:"Camari Cuenca",t:"bio",a:"Cuenca",s:"https://www.camari.org",note:"Succursale FEPP, cooperatives bio"},
+      {n:"Renacer Productos Naturales",t:"herboristerie",a:"Pdte. Cordova 7-21, Cuenca",s:"#",note:"Rue pietonne centrale"},
+      {n:"Feria Agroecologica Yanuncay",t:"bio",a:"Biocentro Agroecologico Yanuncay, Cuenca",s:"#",note:"Samedi matin - Reseau municipal"}
+    ]},
+    "TUN":{name:"Tungurahua (Ambato)",shops:[
+      {n:"Centro Integral Nueva Vida",t:"reformhaus",a:"Av. Cevallos 13-52 y Lalama, Ambato",s:"#"},
+      {n:"Natural Vitality Mall de los Andes",t:"reformhaus",a:"Mall de los Andes M3, Av. Atahualpa, Ambato",s:"https://naturalvitality.com.ec"},
+      {n:"Feria PACAT Ambato",t:"bio",a:"Plaza Pachano, Ambato",s:"#",note:"Lun/Ven/Sam 07h-12h - 305 producteurs Tungurahua"}
+    ]},
+    "COT":{name:"Cotopaxi (Latacunga)",shops:[
+      {n:"Camari Latacunga",t:"bio",a:"Av. Sanchez de Orellana entre Tarqui y Maldonado, Latacunga",s:"https://www.camari.org",note:"Produits bio FEPP"}
+    ]},
+    "MAN":{name:"Manabi (Manta/Portoviejo)",shops:[
+      {n:"Cura Natural Portoviejo",t:"herboristerie",a:"Portoviejo, Manabi",s:"https://www.curanatural-ec.com",note:"Reference nationale naturopathie"},
+      {n:"Centro Naturista Trebol",t:"herboristerie",a:"Portoviejo, Manabi",s:"#"},
+      {n:"Natural Vitality Mall del Pacifico",t:"reformhaus",a:"Mall del Pacifico RB, Manta",s:"https://naturalvitality.com.ec"},
+      {n:"Productos Nativos NADERSA",t:"bio",a:"Manta, Manabi",s:"#",note:"Producteur sacha inchi, maca - potentiel fournisseur ORIM"}
+    ]},
+    "LOJ":{name:"Loja",shops:[
+      {n:"Feria El Valle Loja",t:"bio",a:"Plaza del Valle, Loja",s:"#",note:"Dimanche 06h-14h - 60 producteurs locaux"},
+      {n:"Fybeca Loja",t:"pharmacie",a:"Loja (plusieurs sucursales)",s:"https://www.fybeca.com"},
+      {n:"Cafe Organico Sol de Loja",t:"bio",a:"Loja",s:"#",note:"Cafe bio specialite - potentiel ORIM"}
+    ]},
+    "ELO":{name:"El Oro (Machala)",shops:[
+      {n:"Natural Vitality Gran Piazza",t:"reformhaus",a:"Mall Gran Piazza, Machala",s:"https://naturalvitality.com.ec"},
+      {n:"Fybeca Machala",t:"pharmacie",a:"Av. Paquisha Solar 1-D, CC La Piazza, Machala",s:"https://www.fybeca.com"}
+    ]},
+    "IMB":{name:"Imbabura (Ibarra/Otavalo)",shops:[
+      {n:"Cuidado Natural Ibarra",t:"herboristerie",a:"Mercado Amazonas, Ibarra",s:"#",note:"Medecine andine"},
+      {n:"Centro Naturista El Silo",t:"herboristerie",a:"Ibarra, Imbabura",s:"#"},
+      {n:"Fybeca Ibarra",t:"pharmacie",a:"Ibarra, Imbabura",s:"https://www.fybeca.com"}
+    ]},
+    "SDT":{name:"Santo Domingo",shops:[
+      {n:"Centro Naturista El Arbolito",t:"herboristerie",a:"Av. Quito, Santo Domingo",s:"#",note:"Actif depuis 2013"},
+      {n:"Jalea Real Productos Naturales",t:"reformhaus",a:"Santo Domingo",s:"https://jaleareal.com.ec"}
+    ]},
+    "CHI":{name:"Chimborazo (Riobamba)",shops:[
+      {n:"Camari Riobamba",t:"bio",a:"Riobamba, Chimborazo",s:"https://www.camari.org",note:"Province quinoa/cereales andines bio"},
+      {n:"Centro Naturista Riobamba",t:"herboristerie",a:"Riobamba, Chimborazo",s:"#"}
+    ]},
+    "ESM":{name:"Esmeraldas",shops:[
+      {n:"Camari Esmeraldas",t:"bio",a:"Esmeraldas",s:"https://www.camari.org",note:"Cote pacifique nord"}
+    ]},
+    "LRO":{name:"Los Rios (Babahoyo)",shops:[
+      {n:"Fybeca Babahoyo",t:"pharmacie",a:"Babahoyo, Los Rios",s:"https://www.fybeca.com"}
+    ]},
+    "CNR":{name:"Canar (Azogues)",shops:[
+      {n:"La Primavera Azogues",t:"herboristerie",a:"Azogues, Canar",s:"#",note:"3e local du reseau La Primavera"}
+    ]},
+    "CAR":{name:"Carchi (Tulcan)",shops:[
+      {n:"Fybeca Tulcan",t:"pharmacie",a:"Tulcan, Carchi",s:"https://www.fybeca.com",note:"Frontiere colombienne"}
+    ]},
+    "BOL":{name:"Bolivar (Guaranda)",shops:[
+      {n:"Fybeca Guaranda",t:"pharmacie",a:"Guaranda, Bolivar",s:"https://www.fybeca.com",note:"Province cereales bio andines"}
+    ]},
+    "MOR":{name:"Morona Santiago (Macas)",shops:[
+      {n:"Fybeca Macas",t:"pharmacie",a:"Macas, Morona Santiago",s:"https://www.fybeca.com",note:"Porte entree Amazonie"}
+    ]},
+    "NAP":{name:"Napo (Tena)",shops:[
+      {n:"Fybeca Tena",t:"pharmacie",a:"Tena, Napo",s:"https://www.fybeca.com",note:"Zone cacao Arriba Nacional - potentiel plantes amazoniennes ORIM"}
+    ]},
+    "SUC":{name:"Sucumbios (Lago Agrio)",shops:[
+      {n:"Camari Nueva Loja",t:"bio",a:"Nueva Loja, Sucumbios",s:"https://www.camari.org",note:"Amazonie FEPP"}
+    ]},
+    "ORE":{name:"Orellana (El Coca)",shops:[
+      {n:"Camari El Coca",t:"bio",a:"Francisco de Orellana, Orellana",s:"https://www.camari.org"},
+      {n:"Fybeca El Coca",t:"pharmacie",a:"El Coca, Orellana",s:"https://www.fybeca.com"}
+    ]},
+    "GAL":{name:"Galapagos",shops:[
+      {n:"Bellavista Farmers Market",t:"bio",a:"Bellavista, Santa Cruz, Galapagos",s:"#",note:"Marche producteurs locaux week-end"}
+    ]},
+  }, order:["PCH","GUA","AZU","TUN","COT","MAN","LOJ","ELO","IMB","SDT","CHI","ESM","LRO","CNR","CAR","BOL","MOR","NAP","SUC","ORE","GAL"] },
+  PER: { name:"Perou", flag:"\ud83c\uddf5\ud83c\uddea", regions:{
+    "LIM":{name:"Lima",shops:[
+      {n:"SANTANATURA Miraflores",t:"bio",a:"Av. Arequipa 5031, Tienda 179, Miraflores, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM au Perou"},
+      {n:"SANTANATURA San Isidro",t:"bio",a:"Av. Javier Prado Oeste 1162, San Isidro, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Surco",t:"bio",a:"Av. Aviacion 4923, Santiago de Surco, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Lince",t:"bio",a:"Av. Arenales 2570, Lince, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Magdalena",t:"bio",a:"Av. Sucre 744, Magdalena del Mar, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Los Olivos Universitaria",t:"bio",a:"Av. Universitaria Cdra. 13, Los Olivos, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Los Olivos Antunez",t:"bio",a:"Av. Antunez de Mayolo 891, Los Olivos, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Brena La Rambla",t:"bio",a:"CC La Rambla, Av. Brasil 714, Brena, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA La Victoria",t:"bio",a:"Av. Canada 1110, La Victoria, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Plaza Lima Norte",t:"bio",a:"CC Plaza Lima Norte, Independencia, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Plaza Lima Sur",t:"bio",a:"CC Plaza Lima Sur, Chorrillos, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Chorrillos Huaylas",t:"bio",a:"Tottus Huaylas, Av. Defensores del Morro 1350, Chorrillos, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA La Molina",t:"bio",a:"CC La Fontana, Av. Javier Prado Este 5272, La Molina, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Minka Callao",t:"bio",a:"Av. Argentina 3093, Callao, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"SANTANATURA Metro Faucett",t:"bio",a:"Av. Venezuela 5414, Callao, Lima",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"},
+      {n:"La Sanahoria San Isidro",t:"bio",a:"Miguel Dasso 101, San Isidro, Lima",s:"https://www.lasanahoria.com"},
+      {n:"La Sanahoria Barranco",t:"bio",a:"Calle Centenario 185, Barranco, Lima",s:"https://www.lasanahoria.com"},
+      {n:"La Sanahoria El Polo",t:"bio",a:"Shopping El Polo 2, Surco, Lima",s:"https://www.lasanahoria.com"},
+      {n:"La Sanahoria Las Begonias",t:"bio",a:"Av. Las Begonias 429, San Isidro, Lima",s:"https://www.lasanahoria.com"},
+      {n:"Flora y Fauna Lima",t:"bio",a:"Lima (10 magasins)",s:"https://www.florayfauna.pe",note:"Premier supermarche bio Lima"}
+    ]},
+    "AQP":{name:"Arequipa",shops:[
+      {n:"SANTANATURA Arequipa",t:"bio",a:"Plaza Vea, Av. La Marina 300, Arequipa",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"}
+    ]},
+    "CUS":{name:"Cusco",shops:[
+      {n:"SANTANATURA Cusco",t:"bio",a:"Av. Micaela Bastidas 258, Cusco",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"}
+    ]},
+    "LAL":{name:"La Libertad (Trujillo)",shops:[
+      {n:"SANTANATURA Trujillo",t:"bio",a:"Mall Aventura Plaza, Trujillo",s:"https://santanatura.com.pe",note:"Enseigne bio preferee ORIM"}
+    ]},
+  }, order:["LIM","AQP","CUS","LAL"] },
+  COL: { name:"Colombie", flag:"\ud83c\udde8\ud83c\uddf4", regions:{
+    "DC":{name:"Bogota",shops:[
+      {n:"Clorofila El Lago",t:"bio",a:"Calle 41 #24-20, El Lago, Bogota",s:"https://clorofilaorganico.com",note:"Marche samedi, producteurs locaux"},
+      {n:"Clorofila Teusaquillo",t:"bio",a:"Park Way, Teusaquillo, Bogota",s:"https://clorofilaorganico.com"},
+      {n:"Puro y Organico",t:"bio",a:"Bogota",s:"https://puroyorganico.com.co"}
+    ]},
+    "ANT":{name:"Antioquia (Medellin)",shops:[
+      {n:"Moli Natural Medellin",t:"bio",a:"Medellin",s:"https://molinatural.com"},
+      {n:"Madre Tierra Laureles",t:"herboristerie",a:"Calle 35 #80-19, Laureles, Medellin",s:"https://www.madretierra.online"}
+    ]},
+    "VAC":{name:"Valle del Cauca (Cali)",shops:[
+      {n:"Tienda Naturista Cali",t:"herboristerie",a:"Cali",s:"#"}
+    ]},
+  }, order:["DC","ANT","VAC"] },
+  BRA: { name:"Bresil", flag:"\ud83c\udde7\ud83c\uddf7", regions:{
+    "SP":{name:"Sao Paulo",shops:[
+      {n:"Mundo Verde Paulista",t:"bio",a:"Av. Paulista 1230, Sao Paulo SP 01310",s:"https://www.mundoverde.com.br",note:"Reseau leader Bresil 380+ magasins"},
+      {n:"Mundo Verde Frei Caneca",t:"bio",a:"Rua Frei Caneca 569, Sao Paulo SP 01307",s:"https://www.mundoverde.com.br"},
+      {n:"Mundo Verde Teodoro Sampaio",t:"bio",a:"Rua Teodoro Sampaio 2064, Sao Paulo SP 05406",s:"https://www.mundoverde.com.br"},
+      {n:"Mundo Verde Chucri Zaidan",t:"bio",a:"Av. Chucri Zaidan 902, Sao Paulo SP 04583",s:"https://www.mundoverde.com.br"}
+    ]},
+    "RJ":{name:"Rio de Janeiro",shops:[
+      {n:"Mundo Verde Botafogo",t:"bio",a:"Rua Sao Clemente 164, Rio de Janeiro RJ 22260",s:"https://www.mundoverde.com.br"},
+      {n:"Mundo Verde Tijuca",t:"bio",a:"Rua Conde de Bonfim 383, Rio de Janeiro RJ 20520",s:"https://www.mundoverde.com.br"},
+      {n:"Mundo Verde Centro RJ",t:"bio",a:"Av. Mal. Floriano 169, Rio de Janeiro RJ 20080",s:"https://www.mundoverde.com.br"},
+      {n:"Mundo Verde Quitanda",t:"bio",a:"Rua da Quitanda 45, Rio de Janeiro RJ 20091",s:"https://www.mundoverde.com.br"}
+    ]},
+    "DF":{name:"Brasilia",shops:[
+      {n:"Mundo Verde Brasilia",t:"bio",a:"Setor Comercial Sul, Brasilia DF 70300",s:"https://www.mundoverde.com.br"}
+    ]},
+  }, order:["SP","RJ","DF"] },
+  ARG: { name:"Argentine", flag:"\ud83c\udde6\ud83c\uddf7", regions:{
+    "C":{name:"Buenos Aires",shops:[
+      {n:"La Esquina de las Flores",t:"bio",a:"Av. Francisco Beiro 3531, Devoto, Buenos Aires",s:"#"},
+      {n:"Mora Organic Market",t:"bio",a:"Freire 1204, Colegiales, Buenos Aires",s:"#"},
+      {n:"El Galpon Organique",t:"bio",a:"Federico Lacroze 4171, Chacarita, Buenos Aires",s:"#"},
+      {n:"The Organic Deli",t:"bio",a:"Callao 1621, Buenos Aires",s:"#"},
+      {n:"Almacen Organico Palermo",t:"bio",a:"Gorriti 5796, Palermo, Buenos Aires",s:"#"},
+      {n:"Almacen Natural Soler",t:"bio",a:"Soler 6036, Palermo, Buenos Aires",s:"#"}
+    ]},
+  }, order:["C"] },
+  CHL: { name:"Chili", flag:"\ud83c\udde8\ud83c\uddf1", regions:{
+    "RM":{name:"Santiago",shops:[
+      {n:"Naturel Apumanque",t:"bio",a:"Av. Manquehue Sur 31, Las Condes, Santiago",s:"https://www.naturelorganic.cl"},
+      {n:"Naturel Los Leones",t:"bio",a:"Santa Magdalena 41, Providencia, Santiago",s:"https://www.naturelorganic.cl"},
+      {n:"Naturel Plaza Egana",t:"bio",a:"Av. Larrain 5862, La Reina, Santiago",s:"https://www.naturelorganic.cl"},
+      {n:"Naturel Parque Arauco",t:"bio",a:"Av. Kennedy 5413, Las Condes, Santiago",s:"https://www.naturelorganic.cl"},
+      {n:"Tienda Natural BowSPA",t:"bio",a:"Virginia 8133, Vitacura, Santiago",s:"https://tiendanatural.cl"},
+      {n:"Puronatural Las Condes",t:"bio",a:"Av. Padre Hurtado 919, Las Condes, Santiago",s:"https://www.puronatural.cl"},
+      {n:"Santiago Nativo",t:"bio",a:"Providencia, Santiago",s:"https://santiagonativo.cl"}
+    ]},
+  }, order:["RM"] },
+  URY: { name:"Uruguay", flag:"\ud83c\uddfa\ud83c\uddfe", regions:{
+    "MO":{name:"Montevideo",shops:[
+      {n:"Almacen Girasoles",t:"bio",a:"Mario Cassinoni 1660, Montevideo",s:"https://almacengirasoles.com"},
+      {n:"Terrunio Almacen Natural",t:"bio",a:"Pocitos, Montevideo",s:"https://terrunioalmacennatural.com"},
+      {n:"Buena Vida Pocitos",t:"bio",a:"Pocitos, Montevideo",s:"#"},
+      {n:"Al Natural Montevideo",t:"bio",a:"Rivera 2075, Montevideo",s:"#"},
+      {n:"La Molienda",t:"bio",a:"Montevideo",s:"https://www.lamolienda.uy"}
+    ]},
+  }, order:["MO"] },
+  BOL: { name:"Bolivie", flag:"\ud83c\udde7\ud83c\uddf4", regions:{
+    "LP":{name:"La Paz",shops:[
+      {n:"Natural Farma Calacoto",t:"herboristerie",a:"Av. Ballivian entre 14 y 15, Calacoto, La Paz",s:"https://naturalfarma.bo"},
+      {n:"Natural Store del Valle",t:"bio",a:"Illampu 806, La Paz",s:"#"},
+      {n:"Organic Natural Shop",t:"bio",a:"La Paz",s:"#"}
+    ]},
+    "SC":{name:"Santa Cruz",shops:[
+      {n:"Natural Farma Santa Cruz",t:"herboristerie",a:"Santos Dumont 730, Santa Cruz",s:"https://naturalfarma.bo"}
+    ]},
+  }, order:["LP","SC"] },
+  PRY: { name:"Paraguay", flag:"\ud83c\uddf5\ud83c\uddfe", regions:{
+    "ASU":{name:"Asuncion",shops:[
+      {n:"Viva Natural",t:"herboristerie",a:"Asuncion",s:"https://vivanatural.com.py"},
+      {n:"Natural Life Paraguay",t:"herboristerie",a:"Asuncion",s:"https://www.naturallife.com.py",note:"30 ans d'experience"},
+      {n:"La Tiendita Natural",t:"bio",a:"Asuncion",s:"#"}
+    ]},
+  }, order:["ASU"] },
+  MEX: { name:"Mexique", flag:"\ud83c\uddf2\ud83c\uddfd", regions:{
+    "CMX":{name:"Mexico DF",shops:[
+      {n:"The Green Corner Coyoacan",t:"bio",a:"Av. Miguel Angel de Quevedo 733, Coyoacan, CDMX 04330",s:"https://www.thegreencorner.org"},
+      {n:"The Green Corner Condesa",t:"bio",a:"Av. Mazatlan 81, Condesa, CDMX 06140",s:"https://www.thegreencorner.org"},
+      {n:"The Green Corner Del Valle",t:"bio",a:"Av. Coyoacan 1052, Del Valle Centro, CDMX 03100",s:"https://www.thegreencorner.org"},
+      {n:"Nutrisa San Angel",t:"herboristerie",a:"Amargura 14, San Angel, CDMX 01000",s:"#"},
+      {n:"Omecalli Natural Market",t:"bio",a:"Colonia Roma Norte, CDMX",s:"#"},
+      {n:"Bioaromas CDMX",t:"herboristerie",a:"Colonia Polanco, CDMX",s:"#"}
+    ]},
+    "JAL":{name:"Jalisco (Guadalajara)",shops:[
+      {n:"Tienda Organica Guadalajara",t:"bio",a:"Av. Chapultepec Norte 220, Guadalajara, JAL 44600",s:"#"},
+      {n:"Nutrisa Plaza Patria",t:"herboristerie",a:"Blvd. Patria 888, Guadalajara, JAL",s:"#"}
+    ]},
+    "NLE":{name:"Nuevo Leon (Monterrey)",shops:[
+      {n:"The Green Corner Monterrey",t:"bio",a:"Col. Del Valle, San Pedro Garza Garcia, NL 66220",s:"https://www.thegreencorner.org"},
+      {n:"Aires de Campo Monterrey",t:"bio",a:"Col. San Lorenzo Tlaltenango, Monterrey, NL",s:"https://airesdelcampo.com"}
+    ]},
+    "ROO":{name:"Quintana Roo",shops:[
+      {n:"The Green Corner Cancun",t:"bio",a:"Av. Bonampak, Zona Hotelera, Cancun, ROO 77500",s:"https://www.thegreencorner.org"},
+      {n:"Nutrisa Playa del Carmen",t:"herboristerie",a:"5a Avenida, Playa del Carmen, ROO",s:"#"}
+    ]},
+    "YUC":{name:"Yucatan (Merida)",shops:[
+      {n:"Organicos Merida",t:"bio",a:"Calle 60, Col. Centro, Merida, YUC 97000",s:"#"}
+    ]},
+    "BCS":{name:"Baja California Sur",shops:[
+      {n:"Organic Market Cabo",t:"bio",a:"Lazaro Cardenas, Cabo San Lucas, BCS 23450",s:"#"}
+    ]},
+  }, order:["CMX","JAL","NLE","ROO","YUC","BCS"] },
+  GTM: { name:"Guatemala", flag:"\ud83c\uddec\ud83c\uddf9", regions:{
+    "GU":{name:"Guatemala City",shops:[
+      {n:"Organica Guatemala",t:"bio",a:"Diagonal 6, 16-23, Zona 10, CC La Villa, Guatemala City",s:"#",note:"Seul supermarche 100% bio de GT City"},
+      {n:"Organic Well",t:"bio",a:"Guatemala City",s:"https://organicwell.com.gt"},
+      {n:"Salud Para Vida",t:"herboristerie",a:"Guatemala City",s:"https://saludparavida.org"}
+    ]},
+    "SA":{name:"Antigua",shops:[
+      {n:"Organica Antigua",t:"bio",a:"Antigua Guatemala, Sacatepequez",s:"#"}
+    ]},
+  }, order:["GU","SA"] },
+  CRI: { name:"Costa Rica", flag:"\ud83c\udde8\ud83c\uddf7", regions:{
+    "SJ":{name:"San Jose",shops:[
+      {n:"Auto Mercado Centro",t:"bio",a:"Calle 3 entre Av. 3 y 5, Carmen, San Jose",s:"https://automercadoesmilugar.com"},
+      {n:"Auto Mercado Yoses",t:"bio",a:"Boul. de Los Yoses, San Pedro, San Jose",s:"https://automercadoesmilugar.com"},
+      {n:"Auto Mercado Plaza Mayor",t:"bio",a:"CC Plaza Mayor, Pavas, San Jose",s:"https://automercadoesmilugar.com"},
+      {n:"Auto Mercado Multiplaza",t:"bio",a:"CC Multiplaza, Escazu, San Jose",s:"https://automercadoesmilugar.com"},
+      {n:"Auto Mercado Guadalupe",t:"bio",a:"Goicoechea, San Jose",s:"https://automercadoesmilugar.com"},
+      {n:"Auto Mercado Curridabat",t:"bio",a:"CC Plaza del Sol, Curridabat, San Jose",s:"https://automercadoesmilugar.com"},
+      {n:"Green Center Escazu",t:"bio",a:"CC La Paco, San Rafael, Escazu",s:"https://www.greencentercr.com",note:"Supermarche 100% bio"},
+      {n:"Green Center Santa Ana",t:"bio",a:"Rio de Oro de Santa Ana, San Jose",s:"https://www.greencentercr.com"},
+      {n:"Green Center Curridabat",t:"bio",a:"Curridabat, San Jose",s:"https://www.greencentercr.com"}
+    ]},
+    "PZ":{name:"Cote Pacifique",shops:[
+      {n:"Mama Toucan's",t:"bio",a:"Playa Dominical, Puntarenas",s:"#"}
+    ]},
+  }, order:["SJ","PZ"] },
+  PAN: { name:"Panama", flag:"\ud83c\uddf5\ud83c\udde6", regions:{
+    "PC":{name:"Panama City",shops:[
+      {n:"Organica Paitilla Mall",t:"bio",a:"CC Paitilla Mall, Panama City",s:"https://organicastore.com",note:"Reference bio Panama"},
+      {n:"Organica Town Center",t:"bio",a:"Town Center Mall, Panama City",s:"https://organicastore.com"},
+      {n:"Organica Costa Verde",t:"bio",a:"Paseo Costa Verde, La Chorrera",s:"https://organicastore.com"},
+      {n:"Organica Coronado",t:"bio",a:"Plaza Las Pergolas, Coronado",s:"https://organicastore.com"}
+    ]},
+  }, order:["PC"] },
+  HND: { name:"Honduras", flag:"\ud83c\udded\ud83c\uddf3", regions:{
+    "FM":{name:"Tegucigalpa",shops:[
+      {n:"Pronavit",t:"herboristerie",a:"Tegucigalpa",s:"#"}
+    ]},
+  }, order:["FM"] },
+  SLV: { name:"El Salvador", flag:"\ud83c\uddf8\ud83c\uddfb", regions:{
+    "SS":{name:"San Salvador",shops:[
+      {n:"GNC El Salvador",t:"herboristerie",a:"San Salvador",s:"#"},
+      {n:"Tiendas Naturistas SV",t:"herboristerie",a:"San Salvador",s:"#"}
+    ]},
+  }, order:["SS"] },
+  NIC: { name:"Nicaragua", flag:"\ud83c\uddf3\ud83c\uddee", regions:{
+    "MN":{name:"Managua",shops:[
+      {n:"Naturaleza Centro",t:"herboristerie",a:"Managua",s:"#"},
+      {n:"Tienda Naturaleza",t:"herboristerie",a:"Managua",s:"#"}
+    ]},
+  }, order:["MN"] },
+  USA: { name:"États-Unis", flag:"\ud83c\uddfa\ud83c\uddf8", regions:{
+    "CA":{name:"Californie",shops:[
+      {n:"Whole Foods Fairfax",t:"bio",a:"6350 W 3rd St, Los Angeles, CA 90036",s:"https://www.wholefoodsmarket.com",note:"Flagship LA"},
+      {n:"Whole Foods South Grand",t:"bio",a:"788 S Grand Ave, Los Angeles, CA 90017",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods La Cienega",t:"bio",a:"3377 S La Cienega Blvd, Los Angeles, CA 90016",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Westwood",t:"bio",a:"1050 S Gayley Ave, Los Angeles, CA 90024",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Brentwood",t:"bio",a:"11737 San Vicente Blvd, Los Angeles, CA 90049",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods West Hollywood",t:"bio",a:"7871 W Santa Monica Blvd, West Hollywood, CA 90046",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Market SF",t:"bio",a:"2001 Market St, San Francisco, CA 94114",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods 4th St SF",t:"bio",a:"399 4th St, San Francisco, CA 94107",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods California St SF",t:"bio",a:"1765 California St, San Francisco, CA 94109",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Stanyan SF",t:"bio",a:"690 Stanyan St, San Francisco, CA 94117",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods La Jolla",t:"bio",a:"8825 Villa La Jolla Dr, La Jolla, CA 92037",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Hillcrest",t:"bio",a:"711 University Ave, San Diego, CA 92103",s:"https://www.wholefoodsmarket.com"},
+      {n:"Sprouts Westwood",t:"bio",a:"1751 Westwood Blvd, Los Angeles, CA 90024",s:"https://www.sprouts.com"},
+      {n:"Sprouts Hollywood",t:"bio",a:"915 N La Brea Ave, Los Angeles, CA 90038",s:"https://www.sprouts.com"},
+      {n:"Sprouts Mid-City",t:"bio",a:"1302 S La Brea Ave, Los Angeles, CA 90019",s:"https://www.sprouts.com"},
+      {n:"Sprouts Eagle Rock",t:"bio",a:"2245 Yosemite Dr, Los Angeles, CA 90041",s:"https://www.sprouts.com"},
+      {n:"Sprouts Park Blvd SD",t:"bio",a:"4175 Park Blvd, San Diego, CA 92103",s:"https://www.sprouts.com"},
+      {n:"Sprouts Genesee SD",t:"bio",a:"4439 Genesee Ave, San Diego, CA 92117",s:"https://www.sprouts.com"},
+      {n:"Erewhon Beverly Blvd",t:"bio",a:"7660 Beverly Blvd, Los Angeles, CA 90036",s:"https://erewhon.com",note:"Premium bio"},
+      {n:"Erewhon Venice",t:"bio",a:"585 Venice Blvd, Los Angeles, CA 90291",s:"https://erewhon.com"},
+      {n:"Erewhon Silver Lake",t:"bio",a:"4121 Santa Monica Blvd, Los Angeles, CA 90029",s:"https://erewhon.com"},
+      {n:"Erewhon Studio City",t:"bio",a:"12833 Ventura Blvd, Studio City, CA 91604",s:"https://erewhon.com"},
+      {n:"Erewhon Beverly Hills",t:"bio",a:"339 N Beverly Dr, Beverly Hills, CA 90210",s:"https://erewhon.com"},
+      {n:"Erewhon Pacific Palisades",t:"bio",a:"15285 W Sunset Blvd, Pacific Palisades, CA 90272",s:"https://erewhon.com"},
+      {n:"Lassens La Brea",t:"bio",a:"710 S La Brea Ave, Los Angeles, CA 90036",s:"https://www.lassens.com"},
+      {n:"Lassens Los Feliz",t:"bio",a:"2080 Hillhurst Ave, Los Angeles, CA 90027",s:"https://www.lassens.com"},
+      {n:"Lassens Echo Park",t:"bio",a:"1631 W Sunset Blvd, Los Angeles, CA 90026",s:"https://www.lassens.com"},
+      {n:"Lassens Ventura",t:"bio",a:"4071 E Main St, Ventura, CA 93003",s:"https://www.lassens.com"},
+      {n:"Lassens Santa Barbara",t:"bio",a:"5154 Hollister Ave, Santa Barbara, CA 93111",s:"https://www.lassens.com"}
+    ]},
+    "NY":{name:"New York",shops:[
+      {n:"Whole Foods Union Square",t:"bio",a:"4 Union Square S, New York, NY 10003",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Chelsea",t:"bio",a:"250 7th Ave, New York, NY 10001",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Manhattan West",t:"bio",a:"10 Manhattan West, New York, NY 10001",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods One Wall Street",t:"bio",a:"1 Wall St, New York, NY 10005",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Park Slope",t:"bio",a:"214 3rd St, Brooklyn, NY 11215",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Williamsburg",t:"bio",a:"774 Grand St, Brooklyn, NY 11211",s:"https://www.wholefoodsmarket.com"},
+      {n:"Trader Joe's East Village",t:"bio",a:"436 E 14th St, New York, NY 10009",s:"https://locations.traderjoes.com"},
+      {n:"Trader Joe's Williamsburg",t:"bio",a:"200 Kent Ave, Brooklyn, NY 11249",s:"https://locations.traderjoes.com"}
+    ]},
+    "TX":{name:"Texas",shops:[
+      {n:"Whole Foods North Lamar",t:"bio",a:"525 N Lamar Blvd, Austin, TX 78703",s:"https://www.wholefoodsmarket.com",note:"Flagship Austin"},
+      {n:"Whole Foods Research Austin",t:"bio",a:"9607 Research Blvd, Austin, TX 78759",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Slaughter Austin",t:"bio",a:"4301 W William Cannon Dr, Austin, TX 78749",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Galleria Houston",t:"bio",a:"1700 Post Oak Blvd, Houston, TX 77056",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Kirby Houston",t:"bio",a:"2955 Kirby Dr, Houston, TX 77098",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Waugh Houston",t:"bio",a:"701 Waugh Dr, Houston, TX 77019",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Voss Houston",t:"bio",a:"1407 S Voss Rd, Houston, TX 77057",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Preston Dallas",t:"bio",a:"11700 Preston Rd, Dallas, TX 75230",s:"https://www.wholefoodsmarket.com"}
+    ]},
+    "FL":{name:"Floride",shops:[
+      {n:"Whole Foods Pinecrest",t:"bio",a:"7930 SW 104th St, Miami, FL 33156",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods North Miami",t:"bio",a:"12150 Biscayne Blvd, North Miami, FL 33181",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Winter Park",t:"bio",a:"1030 N Orlando Ave, Winter Park, FL 32789",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Turkey Lake",t:"bio",a:"8003 Turkey Lake Rd, Orlando, FL 32819",s:"https://www.wholefoodsmarket.com"}
+    ]},
+    "IL":{name:"Illinois",shops:[
+      {n:"Whole Foods Lincoln Park",t:"bio",a:"1550 N Kingsbury St, Chicago, IL 60642",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Streeterville",t:"bio",a:"255 E Grand Ave, Chicago, IL 60611",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods One Chicago",t:"bio",a:"3 W Chicago Ave, Chicago, IL 60654",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods South Loop",t:"bio",a:"1101 S Canal St, Chicago, IL 60607",s:"https://www.wholefoodsmarket.com"},
+      {n:"Trader Joe's Lincoln Park",t:"bio",a:"667 W Diversey Pkwy, Chicago, IL 60614",s:"https://locations.traderjoes.com"},
+      {n:"Trader Joe's Hyde Park",t:"bio",a:"1528 E 55th St, Chicago, IL 60615",s:"https://locations.traderjoes.com"},
+      {n:"Trader Joe's Streeterville",t:"bio",a:"44 E Ontario St, Chicago, IL 60611",s:"https://locations.traderjoes.com"}
+    ]},
+    "CO":{name:"Colorado",shops:[
+      {n:"Whole Foods Cherry Creek",t:"bio",a:"2375 E 1st Ave, Denver, CO 80206",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Union Station",t:"bio",a:"1701 Wewatta St, Denver, CO 80202",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Hampden",t:"bio",a:"7400 E Hampden Ave, Denver, CO 80231",s:"https://www.wholefoodsmarket.com"},
+      {n:"Natural Grocers Boulder",t:"bio",a:"2685 Pearl St, Boulder, CO 80302",s:"https://www.naturalgrocers.com"},
+      {n:"Natural Grocers Colorado",t:"bio",a:"2685 S Colorado Blvd, Denver, CO 80222",s:"https://www.naturalgrocers.com"},
+      {n:"Natural Grocers RiNo",t:"bio",a:"3825 Brighton Blvd, Denver, CO 80216",s:"https://www.naturalgrocers.com"},
+      {n:"Natural Grocers Design District",t:"bio",a:"55 S Broadway, Denver, CO 80209",s:"https://www.naturalgrocers.com"}
+    ]},
+    "WA":{name:"Washington",shops:[
+      {n:"Whole Foods Westlake Seattle",t:"bio",a:"2210 Westlake Ave, Seattle, WA 98121",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Roosevelt",t:"bio",a:"1026 NE 64th St, Seattle, WA 98115",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Magnolia",t:"bio",a:"2001 15th Ave W, Seattle, WA 98119",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods West Seattle",t:"bio",a:"4755 Fauntleroy Way SW, Seattle, WA 98116",s:"https://www.wholefoodsmarket.com"}
+    ]},
+    "OR":{name:"Oregon",shops:[
+      {n:"Whole Foods Pearl District",t:"bio",a:"1210 NW Couch St, Portland, OR 97209",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Hollywood Portland",t:"bio",a:"4301 NE Sandy Blvd, Portland, OR 97213",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Irvington",t:"bio",a:"3535 NE 15th Ave, Portland, OR 97212",s:"https://www.wholefoodsmarket.com"}
+    ]},
+    "MA":{name:"Massachusetts",shops:[
+      {n:"Whole Foods West End Boston",t:"bio",a:"181 Cambridge St, Boston, MA 02114",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Symphony",t:"bio",a:"15 Westland Ave, Boston, MA 02115",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Brighton",t:"bio",a:"15 Washington St, Brighton, MA 02135",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Brookline",t:"bio",a:"1028 Beacon St, Brookline, MA 02446",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Alewife",t:"bio",a:"200 Alewife Brook Pkwy, Cambridge, MA 02138",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Central Square",t:"bio",a:"115 Prospect St, Cambridge, MA 02139",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods River Street",t:"bio",a:"340 River St, Cambridge, MA 02139",s:"https://www.wholefoodsmarket.com"},
+      {n:"Trader Joe's Back Bay",t:"bio",a:"500 Boylston St, Boston, MA 02116",s:"https://locations.traderjoes.com"},
+      {n:"Trader Joe's Seaport",t:"bio",a:"44 Thomson Pl, Boston, MA 02210",s:"https://locations.traderjoes.com"}
+    ]},
+    "AZ":{name:"Arizona",shops:[
+      {n:"Whole Foods North Scottsdale",t:"bio",a:"7111 E Mayo Blvd, Phoenix, AZ 85054",s:"https://www.wholefoodsmarket.com"},
+      {n:"Sprouts Arizona",t:"bio",a:"Phoenix metro (48 magasins)",s:"https://www.sprouts.com"}
+    ]},
+    "GA":{name:"Georgie",shops:[
+      {n:"Whole Foods Buckhead",t:"bio",a:"77 W Paces Ferry Rd NW, Atlanta, GA 30305",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Midtown",t:"bio",a:"22 14th St NW, Atlanta, GA 30309",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Chamblee",t:"bio",a:"5001 Peachtree Blvd, Atlanta, GA 30341",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Ponce City",t:"bio",a:"650 Ponce De Leon Ave NE, Atlanta, GA 30308",s:"https://www.wholefoodsmarket.com"}
+    ]},
+    "NC":{name:"Caroline du Nord",shops:[
+      {n:"Whole Foods Wade Ave",t:"bio",a:"3540 Wade Ave, Raleigh, NC 27607",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods North Raleigh",t:"bio",a:"8710 Six Forks Rd, Raleigh, NC 27615",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Charlotte",t:"bio",a:"400 E Stonewall St, Charlotte, NC 28202",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Durham",t:"bio",a:"621 Broad St, Durham, NC 27705",s:"https://www.wholefoodsmarket.com"}
+    ]},
+  }, order:["CA","NY","TX","FL","IL","CO","WA","OR","MA","AZ","GA","NC"] },
+  CAN: { name:"Canada", flag:"\ud83c\udde8\ud83c\udde6", regions:{
+    "QC":{name:"Quebec",shops:[
+      {n:"Rachelle-Bery Saint-Laurent Nord",t:"bio",a:"7055 Boul. Saint-Laurent, Montreal, QC H2S 3E3",s:"https://www.rachellebery.ca"},
+      {n:"Rachelle-Bery Saint-Laurent Centre",t:"bio",a:"4810 Boul. Saint-Laurent, Montreal, QC H2T 1R5",s:"https://www.rachellebery.ca"},
+      {n:"Rachelle-Bery Beaubien",t:"bio",a:"2346 Rue Beaubien Est, Montreal, QC H2G 1M9",s:"https://www.rachellebery.ca"},
+      {n:"Rachelle-Bery Mont-Royal",t:"bio",a:"1289 Boul. Laird, Mont-Royal, QC H3P 2S9",s:"https://www.rachellebery.ca"},
+      {n:"Rachelle-Bery Quebec Nord",t:"bio",a:"5555 Boul. des Gradins, Quebec, QC G2J 1C8",s:"https://www.rachellebery.ca"},
+      {n:"Rachelle-Bery Quebec Nordique",t:"bio",a:"969 Ave Nordique, Quebec, QC G1C 7S8",s:"https://www.rachellebery.ca"},
+      {n:"Avril Brossard",t:"bio",a:"8600 Boul. Leduc, Brossard, QC J4Y 0G6",s:"https://avril.ca"},
+      {n:"Avril Quebec City",t:"bio",a:"1033 Rue des Rocailles, Quebec, QC G2K 0L4",s:"https://avril.ca"},
+      {n:"Avril Laval DUO",t:"bio",a:"Centre DUO, Laval, QC",s:"https://avril.ca"},
+      {n:"Avril Sherbrooke",t:"bio",a:"Sherbrooke, QC",s:"https://avril.ca"},
+      {n:"Avril Griffintown",t:"bio",a:"Montreal Griffintown, QC",s:"https://avril.ca"},
+      {n:"Whole Foods Montreal",t:"bio",a:"1425 Boul. de Maisonneuve O, Montreal, QC H3G 1M8",s:"https://www.wholefoodsmarket.com"}
+    ]},
+    "ON":{name:"Ontario",shops:[
+      {n:"Nature's Emporium Newmarket",t:"bio",a:"16655 Yonge St, Newmarket, ON L3X 1V6",s:"https://naturesemporium.com"},
+      {n:"Nature's Emporium Toronto",t:"bio",a:"1 York St, Toronto, ON M5J 0B6",s:"https://naturesemporium.com"},
+      {n:"Nature's Emporium Oakville",t:"bio",a:"Dorval Crossing, Oakville, ON",s:"https://naturesemporium.com"},
+      {n:"Nature's Emporium Burlington",t:"bio",a:"Burlington, ON",s:"https://naturesemporium.com"},
+      {n:"Whole Foods Toronto Bloor",t:"bio",a:"87 Avenue Rd, Toronto, ON M5R 3R9",s:"https://www.wholefoodsmarket.com"}
+    ]},
+    "BC":{name:"Colombie-Britannique",shops:[
+      {n:"Choices Cambie",t:"bio",a:"3493 Cambie St, Vancouver, BC V5Z 2W7",s:"https://www.choicesmarkets.com"},
+      {n:"Choices Commercial",t:"bio",a:"1045 Commercial Dr, Vancouver, BC V5L 3X1",s:"https://www.choicesmarkets.com"},
+      {n:"Choices W 57th Ave",t:"bio",a:"1888 W 57th Ave, Vancouver, BC V6P 1T7",s:"https://www.choicesmarkets.com"},
+      {n:"Choices W 16th Ave",t:"bio",a:"2627 W 16th Ave, Vancouver, BC V6K 3C2",s:"https://www.choicesmarkets.com"},
+      {n:"Choices Downtown",t:"bio",a:"1202 Richards St, Vancouver, BC V6B 3G2",s:"https://www.choicesmarkets.com"},
+      {n:"Choices North Vancouver",t:"bio",a:"801 Marine Dr, North Vancouver, BC V7P 3K6",s:"https://www.choicesmarkets.com"},
+      {n:"Choices Burnaby",t:"bio",a:"8683 10th Ave, Burnaby, BC V3N 2S9",s:"https://www.choicesmarkets.com"},
+      {n:"Choices Surrey",t:"bio",a:"3248 King George Blvd, Surrey, BC V4P 1A5",s:"https://www.choicesmarkets.com"},
+      {n:"Choices Kelowna",t:"bio",a:"1937 Harvey Ave, Kelowna, BC V1Y 6G5",s:"https://www.choicesmarkets.com"},
+      {n:"Whole Foods Vancouver Cambie",t:"bio",a:"510 W 8th Ave, Vancouver, BC V5Z 1C5",s:"https://www.wholefoodsmarket.com"}
+    ]},
+    "AB":{name:"Alberta",shops:[
+      {n:"Whole Foods Calgary South",t:"bio",a:"20 Crowfoot Crescent NW, Calgary, AB T3G 2P6",s:"https://www.wholefoodsmarket.com"},
+      {n:"Whole Foods Edmonton",t:"bio",a:"9450 137 Ave NW, Edmonton, AB T5E 6C2",s:"https://www.wholefoodsmarket.com"}
+    ]},
+  }, order:["QC","ON","BC","AB"] },
+};
+
+var AMERICAS_COUNTRY_ORDER = ["ECU","PER","COL","BRA","ARG","CHL","URY","BOL","PRY","MEX","GTM","CRI","PAN","HND","SLV","NIC","USA","CAN"];
+
 var FLAG_MAP = {
   FRA:"\ud83c\uddeb\ud83c\uddf7", CHE:"\ud83c\udde8\ud83c\udded", CAN:"\ud83c\udde8\ud83c\udde6",
   ESP:"\ud83c\uddea\ud83c\uddf8", ARE:"\ud83c\udde6\ud83c\uddea", ITA:"\ud83c\uddee\ud83c\uddf9",
@@ -1454,7 +1975,13 @@ var FLAG_MAP = {
   AUS:"\ud83c\udde6\ud83c\uddfa",
   DEU:"\ud83c\udde9\ud83c\uddea", BEL:"\ud83c\udde7\ud83c\uddea", PRT:"\ud83c\uddf5\ud83c\uddf9",
   GBR:"\ud83c\uddec\ud83c\udde7", NLD:"\ud83c\uddf3\ud83c\uddf1", AUT:"\ud83c\udde6\ud83c\uddf9",
-  POL:"\ud83c\uddf5\ud83c\uddf1", NOR:"\ud83c\uddf3\ud83c\uddf4", SWE:"\ud83c\uddf8\ud83c\uddea"
+  POL:"\ud83c\uddf5\ud83c\uddf1", NOR:"\ud83c\uddf3\ud83c\uddf4", SWE:"\ud83c\uddf8\ud83c\uddea",
+  ECU:"\ud83c\uddea\ud83c\udde8", USA:"\ud83c\uddfa\ud83c\uddf8", MEX:"\ud83c\uddf2\ud83c\uddfd",
+  GTM:"\ud83c\uddec\ud83c\uddf9", CRI:"\ud83c\udde8\ud83c\uddf7", PAN:"\ud83c\uddf5\ud83c\udde6",
+  HND:"\ud83c\udded\ud83c\uddf3", SLV:"\ud83c\uddf8\ud83c\uddfb", NIC:"\ud83c\uddf3\ud83c\uddee",
+  ARG:"\ud83c\udde6\ud83c\uddf7", CHL:"\ud83c\udde8\ud83c\uddf1", COL:"\ud83c\udde8\ud83c\uddf4",
+  PER:"\ud83c\uddf5\ud83c\uddea", URY:"\ud83c\uddfa\ud83c\uddfe", BOL:"\ud83c\udde7\ud83c\uddf4",
+  PRY:"\ud83c\uddf5\ud83c\uddfe"
 };
 
 /* ─── ISO numeric → alpha-3 mapping ─── */
@@ -2010,6 +2537,11 @@ function onMouseMove(e) {
       var euCountry = EUROPE_COUNTRIES[code];
       euCountry.order.forEach(function(r){ euTotal += euCountry.regions[r].shops.length; });
       text += ' \u2014 ' + euTotal + ' ' + t('swiss.shops');
+    } else if (AMERICAS_COUNTRIES[code]) {
+      var amTotal = 0;
+      var amCountry = AMERICAS_COUNTRIES[code];
+      amCountry.order.forEach(function(r){ amTotal += amCountry.regions[r].shops.length; });
+      text += ' \u2014 ' + amTotal + ' ' + t('swiss.shops');
     } else {
       var allEntries = partnersInCountry(code);
       var partnerCount = allEntries.length;
@@ -2049,6 +2581,8 @@ function onClickGlobe(e) {
       openFrancePanel(cx);
     } else if (EUROPE_COUNTRIES[code]) {
       openEuCountryPanel(code, cx);
+    } else if (AMERICAS_COUNTRIES[code]) {
+      openAmCountryPanel(code, cx);
     } else {
       var entries = partnersInCountry(code);
       if (entries.length > 0) {
@@ -2160,20 +2694,7 @@ function openCantonPanel(cantonCode) {
   h += '<div class="canton-header"><span class="canton-header-name">' + escHtml(canton.name) + '</span></div>';
   h += '<div class="panel-subtitle">' + canton.shops.length + ' ' + t('swiss.commerces') + '</div>';
 
-  canton.shops.forEach(function(shop){
-    var typeClass = 'shop-type-' + shop.t;
-    var typeLabel = t('type.' + shop.t) || shop.t;
-    h += '<div class="shop-card">';
-    h += '<div class="shop-card-name">' + escHtml(shop.n) + '</div>';
-    h += '<span class="shop-type-badge ' + typeClass + '">' + escHtml(typeLabel) + '</span>';
-    h += '<div class="shop-card-address">' + escHtml(shop.a) + '</div>';
-    if (shop.note) h += '<div class="shop-card-note">' + escHtml(shop.note) + '</div>';
-    h += '<div class="shop-card-links">';
-    var mapsQuery = encodeURIComponent(shop.n + ' ' + shop.a);
-    h += '<a href="https://www.google.com/maps/search/?api=1&query=' + mapsQuery + '" target="_blank" rel="noopener">\ud83d\udccd Maps</a>';
-    if (shop.s && shop.s !== '#') h += '<a href="' + shop.s + '" target="_blank" rel="noopener">\ud83c\udf10 ' + t('panel.site') + '</a>';
-    h += '</div></div>';
-  });
+  h += renderShopsWithSections(canton.shops);
 
   sidePanelEl.innerHTML = h;
   sidePanelEl.scrollTop = 0;
@@ -2262,20 +2783,7 @@ function openRegionPanel(regionCode) {
   h += '<div class="canton-header"><span class="canton-header-name">' + escHtml(region.name) + '</span></div>';
   h += '<div class="panel-subtitle">' + region.shops.length + ' ' + t('swiss.commerces') + '</div>';
 
-  region.shops.forEach(function(shop){
-    var typeClass = 'shop-type-' + shop.t;
-    var typeLabel = t('type.' + shop.t) || shop.t;
-    h += '<div class="shop-card">';
-    h += '<div class="shop-card-name">' + escHtml(shop.n) + '</div>';
-    h += '<span class="shop-type-badge ' + typeClass + '">' + escHtml(typeLabel) + '</span>';
-    h += '<div class="shop-card-address">' + escHtml(shop.a) + '</div>';
-    if (shop.note) h += '<div class="shop-card-note">' + escHtml(shop.note) + '</div>';
-    h += '<div class="shop-card-links">';
-    var mapsQuery = encodeURIComponent(shop.n + ' ' + shop.a);
-    h += '<a href="https://www.google.com/maps/search/?api=1&query=' + mapsQuery + '" target="_blank" rel="noopener">\ud83d\udccd Maps</a>';
-    if (shop.s && shop.s !== '#') h += '<a href="' + shop.s + '" target="_blank" rel="noopener">\ud83c\udf10 ' + t('panel.site') + '</a>';
-    h += '</div></div>';
-  });
+  h += renderShopsWithSections(region.shops);
 
   sidePanelEl.innerHTML = h;
   sidePanelEl.scrollTop = 0;
@@ -2373,20 +2881,7 @@ function openEuRegionPanel(regionCode) {
   h += '<div class="canton-header"><span class="canton-header-name">' + escHtml(region.name) + '</span></div>';
   h += '<div class="panel-subtitle">' + region.shops.length + ' ' + t('swiss.commerces') + '</div>';
 
-  region.shops.forEach(function(shop){
-    var typeClass = 'shop-type-' + shop.t;
-    var typeLabel = t('type.' + shop.t) || shop.t;
-    h += '<div class="shop-card">';
-    h += '<div class="shop-card-name">' + escHtml(shop.n) + '</div>';
-    h += '<span class="shop-type-badge ' + typeClass + '">' + escHtml(typeLabel) + '</span>';
-    h += '<div class="shop-card-address">' + escHtml(shop.a) + '</div>';
-    if (shop.note) h += '<div class="shop-card-note">' + escHtml(shop.note) + '</div>';
-    h += '<div class="shop-card-links">';
-    var mapsQuery = encodeURIComponent(shop.n + ' ' + shop.a);
-    h += '<a href="https://www.google.com/maps/search/?api=1&query=' + mapsQuery + '" target="_blank" rel="noopener">\ud83d\udccd Maps</a>';
-    if (shop.s && shop.s !== '#') h += '<a href="' + shop.s + '" target="_blank" rel="noopener">\ud83c\udf10 ' + t('panel.site') + '</a>';
-    h += '</div></div>';
-  });
+  h += renderShopsWithSections(region.shops);
 
   sidePanelEl.innerHTML = h;
   sidePanelEl.scrollTop = 0;
@@ -2403,6 +2898,156 @@ window.__filterEuRegions = function(query){
   if (!country) return;
   var q = query.toLowerCase().trim();
   var grid = document.getElementById('eu-region-grid');
+  if (!grid) return;
+  var btns = grid.children;
+  for (var i = 0; i < btns.length; i++) {
+    var btn = btns[i];
+    var code = country.order[i];
+    var region = country.regions[code];
+    if (!q) { btn.style.display = ''; continue; }
+    var match = code.toLowerCase().indexOf(q) !== -1 || region.name.toLowerCase().indexOf(q) !== -1;
+    if (!match) {
+      region.shops.forEach(function(s){
+        if (s.n.toLowerCase().indexOf(q) !== -1 || s.a.toLowerCase().indexOf(q) !== -1) match = true;
+      });
+    }
+    btn.style.display = match ? '' : 'none';
+  }
+};
+
+/* ───────────────────────────────── SHOP RENDERING HELPERS (Option C) ───────────────────────────────── */
+function renderShopCard(shop, isOfficial) {
+  var typeClass = 'shop-type-' + shop.t;
+  var typeLabel = t('type.' + shop.t) || shop.t;
+  var h = '<div class="shop-card' + (isOfficial ? ' official-partner' : '') + '">';
+  h += '<div class="shop-card-name">' + escHtml(shop.n) + '</div>';
+  h += '<span class="shop-type-badge ' + typeClass + '">' + escHtml(typeLabel) + '</span>';
+  h += '<div class="shop-card-address">' + escHtml(shop.a) + '</div>';
+  if (shop.note) h += '<div class="shop-card-note">' + escHtml(shop.note) + '</div>';
+  h += '<div class="shop-card-links">';
+  var mapsQuery = encodeURIComponent(shop.n + ' ' + shop.a);
+  h += '<a href="https://www.google.com/maps/search/?api=1&query=' + mapsQuery + '" target="_blank" rel="noopener">\ud83d\udccd Maps</a>';
+  if (shop.s && shop.s !== '#') h += '<a href="' + shop.s + '" target="_blank" rel="noopener">\ud83c\udf10 ' + t('panel.site') + '</a>';
+  h += '</div></div>';
+  return h;
+}
+
+function renderShopsWithSections(shops) {
+  var officialPartners = shops.filter(function(s){ return s.isOfficialPartner === true; });
+  var networkShops = shops.filter(function(s){ return s.isOfficialPartner !== true; });
+
+  var h = '';
+
+  // Section 1 : Partenaires officiels ORIM
+  h += '<div class="partner-section-title official"><span class="section-icon">\u2605</span> ' + t('section.officialPartners') + '</div>';
+  if (officialPartners.length > 0) {
+    officialPartners.forEach(function(shop){
+      h += renderShopCard(shop, true);
+    });
+  } else {
+    h += '<div class="official-partner-empty">';
+    h += '<strong>' + t('section.officialPartnersEmptyTitle') + '</strong>';
+    h += t('section.officialPartnersEmptyDesc');
+    h += ' <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a>';
+    h += '</div>';
+  }
+
+  // Section 2 : Reseau de reference
+  if (networkShops.length > 0) {
+    h += '<div class="partner-section-title network"><span class="section-icon">\ud83c\udf31</span> ' + t('section.referenceNetwork') + '</div>';
+    networkShops.forEach(function(shop){
+      h += renderShopCard(shop, false);
+    });
+  }
+
+  return h;
+}
+
+/* ───────────────────────────────── AMERICAS COUNTRIES NAVIGATOR ───────────────────────────────── */
+var currentAmCountry = null;
+
+function openAmCountryPanel(countryCode, clickX) {
+  var country = AMERICAS_COUNTRIES[countryCode];
+  if (!country) return;
+  currentAmCountry = countryCode;
+
+  panelOpen = true;
+  mouseInPanel = false;
+  canClosePanel = false;
+  clearTimeout(panelTimeout);
+  clearTimeout(panelMinTimer);
+
+  var side = clickX < window.innerWidth / 2 ? 'right' : 'left';
+  sidePanelEl.className = 'open-' + side;
+
+  var totalShops = 0;
+  country.order.forEach(function(r){ totalShops += country.regions[r].shops.length; });
+
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<div class="panel-header"><span class="panel-flag">' + country.flag + '</span><span class="panel-country">' + escHtml(country.name) + '</span></div>';
+  h += '<div class="panel-subtitle">' + totalShops + ' ' + t('swiss.shops') + '</div>';
+
+  h += '<div class="swiss-intro">' + t('am.intro') + '</div>';
+
+  h += '<div class="swiss-legend">';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#90be6d"></span>' + t('type.bio') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#00b4d8"></span>' + t('type.pharmacie') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#f4a261"></span>' + t('type.herboristerie') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#00d4aa"></span>' + t('type.reformhaus') + '</div>';
+  h += '</div>';
+
+  h += '<input type="text" class="swiss-search" placeholder="' + t('am.search') + '" oninput="window.__filterAmRegions(this.value)" />';
+
+  h += '<div class="canton-grid" id="am-region-grid">';
+  country.order.forEach(function(code){
+    var region = country.regions[code];
+    var count = region.shops.length;
+    var cls = count === 0 ? ' empty' : '';
+    h += '<div class="canton-btn' + cls + '" ' + (count > 0 ? 'onclick="window.__openAmRegion(\'' + code + '\')"' : '') + '>';
+    if (count > 0) h += '<span class="canton-count">' + count + '</span>';
+    h += '<span class="canton-code">' + code + '</span>';
+    h += '<span class="canton-name">' + escHtml(region.name) + '</span>';
+    h += '</div>';
+  });
+  h += '</div>';
+
+  sidePanelEl.innerHTML = h;
+
+  panelMinTimer = setTimeout(function(){ canClosePanel = true; }, 30000);
+  clearTimeout(panelTimeout);
+}
+
+function openAmRegionPanel(regionCode) {
+  if (!currentAmCountry) return;
+  var country = AMERICAS_COUNTRIES[currentAmCountry];
+  if (!country) return;
+  var region = country.regions[regionCode];
+  if (!region) return;
+
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<button class="swiss-back" onclick="window.__backToAmCountry()">\u2190 ' + escHtml(country.name) + '</button>';
+  h += '<div class="canton-header"><span class="canton-header-name">' + escHtml(region.name) + '</span></div>';
+  h += '<div class="panel-subtitle">' + region.shops.length + ' ' + t('swiss.commerces') + '</div>';
+
+  h += renderShopsWithSections(region.shops);
+
+  sidePanelEl.innerHTML = h;
+  sidePanelEl.scrollTop = 0;
+}
+
+window.__openAmRegion = function(code){ openAmRegionPanel(code); };
+window.__backToAmCountry = function(){
+  if (currentAmCountry) openAmCountryPanel(currentAmCountry, window.innerWidth);
+  sidePanelEl.scrollTop = 0;
+};
+window.__filterAmRegions = function(query){
+  if (!currentAmCountry) return;
+  var country = AMERICAS_COUNTRIES[currentAmCountry];
+  if (!country) return;
+  var q = query.toLowerCase().trim();
+  var grid = document.getElementById('am-region-grid');
   if (!grid) return;
   var btns = grid.children;
   for (var i = 0; i < btns.length; i++) {
@@ -2536,12 +3181,18 @@ var I18N = {
     "panel.rdv":"Rendez-vous","panel.site":"Site web",
     "type.m\u00e9decin":"M\u00e9decin","type.therapeute":"Th\u00e9rapeute","type.magasin":"Magasin","type.naturopathe":"Naturopathe","type.coach":"Coach","type.laboratoire":"Laboratoire",
     "type.bio":"Bio","type.pharmacie":"Pharmacie","type.droguerie":"Droguerie","type.herboristerie":"Herboristerie","type.reformhaus":"Reformhaus",
-    "swiss.shops":"points de vente","swiss.intro":"D\u00e9couvrez les magasins bio, pharmacies, drogueries et herboristeries partenaires en Suisse. Cliquez sur un canton pour voir les commerces disponibles.",
+    "swiss.shops":"commerces r\u00e9f\u00e9renc\u00e9s","swiss.intro":"Le r\u00e9seau bio & sant\u00e9 de r\u00e9f\u00e9rence ORIM en Suisse. Magasins bio, pharmacies, drogueries, herboristeries et reformhaus. Cliquez sur un canton pour d\u00e9couvrir les commerces locaux.",
     "swiss.search":"Rechercher un canton ou un magasin...","swiss.back":"Tous les cantons","swiss.commerces":"commerces",
-    "france.intro":"D\u00e9couvrez les magasins bio, herboristeries et enseignes bien-\u00eatre partenaires en France m\u00e9tropolitaine. Les r\u00e9gions frontali\u00e8res (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) sont mises en avant pour les frontaliers.",
+    "france.intro":"Le r\u00e9seau bio & sant\u00e9 de r\u00e9f\u00e9rence ORIM en France m\u00e9tropolitaine. Les r\u00e9gions frontali\u00e8res (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) sont mises en avant pour les frontaliers.",
     "france.search":"Rechercher une r\u00e9gion ou un magasin...","france.back":"Toutes les r\u00e9gions",
-    "eu.intro":"D\u00e9couvrez les enseignes bio, herboristeries et magasins de bien-\u00eatre partenaires dans ce pays europ\u00e9en. Cliquez sur une r\u00e9gion pour voir les commerces disponibles.",
-    "eu.search":"Rechercher une r\u00e9gion ou un magasin..."
+    "eu.intro":"Le r\u00e9seau bio & sant\u00e9 de r\u00e9f\u00e9rence ORIM dans ce pays europ\u00e9en. Cliquez sur une r\u00e9gion pour d\u00e9couvrir les commerces disponibles.",
+    "eu.search":"Rechercher une r\u00e9gion ou un magasin...",
+    "am.intro":"Le r\u00e9seau bio & sant\u00e9 de r\u00e9f\u00e9rence ORIM dans ce pays am\u00e9ricain. L\u2019\u00c9quateur est en priorit\u00e9 dans notre strat\u00e9gie d\u2019expansion. Cliquez sur une r\u00e9gion pour d\u00e9couvrir les commerces disponibles.",
+    "am.search":"Rechercher une r\u00e9gion ou un magasin...",
+    "section.officialPartners":"Partenaires officiels ORIM\u2122",
+    "section.referenceNetwork":"R\u00e9seau bio & sant\u00e9 de r\u00e9f\u00e9rence",
+    "section.officialPartnersEmptyTitle":"Premiers partenariats en cours de signature",
+    "section.officialPartnersEmptyDesc":"Nous s\u00e9lectionnons actuellement nos partenaires officiels. Pour devenir partenaire ORIM\u2122, contactez-nous \u00e0"
   },
   en: {
     "nav.home":"Home","nav.science":"Science","nav.indice":"ORIM Index","nav.partners":"Partners","nav.contact":"Contact us",
@@ -2551,12 +3202,18 @@ var I18N = {
     "panel.rdv":"Book appointment","panel.site":"Website",
     "type.m\u00e9decin":"Doctor","type.therapeute":"Therapist","type.magasin":"Store","type.naturopathe":"Naturopath","type.coach":"Coach","type.laboratoire":"Laboratory",
     "type.bio":"Organic","type.pharmacie":"Pharmacy","type.droguerie":"Drugstore","type.herboristerie":"Herbalist","type.reformhaus":"Health Store",
-    "swiss.shops":"retail locations","swiss.intro":"Discover organic shops, pharmacies, drugstores and herbalists across Switzerland. Click a canton to browse available stores.",
+    "swiss.shops":"referenced stores","swiss.intro":"The ORIM reference network of organic and health stores across Switzerland. Organic shops, pharmacies, drugstores, herbalists and health stores. Click a canton to discover local businesses.",
     "swiss.search":"Search a canton or store...","swiss.back":"All cantons","swiss.commerces":"stores",
-    "france.intro":"Discover organic shops, herbalists and wellness partners across metropolitan France. Cross-border regions (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) are highlighted for frontier workers.",
+    "france.intro":"The ORIM reference network of organic and health stores across metropolitan France. Cross-border regions (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) are highlighted for frontier workers.",
     "france.search":"Search a region or store...","france.back":"All regions",
-    "eu.intro":"Discover organic shops, herbalists and wellness partners in this European country. Click a region to browse available stores.",
-    "eu.search":"Search a region or store..."
+    "eu.intro":"The ORIM reference network of organic and health stores in this European country. Click a region to browse available stores.",
+    "eu.search":"Search a region or store...",
+    "am.intro":"The ORIM reference network of organic and health stores in this American country. Ecuador is a priority in our expansion strategy. Click a region to browse available stores.",
+    "am.search":"Search a region or store...",
+    "section.officialPartners":"ORIM\u2122 Official Partners",
+    "section.referenceNetwork":"Reference network of organic and health stores",
+    "section.officialPartnersEmptyTitle":"First partnerships being signed",
+    "section.officialPartnersEmptyDesc":"We are currently selecting our official partners. To become an ORIM\u2122 partner, contact us at"
   },
   es: {
     "nav.home":"Inicio","nav.science":"Ciencia","nav.indice":"\u00CDndice ORIM","nav.partners":"Socios","nav.contact":"Cont\u00e1ctenos",
@@ -2566,12 +3223,18 @@ var I18N = {
     "panel.rdv":"Reservar cita","panel.site":"Sitio web",
     "type.m\u00e9decin":"M\u00e9dico","type.therapeute":"Terapeuta","type.magasin":"Tienda","type.naturopathe":"Natur\u00f3pata","type.coach":"Coach","type.laboratoire":"Laboratorio",
     "type.bio":"Bio","type.pharmacie":"Farmacia","type.droguerie":"Droguería","type.herboristerie":"Herbolario","type.reformhaus":"Tienda naturista",
-    "swiss.shops":"puntos de venta","swiss.intro":"Descubra tiendas bio, farmacias, droguer\u00edas y herbolarios en Suiza. Haga clic en un cant\u00f3n para ver las tiendas disponibles.",
+    "swiss.shops":"comercios referenciados","swiss.intro":"La red ORIM de referencia de tiendas bio y salud en Suiza. Tiendas bio, farmacias, droguer\u00edas, herbolarios y tiendas naturistas. Haga clic en un cant\u00f3n para descubrir los comercios locales.",
     "swiss.search":"Buscar un cant\u00f3n o tienda...","swiss.back":"Todos los cantones","swiss.commerces":"comercios",
-    "france.intro":"Descubra tiendas bio, herbolarios y socios de bienestar en Francia metropolitana. Las regiones fronterizas (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) tienen prioridad para los trabajadores transfronterizos.",
+    "france.intro":"La red ORIM de referencia de tiendas bio y salud en Francia metropolitana. Las regiones fronterizas (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) tienen prioridad para los trabajadores transfronterizos.",
     "france.search":"Buscar una regi\u00f3n o tienda...","france.back":"Todas las regiones",
-    "eu.intro":"Descubra tiendas bio, herbolarios y socios de bienestar en este pa\u00eds europeo. Haga clic en una regi\u00f3n para ver las tiendas disponibles.",
-    "eu.search":"Buscar una regi\u00f3n o tienda..."
+    "eu.intro":"La red ORIM de referencia de tiendas bio y salud en este pa\u00eds europeo. Haga clic en una regi\u00f3n para descubrir los comercios disponibles.",
+    "eu.search":"Buscar una regi\u00f3n o tienda...",
+    "am.intro":"La red ORIM de referencia de tiendas bio y salud en este pa\u00eds americano. Ecuador es prioridad en nuestra estrategia de expansi\u00f3n. Haga clic en una regi\u00f3n para descubrir los comercios disponibles.",
+    "am.search":"Buscar una regi\u00f3n o tienda...",
+    "section.officialPartners":"Socios oficiales ORIM\u2122",
+    "section.referenceNetwork":"Red de referencia de tiendas bio y salud",
+    "section.officialPartnersEmptyTitle":"Primeras alianzas en proceso de firma",
+    "section.officialPartnersEmptyDesc":"Estamos seleccionando nuestros socios oficiales. Para ser socio ORIM\u2122, cont\u00e1ctenos en"
   },
   de: {
     "nav.home":"Startseite","nav.science":"Wissenschaft","nav.indice":"ORIM-Index","nav.partners":"Partner","nav.contact":"Kontakt",
@@ -2581,12 +3244,18 @@ var I18N = {
     "panel.rdv":"Termin buchen","panel.site":"Webseite",
     "type.m\u00e9decin":"Arzt","type.therapeute":"Therapeut","type.magasin":"Gesch\u00e4ft","type.naturopathe":"Naturheilkundler","type.coach":"Coach","type.laboratoire":"Labor",
     "type.bio":"Bio","type.pharmacie":"Apotheke","type.droguerie":"Drogerie","type.herboristerie":"Kr\u00e4uterladen","type.reformhaus":"Reformhaus",
-    "swiss.shops":"Verkaufsstellen","swiss.intro":"Entdecken Sie Bio-L\u00e4den, Apotheken, Drogerien und Kr\u00e4uterl\u00e4den in der Schweiz. Klicken Sie auf einen Kanton, um die verf\u00fcgbaren Gesch\u00e4fte zu sehen.",
+    "swiss.shops":"Referenzgesch\u00e4fte","swiss.intro":"Das ORIM Referenznetzwerk f\u00fcr Bio- und Gesundheitsgesch\u00e4fte in der Schweiz. Bio-L\u00e4den, Apotheken, Drogerien, Kr\u00e4uterl\u00e4den und Reformh\u00e4user. Klicken Sie auf einen Kanton, um lokale Gesch\u00e4fte zu entdecken.",
     "swiss.search":"Kanton oder Gesch\u00e4ft suchen...","swiss.back":"Alle Kantone","swiss.commerces":"Gesch\u00e4fte",
-    "france.intro":"Entdecken Sie Bio-L\u00e4den, Kr\u00e4uterl\u00e4den und Wellness-Partner in Frankreich. Grenzregionen (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) werden f\u00fcr Grenzg\u00e4nger hervorgehoben.",
+    "france.intro":"Das ORIM Referenznetzwerk f\u00fcr Bio- und Gesundheitsgesch\u00e4fte in Frankreich. Grenzregionen (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) werden f\u00fcr Grenzg\u00e4nger hervorgehoben.",
     "france.search":"Region oder Gesch\u00e4ft suchen...","france.back":"Alle Regionen",
-    "eu.intro":"Entdecken Sie Bio-L\u00e4den, Kr\u00e4uterl\u00e4den und Wellness-Partner in diesem europ\u00e4ischen Land. Klicken Sie auf eine Region, um die verf\u00fcgbaren Gesch\u00e4fte zu sehen.",
-    "eu.search":"Region oder Gesch\u00e4ft suchen..."
+    "eu.intro":"Das ORIM Referenznetzwerk f\u00fcr Bio- und Gesundheitsgesch\u00e4fte in diesem europ\u00e4ischen Land. Klicken Sie auf eine Region, um die verf\u00fcgbaren Gesch\u00e4fte zu entdecken.",
+    "eu.search":"Region oder Gesch\u00e4ft suchen...",
+    "am.intro":"Das ORIM Referenznetzwerk f\u00fcr Bio- und Gesundheitsgesch\u00e4fte in diesem amerikanischen Land. Ecuador hat Priorit\u00e4t in unserer Expansionsstrategie. Klicken Sie auf eine Region, um die verf\u00fcgbaren Gesch\u00e4fte zu entdecken.",
+    "am.search":"Region oder Gesch\u00e4ft suchen...",
+    "section.officialPartners":"Offizielle ORIM\u2122-Partner",
+    "section.referenceNetwork":"Referenznetzwerk f\u00fcr Bio- und Gesundheitsgesch\u00e4fte",
+    "section.officialPartnersEmptyTitle":"Erste Partnerschaften werden unterzeichnet",
+    "section.officialPartnersEmptyDesc":"Wir w\u00e4hlen derzeit unsere offiziellen Partner aus. Um ORIM\u2122-Partner zu werden, kontaktieren Sie uns unter"
   }
 };
 

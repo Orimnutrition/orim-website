@@ -586,6 +586,221 @@ var SWISS_SHOPS = {
 /* ── Canton display order (Romandie first, then Deutschschweiz, then Tessin) ── */
 var CANTON_ORDER = ["GE","VD","VS","FR","NE","JU","BE","ZH","BS","BL","LU","AG","SO","SG","TG","GR","ZG","SZ","GL","SH","AR","AI","TI","UR","OW","NW"];
 
+/* ─── FRANCE SHOPS DATABASE (by region) ─── */
+var FRANCE_SHOPS = {
+  ARA: { name:"Auvergne-Rh\u00f4ne-Alpes", shops:[
+    {n:"Biocoop Confluence",t:"bio",a:"42 cours Charlemagne, 69002 Lyon",s:"https://www.biocoop-confluence.fr/"},
+    {n:"Biocoop Les Terreaux",t:"bio",a:"3 rue des Tables Claudiennes, 69001 Lyon",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Lyon Vend\u00f4me",t:"bio",a:"50 rue de S\u00e8ze, 69006 Lyon",s:"https://www.biocooplyonvendome.bio/"},
+    {n:"Biocoop Jules Guesde",t:"bio",a:"33 rue Jaboulay, 69007 Lyon",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Mermoz",t:"bio",a:"Avenue Mermoz, 69008 Lyon",s:"https://mermoz.biocoop.net/"},
+    {n:"Biocoop du Gros Caillou",t:"bio",a:"27 rue de Belfort, 69004 Lyon",s:"https://www.biocoopdugroscaillou.fr/"},
+    {n:"Biocoop Lyon Lumi\u00e8re",t:"bio",a:"183 rue Andr\u00e9 Philip, 69003 Lyon",s:"https://www.biocooplyonlumiere.fr/"},
+    {n:"La Vie Claire Lyon Charit\u00e9",t:"bio",a:"40 rue de la Charit\u00e9, 69002 Lyon",s:"https://www.lavieclaire.com"},
+    {n:"La Vie Claire Lyon Berthelot",t:"bio",a:"148 avenue Berthelot, 69007 Lyon",s:"https://www.lavieclaire.com"},
+    {n:"Naturalia Villeurbanne",t:"bio",a:"31 cours \u00c9mile Zola, 69100 Villeurbanne",s:"https://magasins.naturalia.fr"},
+    {n:"Satoriz Caluire-et-Cuire",t:"bio",a:"100 avenue du G\u00e9n\u00e9ral Leclerc, 69300 Caluire-et-Cuire",s:"https://satoriz.fr"},
+    {n:"Satoriz Champagne-au-Mont-d\u2019Or",t:"bio",a:"11 rue des Rosi\u00e9ristes, 69410 Champagne-au-Mont-d\u2019Or",s:"https://satoriz.fr"},
+    {n:"Satoriz Vaulx-en-Velin",t:"bio",a:"CC Les 7 Chemins, 10 rue des Fr\u00e8res Lumi\u00e8re, 69120 Vaulx-en-Velin",s:"https://satoriz.fr"},
+    {n:"Biocoop Champollion Grenoble",t:"bio",a:"8 boulevard Agutte Sembat, 38000 Grenoble",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Casabio Chorier",t:"bio",a:"32 rue Nicolas Chorier, 38000 Grenoble",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Malherbe Grenoble",t:"bio",a:"114 avenue Jean Perrot, 38100 Grenoble",s:"https://www.biocoop.fr"},
+    {n:"La Vie Claire Grenoble Berriat",t:"bio",a:"38 cours Berriat, 38000 Grenoble",s:"https://www.lavieclaire.com"},
+    {n:"Naturalia Grenoble Gambetta",t:"bio",a:"48 boulevard Gambetta, 38000 Grenoble",s:"https://magasins.naturalia.fr"},
+    {n:"Satoriz Saint-Martin-d\u2019H\u00e8res",t:"bio",a:"4 avenue Gabriel P\u00e9ri, 38400 Saint-Martin-d\u2019H\u00e8res",s:"https://satoriz.fr"},
+    {n:"Satoriz \u00c9chirolles",t:"bio",a:"Espace Comboire, 38130 \u00c9chirolles",s:"https://satoriz.fr"},
+    {n:"Satoriz Voiron",t:"bio",a:"ZI des Blanchisseries, 38500 Voiron",s:"https://satoriz.fr"},
+    {n:"Satoriz Crolles",t:"bio",a:"441 rue Charles de Gaulle, 38920 Crolles",s:"https://satoriz.fr"},
+    {n:"Biocoop Aquarius La Paix",t:"bio",a:"10 rue de la Paix, 74000 Annecy",s:"https://www.aquarius-biocoop.org/"},
+    {n:"Biocoop Aquarius BCA",t:"bio",a:"6 rue du 11e Bataillon de Chasseurs, 74000 Annecy",s:"https://www.aquarius-biocoop.org/"},
+    {n:"Biocoop Aquarius Pringy",t:"bio",a:"95 route d\u2019Annecy, 74370 Pringy",s:"https://www.aquarius-biocoop.org/"},
+    {n:"Biocoop Rive Bio Annecy-le-Vieux",t:"bio",a:"6 rue Centrale, 74940 Annecy-le-Vieux",s:"https://www.biocoop.fr"},
+    {n:"Biocoop La Roche-sur-Foron",t:"bio",a:"2 rue Perrine, 74800 La Roche-sur-Foron",s:"https://www.biocoop.fr"},
+    {n:"Satoriz \u00c9pagny Metz-Tessy",t:"bio",a:"99 avenue des Alpes, 74330 \u00c9pagny Metz-Tessy",s:"https://satoriz.fr"},
+    {n:"Satoriz Gaillard",t:"bio",a:"2 rue Ren\u00e9 Cassin, ZAC de la Ch\u00e2telaine, 74240 Gaillard",s:"https://satoriz.fr",note:"Frontalier Gen\u00e8ve \u2013 commune limitrophe"},
+    {n:"Satoriz Anthy-sur-L\u00e9man",t:"bio",a:"Espace L\u00e9man 2, 4 bis bd du Pr\u00e9 Biollat, 74200 Anthy-sur-L\u00e9man",s:"https://satoriz.fr"},
+    {n:"Satoriz Thonon-les-Bains",t:"bio",a:"10 avenue d\u2019\u00c9vian, 74200 Thonon-les-Bains",s:"https://satoriz.fr"},
+    {n:"Satoriz Sallanches",t:"bio",a:"1894 avenue de Gen\u00e8ve, 74700 Sallanches",s:"https://satoriz.fr"},
+    {n:"Satoriz Ferney-Voltaire",t:"bio",a:"31 rue Voltaire, 01210 Ferney-Voltaire",s:"https://satoriz.fr",note:"Frontalier Gen\u00e8ve \u2013 PRIORIT\u00c9 ORIM"},
+    {n:"Satoriz Thoiry",t:"bio",a:"CC Val Thoiry, 01710 Thoiry",s:"https://satoriz.fr",note:"Frontalier Gen\u00e8ve \u2013 Pays de Gex"},
+    {n:"Biocoop Casabio Chamb\u00e9ry Faubourg",t:"bio",a:"106 Faubourg March\u00e9, 73000 Chamb\u00e9ry",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Casabio Chamb\u00e9ry Rize",t:"bio",a:"26 Quai de la Rize, 73000 Chamb\u00e9ry",s:"https://www.biocoop.fr"},
+    {n:"Satoriz Chamb\u00e9ry",t:"bio",a:"2577 avenue des Landiers, 73000 Chamb\u00e9ry",s:"https://satoriz.fr"},
+    {n:"La Vie Claire Chamb\u00e9ry",t:"bio",a:"Boulevard de la Colonne, 73000 Chamb\u00e9ry",s:"https://magasins.lavieclaire.com"},
+    {n:"Satoriz Albertville",t:"bio",a:"310 rue Louis Armand, 73200 Albertville",s:"https://satoriz.fr"},
+    {n:"Satoriz Saint-\u00c9tienne",t:"bio",a:"5 rue Marc Charras, 42000 Saint-\u00c9tienne",s:"https://satoriz.fr"}
+  ]},
+  BFC: { name:"Bourgogne-Franche-Comt\u00e9", shops:[
+    {n:"Biocoop La Canop\u00e9e La Boucle",t:"bio",a:"20 rue des Granges, 25000 Besan\u00e7on",s:"https://lacanopee.biocoop.net/"},
+    {n:"Biocoop La Canop\u00e9e Mouill\u00e8re",t:"bio",a:"3 all\u00e9e de l\u2019\u00eele aux Moineaux, 25000 Besan\u00e7on",s:"https://lacanopee.biocoop.net/"},
+    {n:"Biocoop La Canop\u00e9e Vauban",t:"bio",a:"Place du Mar\u00e9chal Leclerc, 25000 Besan\u00e7on",s:"https://www.biocoop.fr"},
+    {n:"Biocoop La Canop\u00e9e Valentin",t:"bio",a:"Zone Valentin Nord, 25870 Ch\u00e2tillon-le-Duc",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Les Halles Montb\u00e9liard",t:"bio",a:"25200 Montb\u00e9liard",s:"https://www.biocoop.fr"},
+    {n:"Naturalia Besan\u00e7on",t:"bio",a:"15 Grande Rue, 25000 Besan\u00e7on",s:"https://magasins.naturalia.fr"},
+    {n:"La Vie Claire Besan\u00e7on",t:"bio",a:"Route de Belfort, ZI des Murgelots, 25220 Chalezeule",s:"https://www.lavieclaire.com"},
+    {n:"Biocoop Antidotes Dijon",t:"bio",a:"11 rue de Bellevue, 21000 Dijon",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Terres Bio Dijon",t:"bio",a:"126 route d\u2019Ahuy, 21000 Dijon",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Terres Bio Ahuy",t:"bio",a:"1 rue Pr\u00e9 Potet, 21121 Ahuy",s:"https://www.biocoop.fr"},
+    {n:"La Vie Claire Dijon",t:"bio",a:"8 rue Pasteur, 21000 Dijon",s:"https://www.lavieclaire.com"},
+    {n:"Satoriz Sanc\u00e9 Mâcon",t:"bio",a:"ZAC des Plati\u00e8res, 71000 Sanc\u00e9",s:"https://satoriz.fr"}
+  ]},
+  GES: { name:"Grand Est", shops:[
+    {n:"Biocoop Coquelicot",t:"bio",a:"6-8 rue de la Premi\u00e8re Arm\u00e9e, 67000 Strasbourg",s:"https://biocoop.coquelicot.bio/"},
+    {n:"Biocoop Le Quai des Halles",t:"bio",a:"6 rue de S\u00e9bastopol, 67000 Strasbourg",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Neudorf",t:"bio",a:"Route du Polygone, 67100 Strasbourg",s:"https://neudorf.biocoop.net/"},
+    {n:"Naturalia Strasbourg",t:"bio",a:"8 rue du Vieux March\u00e9 aux Grains, 67000 Strasbourg",s:"https://magasins.naturalia.fr"},
+    {n:"La Vie Claire Strasbourg",t:"bio",a:"67200 Strasbourg",s:"https://www.lavieclaire.com"},
+    {n:"Herboristerie Suisse Strasbourg",t:"herboristerie",a:"19 rue des Juifs, 67000 Strasbourg",s:"#"},
+    {n:"Flor\u2019Alsace Herboristerie",t:"herboristerie",a:"20 rue des Serruriers, 67000 Strasbourg",s:"#"},
+    {n:"Satoriz Vendenheim",t:"bio",a:"Rue Transversale B, 67550 Vendenheim",s:"https://satoriz.fr"},
+    {n:"Biocoop du Rebberg Mulhouse",t:"bio",a:"36 avenue de Riedisheim, 68100 Mulhouse",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Engelman Mulhouse",t:"bio",a:"68100 Mulhouse",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Sonnebluem Colmar",t:"bio",a:"7 rue du Grillenbreit, 68000 Colmar",s:"https://www.biocoop.fr"},
+    {n:"Biocoop les Erlen Colmar",t:"bio",a:"108 route de Rouffach, 68000 Colmar",s:"https://www.biocoop.fr"},
+    {n:"Satoriz Wittenheim",t:"bio",a:"13 route de Soultz, 68270 Wittenheim",s:"https://satoriz.fr",note:"R\u00e9gion B\u00e2le \u2013 frontalier Suisse"},
+    {n:"Biocoop Le Goupil Vert Nancy",t:"bio",a:"34 rue Marcel Brot, 54000 Nancy",s:"https://www.biocoop.fr"},
+    {n:"La Vie Claire Metz",t:"bio",a:"4 boulevard Tr\u00e8ves, 57000 Metz",s:"https://www.lavieclaire.com"},
+    {n:"Biocoop Augny Metz",t:"bio",a:"Zone ACTISUD, 57685 Augny",s:"https://augny.biocoop.net/"},
+    {n:"Biocoop Saint Thomas Reims",t:"bio",a:"34 avenue de Laon, 51100 Reims",s:"https://www.biocoop-saint-thomas.fr/"},
+    {n:"Satoriz Cormontreuil Reims",t:"bio",a:"Rue des Laps, 51350 Cormontreuil",s:"https://satoriz.fr"}
+  ]},
+  IDF: { name:"\u00cele-de-France", shops:[
+    {n:"Biocoop La Ruche Al\u00e9sia",t:"bio",a:"102 rue d\u2019Al\u00e9sia, 75014 Paris",s:"https://ruchebiocoop.com/"},
+    {n:"Biocoop La Ruche Tolbiac",t:"bio",a:"77 rue Tolbiac, 75013 Paris",s:"https://ruchebiocoop.com/"},
+    {n:"Biocoop La Ruche Glaci\u00e8re",t:"bio",a:"130 rue de la Glaci\u00e8re, 75013 Paris",s:"https://ruchebiocoop.com/"},
+    {n:"Biocoop La Ruche Mouffetard",t:"bio",a:"26 rue Daubenton, 75005 Paris",s:"https://ruchebiocoop.com/"},
+    {n:"Biocoop Canal Bio",t:"bio",a:"44 bis Quai de la Loire, 75019 Paris",s:"https://www.biocoop.fr"},
+    {n:"Naturalia R\u00e9aumur",t:"bio",a:"93 rue R\u00e9aumur, 75002 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Grands Boulevards",t:"bio",a:"6 rue du Faubourg Montmartre, 75009 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Saint-Michel",t:"bio",a:"78 boulevard Saint-Michel, 75006 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Bac",t:"bio",a:"63 rue du Bac, 75007 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Monge",t:"bio",a:"36 rue Monge, 75005 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Verrerie",t:"bio",a:"87 rue de la Verrerie, 75004 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Saint-Antoine",t:"bio",a:"59 rue Saint-Antoine, 75004 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Beaubourg",t:"bio",a:"84 rue Beaubourg, 75003 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Crim\u00e9e",t:"bio",a:"192 rue Crim\u00e9e, 75019 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Naturalia Bonne Nouvelle",t:"bio",a:"8 boulevard Bonne Nouvelle, 75010 Paris",s:"https://magasins.naturalia.fr"},
+    {n:"Bio c\u2019Bon Vavin",t:"bio",a:"31 rue Vavin, 75006 Paris",s:"https://www.bio-c-bon.eu"},
+    {n:"Bio c\u2019Bon Ternes",t:"bio",a:"79 avenue des Ternes, 75017 Paris",s:"https://www.bio-c-bon.eu"},
+    {n:"Bio c\u2019Bon Jaur\u00e8s",t:"bio",a:"124 avenue Jean Jaur\u00e8s, 75019 Paris",s:"https://www.bio-c-bon.eu"},
+    {n:"Bio c\u2019Bon Al\u00e9sia",t:"bio",a:"119 rue d\u2019Al\u00e9sia, 75014 Paris",s:"https://www.bio-c-bon.eu"},
+    {n:"Bio c\u2019Bon Bourgogne",t:"bio",a:"43 rue de Bourgogne, 75007 Paris",s:"https://www.bio-c-bon.eu"},
+    {n:"Bio c\u2019Bon Cerisaie",t:"bio",a:"16 rue de la Cerisaie, 75004 Paris",s:"https://www.bio-c-bon.eu"},
+    {n:"Bio c\u2019Bon Saint Mand\u00e9",t:"bio",a:"43 avenue de Saint-Mand\u00e9, 75012 Paris",s:"https://www.bio-c-bon.eu"},
+    {n:"Bio c\u2019Bon Parmentier",t:"bio",a:"52 avenue Parmentier, 75011 Paris",s:"https://www.bio-c-bon.eu"},
+    {n:"La Vie Claire Ledru-Rollin",t:"bio",a:"163 avenue Ledru-Rollin, 75011 Paris",s:"https://www.lavieclaire.com"},
+    {n:"La Vie Claire Saint-Honor\u00e9",t:"bio",a:"76 rue Saint-Honor\u00e9, 75001 Paris",s:"https://www.lavieclaire.com"},
+    {n:"Natur\u00e9O Fresnes",t:"bio",a:"Parc Commercial La Cerisaie, 94260 Fresnes",s:"https://www.natureo-bio.fr"},
+    {n:"Natur\u00e9O Livry-Gargan",t:"bio",a:"62 boulevard de l\u2019Europe, 93190 Livry-Gargan",s:"https://www.natureo-bio.fr"},
+    {n:"Natur\u00e9O Houilles",t:"bio",a:"45 boulevard Henri Barbusse, 78800 Houilles",s:"https://www.natureo-bio.fr"},
+    {n:"Natur\u00e9O Rambouillet",t:"bio",a:"CC La Clairi\u00e8re, 78120 Rambouillet",s:"https://www.natureo-bio.fr"},
+    {n:"Herboristerie du Palais-Royal",t:"herboristerie",a:"11 rue des Petits Champs, 75001 Paris",s:"https://www.herboristerie.com/"},
+    {n:"L\u2019Herboristerie de Paris",t:"herboristerie",a:"30 rue Pasquier, 75008 Paris",s:"https://www.herboristeriedeparis.com/"},
+    {n:"La Grande Herboristerie Parisienne",t:"herboristerie",a:"87 rue d\u2019Amsterdam, 75008 Paris",s:"#"},
+    {n:"Herborisia",t:"herboristerie",a:"35 rue du Faubourg Saint-Denis, 75010 Paris",s:"https://herborisia.fr/"}
+  ]},
+  PAC: { name:"PACA", shops:[
+    {n:"Biocoop Endoume",t:"bio",a:"27 rue Endoume, 13007 Marseille",s:"https://www.biocoopendoume.fr/"},
+    {n:"Biocoop Chave",t:"bio",a:"103 rue du Camas, 13005 Marseille",s:"https://www.biocoopchave.fr/"},
+    {n:"Biocoop Rouet",t:"bio",a:"150 rue du Rouet, 13008 Marseille",s:"https://www.biocoop-rouet-marseille.fr/"},
+    {n:"Biocoop Castellane",t:"bio",a:"87 rue d\u2019Italie, 13006 Marseille",s:"https://www.biocoopcastellane.fr/"},
+    {n:"Biocoop Les Bonnes Graines",t:"bio",a:"Marseille 13e",s:"https://www.biocooplesbonnesgraines.fr/"},
+    {n:"Biocoop des Collines",t:"bio",a:"203 route des Camoins, 13011 Marseille",s:"https://www.biocoopdescollines.com/"},
+    {n:"Biocoop Bio Coin Joli",t:"bio",a:"14 boulevard Ganay, 13009 Marseille",s:"https://biocoinjoli.biocoop.net/"},
+    {n:"Biocoop La Coumpagnie Aix",t:"bio",a:"4 rue Pierre de Coubertin, 13100 Aix-en-Provence",s:"https://www.biocoop-lacoumpagnie.fr/"},
+    {n:"Biocoop La Coumpagnie Camp de Menthe",t:"bio",a:"840 avenue Camp de Menthe, 13090 Aix-en-Provence",s:"https://www.biocoop-lacoumpagnie.fr/"},
+    {n:"Biocoop Jardin d\u2019Eden Nice",t:"bio",a:"52 rue Gioffredo, 06000 Nice",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Riviera Nice Dunant",t:"bio",a:"104 avenue Henry Dunant, 06100 Nice",s:"https://www.biocoop-riviera.fr/"},
+    {n:"Biocoop Nice Grimaldi",t:"bio",a:"2 place Grimaldi, 06000 Nice",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Nice V\u00e9rola",t:"bio",a:"37 avenue Auguste V\u00e9rola, 06200 Nice",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Nice Raynaud",t:"bio",a:"2 boulevard Auguste Raynaud, 06100 Nice",s:"https://www.biocoop.fr"},
+    {n:"Satoriz Vallauris",t:"bio",a:"2791 chemin Saint-Bernard, 06220 Vallauris",s:"https://satoriz.fr"},
+    {n:"Satoriz Mandelieu",t:"bio",a:"Les Tourrades, 06210 Mandelieu-la-Napoule",s:"https://satoriz.fr"},
+    {n:"Satoriz Aubagne",t:"bio",a:"2136 route de G\u00e9menos, 13400 Aubagne",s:"https://satoriz.fr"},
+    {n:"Satoriz Vitrolles",t:"bio",a:"76 avenue Padovanin, 13127 Vitrolles",s:"https://satoriz.fr"},
+    {n:"Satoriz Puget-sur-Argens",t:"bio",a:"Quartier La Tuill\u00e8re, 83480 Puget-sur-Argens",s:"https://satoriz.fr"}
+  ]},
+  OCC: { name:"Occitanie", shops:[
+    {n:"Biocoop Trinit\u00e9 Toulouse",t:"bio",a:"7 place Trinit\u00e9, 31000 Toulouse",s:"https://www.biocooptrinite-toulouse.com/"},
+    {n:"Biocoop Jaur\u00e8s Toulouse",t:"bio",a:"32 all\u00e9e Jean Jaur\u00e8s, 31000 Toulouse",s:"https://www.biocoopjaures-toulouse.com/"},
+    {n:"Biocoop Purpan Toulouse",t:"bio",a:"301 avenue de Grande Bretagne, 31300 Toulouse",s:"https://www.biocoop-purpan.com/"},
+    {n:"Biocoop Les Minimes Toulouse",t:"bio",a:"88 route d\u2019Albi, 31200 Toulouse",s:"https://www.biominimes.fr/"},
+    {n:"Biocoop du Courreau Montpellier",t:"bio",a:"2 boulevard du Jeu de Paume, 34000 Montpellier",s:"https://montpellier-courreau.biocoop.net/"},
+    {n:"Biocoop Cl\u00e9menceau Montpellier",t:"bio",a:"22 bis avenue Georges Cl\u00e9menceau, 34000 Montpellier",s:"https://montpellier-clemenceau.biocoop.net/"},
+    {n:"Biocoop Marianne Montpellier",t:"bio",a:"181 place Ernest Granier, 34000 Montpellier",s:"https://www.biocoopmarianne-montpellier.fr/"},
+    {n:"Satoriz P\u00e9rols",t:"bio",a:"ZC du Fenouillet, 34470 P\u00e9rols",s:"https://satoriz.fr"},
+    {n:"Satoriz Les Angles",t:"bio",a:"ZAC Grand Angle, 30133 Les Angles",s:"https://satoriz.fr"},
+    {n:"Satoriz N\u00eemes",t:"bio",a:"115 avenue des Fran\u00e7ais Libres, 30000 N\u00eemes",s:"https://satoriz.fr"}
+  ]},
+  NAQ: { name:"Nouvelle-Aquitaine", shops:[
+    {n:"Biocoop Victoire Bordeaux",t:"bio",a:"10 cours de l\u2019Argonne, 33000 Bordeaux",s:"https://www.biocoopbordeauxvictoire.fr/"},
+    {n:"Biocoop Gambetta Bordeaux",t:"bio",a:"27 rue Juda\u00efque, 33000 Bordeaux",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Caud\u00e9ran Bordeaux",t:"bio",a:"48 avenue du G\u00e9n\u00e9ral Leclerc, 33200 Bordeaux",s:"https://cauderan.biocoop.net/"},
+    {n:"Biocoop La Bastide Bordeaux",t:"bio",a:"1 all\u00e9e Serr, 33100 Bordeaux",s:"https://bordeauxbastide.biocoop.net/"},
+    {n:"Biocoop Sicard Bordeaux",t:"bio",a:"6 rue Sicard, 33000 Bordeaux",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Royan Lavoisier",t:"bio",a:"17200 Royan",s:"https://www.biocoop.fr"},
+    {n:"Le Pois Tout Vert Poitiers",t:"bio",a:"86000 Poitiers",s:"https://www.biocoop.fr"}
+  ]},
+  HDF: { name:"Hauts-de-France", shops:[
+    {n:"Biocoop du Molinel Lille",t:"bio",a:"86 rue du Molinel, 59000 Lille",s:"https://www.biocoop-molinel.com/"},
+    {n:"Biocoop Saveurs et Saisons",t:"bio",a:"98 rue Solf\u00e9rino, 59000 Lille",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Vert\u2019Tige S\u00e9bastopol",t:"bio",a:"23 rue des Postes, 59000 Lille",s:"https://www.biocoop.fr"},
+    {n:"Biocoop March\u00e9 Couvert",t:"bio",a:"Place de la Nouvelle Aventure, 59000 Lille",s:"https://www.biocoop.fr"},
+    {n:"Natur\u00e9O Orchies",t:"bio",a:"ZAC de l\u2019Europe, 59310 Orchies",s:"https://www.natureo-bio.fr"},
+    {n:"Natur\u00e9O Saint-Maximin",t:"bio",a:"204 rue des Girondins, 60740 Saint-Maximin",s:"https://www.natureo-bio.fr"}
+  ]},
+  PDL: { name:"Pays de la Loire", shops:[
+    {n:"Biocoop Nantes Nord",t:"bio",a:"188 route de Rennes, 44300 Nantes",s:"https://nantes-nord.biocoop.net/"},
+    {n:"Biocoop Nantes Barbara",t:"bio",a:"22 rue Barbara, 44300 Nantes",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Les Hameaux Bio",t:"bio",a:"44000 Nantes",s:"https://leshameauxbio.fr/"},
+    {n:"La Vie Claire Nantes",t:"bio",a:"14 rue Pitre Chevalier, 44000 Nantes",s:"https://www.lavieclaire.com"},
+    {n:"Biocoop Caba Imbach Angers",t:"bio",a:"22 place Imbach, 49100 Angers",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Mara\u00eechine Challans",t:"bio",a:"85300 Challans",s:"https://www.biocoop.fr"}
+  ]},
+  BRE: { name:"Bretagne", shops:[
+    {n:"Biocoop Scarab\u00e9e Cleunay",t:"bio",a:"132 rue Eug\u00e8ne Pottier, 35000 Rennes",s:"https://scarabee-biocoop.coop/"},
+    {n:"Biocoop Scarab\u00e9e Papu",t:"bio",a:"18 rue Papu, 35000 Rennes",s:"https://scarabee-biocoop.coop/"},
+    {n:"Biocoop Scarab\u00e9e Vasselot",t:"bio",a:"7 rue Vasselot, 35000 Rennes",s:"https://scarabee-biocoop.coop/"},
+    {n:"Biocoop Scarab\u00e9e Rue de Paris",t:"bio",a:"131 rue de Paris, 35000 Rennes",s:"https://scarabee-biocoop.coop/"},
+    {n:"Biocoop Scarab\u00e9e Jacques Cartier",t:"bio",a:"11 place Th\u00e9r\u00e8se Pierre, 35000 Rennes",s:"https://scarabee-biocoop.coop/"},
+    {n:"La Vie Claire Rennes",t:"bio",a:"7 rue Poullain Duparc, 35200 Rennes",s:"https://www.lavieclaire.com"},
+    {n:"Biocoop Douargann",t:"bio",a:"22300 Lannion",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Ar Vro Fisel",t:"bio",a:"22110 Rostrenen",s:"https://www.biocoop.fr"},
+    {n:"La Vie Claire Brest",t:"bio",a:"43 rue Louis Pasteur, 29200 Brest",s:"https://www.lavieclaire.com"}
+  ]},
+  NOR: { name:"Normandie", shops:[
+    {n:"Biocoop Jeanne d\u2019Arc Rouen",t:"bio",a:"88 rue Jeanne d\u2019Arc, 76000 Rouen",s:"https://www.biocoop-rouen-jeanne-darc.com/"},
+    {n:"Biocoop Grand-Quevilly",t:"bio",a:"CC Bois Cany, 76120 Le Grand-Quevilly",s:"https://www.biocoop-grand-quevilly.fr/"},
+    {n:"Biocoop Plan\u00e8te Bio",t:"bio",a:"45 rue Georges de Buffon, 76230 Bois-Guillaume",s:"https://www.biocoop.fr"},
+    {n:"Biocoop La Vie au Naturel",t:"bio",a:"55 rue Saint-Sever, 76100 Rouen",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Passage D\u00e9mog\u00e9",t:"bio",a:"77 rue de Berni\u00e8res, 14000 Caen",s:"https://www.biocoop-passagedemoge.com/"},
+    {n:"Biocoop Fr\u00e9quence Bio",t:"bio",a:"14000 Caen",s:"https://www.biocoopfrequencebio.fr/"},
+    {n:"Natur\u00e9O Le Havre",t:"bio",a:"81 rue Claude L\u00e9vi-Strauss, 76620 Le Havre",s:"https://www.natureo-bio.fr"},
+    {n:"Natur\u00e9O Mondeville",t:"bio",a:"Route de Paris, 14120 Mondeville",s:"https://www.natureo-bio.fr"},
+    {n:"Biocoop Louviers",t:"bio",a:"27400 Louviers",s:"https://www.biocoop-louviers.fr/"}
+  ]},
+  CVL: { name:"Centre-Val de Loire", shops:[
+    {n:"Biocoop Orl\u00e9ans Saran",t:"bio",a:"40 rue Gabriel Debacq, 45770 Saran",s:"https://www.biocoop-orleans.fr/"},
+    {n:"Biocoop Biocit\u00e9 Tours",t:"bio",a:"Tours, 37000",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Tours Nord",t:"bio",a:"15 rue Arthur Rimbaud, 37100 Tours",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Salut Terre",t:"bio",a:"37000 Tours",s:"https://www.biocoop.fr"},
+    {n:"Biocoop Au Bourgeon Vert",t:"bio",a:"121 bd de l\u2019Avenir, 18000 Bourges",s:"https://www.biocoopaubourgeonvert.fr/"},
+    {n:"Natur\u00e9O Olivet",t:"bio",a:"25 rue Guyenne, 45160 Olivet",s:"https://www.natureo-bio.fr"},
+    {n:"Natur\u00e9O Amilly",t:"bio",a:"850 rue de l\u2019Europe, 45200 Amilly",s:"https://www.natureo-bio.fr"},
+    {n:"Natur\u00e9O Chartres",t:"bio",a:"CC Les 3 Ponts, 28000 Chartres",s:"https://www.natureo-bio.fr"}
+  ]},
+  COR: { name:"Corse", shops:[
+    {n:"Biocoop Del Pellegrino",t:"bio",a:"6 rue du Dr. Del Pellegrino, 20000 Ajaccio",s:"https://www.biocoopalban.fr/"},
+    {n:"La Roulotte Furiani",t:"bio",a:"Canale, RN193, 20600 Furiani",s:"https://furiani.laroulotte-bio.fr/"},
+    {n:"Ambre Naturelle",t:"reformhaus",a:"16 boulevard Albert 1er, 20000 Ajaccio",s:"#"},
+    {n:"Tr\u00e0 di Bio",t:"bio",a:"18 boulevard Paoli, 20200 Bastia",s:"https://www.annuairevert.com/magasin/3059-tra-di-bio"},
+    {n:"La Vie Claire Bastia",t:"bio",a:"20200 Bastia",s:"https://www.lavieclaire.com"}
+  ]}
+};
+
+/* ── French regions display order (frontalier Suisse first) ── */
+var REGION_ORDER = ["ARA","BFC","GES","IDF","PAC","OCC","NAQ","HDF","PDL","BRE","NOR","CVL","COR"];
+
 var FLAG_MAP = {
   FRA:"\ud83c\uddeb\ud83c\uddf7", CHE:"\ud83c\udde8\ud83c\udded", CAN:"\ud83c\udde8\ud83c\udde6",
   ESP:"\ud83c\uddea\ud83c\uddf8", ARE:"\ud83c\udde6\ud83c\uddea", ITA:"\ud83c\uddee\ud83c\uddf9",
@@ -1137,6 +1352,10 @@ function onMouseMove(e) {
       var totalShops = 0;
       CANTON_ORDER.forEach(function(c){ totalShops += SWISS_SHOPS[c].shops.length; });
       text += ' \u2014 ' + totalShops + ' ' + t('swiss.shops');
+    } else if (code === 'FRA') {
+      var totalShopsFr = 0;
+      REGION_ORDER.forEach(function(r){ totalShopsFr += FRANCE_SHOPS[r].shops.length; });
+      text += ' \u2014 ' + totalShopsFr + ' ' + t('swiss.shops');
     } else {
       var allEntries = partnersInCountry(code);
       var partnerCount = allEntries.length;
@@ -1172,6 +1391,8 @@ function onClickGlobe(e) {
 
     if (code === 'CHE') {
       openSwissPanel(cx);
+    } else if (code === 'FRA') {
+      openFrancePanel(cx);
     } else {
       var entries = partnersInCountry(code);
       if (entries.length > 0) {
@@ -1327,6 +1548,108 @@ window.__filterCantons = function(query){
   }
 };
 
+/* ───────────────────────────────── FRANCE REGION NAVIGATOR ───────────────────────────────── */
+function openFrancePanel(clickX) {
+  panelOpen = true;
+  mouseInPanel = false;
+  canClosePanel = false;
+  clearTimeout(panelTimeout);
+  clearTimeout(panelMinTimer);
+
+  var side = clickX < window.innerWidth / 2 ? 'right' : 'left';
+  sidePanelEl.className = 'open-' + side;
+
+  var totalShops = 0;
+  REGION_ORDER.forEach(function(r){ totalShops += FRANCE_SHOPS[r].shops.length; });
+
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<div class="panel-header"><span class="panel-flag">\ud83c\uddeb\ud83c\uddf7</span><span class="panel-country">France</span></div>';
+  h += '<div class="panel-subtitle">' + totalShops + ' ' + t('swiss.shops') + '</div>';
+
+  h += '<div class="swiss-intro">' + t('france.intro') + '</div>';
+
+  h += '<div class="swiss-legend">';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#90be6d"></span>' + t('type.bio') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#f4a261"></span>' + t('type.herboristerie') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#00d4aa"></span>' + t('type.reformhaus') + '</div>';
+  h += '</div>';
+
+  h += '<input type="text" class="swiss-search" placeholder="' + t('france.search') + '" oninput="window.__filterRegions(this.value)" />';
+
+  h += '<div class="canton-grid" id="region-grid">';
+  REGION_ORDER.forEach(function(code){
+    var region = FRANCE_SHOPS[code];
+    var count = region.shops.length;
+    var cls = count === 0 ? ' empty' : '';
+    h += '<div class="canton-btn' + cls + '" ' + (count > 0 ? 'onclick="window.__openRegion(\'' + code + '\')"' : '') + '>';
+    if (count > 0) h += '<span class="canton-count">' + count + '</span>';
+    h += '<span class="canton-code">' + code + '</span>';
+    h += '<span class="canton-name">' + escHtml(region.name) + '</span>';
+    h += '</div>';
+  });
+  h += '</div>';
+
+  sidePanelEl.innerHTML = h;
+
+  panelMinTimer = setTimeout(function(){ canClosePanel = true; }, 30000);
+  clearTimeout(panelTimeout);
+}
+
+function openRegionPanel(regionCode) {
+  var region = FRANCE_SHOPS[regionCode];
+  if (!region) return;
+
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<button class="swiss-back" onclick="window.__backToRegions()">\u2190 ' + t('france.back') + '</button>';
+  h += '<div class="canton-header"><span class="canton-header-name">' + escHtml(region.name) + '</span></div>';
+  h += '<div class="panel-subtitle">' + region.shops.length + ' ' + t('swiss.commerces') + '</div>';
+
+  region.shops.forEach(function(shop){
+    var typeClass = 'shop-type-' + shop.t;
+    var typeLabel = t('type.' + shop.t) || shop.t;
+    h += '<div class="shop-card">';
+    h += '<div class="shop-card-name">' + escHtml(shop.n) + '</div>';
+    h += '<span class="shop-type-badge ' + typeClass + '">' + escHtml(typeLabel) + '</span>';
+    h += '<div class="shop-card-address">' + escHtml(shop.a) + '</div>';
+    if (shop.note) h += '<div class="shop-card-note">' + escHtml(shop.note) + '</div>';
+    h += '<div class="shop-card-links">';
+    var mapsQuery = encodeURIComponent(shop.n + ' ' + shop.a);
+    h += '<a href="https://www.google.com/maps/search/?api=1&query=' + mapsQuery + '" target="_blank" rel="noopener">\ud83d\udccd Maps</a>';
+    if (shop.s && shop.s !== '#') h += '<a href="' + shop.s + '" target="_blank" rel="noopener">\ud83c\udf10 ' + t('panel.site') + '</a>';
+    h += '</div></div>';
+  });
+
+  sidePanelEl.innerHTML = h;
+  sidePanelEl.scrollTop = 0;
+}
+
+window.__openRegion = function(code){ openRegionPanel(code); };
+window.__backToRegions = function(){
+  openFrancePanel(window.innerWidth);
+  sidePanelEl.scrollTop = 0;
+};
+window.__filterRegions = function(query){
+  var q = query.toLowerCase().trim();
+  var grid = document.getElementById('region-grid');
+  if (!grid) return;
+  var btns = grid.children;
+  for (var i = 0; i < btns.length; i++) {
+    var btn = btns[i];
+    var code = REGION_ORDER[i];
+    var region = FRANCE_SHOPS[code];
+    if (!q) { btn.style.display = ''; continue; }
+    var match = code.toLowerCase().indexOf(q) !== -1 || region.name.toLowerCase().indexOf(q) !== -1;
+    if (!match) {
+      region.shops.forEach(function(s){
+        if (s.n.toLowerCase().indexOf(q) !== -1 || s.a.toLowerCase().indexOf(q) !== -1) match = true;
+      });
+    }
+    btn.style.display = match ? '' : 'none';
+  }
+};
+
 /* ─── CLOSE PANEL ─── */
 function closeSidePanel() {
   if (!panelOpen) return;
@@ -1444,7 +1767,9 @@ var I18N = {
     "type.m\u00e9decin":"M\u00e9decin","type.therapeute":"Th\u00e9rapeute","type.magasin":"Magasin","type.naturopathe":"Naturopathe","type.coach":"Coach","type.laboratoire":"Laboratoire",
     "type.bio":"Bio","type.pharmacie":"Pharmacie","type.droguerie":"Droguerie","type.herboristerie":"Herboristerie","type.reformhaus":"Reformhaus",
     "swiss.shops":"points de vente","swiss.intro":"D\u00e9couvrez les magasins bio, pharmacies, drogueries et herboristeries partenaires en Suisse. Cliquez sur un canton pour voir les commerces disponibles.",
-    "swiss.search":"Rechercher un canton ou un magasin...","swiss.back":"Tous les cantons","swiss.commerces":"commerces"
+    "swiss.search":"Rechercher un canton ou un magasin...","swiss.back":"Tous les cantons","swiss.commerces":"commerces",
+    "france.intro":"D\u00e9couvrez les magasins bio, herboristeries et enseignes bien-\u00eatre partenaires en France m\u00e9tropolitaine. Les r\u00e9gions frontali\u00e8res (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) sont mises en avant pour les frontaliers.",
+    "france.search":"Rechercher une r\u00e9gion ou un magasin...","france.back":"Toutes les r\u00e9gions"
   },
   en: {
     "nav.home":"Home","nav.science":"Science","nav.indice":"ORIM Index","nav.partners":"Partners","nav.contact":"Contact us",
@@ -1455,7 +1780,9 @@ var I18N = {
     "type.m\u00e9decin":"Doctor","type.therapeute":"Therapist","type.magasin":"Store","type.naturopathe":"Naturopath","type.coach":"Coach","type.laboratoire":"Laboratory",
     "type.bio":"Organic","type.pharmacie":"Pharmacy","type.droguerie":"Drugstore","type.herboristerie":"Herbalist","type.reformhaus":"Health Store",
     "swiss.shops":"retail locations","swiss.intro":"Discover organic shops, pharmacies, drugstores and herbalists across Switzerland. Click a canton to browse available stores.",
-    "swiss.search":"Search a canton or store...","swiss.back":"All cantons","swiss.commerces":"stores"
+    "swiss.search":"Search a canton or store...","swiss.back":"All cantons","swiss.commerces":"stores",
+    "france.intro":"Discover organic shops, herbalists and wellness partners across metropolitan France. Cross-border regions (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) are highlighted for frontier workers.",
+    "france.search":"Search a region or store...","france.back":"All regions"
   },
   es: {
     "nav.home":"Inicio","nav.science":"Ciencia","nav.indice":"\u00CDndice ORIM","nav.partners":"Socios","nav.contact":"Cont\u00e1ctenos",
@@ -1466,7 +1793,9 @@ var I18N = {
     "type.m\u00e9decin":"M\u00e9dico","type.therapeute":"Terapeuta","type.magasin":"Tienda","type.naturopathe":"Natur\u00f3pata","type.coach":"Coach","type.laboratoire":"Laboratorio",
     "type.bio":"Bio","type.pharmacie":"Farmacia","type.droguerie":"Droguería","type.herboristerie":"Herbolario","type.reformhaus":"Tienda naturista",
     "swiss.shops":"puntos de venta","swiss.intro":"Descubra tiendas bio, farmacias, droguer\u00edas y herbolarios en Suiza. Haga clic en un cant\u00f3n para ver las tiendas disponibles.",
-    "swiss.search":"Buscar un cant\u00f3n o tienda...","swiss.back":"Todos los cantones","swiss.commerces":"comercios"
+    "swiss.search":"Buscar un cant\u00f3n o tienda...","swiss.back":"Todos los cantones","swiss.commerces":"comercios",
+    "france.intro":"Descubra tiendas bio, herbolarios y socios de bienestar en Francia metropolitana. Las regiones fronterizas (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) tienen prioridad para los trabajadores transfronterizos.",
+    "france.search":"Buscar una regi\u00f3n o tienda...","france.back":"Todas las regiones"
   },
   de: {
     "nav.home":"Startseite","nav.science":"Wissenschaft","nav.indice":"ORIM-Index","nav.partners":"Partner","nav.contact":"Kontakt",
@@ -1477,7 +1806,9 @@ var I18N = {
     "type.m\u00e9decin":"Arzt","type.therapeute":"Therapeut","type.magasin":"Gesch\u00e4ft","type.naturopathe":"Naturheilkundler","type.coach":"Coach","type.laboratoire":"Labor",
     "type.bio":"Bio","type.pharmacie":"Apotheke","type.droguerie":"Drogerie","type.herboristerie":"Kr\u00e4uterladen","type.reformhaus":"Reformhaus",
     "swiss.shops":"Verkaufsstellen","swiss.intro":"Entdecken Sie Bio-L\u00e4den, Apotheken, Drogerien und Kr\u00e4uterl\u00e4den in der Schweiz. Klicken Sie auf einen Kanton, um die verf\u00fcgbaren Gesch\u00e4fte zu sehen.",
-    "swiss.search":"Kanton oder Gesch\u00e4ft suchen...","swiss.back":"Alle Kantone","swiss.commerces":"Gesch\u00e4fte"
+    "swiss.search":"Kanton oder Gesch\u00e4ft suchen...","swiss.back":"Alle Kantone","swiss.commerces":"Gesch\u00e4fte",
+    "france.intro":"Entdecken Sie Bio-L\u00e4den, Kr\u00e4uterl\u00e4den und Wellness-Partner in Frankreich. Grenzregionen (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) werden f\u00fcr Grenzg\u00e4nger hervorgehoben.",
+    "france.search":"Region oder Gesch\u00e4ft suchen...","france.back":"Alle Regionen"
   }
 };
 

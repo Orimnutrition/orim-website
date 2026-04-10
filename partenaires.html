@@ -801,11 +801,660 @@ var FRANCE_SHOPS = {
 /* ── French regions display order (frontalier Suisse first) ── */
 var REGION_ORDER = ["ARA","BFC","GES","IDF","PAC","OCC","NAQ","HDF","PDL","BRE","NOR","CVL","COR"];
 
+/* ─── EUROPE SHOPS DATABASE (11 countries) ─── */
+var EUROPE_COUNTRIES = {
+  DEU: { name:"Allemagne", flag:"\ud83c\udde9\ud83c\uddea", regions:{
+    "BW":{name:"Bade-Wurtemberg",shops:[
+      {n:"Alnatura Stuttgart Degerloch",t:"bio",a:"Epplestraße 12, 70597 Stuttgart",s:"https://www.alnatura.de"},
+      {n:"Alnatura Stuttgart Killesberg",t:"bio",a:"Am Höhenpark 4, 70192 Stuttgart",s:"https://www.alnatura.de"},
+      {n:"Alnatura Stuttgart Zuffenhausen",t:"bio",a:"Frankenstraße 3, 70435 Stuttgart",s:"https://www.alnatura.de"},
+      {n:"Alnatura Stuttgart Tübinger",t:"bio",a:"Tübinger Str. 31-33, 70178 Stuttgart",s:"https://www.alnatura.de"},
+      {n:"Alnatura Karlsruhe Oststadt",t:"bio",a:"Käppelestraße 5, 76131 Karlsruhe",s:"https://www.alnatura.de"},
+      {n:"Alnatura Karlsruhe Parkarkaden",t:"bio",a:"Ludwig-Erhard-Allee 14, 76131 Karlsruhe",s:"https://www.alnatura.de"},
+      {n:"Alnatura Freiburg Fahnenberg",t:"bio",a:"Fahnenbergplatz 3, 79098 Freiburg",s:"https://www.alnatura.de",note:"Frontalier Suisse - Bale"},
+      {n:"Alnatura Freiburg Bismarck",t:"bio",a:"Bismarckallee 10, 79098 Freiburg",s:"https://www.alnatura.de",note:"Frontalier Suisse - Bale"},
+      {n:"Alnatura Freiburg Kaiser-Joseph",t:"bio",a:"Kaiser-Joseph-Straße 282, 79098 Freiburg",s:"https://www.alnatura.de",note:"Frontalier Suisse - Bale"},
+      {n:"Alnatura Freiburg Schwarzwald",t:"bio",a:"Schwarzwaldstr. 78, 79117 Freiburg",s:"https://www.alnatura.de",note:"Frontalier Suisse - Bale"},
+      {n:"Alnatura Freiburg Merzhauser",t:"bio",a:"Merzhauser Straße 179, 79100 Freiburg",s:"https://www.alnatura.de",note:"Frontalier Suisse - Bale"},
+      {n:"Alnatura Mannheim",t:"bio",a:"N7, 12, 68161 Mannheim",s:"https://www.alnatura.de"},
+      {n:"Alnatura Heidelberg Poststraße",t:"bio",a:"Poststraße 36/5, 69115 Heidelberg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Heidelberg Langer Anger",t:"bio",a:"Langer Anger 7-9, 69115 Heidelberg",s:"https://www.alnatura.de"},
+      {n:"Denns Biomarkt Stuttgart",t:"bio",a:"Robert-Koch-Str. 2, 70563 Stuttgart",s:"https://www.biomarkt.de"},
+      {n:"Denns Biomarkt Karlsruhe Durmersheimer",t:"bio",a:"Durmersheimer Str. 143, 76185 Karlsruhe",s:"https://www.biomarkt.de"},
+      {n:"Denns Biomarkt Karlsruhe Kaiserallee",t:"bio",a:"Kaiserallee 13 B, 76133 Karlsruhe",s:"https://www.biomarkt.de"}
+    ]},
+    "BY":{name:"Baviere",shops:[
+      {n:"Alnatura München Münchner Freiheit",t:"bio",a:"Münchner Freiheit 7, 80802 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Trudering",t:"bio",a:"Hafelhofweg 2, 81825 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Friedenheimer",t:"bio",a:"Friedenheimer Brücke 23, 80639 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Haidhausen",t:"bio",a:"Weißenburger Straße 20, 81667 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Innenstadt",t:"bio",a:"Sonnenstraße 23, 80331 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Isarvorstadt",t:"bio",a:"Lindwurmstr. 117, 80337 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Milbertshofen",t:"bio",a:"Ingolstädter Straße 170b, 80939 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Neuhausen",t:"bio",a:"Nymphenburger Str. 158, 80634 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Boschetsrieder",t:"bio",a:"Boschetsrieder Straße 72, 81379 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Kistlerhof",t:"bio",a:"Kistlerhofstr. 243a, 81379 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Pasing",t:"bio",a:"Landsberger Straße 480-482, 81241 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura München Leopoldstr",t:"bio",a:"Leopoldstr. 64, 80802 München",s:"https://www.alnatura.de"},
+      {n:"Alnatura Augsburg",t:"bio",a:"Inninger Str. 97c, 86179 Augsburg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Nürnberg",t:"bio",a:"Sulzbacher Straße 71, 90489 Nürnberg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Erlangen",t:"bio",a:"Nürnberger Straße 24, 91052 Erlangen",s:"https://www.alnatura.de"},
+      {n:"Denns Biomarkt München Hohenzollern",t:"bio",a:"Hohenzollernstraße 3-5, 80801 München",s:"https://www.biomarkt.de"},
+      {n:"Denns Biomarkt München Verdi",t:"bio",a:"Verdistr. 130, 80935 München",s:"https://www.biomarkt.de"},
+      {n:"Denns Biomarkt Nürnberg",t:"bio",a:"Äußere Cramer-Klett-Str. 21, 90489 Nürnberg",s:"https://www.biomarkt.de"},
+      {n:"Denns Biomarkt Augsburg",t:"bio",a:"Eichleitnerstr. 14, 86199 Augsburg",s:"https://www.biomarkt.de"}
+    ]},
+    "HE":{name:"Hesse",shops:[
+      {n:"Alnatura Frankfurt Bockenheim",t:"bio",a:"Leipziger Straße 19, 60486 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Frankfurt Bornheim",t:"bio",a:"Burgstraße 106, 60389 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Frankfurt Eckenheim",t:"bio",a:"Karl-von-Drais-Straße 5, 60435 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Frankfurt Eschersheim",t:"bio",a:"Eschersheimer Landstr. 526-532, 60433 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Frankfurt Nordend",t:"bio",a:"Eschersheimer Landstraße 60, 60322 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Frankfurt Sachsenhausen Schweizer",t:"bio",a:"Schweizer Straße 80, 60594 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Frankfurt Südbahnhof",t:"bio",a:"Hedderichstraße 47-49, 60594 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Frankfurt Ostend",t:"bio",a:"Hanauer Landstraße 110, 60314 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Frankfurt Westend",t:"bio",a:"Bockenheimer Landstraße 13-15, 60325 Frankfurt",s:"https://www.alnatura.de"},
+      {n:"Alnatura Wiesbaden",t:"bio",a:"Dotzheimer Str. 14-18, 65185 Wiesbaden",s:"https://www.alnatura.de"}
+    ]},
+    "BE":{name:"Berlin",shops:[
+      {n:"Alnatura Berlin Friedrichshain",t:"bio",a:"Koppenstr. 8, 10243 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Wilmersdorfer",t:"bio",a:"Wilmersdorferstr. 46, 10627 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Giesebrecht",t:"bio",a:"Giesebrechtstraße 4, 10629 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Kreuzberg",t:"bio",a:"Schleiermacherstraße 25, 10961 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Alte Jakobstr",t:"bio",a:"Alte Jakobstraße 79/80, 10179 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Chausseestr",t:"bio",a:"Chausseestr. 10, 10115 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Friedrichstr",t:"bio",a:"Friedrichstraße 191, 10117 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Moabit",t:"bio",a:"Turmstraße 72/73, 10551 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Greifswalder",t:"bio",a:"Greifswalder Str. 89, 10409 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Schönhauser",t:"bio",a:"Schönhauser Allee 108, 10439 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Schöneberg",t:"bio",a:"Else-Lasker-Schüler-Str. 18-22, 10783 Berlin",s:"https://www.alnatura.de"},
+      {n:"Alnatura Berlin Wilmersdorf",t:"bio",a:"Konstanzer Str. 2, 10707 Berlin",s:"https://www.alnatura.de"}
+    ]},
+    "HH":{name:"Hambourg",shops:[
+      {n:"Alnatura Hamburg Altona",t:"bio",a:"Hahnenkamp 1, 22765 Hamburg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Hamburg Bahrenfeld",t:"bio",a:"Paul-Dessau-Straße 8, 22761 Hamburg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Hamburg Barmbek",t:"bio",a:"Fuhlsbüttler Str. 136-146, 22305 Hamburg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Hamburg Eppendorf",t:"bio",a:"Hoheluftchaussee 18, 22053 Hamburg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Hamburg HafenCity",t:"bio",a:"Überseeboulevard 5, 20457 Hamburg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Hamburg Ottensen",t:"bio",a:"Bahrenfelder Str. 242-244, 22765 Hamburg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Hamburg Sternschanze",t:"bio",a:"Schanzenstraße 34-36, 20357 Hamburg",s:"https://www.alnatura.de"},
+      {n:"Alnatura Hamburg Wandsbek",t:"bio",a:"Wandsbeker Marktstraße 2, 22041 Hamburg",s:"https://www.alnatura.de"}
+    ]},
+    "NW":{name:"Rhenanie Nord-Westphalie",shops:[
+      {n:"Alnatura Köln Neumarkt",t:"bio",a:"Neumarkt 41-43, 50667 Köln",s:"https://www.alnatura.de"},
+      {n:"Alnatura Köln Severin",t:"bio",a:"Severinstr. 35-37, 50678 Köln",s:"https://www.alnatura.de"},
+      {n:"Alnatura Köln Bayenthal",t:"bio",a:"Goltsteinstraße 91, 50968 Köln",s:"https://www.alnatura.de"},
+      {n:"Alnatura Köln Belgisches Viertel",t:"bio",a:"Venloer Str. 47-53, 50672 Köln",s:"https://www.alnatura.de"},
+      {n:"Alnatura Köln Ehrenfeld",t:"bio",a:"Venloer Str. 301-303, 50823 Köln",s:"https://www.alnatura.de"},
+      {n:"Alnatura Köln Nippes",t:"bio",a:"Neusser Straße 264, 50733 Köln",s:"https://www.alnatura.de"},
+      {n:"Alnatura Köln Sülz",t:"bio",a:"Berrenrather Straße 240, 50939 Köln",s:"https://www.alnatura.de"},
+      {n:"Alnatura Köln Weiden",t:"bio",a:"Aachener Straße 1141, 50858 Köln",s:"https://www.alnatura.de"},
+      {n:"Alnatura Düsseldorf Stadtmitte",t:"bio",a:"Konrad-Adenauer-Platz 11, 40210 Düsseldorf",s:"https://www.alnatura.de"},
+      {n:"Alnatura Düsseldorf Gerresheim",t:"bio",a:"Am Wildpark 2a, 40629 Düsseldorf",s:"https://www.alnatura.de"},
+      {n:"Alnatura Düsseldorf Derendorf",t:"bio",a:"Ulmenstraße 91, 40476 Düsseldorf",s:"https://www.alnatura.de"}
+    ]},
+    "NI":{name:"Basse-Saxe",shops:[
+      {n:"Alnatura Hannover List",t:"bio",a:"Jakobistraße 10, 30163 Hannover",s:"https://www.alnatura.de"},
+      {n:"Alnatura Hannover Südstadt",t:"bio",a:"An der Weide 27-31, 30171 Hannover",s:"https://www.alnatura.de"}
+    ]},
+  }, order:["BW","BY","HE","BE","HH","NW","NI"] },
+  ITA: { name:"Italie", flag:"\ud83c\uddee\ud83c\uddf9", regions:{
+    "PIE":{name:"Piemont",shops:[
+      {n:"NaturaSi Torino Santa Teresa",t:"bio",a:"Via Santa Teresa, 3, 10121 Torino",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Torino Turati",t:"bio",a:"Corso Filippo Turati, 12, 10128 Torino",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Torino Adriatico",t:"bio",a:"Corso Adriatico, 26, 10129 Torino",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Torino Moncalieri",t:"bio",a:"Corso Moncalieri, 194/D, 10133 Torino",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Torino Orbassano",t:"bio",a:"Corso Orbassano, 248/A, 10137 Torino",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Moncalieri",t:"bio",a:"Via Vittime di Bologna, 20, 10024 Moncalieri",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Rivoli",t:"bio",a:"Corso Susa, 154B, 10098 Rivoli",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Chieri",t:"bio",a:"Via Roma, 29, 10023 Chieri",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Cirié",t:"bio",a:"Via Torino, 84/C, 10073 Cirié",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Novara",t:"bio",a:"Via G. Marconi, 12, 28100 Novara",s:"https://www.naturasi.it"}
+    ]},
+    "VDA":{name:"Vallee d'Aoste",shops:[
+      {n:"NaturaSi Aosta",t:"bio",a:"Via Xavier de Maistre, 1, 11100 Aosta",s:"https://www.naturasi.it",note:"Frontalier Suisse - Val d'Aoste"}
+    ]},
+    "LOM":{name:"Lombardie",shops:[
+      {n:"NaturaSi Milano Millelire",t:"bio",a:"Via Millelire, 14, 20147 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Monti",t:"bio",a:"Via Vincenzo Monti, 32, 20123 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Washington",t:"bio",a:"Via Washington, 111, 20146 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Petitti",t:"bio",a:"Via Petitti, 6, 20149 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano De Amicis",t:"bio",a:"Via E. De Amicis, 45, 20123 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Colombo",t:"bio",a:"Corso Cristoforo Colombo, 1, 20144 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Correnti",t:"bio",a:"Via Cesare Correnti, 10, 20123 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Porta Volta",t:"bio",a:"Bastioni Porta Volta, 5/A, 20121 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Umbria",t:"bio",a:"Viale Umbria, 3, 20135 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Cassala",t:"bio",a:"Viale Cassala, 61, 20143 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Milano Indipendenza",t:"bio",a:"Corso Indipendenza, 7, 20129 Milano",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Bergamo Borgo Palazzo",t:"bio",a:"Via Borgo Palazzo, 114, 24125 Bergamo",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Bergamo Carducci",t:"bio",a:"Via Carducci, 2, 24121 Bergamo",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Brescia X Giornate",t:"bio",a:"Via X Giornate, 28, 25122 Brescia",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Brescia Foro Boario",t:"bio",a:"Via Foro Boario, 46, 25121 Brescia",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Desenzano",t:"bio",a:"Via Marconi, 133, 25015 Desenzano del Garda",s:"https://www.naturasi.it"}
+    ]},
+    "LIG":{name:"Ligurie",shops:[
+      {n:"NaturaSi Genova Barabino",t:"bio",a:"Via C. Barabino, 90/R, 16129 Genova",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Genova Casaccie",t:"bio",a:"Via delle Casaccie, 74, 16121 Genova",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Genova Corso Europa",t:"bio",a:"Corso Europa, 300, 16132 Genova",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Genova Sabotino",t:"bio",a:"Via Sabotino, 24/26, 16156 Genova",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Sestri Levante",t:"bio",a:"Via Dante, 92-96, 16039 Sestri Levante",s:"https://www.naturasi.it"}
+    ]},
+    "VEN":{name:"Venetie",shops:[
+      {n:"NaturaSi Venezia",t:"bio",a:"Calle della Regina, 2264, 30121 Venezia",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Mestre Torino",t:"bio",a:"Via Torino, 86, 30172 Mestre",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Mestre Garibaldi",t:"bio",a:"Largo Rotonda Garibaldi, 10/A, 30174 Mestre",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Verona Nepote",t:"bio",a:"Via C. Nepote, 2/4, 37131 Verona",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Verona Pisacane",t:"bio",a:"Via C. Pisacane, 2/A, 37123 Verona",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Verona Corso Milano",t:"bio",a:"Corso Milano, 110, 37138 Verona",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Verona Torbido",t:"bio",a:"Via Torbido, 11/A, 37136 Verona",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Treviso",t:"bio",a:"Viale Cadorna, 13, 31100 Treviso",s:"https://www.naturasi.it"}
+    ]},
+    "TAA":{name:"Trentin-Haut-Adige",shops:[
+      {n:"NaturaSi Trento Brennero",t:"bio",a:"Via Brennero, 138, 38121 Trento",s:"https://www.naturasi.it",note:"Frontalier Autriche/Suisse"},
+      {n:"NaturaSi Trento Prato",t:"bio",a:"Via Giovanni a Prato, 22/2, 38122 Trento",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Rovereto",t:"bio",a:"Via Bezzecca, 11, 38068 Rovereto",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Mezzolombardo",t:"bio",a:"Piazza delle Erbe, 3, 38017 Mezzolombardo",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Pergine Valsugana",t:"bio",a:"Localita Fratte, 26, 38057 Pergine",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Arco",t:"bio",a:"Via Santa Caterina, 49, 38062 Arco",s:"https://www.naturasi.it"}
+    ]},
+    "EMR":{name:"Emilie-Romagne",shops:[
+      {n:"NaturaSi Bologna Repubblica",t:"bio",a:"Viale Repubblica, 23/2, 40127 Bologna",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Bologna Montefiorino",t:"bio",a:"Via Montefiorino, 2/D, 40139 Bologna",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Bologna Po",t:"bio",a:"Via Po, 3, 40141 Bologna",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Casalecchio",t:"bio",a:"Via Porrettana, 388, 40033 Casalecchio di Reno",s:"https://www.naturasi.it"},
+      {n:"NaturaSi San Lazzaro",t:"bio",a:"Via Emilia, 234, 40068 San Lazzaro di Savena",s:"https://www.naturasi.it"}
+    ]},
+    "TOS":{name:"Toscane",shops:[
+      {n:"NaturaSi Firenze Corsica",t:"bio",a:"Viale Corsica, 19/23, 50127 Firenze",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Firenze Masaccio",t:"bio",a:"Via Masaccio, 88/90, 50132 Firenze",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Firenze Montelupo",t:"bio",a:"Via Baccio da Montelupo, 81, 50142 Firenze",s:"https://www.naturasi.it"}
+    ]},
+    "LAZ":{name:"Latium",shops:[
+      {n:"NaturaSi Roma Martini",t:"bio",a:"Via P. Martini ang. Via U. De Carolis, 16-32, 00136 Roma",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Roma Tripolitania",t:"bio",a:"Via Tripolitania, 39, 00199 Roma",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Roma Prati Fiscali",t:"bio",a:"Via Prati Fiscali, 243, 00141 Roma",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Roma Marini",t:"bio",a:"Via Luigi Gaetano Marini, 20, 00179 Roma",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Roma Portuense",t:"bio",a:"Via Portuense, 540, 00149 Roma",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Roma Sicilia",t:"bio",a:"Via Sicilia, 180-184, 00187 Roma",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Roma Prefetti",t:"bio",a:"Via dei Prefetti, 13/14, 00186 Roma",s:"https://www.naturasi.it"}
+    ]},
+    "CAM":{name:"Campanie",shops:[
+      {n:"NaturaSi Napoli Leopardi",t:"bio",a:"Via Giacomo Leopardi, 199, 80125 Napoli",s:"https://www.naturasi.it"}
+    ]},
+    "SIC":{name:"Sicile",shops:[
+      {n:"NaturaSi Palermo",t:"bio",a:"Via Gioacchino di Marzo, 23/B, 90141 Palermo",s:"https://www.naturasi.it"}
+    ]},
+    "SAR":{name:"Sardaigne",shops:[
+      {n:"NaturaSi Cagliari Barone Rossi",t:"bio",a:"Vico Barone Rossi, 4, 09124 Cagliari",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Cagliari San Benedetto",t:"bio",a:"Via San Benedetto, 2/D, 09134 Cagliari",s:"https://www.naturasi.it"},
+      {n:"NaturaSi Cagliari Marconi",t:"bio",a:"Viale Marconi, 101, 09131 Cagliari",s:"https://www.naturasi.it"}
+    ]},
+  }, order:["PIE","VDA","LOM","LIG","VEN","TAA","EMR","TOS","LAZ","CAM","SIC","SAR"] },
+  AUT: { name:"Autriche", flag:"\ud83c\udde6\ud83c\uddf9", regions:{
+    "V":{name:"Vorarlberg (frontalier Suisse)",shops:[
+      {n:"Denn's Bregenz",t:"bio",a:"Mariahilfstraße 1, 6900 Bregenz",s:"https://www.denns-biomarkt.at",note:"Frontalier Suisse direct"}
+    ]},
+    "T":{name:"Tirol (frontalier Suisse)",shops:[
+      {n:"Denn's Innsbruck Anichstrasse",t:"bio",a:"Anichstraße 5, 6020 Innsbruck",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Innsbruck Amraser",t:"bio",a:"Amraser-See-Straße 56, 6020 Innsbruck",s:"https://www.denns-biomarkt.at"}
+    ]},
+    "W":{name:"Wien / Vienne",shops:[
+      {n:"Denn's Singerstrasse",t:"bio",a:"Singerstraße 27, 1010 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Taborstrasse",t:"bio",a:"Taborstraße 10, 1020 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Landstrasse",t:"bio",a:"Landstraßer Hauptstraße 37, 1030 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Wiedner Hauptstrasse",t:"bio",a:"Wiedner Hauptstraße 71, 1040 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Josefstaedter",t:"bio",a:"Josefstädter Straße 18, 1080 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Lindengasse",t:"bio",a:"Lindengasse 13-15, 1070 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Kaiserstrasse",t:"bio",a:"Kaiserstraße 57-59, 1070 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Penzing",t:"bio",a:"Hauptstraße 33-35, 1140 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Lainzer",t:"bio",a:"Lainzer Straße 11-13, 1130 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Martinstrasse",t:"bio",a:"Martinstraße 60, 1180 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Sieveringer",t:"bio",a:"Sieveringer Straße 25, 1190 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Ottakringer",t:"bio",a:"Ottakringer Straße 186, 1160 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Donaustadt",t:"bio",a:"Gewerbeparkstraße 12, 1220 Wien",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Liesing",t:"bio",a:"Dreiständegasse 2, 1230 Wien",s:"https://www.denns-biomarkt.at"}
+    ]},
+    "NOE":{name:"Basse-Autriche",shops:[
+      {n:"Denn's St. Polten",t:"bio",a:"Mariazellerstraße 75, 3100 St. Pölten",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Perchtoldsdorf",t:"bio",a:"Brunnergasse 1-9, 2380 Perchtoldsdorf",s:"https://www.denns-biomarkt.at"}
+    ]},
+    "OOE":{name:"Haute-Autriche",shops:[
+      {n:"Denn's Linz Landstrasse",t:"bio",a:"Landstraße 111, 4020 Linz",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Linz Kaisergasse",t:"bio",a:"Kaisergasse 17, 4020 Linz",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Linz Hamerling",t:"bio",a:"Hamerlingstraße 42-44, 4020 Linz",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Wels",t:"bio",a:"Malvenstraße 5, 4600 Wels",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Ried",t:"bio",a:"Marktplatz 3, 4910 Ried im Innkreis",s:"https://www.denns-biomarkt.at"}
+    ]},
+    "ST":{name:"Styrie",shops:[
+      {n:"Denn's Graz Joanneumring",t:"bio",a:"Joanneumring 8-10, 8010 Graz",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Graz Plueddemann",t:"bio",a:"Plüddemanngasse 67, 8010 Graz",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Graz Eggenberger",t:"bio",a:"Eggenberger Allee 26A, 8020 Graz",s:"https://www.denns-biomarkt.at"}
+    ]},
+    "K":{name:"Carinthie",shops:[
+      {n:"Denn's Klagenfurt",t:"bio",a:"Völkermarkter Straße 160, 9020 Klagenfurt",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Villach",t:"bio",a:"Bruno-Kreisky-Straße 25, 9500 Villach",s:"https://www.denns-biomarkt.at"}
+    ]},
+    "S":{name:"Salzburg",shops:[
+      {n:"Denn's Salzburg Alpenstrasse",t:"bio",a:"Alpenstraße 75, 5020 Salzburg",s:"https://www.denns-biomarkt.at"},
+      {n:"Denn's Salzburg Sterneck",t:"bio",a:"Sterneckstraße 31, 5020 Salzburg",s:"https://www.denns-biomarkt.at"}
+    ]},
+  }, order:["V","T","W","NOE","OOE","ST","K","S"] },
+  BEL: { name:"Belgique", flag:"\ud83c\udde7\ud83c\uddea", regions:{
+    "BRU":{name:"Bruxelles-Capitale",shops:[
+      {n:"Bio-Planet Uccle",t:"bio",a:"Rue Egide Van Ophem 50, 1180 Uccle",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Saint-Gilles",t:"bio",a:"Chaussée de Waterloo 71, 1060 Saint-Gilles",s:"https://www.bioplanet.be"}
+    ]},
+    "VLG":{name:"Flandre",shops:[
+      {n:"Bio-Planet Antwerpen",t:"bio",a:"Oudeleeuwenrui 34, 2000 Antwerpen",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Wilrijk",t:"bio",a:"Boomsesteenweg 524, 2610 Wilrijk",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Lier",t:"bio",a:"Boomlaarstraat 309, 2500 Lier",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Mechelen",t:"bio",a:"Battelsesteenweg 68, 2800 Mechelen",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Mol",t:"bio",a:"Molderdijk 65, 2400 Mol",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Turnhout",t:"bio",a:"Steenweg op Oosthoven 247, 2300 Turnhout",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Gent",t:"bio",a:"Drongensesteenweg 134, 9000 Gent",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Brugge",t:"bio",a:"Sint-Pieterskaai 53, 8000 Brugge",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Hasselt",t:"bio",a:"Genkersteenweg 69, 3500 Hasselt",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Kessel-Lo",t:"bio",a:"Tiensesteenweg 371, 3010 Kessel-Lo",s:"https://www.bioplanet.be"}
+    ]},
+    "WAL":{name:"Wallonie",shops:[
+      {n:"Bio-Planet Liege",t:"bio",a:"Rue Bernimolin 1, 4020 Liège",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Ben-Ahin",t:"bio",a:"Rue Joseph Wauters 7, 4500 Ben-Ahin",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Ensival",t:"bio",a:"Rue de la Paix 44, 4800 Ensival",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Hannut",t:"bio",a:"Rue de Huy 54, 4280 Hannut",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Marcinelle",t:"bio",a:"Avenue de Philippeville 229, 6001 Marcinelle",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Mons",t:"bio",a:"Chaussée du Roeulx 186, 7000 Mons",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Froyennes",t:"bio",a:"Rue De Maire 5, 7503 Froyennes",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Jambes",t:"bio",a:"Rue Commandant Tilot 39, 5100 Jambes",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Gembloux",t:"bio",a:"Chaussée de Charleroi 22, 5030 Gembloux",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Braine-l'Alleud",t:"bio",a:"Chaussée d'Alsemberg 437, 1420 Braine-l'Alleud",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Corbais",t:"bio",a:"Rue Haute 2, 1435 Corbais",s:"https://www.bioplanet.be"},
+      {n:"Bio-Planet Nivelles",t:"bio",a:"Chaussée de Namur 59, 1400 Nivelles",s:"https://www.bioplanet.be"}
+    ]},
+  }, order:["BRU","VLG","WAL"] },
+  ESP: { name:"Espagne", flag:"\ud83c\uddea\ud83c\uddf8", regions:{
+    "CAT":{name:"Catalogne",shops:[
+      {n:"Veritas Barcelona - Còrsega",t:"bio",a:"C/ Còrsega, 302, 08008 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Casanova",t:"bio",a:"C/ Casanova, 142, 08036 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Diputació",t:"bio",a:"C/ Diputació, 239-247, 08007 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Doctor Dou",t:"bio",a:"C/ Doctor Dou, 17, 08001 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Gran Via Carles III",t:"bio",a:"Gran Via de Carles III, 55, 08028 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Gran Via Corts",t:"bio",a:"Gran Via de les Corts Catalanes, 539, 08011 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Sant Andreu",t:"bio",a:"C/ Gran de Sant Andreu, 122, 08030 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Montserrat",t:"bio",a:"Av. Mare de Déu de Montserrat, 19-21, 08024 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Pau Alsina",t:"bio",a:"C/ Pau Alsina, 37-39, 08025 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Consell de la Vila",t:"bio",a:"Plaça Consell de la Vila, 9, 08034 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Torrent de l'Olla",t:"bio",a:"C/ Torrent de l'Olla, 200, 08012 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Balmes",t:"bio",a:"C/ Balmes, 309, 08006 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Mandri",t:"bio",a:"C/ Mandri, 15, 08022 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Via Laietana",t:"bio",a:"Via Laietana, 28, 08003 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Barcelona - Marià Cubí",t:"bio",a:"C/ Marià Cubí, 7-9, 08006 Barcelona",s:"https://veritas.es"},
+      {n:"Veritas Sant Cugat",t:"bio",a:"Av. Lluís Companys, 31-33, 08190 Sant Cugat del Vallès",s:"https://veritas.es"},
+      {n:"Veritas Sabadell",t:"bio",a:"C/ Vilarrúbias, 1, 08202 Sabadell",s:"https://veritas.es"},
+      {n:"Veritas Terrassa",t:"bio",a:"Rambla d'Égara, 215, 08224 Terrassa",s:"https://veritas.es"},
+      {n:"Veritas Cornellà",t:"bio",a:"C/ Major, 13, 08940 Cornellà de Llobregat",s:"https://veritas.es"},
+      {n:"Veritas Girona",t:"bio",a:"C/ Juli Garreta, 32, 17002 Girona",s:"https://veritas.es"},
+      {n:"Veritas Lleida",t:"bio",a:"Av. Doctor Fleming, 29, 25006 Lleida",s:"https://veritas.es"},
+      {n:"Veritas Tarragona",t:"bio",a:"Plaça de Corsini, 43001 Tarragona",s:"https://veritas.es"},
+      {n:"Veritas Puigcerdà",t:"bio",a:"Rambla Josep Maria Martí, 4, 17520 Puigcerdà",s:"https://veritas.es"}
+    ]},
+    "MAD":{name:"Madrid",shops:[
+      {n:"Veritas Madrid - Libertad",t:"bio",a:"C/ Libertad, 24, 28004 Madrid",s:"https://veritas.es"},
+      {n:"Herbolario El Naturalista",t:"herboristerie",a:"C/ Mejía Lequerica, 4, 28004 Madrid",s:"#"},
+      {n:"Herbolario El Ganso Azul",t:"herboristerie",a:"C/ Bravo Murillo, 67, 28003 Madrid",s:"#"}
+    ]},
+    "PVA":{name:"Pays basque",shops:[
+      {n:"Veritas Bilbao - Urquijo",t:"bio",a:"Alameda Urquijo, 12, 48008 Bilbao",s:"https://veritas.es"},
+      {n:"Veritas Bilbao - CC Artea",t:"bio",a:"CC Artea, Peruri 33, 48940 Leioa",s:"https://veritas.es"},
+      {n:"Veritas Donostia - Garibai",t:"bio",a:"C/ Garibai, 20, 20004 Donostia",s:"https://veritas.es"},
+      {n:"Veritas Donostia - San Frantzisko",t:"bio",a:"San Frantzisko Kalea, 15, 20012 Donostia",s:"https://veritas.es"},
+      {n:"Veritas Vitoria-Gasteiz",t:"bio",a:"Sancho el Sabio Kalea, 13, 01008 Vitoria-Gasteiz",s:"https://veritas.es"}
+    ]},
+    "AND":{name:"Andalousie",shops:[
+      {n:"Herbolario Meridiano",t:"herboristerie",a:"C/ Trajano, 15, 41002 Sevilla",s:"#"},
+      {n:"Herbolario El Vergel",t:"herboristerie",a:"C/ Carretería, 61, 29008 Málaga",s:"#"},
+      {n:"Ecorganic Supermercado",t:"bio",a:"C/ Luis Montoto, 115, 41007 Sevilla",s:"#"}
+    ]},
+    "VAL":{name:"Communauté valencienne",shops:[
+      {n:"Veritas Valencia - Alfahuir",t:"bio",a:"C/ Alfahuir, 53, 46019 Valencia",s:"https://veritas.es"},
+      {n:"Veritas Valencia - Blasco Ibáñez",t:"bio",a:"Av. Blasco Ibáñez, 70, 46021 Valencia",s:"https://veritas.es"},
+      {n:"Veritas Valencia - Marqués del Turia",t:"bio",a:"Gran Vía Marqués del Túria, 42, 46005 Valencia",s:"https://veritas.es"},
+      {n:"Veritas Valencia - Ramón y Cajal",t:"bio",a:"Gran Vía Ramón y Cajal, 27, 46007 Valencia",s:"https://veritas.es"},
+      {n:"Veritas Valencia - Serrería",t:"bio",a:"C/ Serradora, 16, 46011 Valencia",s:"https://veritas.es"},
+      {n:"Herbolario Navarro Arzobispo",t:"herboristerie",a:"C/ Arzobispo Mayoral, 20, 46002 Valencia",s:"https://www.herbolarionavarro.es"},
+      {n:"Herbolario Navarro Jorge Juan",t:"herboristerie",a:"C/ Jorge Juan, 15, 46004 Valencia",s:"https://www.herbolarionavarro.es"},
+      {n:"Herbolario Navarro Gaspar Aguilar",t:"herboristerie",a:"Av. Gaspar Aguilar, 34, 46017 Valencia",s:"https://www.herbolarionavarro.es"}
+    ]},
+    "BAL":{name:"Iles Baléares",shops:[
+      {n:"Veritas Palma - Camí dels Reis",t:"bio",a:"C/ Camí dels Reis, 121-123, 07013 Palma",s:"https://veritas.es"},
+      {n:"Veritas Port d'Andratx",t:"bio",a:"Av. Gabriel Roca, 3, 07157 Andratx",s:"https://veritas.es"},
+      {n:"Veritas Ibiza",t:"bio",a:"Avenida España, 8, 07800 Ibiza",s:"https://veritas.es"}
+    ]},
+    "NAV":{name:"Navarre",shops:[
+      {n:"Veritas Pamplona",t:"bio",a:"C/ Sancho el Mayor, 7, 31002 Pamplona",s:"https://veritas.es"}
+    ]},
+    "ARA":{name:"Aragon",shops:[
+      {n:"Herbolario La Vid",t:"herboristerie",a:"C/ San Pablo, 39, 50003 Zaragoza",s:"#"},
+      {n:"Ecoteka Bio",t:"bio",a:"C/ Conde de Aranda, 28, 50004 Zaragoza",s:"#"}
+    ]},
+    "GAL":{name:"Galice",shops:[
+      {n:"Herbolario A Herba",t:"herboristerie",a:"Rua do Franco, 8, 15704 Santiago de Compostela",s:"#"},
+      {n:"Herbolario Fonte do Saúde",t:"herboristerie",a:"C/ Real, 32, 15003 A Coruna",s:"#"}
+    ]},
+    "CAN":{name:"Canaries",shops:[
+      {n:"Herbolario El Jardín",t:"herboristerie",a:"C/ Triana, 79, 35002 Las Palmas",s:"#"}
+    ]},
+  }, order:["CAT","MAD","PVA","AND","VAL","BAL","NAV","ARA","GAL","CAN"] },
+  PRT: { name:"Portugal", flag:"\ud83c\uddf5\ud83c\uddf9", regions:{
+    "LIS":{name:"Lisbonne",shops:[
+      {n:"Celeiro 1 de Dezembro",t:"bio",a:"Rua 1º de Dezembro 65, 1200-357 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Antonio Augusto",t:"bio",a:"Av. António Augusto de Aguiar 130-A, 1050-020 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Av. Republica",t:"bio",a:"Av. da República 83-C, 1050-190 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Av. Roma",t:"bio",a:"Avenida de Roma 12, 1000-261 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Alto dos Moinhos",t:"bio",a:"Rua Abílio Mendes 16-18, 1500-458 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Alvalade",t:"bio",a:"Praça de Alvalade 6, 1700-036 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Benfica",t:"bio",a:"Rua José Simões 8, 1500-681 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Campo de Ourique",t:"bio",a:"Rua do 4 de Infantaria 34, 1350-273 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Colombo",t:"bio",a:"CC Colombo, Av. Lusíada, 1500-392 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Duque de Avila",t:"bio",a:"Av. Duque de Ávila 141B, 1050-053 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Amoreiras",t:"bio",a:"CC Colombo Loja 1131, 1070-103 Lisboa",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Algés",t:"bio",a:"Av. Combatentes da Grande Guerra 58A, 1495-039 Algés",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Alfragide",t:"bio",a:"Alegro Alfragide, 2790-045 Carnaxide",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Amadora",t:"bio",a:"Continente Amadora, 2724-510 Amadora",s:"https://www.celeiro.pt"},
+      {n:"Celeiro CascaiShopping",t:"bio",a:"CC CascaiShopping, 2645-543 Alcabideche",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Almada",t:"bio",a:"Almada Forum, 2800-000 Almada",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Alegro Sintra",t:"bio",a:"Alegro Sintra, 2635-018 Rio de Mouro",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Alverca",t:"bio",a:"Auchan Alverca, 2615-170 Alverca",s:"https://www.celeiro.pt"}
+    ]},
+    "PRT":{name:"Porto",shops:[
+      {n:"Celeiro Campus S. Joao",t:"bio",a:"Galerias Campus S. João, 4200-450 Porto",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Santa Catarina",t:"bio",a:"Rua de Santa Catarina 312-350, 4000-443 Porto",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Cidade do Porto",t:"bio",a:"Praça do Bom Sucesso 61, 4150-146 Porto",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Alameda Maia",t:"bio",a:"Rua dos Campeões 28, 4435-111 Maia",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Arrabida",t:"bio",a:"Praceta Henrique Moreira 244, 4400-346 Vila Nova de Gaia",s:"https://www.celeiro.pt"}
+    ]},
+    "BRG":{name:"Braga",shops:[
+      {n:"Celeiro Braga Parque",t:"bio",a:"Braga Parque Shopping, 4710-427 Braga",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Famalicao",t:"bio",a:"Auchan Famalicão",s:"https://www.celeiro.pt"}
+    ]},
+    "COI":{name:"Coimbra",shops:[
+      {n:"Celeiro Alma Coimbra",t:"bio",a:"Alma Shopping, 3030-327 Coimbra",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Forum Coimbra",t:"bio",a:"Av. José Bonifácio de Andrade e Silva 1, 3040-389 Coimbra",s:"https://www.celeiro.pt"}
+    ]},
+    "ALG":{name:"Algarve",shops:[
+      {n:"Celeiro AlgarveShopping",t:"bio",a:"Caminho dos Álamos 2389, 8200-425 Guia",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Aqua Portimao",t:"bio",a:"CC Aqua Portimão, 8500-448 Portimão",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Forum Algarve",t:"bio",a:"EN 125 Km 103, 8009-020 Faro",s:"https://www.celeiro.pt"},
+      {n:"Celeiro Barreiro",t:"bio",a:"Fórum Barreiro, 2830-364 Barreiro",s:"https://www.celeiro.pt"}
+    ]},
+  }, order:["LIS","PRT","BRG","COI","ALG"] },
+  GBR: { name:"Royaume-Uni", flag:"\ud83c\uddec\ud83c\udde7", regions:{
+    "LDN":{name:"Grande Londres",shops:[
+      {n:"Holland & Barrett Kensington",t:"bio",a:"167 Kensington High Street, London W8 6SH",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Islington",t:"bio",a:"212 Upper Street, London N1 1RL",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Notting Hill",t:"bio",a:"130 Notting Hill Gate, London W11 3QG",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Camden",t:"bio",a:"191-200 High Street, Camden, London NW1 0LT",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Covent Garden",t:"bio",a:"390-391 Strand, London WC2R 0LT",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Victoria",t:"bio",a:"115 Buckingham Palace Road, London SW1W 9SJ",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Chelsea",t:"bio",a:"73 King's Road, London SW3 4NX",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Canary Wharf",t:"bio",a:"18 Jubilee Place, London E14 5NY",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Liverpool St",t:"bio",a:"34-37 Liverpool Street, London EC2M 7PP",s:"https://www.hollandandbarrett.com"},
+      {n:"Planet Organic Tottenham Court Rd",t:"bio",a:"23-24 Tottenham Court Road, London W1T 1BJ",s:"https://www.planetorganic.com"},
+      {n:"Planet Organic Notting Hill",t:"bio",a:"42 Westbourne Grove, London W2 5SH",s:"https://www.planetorganic.com"},
+      {n:"Planet Organic Muswell Hill",t:"bio",a:"111-117 Muswell Hill Road, London N10 3HS",s:"https://www.planetorganic.com"},
+      {n:"Planet Organic Bloomsbury",t:"bio",a:"22 Torrington Place, London WC1E 7HJ",s:"https://www.planetorganic.com"},
+      {n:"Planet Organic Hampstead",t:"bio",a:"6 Hampstead High Street, London NW3 1PR",s:"https://www.planetorganic.com"},
+      {n:"Whole Foods Kensington",t:"bio",a:"63-97 Kensington High Street, London W8 5SE",s:"https://www.wholefoodsmarket.co.uk",note:"Flagship UK"}
+    ]},
+    "SEE":{name:"Sud-Est Angleterre",shops:[
+      {n:"Holland & Barrett Brighton Western",t:"bio",a:"187 Western Road, Brighton BN1 2BA",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Brighton Churchill",t:"bio",a:"Churchill Square, Brighton BN1 2TD",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Cambridge",t:"bio",a:"Lion Yard Centre, Cambridge CB2 3ET",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Oxford",t:"bio",a:"Golden Cross Arcade, Oxford OX1 3EU",s:"https://www.hollandandbarrett.com"}
+    ]},
+    "SWE":{name:"Sud-Ouest Angleterre",shops:[
+      {n:"Holland & Barrett Bristol Cabot",t:"bio",a:"Cabot Circus, Bristol BS1 3BD",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Bristol Broadmead",t:"bio",a:"69 Broadmead, Bristol BS1 3DX",s:"https://www.hollandandbarrett.com"}
+    ]},
+    "WMI":{name:"West Midlands",shops:[
+      {n:"Holland & Barrett Birmingham Grand",t:"bio",a:"Grand Central, Birmingham B2 4XB",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Birmingham High St",t:"bio",a:"92 High Street, Birmingham B4 7SY",s:"https://www.hollandandbarrett.com"}
+    ]},
+    "NWE":{name:"Nord-Ouest Angleterre",shops:[
+      {n:"Holland & Barrett Manchester Market",t:"bio",a:"103-105 Market Street, Manchester M1 1NN",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Manchester Deansgate",t:"bio",a:"87 Deansgate, Manchester M2 7JB",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Liverpool One",t:"bio",a:"Liverpool One, Liverpool L1 8BJ",s:"https://www.hollandandbarrett.com"}
+    ]},
+    "YOR":{name:"Yorkshire",shops:[
+      {n:"Holland & Barrett Leeds",t:"bio",a:"Trinity Leeds, Leeds LS1 5ER",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Sheffield",t:"bio",a:"71 The Moor, Sheffield S1 4PF",s:"https://www.hollandandbarrett.com"}
+    ]},
+    "NEE":{name:"Nord-Est Angleterre",shops:[
+      {n:"Holland & Barrett Newcastle",t:"bio",a:"Eldon Square, Newcastle NE1 7XJ",s:"https://www.hollandandbarrett.com"}
+    ]},
+    "SCO":{name:"Ecosse",shops:[
+      {n:"Holland & Barrett Edinburgh",t:"bio",a:"18-19 Princes Street, Edinburgh EH2 2AN",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Glasgow Queen",t:"bio",a:"9 Queen Street, Glasgow G1 3ED",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Glasgow Buchanan",t:"bio",a:"229 Buchanan Street, Glasgow G1 2NG",s:"https://www.hollandandbarrett.com"},
+      {n:"Real Foods Edinburgh",t:"bio",a:"37 Broughton Street, Edinburgh EH1 3JU",s:"https://www.realfoods.co.uk",note:"Magasin historique 40+ ans"}
+    ]},
+    "WAL":{name:"Pays de Galles",shops:[
+      {n:"Holland & Barrett Cardiff Queen",t:"bio",a:"St Davids Centre, Cardiff CF10 2BE",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Cardiff Albany",t:"bio",a:"89 Albany Road, Cardiff CF24 3LP",s:"https://www.hollandandbarrett.com"}
+    ]},
+    "NIR":{name:"Irlande du Nord",shops:[
+      {n:"Holland & Barrett Belfast Ann",t:"bio",a:"30-34 Ann Street, Belfast BT1 4EG",s:"https://www.hollandandbarrett.com"},
+      {n:"Holland & Barrett Belfast Lisburn",t:"bio",a:"519-521 Lisburn Road, Belfast BT9 7GQ",s:"https://www.hollandandbarrett.com"}
+    ]},
+  }, order:["LDN","SEE","SWE","WMI","NWE","YOR","NEE","SCO","WAL","NIR"] },
+  NLD: { name:"Pays-Bas", flag:"\ud83c\uddf3\ud83c\uddf1", regions:{
+    "NH":{name:"Noord-Holland",shops:[
+      {n:"Ekoplaza Haarlemmerdijk",t:"bio",a:"Haarlemmerdijk 160-164, 1013 JK Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Waterlooplein",t:"bio",a:"Waterlooplein 131, 1011 PG Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Scheldestraat",t:"bio",a:"Scheldestraat 53, 1078 GG Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Jan Pieter Heijestraat",t:"bio",a:"Jan Pieter Heijestraat 105-109, 1053 GN Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Elandsgracht",t:"bio",a:"Elandsgracht 118, 1016 VB Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza 1e Van Swindenstraat",t:"bio",a:"1e Van Swindenstraat 30-32, 1093 GE Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza AJ Ernststraat",t:"bio",a:"Arent Janszoon Ernststraat 665, 1083 BE Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Weteringschans",t:"bio",a:"Weteringschans 133-137, 1017 SC Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Van Woustraat",t:"bio",a:"Van Woustraat 80-82, 1073 LP Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Haarlemmerstraat",t:"bio",a:"Haarlemmerstraat 165, 1013 EP Amsterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Haarlem",t:"bio",a:"Houtplein 18, 2012 DH Haarlem",s:"https://www.ekoplaza.nl"}
+    ]},
+    "ZH":{name:"Zuid-Holland",shops:[
+      {n:"Ekoplaza Den Haag Grote",t:"bio",a:"Grote Marktstraat 177, 2511 BJ Den Haag",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Den Haag Stationsweg",t:"bio",a:"Stationsweg 36, 2515 BN Den Haag",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Rotterdam",t:"bio",a:"Nieuwe Binnenweg 236-242, 3021 GN Rotterdam",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Leiden",t:"bio",a:"Breestraat 127, 2311 CM Leiden",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Delft",t:"bio",a:"Vrouwjuttenland 33-35, 2611 LB Delft",s:"https://www.ekoplaza.nl"}
+    ]},
+    "UT":{name:"Utrecht",shops:[
+      {n:"Ekoplaza Utrecht Nachtegaal",t:"bio",a:"Nachtegaalstraat 51A, 3581 AD Utrecht",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Utrecht Amsterdamse",t:"bio",a:"Amsterdamsestraatweg 15, 3513 AA Utrecht",s:"https://www.ekoplaza.nl"}
+    ]},
+    "GLD":{name:"Gelderland",shops:[
+      {n:"Ekoplaza Arnhem",t:"bio",a:"Looierstraat 6-8, 6811 AG Arnhem",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Nijmegen",t:"bio",a:"Groenestraat 49, 6531 HG Nijmegen",s:"https://www.ekoplaza.nl"}
+    ]},
+    "NB":{name:"Noord-Brabant",shops:[
+      {n:"Ekoplaza Eindhoven",t:"bio",a:"Kruisstraat 58, 5611 GG Eindhoven",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Breda",t:"bio",a:"Karrestraat 19, 4811 GV Breda",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Den Bosch",t:"bio",a:"Pensmarkt 17, 5211 TE 's-Hertogenbosch",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Tilburg",t:"bio",a:"Heuvelstraat 110, 5038 BK Tilburg",s:"https://www.ekoplaza.nl"}
+    ]},
+    "OV":{name:"Overijssel",shops:[
+      {n:"Ekoplaza Zwolle",t:"bio",a:"Diezerstraat 57, 8011 AB Zwolle",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Enschede",t:"bio",a:"Marktstraat 6, 7511 GB Enschede",s:"https://www.ekoplaza.nl"}
+    ]},
+    "GRN":{name:"Groningen",shops:[
+      {n:"Ekoplaza Groningen Ebbinge",t:"bio",a:"Nieuwe Ebbingestraat 49-51, 9712 NE Groningen",s:"https://www.ekoplaza.nl"},
+      {n:"Ekoplaza Groningen Zuiderdiep",t:"bio",a:"Gedempte Zuiderdiep 65, 9711 HC Groningen",s:"https://www.ekoplaza.nl"}
+    ]},
+    "FRL":{name:"Friesland",shops:[
+      {n:"Ekoplaza Leeuwarden",t:"bio",a:"Amelandstraat 20, 8921 CK Leeuwarden",s:"https://www.ekoplaza.nl"}
+    ]},
+    "LI":{name:"Limburg",shops:[
+      {n:"Ekoplaza Maastricht",t:"bio",a:"Rechtstraat 48A, 6221 EK Maastricht",s:"https://www.ekoplaza.nl"}
+    ]},
+  }, order:["NH","ZH","UT","GLD","NB","OV","GRN","FRL","LI"] },
+  POL: { name:"Pologne", flag:"\ud83c\uddf5\ud83c\uddf1", regions:{
+    "MAZ":{name:"Mazowieckie (Varsovie)",shops:[
+      {n:"Organic Farma Zdrowia Arkadia",t:"bio",a:"Al. Jana Pawła II 82, 00-175 Varsovie",s:"https://organic24.pl",note:"CC Arkadia"},
+      {n:"Organic Farma Zdrowia Q22",t:"bio",a:"Al. Jana Pawła II 22, 00-133 Varsovie",s:"https://organic24.pl",note:"Tour Q22 centre-ville"},
+      {n:"Organic Farma Zdrowia Zlote Tarasy",t:"bio",a:"ul. Złota 59, 00-120 Varsovie",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia Mokotow",t:"bio",a:"ul. Wołoska 12, 02-675 Varsovie",s:"https://organic24.pl",note:"Westfield Mokotow"},
+      {n:"Organic Farma Zdrowia Sadyba",t:"bio",a:"ul. Powsinska 31, 02-903 Varsovie",s:"https://organic24.pl",note:"Sadyba Best Mall"},
+      {n:"Organic Farma Zdrowia Fieldorfa",t:"bio",a:"ul. gen. Augusta Emila Fieldorfa 10a/206, 03-984 Varsovie",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia Kabaty",t:"bio",a:"ul. Wąwozowa 36, 02-796 Varsovie",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia Konstancin",t:"bio",a:"ul. Warecka 1, 05-510 Konstancin-Jeziorna",s:"https://organic24.pl"},
+      {n:"Zdrowy Sklep Grojjecka",t:"bio",a:"ul. Grójecka 42B, 02-320 Varsovie",s:"#"},
+      {n:"Debowy Dym Delikatesy Bio",t:"bio",a:"ul. Dębowa 1, 05-816 Reguły",s:"#"}
+    ]},
+    "MAL":{name:"Malopolskie (Cracovie)",shops:[
+      {n:"Organic Farma Zdrowia Galeria Krakowska",t:"bio",a:"ul. Pawia 5, 31-154 Cracovie",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia Biovert",t:"bio",a:"ul. Kazimierza Wielkiego 43, 30-074 Cracovie",s:"https://organic24.pl"}
+    ]},
+    "DSL":{name:"Dolnoslaskie (Wroclaw)",shops:[
+      {n:"Organic Farma Zdrowia Renoma",t:"bio",a:"ul. Świdnicka 40, 50-950 Wroclaw",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia Magnolia",t:"bio",a:"ul. Legnicka 58, 54-204 Wroclaw",s:"https://organic24.pl"},
+      {n:"Kraina Zdrowia",t:"bio",a:"ul. Świdnicka 29, 50-066 Wroclaw",s:"#"}
+    ]},
+    "WLP":{name:"Wielkopolskie (Poznan)",shops:[
+      {n:"Organic Farma Zdrowia Stary Browar",t:"bio",a:"ul. Półwiejska 42, 61-888 Poznan",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia Poznan Plaza",t:"bio",a:"ul. Półwiejska 42/50, 61-888 Poznan",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia King Cross",t:"bio",a:"ul. Bukowska 156, 60-198 Poznan",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia Posnania",t:"bio",a:"ul. Szwajcarska 18, 61-285 Poznan",s:"https://organic24.pl"}
+    ]},
+    "POM":{name:"Pomorskie (Gdansk)",shops:[
+      {n:"Organic Farma Zdrowia Galeria Baltycka",t:"bio",a:"al. Grunwaldzka 141, 80-264 Gdansk",s:"https://organic24.pl"},
+      {n:"Ekosopot",t:"bio",a:"ul. 3 Maja 18, 81-793 Sopot",s:"#"}
+    ]},
+    "SLA":{name:"Slaskie (Katowice)",shops:[
+      {n:"Organic Farma Zdrowia Silesia",t:"bio",a:"ul. Chorzowska 107, 40-101 Katowice",s:"https://organic24.pl"}
+    ]},
+    "LOD":{name:"Lodzkie (Lodz)",shops:[
+      {n:"Organic Farma Zdrowia Manufaktura",t:"bio",a:"ul. Karskiego 5, 91-071 Lodz",s:"https://organic24.pl"}
+    ]},
+    "KPO":{name:"Kujawsko-Pomorskie (Bydgoszcz)",shops:[
+      {n:"Organic Farma Zdrowia Faktoria",t:"bio",a:"ul. Gdańska 138-140, 85-022 Bydgoszcz",s:"https://organic24.pl"},
+      {n:"Organic Farma Zdrowia Zielone Arkady",t:"bio",a:"al. Wojska Polskiego 1, 85-171 Bydgoszcz",s:"https://organic24.pl"}
+    ]},
+    "ZPM":{name:"Zachodniopomorskie (Szczecin)",shops:[
+      {n:"Eco Mako",t:"bio",a:"ul. Remonta 3, 71-497 Szczecin",s:"#"},
+      {n:"Zielona Esencja Manhattan",t:"herboristerie",a:"ul. Ks. Staszica 1, 70-952 Szczecin",s:"#"},
+      {n:"AWBIO Sklep Ekologiczny",t:"bio",a:"ul. Strzałowska 22b, 71-730 Szczecin",s:"#"}
+    ]},
+    "LUB":{name:"Lubelskie (Lublin)",shops:[
+      {n:"BIOMONDO Sklep Bio",t:"bio",a:"ul. Energetyków 23, 20-468 Lublin",s:"#"},
+      {n:"Lubartowska 77 Sklep Eko",t:"bio",a:"ul. Lubartowska 77, 20-123 Lublin",s:"#"}
+    ]},
+  }, order:["MAZ","MAL","DSL","WLP","POM","SLA","LOD","KPO","ZPM","LUB"] },
+  NOR: { name:"Norvege", flag:"\ud83c\uddf3\ud83c\uddf4", regions:{
+    "OSL":{name:"Oslo",shops:[
+      {n:"Life Oslo City",t:"reformhaus",a:"Stenersgt. 1, 0050 Oslo",s:"https://www.life.no"},
+      {n:"Life Majorstuen",t:"reformhaus",a:"Valkyriegaten 11A, 0366 Oslo",s:"https://www.life.no"},
+      {n:"Life Grunerlokka",t:"reformhaus",a:"Thorvald Meyers gate 53, 0555 Oslo",s:"https://www.life.no"},
+      {n:"Life Akersgata",t:"reformhaus",a:"Akersgata 32, 0180 Oslo",s:"https://www.life.no"},
+      {n:"Life Foodstore Colosseum",t:"bio",a:"Middelthuns gate 21c, 0368 Oslo",s:"https://www.life.no"},
+      {n:"Life Ullevaal",t:"reformhaus",a:"Sognsveien 75, 0855 Oslo",s:"https://www.life.no"}
+    ]},
+    "VIK":{name:"Viken (Drammen)",shops:[
+      {n:"Life Gulskogen Drammen",t:"reformhaus",a:"Guldlisten 35, 3048 Drammen",s:"https://www.life.no"}
+    ]},
+    "VTL":{name:"Vestland (Bergen)",shops:[
+      {n:"Life Galleriet Bergen",t:"reformhaus",a:"Torgallmenningen 8, 5014 Bergen",s:"https://www.life.no"},
+      {n:"Life Asane Bergen",t:"reformhaus",a:"Åsane Senter 42, 5116 Ulset",s:"https://www.life.no"},
+      {n:"Life Lagunen Bergen",t:"reformhaus",a:"Laguneveien 1, 5239 Rådal",s:"https://www.life.no"}
+    ]},
+    "TRL":{name:"Trondelag (Trondheim)",shops:[
+      {n:"Life Thomas Angells Trondheim",t:"reformhaus",a:"Thomas Angells gate 17, 7011 Trondheim",s:"https://www.life.no"},
+      {n:"Life City Lade Trondheim",t:"reformhaus",a:"Haakon VIIs gate 9, 7041 Trondheim",s:"https://www.life.no"}
+    ]},
+    "ROG":{name:"Rogaland (Stavanger)",shops:[
+      {n:"Life Stavanger Torgterrassen",t:"reformhaus",a:"Kirkegt. 2, 4006 Stavanger",s:"https://www.life.no"}
+    ]},
+    "INL":{name:"Innlandet (Lillehammer)",shops:[
+      {n:"Life Strandtorget Lillehammer",t:"reformhaus",a:"Strandpromenaden 85, 2609 Lillehammer",s:"https://www.life.no"},
+      {n:"Life CC Hamar",t:"reformhaus",a:"Vangsvegen 62, 2317 Hamar",s:"https://www.life.no"}
+    ]},
+    "AGD":{name:"Agder (Kristiansand)",shops:[
+      {n:"Life Sorlandssenteret",t:"reformhaus",a:"Barstølveien 31/35, 4636 Kristiansand",s:"https://www.life.no"}
+    ]},
+    "NRL":{name:"Nordland (Bodo)",shops:[
+      {n:"Life City Nord Bodo",t:"reformhaus",a:"Stormyra City Nord, 8008 Bodø",s:"https://www.life.no"}
+    ]},
+    "TRF":{name:"Troms og Finnmark (Tromso)",shops:[
+      {n:"Life Jekta Tromso",t:"reformhaus",a:"Karlsøyveien 12, 9015 Tromsø",s:"https://www.life.no"}
+    ]},
+  }, order:["OSL","VIK","VTL","TRL","ROG","INL","AGD","NRL","TRF"] },
+  SWE: { name:"Suede", flag:"\ud83c\uddf8\ud83c\uddea", regions:{
+    "STO":{name:"Stockholm",shops:[
+      {n:"Life Gallerian",t:"reformhaus",a:"Hamngatan 37, 111 53 Stockholm",s:"https://www.lifebutiken.se"},
+      {n:"Life Hotorget",t:"reformhaus",a:"Kungsgatan 48, 111 35 Stockholm",s:"https://www.lifebutiken.se"},
+      {n:"Life Faltoversten",t:"reformhaus",a:"Karlaplan 13, 115 20 Stockholm",s:"https://www.lifebutiken.se"},
+      {n:"Life Liljeholmstorget",t:"reformhaus",a:"Liljeholmstorget 3, 117 63 Stockholm",s:"https://www.lifebutiken.se"},
+      {n:"Life Ringen Sodermalm",t:"reformhaus",a:"Götgatan 98, 118 60 Stockholm",s:"https://www.lifebutiken.se"},
+      {n:"Life Vastermalmsgallerian",t:"reformhaus",a:"Sankt Eriksgatan 45, 112 34 Stockholm",s:"https://www.lifebutiken.se"}
+    ]},
+    "VGT":{name:"Västra Götaland (Göteborg)",shops:[
+      {n:"Life Backaplan",t:"reformhaus",a:"Backaplan 2, 417 30 Göteborg",s:"https://www.lifebutiken.se"},
+      {n:"Life Femmanhuset",t:"reformhaus",a:"Postgatan 26-32, 411 06 Göteborg",s:"https://www.lifebutiken.se"},
+      {n:"Life Frolanda Torg",t:"reformhaus",a:"Frölunda Torg, 421 42 Västra Frölunda",s:"https://www.lifebutiken.se"},
+      {n:"Life Borås Allegatan",t:"reformhaus",a:"Allégatan 48, 503 37 Borås",s:"https://www.lifebutiken.se"}
+    ]},
+    "SKA":{name:"Skåne (Malmö)",shops:[
+      {n:"Life Triangeln Malmö",t:"reformhaus",a:"Södra Förstadsgatan 41, 211 43 Malmö",s:"https://www.lifebutiken.se"},
+      {n:"Life Mobilia Malmö",t:"reformhaus",a:"Per Albin Hanssons väg 40, 214 32 Malmö",s:"https://www.lifebutiken.se"},
+      {n:"Life Hyllie Malmö",t:"reformhaus",a:"Hyllie Stationsväg 10, 215 32 Malmö",s:"https://www.lifebutiken.se"},
+      {n:"Life Klostergatan Lund",t:"reformhaus",a:"Klostergatan 8B, 222 22 Lund",s:"https://www.lifebutiken.se"},
+      {n:"Life Nova Lund",t:"reformhaus",a:"Företagsvägen 10, 227 61 Lund",s:"https://www.lifebutiken.se"}
+    ]},
+    "UPP":{name:"Uppsala",shops:[
+      {n:"Life Forumkvarteret Uppsala",t:"reformhaus",a:"Kungsängsgatan 6-8, 753 20 Uppsala",s:"https://www.lifebutiken.se"},
+      {n:"Life Granby Centrum Uppsala",t:"reformhaus",a:"Gränbystaden, 750 22 Uppsala",s:"https://www.lifebutiken.se"}
+    ]},
+    "OST":{name:"Östergötland",shops:[
+      {n:"Life Linköping",t:"reformhaus",a:"Svedengatan 1, 581 28 Linköping",s:"https://www.lifebutiken.se"},
+      {n:"Life Norrköping",t:"reformhaus",a:"Drottninggatan 59, 602 32 Norrköping",s:"https://www.lifebutiken.se"}
+    ]},
+    "JON":{name:"Jönköping",shops:[
+      {n:"Life Jönköping Asecs",t:"reformhaus",a:"Kompanigatan 13, 553 05 Jönköping",s:"https://www.lifebutiken.se"}
+    ]},
+    "HAL":{name:"Halland (Halmstad)",shops:[
+      {n:"Life Halmstad Hallarna",t:"reformhaus",a:"Prästvägen 1, 302 63 Halmstad",s:"https://www.lifebutiken.se"}
+    ]},
+    "ORE":{name:"Örebro",shops:[
+      {n:"Life Örebro",t:"reformhaus",a:"Drottninggatan 34, 702 10 Örebro",s:"https://www.lifebutiken.se"}
+    ]},
+    "VBO":{name:"Västerbotten (Umeå)",shops:[
+      {n:"Life Umeå Avion",t:"reformhaus",a:"Marknadsgatan 3, 904 22 Umeå",s:"https://www.lifebutiken.se"}
+    ]},
+    "NBO":{name:"Norrbotten (Luleå)",shops:[
+      {n:"Life Luleå Storgatan",t:"reformhaus",a:"Storgatan 48B, 972 31 Luleå",s:"https://www.lifebutiken.se"},
+      {n:"Life Luleå Smedjan",t:"reformhaus",a:"Storgatan 36-38, 972 31 Luleå",s:"https://www.lifebutiken.se"}
+    ]},
+    "DAL":{name:"Dalarna (Falun)",shops:[
+      {n:"Life Falun",t:"reformhaus",a:"Slaggatan 13, 791 71 Falun",s:"https://www.lifebutiken.se"},
+      {n:"Life Borlänge Kupolen",t:"reformhaus",a:"Kupolen 73, 781 70 Borlänge",s:"https://www.lifebutiken.se"}
+    ]},
+    "GVL":{name:"Gävleborg (Gävle)",shops:[
+      {n:"Life Gävle Nian",t:"reformhaus",a:"Drottninggatan 9, 803 20 Gävle",s:"https://www.lifebutiken.se"}
+    ]},
+    "VML":{name:"Värmland (Karlstad)",shops:[
+      {n:"Life Karlstad",t:"reformhaus",a:"Järnvägsgatan 2, 652 25 Karlstad",s:"https://www.lifebutiken.se"}
+    ]},
+  }, order:["STO","VGT","SKA","UPP","OST","JON","HAL","ORE","VBO","NBO","DAL","GVL","VML"] },
+};
+
+var EUROPE_COUNTRY_ORDER = ["DEU","ITA","AUT","BEL","ESP","PRT","GBR","NLD","POL","NOR","SWE"];
+
 var FLAG_MAP = {
   FRA:"\ud83c\uddeb\ud83c\uddf7", CHE:"\ud83c\udde8\ud83c\udded", CAN:"\ud83c\udde8\ud83c\udde6",
   ESP:"\ud83c\uddea\ud83c\uddf8", ARE:"\ud83c\udde6\ud83c\uddea", ITA:"\ud83c\uddee\ud83c\uddf9",
   JPN:"\ud83c\uddef\ud83c\uddf5", BRA:"\ud83c\udde7\ud83c\uddf7", SEN:"\ud83c\uddf8\ud83c\uddf3",
-  AUS:"\ud83c\udde6\ud83c\uddfa"
+  AUS:"\ud83c\udde6\ud83c\uddfa",
+  DEU:"\ud83c\udde9\ud83c\uddea", BEL:"\ud83c\udde7\ud83c\uddea", PRT:"\ud83c\uddf5\ud83c\uddf9",
+  GBR:"\ud83c\uddec\ud83c\udde7", NLD:"\ud83c\uddf3\ud83c\uddf1", AUT:"\ud83c\udde6\ud83c\uddf9",
+  POL:"\ud83c\uddf5\ud83c\uddf1", NOR:"\ud83c\uddf3\ud83c\uddf4", SWE:"\ud83c\uddf8\ud83c\uddea"
 };
 
 /* ─── ISO numeric → alpha-3 mapping ─── */
@@ -1356,6 +2005,11 @@ function onMouseMove(e) {
       var totalShopsFr = 0;
       REGION_ORDER.forEach(function(r){ totalShopsFr += FRANCE_SHOPS[r].shops.length; });
       text += ' \u2014 ' + totalShopsFr + ' ' + t('swiss.shops');
+    } else if (EUROPE_COUNTRIES[code]) {
+      var euTotal = 0;
+      var euCountry = EUROPE_COUNTRIES[code];
+      euCountry.order.forEach(function(r){ euTotal += euCountry.regions[r].shops.length; });
+      text += ' \u2014 ' + euTotal + ' ' + t('swiss.shops');
     } else {
       var allEntries = partnersInCountry(code);
       var partnerCount = allEntries.length;
@@ -1393,6 +2047,8 @@ function onClickGlobe(e) {
       openSwissPanel(cx);
     } else if (code === 'FRA') {
       openFrancePanel(cx);
+    } else if (EUROPE_COUNTRIES[code]) {
+      openEuCountryPanel(code, cx);
     } else {
       var entries = partnersInCountry(code);
       if (entries.length > 0) {
@@ -1650,6 +2306,120 @@ window.__filterRegions = function(query){
   }
 };
 
+/* ───────────────────────────────── EUROPE COUNTRIES NAVIGATOR (generic) ───────────────────────────────── */
+var currentEuCountry = null;
+
+function openEuCountryPanel(countryCode, clickX) {
+  var country = EUROPE_COUNTRIES[countryCode];
+  if (!country) return;
+  currentEuCountry = countryCode;
+
+  panelOpen = true;
+  mouseInPanel = false;
+  canClosePanel = false;
+  clearTimeout(panelTimeout);
+  clearTimeout(panelMinTimer);
+
+  var side = clickX < window.innerWidth / 2 ? 'right' : 'left';
+  sidePanelEl.className = 'open-' + side;
+
+  var totalShops = 0;
+  country.order.forEach(function(r){ totalShops += country.regions[r].shops.length; });
+
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<div class="panel-header"><span class="panel-flag">' + country.flag + '</span><span class="panel-country">' + escHtml(country.name) + '</span></div>';
+  h += '<div class="panel-subtitle">' + totalShops + ' ' + t('swiss.shops') + '</div>';
+
+  h += '<div class="swiss-intro">' + t('eu.intro') + '</div>';
+
+  h += '<div class="swiss-legend">';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#90be6d"></span>' + t('type.bio') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#f4a261"></span>' + t('type.herboristerie') + '</div>';
+  h += '<div class="swiss-legend-item"><span class="swiss-legend-dot" style="background:#00d4aa"></span>' + t('type.reformhaus') + '</div>';
+  h += '</div>';
+
+  h += '<input type="text" class="swiss-search" placeholder="' + t('eu.search') + '" oninput="window.__filterEuRegions(this.value)" />';
+
+  h += '<div class="canton-grid" id="eu-region-grid">';
+  country.order.forEach(function(code){
+    var region = country.regions[code];
+    var count = region.shops.length;
+    var cls = count === 0 ? ' empty' : '';
+    h += '<div class="canton-btn' + cls + '" ' + (count > 0 ? 'onclick="window.__openEuRegion(\'' + code + '\')"' : '') + '>';
+    if (count > 0) h += '<span class="canton-count">' + count + '</span>';
+    h += '<span class="canton-code">' + code + '</span>';
+    h += '<span class="canton-name">' + escHtml(region.name) + '</span>';
+    h += '</div>';
+  });
+  h += '</div>';
+
+  sidePanelEl.innerHTML = h;
+
+  panelMinTimer = setTimeout(function(){ canClosePanel = true; }, 30000);
+  clearTimeout(panelTimeout);
+}
+
+function openEuRegionPanel(regionCode) {
+  if (!currentEuCountry) return;
+  var country = EUROPE_COUNTRIES[currentEuCountry];
+  if (!country) return;
+  var region = country.regions[regionCode];
+  if (!region) return;
+
+  var h = '';
+  h += '<button class="panel-close" onclick="window.__closePanel()">\u00d7</button>';
+  h += '<button class="swiss-back" onclick="window.__backToEuCountry()">\u2190 ' + escHtml(country.name) + '</button>';
+  h += '<div class="canton-header"><span class="canton-header-name">' + escHtml(region.name) + '</span></div>';
+  h += '<div class="panel-subtitle">' + region.shops.length + ' ' + t('swiss.commerces') + '</div>';
+
+  region.shops.forEach(function(shop){
+    var typeClass = 'shop-type-' + shop.t;
+    var typeLabel = t('type.' + shop.t) || shop.t;
+    h += '<div class="shop-card">';
+    h += '<div class="shop-card-name">' + escHtml(shop.n) + '</div>';
+    h += '<span class="shop-type-badge ' + typeClass + '">' + escHtml(typeLabel) + '</span>';
+    h += '<div class="shop-card-address">' + escHtml(shop.a) + '</div>';
+    if (shop.note) h += '<div class="shop-card-note">' + escHtml(shop.note) + '</div>';
+    h += '<div class="shop-card-links">';
+    var mapsQuery = encodeURIComponent(shop.n + ' ' + shop.a);
+    h += '<a href="https://www.google.com/maps/search/?api=1&query=' + mapsQuery + '" target="_blank" rel="noopener">\ud83d\udccd Maps</a>';
+    if (shop.s && shop.s !== '#') h += '<a href="' + shop.s + '" target="_blank" rel="noopener">\ud83c\udf10 ' + t('panel.site') + '</a>';
+    h += '</div></div>';
+  });
+
+  sidePanelEl.innerHTML = h;
+  sidePanelEl.scrollTop = 0;
+}
+
+window.__openEuRegion = function(code){ openEuRegionPanel(code); };
+window.__backToEuCountry = function(){
+  if (currentEuCountry) openEuCountryPanel(currentEuCountry, window.innerWidth);
+  sidePanelEl.scrollTop = 0;
+};
+window.__filterEuRegions = function(query){
+  if (!currentEuCountry) return;
+  var country = EUROPE_COUNTRIES[currentEuCountry];
+  if (!country) return;
+  var q = query.toLowerCase().trim();
+  var grid = document.getElementById('eu-region-grid');
+  if (!grid) return;
+  var btns = grid.children;
+  for (var i = 0; i < btns.length; i++) {
+    var btn = btns[i];
+    var code = country.order[i];
+    var region = country.regions[code];
+    if (!q) { btn.style.display = ''; continue; }
+    var match = code.toLowerCase().indexOf(q) !== -1 || region.name.toLowerCase().indexOf(q) !== -1;
+    if (!match) {
+      region.shops.forEach(function(s){
+        if (s.n.toLowerCase().indexOf(q) !== -1 || s.a.toLowerCase().indexOf(q) !== -1) match = true;
+      });
+    }
+    btn.style.display = match ? '' : 'none';
+  }
+};
+
 /* ─── CLOSE PANEL ─── */
 function closeSidePanel() {
   if (!panelOpen) return;
@@ -1769,7 +2539,9 @@ var I18N = {
     "swiss.shops":"points de vente","swiss.intro":"D\u00e9couvrez les magasins bio, pharmacies, drogueries et herboristeries partenaires en Suisse. Cliquez sur un canton pour voir les commerces disponibles.",
     "swiss.search":"Rechercher un canton ou un magasin...","swiss.back":"Tous les cantons","swiss.commerces":"commerces",
     "france.intro":"D\u00e9couvrez les magasins bio, herboristeries et enseignes bien-\u00eatre partenaires en France m\u00e9tropolitaine. Les r\u00e9gions frontali\u00e8res (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) sont mises en avant pour les frontaliers.",
-    "france.search":"Rechercher une r\u00e9gion ou un magasin...","france.back":"Toutes les r\u00e9gions"
+    "france.search":"Rechercher une r\u00e9gion ou un magasin...","france.back":"Toutes les r\u00e9gions",
+    "eu.intro":"D\u00e9couvrez les enseignes bio, herboristeries et magasins de bien-\u00eatre partenaires dans ce pays europ\u00e9en. Cliquez sur une r\u00e9gion pour voir les commerces disponibles.",
+    "eu.search":"Rechercher une r\u00e9gion ou un magasin..."
   },
   en: {
     "nav.home":"Home","nav.science":"Science","nav.indice":"ORIM Index","nav.partners":"Partners","nav.contact":"Contact us",
@@ -1782,7 +2554,9 @@ var I18N = {
     "swiss.shops":"retail locations","swiss.intro":"Discover organic shops, pharmacies, drugstores and herbalists across Switzerland. Click a canton to browse available stores.",
     "swiss.search":"Search a canton or store...","swiss.back":"All cantons","swiss.commerces":"stores",
     "france.intro":"Discover organic shops, herbalists and wellness partners across metropolitan France. Cross-border regions (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) are highlighted for frontier workers.",
-    "france.search":"Search a region or store...","france.back":"All regions"
+    "france.search":"Search a region or store...","france.back":"All regions",
+    "eu.intro":"Discover organic shops, herbalists and wellness partners in this European country. Click a region to browse available stores.",
+    "eu.search":"Search a region or store..."
   },
   es: {
     "nav.home":"Inicio","nav.science":"Ciencia","nav.indice":"\u00CDndice ORIM","nav.partners":"Socios","nav.contact":"Cont\u00e1ctenos",
@@ -1795,7 +2569,9 @@ var I18N = {
     "swiss.shops":"puntos de venta","swiss.intro":"Descubra tiendas bio, farmacias, droguer\u00edas y herbolarios en Suiza. Haga clic en un cant\u00f3n para ver las tiendas disponibles.",
     "swiss.search":"Buscar un cant\u00f3n o tienda...","swiss.back":"Todos los cantones","swiss.commerces":"comercios",
     "france.intro":"Descubra tiendas bio, herbolarios y socios de bienestar en Francia metropolitana. Las regiones fronterizas (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) tienen prioridad para los trabajadores transfronterizos.",
-    "france.search":"Buscar una regi\u00f3n o tienda...","france.back":"Todas las regiones"
+    "france.search":"Buscar una regi\u00f3n o tienda...","france.back":"Todas las regiones",
+    "eu.intro":"Descubra tiendas bio, herbolarios y socios de bienestar en este pa\u00eds europeo. Haga clic en una regi\u00f3n para ver las tiendas disponibles.",
+    "eu.search":"Buscar una regi\u00f3n o tienda..."
   },
   de: {
     "nav.home":"Startseite","nav.science":"Wissenschaft","nav.indice":"ORIM-Index","nav.partners":"Partner","nav.contact":"Kontakt",
@@ -1808,7 +2584,9 @@ var I18N = {
     "swiss.shops":"Verkaufsstellen","swiss.intro":"Entdecken Sie Bio-L\u00e4den, Apotheken, Drogerien und Kr\u00e4uterl\u00e4den in der Schweiz. Klicken Sie auf einen Kanton, um die verf\u00fcgbaren Gesch\u00e4fte zu sehen.",
     "swiss.search":"Kanton oder Gesch\u00e4ft suchen...","swiss.back":"Alle Kantone","swiss.commerces":"Gesch\u00e4fte",
     "france.intro":"Entdecken Sie Bio-L\u00e4den, Kr\u00e4uterl\u00e4den und Wellness-Partner in Frankreich. Grenzregionen (Auvergne-Rh\u00f4ne-Alpes, Bourgogne-Franche-Comt\u00e9, Grand Est) werden f\u00fcr Grenzg\u00e4nger hervorgehoben.",
-    "france.search":"Region oder Gesch\u00e4ft suchen...","france.back":"Alle Regionen"
+    "france.search":"Region oder Gesch\u00e4ft suchen...","france.back":"Alle Regionen",
+    "eu.intro":"Entdecken Sie Bio-L\u00e4den, Kr\u00e4uterl\u00e4den und Wellness-Partner in diesem europ\u00e4ischen Land. Klicken Sie auf eine Region, um die verf\u00fcgbaren Gesch\u00e4fte zu sehen.",
+    "eu.search":"Region oder Gesch\u00e4ft suchen..."
   }
 };
 

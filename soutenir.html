@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soutenir ORIM™ — Association genevoise d'immunonutrition préventive</title>
+  <meta name="description" content="Soutenez l'Association ORIM Genève, à but non lucratif. Vos dons financent la recherche scientifique, l'éducation et l'accompagnement en immunonutrition préventive." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Soutenir ORIM™" />
+  <meta property="og:description" content="Association ORIM Genève — Recherche, éducation et accompagnement en immunonutrition préventive. Compte PostFinance officiel." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://orimnutrition.org/soutenir.html" />
+  <meta property="og:locale" content="fr_CH" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0d1b2a;
+      --blue:   #1a4a7a;
+      --cyan:   #00b4d8;
+      --lcyan:  #90e0ef;
+      --white:  #f8fafc;
+      --gray:   #94a3b8;
+      --lgray:  #1e2d3d;
+      --gold:   #c9a84c;
+      --teal:   #1BA8A6;
+      --gold-orim: #E6A817;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    .header {
+      background: rgba(13,27,42,.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,180,216,.15);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--teal);
+      text-decoration: none;
+      text-shadow: 0 0 12px rgba(27,168,166,.3);
+    }
+    .logo span {
+      color: var(--white);
+      font-weight: 300;
+      opacity: .7;
+      font-size: .7rem;
+      margin-left: 6px;
+      letter-spacing: 1px;
+    }
+    .nav-back {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: color .3s;
+    }
+    .nav-back:hover { color: var(--cyan); }
+
+    /* HERO */
+    .hero {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(27,168,166,.05) 0%, transparent 100%);
+      border-bottom: 1px solid rgba(0,180,216,.08);
+    }
+    .hero-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .hero-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--teal);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 24px rgba(27,168,166,.25);
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--lcyan);
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+      font-weight: 300;
+    }
+    .hero-desc {
+      font-size: .92rem;
+      color: var(--gray);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* MAIN */
+    .main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* BANK CARD */
+    .bank-card {
+      background: linear-gradient(135deg, rgba(27,168,166,.08) 0%, rgba(230,168,23,.04) 100%);
+      border: 1px solid rgba(27,168,166,.25);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,.3), 0 0 60px rgba(27,168,166,.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .bank-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal) 0%, var(--gold-orim) 100%);
+    }
+    .bank-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(0,180,216,.1);
+    }
+    .bank-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 0 12px rgba(27,168,166,.4));
+    }
+    .bank-card-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+    .bank-card-subtitle {
+      font-size: .72rem;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    .bank-field {
+      display: grid;
+      grid-template-columns: 180px 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: .9rem 0;
+      border-bottom: 1px solid rgba(148,163,184,.08);
+    }
+    .bank-field:last-of-type { border-bottom: none; }
+    .bank-field-label {
+      font-size: .72rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      font-weight: 500;
+    }
+    .bank-field-value {
+      font-family: 'Rajdhani', monospace;
+      font-size: 1.05rem;
+      color: var(--white);
+      font-weight: 600;
+      letter-spacing: .3px;
+      word-break: break-all;
+    }
+    .bank-field-value.highlight {
+      color: var(--lcyan);
+      font-size: 1.15rem;
+    }
+    .copy-btn {
+      background: rgba(27,168,166,.12);
+      border: 1px solid rgba(27,168,166,.3);
+      color: var(--teal);
+      padding: .4rem .8rem;
+      border-radius: 6px;
+      font-size: .7rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .25s;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    .copy-btn:hover {
+      background: rgba(27,168,166,.22);
+      border-color: var(--teal);
+      transform: translateY(-1px);
+    }
+    .copy-btn.copied {
+      background: rgba(34,197,94,.2);
+      border-color: #22c55e;
+      color: #22c55e;
+    }
+
+    /* INFO SECTIONS */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+    .info-card {
+      background: rgba(13,27,42,.6);
+      border: 1px solid rgba(0,180,216,.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color .3s, transform .3s;
+    }
+    .info-card:hover {
+      border-color: rgba(27,168,166,.3);
+      transform: translateY(-2px);
+    }
+    .info-icon {
+      font-size: 1.6rem;
+      margin-bottom: .8rem;
+      display: block;
+    }
+    .info-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: .5rem;
+      letter-spacing: .5px;
+    }
+    .info-text {
+      font-size: .85rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* NOTICE */
+    .notice {
+      background: rgba(230,168,23,.06);
+      border: 1px solid rgba(230,168,23,.2);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin-top: 2rem;
+      font-size: .82rem;
+      color: var(--gray);
+      line-height: 1.7;
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+    }
+    .notice-icon {
+      font-size: 1.1rem;
+      color: var(--gold-orim);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .notice strong {
+      color: var(--gold-orim);
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      border-top: 1px solid rgba(0,180,216,.1);
+      margin-top: 3rem;
+      color: var(--gray);
+      font-size: .78rem;
+    }
+    .footer a {
+      color: var(--teal);
+      text-decoration: none;
+      transition: opacity .3s;
+    }
+    .footer a:hover { opacity: .75; }
+    .footer-divider {
+      margin: 0 .6rem;
+      opacity: .4;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      background: rgba(13,27,42,.95);
+      border: 1px solid var(--teal);
+      color: var(--white);
+      padding: .8rem 1.5rem;
+      border-radius: 8px;
+      font-size: .85rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,.5), 0 0 40px rgba(27,168,166,.2);
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+      z-index: 200;
+      backdrop-filter: blur(12px);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 700px) {
+      .header { padding: .8rem 1rem; }
+      .hero { padding: 3rem 1rem 2rem; }
+      .main { padding: 2rem 1rem; }
+      .bank-card { padding: 1.8rem 1.2rem; }
+      .bank-field {
+        grid-template-columns: 1fr;
+        gap: .3rem;
+        padding: 1rem 0;
+      }
+      .bank-field-label { font-size: .68rem; }
+      .bank-field-value { font-size: .95rem; }
+      .copy-btn {
+        justify-self: start;
+        margin-top: .4rem;
+      }
+      .logo { font-size: 1.1rem; letter-spacing: 2px; }
+      .logo span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo">ORIM<span>NUTRITION</span></a>
+      <a href="/" class="nav-back">&#8592; Retour au site</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-icon">&#x2764;&#xFE0F;</span>
+    <h1 class="hero-title">Soutenir ORIM&trade;</h1>
+    <p class="hero-subtitle">Association g&eacute;nevoise &agrave; but non lucratif d&eacute;di&eacute;e &agrave; la recherche, l'&eacute;ducation et l'accompagnement en immunonutrition pr&eacute;ventive.</p>
+    <p class="hero-desc">Votre soutien finance nos programmes scientifiques, nos publications, nos actions p&eacute;dagogiques et le futur Centre ORIM Gen&egrave;ve. Chaque don compte.</p>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- BANK CARD -->
+    <div class="bank-card">
+      <div class="bank-card-header">
+        <span class="bank-icon">&#x1F3E6;</span>
+        <div>
+          <div class="bank-card-title">Compte bancaire officiel</div>
+          <div class="bank-card-subtitle">Association ORIM Gen&egrave;ve &middot; PostFinance</div>
+        </div>
+      </div>
+
+      <div class="bank-field">
+        <div class="bank-field-label">Titulaire</div>
+        <div class="bank-field-value">Association ORIM</div>
+        <span></span>
+      </div>
+
+      <div class="bank-field">
+        <div class="bank-field-label">Nom complet</div>
+        <div class="bank-field-value" style="font-size:.9rem">Optimisation R&eacute;solutive Immuno-M&eacute;tabolique</div>
+        <span></span>
+      </div>
+
+      <div class="bank-field">
+        <div class="bank-field-label">Banque</div>
+        <div class="bank-field-value">PostFinance SA &middot; Ch&ecirc;ne-Bourg</div>
+        <span></span>
+      </div>
+
+      <div class="bank-field">
+        <div class="bank-field-label">Num&eacute;ro de compte</div>
+        <div class="bank-field-value" id="account-number">16-871464-5</div>
+        <button class="copy-btn" data-target="account-number">Copier</button>
+      </div>
+
+      <div class="bank-field">
+        <div class="bank-field-label">IBAN</div>
+        <div class="bank-field-value highlight" id="iban">CH23 0900 0000 1687 1464 5</div>
+        <button class="copy-btn" data-target="iban">Copier</button>
+      </div>
+
+      <div class="bank-field">
+        <div class="bank-field-label">BIC / SWIFT</div>
+        <div class="bank-field-value" id="bic">POFICHBEXXX</div>
+        <button class="copy-btn" data-target="bic">Copier</button>
+      </div>
+
+      <div class="bank-field">
+        <div class="bank-field-label">Devise</div>
+        <div class="bank-field-value">CHF (Francs suisses)</div>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- NOTICE -->
+    <div class="notice">
+      <span class="notice-icon">&#9432;</span>
+      <div>
+        <strong>Attestation de don.</strong> L'Association ORIM &eacute;tablit sur demande une attestation pour chaque don re&ccedil;u. Merci d'indiquer votre adresse compl&egrave;te dans le motif de virement ou de nous &eacute;crire &agrave; <a href="mailto:info@orimnutrition.org" style="color:var(--teal);text-decoration:none">info@orimnutrition.org</a> apr&egrave;s votre don.
+      </div>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="info-icon">&#x1F52C;</span>
+        <div class="info-title">Recherche scientifique</div>
+        <div class="info-text">Financement des programmes de recherche ORIM sur l'immunonutrition pr&eacute;ventive, la nutrig&eacute;nomique et le microbiote.</div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">&#x1F4DA;</span>
+        <div class="info-title">&Eacute;ducation &amp; publications</div>
+        <div class="info-text">Production de contenus p&eacute;dagogiques, bulletins scientifiques, conf&eacute;rences publiques et formation des professionnels de sant&eacute;.</div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">&#x1F3E5;</span>
+        <div class="info-title">Centre ORIM Gen&egrave;ve</div>
+        <div class="info-text">Construction du futur centre d'immunonutrition pr&eacute;ventive &agrave; Gen&egrave;ve : consultations, cuisine &eacute;ducative, espace bien-&ecirc;tre.</div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">&#x1F91D;</span>
+        <div class="info-title">R&eacute;seau praticiens</div>
+        <div class="info-text">D&eacute;veloppement du r&eacute;seau de m&eacute;decins, naturopathes et th&eacute;rapeutes partenaires en Suisse et en Europe.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <a href="/">Accueil</a>
+      <span class="footer-divider">&middot;</span>
+      <a href="/partenaires.html">Partenaires</a>
+      <span class="footer-divider">&middot;</span>
+      <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a>
+    </div>
+    <div style="margin-top:1rem;opacity:.6">Association ORIM &middot; Gen&egrave;ve, Suisse &middot; &copy; 2026</div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">Copi&eacute; dans le presse-papiers</div>
+
+  <script>
+    (function() {
+      var toast = document.getElementById('toast');
+      var toastTimeout = null;
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(function() {
+          toast.classList.remove('show');
+        }, 2200);
+      }
+
+      document.querySelectorAll('.copy-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var targetId = btn.getAttribute('data-target');
+          var target = document.getElementById(targetId);
+          if (!target) return;
+          var text = target.textContent.trim();
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function() {
+              btn.textContent = 'Copi\u00e9';
+              btn.classList.add('copied');
+              showToast(text + ' copi\u00e9');
+              setTimeout(function() {
+                btn.textContent = 'Copier';
+                btn.classList.remove('copied');
+              }, 2000);
+            }).catch(function() {
+              fallbackCopy(text, btn);
+            });
+          } else {
+            fallbackCopy(text, btn);
+          }
+        });
+      });
+
+      function fallbackCopy(text, btn) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          btn.textContent = 'Copi\u00e9';
+          btn.classList.add('copied');
+          showToast(text + ' copi\u00e9');
+          setTimeout(function() {
+            btn.textContent = 'Copier';
+            btn.classList.remove('copied');
+          }, 2000);
+        } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    })();
+  </script>
+
+</body>
+</html>

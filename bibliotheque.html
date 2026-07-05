@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bibliothèque Alimentaire ORIM</title>
+<meta name="description" content="Base de données alimentaire ORIM : 5000 aliments indexés selon l'indice immuno-métabolique composite. Accès libre et gratuit.">
+<style>
+  :root{
+    --teal:#1BA8A6; --gold:#E6A817; --dark:#2D3436;
+    --lteal:#E8F6F6; --lgold:#FDF5E0; --line:#dfe6e6; --muted:#6b7776;
+    --champ:#159c8a; --opt:#E6A817; --sub:#e28743; --bad:#d0453f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:#fff;line-height:1.45}
+  a{color:var(--teal)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+  header.masthead{background:var(--teal);color:#fff;padding:18px 0 20px}
+  .backlink{display:inline-block;color:#eafffe;text-decoration:none;font-size:13px;font-weight:bold;opacity:.92;margin-bottom:8px}
+  .backlink:hover{opacity:1;text-decoration:underline}
+  .masthead .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.9;font-weight:bold}
+  .masthead h1{margin:6px 0 4px;font-size:30px;letter-spacing:.01em}
+  .masthead p{margin:0;font-size:14.5px;opacity:.95}
+  .badge-free{display:inline-block;background:var(--gold);color:#2b2b2b;font-weight:bold;font-size:12px;
+    padding:3px 10px;border-radius:12px;margin-top:10px;letter-spacing:.02em}
+
+  .intro{background:var(--lteal);border-bottom:1px solid var(--line)}
+  .intro .wrap{padding:14px 18px;font-size:13px;color:#3a4746}
+  .intro strong{color:var(--teal)}
+
+  .controls{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);
+    box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .controls .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 18px}
+  .controls input[type=search],.controls select{font-family:inherit;font-size:14px;padding:9px 11px;
+    border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--dark)}
+  .controls input[type=search]{flex:1;min-width:220px}
+  .controls input[type=search]:focus,.controls select:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+  .count{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap}
+  .count b{color:var(--dark)}
+
+  .tablecard{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
+  thead th{position:sticky;top:0;background:var(--dark);color:#fff;text-align:left;padding:9px 10px;
+    font-weight:bold;white-space:nowrap;cursor:pointer;user-select:none}
+  thead th.num{text-align:right}
+  thead th .arrow{opacity:.5;font-size:11px}
+  tbody td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody td.num{text-align:right;font-variant-numeric:tabular-nums}
+  tbody tr.food{cursor:pointer}
+  tbody tr.food:hover{background:var(--lteal)}
+  .name{font-weight:bold}
+  .grp{color:var(--muted);font-size:12.5px}
+  .score{display:inline-block;min-width:34px;text-align:center;font-weight:bold;color:#fff;
+    border-radius:6px;padding:2px 6px}
+  .s-champ{background:var(--champ)} .s-opt{background:var(--opt);color:#2b2b2b}
+  .s-sub{background:var(--sub)} .s-bad{background:var(--bad)}
+  .detail td{background:var(--lgold);border-bottom:2px solid var(--gold)}
+  .detail dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px 18px}
+  .detail dt{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:bold}
+  .detail dd{margin:0 0 6px;font-size:13.5px}
+  .detail .notes{grid-column:1/-1;font-style:italic}
+
+  .pager{display:flex;gap:10px;align-items:center;justify-content:center;padding:6px 0 22px;font-size:13.5px}
+  .pager button{font-family:inherit;font-size:13.5px;padding:7px 14px;border:1px solid var(--teal);
+    background:#fff;color:var(--teal);border-radius:8px;cursor:pointer}
+  .pager button:disabled{opacity:.4;cursor:default}
+  .pager .pinfo{color:var(--muted)}
+  .empty{padding:40px 10px;text-align:center;color:var(--muted)}
+
+  footer.foot{border-top:1px solid var(--line);background:#fafbfb;color:#54615f;font-size:12px}
+  footer.foot .wrap{padding:18px 18px 26px}
+  footer.foot .disc{background:var(--lgold);border-left:3px solid var(--gold);padding:10px 12px;border-radius:4px;margin-bottom:12px;color:#5b4a1f}
+  footer.foot .src{color:var(--muted)}
+  footer.foot .brand{margin-top:10px;font-weight:bold;color:var(--teal)}
+
+  @media(max-width:640px){
+    .masthead h1{font-size:24px}
+    .count{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a href="index.html" class="backlink">← Retour au site ORIM</a>
+    <div class="kicker">Association ORIM · Genève</div>
+    <h1>Bibliothèque Alimentaire ORIM</h1>
+    <p>L'indice immuno-métabolique de <b id="hcount">5000</b> aliments, en accès libre.</p>
+    <span class="badge-free">Gratuit et ouvert à tous</span>
+  </div>
+</header>
+
+<div class="intro">
+  <div class="wrap">
+    Chaque aliment reçoit un <strong>indice ORIM composite (0 à 100)</strong> synthétisant huit métriques
+    nutritionnelles et chronobiologiques (PRAL, ORAC, index glycémique, ratio oméga, NOVA, ANDI...).
+    Valeurs <strong>indicatives</strong>, projet pilote expérimental. Ceci n'est pas un avis médical.
+  </div>
+</div>
+
+<div class="controls">
+  <div class="wrap">
+    <input type="search" id="q" placeholder="Rechercher un aliment (ex : quinoa, saumon, myrtille...)" autocomplete="off">
+    <select id="fgroup"><option value="">Tous les groupes</option></select>
+    <select id="fscore">
+      <option value="">Tous les scores</option>
+      <option value="champ">Champion (80 et +)</option>
+      <option value="opt">Optimal (60 à 79)</option>
+      <option value="sub">Suboptimal (40 à 59)</option>
+      <option value="bad">À corriger (moins de 40)</option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="tablecard">
+    <table>
+      <thead>
+        <tr>
+          <th data-sort="name">Aliment <span class="arrow"></span></th>
+          <th data-sort="group">Groupe <span class="arrow"></span></th>
+          <th data-sort="score" class="num">Indice <span class="arrow">▼</span></th>
+          <th data-sort="pral" class="num">PRAL <span class="arrow"></span></th>
+          <th data-sort="orac" class="num">ORAC <span class="arrow"></span></th>
+          <th data-sort="ig" class="num">IG <span class="arrow"></span></th>
+          <th data-sort="cg" class="num">CG <span class="arrow"></span></th>
+          <th data-sort="nova" class="num">NOVA <span class="arrow"></span></th>
+          <th data-sort="andi" class="num">ANDI <span class="arrow"></span></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none">Aucun aliment ne correspond à votre recherche.</div>
+  </div>
+  <div class="pager" id="pager"></div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="disc">
+      <b>Avertissement.</b> Les valeurs sont indicatives et issues d'un projet pilote expérimental
+      (bases USDA, Remer &amp; Manz, Sydney GI, ORAC, NOVA, ANDI et sources régionales). Elles ne
+      constituent pas un avis médical ni nutritionnel individualisé. Consultez un professionnel de santé.
+    </div>
+    <div class="src" id="src"></div>
+    <div class="brand">Association ORIM · Genève, Suisse · info@orimnutrition.org</div>
+  </div>
+</footer>
+
+<script src="bibliotheque-data.js"></script>
+<script>
+(function(){
+  var D = window.ORIM_BIBLIO;
+  var F = {}; D.fields.forEach(function(k,i){F[k]=i;});
+  var PAGE = 100, page = 0, sortKey = "score", sortDir = -1;
+  var norm = function(s){return (s||"").toString().normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();};
+  var rows = D.rows;
+
+  // remplir groupes + sources + compteur entete
+  var gsel = document.getElementById("fgroup");
+  D.groups.forEach(function(g){var o=document.createElement("option");o.value=g;o.textContent=g;gsel.appendChild(o);});
+  document.getElementById("src").textContent = "Sources : " + D.sources.join(" · ");
+  document.getElementById("hcount").textContent = D.total.toLocaleString("fr-CH");
+
+  function band(s){return s>=80?"champ":s>=60?"opt":s>=40?"sub":"bad";}
+  function scoreClass(s){return "s-"+band(s);}
+
+  var q=document.getElementById("q"), fs=document.getElementById("fscore");
+  var tbody=document.getElementById("tbody"), pager=document.getElementById("pager"),
+      countEl=document.getElementById("count"), emptyEl=document.getElementById("empty");
+
+  var filtered = rows;
+  function applyFilter(){
+    var term=norm(q.value.trim()), g=gsel.value, sc=fs.value;
+    filtered = rows.filter(function(r){
+      if(g && r[F.group]!==g) return false;
+      if(sc && band(r[F.score])!==sc) return false;
+      if(term){
+        if(norm(r[F.name]).indexOf(term)===-1 && norm(r[F.group]).indexOf(term)===-1
+           && norm(r[F.vitamines]).indexOf(term)===-1) return false;
+      }
+      return true;
+    });
+    sortRows(); page=0; render();
+  }
+  function sortRows(){
+    var i=F[sortKey];
+    filtered.sort(function(a,b){
+      var x=a[i],y=b[i];
+      if(typeof x==="string"){x=norm(x);y=norm(y);}
+      if(x<y) return -1*sortDir; if(x>y) return 1*sortDir; return 0;
+    });
+  }
+  function render(){
+    var n=filtered.length;
+    countEl.innerHTML="<b>"+n.toLocaleString("fr-CH")+"</b> aliment"+(n>1?"s":"");
+    emptyEl.style.display = n?"none":"block";
+    var start=page*PAGE, slice=filtered.slice(start,start+PAGE);
+    var h="";
+    slice.forEach(function(r){
+      var idx=rows.indexOf(r);
+      h+='<tr class="food" data-i="'+idx+'">'
+        +'<td class="name">'+esc(r[F.name])+'</td>'
+        +'<td class="grp">'+esc(r[F.group])+'</td>'
+        +'<td class="num"><span class="score '+scoreClass(r[F.score])+'">'+r[F.score]+'</span></td>'
+        +'<td class="num">'+fmt(r[F.pral])+'</td>'
+        +'<td class="num">'+fmt(r[F.orac])+'</td>'
+        +'<td class="num">'+fmt(r[F.ig])+'</td>'
+        +'<td class="num">'+fmt(r[F.cg])+'</td>'
+        +'<td class="num">'+fmt(r[F.nova])+'</td>'
+        +'<td class="num">'+fmt(r[F.andi])+'</td></tr>';
+    });
+    tbody.innerHTML=h;
+    renderPager(n,start,slice.length);
+    // en-tetes de tri
+    document.querySelectorAll("thead th").forEach(function(th){
+      var a=th.querySelector(".arrow"); if(!a) return;
+      a.textContent = th.dataset.sort===sortKey ? (sortDir<0?"▼":"▲") : "";
+    });
+  }
+  function renderPager(n,start,shown){
+    if(n<=PAGE){pager.innerHTML="";return;}
+    var pages=Math.ceil(n/PAGE);
+    pager.innerHTML='<button id="prev"'+(page===0?" disabled":"")+'>‹ Précédent</button>'
+      +'<span class="pinfo">Page '+(page+1)+' / '+pages+'  ('+(start+1)+' à '+(start+shown)+')</span>'
+      +'<button id="next"'+(page>=pages-1?" disabled":"")+'>Suivant ›</button>';
+    var pv=document.getElementById("prev"),nx=document.getElementById("next");
+    if(pv)pv.onclick=function(){if(page>0){page--;render();window.scrollTo(0,0);}};
+    if(nx)nx.onclick=function(){if(page<pages-1){page++;render();window.scrollTo(0,0);}};
+  }
+  function esc(s){return (s==null?"":String(s)).replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+  function fmt(v){return v==null||v===""?"–":v;}
+
+  // detail au clic
+  tbody.addEventListener("click",function(e){
+    var tr=e.target.closest("tr.food"); if(!tr) return;
+    var nx=tr.nextElementSibling;
+    if(nx&&nx.classList.contains("detail")){nx.remove();return;}
+    document.querySelectorAll("tr.detail").forEach(function(d){d.remove();});
+    var r=rows[+tr.dataset.i];
+    var dtr=document.createElement("tr"); dtr.className="detail";
+    dtr.innerHTML='<td colspan="9"><dl>'
+      +cell("Ratio oméga-6/3",r[F.ratio_omega])
+      +cell("Alcalinité",r[F.alcalinite])
+      +cell("Inflammation",r[F.inflamm])
+      +cell("Timing ORIM",r[F.timing])
+      +cell("NOVA (transformation)",r[F.nova]+" / 4")
+      +cell("Nutriments clés",r[F.vitamines])
+      +'<div class="notes"><dt>Note</dt><dd>'+esc(r[F.notes]||"–")+'</dd></div>'
+      +'</dl></td>';
+    tr.after(dtr);
+  });
+  function cell(label,val){return '<div><dt>'+label+'</dt><dd>'+esc(fmt(val))+'</dd></div>';}
+
+  // tri au clic sur en-tete
+  document.querySelectorAll("thead th").forEach(function(th){
+    th.addEventListener("click",function(){
+      var k=th.dataset.sort;
+      if(k===sortKey){sortDir*=-1;} else {sortKey=k;sortDir=(k==="name"||k==="group")?1:-1;}
+      sortRows();page=0;render();
+    });
+  });
+
+  var t; q.addEventListener("input",function(){clearTimeout(t);t=setTimeout(applyFilter,120);});
+  gsel.addEventListener("change",applyFilter);
+  fs.addEventListener("change",applyFilter);
+
+  sortRows(); render();
+})();
+</script>
+</body>
+</html>

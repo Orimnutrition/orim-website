@@ -1,595 +1,267 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Politique de confidentialité — ORIM</title>
-  <meta name="description" content="Politique de confidentialité et de cookies du site orimnutrition.org — conforme RGPD, nLPD et CNIL." />
-  <meta name="robots" content="noindex" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Politique de confidentialité — ORIM</title>
+<meta name="description" content="Politique de confidentialité du site orimnutrition.org — RGPD et nLPD. Association ORIM Genève." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --serif:"Fraunces",ui-serif,Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --bench:#F4F7F6; --ink:#0F211F; --graphite:#556663; --hairline:#DCE6E4; --plate:#FFFFFF;
+    --abyss:#04100E; --ink-d:#060D0C; --panel:#0C1A18; --line-d:#16302C; --fg-d:#EAF4F2; --dim-d:#7FA39D;
+    --teal:#1BA8A6; --cyan:#38E1D6; --gold:#E6A817; --gold-hi:#F5C95A; --lteal:#E8F6F6; --lgold:#FDF5E0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bench);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+  a{color:var(--teal)}
 
-    :root {
-      --navy:  #0d1b2a;
-      --blue:  #1a4a7a;
-      --cyan:  #00b4d8;
-      --white: #f8fafc;
-      --gray:  #94a3b8;
-      --lgray: #1e2d3d;
-      --gold:  #c9a84c;
-      --green: #22c55e;
-    }
+  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:22px 0 34px;
+    background:radial-gradient(120% 150% at 80% 0%,#071A17 0%,var(--abyss) 48%,var(--ink-d) 100%);border-bottom:1px solid var(--line-d)}
+  header.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background:linear-gradient(var(--line-d) 1px,transparent 1px) 0 0/100% 42px,linear-gradient(90deg,var(--line-d) 1px,transparent 1px) 0 0/42px 100%;
+    -webkit-mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%);mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%)}
+  header.masthead .wrap{position:relative;z-index:1}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .backlink{color:var(--dim-d);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.04em;transition:color .2s}
+  .backlink:hover{color:var(--cyan)}
+  .langsw{display:flex;gap:2px;flex-shrink:0}
+  .langsw button{background:transparent;border:0;cursor:pointer;padding:5px 7px;color:var(--dim-d);font-family:var(--mono);font-size:12px;letter-spacing:.05em;border-radius:5px;transition:color .2s,background .2s}
+  .langsw button:hover{color:var(--fg-d);background:rgba(56,225,214,.08)}
+  .langsw button.on{color:var(--ink-d);background:var(--cyan);font-weight:500}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
+  .masthead h1{margin:8px 0 8px;font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:-.01em;line-height:1.05;
+    background:linear-gradient(180deg,#FFFFFF,var(--fg-d) 60%,var(--gold-hi) 140%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .masthead .updated{font-family:var(--mono);font-size:12px;color:var(--dim-d);max-width:70ch}
 
-    html { scroll-behavior: smooth; }
+  main{padding:38px 0 70px}
+  .toc{background:var(--plate);border:1px solid var(--hairline);border-radius:12px;padding:18px 22px;margin-bottom:34px}
+  .toc h2{font-family:var(--serif);font-size:1.1rem;margin-bottom:10px;color:var(--ink)}
+  .toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
+  .toc li{font-size:.9rem;margin-bottom:5px}
+  .legal-section{margin-bottom:34px}
+  .legal-section h2{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--ink);margin-bottom:12px;padding-left:12px;border-left:3px solid var(--teal)}
+  .legal-section h3{font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:18px 0 8px}
+  .legal-section p{font-size:.95rem;color:var(--ink);margin-bottom:10px}
+  .legal-section ul{list-style:none;margin:8px 0 10px}
+  .legal-section li{font-size:.95rem;color:var(--ink);padding-left:18px;position:relative;margin-bottom:5px}
+  .legal-section li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
+  .info-box{background:var(--plate);border:1px solid var(--hairline);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;margin:12px 0}
+  .info-box p{margin-bottom:5px;font-size:.92rem} .info-box p:last-child{margin-bottom:0}
+  table.tbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88rem;background:var(--plate);border:1px solid var(--hairline);border-radius:10px;overflow:hidden}
+  table.tbl th{background:var(--ink);color:var(--fg-d);text-align:left;padding:10px 12px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:500}
+  table.tbl td{padding:9px 12px;border-bottom:1px solid var(--hairline);color:var(--ink)}
+  table.tbl tr:last-child td{border-bottom:none}
+  .rights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+  .right-card{background:var(--plate);border:1px solid var(--hairline);border-radius:10px;padding:14px 16px}
+  .right-card strong{display:block;font-family:var(--serif);font-size:1rem;color:var(--teal);margin-bottom:5px}
+  .right-card p{font-size:.86rem;margin:0;color:var(--graphite)}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      overflow-x: hidden;
-    }
-
-    #canvas-bg {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0; pointer-events: none;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 3rem;
-      background: rgba(13, 27, 42, 0.95);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 180, 216, 0.15);
-    }
-    .nav-logo {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.8rem; font-weight: 700;
-      background: linear-gradient(135deg, #00b4d8, #1a4a7a);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: .12em; text-decoration: none;
-    }
-    .nav-logo span { font-size: .7rem; display: block; letter-spacing: .25em; color: var(--gray); -webkit-text-fill-color: var(--gray); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--gray); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
-    .nav-links a:hover { color: var(--cyan); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      border: none; color: #fff; padding: .55rem 1.4rem;
-      border-radius: 2rem; font-size: .8rem; font-weight: 600;
-      letter-spacing: .08em; cursor: pointer; transition: opacity .2s;
-      text-decoration: none;
-    }
-    .nav-cta:hover { opacity: .85; }
-
-    /* ── PAGE CONTENT ── */
-    .page-wrapper {
-      position: relative; z-index: 1;
-      max-width: 860px; margin: 0 auto;
-      padding: 8rem 2rem 6rem;
-    }
-
-    .breadcrumb {
-      font-size: .78rem; color: var(--gray);
-      letter-spacing: .06em; margin-bottom: 2rem;
-    }
-    .breadcrumb a { color: var(--cyan); text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-
-    .page-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--white), var(--cyan));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: .5rem;
-    }
-    .page-updated {
-      font-size: .8rem; color: var(--gray);
-      margin-bottom: 3rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(0,180,216,.15);
-    }
-
-    /* Table of contents */
-    .toc {
-      background: rgba(0,180,216,.05);
-      border: 1px solid rgba(0,180,216,.18);
-      border-radius: .75rem;
-      padding: 1.5rem 1.8rem;
-      margin-bottom: 3rem;
-    }
-    .toc h2 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: .85rem; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--cyan); margin-bottom: 1rem;
-    }
-    .toc ol { padding-left: 1.2rem; }
-    .toc li { margin-bottom: .4rem; }
-    .toc a { color: var(--gray); font-size: .85rem; text-decoration: none; transition: color .2s; }
-    .toc a:hover { color: var(--cyan); }
-
-    .legal-section {
-      margin-bottom: 2.8rem;
-      scroll-margin-top: 6rem;
-    }
-    .legal-section h2 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.25rem; font-weight: 600;
-      color: var(--cyan);
-      letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: 1rem;
-      padding-left: .8rem;
-      border-left: 3px solid var(--cyan);
-    }
-    .legal-section h3 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem; font-weight: 600;
-      color: var(--gold);
-      letter-spacing: .08em; text-transform: uppercase;
-      margin: 1.4rem 0 .6rem;
-    }
-    .legal-section p {
-      font-size: .9rem; line-height: 1.8;
-      color: rgba(248,250,252,.82);
-      margin-bottom: .8rem;
-    }
-    .legal-section ul, .legal-section ol {
-      margin: .6rem 0 .8rem 0;
-    }
-    .legal-section ul { list-style: none; }
-    .legal-section ul li {
-      font-size: .9rem; line-height: 1.8;
-      color: rgba(248,250,252,.82);
-      padding-left: 1.2rem;
-      position: relative; margin-bottom: .3rem;
-    }
-    .legal-section ul li::before {
-      content: '›'; position: absolute; left: 0;
-      color: var(--cyan); font-weight: 700;
-    }
-    .legal-section ol { padding-left: 1.4rem; }
-    .legal-section ol li {
-      font-size: .9rem; line-height: 1.8;
-      color: rgba(248,250,252,.82);
-      margin-bottom: .4rem;
-    }
-    a { color: var(--cyan); }
-    a:hover { text-decoration: underline; }
-
-    .info-box {
-      background: rgba(0,180,216,.06);
-      border: 1px solid rgba(0,180,216,.2);
-      border-radius: .75rem;
-      padding: 1.4rem 1.6rem;
-      margin: 1rem 0;
-    }
-    .info-box p { margin-bottom: .4rem; }
-    .info-box p:last-child { margin-bottom: 0; }
-
-    /* Cookie table */
-    .cookie-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: .83rem;
-    }
-    .cookie-table th {
-      background: rgba(0,180,216,.12);
-      color: var(--cyan);
-      font-family: 'Rajdhani', sans-serif;
-      letter-spacing: .08em; text-transform: uppercase;
-      padding: .7rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(0,180,216,.25);
-    }
-    .cookie-table td {
-      padding: .65rem 1rem;
-      color: rgba(248,250,252,.8);
-      border-bottom: 1px solid rgba(255,255,255,.05);
-      vertical-align: top;
-    }
-    .cookie-table tr:last-child td { border-bottom: none; }
-
-    .rights-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-    .right-card {
-      background: rgba(0,180,216,.06);
-      border: 1px solid rgba(0,180,216,.18);
-      border-radius: .6rem;
-      padding: 1rem 1.2rem;
-    }
-    .right-card strong {
-      display: block;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: .9rem;
-      letter-spacing: .06em;
-      color: var(--cyan);
-      margin-bottom: .4rem;
-    }
-    .right-card p { font-size: .82rem; margin: 0; }
-
-    /* ── FOOTER ── */
-    footer {
-      position: relative; z-index: 1;
-      background: rgba(8,16,24,.95);
-      border-top: 1px solid rgba(0,180,216,.1);
-      padding: 3rem 2rem 2rem;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-    }
-    .nav-logo-foot {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 2rem; font-weight: 700;
-      background: linear-gradient(135deg, #00b4d8, #1a4a7a);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: .12em;
-    }
-    .footer-brand p { font-size: .82rem; color: var(--gray); line-height: 1.7; margin-top: .8rem; max-width: 260px; }
-    .footer-col h4 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: .8rem; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--cyan);
-      margin-bottom: 1.2rem;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: .6rem; }
-    .footer-col a { color: var(--gray); text-decoration: none; font-size: .82rem; transition: color .2s; }
-    .footer-col a:hover { color: var(--white); }
-    .footer-bottom {
-      max-width: 1200px; margin: 2rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,.05);
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: .75rem; color: var(--gray);
-      flex-wrap: wrap; gap: .5rem;
-    }
-    .footer-entities { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .cookie-table { font-size: .75rem; }
-      .cookie-table th, .cookie-table td { padding: .5rem .6rem; }
-    }
-  </style>
+  footer.foot{border-top:1px solid var(--hairline);background:#fff;color:var(--graphite);font-size:12.5px}
+  footer.foot .wrap{padding:22px 20px 28px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+  footer.foot .flinks{display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+  footer.foot a{color:var(--graphite)} footer.foot a:hover{color:var(--ink)}
+  footer.foot .brand{font-family:var(--serif);color:var(--teal);font-weight:600}
+  @media(max-width:640px){.toc ol{columns:1}}
+</style>
 </head>
 <body>
-<!-- Access gate removed - site is now public -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html" class="backlink" data-i18n="pc.back">&larr; Retour au site ORIM</a>
+      <div class="langsw" id="langsw" role="group" aria-label="Langue">
+        <button data-l="fr">FR</button><button data-l="en">EN</button><button data-l="es">ES</button
+        ><button data-l="de">DE</button><button data-l="pt">PT</button><button data-l="it">IT</button>
+      </div>
+    </div>
+    <div class="kicker" data-i18n="pc.kicker">Association ORIM · Genève</div>
+    <h1 data-i18n="pc.title">Politique de confidentialité</h1>
+    <div class="updated" data-i18n="pc.updated">Dernière mise à jour : 16 mars 2026 — conforme au RGPD (UE 2016/679), à la nLPD (Suisse) et aux recommandations CNIL</div>
+  </div>
+</header>
 
-
-<canvas id="canvas-bg"></canvas>
-
-<nav>
-  <a href="index.html" class="nav-logo">ORIM<span>Immuno-Métabolique</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html#mission">Notre Mission</a></li>
-    <li><a href="index.html#prestations">Prestations</a></li>
-    <li><a href="index.html#poles">Pôles</a></li>
-    <li><a href="index.html#marque">Marque ORIM™</a></li>
-    <li><a href="index.html#equipe">Équipe</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-  <a href="index.html#contact" class="nav-cta">Nous contacter</a>
-</nav>
-
-<main class="page-wrapper">
-
-  <p class="breadcrumb"><a href="index.html">Accueil</a> › Politique de confidentialité</p>
-
-  <h1 class="page-title">Politique de confidentialité</h1>
-  <p class="page-updated">Dernière mise à jour : 16 mars 2026 — conforme au RGPD (UE 2016/679), à la nLPD (Suisse) et aux recommandations CNIL</p>
-
-  <!-- TABLE DES MATIÈRES -->
+<main class="wrap">
   <nav class="toc" aria-label="Sommaire">
-    <h2>Sommaire</h2>
+    <h2 data-i18n="pc.toc.h">Sommaire</h2>
     <ol>
-      <li><a href="#responsable">Responsable du traitement</a></li>
-      <li><a href="#donnees">Données collectées</a></li>
-      <li><a href="#finalites">Finalités et bases légales</a></li>
-      <li><a href="#conservation">Durée de conservation</a></li>
-      <li><a href="#destinataires">Destinataires et transferts</a></li>
-      <li><a href="#droits">Vos droits</a></li>
-      <li><a href="#cookies">Politique cookies</a></li>
-      <li><a href="#sécurité">Sécurité</a></li>
-      <li><a href="#modifications">Modifications</a></li>
-      <li><a href="#contact-dpo">Contact</a></li>
+      <li><a href="#responsable" data-i18n="pc.toc.1">Responsable du traitement</a></li>
+      <li><a href="#donnees" data-i18n="pc.toc.2">Données collectées</a></li>
+      <li><a href="#finalites" data-i18n="pc.toc.3">Finalités et bases légales</a></li>
+      <li><a href="#conservation" data-i18n="pc.toc.4">Durée de conservation</a></li>
+      <li><a href="#destinataires" data-i18n="pc.toc.5">Destinataires et transferts</a></li>
+      <li><a href="#droits" data-i18n="pc.toc.6">Vos droits</a></li>
+      <li><a href="#cookies" data-i18n="pc.toc.7">Politique cookies</a></li>
+      <li><a href="#securite" data-i18n="pc.toc.8">Sécurité</a></li>
+      <li><a href="#modifications" data-i18n="pc.toc.9">Modifications</a></li>
+      <li><a href="#contact-dpo" data-i18n="pc.toc.10">Contact</a></li>
     </ol>
   </nav>
 
-  <!-- 1. RESPONSABLE -->
   <div class="legal-section" id="responsable">
-    <h2>1. Responsable du traitement</h2>
+    <h2 data-i18n="pc.s1.h">1. Responsable du traitement</h2>
     <div class="info-box">
       <p><strong>Association ORIM</strong> — Genève, Suisse</p>
-      <p>Responsable : Marcel O. Chevalley, Président</p>
-      <p>Email : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></p>
-      <p>Site : <a href="https://www.orimnutrition.org">www.orimnutrition.org</a></p>
+      <p data-i18n="pc.s1.b2">Responsable : Marcel O. Chevalley, Président</p>
+      <p class="mono">info@orimnutrition.org</p>
     </div>
-    <p>L'Association ORIM, de droit suisse (art. 60 CC), est l'unique responsable du traitement des données collectées via ce site.</p>
+    <p data-i18n="pc.s1.p">L'Association ORIM, de droit suisse (art. 60 CC), est l'unique responsable du traitement des données collectées via ce site.</p>
   </div>
 
-  <!-- 2. DONNÉES COLLECTÉES -->
   <div class="legal-section" id="donnees">
-    <h2>2. Données collectées</h2>
-
-    <h3>Données que vous nous fournissez</h3>
+    <h2 data-i18n="pc.s2.h">2. Données collectées</h2>
+    <h3 data-i18n="pc.s2.h1">Données que vous nous fournissez</h3>
     <ul>
-      <li>Nom et prénom</li>
-      <li>Adresse email</li>
-      <li>Message et objet de la demande (formulaire de contact)</li>
-      <li>Données relatives à une inscription ou à un programme (si applicable)</li>
+      <li data-i18n="pc.s2.a1">Nom et prénom</li>
+      <li data-i18n="pc.s2.a2">Adresse email</li>
+      <li data-i18n="pc.s2.a3">Message et objet de la demande (formulaire de contact)</li>
+      <li data-i18n="pc.s2.a4">Données relatives à une inscription ou à un programme (si applicable)</li>
     </ul>
-
-    <h3>Données collectées automatiquement</h3>
+    <h3 data-i18n="pc.s2.h2">Données collectées automatiquement</h3>
     <ul>
-      <li>Adresse IP (anonymisée)</li>
-      <li>Type et version du navigateur</li>
-      <li>Pages visitées et durée de visite (données d'analyse)</li>
-      <li>Référent (page depuis laquelle vous êtes arrivé)</li>
+      <li data-i18n="pc.s2.b1">Adresse IP (anonymisée)</li>
+      <li data-i18n="pc.s2.b2">Type et version du navigateur</li>
+      <li data-i18n="pc.s2.b3">Pages visitées et durée de visite (données d'analyse)</li>
+      <li data-i18n="pc.s2.b4">Référent (page depuis laquelle vous êtes arrivé)</li>
     </ul>
-
-    <p>Nous ne collectons pas de données de santé au sens des données sensibles (article 9 du RGPD) via ce site. Les informations partagées dans le cadre de nos programmes sont traitées avec un niveau de protection renforcé et sur base du consentement explicite.</p>
+    <p data-i18n="pc.s2.p">Nous ne collectons pas de données de santé au sens des données sensibles (article 9 du RGPD) via ce site. Les informations partagées dans le cadre de nos programmes sont traitées avec un niveau de protection renforcé et sur base du consentement explicite.</p>
   </div>
 
-  <!-- 3. FINALITÉS -->
   <div class="legal-section" id="finalites">
-    <h2>3. Finalités et bases légales</h2>
-    <table class="cookie-table">
-      <thead>
-        <tr>
-          <th>Finalité</th>
-          <th>Base légale (RGPD)</th>
-        </tr>
-      </thead>
+    <h2 data-i18n="pc.s3.h">3. Finalités et bases légales</h2>
+    <table class="tbl">
+      <thead><tr><th data-i18n="pc.s3.th1">Finalité</th><th data-i18n="pc.s3.th2">Base légale (RGPD)</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Répondre à vos demandes de contact</td>
-          <td>Intérêt légitime / exécution d'un contrat</td>
-        </tr>
-        <tr>
-          <td>Gestion des inscriptions aux programmes ORIM</td>
-          <td>Exécution d'un contrat</td>
-        </tr>
-        <tr>
-          <td>Envoi de la newsletter (si souscrite)</td>
-          <td>Consentement explicite</td>
-        </tr>
-        <tr>
-          <td>Statistiques de fréquentation (anonymisées)</td>
-          <td>Intérêt légitime</td>
-        </tr>
-        <tr>
-          <td>Conformité légale et comptable</td>
-          <td>Obligation légale</td>
-        </tr>
+        <tr><td data-i18n="pc.s3.r1a">Répondre à vos demandes de contact</td><td data-i18n="pc.s3.r1b">Intérêt légitime / exécution d'un contrat</td></tr>
+        <tr><td data-i18n="pc.s3.r2a">Gestion des inscriptions aux programmes ORIM</td><td data-i18n="pc.s3.r2b">Exécution d'un contrat</td></tr>
+        <tr><td data-i18n="pc.s3.r3a">Envoi de la newsletter (si souscrite)</td><td data-i18n="pc.s3.r3b">Consentement explicite</td></tr>
+        <tr><td data-i18n="pc.s3.r4a">Statistiques de fréquentation (anonymisées)</td><td data-i18n="pc.s3.r4b">Intérêt légitime</td></tr>
+        <tr><td data-i18n="pc.s3.r5a">Conformité légale et comptable</td><td data-i18n="pc.s3.r5b">Obligation légale</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- 4. CONSERVATION -->
   <div class="legal-section" id="conservation">
-    <h2>4. Durée de conservation</h2>
+    <h2 data-i18n="pc.s4.h">4. Durée de conservation</h2>
     <ul>
-      <li><strong>Formulaire de contact :</strong> 3 ans à compter du dernier contact</li>
-      <li><strong>Données clients (contrats, factures) :</strong> 10 ans (obligations comptables)</li>
-      <li><strong>Newsletter :</strong> jusqu'au désabonnement ou 3 ans sans ouverture</li>
-      <li><strong>Logs de connexion :</strong> 12 mois maximum</li>
-      <li><strong>Cookies :</strong> selon leur nature (voir section 7)</li>
+      <li data-i18n="pc.s4.l1"><strong>Formulaire de contact :</strong> 3 ans à compter du dernier contact</li>
+      <li data-i18n="pc.s4.l2"><strong>Données clients (contrats, factures) :</strong> 10 ans (obligations comptables)</li>
+      <li data-i18n="pc.s4.l3"><strong>Newsletter :</strong> jusqu'au désabonnement ou 3 ans sans ouverture</li>
+      <li data-i18n="pc.s4.l4"><strong>Logs de connexion :</strong> 12 mois maximum</li>
+      <li data-i18n="pc.s4.l5"><strong>Cookies :</strong> selon leur nature (voir section 7)</li>
     </ul>
-    <p>À l'expiration de ces délais, vos données sont supprimées ou anonymisées de manière sécurisée.</p>
+    <p data-i18n="pc.s4.p">À l'expiration de ces délais, vos données sont supprimées ou anonymisées de manière sécurisée.</p>
   </div>
 
-  <!-- 5. DESTINATAIRES -->
   <div class="legal-section" id="destinataires">
-    <h2>5. Destinataires et transferts</h2>
-    <p>Vos données peuvent être transmises aux sous-traitants suivants, dans le cadre strict des finalités décrites ci-dessus :</p>
+    <h2 data-i18n="pc.s5.h">5. Destinataires et transferts</h2>
+    <p data-i18n="pc.s5.p1">Vos données peuvent être transmises aux sous-traitants suivants, dans le cadre strict des finalités décrites ci-dessus :</p>
     <ul>
-      <li><strong>GitHub, Inc.</strong> — hébergement du site (États-Unis, couvert par les clauses contractuelles types de l'UE)</li>
-      <li><strong>Prestataire d'emailing</strong> — en cas de newsletter (à préciser lors de la mise en place)</li>
+      <li data-i18n="pc.s5.l1"><strong>GitHub, Inc.</strong> — hébergement du site (États-Unis, couvert par les clauses contractuelles types de l'UE)</li>
+      <li data-i18n="pc.s5.l2"><strong>Prestataire d'emailing</strong> — en cas de newsletter (à préciser lors de la mise en place)</li>
     </ul>
-    <p>Vos données ne sont jamais vendues ni louées à des tiers. Tout transfert hors Union Européenne est encadré par les garanties appropriées prévues par le RGPD (clauses contractuelles types, décision d'adéquation).</p>
-    <p>En cas de transfert vers la Suisse, ce pays bénéficie d'une décision d'adéquation de la Commission Européenne.</p>
+    <p data-i18n="pc.s5.p2">Vos données ne sont jamais vendues ni louées à des tiers. Tout transfert hors Union Européenne est encadré par les garanties appropriées prévues par le RGPD.</p>
+    <p data-i18n="pc.s5.p3">En cas de transfert vers la Suisse, ce pays bénéficie d'une décision d'adéquation de la Commission Européenne.</p>
   </div>
 
-  <!-- 6. VOS DROITS -->
   <div class="legal-section" id="droits">
-    <h2>6. Vos droits</h2>
-    <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+    <h2 data-i18n="pc.s6.h">6. Vos droits</h2>
+    <p data-i18n="pc.s6.p1">Conformément au RGPD, vous disposez des droits suivants :</p>
     <div class="rights-grid">
-      <div class="right-card">
-        <strong>Droit d'accès</strong>
-        <p>Obtenir une copie de vos données personnelles que nous détenons.</p>
-      </div>
-      <div class="right-card">
-        <strong>Droit de rectification</strong>
-        <p>Corriger des données inexactes ou incomplètes.</p>
-      </div>
-      <div class="right-card">
-        <strong>Droit à l'effacement</strong>
-        <p>Demander la suppression de vos données (« droit à l'oubli »).</p>
-      </div>
-      <div class="right-card">
-        <strong>Droit à la portabilité</strong>
-        <p>Recevoir vos données dans un format structuré et lisible.</p>
-      </div>
-      <div class="right-card">
-        <strong>Droit d'opposition</strong>
-        <p>Vous opposer à un traitement fondé sur l'intérêt légitime.</p>
-      </div>
-      <div class="right-card">
-        <strong>Droit à la limitation</strong>
-        <p>Suspendre temporairement le traitement de vos données.</p>
-      </div>
+      <div class="right-card"><strong data-i18n="pc.s6.c1t">Droit d'accès</strong><p data-i18n="pc.s6.c1d">Obtenir une copie de vos données personnelles que nous détenons.</p></div>
+      <div class="right-card"><strong data-i18n="pc.s6.c2t">Droit de rectification</strong><p data-i18n="pc.s6.c2d">Corriger des données inexactes ou incomplètes.</p></div>
+      <div class="right-card"><strong data-i18n="pc.s6.c3t">Droit à l'effacement</strong><p data-i18n="pc.s6.c3d">Demander la suppression de vos données (« droit à l'oubli »).</p></div>
+      <div class="right-card"><strong data-i18n="pc.s6.c4t">Droit à la portabilité</strong><p data-i18n="pc.s6.c4d">Recevoir vos données dans un format structuré et lisible.</p></div>
+      <div class="right-card"><strong data-i18n="pc.s6.c5t">Droit d'opposition</strong><p data-i18n="pc.s6.c5d">Vous opposer à un traitement fondé sur l'intérêt légitime.</p></div>
+      <div class="right-card"><strong data-i18n="pc.s6.c6t">Droit à la limitation</strong><p data-i18n="pc.s6.c6d">Suspendre temporairement le traitement de vos données.</p></div>
     </div>
-    <p>Pour exercer ces droits, contactez-nous à <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a> avec une pièce d'identité. Nous répondrons dans un délai d'un mois (prolongeable de deux mois pour les demandes complexes).</p>
-    <p>Vous avez également le droit d'introduire une réclamation auprès de la <strong>CNIL</strong> : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a> — ou auprès du <strong>PFPDT</strong> (Préposé fédéral à la protection des données et à la transparence) si vous résidez en Suisse : <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">www.edoeb.admin.ch</a></p>
-
-    <h3>Conformité nLPD (Suisse)</h3>
-    <p>L'Association ORIM étant de droit suisse, le traitement des données est également conforme à la nouvelle Loi fédérale sur la protection des données (nLPD), entrée en vigueur le 1er septembre 2023. En particulier :</p>
+    <p data-i18n="pc.s6.p2">Pour exercer ces droits, contactez-nous à <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a> avec une pièce d'identité. Nous répondrons dans un délai d'un mois (prolongeable de deux mois pour les demandes complexes).</p>
+    <p data-i18n="pc.s6.p3">Vous avez également le droit d'introduire une réclamation auprès de la <strong>CNIL</strong> (www.cnil.fr) ou auprès du <strong>PFPDT</strong> suisse (www.edoeb.admin.ch).</p>
+    <h3 data-i18n="pc.s6.h3">Conformité nLPD (Suisse)</h3>
+    <p data-i18n="pc.s6.p4">L'Association ORIM étant de droit suisse, le traitement des données est également conforme à la nouvelle Loi fédérale sur la protection des données (nLPD), entrée en vigueur le 1er septembre 2023. En particulier :</p>
     <ul>
-      <li>Les personnes concernées sont informées de manière transparente avant tout traitement</li>
-      <li>Le traitement est limité aux finalités communiquées (principe de finalité)</li>
-      <li>Les données ne sont conservées que le temps nécessaire (principe de proportionnalité)</li>
-      <li>Les mesures techniques et organisationnelles garantissent la sécurité des données (art. 8 nLPD)</li>
-      <li>Toute violation de la sécurité des données est annoncée au PFPDT dans les meilleurs délais (art. 24 nLPD)</li>
+      <li data-i18n="pc.s6.n1">Les personnes concernées sont informées de manière transparente avant tout traitement</li>
+      <li data-i18n="pc.s6.n2">Le traitement est limité aux finalités communiquées (principe de finalité)</li>
+      <li data-i18n="pc.s6.n3">Les données ne sont conservées que le temps nécessaire (principe de proportionnalité)</li>
+      <li data-i18n="pc.s6.n4">Les mesures techniques et organisationnelles garantissent la sécurité des données (art. 8 nLPD)</li>
+      <li data-i18n="pc.s6.n5">Toute violation de la sécurité des données est annoncée au PFPDT dans les meilleurs délais (art. 24 nLPD)</li>
     </ul>
   </div>
 
-  <!-- 7. COOKIES -->
   <div class="legal-section" id="cookies">
-    <h2>7. Politique cookies</h2>
-    <p>Un cookie est un petit fichier texte déposé sur votre terminal. Nous utilisons uniquement les cookies suivants :</p>
-
-    <h3>Cookies strictement nécessaires (pas de consentement requis)</h3>
-    <table class="cookie-table">
-      <thead>
-        <tr><th>Nom</th><th>Finalité</th><th>Durée</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>orim_cookie_consent</td>
-          <td>Mémoriser votre choix de consentement aux cookies</td>
-          <td>12 mois</td>
-        </tr>
-      </tbody>
+    <h2 data-i18n="pc.s7.h">7. Politique cookies</h2>
+    <p data-i18n="pc.s7.p1">Un cookie est un petit fichier texte déposé sur votre terminal. Nous utilisons uniquement les cookies suivants :</p>
+    <h3 data-i18n="pc.s7.h1">Cookies strictement nécessaires (pas de consentement requis)</h3>
+    <table class="tbl">
+      <thead><tr><th data-i18n="pc.s7.th1">Nom</th><th data-i18n="pc.s7.th2">Finalité</th><th data-i18n="pc.s7.th3">Durée</th></tr></thead>
+      <tbody><tr><td class="mono">orim_cookie_consent</td><td data-i18n="pc.s7.r1b">Mémoriser votre choix de consentement aux cookies</td><td data-i18n="pc.s7.r1c">12 mois</td></tr></tbody>
     </table>
-
-    <h3>Cookies analytiques (avec consentement)</h3>
-    <p>Si vous y consentez, nous utilisons des outils d'analyse d'audience pour améliorer le site. Ces outils anonymisent votre adresse IP et ne permettent pas de vous identifier personnellement.</p>
-
-    <h3>Cookies tiers</h3>
-    <p>Ce site peut charger des ressources depuis Google Fonts (polices de caractères). Ces chargements peuvent déposer des cookies ou collecter des données techniques. Consultez la politique de confidentialité de Google pour plus d'informations.</p>
-
-    <h3>Gérer vos préférences</h3>
-    <p>Vous pouvez à tout moment modifier vos préférences cookies via les paramètres de votre navigateur, ou en cliquant sur le lien « Gérer mes cookies » en bas de page lorsqu'il est disponible.</p>
+    <h3 data-i18n="pc.s7.h2">Cookies analytiques (avec consentement)</h3>
+    <p data-i18n="pc.s7.p2">Si vous y consentez, nous utilisons des outils d'analyse d'audience pour améliorer le site. Ces outils anonymisent votre adresse IP et ne permettent pas de vous identifier personnellement.</p>
+    <h3 data-i18n="pc.s7.h3">Cookies tiers</h3>
+    <p data-i18n="pc.s7.p3">Ce site peut charger des ressources depuis Google Fonts (polices de caractères). Ces chargements peuvent déposer des cookies ou collecter des données techniques.</p>
+    <h3 data-i18n="pc.s7.h4">Gérer vos préférences</h3>
+    <p data-i18n="pc.s7.p4">Vous pouvez à tout moment modifier vos préférences cookies via les paramètres de votre navigateur.</p>
   </div>
 
-  <!-- 8. SÉCURITÉ -->
-  <div class="legal-section" id="sécurité">
-    <h2>8. Sécurité</h2>
-    <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, destruction ou altération :</p>
+  <div class="legal-section" id="securite">
+    <h2 data-i18n="pc.s8.h">8. Sécurité</h2>
+    <p data-i18n="pc.s8.p1">Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, destruction ou altération :</p>
     <ul>
-      <li>Connexion sécurisée HTTPS (TLS) sur l'ensemble du site</li>
-      <li>Accès aux données restreint aux personnes habilitées</li>
-      <li>Aucune donnée de paiement stockée sur nos serveurs</li>
+      <li data-i18n="pc.s8.l1">Connexion sécurisée HTTPS (TLS) sur l'ensemble du site</li>
+      <li data-i18n="pc.s8.l2">Accès aux données restreint aux personnes habilitées</li>
+      <li data-i18n="pc.s8.l3">Aucune donnée de paiement stockée sur nos serveurs</li>
     </ul>
-    <p>En cas de violation de données susceptible d'engendrer un risque élevé pour vos droits et libertés, nous vous en informerons dans les meilleurs délais conformément à l'article 34 du RGPD.</p>
+    <p data-i18n="pc.s8.p2">En cas de violation de données susceptible d'engendrer un risque élevé pour vos droits et libertés, nous vous en informerons dans les meilleurs délais conformément à l'article 34 du RGPD.</p>
   </div>
 
-  <!-- 9. MODIFICATIONS -->
   <div class="legal-section" id="modifications">
-    <h2>9. Modifications de la politique</h2>
-    <p>Nous nous réservons le droit de modifier cette politique à tout moment, notamment pour nous conformer à l'évolution de la réglementation. La date de dernière mise à jour est indiquée en haut de page.</p>
-    <p>En cas de modification substantielle, nous vous en informerons par email (si vous êtes abonné à notre newsletter) ou par un avis visible sur le site.</p>
+    <h2 data-i18n="pc.s9.h">9. Modifications de la politique</h2>
+    <p data-i18n="pc.s9.p1">Nous nous réservons le droit de modifier cette politique à tout moment, notamment pour nous conformer à l'évolution de la réglementation. La date de dernière mise à jour est indiquée en haut de page.</p>
+    <p data-i18n="pc.s9.p2">En cas de modification substantielle, nous vous en informerons par email (si vous êtes abonné à notre newsletter) ou par un avis visible sur le site.</p>
   </div>
 
-  <!-- 10. CONTACT DPO -->
   <div class="legal-section" id="contact-dpo">
-    <h2>10. Contact</h2>
-    <p>Pour toute question relative à cette politique ou pour exercer vos droits :</p>
+    <h2 data-i18n="pc.s10.h">10. Contact</h2>
+    <p data-i18n="pc.s10.p1">Pour toute question relative à cette politique ou pour exercer vos droits :</p>
     <div class="info-box">
-      <p><strong>Responsable protection des données — ORIM</strong></p>
-      <p>Email : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></p>
-      <p>Site : <a href="https://www.orimnutrition.org">www.orimnutrition.org</a></p>
-      <p>Délai de réponse : 30 jours maximum (article 12 RGPD)</p>
+      <p data-i18n="pc.s10.b1"><strong>Responsable protection des données — ORIM</strong></p>
+      <p class="mono">info@orimnutrition.org</p>
+      <p data-i18n="pc.s10.b3">Délai de réponse : 30 jours maximum (article 12 RGPD)</p>
     </div>
   </div>
-
 </main>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="nav-logo-foot">ORIM</div>
-      <p>Optimisation Résolutive Immuno-Métabolique — Association genevoise de recherche et éducation en immunonutrition préventive.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="index.html#mission">Notre Mission</a></li>
-        <li><a href="index.html#prestations">Prestations</a></li>
-        <li><a href="index.html#poles">Pôles</a></li>
-        <li><a href="index.html#marque">Marque ORIM™</a></li>
-        <li><a href="index.html#equipe">Équipe</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Association</h4>
-      <ul>
-        <li><a href="#">Association ORIM Genève</a></li>
-        <li><a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Légal</h4>
-      <ul>
-        <li><a href="mentions-legales.html">Mentions légales</a></li>
-        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-        <li><a href="#">Statuts de l'association</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 Association ORIM — Tous droits réservés</span>
-    <div class="footer-entities">
-      <span>Association ORIM — Genève, Suisse</span>
+<footer class="foot">
+  <div class="wrap">
+    <div class="brand">ORIM · Association ORIM Genève</div>
+    <div class="flinks">
+      <a href="index.html" data-i18n="pc.f.home">Accueil</a>
+      <a href="bibliotheque.html" data-i18n="pc.f.biblio">Bibliothèque</a>
+      <a href="mentions-legales.html" data-i18n="pc.f.mentions">Mentions légales</a>
+      <a href="politique-confidentialite.html" data-i18n="pc.f.privacy">Politique de confidentialité</a>
     </div>
   </div>
 </footer>
 
 <script>
-const canvas = document.getElementById('canvas-bg');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-resize();
-window.addEventListener('resize', () => { resize(); initParticles(); });
-function Particle() {
-  this.x = Math.random() * W; this.y = Math.random() * H;
-  this.vx = (Math.random() - .5) * .4; this.vy = (Math.random() - .5) * .4;
-  this.r = Math.random() * 1.5 + .5; this.alpha = Math.random() * .5 + .1;
+var I18N = {"fr":{"pc.back":"&larr; Retour au site ORIM","pc.kicker":"Association ORIM · Genève","pc.title":"Politique de confidentialité","pc.updated":"Dernière mise à jour : 16 mars 2026 — conforme au RGPD (UE 2016/679), à la nLPD (Suisse) et aux recommandations CNIL","pc.toc.h":"Sommaire","pc.toc.1":"Responsable du traitement","pc.toc.2":"Données collectées","pc.toc.3":"Finalités et bases légales","pc.toc.4":"Durée de conservation","pc.toc.5":"Destinataires et transferts","pc.toc.6":"Vos droits","pc.toc.7":"Politique cookies","pc.toc.8":"Sécurité","pc.toc.9":"Modifications","pc.toc.10":"Contact","pc.s1.h":"1. Responsable du traitement","pc.s1.b2":"Responsable : Marcel O. Chevalley, Président","pc.s1.p":"L'Association ORIM, de droit suisse (art. 60 CC), est l'unique responsable du traitement des données collectées via ce site.","pc.s2.h":"2. Données collectées","pc.s2.h1":"Données que vous nous fournissez","pc.s2.a1":"Nom et prénom","pc.s2.a2":"Adresse email","pc.s2.a3":"Message et objet de la demande (formulaire de contact)","pc.s2.a4":"Données relatives à une inscription ou à un programme (si applicable)","pc.s2.h2":"Données collectées automatiquement","pc.s2.b1":"Adresse IP (anonymisée)","pc.s2.b2":"Type et version du navigateur","pc.s2.b3":"Pages visitées et durée de visite (données d'analyse)","pc.s2.b4":"Référent (page depuis laquelle vous êtes arrivé)","pc.s2.p":"Nous ne collectons pas de données de santé au sens des données sensibles (article 9 du RGPD) via ce site. Les informations partagées dans le cadre de nos programmes sont traitées avec un niveau de protection renforcé et sur base du consentement explicite.","pc.s3.h":"3. Finalités et bases légales","pc.s3.th1":"Finalité","pc.s3.th2":"Base légale (RGPD)","pc.s3.r1a":"Répondre à vos demandes de contact","pc.s3.r1b":"Intérêt légitime / exécution d'un contrat","pc.s3.r2a":"Gestion des inscriptions aux programmes ORIM","pc.s3.r2b":"Exécution d'un contrat","pc.s3.r3a":"Envoi de la newsletter (si souscrite)","pc.s3.r3b":"Consentement explicite","pc.s3.r4a":"Statistiques de fréquentation (anonymisées)","pc.s3.r4b":"Intérêt légitime","pc.s3.r5a":"Conformité légale et comptable","pc.s3.r5b":"Obligation légale","pc.s4.h":"4. Durée de conservation","pc.s4.l1":"<strong>Formulaire de contact :</strong> 3 ans à compter du dernier contact","pc.s4.l2":"<strong>Données clients (contrats, factures) :</strong> 10 ans (obligations comptables)","pc.s4.l3":"<strong>Newsletter :</strong> jusqu'au désabonnement ou 3 ans sans ouverture","pc.s4.l4":"<strong>Logs de connexion :</strong> 12 mois maximum","pc.s4.l5":"<strong>Cookies :</strong> selon leur nature (voir section 7)","pc.s4.p":"À l'expiration de ces délais, vos données sont supprimées ou anonymisées de manière sécurisée.","pc.s5.h":"5. Destinataires et transferts","pc.s5.p1":"Vos données peuvent être transmises aux sous-traitants suivants, dans le cadre strict des finalités décrites ci-dessus :","pc.s5.l1":"<strong>GitHub, Inc.</strong> — hébergement du site (États-Unis, couvert par les clauses contractuelles types de l'UE)","pc.s5.l2":"<strong>Prestataire d'emailing</strong> — en cas de newsletter (à préciser lors de la mise en place)","pc.s5.p2":"Vos données ne sont jamais vendues ni louées à des tiers. Tout transfert hors Union Européenne est encadré par les garanties appropriées prévues par le RGPD.","pc.s5.p3":"En cas de transfert vers la Suisse, ce pays bénéficie d'une décision d'adéquation de la Commission Européenne.","pc.s6.h":"6. Vos droits","pc.s6.p1":"Conformément au RGPD, vous disposez des droits suivants :","pc.s6.c1t":"Droit d'accès","pc.s6.c1d":"Obtenir une copie de vos données personnelles que nous détenons.","pc.s6.c2t":"Droit de rectification","pc.s6.c2d":"Corriger des données inexactes ou incomplètes.","pc.s6.c3t":"Droit à l'effacement","pc.s6.c3d":"Demander la suppression de vos données (« droit à l'oubli »).","pc.s6.c4t":"Droit à la portabilité","pc.s6.c4d":"Recevoir vos données dans un format structuré et lisible.","pc.s6.c5t":"Droit d'opposition","pc.s6.c5d":"Vous opposer à un traitement fondé sur l'intérêt légitime.","pc.s6.c6t":"Droit à la limitation","pc.s6.c6d":"Suspendre temporairement le traitement de vos données.","pc.s6.p2":"Pour exercer ces droits, contactez-nous à <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> avec une pièce d'identité. Nous répondrons dans un délai d'un mois (prolongeable de deux mois pour les demandes complexes).","pc.s6.p3":"Vous avez également le droit d'introduire une réclamation auprès de la <strong>CNIL</strong> (www.cnil.fr) ou auprès du <strong>PFPDT</strong> suisse (www.edoeb.admin.ch).","pc.s6.h3":"Conformité nLPD (Suisse)","pc.s6.p4":"L'Association ORIM étant de droit suisse, le traitement des données est également conforme à la nouvelle Loi fédérale sur la protection des données (nLPD), entrée en vigueur le 1er septembre 2023. En particulier :","pc.s6.n1":"Les personnes concernées sont informées de manière transparente avant tout traitement","pc.s6.n2":"Le traitement est limité aux finalités communiquées (principe de finalité)","pc.s6.n3":"Les données ne sont conservées que le temps nécessaire (principe de proportionnalité)","pc.s6.n4":"Les mesures techniques et organisationnelles garantissent la sécurité des données (art. 8 nLPD)","pc.s6.n5":"Toute violation de la sécurité des données est annoncée au PFPDT dans les meilleurs délais (art. 24 nLPD)","pc.s7.h":"7. Politique cookies","pc.s7.p1":"Un cookie est un petit fichier texte déposé sur votre terminal. Nous utilisons uniquement les cookies suivants :","pc.s7.h1":"Cookies strictement nécessaires (pas de consentement requis)","pc.s7.th1":"Nom","pc.s7.th2":"Finalité","pc.s7.th3":"Durée","pc.s7.r1b":"Mémoriser votre choix de consentement aux cookies","pc.s7.r1c":"12 mois","pc.s7.h2":"Cookies analytiques (avec consentement)","pc.s7.p2":"Si vous y consentez, nous utilisons des outils d'analyse d'audience pour améliorer le site. Ces outils anonymisent votre adresse IP et ne permettent pas de vous identifier personnellement.","pc.s7.h3":"Cookies tiers","pc.s7.p3":"Ce site peut charger des ressources depuis Google Fonts (polices de caractères). Ces chargements peuvent déposer des cookies ou collecter des données techniques.","pc.s7.h4":"Gérer vos préférences","pc.s7.p4":"Vous pouvez à tout moment modifier vos préférences cookies via les paramètres de votre navigateur.","pc.s8.h":"8. Sécurité","pc.s8.p1":"Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, destruction ou altération :","pc.s8.l1":"Connexion sécurisée HTTPS (TLS) sur l'ensemble du site","pc.s8.l2":"Accès aux données restreint aux personnes habilitées","pc.s8.l3":"Aucune donnée de paiement stockée sur nos serveurs","pc.s8.p2":"En cas de violation de données susceptible d'engendrer un risque élevé pour vos droits et libertés, nous vous en informerons dans les meilleurs délais conformément à l'article 34 du RGPD.","pc.s9.h":"9. Modifications de la politique","pc.s9.p1":"Nous nous réservons le droit de modifier cette politique à tout moment, notamment pour nous conformer à l'évolution de la réglementation. La date de dernière mise à jour est indiquée en haut de page.","pc.s9.p2":"En cas de modification substantielle, nous vous en informerons par email (si vous êtes abonné à notre newsletter) ou par un avis visible sur le site.","pc.s10.h":"10. Contact","pc.s10.p1":"Pour toute question relative à cette politique ou pour exercer vos droits :","pc.s10.b1":"<strong>Responsable protection des données — ORIM</strong>","pc.s10.b3":"Délai de réponse : 30 jours maximum (article 12 RGPD)","pc.f.home":"Accueil","pc.f.biblio":"Bibliothèque","pc.f.mentions":"Mentions légales","pc.f.privacy":"Politique de confidentialité"},"en":{"pc.back":"&larr; Back to the ORIM website","pc.kicker":"ORIM Association · Geneva","pc.title":"Privacy Policy","pc.updated":"Last updated: 16 March 2026 — compliant with the GDPR (EU 2016/679), the Swiss FADP (nFADP) and CNIL recommendations","pc.toc.h":"Contents","pc.toc.1":"Data controller","pc.toc.2":"Data collected","pc.toc.3":"Purposes and legal bases","pc.toc.4":"Retention period","pc.toc.5":"Recipients and transfers","pc.toc.6":"Your rights","pc.toc.7":"Cookie policy","pc.toc.8":"Security","pc.toc.9":"Changes","pc.toc.10":"Contact","pc.s1.h":"1. Data controller","pc.s1.b2":"Controller: Marcel O. Chevalley, President","pc.s1.p":"The ORIM Association, incorporated under Swiss law (art. 60 CC), is the sole controller of the data collected through this website.","pc.s2.h":"2. Data collected","pc.s2.h1":"Data you provide to us","pc.s2.a1":"First and last name","pc.s2.a2":"Email address","pc.s2.a3":"Message and subject of the request (contact form)","pc.s2.a4":"Data relating to a registration or a programme (where applicable)","pc.s2.h2":"Data collected automatically","pc.s2.b1":"IP address (anonymised)","pc.s2.b2":"Browser type and version","pc.s2.b3":"Pages visited and duration of visit (analytics data)","pc.s2.b4":"Referrer (the page from which you arrived)","pc.s2.p":"We do not collect health data within the meaning of sensitive data (Article 9 of the GDPR) through this website. Information shared as part of our programmes is processed with an enhanced level of protection and on the basis of explicit consent.","pc.s3.h":"3. Purposes and legal bases","pc.s3.th1":"Purpose","pc.s3.th2":"Legal basis (GDPR)","pc.s3.r1a":"Responding to your contact requests","pc.s3.r1b":"Legitimate interest / performance of a contract","pc.s3.r2a":"Managing registrations for ORIM programmes","pc.s3.r2b":"Performance of a contract","pc.s3.r3a":"Sending the newsletter (if subscribed)","pc.s3.r3b":"Explicit consent","pc.s3.r4a":"Traffic statistics (anonymised)","pc.s3.r4b":"Legitimate interest","pc.s3.r5a":"Legal and accounting compliance","pc.s3.r5b":"Legal obligation","pc.s4.h":"4. Retention period","pc.s4.l1":"<strong>Contact form:</strong> 3 years from the last contact","pc.s4.l2":"<strong>Client data (contracts, invoices):</strong> 10 years (accounting obligations)","pc.s4.l3":"<strong>Newsletter:</strong> until unsubscription or 3 years without opening","pc.s4.l4":"<strong>Connection logs:</strong> 12 months maximum","pc.s4.l5":"<strong>Cookies:</strong> depending on their nature (see section 7)","pc.s4.p":"Upon expiry of these periods, your data is deleted or anonymised in a secure manner.","pc.s5.h":"5. Recipients and transfers","pc.s5.p1":"Your data may be shared with the following processors, strictly within the scope of the purposes described above:","pc.s5.l1":"<strong>GitHub, Inc.</strong> — website hosting (United States, covered by the EU Standard Contractual Clauses)","pc.s5.l2":"<strong>Email service provider</strong> — in the event of a newsletter (to be specified upon implementation)","pc.s5.p2":"Your data is never sold or rented to third parties. Any transfer outside the European Union is governed by the appropriate safeguards provided for by the GDPR.","pc.s5.p3":"In the event of a transfer to Switzerland, that country benefits from an adequacy decision of the European Commission.","pc.s6.h":"6. Your rights","pc.s6.p1":"In accordance with the GDPR, you have the following rights:","pc.s6.c1t":"Right of access","pc.s6.c1d":"Obtain a copy of the personal data we hold about you.","pc.s6.c2t":"Right to rectification","pc.s6.c2d":"Correct inaccurate or incomplete data.","pc.s6.c3t":"Right to erasure","pc.s6.c3d":"Request the deletion of your data (« right to be forgotten »).","pc.s6.c4t":"Right to portability","pc.s6.c4d":"Receive your data in a structured and readable format.","pc.s6.c5t":"Right to object","pc.s6.c5d":"Object to processing based on legitimate interest.","pc.s6.c6t":"Right to restriction","pc.s6.c6d":"Temporarily suspend the processing of your data.","pc.s6.p2":"To exercise these rights, contact us at <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> with proof of identity. We will respond within one month (extendable by two months for complex requests).","pc.s6.p3":"You also have the right to lodge a complaint with the <strong>CNIL</strong> (www.cnil.fr) or with the Swiss <strong>FDPIC</strong> (www.edoeb.admin.ch).","pc.s6.h3":"nFADP compliance (Switzerland)","pc.s6.p4":"As the ORIM Association is incorporated under Swiss law, the processing of data also complies with the new Federal Act on Data Protection (nFADP), which came into force on 1 September 2023. In particular:","pc.s6.n1":"Data subjects are informed transparently before any processing","pc.s6.n2":"Processing is limited to the communicated purposes (purpose limitation principle)","pc.s6.n3":"Data is retained only for as long as necessary (proportionality principle)","pc.s6.n4":"Technical and organisational measures ensure the security of the data (art. 8 nFADP)","pc.s6.n5":"Any data security breach is reported to the FDPIC as soon as possible (art. 24 nFADP)","pc.s7.h":"7. Cookie policy","pc.s7.p1":"A cookie is a small text file placed on your device. We use only the following cookies:","pc.s7.h1":"Strictly necessary cookies (no consent required)","pc.s7.th1":"Name","pc.s7.th2":"Purpose","pc.s7.th3":"Duration","pc.s7.r1b":"Remember your cookie consent choice","pc.s7.r1c":"12 months","pc.s7.h2":"Analytics cookies (with consent)","pc.s7.p2":"If you consent, we use audience analytics tools to improve the site. These tools anonymise your IP address and do not allow you to be personally identified.","pc.s7.h3":"Third-party cookies","pc.s7.p3":"This site may load resources from Google Fonts (typefaces). These loads may place cookies or collect technical data.","pc.s7.h4":"Manage your preferences","pc.s7.p4":"You can change your cookie preferences at any time through your browser settings.","pc.s8.h":"8. Security","pc.s8.p1":"We implement appropriate technical and organisational measures to protect your data against any unauthorised access, loss, destruction or alteration:","pc.s8.l1":"Secure HTTPS connection (TLS) across the entire site","pc.s8.l2":"Access to data restricted to authorised persons","pc.s8.l3":"No payment data stored on our servers","pc.s8.p2":"In the event of a data breach likely to result in a high risk to your rights and freedoms, we will inform you as soon as possible in accordance with Article 34 of the GDPR.","pc.s9.h":"9. Changes to the policy","pc.s9.p1":"We reserve the right to amend this policy at any time, in particular to comply with regulatory developments. The date of the last update is shown at the top of the page.","pc.s9.p2":"In the event of a substantial change, we will inform you by email (if you are subscribed to our newsletter) or by a notice visible on the site.","pc.s10.h":"10. Contact","pc.s10.p1":"For any question regarding this policy or to exercise your rights:","pc.s10.b1":"<strong>Data Protection Officer — ORIM</strong>","pc.s10.b3":"Response time: 30 days maximum (Article 12 GDPR)","pc.f.home":"Home","pc.f.biblio":"Library","pc.f.mentions":"Legal notice","pc.f.privacy":"Privacy Policy"},"es":{"pc.back":"&larr; Volver al sitio ORIM","pc.kicker":"Asociación ORIM · Ginebra","pc.title":"Política de privacidad","pc.updated":"Última actualización: 16 de marzo de 2026 — conforme al RGPD (UE 2016/679), a la nLPD (Suiza) y a las recomendaciones de la CNIL","pc.toc.h":"Índice","pc.toc.1":"Responsable del tratamiento","pc.toc.2":"Datos recopilados","pc.toc.3":"Finalidades y bases jurídicas","pc.toc.4":"Plazo de conservación","pc.toc.5":"Destinatarios y transferencias","pc.toc.6":"Sus derechos","pc.toc.7":"Política de cookies","pc.toc.8":"Seguridad","pc.toc.9":"Modificaciones","pc.toc.10":"Contacto","pc.s1.h":"1. Responsable del tratamiento","pc.s1.b2":"Responsable: Marcel O. Chevalley, Presidente","pc.s1.p":"La Asociación ORIM, de derecho suizo (art. 60 CC), es la única responsable del tratamiento de los datos recopilados a través de este sitio.","pc.s2.h":"2. Datos recopilados","pc.s2.h1":"Datos que usted nos facilita","pc.s2.a1":"Nombre y apellidos","pc.s2.a2":"Dirección de correo electrónico","pc.s2.a3":"Mensaje y objeto de la solicitud (formulario de contacto)","pc.s2.a4":"Datos relativos a una inscripción o a un programa (si procede)","pc.s2.h2":"Datos recopilados automáticamente","pc.s2.b1":"Dirección IP (anonimizada)","pc.s2.b2":"Tipo y versión del navegador","pc.s2.b3":"Páginas visitadas y duración de la visita (datos de análisis)","pc.s2.b4":"Referente (página desde la que ha llegado)","pc.s2.p":"No recopilamos datos de salud en el sentido de los datos sensibles (artículo 9 del RGPD) a través de este sitio. La información compartida en el marco de nuestros programas se trata con un nivel de protección reforzado y sobre la base del consentimiento explícito.","pc.s3.h":"3. Finalidades y bases jurídicas","pc.s3.th1":"Finalidad","pc.s3.th2":"Base jurídica (RGPD)","pc.s3.r1a":"Responder a sus solicitudes de contacto","pc.s3.r1b":"Interés legítimo / ejecución de un contrato","pc.s3.r2a":"Gestión de las inscripciones a los programas ORIM","pc.s3.r2b":"Ejecución de un contrato","pc.s3.r3a":"Envío del boletín informativo (si está suscrito)","pc.s3.r3b":"Consentimiento explícito","pc.s3.r4a":"Estadísticas de visitas (anonimizadas)","pc.s3.r4b":"Interés legítimo","pc.s3.r5a":"Cumplimiento legal y contable","pc.s3.r5b":"Obligación legal","pc.s4.h":"4. Plazo de conservación","pc.s4.l1":"<strong>Formulario de contacto:</strong> 3 años a partir del último contacto","pc.s4.l2":"<strong>Datos de clientes (contratos, facturas):</strong> 10 años (obligaciones contables)","pc.s4.l3":"<strong>Boletín informativo:</strong> hasta la baja o 3 años sin apertura","pc.s4.l4":"<strong>Registros de conexión:</strong> 12 meses como máximo","pc.s4.l5":"<strong>Cookies:</strong> según su naturaleza (véase la sección 7)","pc.s4.p":"Al vencer estos plazos, sus datos se suprimen o anonimizan de manera segura.","pc.s5.h":"5. Destinatarios y transferencias","pc.s5.p1":"Sus datos pueden transmitirse a los siguientes encargados del tratamiento, en el marco estricto de las finalidades descritas anteriormente:","pc.s5.l1":"<strong>GitHub, Inc.</strong> — alojamiento del sitio (Estados Unidos, cubierto por las cláusulas contractuales tipo de la UE)","pc.s5.l2":"<strong>Proveedor de envío de correos</strong> — en caso de boletín informativo (por precisar en el momento de su implementación)","pc.s5.p2":"Sus datos nunca se venden ni se alquilan a terceros. Toda transferencia fuera de la Unión Europea se rige por las garantías adecuadas previstas por el RGPD.","pc.s5.p3":"En caso de transferencia hacia Suiza, este país se beneficia de una decisión de adecuación de la Comisión Europea.","pc.s6.h":"6. Sus derechos","pc.s6.p1":"De conformidad con el RGPD, usted dispone de los siguientes derechos:","pc.s6.c1t":"Derecho de acceso","pc.s6.c1d":"Obtener una copia de sus datos personales que conservamos.","pc.s6.c2t":"Derecho de rectificación","pc.s6.c2d":"Corregir datos inexactos o incompletos.","pc.s6.c3t":"Derecho de supresión","pc.s6.c3d":"Solicitar la supresión de sus datos («derecho al olvido»).","pc.s6.c4t":"Derecho a la portabilidad","pc.s6.c4d":"Recibir sus datos en un formato estructurado y legible.","pc.s6.c5t":"Derecho de oposición","pc.s6.c5d":"Oponerse a un tratamiento basado en el interés legítimo.","pc.s6.c6t":"Derecho a la limitación","pc.s6.c6d":"Suspender temporalmente el tratamiento de sus datos.","pc.s6.p2":"Para ejercer estos derechos, contáctenos en <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> con un documento de identidad. Responderemos en un plazo de un mes (prorrogable dos meses para las solicitudes complejas).","pc.s6.p3":"También tiene derecho a presentar una reclamación ante la <strong>CNIL</strong> (www.cnil.fr) o ante el <strong>PFPDT</strong> suizo (www.edoeb.admin.ch).","pc.s6.h3":"Cumplimiento de la nLPD (Suiza)","pc.s6.p4":"Al ser la Asociación ORIM de derecho suizo, el tratamiento de los datos también cumple con la nueva Ley Federal de Protección de Datos (nLPD), que entró en vigor el 1 de septiembre de 2023. En particular:","pc.s6.n1":"Las personas concernidas son informadas de manera transparente antes de cualquier tratamiento","pc.s6.n2":"El tratamiento se limita a las finalidades comunicadas (principio de finalidad)","pc.s6.n3":"Los datos solo se conservan durante el tiempo necesario (principio de proporcionalidad)","pc.s6.n4":"Las medidas técnicas y organizativas garantizan la seguridad de los datos (art. 8 nLPD)","pc.s6.n5":"Toda violación de la seguridad de los datos se comunica al PFPDT a la mayor brevedad (art. 24 nLPD)","pc.s7.h":"7. Política de cookies","pc.s7.p1":"Una cookie es un pequeño archivo de texto que se deposita en su dispositivo. Utilizamos únicamente las siguientes cookies:","pc.s7.h1":"Cookies estrictamente necesarias (no requieren consentimiento)","pc.s7.th1":"Nombre","pc.s7.th2":"Finalidad","pc.s7.th3":"Duración","pc.s7.r1b":"Memorizar su elección de consentimiento de cookies","pc.s7.r1c":"12 meses","pc.s7.h2":"Cookies analíticas (con consentimiento)","pc.s7.p2":"Si usted lo consiente, utilizamos herramientas de análisis de audiencia para mejorar el sitio. Estas herramientas anonimizan su dirección IP y no permiten identificarlo personalmente.","pc.s7.h3":"Cookies de terceros","pc.s7.p3":"Este sitio puede cargar recursos desde Google Fonts (tipografías). Estas cargas pueden depositar cookies o recopilar datos técnicos.","pc.s7.h4":"Gestionar sus preferencias","pc.s7.p4":"Puede modificar en cualquier momento sus preferencias de cookies mediante los ajustes de su navegador.","pc.s8.h":"8. Seguridad","pc.s8.p1":"Aplicamos medidas técnicas y organizativas apropiadas para proteger sus datos contra todo acceso no autorizado, pérdida, destrucción o alteración:","pc.s8.l1":"Conexión segura HTTPS (TLS) en todo el sitio","pc.s8.l2":"Acceso a los datos restringido a las personas autorizadas","pc.s8.l3":"Ningún dato de pago almacenado en nuestros servidores","pc.s8.p2":"En caso de violación de datos que pueda entrañar un riesgo elevado para sus derechos y libertades, se lo informaremos a la mayor brevedad de conformidad con el artículo 34 del RGPD.","pc.s9.h":"9. Modificaciones de la política","pc.s9.p1":"Nos reservamos el derecho de modificar esta política en cualquier momento, en particular para cumplir con la evolución de la normativa. La fecha de la última actualización se indica en la parte superior de la página.","pc.s9.p2":"En caso de modificación sustancial, se lo informaremos por correo electrónico (si está suscrito a nuestro boletín informativo) o mediante un aviso visible en el sitio.","pc.s10.h":"10. Contacto","pc.s10.p1":"Para cualquier pregunta relativa a esta política o para ejercer sus derechos:","pc.s10.b1":"<strong>Responsable de protección de datos — ORIM</strong>","pc.s10.b3":"Plazo de respuesta: 30 días como máximo (artículo 12 del RGPD)","pc.f.home":"Inicio","pc.f.biblio":"Biblioteca","pc.f.mentions":"Aviso legal","pc.f.privacy":"Política de privacidad"},"de":{"pc.back":"&larr; Zurück zur ORIM-Website","pc.kicker":"Verein ORIM · Genf","pc.title":"Datenschutzerklärung","pc.updated":"Letzte Aktualisierung: 16. März 2026 — konform mit der DSGVO (EU 2016/679), dem revidierten DSG (Schweiz) und den Empfehlungen der CNIL","pc.toc.h":"Inhaltsverzeichnis","pc.toc.1":"Verantwortlicher für die Verarbeitung","pc.toc.2":"Erhobene Daten","pc.toc.3":"Zwecke und Rechtsgrundlagen","pc.toc.4":"Aufbewahrungsdauer","pc.toc.5":"Empfänger und Übermittlungen","pc.toc.6":"Ihre Rechte","pc.toc.7":"Cookie-Richtlinie","pc.toc.8":"Sicherheit","pc.toc.9":"Änderungen","pc.toc.10":"Kontakt","pc.s1.h":"1. Verantwortlicher für die Verarbeitung","pc.s1.b2":"Verantwortlicher: Marcel O. Chevalley, Präsident","pc.s1.p":"Der Verein ORIM nach schweizerischem Recht (Art. 60 ZGB) ist der alleinige Verantwortliche für die Verarbeitung der über diese Website erhobenen Daten.","pc.s2.h":"2. Erhobene Daten","pc.s2.h1":"Daten, die Sie uns übermitteln","pc.s2.a1":"Name und Vorname","pc.s2.a2":"E-Mail-Adresse","pc.s2.a3":"Nachricht und Betreff der Anfrage (Kontaktformular)","pc.s2.a4":"Daten im Zusammenhang mit einer Anmeldung oder einem Programm (sofern zutreffend)","pc.s2.h2":"Automatisch erhobene Daten","pc.s2.b1":"IP-Adresse (anonymisiert)","pc.s2.b2":"Typ und Version des Browsers","pc.s2.b3":"Besuchte Seiten und Besuchsdauer (Analysedaten)","pc.s2.b4":"Referrer (Seite, von der Sie gekommen sind)","pc.s2.p":"Wir erheben über diese Website keine Gesundheitsdaten im Sinne besonderer Kategorien personenbezogener Daten (Artikel 9 DSGVO). Die im Rahmen unserer Programme geteilten Informationen werden mit einem erhöhten Schutzniveau und auf der Grundlage einer ausdrücklichen Einwilligung verarbeitet.","pc.s3.h":"3. Zwecke und Rechtsgrundlagen","pc.s3.th1":"Zweck","pc.s3.th2":"Rechtsgrundlage (DSGVO)","pc.s3.r1a":"Beantwortung Ihrer Kontaktanfragen","pc.s3.r1b":"Berechtigtes Interesse / Vertragserfüllung","pc.s3.r2a":"Verwaltung der Anmeldungen zu den ORIM-Programmen","pc.s3.r2b":"Vertragserfüllung","pc.s3.r3a":"Versand des Newsletters (bei Abonnement)","pc.s3.r3b":"Ausdrückliche Einwilligung","pc.s3.r4a":"Besuchsstatistiken (anonymisiert)","pc.s3.r4b":"Berechtigtes Interesse","pc.s3.r5a":"Gesetzliche und buchhalterische Konformität","pc.s3.r5b":"Rechtliche Verpflichtung","pc.s4.h":"4. Aufbewahrungsdauer","pc.s4.l1":"<strong>Kontaktformular:</strong> 3 Jahre ab dem letzten Kontakt","pc.s4.l2":"<strong>Kundendaten (Verträge, Rechnungen):</strong> 10 Jahre (buchhalterische Pflichten)","pc.s4.l3":"<strong>Newsletter:</strong> bis zur Abmeldung oder 3 Jahre ohne Öffnung","pc.s4.l4":"<strong>Verbindungsprotokolle:</strong> maximal 12 Monate","pc.s4.l5":"<strong>Cookies:</strong> je nach Art (siehe Abschnitt 7)","pc.s4.p":"Nach Ablauf dieser Fristen werden Ihre Daten auf sichere Weise gelöscht oder anonymisiert.","pc.s5.h":"5. Empfänger und Übermittlungen","pc.s5.p1":"Ihre Daten können den folgenden Auftragsverarbeitern im strikten Rahmen der oben beschriebenen Zwecke übermittelt werden:","pc.s5.l1":"<strong>GitHub, Inc.</strong> — Hosting der Website (Vereinigte Staaten, abgedeckt durch die EU-Standardvertragsklauseln)","pc.s5.l2":"<strong>E-Mail-Dienstleister</strong> — im Falle eines Newsletters (bei der Einrichtung zu präzisieren)","pc.s5.p2":"Ihre Daten werden niemals an Dritte verkauft oder vermietet. Jede Übermittlung ausserhalb der Europäischen Union wird durch die von der DSGVO vorgesehenen geeigneten Garantien geregelt.","pc.s5.p3":"Im Falle einer Übermittlung in die Schweiz verfügt dieses Land über einen Angemessenheitsbeschluss der Europäischen Kommission.","pc.s6.h":"6. Ihre Rechte","pc.s6.p1":"Gemäss der DSGVO stehen Ihnen die folgenden Rechte zu:","pc.s6.c1t":"Auskunftsrecht","pc.s6.c1d":"Eine Kopie Ihrer bei uns gespeicherten personenbezogenen Daten erhalten.","pc.s6.c2t":"Recht auf Berichtigung","pc.s6.c2d":"Unrichtige oder unvollständige Daten berichtigen lassen.","pc.s6.c3t":"Recht auf Löschung","pc.s6.c3d":"Die Löschung Ihrer Daten verlangen (« Recht auf Vergessenwerden »).","pc.s6.c4t":"Recht auf Datenübertragbarkeit","pc.s6.c4d":"Ihre Daten in einem strukturierten und lesbaren Format erhalten.","pc.s6.c5t":"Widerspruchsrecht","pc.s6.c5d":"Einer auf dem berechtigten Interesse beruhenden Verarbeitung widersprechen.","pc.s6.c6t":"Recht auf Einschränkung","pc.s6.c6d":"Die Verarbeitung Ihrer Daten vorübergehend aussetzen.","pc.s6.p2":"Um diese Rechte auszuüben, kontaktieren Sie uns unter <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> mit einem Ausweisdokument. Wir antworten innerhalb einer Frist von einem Monat (bei komplexen Anfragen um zwei Monate verlängerbar).","pc.s6.p3":"Sie haben ausserdem das Recht, eine Beschwerde bei der <strong>CNIL</strong> (www.cnil.fr) oder beim schweizerischen <strong>EDÖB</strong> (www.edoeb.admin.ch) einzureichen.","pc.s6.h3":"Konformität mit dem revidierten DSG (Schweiz)","pc.s6.p4":"Da der Verein ORIM dem schweizerischen Recht untersteht, erfolgt die Datenverarbeitung auch in Übereinstimmung mit dem neuen Bundesgesetz über den Datenschutz (revidiertes DSG), das am 1. September 2023 in Kraft getreten ist. Insbesondere:","pc.s6.n1":"Die betroffenen Personen werden vor jeder Verarbeitung transparent informiert","pc.s6.n2":"Die Verarbeitung ist auf die mitgeteilten Zwecke beschränkt (Grundsatz der Zweckbindung)","pc.s6.n3":"Die Daten werden nur so lange aufbewahrt, wie es erforderlich ist (Grundsatz der Verhältnismässigkeit)","pc.s6.n4":"Die technischen und organisatorischen Massnahmen gewährleisten die Datensicherheit (Art. 8 revidiertes DSG)","pc.s6.n5":"Jede Verletzung der Datensicherheit wird dem EDÖB so rasch als möglich gemeldet (Art. 24 revidiertes DSG)","pc.s7.h":"7. Cookie-Richtlinie","pc.s7.p1":"Ein Cookie ist eine kleine Textdatei, die auf Ihrem Endgerät abgelegt wird. Wir verwenden ausschliesslich die folgenden Cookies:","pc.s7.h1":"Unbedingt erforderliche Cookies (keine Einwilligung erforderlich)","pc.s7.th1":"Name","pc.s7.th2":"Zweck","pc.s7.th3":"Dauer","pc.s7.r1b":"Speicherung Ihrer Cookie-Einwilligungsauswahl","pc.s7.r1c":"12 Monate","pc.s7.h2":"Analyse-Cookies (mit Einwilligung)","pc.s7.p2":"Sofern Sie einwilligen, verwenden wir Werkzeuge zur Besucheranalyse, um die Website zu verbessern. Diese Werkzeuge anonymisieren Ihre IP-Adresse und ermöglichen keine persönliche Identifizierung.","pc.s7.h3":"Cookies von Drittanbietern","pc.s7.p3":"Diese Website kann Ressourcen von Google Fonts (Schriftarten) laden. Diese Ladevorgänge können Cookies setzen oder technische Daten erheben.","pc.s7.h4":"Ihre Einstellungen verwalten","pc.s7.p4":"Sie können Ihre Cookie-Einstellungen jederzeit über die Einstellungen Ihres Browsers ändern.","pc.s8.h":"8. Sicherheit","pc.s8.p1":"Wir treffen geeignete technische und organisatorische Massnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust, Zerstörung oder Veränderung zu schützen:","pc.s8.l1":"Gesicherte HTTPS-Verbindung (TLS) auf der gesamten Website","pc.s8.l2":"Datenzugriff beschränkt auf berechtigte Personen","pc.s8.l3":"Keine Zahlungsdaten auf unseren Servern gespeichert","pc.s8.p2":"Im Falle einer Datenschutzverletzung, die voraussichtlich ein hohes Risiko für Ihre Rechte und Freiheiten zur Folge hat, informieren wir Sie so rasch als möglich gemäss Artikel 34 DSGVO.","pc.s9.h":"9. Änderungen der Richtlinie","pc.s9.p1":"Wir behalten uns das Recht vor, diese Richtlinie jederzeit zu ändern, insbesondere um uns an die Entwicklung der Rechtsvorschriften anzupassen. Das Datum der letzten Aktualisierung ist am Seitenanfang angegeben.","pc.s9.p2":"Im Falle einer wesentlichen Änderung informieren wir Sie per E-Mail (sofern Sie unseren Newsletter abonniert haben) oder durch einen auf der Website sichtbaren Hinweis.","pc.s10.h":"10. Kontakt","pc.s10.p1":"Für alle Fragen zu dieser Richtlinie oder zur Ausübung Ihrer Rechte:","pc.s10.b1":"<strong>Datenschutzverantwortlicher — ORIM</strong>","pc.s10.b3":"Antwortfrist: maximal 30 Tage (Artikel 12 DSGVO)","pc.f.home":"Startseite","pc.f.biblio":"Bibliothek","pc.f.mentions":"Impressum","pc.f.privacy":"Datenschutzerklärung"},"pt":{"pc.back":"&larr; Voltar ao site ORIM","pc.kicker":"Associação ORIM · Genebra","pc.title":"Política de privacidade","pc.updated":"Última atualização: 16 de março de 2026 — em conformidade com o RGPD (UE 2016/679), a nLPD (Suíça) e as recomendações da CNIL","pc.toc.h":"Índice","pc.toc.1":"Responsável pelo tratamento","pc.toc.2":"Dados recolhidos","pc.toc.3":"Finalidades e bases legais","pc.toc.4":"Prazo de conservação","pc.toc.5":"Destinatários e transferências","pc.toc.6":"Os seus direitos","pc.toc.7":"Política de cookies","pc.toc.8":"Segurança","pc.toc.9":"Alterações","pc.toc.10":"Contacto","pc.s1.h":"1. Responsável pelo tratamento","pc.s1.b2":"Responsável: Marcel O. Chevalley, Presidente","pc.s1.p":"A Associação ORIM, de direito suíço (art. 60 CC), é a única responsável pelo tratamento dos dados recolhidos através deste site.","pc.s2.h":"2. Dados recolhidos","pc.s2.h1":"Dados que nos fornece","pc.s2.a1":"Nome e apelido","pc.s2.a2":"Endereço de email","pc.s2.a3":"Mensagem e objeto do pedido (formulário de contacto)","pc.s2.a4":"Dados relativos a uma inscrição ou a um programa (se aplicável)","pc.s2.h2":"Dados recolhidos automaticamente","pc.s2.b1":"Endereço IP (anonimizado)","pc.s2.b2":"Tipo e versão do navegador","pc.s2.b3":"Páginas visitadas e duração da visita (dados de análise)","pc.s2.b4":"Referenciador (página a partir da qual chegou)","pc.s2.p":"Não recolhemos dados de saúde na aceção dos dados sensíveis (artigo 9.º do RGPD) através deste site. As informações partilhadas no âmbito dos nossos programas são tratadas com um nível de proteção reforçado e com base no consentimento explícito.","pc.s3.h":"3. Finalidades e bases legais","pc.s3.th1":"Finalidade","pc.s3.th2":"Base legal (RGPD)","pc.s3.r1a":"Responder aos seus pedidos de contacto","pc.s3.r1b":"Interesse legítimo / execução de um contrato","pc.s3.r2a":"Gestão das inscrições nos programas ORIM","pc.s3.r2b":"Execução de um contrato","pc.s3.r3a":"Envio da newsletter (se subscrita)","pc.s3.r3b":"Consentimento explícito","pc.s3.r4a":"Estatísticas de frequência (anonimizadas)","pc.s3.r4b":"Interesse legítimo","pc.s3.r5a":"Conformidade legal e contabilística","pc.s3.r5b":"Obrigação legal","pc.s4.h":"4. Prazo de conservação","pc.s4.l1":"<strong>Formulário de contacto:</strong> 3 anos a contar do último contacto","pc.s4.l2":"<strong>Dados de clientes (contratos, faturas):</strong> 10 anos (obrigações contabilísticas)","pc.s4.l3":"<strong>Newsletter:</strong> até ao cancelamento da subscrição ou 3 anos sem abertura","pc.s4.l4":"<strong>Registos de ligação:</strong> 12 meses no máximo","pc.s4.l5":"<strong>Cookies:</strong> consoante a sua natureza (ver secção 7)","pc.s4.p":"Findos estes prazos, os seus dados são eliminados ou anonimizados de forma segura.","pc.s5.h":"5. Destinatários e transferências","pc.s5.p1":"Os seus dados podem ser transmitidos aos seguintes subcontratantes, no âmbito estrito das finalidades descritas acima:","pc.s5.l1":"<strong>GitHub, Inc.</strong> — alojamento do site (Estados Unidos, coberto pelas cláusulas contratuais-tipo da UE)","pc.s5.l2":"<strong>Prestador de emailing</strong> — em caso de newsletter (a especificar na sua implementação)","pc.s5.p2":"Os seus dados nunca são vendidos nem alugados a terceiros. Qualquer transferência para fora da União Europeia é enquadrada pelas garantias adequadas previstas pelo RGPD.","pc.s5.p3":"Em caso de transferência para a Suíça, este país beneficia de uma decisão de adequação da Comissão Europeia.","pc.s6.h":"6. Os seus direitos","pc.s6.p1":"Nos termos do RGPD, dispõe dos seguintes direitos:","pc.s6.c1t":"Direito de acesso","pc.s6.c1d":"Obter uma cópia dos seus dados pessoais que detemos.","pc.s6.c2t":"Direito de retificação","pc.s6.c2d":"Corrigir dados inexatos ou incompletos.","pc.s6.c3t":"Direito ao apagamento","pc.s6.c3d":"Solicitar a eliminação dos seus dados («direito a ser esquecido»).","pc.s6.c4t":"Direito à portabilidade","pc.s6.c4d":"Receber os seus dados num formato estruturado e legível.","pc.s6.c5t":"Direito de oposição","pc.s6.c5d":"Opor-se a um tratamento fundamentado no interesse legítimo.","pc.s6.c6t":"Direito à limitação","pc.s6.c6d":"Suspender temporariamente o tratamento dos seus dados.","pc.s6.p2":"Para exercer estes direitos, contacte-nos através de <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> com um documento de identificação. Responderemos no prazo de um mês (prorrogável por dois meses para os pedidos complexos).","pc.s6.p3":"Tem igualmente o direito de apresentar uma reclamação junto da <strong>CNIL</strong> (www.cnil.fr) ou junto do <strong>PFPDT</strong> suíço (www.edoeb.admin.ch).","pc.s6.h3":"Conformidade com a nLPD (Suíça)","pc.s6.p4":"Sendo a Associação ORIM de direito suíço, o tratamento dos dados está igualmente em conformidade com a nova Lei federal sobre a proteção de dados (nLPD), que entrou em vigor em 1 de setembro de 2023. Em particular:","pc.s6.n1":"As pessoas em causa são informadas de forma transparente antes de qualquer tratamento","pc.s6.n2":"O tratamento limita-se às finalidades comunicadas (princípio da finalidade)","pc.s6.n3":"Os dados são conservados apenas pelo tempo necessário (princípio da proporcionalidade)","pc.s6.n4":"As medidas técnicas e organizacionais garantem a segurança dos dados (art. 8 nLPD)","pc.s6.n5":"Qualquer violação da segurança dos dados é comunicada ao PFPDT com a maior brevidade possível (art. 24 nLPD)","pc.s7.h":"7. Política de cookies","pc.s7.p1":"Um cookie é um pequeno ficheiro de texto colocado no seu terminal. Utilizamos unicamente os seguintes cookies:","pc.s7.h1":"Cookies estritamente necessários (não é necessário consentimento)","pc.s7.th1":"Nome","pc.s7.th2":"Finalidade","pc.s7.th3":"Duração","pc.s7.r1b":"Memorizar a sua escolha de consentimento aos cookies","pc.s7.r1c":"12 meses","pc.s7.h2":"Cookies analíticos (com consentimento)","pc.s7.p2":"Se der o seu consentimento, utilizamos ferramentas de análise de audiência para melhorar o site. Estas ferramentas anonimizam o seu endereço IP e não permitem identificá-lo pessoalmente.","pc.s7.h3":"Cookies de terceiros","pc.s7.p3":"Este site pode carregar recursos a partir do Google Fonts (tipos de letra). Estes carregamentos podem colocar cookies ou recolher dados técnicos.","pc.s7.h4":"Gerir as suas preferências","pc.s7.p4":"Pode a qualquer momento alterar as suas preferências de cookies através das definições do seu navegador.","pc.s8.h":"8. Segurança","pc.s8.p1":"Implementamos medidas técnicas e organizacionais adequadas para proteger os seus dados contra qualquer acesso não autorizado, perda, destruição ou alteração:","pc.s8.l1":"Ligação segura HTTPS (TLS) em todo o site","pc.s8.l2":"Acesso aos dados restrito às pessoas autorizadas","pc.s8.l3":"Nenhum dado de pagamento armazenado nos nossos servidores","pc.s8.p2":"Em caso de violação de dados suscetível de gerar um risco elevado para os seus direitos e liberdades, informá-lo-emos com a maior brevidade possível, nos termos do artigo 34.º do RGPD.","pc.s9.h":"9. Alterações da política","pc.s9.p1":"Reservamo-nos o direito de alterar esta política a qualquer momento, nomeadamente para nos conformarmos com a evolução da regulamentação. A data da última atualização é indicada no topo da página.","pc.s9.p2":"Em caso de alteração substancial, informá-lo-emos por email (se for subscritor da nossa newsletter) ou através de um aviso visível no site.","pc.s10.h":"10. Contacto","pc.s10.p1":"Para qualquer questão relativa a esta política ou para exercer os seus direitos:","pc.s10.b1":"<strong>Responsável pela proteção de dados — ORIM</strong>","pc.s10.b3":"Prazo de resposta: 30 dias no máximo (artigo 12.º do RGPD)","pc.f.home":"Início","pc.f.biblio":"Biblioteca","pc.f.mentions":"Menções legais","pc.f.privacy":"Política de privacidade"},"it":{"pc.back":"&larr; Torna al sito ORIM","pc.kicker":"Associazione ORIM · Ginevra","pc.title":"Informativa sulla privacy","pc.updated":"Ultimo aggiornamento: 16 marzo 2026 — conforme al GDPR (UE 2016/679), alla nLPD (Svizzera) e alle raccomandazioni della CNIL","pc.toc.h":"Indice","pc.toc.1":"Titolare del trattamento","pc.toc.2":"Dati raccolti","pc.toc.3":"Finalità e basi giuridiche","pc.toc.4":"Periodo di conservazione","pc.toc.5":"Destinatari e trasferimenti","pc.toc.6":"I vostri diritti","pc.toc.7":"Politica sui cookie","pc.toc.8":"Sicurezza","pc.toc.9":"Modifiche","pc.toc.10":"Contatti","pc.s1.h":"1. Titolare del trattamento","pc.s1.b2":"Titolare: Marcel O. Chevalley, Presidente","pc.s1.p":"L'Associazione ORIM, di diritto svizzero (art. 60 CC), è l'unico titolare del trattamento dei dati raccolti tramite questo sito.","pc.s2.h":"2. Dati raccolti","pc.s2.h1":"Dati che ci fornite","pc.s2.a1":"Nome e cognome","pc.s2.a2":"Indirizzo email","pc.s2.a3":"Messaggio e oggetto della richiesta (modulo di contatto)","pc.s2.a4":"Dati relativi a un'iscrizione o a un programma (se applicabile)","pc.s2.h2":"Dati raccolti automaticamente","pc.s2.b1":"Indirizzo IP (anonimizzato)","pc.s2.b2":"Tipo e versione del browser","pc.s2.b3":"Pagine visitate e durata della visita (dati di analisi)","pc.s2.b4":"Referrer (pagina da cui siete arrivati)","pc.s2.p":"Non raccogliamo dati sanitari ai sensi delle categorie particolari di dati (articolo 9 del GDPR) tramite questo sito. Le informazioni condivise nell'ambito dei nostri programmi sono trattate con un livello di protezione rafforzato e sulla base del consenso esplicito.","pc.s3.h":"3. Finalità e basi giuridiche","pc.s3.th1":"Finalità","pc.s3.th2":"Base giuridica (GDPR)","pc.s3.r1a":"Rispondere alle vostre richieste di contatto","pc.s3.r1b":"Interesse legittimo / esecuzione di un contratto","pc.s3.r2a":"Gestione delle iscrizioni ai programmi ORIM","pc.s3.r2b":"Esecuzione di un contratto","pc.s3.r3a":"Invio della newsletter (se sottoscritta)","pc.s3.r3b":"Consenso esplicito","pc.s3.r4a":"Statistiche di accesso (anonimizzate)","pc.s3.r4b":"Interesse legittimo","pc.s3.r5a":"Conformità legale e contabile","pc.s3.r5b":"Obbligo di legge","pc.s4.h":"4. Periodo di conservazione","pc.s4.l1":"<strong>Modulo di contatto:</strong> 3 anni a partire dall'ultimo contatto","pc.s4.l2":"<strong>Dati dei clienti (contratti, fatture):</strong> 10 anni (obblighi contabili)","pc.s4.l3":"<strong>Newsletter:</strong> fino alla cancellazione o 3 anni senza aperture","pc.s4.l4":"<strong>Log di connessione:</strong> 12 mesi al massimo","pc.s4.l5":"<strong>Cookie:</strong> secondo la loro natura (vedere sezione 7)","pc.s4.p":"Alla scadenza di questi termini, i vostri dati vengono cancellati o anonimizzati in modo sicuro.","pc.s5.h":"5. Destinatari e trasferimenti","pc.s5.p1":"I vostri dati possono essere trasmessi ai seguenti responsabili del trattamento, nell'ambito rigoroso delle finalità descritte sopra:","pc.s5.l1":"<strong>GitHub, Inc.</strong> — hosting del sito (Stati Uniti, coperto dalle clausole contrattuali tipo dell'UE)","pc.s5.l2":"<strong>Fornitore di servizi di emailing</strong> — in caso di newsletter (da precisare al momento dell'attivazione)","pc.s5.p2":"I vostri dati non vengono mai venduti né ceduti a terzi. Ogni trasferimento al di fuori dell'Unione Europea è disciplinato dalle garanzie appropriate previste dal GDPR.","pc.s5.p3":"In caso di trasferimento verso la Svizzera, tale Paese beneficia di una decisione di adeguatezza della Commissione Europea.","pc.s6.h":"6. I vostri diritti","pc.s6.p1":"In conformità al GDPR, disponete dei seguenti diritti:","pc.s6.c1t":"Diritto di accesso","pc.s6.c1d":"Ottenere una copia dei vostri dati personali in nostro possesso.","pc.s6.c2t":"Diritto di rettifica","pc.s6.c2d":"Correggere dati inesatti o incompleti.","pc.s6.c3t":"Diritto alla cancellazione","pc.s6.c3d":"Richiedere la cancellazione dei vostri dati («diritto all'oblio»).","pc.s6.c4t":"Diritto alla portabilità","pc.s6.c4d":"Ricevere i vostri dati in un formato strutturato e leggibile.","pc.s6.c5t":"Diritto di opposizione","pc.s6.c5d":"Opporvi a un trattamento fondato sull'interesse legittimo.","pc.s6.c6t":"Diritto di limitazione","pc.s6.c6d":"Sospendere temporaneamente il trattamento dei vostri dati.","pc.s6.p2":"Per esercitare questi diritti, contattateci all'indirizzo <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> allegando un documento d'identità. Risponderemo entro un mese (prorogabile di due mesi per le richieste complesse).","pc.s6.p3":"Avete inoltre il diritto di presentare un reclamo alla <strong>CNIL</strong> (www.cnil.fr) o all'<strong>IFPDT</strong> svizzero (www.edoeb.admin.ch).","pc.s6.h3":"Conformità nLPD (Svizzera)","pc.s6.p4":"Essendo l'Associazione ORIM di diritto svizzero, il trattamento dei dati è altresì conforme alla nuova Legge federale sulla protezione dei dati (nLPD), entrata in vigore il 1° settembre 2023. In particolare:","pc.s6.n1":"Le persone interessate sono informate in modo trasparente prima di ogni trattamento","pc.s6.n2":"Il trattamento è limitato alle finalità comunicate (principio di finalità)","pc.s6.n3":"I dati sono conservati solo per il tempo necessario (principio di proporzionalità)","pc.s6.n4":"Le misure tecniche e organizzative garantiscono la sicurezza dei dati (art. 8 nLPD)","pc.s6.n5":"Ogni violazione della sicurezza dei dati è notificata all'IFPDT nel più breve tempo possibile (art. 24 nLPD)","pc.s7.h":"7. Politica sui cookie","pc.s7.p1":"Un cookie è un piccolo file di testo depositato sul vostro dispositivo. Utilizziamo esclusivamente i seguenti cookie:","pc.s7.h1":"Cookie strettamente necessari (nessun consenso richiesto)","pc.s7.th1":"Nome","pc.s7.th2":"Finalità","pc.s7.th3":"Durata","pc.s7.r1b":"Memorizzare la vostra scelta di consenso ai cookie","pc.s7.r1c":"12 mesi","pc.s7.h2":"Cookie analitici (con consenso)","pc.s7.p2":"Se acconsentite, utilizziamo strumenti di analisi dell'audience per migliorare il sito. Questi strumenti anonimizzano il vostro indirizzo IP e non consentono di identificarvi personalmente.","pc.s7.h3":"Cookie di terze parti","pc.s7.p3":"Questo sito può caricare risorse da Google Fonts (caratteri tipografici). Tali caricamenti possono depositare cookie o raccogliere dati tecnici.","pc.s7.h4":"Gestire le vostre preferenze","pc.s7.p4":"Potete modificare in qualsiasi momento le vostre preferenze relative ai cookie tramite le impostazioni del vostro browser.","pc.s8.h":"8. Sicurezza","pc.s8.p1":"Adottiamo misure tecniche e organizzative appropriate per proteggere i vostri dati da qualsiasi accesso non autorizzato, perdita, distruzione o alterazione:","pc.s8.l1":"Connessione sicura HTTPS (TLS) sull'intero sito","pc.s8.l2":"Accesso ai dati limitato alle persone autorizzate","pc.s8.l3":"Nessun dato di pagamento memorizzato sui nostri server","pc.s8.p2":"In caso di violazione dei dati suscettibile di generare un rischio elevato per i vostri diritti e libertà, ve ne informeremo nel più breve tempo possibile in conformità all'articolo 34 del GDPR.","pc.s9.h":"9. Modifiche dell'informativa","pc.s9.p1":"Ci riserviamo il diritto di modificare questa informativa in qualsiasi momento, in particolare per conformarci all'evoluzione della normativa. La data dell'ultimo aggiornamento è indicata all'inizio della pagina.","pc.s9.p2":"In caso di modifica sostanziale, ve ne informeremo via email (se siete abbonati alla nostra newsletter) o mediante un avviso visibile sul sito.","pc.s10.h":"10. Contatti","pc.s10.p1":"Per qualsiasi domanda relativa a questa informativa o per esercitare i vostri diritti:","pc.s10.b1":"<strong>Responsabile della protezione dei dati — ORIM</strong>","pc.s10.b3":"Tempo di risposta: 30 giorni al massimo (articolo 12 GDPR)","pc.f.home":"Home","pc.f.biblio":"Biblioteca","pc.f.mentions":"Note legali","pc.f.privacy":"Informativa sulla privacy"}};
+var LANGS=["fr","en","es","de","pt","it"], lang="fr";
+function ui(k){var b=(typeof I18N!=="undefined")&&I18N[lang]; return (b&&b[k])||null;}
+function setLang(l){
+  if(LANGS.indexOf(l)===-1)l="fr"; lang=l; document.documentElement.lang=l;
+  try{localStorage.setItem("orim_pc_lang",l);}catch(e){}
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var v=ui(el.getAttribute("data-i18n")); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll("#langsw button").forEach(function(b){b.classList.toggle("on",b.dataset.l===l);});
 }
-function initParticles() { particles = Array.from({length: Math.floor(W * H / 9000)}, () => new Particle()); }
-initParticles();
-function drawParticles() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy;
-    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(0,180,216,${p.alpha})`; ctx.fill();
-  });
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120) {
-        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(0,180,216,${.12*(1-dist/120)})`; ctx.lineWidth = .5; ctx.stroke();
-      }
-    }
-  }
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
+document.getElementById("langsw").addEventListener("click",function(e){var b=e.target.closest("button[data-l]"); if(b)setLang(b.dataset.l);});
+var _s; try{_s=localStorage.getItem("orim_pc_lang");}catch(e){}
+setLang(_s||(navigator.language||"fr").slice(0,2));
 </script>
-
 </body>
 </html>

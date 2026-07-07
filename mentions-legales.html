@@ -1,379 +1,171 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mentions légales — ORIM</title>
-  <meta name="description" content="Mentions légales du site orimnutrition.org — Association ORIM Genève." />
-  <meta name="robots" content="noindex" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mentions légales — ORIM</title>
+<meta name="description" content="Mentions légales du site orimnutrition.org — Association ORIM Genève." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --serif:"Fraunces",ui-serif,Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --bench:#F4F7F6; --ink:#0F211F; --graphite:#556663; --hairline:#DCE6E4; --plate:#FFFFFF;
+    --abyss:#04100E; --ink-d:#060D0C; --panel:#0C1A18; --line-d:#16302C; --fg-d:#EAF4F2; --dim-d:#7FA39D;
+    --teal:#1BA8A6; --cyan:#38E1D6; --gold:#E6A817; --gold-hi:#F5C95A; --lteal:#E8F6F6; --lgold:#FDF5E0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bench);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+  a{color:var(--teal)}
 
-    :root {
-      --navy:  #0d1b2a;
-      --blue:  #1a4a7a;
-      --cyan:  #00b4d8;
-      --white: #f8fafc;
-      --gray:  #94a3b8;
-      --lgray: #1e2d3d;
-      --gold:  #c9a84c;
-    }
+  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:22px 0 34px;
+    background:radial-gradient(120% 150% at 80% 0%,#071A17 0%,var(--abyss) 48%,var(--ink-d) 100%);border-bottom:1px solid var(--line-d)}
+  header.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background:linear-gradient(var(--line-d) 1px,transparent 1px) 0 0/100% 42px,linear-gradient(90deg,var(--line-d) 1px,transparent 1px) 0 0/42px 100%;
+    -webkit-mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%);mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%)}
+  header.masthead .wrap{position:relative;z-index:1}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .backlink{color:var(--dim-d);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.04em;transition:color .2s}
+  .backlink:hover{color:var(--cyan)}
+  .langsw{display:flex;gap:2px;flex-shrink:0}
+  .langsw button{background:transparent;border:0;cursor:pointer;padding:5px 7px;color:var(--dim-d);font-family:var(--mono);font-size:12px;letter-spacing:.05em;border-radius:5px;transition:color .2s,background .2s}
+  .langsw button:hover{color:var(--fg-d);background:rgba(56,225,214,.08)}
+  .langsw button.on{color:var(--ink-d);background:var(--cyan);font-weight:500}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
+  .masthead h1{margin:8px 0 8px;font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:-.01em;line-height:1.05;
+    background:linear-gradient(180deg,#FFFFFF,var(--fg-d) 60%,var(--gold-hi) 140%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .masthead .updated{font-family:var(--mono);font-size:12px;color:var(--dim-d)}
 
-    html { scroll-behavior: smooth; }
+  main{padding:42px 0 70px}
+  .legal-section{margin-bottom:34px}
+  .legal-section h2{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--ink);margin-bottom:12px;padding-left:12px;border-left:3px solid var(--teal)}
+  .legal-section p{font-size:.95rem;color:var(--ink);margin-bottom:10px}
+  .legal-section ul{list-style:none;margin:8px 0 10px}
+  .legal-section li{font-size:.95rem;color:var(--ink);padding-left:18px;position:relative;margin-bottom:5px}
+  .legal-section li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
+  .info-box{background:var(--plate);border:1px solid var(--hairline);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;margin:12px 0}
+  .info-box p{margin-bottom:5px;font-size:.92rem}
+  .info-box p:last-child{margin-bottom:0}
+  .info-box .mono{font-family:var(--mono);font-size:.86rem}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      overflow-x: hidden;
-    }
-
-    #canvas-bg {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0; pointer-events: none;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 3rem;
-      background: rgba(13, 27, 42, 0.95);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 180, 216, 0.15);
-    }
-    .nav-logo {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.8rem; font-weight: 700;
-      background: linear-gradient(135deg, #00b4d8, #1a4a7a);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: .12em; text-decoration: none;
-    }
-    .nav-logo span { font-size: .7rem; display: block; letter-spacing: .25em; color: var(--gray); -webkit-text-fill-color: var(--gray); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--gray); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
-    .nav-links a:hover { color: var(--cyan); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      border: none; color: #fff; padding: .55rem 1.4rem;
-      border-radius: 2rem; font-size: .8rem; font-weight: 600;
-      letter-spacing: .08em; cursor: pointer; transition: opacity .2s;
-      text-decoration: none;
-    }
-    .nav-cta:hover { opacity: .85; }
-
-    /* ── PAGE CONTENT ── */
-    .page-wrapper {
-      position: relative; z-index: 1;
-      max-width: 860px; margin: 0 auto;
-      padding: 8rem 2rem 6rem;
-    }
-
-    .breadcrumb {
-      font-size: .78rem; color: var(--gray);
-      letter-spacing: .06em; margin-bottom: 2rem;
-    }
-    .breadcrumb a { color: var(--cyan); text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-
-    .page-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--white), var(--cyan));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: .5rem;
-    }
-    .page-updated {
-      font-size: .8rem; color: var(--gray);
-      margin-bottom: 3rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(0,180,216,.15);
-    }
-
-    .legal-section {
-      margin-bottom: 2.8rem;
-    }
-    .legal-section h2 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.25rem; font-weight: 600;
-      color: var(--cyan);
-      letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: 1rem;
-      padding-left: .8rem;
-      border-left: 3px solid var(--cyan);
-    }
-    .legal-section h3 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem; font-weight: 600;
-      color: var(--gold);
-      letter-spacing: .08em; text-transform: uppercase;
-      margin: 1.4rem 0 .6rem;
-    }
-    .legal-section p {
-      font-size: .9rem; line-height: 1.8;
-      color: rgba(248,250,252,.82);
-      margin-bottom: .8rem;
-    }
-    .legal-section ul {
-      list-style: none; margin: .6rem 0 .8rem 0;
-    }
-    .legal-section ul li {
-      font-size: .9rem; line-height: 1.8;
-      color: rgba(248,250,252,.82);
-      padding-left: 1.2rem;
-      position: relative; margin-bottom: .3rem;
-    }
-    .legal-section ul li::before {
-      content: '›'; position: absolute; left: 0;
-      color: var(--cyan); font-weight: 700;
-    }
-    a { color: var(--cyan); }
-    a:hover { text-decoration: underline; }
-
-    .info-box {
-      background: rgba(0,180,216,.06);
-      border: 1px solid rgba(0,180,216,.2);
-      border-radius: .75rem;
-      padding: 1.4rem 1.6rem;
-      margin: 1rem 0;
-    }
-    .info-box p { margin-bottom: .4rem; }
-    .info-box p:last-child { margin-bottom: 0; }
-
-    /* ── FOOTER ── */
-    footer {
-      position: relative; z-index: 1;
-      background: rgba(8,16,24,.95);
-      border-top: 1px solid rgba(0,180,216,.1);
-      padding: 3rem 2rem 2rem;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-    }
-    .footer-brand .nav-logo-foot {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 2rem; font-weight: 700;
-      background: linear-gradient(135deg, #00b4d8, #1a4a7a);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: .12em;
-    }
-    .footer-brand p { font-size: .82rem; color: var(--gray); line-height: 1.7; margin-top: .8rem; max-width: 260px; }
-    .footer-col h4 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: .8rem; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--cyan);
-      margin-bottom: 1.2rem;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: .6rem; }
-    .footer-col a { color: var(--gray); text-decoration: none; font-size: .82rem; transition: color .2s; }
-    .footer-col a:hover { color: var(--white); }
-    .footer-bottom {
-      max-width: 1200px; margin: 2rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,.05);
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: .75rem; color: var(--gray);
-      flex-wrap: wrap; gap: .5rem;
-    }
-    .footer-entities { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-    }
-  </style>
+  footer.foot{border-top:1px solid var(--hairline);background:#fff;color:var(--graphite);font-size:12.5px}
+  footer.foot .wrap{padding:22px 20px 28px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+  footer.foot .flinks{display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+  footer.foot a{color:var(--graphite)} footer.foot a:hover{color:var(--ink)}
+  footer.foot .brand{font-family:var(--serif);color:var(--teal);font-weight:600}
+</style>
 </head>
 <body>
-<!-- Access gate removed - site is now public -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html" class="backlink" data-i18n="ml.back">&larr; Retour au site ORIM</a>
+      <div class="langsw" id="langsw" role="group" aria-label="Langue">
+        <button data-l="fr">FR</button><button data-l="en">EN</button><button data-l="es">ES</button
+        ><button data-l="de">DE</button><button data-l="pt">PT</button><button data-l="it">IT</button>
+      </div>
+    </div>
+    <div class="kicker" data-i18n="ml.kicker">Association ORIM · Genève</div>
+    <h1 data-i18n="ml.title">Mentions légales</h1>
+    <div class="updated" data-i18n="ml.updated">Dernière mise à jour : 11 mars 2026</div>
+  </div>
+</header>
 
-
-<canvas id="canvas-bg"></canvas>
-
-<nav>
-  <a href="index.html" class="nav-logo">ORIM<span>Immuno-Métabolique</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html#mission">Notre Mission</a></li>
-    <li><a href="index.html#prestations">Prestations</a></li>
-    <li><a href="index.html#poles">Pôles</a></li>
-    <li><a href="index.html#marque">Marque ORIM™</a></li>
-    <li><a href="index.html#equipe">Équipe</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-  <a href="index.html#contact" class="nav-cta">Nous contacter</a>
-</nav>
-
-<main class="page-wrapper">
-
-  <p class="breadcrumb"><a href="index.html">Accueil</a> › Mentions légales</p>
-
-  <h1 class="page-title">Mentions légales</h1>
-  <p class="page-updated">Dernière mise à jour : 11 mars 2026</p>
-
-  <!-- 1. ÉDITEUR -->
+<main class="wrap">
   <div class="legal-section">
-    <h2>1. Éditeur du site</h2>
-    <p>Le site <strong>orimnutrition.org</strong> est édité par :</p>
-
+    <h2 data-i18n="ml.s1.h">1. Éditeur du site</h2>
+    <p data-i18n="ml.s1.p">Le site <strong>orimnutrition.org</strong> est édité par :</p>
     <div class="info-box">
       <p><strong>Association ORIM</strong></p>
-      <p>Association de droit suisse (art. 60 CC) — Genève, Suisse</p>
-      <p>Activité : Optimisation Résolutive Immuno-Métabolique — recherche et éducation en immunonutrition préventive</p>
-      <p>Responsable de publication : Marcel O. Chevalley, Président</p>
-      <p>Email : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></p>
+      <p data-i18n="ml.s1.b2">Association de droit suisse (art. 60 CC) — Genève, Suisse</p>
+      <p data-i18n="ml.s1.b3">Activité : Optimisation Résolutive Immuno-Métabolique — recherche et éducation en immunonutrition préventive</p>
+      <p data-i18n="ml.s1.b4">Responsable de publication : Marcel O. Chevalley, Président</p>
+      <p class="mono">Email : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></p>
     </div>
   </div>
 
-  <!-- 2. HÉBERGEUR -->
   <div class="legal-section">
-    <h2>2. Hébergeur</h2>
+    <h2 data-i18n="ml.s2.h">2. Hébergeur</h2>
     <div class="info-box">
       <p><strong>GitHub, Inc.</strong></p>
-      <p>88 Colin P Kelly Jr Street — San Francisco, CA 94107 — États-Unis</p>
-      <p>Site : <a href="https://github.com" target="_blank" rel="noopener">github.com</a></p>
-      <p>Service : GitHub Pages (hébergement de sites statiques)</p>
+      <p class="mono">88 Colin P Kelly Jr Street — San Francisco, CA 94107 — USA</p>
+      <p class="mono">github.com</p>
+      <p data-i18n="ml.s2.b4">Service : GitHub Pages (hébergement de sites statiques)</p>
     </div>
   </div>
 
-  <!-- 3. PROPRIÉTÉ INTELLECTUELLE -->
   <div class="legal-section">
-    <h2>3. Propriété intellectuelle</h2>
-    <p>L'ensemble du contenu de ce site (textes, graphiques, images, vidéos, logos, architecture) est protégé par le droit d'auteur et appartient à l'Association ORIM et/ou à Marcel Olivier Chevalley (titulaire de la marque ORIM™), sauf mention contraire explicite.</p>
-    <p>Toute reproduction, représentation, modification, publication ou adaptation, totale ou partielle, de quelque élément que ce soit du site, par quelque procédé que ce soit, est interdite sauf autorisation écrite préalable des titulaires des droits.</p>
+    <h2 data-i18n="ml.s3.h">3. Propriété intellectuelle</h2>
+    <p data-i18n="ml.s3.p1">L'ensemble du contenu de ce site (textes, graphiques, images, vidéos, logos, architecture) est protégé par le droit d'auteur et appartient à l'Association ORIM et/ou à Marcel Olivier Chevalley (titulaire de la marque ORIM™), sauf mention contraire explicite.</p>
+    <p data-i18n="ml.s3.p2">Toute reproduction, représentation, modification, publication ou adaptation, totale ou partielle, de quelque élément que ce soit du site, par quelque procédé que ce soit, est interdite sauf autorisation écrite préalable des titulaires des droits.</p>
   </div>
 
-  <!-- 4. RESPONSABILITÉ -->
   <div class="legal-section">
-    <h2>4. Limitation de responsabilité</h2>
-    <p>ORIM s'efforce de fournir des informations exactes et à jour. Toutefois, les informations publiées sur ce site ont un caractère éducatif et ne constituent en aucun cas un avis médical, un diagnostic ou une prescription.</p>
-    <p>ORIM décline toute responsabilité pour :</p>
+    <h2 data-i18n="ml.s4.h">4. Limitation de responsabilité</h2>
+    <p data-i18n="ml.s4.p1">ORIM s'efforce de fournir des informations exactes et à jour. Toutefois, les informations publiées sur ce site ont un caractère éducatif et ne constituent en aucun cas un avis médical, un diagnostic ou une prescription.</p>
+    <p data-i18n="ml.s4.p2">ORIM décline toute responsabilité pour :</p>
     <ul>
-      <li>Toute interruption ou indisponibilité du site</li>
-      <li>Tout dommage résultant d'une intrusion frauduleuse ou d'un virus</li>
-      <li>Le contenu des sites tiers vers lesquels pointent des liens hypertextes</li>
+      <li data-i18n="ml.s4.l1">Toute interruption ou indisponibilité du site</li>
+      <li data-i18n="ml.s4.l2">Tout dommage résultant d'une intrusion frauduleuse ou d'un virus</li>
+      <li data-i18n="ml.s4.l3">Le contenu des sites tiers vers lesquels pointent des liens hypertextes</li>
     </ul>
-    <p>En cas de problème de santé, consultez impérativement un professionnel de santé qualifié.</p>
+    <p data-i18n="ml.s4.p3">En cas de problème de santé, consultez impérativement un professionnel de santé qualifié.</p>
   </div>
 
-  <!-- 5. DONNÉES PERSONNELLES -->
   <div class="legal-section">
-    <h2>5. Données personnelles</h2>
-    <p>La collecte et le traitement de vos données personnelles sont détaillés dans notre <a href="politique-confidentialite.html">Politique de confidentialité</a>, conforme au RGPD (UE 2016/679) et à la nLPD (Loi fédérale suisse sur la protection des données).</p>
-    <p>Pour exercer vos droits (accès, rectification, suppression, portabilité, opposition), contactez-nous : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></p>
+    <h2 data-i18n="ml.s5.h">5. Données personnelles</h2>
+    <p data-i18n="ml.s5.p1">La collecte et le traitement de vos données personnelles sont détaillés dans notre <a href="politique-confidentialite.html">Politique de confidentialité</a>, conforme au RGPD (UE 2016/679) et à la nLPD (Loi fédérale suisse sur la protection des données).</p>
+    <p data-i18n="ml.s5.p2">Pour exercer vos droits (accès, rectification, suppression, portabilité, opposition), contactez-nous : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></p>
   </div>
 
-  <!-- 6. COOKIES -->
   <div class="legal-section">
-    <h2>6. Cookies</h2>
-    <p>Ce site peut utiliser des cookies techniques nécessaires à son fonctionnement. Aucun cookie publicitaire ou de tracking tiers n'est déposé sans votre consentement préalable, conformément aux recommandations de la CNIL.</p>
-    <p>Voir notre <a href="politique-confidentialite.html#cookies">politique cookies</a> pour plus de détails.</p>
+    <h2 data-i18n="ml.s6.h">6. Cookies</h2>
+    <p data-i18n="ml.s6.p1">Ce site peut utiliser des cookies techniques nécessaires à son fonctionnement. Aucun cookie publicitaire ou de tracking tiers n'est déposé sans votre consentement préalable.</p>
+    <p data-i18n="ml.s6.p2">Voir notre <a href="politique-confidentialite.html">politique de confidentialité</a> pour plus de détails.</p>
   </div>
 
-  <!-- 7. DROIT APPLICABLE -->
   <div class="legal-section">
-    <h2>7. Droit applicable et juridiction</h2>
-    <p>Le présent site et ses mentions légales sont régis par le droit suisse. Tout litige relatif à l'utilisation du site sera soumis à la compétence exclusive des tribunaux du Canton de Genève.</p>
+    <h2 data-i18n="ml.s7.h">7. Droit applicable et juridiction</h2>
+    <p data-i18n="ml.s7.p1">Le présent site et ses mentions légales sont régis par le droit suisse. Tout litige relatif à l'utilisation du site sera soumis à la compétence exclusive des tribunaux du Canton de Genève.</p>
   </div>
 
-  <!-- 8. CONTACT -->
   <div class="legal-section">
-    <h2>8. Contact</h2>
-    <p>Pour toute question relative aux présentes mentions légales :</p>
+    <h2 data-i18n="ml.s8.h">8. Contact</h2>
+    <p data-i18n="ml.s8.p1">Pour toute question relative aux présentes mentions légales :</p>
     <ul>
-      <li>Email : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></li>
-      <li>Site : <a href="https://www.orimnutrition.org">www.orimnutrition.org</a></li>
+      <li class="mono">Email : <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></li>
+      <li class="mono">Web : <a href="https://www.orimnutrition.org">www.orimnutrition.org</a></li>
     </ul>
   </div>
-
 </main>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="nav-logo-foot">ORIM</div>
-      <p>Optimisation Résolutive Immuno-Métabolique — Association genevoise de recherche et éducation en immunonutrition préventive.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="index.html#mission">Notre Mission</a></li>
-        <li><a href="index.html#prestations">Prestations</a></li>
-        <li><a href="index.html#poles">Pôles</a></li>
-        <li><a href="index.html#marque">Marque ORIM™</a></li>
-        <li><a href="index.html#equipe">Équipe</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Association</h4>
-      <ul>
-        <li><a href="#">Association ORIM Genève</a></li>
-        <li><a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Légal</h4>
-      <ul>
-        <li><a href="mentions-legales.html">Mentions légales</a></li>
-        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-        <li><a href="#">Statuts de l'association</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 Association ORIM — Tous droits réservés</span>
-    <div class="footer-entities">
-      <span>Association ORIM — Genève, Suisse</span>
+<footer class="foot">
+  <div class="wrap">
+    <div class="brand">ORIM · Association ORIM Genève</div>
+    <div class="flinks">
+      <a href="index.html" data-i18n="ml.f.home">Accueil</a>
+      <a href="bibliotheque.html" data-i18n="ml.f.biblio">Bibliothèque</a>
+      <a href="mentions-legales.html" data-i18n="ml.f.mentions">Mentions légales</a>
+      <a href="politique-confidentialite.html" data-i18n="ml.f.privacy">Politique de confidentialité</a>
     </div>
   </div>
 </footer>
 
 <script>
-const canvas = document.getElementById('canvas-bg');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-resize();
-window.addEventListener('resize', () => { resize(); initParticles(); });
-function Particle() {
-  this.x = Math.random() * W; this.y = Math.random() * H;
-  this.vx = (Math.random() - .5) * .4; this.vy = (Math.random() - .5) * .4;
-  this.r = Math.random() * 1.5 + .5; this.alpha = Math.random() * .5 + .1;
+var I18N = {"fr":{"ml.back":"&larr; Retour au site ORIM","ml.kicker":"Association ORIM · Genève","ml.title":"Mentions légales","ml.updated":"Dernière mise à jour : 11 mars 2026","ml.s1.h":"1. Éditeur du site","ml.s1.p":"Le site <strong>orimnutrition.org</strong> est édité par :","ml.s1.b2":"Association de droit suisse (art. 60 CC) — Genève, Suisse","ml.s1.b3":"Activité : Optimisation Résolutive Immuno-Métabolique — recherche et éducation en immunonutrition préventive","ml.s1.b4":"Responsable de publication : Marcel O. Chevalley, Président","ml.s2.h":"2. Hébergeur","ml.s2.b4":"Service : GitHub Pages (hébergement de sites statiques)","ml.s3.h":"3. Propriété intellectuelle","ml.s3.p1":"L'ensemble du contenu de ce site (textes, graphiques, images, vidéos, logos, architecture) est protégé par le droit d'auteur et appartient à l'Association ORIM et/ou à Marcel Olivier Chevalley (titulaire de la marque ORIM™), sauf mention contraire explicite.","ml.s3.p2":"Toute reproduction, représentation, modification, publication ou adaptation, totale ou partielle, de quelque élément que ce soit du site, par quelque procédé que ce soit, est interdite sauf autorisation écrite préalable des titulaires des droits.","ml.s4.h":"4. Limitation de responsabilité","ml.s4.p1":"ORIM s'efforce de fournir des informations exactes et à jour. Toutefois, les informations publiées sur ce site ont un caractère éducatif et ne constituent en aucun cas un avis médical, un diagnostic ou une prescription.","ml.s4.p2":"ORIM décline toute responsabilité pour :","ml.s4.l1":"Toute interruption ou indisponibilité du site","ml.s4.l2":"Tout dommage résultant d'une intrusion frauduleuse ou d'un virus","ml.s4.l3":"Le contenu des sites tiers vers lesquels pointent des liens hypertextes","ml.s4.p3":"En cas de problème de santé, consultez impérativement un professionnel de santé qualifié.","ml.s5.h":"5. Données personnelles","ml.s5.p1":"La collecte et le traitement de vos données personnelles sont détaillés dans notre <a href=\"politique-confidentialite.html\">Politique de confidentialité</a>, conforme au RGPD (UE 2016/679) et à la nLPD (Loi fédérale suisse sur la protection des données).","ml.s5.p2":"Pour exercer vos droits (accès, rectification, suppression, portabilité, opposition), contactez-nous : <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>","ml.s6.h":"6. Cookies","ml.s6.p1":"Ce site peut utiliser des cookies techniques nécessaires à son fonctionnement. Aucun cookie publicitaire ou de tracking tiers n'est déposé sans votre consentement préalable.","ml.s6.p2":"Voir notre <a href=\"politique-confidentialite.html\">politique de confidentialité</a> pour plus de détails.","ml.s7.h":"7. Droit applicable et juridiction","ml.s7.p1":"Le présent site et ses mentions légales sont régis par le droit suisse. Tout litige relatif à l'utilisation du site sera soumis à la compétence exclusive des tribunaux du Canton de Genève.","ml.s8.h":"8. Contact","ml.s8.p1":"Pour toute question relative aux présentes mentions légales :","ml.f.home":"Accueil","ml.f.biblio":"Bibliothèque","ml.f.mentions":"Mentions légales","ml.f.privacy":"Politique de confidentialité"},"en":{"ml.back":"&larr; Back to the ORIM website","ml.kicker":"ORIM Association · Geneva","ml.title":"Legal notice","ml.updated":"Last updated: 11 March 2026","ml.s1.h":"1. Site publisher","ml.s1.p":"The website <strong>orimnutrition.org</strong> is published by:","ml.s1.b2":"Association under Swiss law (art. 60 CC) — Geneva, Switzerland","ml.s1.b3":"Activity: Immuno-Metabolic Resolutive Optimisation — research and education in preventive immunonutrition","ml.s1.b4":"Publication director: Marcel O. Chevalley, President","ml.s2.h":"2. Hosting provider","ml.s2.b4":"Service: GitHub Pages (static website hosting)","ml.s3.h":"3. Intellectual property","ml.s3.p1":"All content on this website (texts, graphics, images, videos, logos, architecture) is protected by copyright and belongs to the ORIM Association and/or Marcel Olivier Chevalley (holder of the ORIM™ trademark), unless explicitly stated otherwise.","ml.s3.p2":"Any reproduction, representation, modification, publication or adaptation, in whole or in part, of any element of the website, by any means whatsoever, is prohibited without the prior written authorisation of the rights holders.","ml.s4.h":"4. Limitation of liability","ml.s4.p1":"ORIM strives to provide accurate and up-to-date information. However, the information published on this website is educational in nature and does not in any way constitute medical advice, a diagnosis or a prescription.","ml.s4.p2":"ORIM disclaims all liability for:","ml.s4.l1":"Any interruption or unavailability of the website","ml.s4.l2":"Any damage resulting from fraudulent intrusion or a virus","ml.s4.l3":"The content of third-party websites to which hypertext links point","ml.s4.p3":"In the event of a health problem, it is essential to consult a qualified healthcare professional.","ml.s5.h":"5. Personal data","ml.s5.p1":"The collection and processing of your personal data are detailed in our <a href=\"politique-confidentialite.html\">Privacy Policy</a>, which complies with the GDPR (EU 2016/679) and the nFADP (Swiss Federal Act on Data Protection).","ml.s5.p2":"To exercise your rights (access, rectification, erasure, portability, objection), contact us: <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>","ml.s6.h":"6. Cookies","ml.s6.p1":"This website may use technical cookies necessary for its operation. No advertising or third-party tracking cookie is placed without your prior consent.","ml.s6.p2":"See our <a href=\"politique-confidentialite.html\">privacy policy</a> for further details.","ml.s7.h":"7. Applicable law and jurisdiction","ml.s7.p1":"This website and its legal notice are governed by Swiss law. Any dispute relating to the use of the website shall be subject to the exclusive jurisdiction of the courts of the Canton of Geneva.","ml.s8.h":"8. Contact","ml.s8.p1":"For any question relating to this legal notice:","ml.f.home":"Home","ml.f.biblio":"Library","ml.f.mentions":"Legal notice","ml.f.privacy":"Privacy policy"},"es":{"ml.back":"&larr; Volver al sitio ORIM","ml.kicker":"Asociación ORIM · Ginebra","ml.title":"Aviso legal","ml.updated":"Última actualización: 11 de marzo de 2026","ml.s1.h":"1. Editor del sitio","ml.s1.p":"El sitio <strong>orimnutrition.org</strong> está editado por:","ml.s1.b2":"Asociación de derecho suizo (art. 60 CC) — Ginebra, Suiza","ml.s1.b3":"Actividad: Optimización Resolutiva Inmuno-Metabólica — investigación y educación en inmunonutrición preventiva","ml.s1.b4":"Responsable de publicación: Marcel O. Chevalley, Presidente","ml.s2.h":"2. Alojamiento","ml.s2.b4":"Servicio: GitHub Pages (alojamiento de sitios estáticos)","ml.s3.h":"3. Propiedad intelectual","ml.s3.p1":"La totalidad del contenido de este sitio (textos, gráficos, imágenes, vídeos, logotipos, arquitectura) está protegida por los derechos de autor y pertenece a la Asociación ORIM y/o a Marcel Olivier Chevalley (titular de la marca ORIM™), salvo mención expresa en contrario.","ml.s3.p2":"Queda prohibida toda reproducción, representación, modificación, publicación o adaptación, total o parcial, de cualquier elemento del sitio, por cualquier procedimiento que sea, salvo autorización previa por escrito de los titulares de los derechos.","ml.s4.h":"4. Limitación de responsabilidad","ml.s4.p1":"ORIM se esfuerza por proporcionar información exacta y actualizada. No obstante, la información publicada en este sitio tiene carácter educativo y no constituye en ningún caso un consejo médico, un diagnóstico ni una prescripción.","ml.s4.p2":"ORIM declina toda responsabilidad por:","ml.s4.l1":"Cualquier interrupción o indisponibilidad del sitio","ml.s4.l2":"Cualquier daño resultante de una intrusión fraudulenta o de un virus","ml.s4.l3":"El contenido de los sitios de terceros a los que apuntan los enlaces de hipertexto","ml.s4.p3":"En caso de problema de salud, consulte imperativamente a un profesional de la salud cualificado.","ml.s5.h":"5. Datos personales","ml.s5.p1":"La recogida y el tratamiento de sus datos personales se detallan en nuestra <a href=\"politique-confidentialite.html\">Política de privacidad</a>, conforme al RGPD (UE 2016/679) y a la nLPD (Ley federal suiza de protección de datos).","ml.s5.p2":"Para ejercer sus derechos (acceso, rectificación, supresión, portabilidad, oposición), contáctenos: <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>","ml.s6.h":"6. Cookies","ml.s6.p1":"Este sitio puede utilizar cookies técnicas necesarias para su funcionamiento. No se instala ninguna cookie publicitaria ni de rastreo de terceros sin su consentimiento previo.","ml.s6.p2":"Consulte nuestra <a href=\"politique-confidentialite.html\">política de privacidad</a> para más detalles.","ml.s7.h":"7. Legislación aplicable y jurisdicción","ml.s7.p1":"El presente sitio y su aviso legal se rigen por el derecho suizo. Todo litigio relativo al uso del sitio se someterá a la competencia exclusiva de los tribunales del Cantón de Ginebra.","ml.s8.h":"8. Contacto","ml.s8.p1":"Para cualquier pregunta relativa al presente aviso legal:","ml.f.home":"Inicio","ml.f.biblio":"Biblioteca","ml.f.mentions":"Aviso legal","ml.f.privacy":"Política de privacidad"},"de":{"ml.back":"&larr; Zurück zur ORIM-Website","ml.kicker":"Verein ORIM · Genf","ml.title":"Impressum","ml.updated":"Letzte Aktualisierung: 11. März 2026","ml.s1.h":"1. Herausgeber der Website","ml.s1.p":"Die Website <strong>orimnutrition.org</strong> wird herausgegeben von:","ml.s1.b2":"Verein nach schweizerischem Recht (Art. 60 ZGB) — Genf, Schweiz","ml.s1.b3":"Tätigkeit: Résolutive Immuno-Métabolische Optimierung — Forschung und Bildung im Bereich der präventiven Immunonutrition","ml.s1.b4":"Verantwortlich für die Veröffentlichung: Marcel O. Chevalley, Präsident","ml.s2.h":"2. Hosting-Anbieter","ml.s2.b4":"Dienst: GitHub Pages (Hosting statischer Websites)","ml.s3.h":"3. Geistiges Eigentum","ml.s3.p1":"Der gesamte Inhalt dieser Website (Texte, Grafiken, Bilder, Videos, Logos, Architektur) ist urheberrechtlich geschützt und gehört dem Verein ORIM und/oder Marcel Olivier Chevalley (Inhaber der Marke ORIM™), sofern nicht ausdrücklich anders angegeben.","ml.s3.p2":"Jede vollständige oder teilweise Vervielfältigung, Wiedergabe, Änderung, Veröffentlichung oder Anpassung eines beliebigen Elements der Website, mit welchem Verfahren auch immer, ist ohne vorherige schriftliche Genehmigung der Rechteinhaber untersagt.","ml.s4.h":"4. Haftungsbeschränkung","ml.s4.p1":"ORIM bemüht sich, genaue und aktuelle Informationen bereitzustellen. Die auf dieser Website veröffentlichten Informationen haben jedoch bildenden Charakter und stellen in keinem Fall eine medizinische Beratung, eine Diagnose oder eine Verschreibung dar.","ml.s4.p2":"ORIM übernimmt keine Haftung für:","ml.s4.l1":"jegliche Unterbrechung oder Nichtverfügbarkeit der Website","ml.s4.l2":"jeglichen Schaden infolge eines betrügerischen Eindringens oder eines Virus","ml.s4.l3":"den Inhalt von Websites Dritter, auf die Hyperlinks verweisen","ml.s4.p3":"Konsultieren Sie bei gesundheitlichen Problemen unbedingt eine qualifizierte Fachperson des Gesundheitswesens.","ml.s5.h":"5. Personenbezogene Daten","ml.s5.p1":"Die Erhebung und Verarbeitung Ihrer personenbezogenen Daten wird in unserer <a href=\"politique-confidentialite.html\">Datenschutzerklärung</a> erläutert, die der DSGVO (EU 2016/679) und dem revidierten schweizerischen Datenschutzgesetz (revDSG) entspricht.","ml.s5.p2":"Um Ihre Rechte auszuüben (Auskunft, Berichtigung, Löschung, Datenübertragbarkeit, Widerspruch), kontaktieren Sie uns: <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>","ml.s6.h":"6. Cookies","ml.s6.p1":"Diese Website kann technische Cookies verwenden, die für ihren Betrieb erforderlich sind. Ohne Ihre vorherige Einwilligung werden keine Werbe- oder Tracking-Cookies Dritter gesetzt.","ml.s6.p2":"Weitere Einzelheiten finden Sie in unserer <a href=\"politique-confidentialite.html\">Datenschutzerklärung</a>.","ml.s7.h":"7. Anwendbares Recht und Gerichtsstand","ml.s7.p1":"Diese Website und ihr Impressum unterliegen dem schweizerischen Recht. Für jeden Streitfall im Zusammenhang mit der Nutzung der Website sind ausschliesslich die Gerichte des Kantons Genf zuständig.","ml.s8.h":"8. Kontakt","ml.s8.p1":"Für alle Fragen zu diesem Impressum:","ml.f.home":"Startseite","ml.f.biblio":"Bibliothek","ml.f.mentions":"Impressum","ml.f.privacy":"Datenschutzerklärung"},"pt":{"ml.back":"&larr; Voltar ao site ORIM","ml.kicker":"Associação ORIM · Genebra","ml.title":"Menções legais","ml.updated":"Última atualização: 11 de março de 2026","ml.s1.h":"1. Editor do site","ml.s1.p":"O site <strong>orimnutrition.org</strong> é editado por:","ml.s1.b2":"Associação de direito suíço (art. 60 CC) — Genebra, Suíça","ml.s1.b3":"Atividade: Otimização Resolutiva Imuno-Metabólica — investigação e educação em imunonutrição preventiva","ml.s1.b4":"Responsável pela publicação: Marcel O. Chevalley, Presidente","ml.s2.h":"2. Alojamento","ml.s2.b4":"Serviço: GitHub Pages (alojamento de sites estáticos)","ml.s3.h":"3. Propriedade intelectual","ml.s3.p1":"Todo o conteúdo deste site (textos, gráficos, imagens, vídeos, logótipos, arquitetura) está protegido por direitos de autor e pertence à Associação ORIM e/ou a Marcel Olivier Chevalley (titular da marca ORIM™), salvo menção explícita em contrário.","ml.s3.p2":"É proibida qualquer reprodução, representação, modificação, publicação ou adaptação, total ou parcial, de qualquer elemento do site, por qualquer meio que seja, salvo autorização escrita prévia dos titulares dos direitos.","ml.s4.h":"4. Limitação de responsabilidade","ml.s4.p1":"A ORIM esforça-se por fornecer informações exatas e atualizadas. No entanto, as informações publicadas neste site têm caráter educativo e não constituem, em caso algum, um parecer médico, um diagnóstico ou uma prescrição.","ml.s4.p2":"A ORIM declina qualquer responsabilidade por:","ml.s4.l1":"Qualquer interrupção ou indisponibilidade do site","ml.s4.l2":"Qualquer dano resultante de uma intrusão fraudulenta ou de um vírus","ml.s4.l3":"O conteúdo dos sites de terceiros para os quais apontam as ligações de hipertexto","ml.s4.p3":"Em caso de problema de saúde, consulte imperativamente um profissional de saúde qualificado.","ml.s5.h":"5. Dados pessoais","ml.s5.p1":"A recolha e o tratamento dos seus dados pessoais estão detalhados na nossa <a href=\"politique-confidentialite.html\">Política de privacidade</a>, em conformidade com o RGPD (UE 2016/679) e com a nLPD (Lei federal suíça sobre a proteção de dados).","ml.s5.p2":"Para exercer os seus direitos (acesso, retificação, eliminação, portabilidade, oposição), contacte-nos: <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>","ml.s6.h":"6. Cookies","ml.s6.p1":"Este site pode utilizar cookies técnicos necessários ao seu funcionamento. Nenhum cookie publicitário ou de rastreamento de terceiros é depositado sem o seu consentimento prévio.","ml.s6.p2":"Consulte a nossa <a href=\"politique-confidentialite.html\">política de privacidade</a> para mais detalhes.","ml.s7.h":"7. Direito aplicável e jurisdição","ml.s7.p1":"O presente site e as suas menções legais são regidos pelo direito suíço. Qualquer litígio relativo à utilização do site será submetido à competência exclusiva dos tribunais do Cantão de Genebra.","ml.s8.h":"8. Contacto","ml.s8.p1":"Para qualquer questão relativa às presentes menções legais:","ml.f.home":"Início","ml.f.biblio":"Biblioteca","ml.f.mentions":"Menções legais","ml.f.privacy":"Política de privacidade"},"it":{"ml.back":"&larr; Torna al sito ORIM","ml.kicker":"Associazione ORIM · Ginevra","ml.title":"Note legali","ml.updated":"Ultimo aggiornamento: 11 marzo 2026","ml.s1.h":"1. Editore del sito","ml.s1.p":"Il sito <strong>orimnutrition.org</strong> è edito da:","ml.s1.b2":"Associazione di diritto svizzero (art. 60 CC) — Ginevra, Svizzera","ml.s1.b3":"Attività: Ottimizzazione Risolutiva Immuno-Metabolica — ricerca ed educazione in immunonutrizione preventiva","ml.s1.b4":"Responsabile della pubblicazione: Marcel O. Chevalley, Presidente","ml.s2.h":"2. Hosting","ml.s2.b4":"Servizio: GitHub Pages (hosting di siti statici)","ml.s3.h":"3. Proprietà intellettuale","ml.s3.p1":"L'insieme dei contenuti di questo sito (testi, grafica, immagini, video, loghi, architettura) è protetto dal diritto d'autore e appartiene all'Associazione ORIM e/o a Marcel Olivier Chevalley (titolare del marchio ORIM™), salvo esplicita indicazione contraria.","ml.s3.p2":"Qualsiasi riproduzione, rappresentazione, modifica, pubblicazione o adattamento, totale o parziale, di qualunque elemento del sito, con qualsiasi procedimento, è vietata salvo previa autorizzazione scritta dei titolari dei diritti.","ml.s4.h":"4. Limitazione di responsabilità","ml.s4.p1":"ORIM si impegna a fornire informazioni esatte e aggiornate. Tuttavia, le informazioni pubblicate su questo sito hanno carattere educativo e non costituiscono in alcun modo un parere medico, una diagnosi o una prescrizione.","ml.s4.p2":"ORIM declina ogni responsabilità per:","ml.s4.l1":"Qualsiasi interruzione o indisponibilità del sito","ml.s4.l2":"Qualsiasi danno derivante da un'intrusione fraudolenta o da un virus","ml.s4.l3":"Il contenuto dei siti terzi verso i quali puntano i collegamenti ipertestuali","ml.s4.p3":"In caso di problemi di salute, consultate tassativamente un professionista sanitario qualificato.","ml.s5.h":"5. Dati personali","ml.s5.p1":"La raccolta e il trattamento dei vostri dati personali sono descritti nella nostra <a href=\"politique-confidentialite.html\">Informativa sulla privacy</a>, conforme al GDPR (UE 2016/679) e alla nLPD (Legge federale svizzera sulla protezione dei dati).","ml.s5.p2":"Per esercitare i vostri diritti (accesso, rettifica, cancellazione, portabilità, opposizione), contattateci: <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>","ml.s6.h":"6. Cookie","ml.s6.p1":"Questo sito può utilizzare cookie tecnici necessari al suo funzionamento. Nessun cookie pubblicitario o di tracciamento di terze parti viene installato senza il vostro previo consenso.","ml.s6.p2":"Consultate la nostra <a href=\"politique-confidentialite.html\">informativa sulla privacy</a> per maggiori dettagli.","ml.s7.h":"7. Legge applicabile e foro competente","ml.s7.p1":"Il presente sito e le sue note legali sono disciplinati dal diritto svizzero. Qualsiasi controversia relativa all'utilizzo del sito sarà sottoposta alla competenza esclusiva dei tribunali del Cantone di Ginevra.","ml.s8.h":"8. Contatto","ml.s8.p1":"Per qualsiasi domanda relativa alle presenti note legali:","ml.f.home":"Home","ml.f.biblio":"Biblioteca","ml.f.mentions":"Note legali","ml.f.privacy":"Informativa sulla privacy"}};
+var LANGS=["fr","en","es","de","pt","it"], lang="fr";
+function ui(k){var b=(typeof I18N!=="undefined")&&I18N[lang]; return (b&&b[k])||null;}
+function setLang(l){
+  if(LANGS.indexOf(l)===-1)l="fr"; lang=l; document.documentElement.lang=l;
+  try{localStorage.setItem("orim_ml_lang",l);}catch(e){}
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var v=ui(el.getAttribute("data-i18n")); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll("#langsw button").forEach(function(b){b.classList.toggle("on",b.dataset.l===l);});
 }
-function initParticles() { particles = Array.from({length: Math.floor(W * H / 9000)}, () => new Particle()); }
-initParticles();
-function drawParticles() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy;
-    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(0,180,216,${p.alpha})`; ctx.fill();
-  });
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120) {
-        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(0,180,216,${.12*(1-dist/120)})`; ctx.lineWidth = .5; ctx.stroke();
-      }
-    }
-  }
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
+document.getElementById("langsw").addEventListener("click",function(e){var b=e.target.closest("button[data-l]"); if(b)setLang(b.dataset.l);});
+var _s; try{_s=localStorage.getItem("orim_ml_lang");}catch(e){}
+setLang(_s||(navigator.language||"fr").slice(0,2));
 </script>
-
 </body>
 </html>

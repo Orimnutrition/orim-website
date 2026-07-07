@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bibliothèque Alimentaire ORIM</title>
-<meta name="description" content="Base de données alimentaire ORIM : 5'000 aliments indexés selon l'indice immuno-métabolique composite. Accès libre et gratuit.">
+<meta name="description" content="Base de données alimentaire ORIM : 5'000 aliments indexés selon l'indice immuno-métabolique composite. Disponible en 6 langues, accès libre et gratuit.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
@@ -12,15 +12,11 @@
     --serif:"Fraunces",ui-serif,Georgia,serif;
     --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    /* corps clinique clair (aligne sur l'accueil Laboratory) */
     --bench:#F4F7F6; --ink:#0F211F; --graphite:#556663; --hairline:#DCE6E4; --plate:#FFFFFF;
-    /* bandeau sombre bioluminescent (echo du hero) */
     --abyss:#04100E; --ink-d:#060D0C; --panel:#0C1A18; --line-d:#16302C;
     --fg-d:#EAF4F2; --dim-d:#7FA39D;
-    /* accents marque */
     --teal:#1BA8A6; --cyan:#38E1D6; --gold:#E6A817; --gold-hi:#F5C95A;
     --lteal:#E8F6F6; --lgold:#FDF5E0;
-    /* bandes de score */
     --champ:#159c8a; --opt:#E6A817; --sub:#e28743; --bad:#d0453f;
   }
   *{box-sizing:border-box}
@@ -29,7 +25,7 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
   /* ===== En-tete sombre bioluminescent ===== */
-  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:26px 0 30px;
+  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:22px 0 30px;
     background:radial-gradient(120% 150% at 80% 0%,#071A17 0%,var(--abyss) 48%,var(--ink-d) 100%);
     border-bottom:1px solid var(--line-d)}
   header.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
@@ -38,26 +34,29 @@
     -webkit-mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%);
             mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%)}
   header.masthead .wrap{position:relative;z-index:1}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
   .backlink{display:inline-block;color:var(--dim-d);text-decoration:none;font-family:var(--mono);
-    font-size:12px;letter-spacing:.04em;margin-bottom:14px;transition:color .2s}
+    font-size:12px;letter-spacing:.04em;transition:color .2s}
   .backlink:hover{color:var(--cyan)}
+  .langsw{display:flex;gap:2px;flex-shrink:0}
+  .langsw button{background:transparent;border:0;cursor:pointer;padding:5px 7px;color:var(--dim-d);
+    font-family:var(--mono);font-size:12px;letter-spacing:.05em;border-radius:5px;transition:color .2s,background .2s}
+  .langsw button:hover{color:var(--fg-d);background:rgba(56,225,214,.08)}
+  .langsw button.on{color:var(--ink-d);background:var(--cyan);font-weight:500}
   .masthead .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
   .masthead h1{margin:8px 0 6px;font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);
     letter-spacing:-.01em;line-height:1.05;
     background:linear-gradient(180deg,#FFFFFF,var(--fg-d) 60%,var(--gold-hi) 140%);
     -webkit-background-clip:text;background-clip:text;color:transparent}
-  .masthead p{margin:0;font-size:15px;color:#C7DAD6}
-  .masthead p b{font-family:var(--mono);color:var(--gold-hi);font-weight:500}
+  .masthead p.sub{margin:0;font-size:15px;color:#C7DAD6}
+  .masthead p.sub b{font-family:var(--mono);color:var(--gold-hi);font-weight:500}
   .badge-free{display:inline-block;background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#1A1204;
     font-weight:600;font-size:12px;font-family:var(--mono);letter-spacing:.02em;
     padding:5px 12px;border-radius:999px;margin-top:16px}
 
-  /* ===== Intro ===== */
   .intro{background:#fff;border-bottom:1px solid var(--hairline)}
   .intro .wrap{padding:16px 20px;font-size:13.5px;color:var(--graphite)}
-  .intro strong{color:var(--teal);font-weight:600}
 
-  /* ===== Controles ===== */
   .controls{position:sticky;top:0;z-index:20;background:rgba(244,247,246,.92);
     -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--hairline)}
   .controls .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 20px}
@@ -68,7 +67,6 @@
   .count{margin-left:auto;font-family:var(--mono);font-size:13px;color:var(--graphite);white-space:nowrap;font-variant-numeric:tabular-nums}
   .count b{color:var(--ink)}
 
-  /* ===== Tableau ===== */
   .tablecard{overflow-x:auto;margin:18px 0;background:var(--plate);border:1px solid var(--hairline);border-radius:12px}
   table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
   thead th{position:sticky;top:0;background:var(--ink);color:var(--fg-d);text-align:left;padding:11px 12px;
@@ -92,7 +90,6 @@
   .detail dd{margin:0 0 6px;font-size:13.5px;color:var(--ink)}
   .detail .notes{grid-column:1/-1;font-style:italic}
 
-  /* ===== Pagination ===== */
   .pager{display:flex;gap:10px;align-items:center;justify-content:center;padding:8px 0 26px;font-size:13.5px}
   .pager button{font-family:var(--sans);font-size:13.5px;font-weight:500;padding:8px 16px;border:1px solid var(--teal);
     background:#fff;color:var(--teal);border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
@@ -101,47 +98,46 @@
   .pager .pinfo{font-family:var(--mono);color:var(--graphite)}
   .empty{padding:44px 10px;text-align:center;color:var(--graphite)}
 
-  /* ===== Pied ===== */
   footer.foot{border-top:1px solid var(--hairline);background:#fff;color:var(--graphite);font-size:12.5px}
   footer.foot .wrap{padding:20px 20px 28px}
   footer.foot .disc{background:var(--lgold);border-left:3px solid var(--gold);padding:11px 13px;border-radius:4px;margin-bottom:12px;color:#5b4a1f}
   footer.foot .src{color:var(--graphite);font-family:var(--mono);font-size:11.5px}
   footer.foot .brand{margin-top:12px;font-weight:600;color:var(--teal)}
 
-  @media(max-width:640px){
-    .count{margin-left:0;width:100%}
-  }
+  @media(max-width:640px){ .count{margin-left:0;width:100%} }
 </style>
 </head>
 <body>
 <header class="masthead">
   <div class="wrap">
-    <a href="index.html" class="backlink">&larr; Retour au site ORIM</a>
-    <div class="kicker">Association ORIM · Genève</div>
-    <h1>Bibliothèque Alimentaire ORIM</h1>
-    <p>L'indice immuno-métabolique de <b id="hcount">5'000</b> aliments, en accès libre.</p>
-    <span class="badge-free">Gratuit et ouvert à tous</span>
+    <div class="topbar">
+      <a href="index.html" class="backlink" data-ui="backlink">&larr; Retour au site ORIM</a>
+      <div class="langsw" id="langsw" role="group" aria-label="Langue / Language">
+        <button data-l="fr">FR</button><button data-l="en">EN</button><button data-l="es">ES</button
+        ><button data-l="de">DE</button><button data-l="pt">PT</button><button data-l="it">IT</button>
+      </div>
+    </div>
+    <div class="kicker" data-ui="kicker">Association ORIM · Genève</div>
+    <h1 data-ui="title">Bibliothèque Alimentaire ORIM</h1>
+    <p class="sub" data-ui="subtitle">L'indice immuno-métabolique de <b id="hcount">5'000</b> aliments, en accès libre.</p>
+    <span class="badge-free" data-ui="badge">Gratuit et ouvert à tous</span>
   </div>
 </header>
 
 <div class="intro">
-  <div class="wrap">
-    Chaque aliment reçoit un <strong>indice ORIM composite (0 à 100)</strong> synthétisant huit métriques
-    nutritionnelles et chronobiologiques (PRAL, ORAC, index glycémique, ratio oméga, NOVA, ANDI...).
-    Valeurs <strong>indicatives</strong>, projet pilote expérimental. Ceci n'est pas un avis médical.
-  </div>
+  <div class="wrap"><span data-ui="intro">Chaque aliment reçoit un indice ORIM composite (0 à 100) synthétisant huit métriques nutritionnelles et chronobiologiques (PRAL, ORAC, index glycémique, ratio oméga, NOVA, ANDI...). Valeurs indicatives, projet pilote expérimental. Ceci n'est pas un avis médical.</span></div>
 </div>
 
 <div class="controls">
   <div class="wrap">
-    <input type="search" id="q" placeholder="Rechercher un aliment (ex : quinoa, saumon, myrtille...)" autocomplete="off">
-    <select id="fgroup"><option value="">Tous les groupes</option></select>
+    <input type="search" id="q" data-ui="search" placeholder="Rechercher un aliment (ex : quinoa, saumon, myrtille...)" autocomplete="off">
+    <select id="fgroup"></select>
     <select id="fscore">
-      <option value="">Tous les scores</option>
-      <option value="champ">Champion (80 et +)</option>
-      <option value="opt">Optimal (60 à 79)</option>
-      <option value="sub">Suboptimal (40 à 59)</option>
-      <option value="bad">À corriger (moins de 40)</option>
+      <option value="" data-ui="allscores">Tous les scores</option>
+      <option value="champ" data-ui="sc_champ">Champion (80 et +)</option>
+      <option value="opt" data-ui="sc_opt">Optimal (60 à 79)</option>
+      <option value="sub" data-ui="sc_sub">Suboptimal (40 à 59)</option>
+      <option value="bad" data-ui="sc_bad">À corriger (moins de 40)</option>
     </select>
     <span class="count" id="count"></span>
   </div>
@@ -152,9 +148,9 @@
     <table>
       <thead>
         <tr>
-          <th data-sort="name">Aliment <span class="arrow"></span></th>
-          <th data-sort="group">Groupe <span class="arrow"></span></th>
-          <th data-sort="score" class="num">Indice <span class="arrow">▼</span></th>
+          <th data-sort="name"><span data-ui="h_aliment">Aliment</span> <span class="arrow"></span></th>
+          <th data-sort="group"><span data-ui="h_groupe">Groupe</span> <span class="arrow"></span></th>
+          <th data-sort="score" class="num"><span data-ui="h_indice">Indice</span> <span class="arrow">▼</span></th>
           <th data-sort="pral" class="num">PRAL <span class="arrow"></span></th>
           <th data-sort="orac" class="num">ORAC <span class="arrow"></span></th>
           <th data-sort="ig" class="num">IG <span class="arrow"></span></th>
@@ -165,79 +161,113 @@
       </thead>
       <tbody id="tbody"></tbody>
     </table>
-    <div class="empty" id="empty" style="display:none">Aucun aliment ne correspond à votre recherche.</div>
+    <div class="empty" id="empty" style="display:none" data-ui="empty">Aucun aliment ne correspond à votre recherche.</div>
   </div>
   <div class="pager" id="pager"></div>
 </main>
 
 <footer class="foot">
   <div class="wrap">
-    <div class="disc">
-      <b>Avertissement.</b> Les valeurs sont indicatives et issues d'un projet pilote expérimental
-      (bases USDA, Remer &amp; Manz, Sydney GI, ORAC, NOVA, ANDI et sources régionales). Elles ne
-      constituent pas un avis médical ni nutritionnel individualisé. Consultez un professionnel de santé.
-    </div>
+    <div class="disc" data-ui="disc"><b>Avertissement.</b> Les valeurs sont indicatives et issues d'un projet pilote expérimental (bases USDA, Remer &amp; Manz, Sydney GI, ORAC, NOVA, ANDI et sources régionales). Elles ne constituent pas un avis médical ni nutritionnel individualisé. Consultez un professionnel de santé.</div>
     <div class="src" id="src"></div>
-    <div class="brand">Association ORIM · Genève, Suisse · info@orimnutrition.org</div>
+    <div class="brand" data-ui="brand">Association ORIM · Genève, Suisse · info@orimnutrition.org</div>
   </div>
 </footer>
 
 <script src="bibliotheque-data.js"></script>
 <script>
 (function(){
-  var D = window.ORIM_BIBLIO;
+  var D = window.ORIM_BIBLIO, I = D.i18n;
   var F = {}; D.fields.forEach(function(k,i){F[k]=i;});
+  var rows = D.rows, ntr = D.ntr || [];
+  var NTRI = {en:0,es:1,de:2,pt:3,it:4};
+  var LANGS = ["fr","en","es","de","pt","it"];
+  var lang = "fr";
   var PAGE = 100, page = 0, sortKey = "score", sortDir = -1;
+
   var norm = function(s){return (s||"").toString().normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();};
-  var rows = D.rows;
-  var nf = function(n){return n.toLocaleString("de-CH");}; // format suisse : 5'000
+  var nf = function(n){return n.toLocaleString("de-CH");}; // format suisse 5'000
+  function ui(k){var o=I.ui[k]; return o?(o[lang]||o.fr):k;}
+  function glabel(key){var o=I.groups[key]; return o?(o[lang]||o.fr):key;}
+  function tlabel(key){if(!key)return "";var o=I.timings[key]; return o?(o[lang]||o.fr):key;}
+  function noteFor(i){return lang==="fr"?rows[i][F.notes]:((ntr[i]&&ntr[i][NTRI[lang]])||rows[i][F.notes]);}
 
-  // remplir groupes + sources + compteur entete
-  var gsel = document.getElementById("fgroup");
-  D.groups.forEach(function(g){var o=document.createElement("option");o.value=g;o.textContent=g;gsel.appendChild(o);});
-  document.getElementById("src").textContent = "Sources : " + D.sources.join(" · ");
-  document.getElementById("hcount").textContent = nf(D.total);
-
-  function band(s){return s>=80?"champ":s>=60?"opt":s>=40?"sub":"bad";}
-  function scoreClass(s){return "s-"+band(s);}
-
-  var q=document.getElementById("q"), fs=document.getElementById("fscore");
+  var q=document.getElementById("q"), fs=document.getElementById("fscore"), gsel=document.getElementById("fgroup");
   var tbody=document.getElementById("tbody"), pager=document.getElementById("pager"),
       countEl=document.getElementById("count"), emptyEl=document.getElementById("empty");
 
-  var filtered = rows;
+  document.getElementById("src").textContent = "Sources : " + D.sources.join(" · ");
+
+  function band(s){return s>=80?"champ":s>=60?"opt":s>=40?"sub":"bad";}
+  function scoreClass(s){return "s-"+band(s);}
+  function esc(s){return (s==null?"":String(s)).replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+  function fmt(v){return v==null||v===""?"–":v;}
+
+  // ---- Filtre groupes localise (valeur = cle ASCII, label = langue courante) ----
+  function rebuildGroupFilter(){
+    var cur=gsel.value;
+    var opts='<option value="">'+esc(ui("allgroups"))+'</option>';
+    D.groups.slice().sort(function(a,b){return glabel(a).localeCompare(glabel(b),lang);})
+      .forEach(function(g){opts+='<option value="'+esc(g)+'">'+esc(glabel(g))+'</option>';});
+    gsel.innerHTML=opts; gsel.value=cur;
+  }
+
+  // ---- Application de la langue ----
+  function setLang(l){
+    if(LANGS.indexOf(l)===-1) l="fr";
+    lang=l; document.documentElement.lang=l;
+    try{localStorage.setItem("orim_biblio_lang",l);}catch(e){}
+    document.querySelectorAll("[data-ui]").forEach(function(el){
+      var k=el.getAttribute("data-ui");
+      if(k==="search"){el.setAttribute("placeholder",ui("search"));return;}
+      if(k==="subtitle"){el.innerHTML=esc(ui("subtitle")).replace("{N}",'<b>'+nf(D.total)+'</b>');return;}
+      if(k==="disc"){el.innerHTML="<b>"+esc(discWord())+"</b> "+esc(ui("disc").replace(/^[^.]*\.\s*/,""));return;}
+      el.textContent=ui(k);
+    });
+    document.querySelectorAll("#langsw button").forEach(function(b){b.classList.toggle("on",b.dataset.l===l);});
+    rebuildGroupFilter();
+    render();
+  }
+  function discWord(){ // premier mot du disclaimer (Avertissement/Warning...) reste en gras
+    var t=ui("disc"); var m=t.match(/^([^.]*)\./); return m?m[1]:"";
+  }
+
+  // ---- Filtrage / tri / rendu ----
+  var filtered = rows.map(function(_,i){return i;}); // on travaille sur des index
   function applyFilter(){
     var term=norm(q.value.trim()), g=gsel.value, sc=fs.value;
-    filtered = rows.filter(function(r){
-      if(g && r[F.group]!==g) return false;
-      if(sc && band(r[F.score])!==sc) return false;
+    filtered = [];
+    for(var i=0;i<rows.length;i++){
+      var r=rows[i];
+      if(g && r[F.group]!==g) continue;
+      if(sc && band(r[F.score])!==sc) continue;
       if(term){
-        if(norm(r[F.name]).indexOf(term)===-1 && norm(r[F.group]).indexOf(term)===-1
-           && norm(r[F.vitamines]).indexOf(term)===-1) return false;
+        if(norm(r[F.name]).indexOf(term)===-1 && norm(glabel(r[F.group])).indexOf(term)===-1
+           && norm(r[F.vitamines]).indexOf(term)===-1 && norm(noteFor(i)).indexOf(term)===-1) continue;
       }
-      return true;
-    });
+      filtered.push(i);
+    }
     sortRows(); page=0; render();
   }
   function sortRows(){
-    var i=F[sortKey];
+    var k=F[sortKey];
     filtered.sort(function(a,b){
-      var x=a[i],y=b[i];
-      if(typeof x==="string"){x=norm(x);y=norm(y);}
+      var x=rows[a][k],y=rows[b][k];
+      if(typeof x==="string"){x=norm(sortKey==="group"?glabel(x):x);y=norm(sortKey==="group"?glabel(y):y);}
       if(x<y) return -1*sortDir; if(x>y) return 1*sortDir; return 0;
     });
   }
   function render(){
     var n=filtered.length;
-    countEl.innerHTML="<b>"+nf(n)+"</b> aliment"+(n>1?"s":"");
+    countEl.innerHTML="<b>"+nf(n)+"</b> "+esc(ui("count_word"));
     emptyEl.style.display = n?"none":"block";
     var start=page*PAGE, slice=filtered.slice(start,start+PAGE);
     var h="";
-    slice.forEach(function(r){
-      var idx=rows.indexOf(r);
-      h+='<tr class="food" data-i="'+idx+'">'
+    slice.forEach(function(i){
+      var r=rows[i];
+      h+='<tr class="food" data-i="'+i+'">'
         +'<td class="name">'+esc(r[F.name])+'</td>'
-        +'<td class="grp">'+esc(r[F.group])+'</td>'
+        +'<td class="grp">'+esc(glabel(r[F.group]))+'</td>'
         +'<td class="num"><span class="score '+scoreClass(r[F.score])+'">'+r[F.score]+'</span></td>'
         +'<td class="num">'+fmt(r[F.pral])+'</td>'
         +'<td class="num">'+fmt(r[F.orac])+'</td>'
@@ -248,7 +278,6 @@
     });
     tbody.innerHTML=h;
     renderPager(n,start,slice.length);
-    // en-tetes de tri
     document.querySelectorAll("thead th").forEach(function(th){
       var a=th.querySelector(".arrow"); if(!a) return;
       a.textContent = th.dataset.sort===sortKey ? (sortDir<0?"▼":"▲") : "";
@@ -257,38 +286,36 @@
   function renderPager(n,start,shown){
     if(n<=PAGE){pager.innerHTML="";return;}
     var pages=Math.ceil(n/PAGE);
-    pager.innerHTML='<button id="prev"'+(page===0?" disabled":"")+'>‹ Précédent</button>'
-      +'<span class="pinfo">Page '+(page+1)+' / '+pages+'  ('+(start+1)+' à '+(start+shown)+')</span>'
-      +'<button id="next"'+(page>=pages-1?" disabled":"")+'>Suivant ›</button>';
+    pager.innerHTML='<button id="prev"'+(page===0?" disabled":"")+'>'+esc(ui("p_prev"))+'</button>'
+      +'<span class="pinfo">'+esc(ui("p_page"))+' '+(page+1)+' / '+pages+'  ('+(start+1)+'–'+(start+shown)+')</span>'
+      +'<button id="next"'+(page>=pages-1?" disabled":"")+'>'+esc(ui("p_next"))+'</button>';
     var pv=document.getElementById("prev"),nx=document.getElementById("next");
     if(pv)pv.onclick=function(){if(page>0){page--;render();window.scrollTo(0,0);}};
     if(nx)nx.onclick=function(){if(page<pages-1){page++;render();window.scrollTo(0,0);}};
   }
-  function esc(s){return (s==null?"":String(s)).replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
-  function fmt(v){return v==null||v===""?"–":v;}
 
-  // detail au clic
+  // ---- Detail au clic (localise) ----
   tbody.addEventListener("click",function(e){
     var tr=e.target.closest("tr.food"); if(!tr) return;
     var nx=tr.nextElementSibling;
     if(nx&&nx.classList.contains("detail")){nx.remove();return;}
     document.querySelectorAll("tr.detail").forEach(function(d){d.remove();});
-    var r=rows[+tr.dataset.i];
+    var i=+tr.dataset.i, r=rows[i];
     var dtr=document.createElement("tr"); dtr.className="detail";
     dtr.innerHTML='<td colspan="9"><dl>'
-      +cell("Ratio oméga-6/3",r[F.ratio_omega])
-      +cell("Alcalinité",r[F.alcalinite])
-      +cell("Inflammation",r[F.inflamm])
-      +cell("Timing ORIM",r[F.timing])
-      +cell("NOVA (transformation)",r[F.nova]+" / 4")
-      +cell("Nutriments clés",r[F.vitamines])
-      +'<div class="notes"><dt>Note</dt><dd>'+esc(r[F.notes]||"–")+'</dd></div>'
+      +cell(ui("d_ratio"),r[F.ratio_omega])
+      +cell(ui("d_alca"),r[F.alcalinite])
+      +cell(ui("d_inflamm"),r[F.inflamm])
+      +cell(ui("d_timing"),tlabel(r[F.timing]))
+      +cell(ui("d_nova"),r[F.nova]+" / 4")
+      +cell(ui("d_nutr"),r[F.vitamines])
+      +'<div class="notes"><dt>'+esc(ui("d_note"))+'</dt><dd>'+esc(noteFor(i)||"–")+'</dd></div>'
       +'</dl></td>';
     tr.after(dtr);
   });
-  function cell(label,val){return '<div><dt>'+label+'</dt><dd>'+esc(fmt(val))+'</dd></div>';}
+  function cell(label,val){return '<div><dt>'+esc(label)+'</dt><dd>'+esc(fmt(val))+'</dd></div>';}
 
-  // tri au clic sur en-tete
+  // ---- Tri au clic ----
   document.querySelectorAll("thead th").forEach(function(th){
     th.addEventListener("click",function(){
       var k=th.dataset.sort;
@@ -300,8 +327,14 @@
   var t; q.addEventListener("input",function(){clearTimeout(t);t=setTimeout(applyFilter,120);});
   gsel.addEventListener("change",applyFilter);
   fs.addEventListener("change",applyFilter);
+  document.getElementById("langsw").addEventListener("click",function(e){
+    var b=e.target.closest("button[data-l]"); if(b) setLang(b.dataset.l);
+  });
 
-  sortRows(); render();
+  // ---- Init ----
+  var saved; try{saved=localStorage.getItem("orim_biblio_lang");}catch(e){}
+  sortRows();
+  setLang(saved||"fr");
 })();
 </script>
 </body>

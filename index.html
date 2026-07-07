@@ -45,394 +45,205 @@
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:   #0d1b2a;
-      --blue:   #1a4a7a;
-      --cyan:   #00b4d8;
-      --lcyan:  #90e0ef;
-      --white:  #f8fafc;
-      --gray:   #94a3b8;
-      --lgray:  #1e2d3d;
-      --gold:   #c9a84c;
-      --green:  #22c55e;
-      --teal:   #1BA8A6;
-      --teal-light: #E0F5F5;
-      --gold-orim: #E6A817;
-      --dark:   #2D3436;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+  :root{
+    --bench:#F4F7F6; --plate:#FFFFFF; --ink:#0F211F; --graphite:#556663;
+    --hairline:#DCE6E4; --reagent:#1BA8A6; --reagent-deep:#127472;
+    --gold:#E6A817; --gold-deep:#9a6f0f;
+    --maxw:1180px;
+    --serif:'Fraunces','Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Times New Roman',serif;
+    --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,'SF Mono','Cascadia Mono',Menlo,Consolas,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--bench);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.06;text-wrap:balance;margin:0}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.1rem,4vw,2.4rem)}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--reagent-deep);display:inline-flex;align-items:center;gap:.55rem}
+  .eyebrow::before{content:"";width:16px;height:1px;background:var(--reagent)}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-    /* CANVAS */
-    #canvas-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  header{position:sticky;top:0;z-index:100;background:rgba(244,247,246,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--hairline)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:66px;gap:1rem}
+  .brand{font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:.13em;flex-shrink:0;color:var(--ink)}
+  .brand small{font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;color:var(--graphite);display:block;margin-top:-3px}
+  nav.links{display:flex;gap:1.6rem;align-items:center}
+  nav.links a{font-size:.82rem;color:var(--graphite)}
+  nav.links a:hover{color:var(--ink)}
+  .hgroup{display:flex;align-items:center;gap:1.2rem}
+  .btn{font-family:var(--sans);font-size:.82rem;font-weight:600;letter-spacing:.01em;border-radius:3px;padding:.62rem 1.05rem;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s,border-color .2s,color .2s;display:inline-flex;align-items:center;gap:.4rem}
+  .btn-solid{background:var(--reagent);color:#fff}
+  .btn-solid:hover{background:var(--reagent-deep);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--hairline)}
+  .btn-ghost:hover{border-color:var(--reagent);color:var(--reagent-deep)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--reagent);outline-offset:3px}
 
-    /* VIDEO HERO */
-    #hero-video { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; z-index:0; object-fit:cover; opacity:.35; pointer-events:none; }
-    .hero-overlay { position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(13,27,42,.6) 0%,rgba(13,27,42,.3) 40%,rgba(13,27,42,.9) 100%); }
+  /* language dropdown (clair) */
+  .lang-dropdown{position:relative;z-index:200}
+  .lang-dropdown-btn{background:transparent;border:1px solid var(--hairline);color:var(--graphite);font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;padding:.4rem .6rem;border-radius:4px;cursor:pointer;display:flex;align-items:center;gap:.35rem}
+  .lang-dropdown-btn:hover{border-color:var(--reagent);color:var(--ink)}
+  .lang-arrow{transition:transform .2s}
+  .lang-dropdown.open .lang-arrow{transform:rotate(180deg)}
+  .lang-dropdown-menu{position:absolute;top:calc(100% + 6px);right:0;background:var(--plate);border:1px solid var(--hairline);border-radius:6px;box-shadow:0 12px 34px rgba(15,33,31,.12);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .2s,transform .2s;min-width:150px;overflow:hidden}
+  .lang-dropdown.open .lang-dropdown-menu{opacity:1;transform:translateY(0);pointer-events:auto}
+  .lang-dropdown-menu button{display:block;width:100%;text-align:left;background:none;border:none;color:var(--graphite);font-family:var(--sans);font-size:.82rem;padding:.55rem .9rem;cursor:pointer}
+  .lang-dropdown-menu button:hover{background:var(--bench);color:var(--ink)}
+  .lang-dropdown-menu button.active{color:var(--reagent-deep);background:rgba(27,168,166,.08)}
+  @media(max-width:920px){nav.links{display:none}}
 
-    /* LANG DROPDOWN */
-    .lang-dropdown { position:relative; z-index:200; }
-    .lang-dropdown-btn {
-      display:flex; align-items:center; gap:.35rem;
-      background:rgba(13,27,42,.92); backdrop-filter:blur(10px);
-      border:1px solid rgba(0,180,216,.25); color:var(--white);
-      font-size:.72rem; font-weight:600; letter-spacing:.05em;
-      padding:.35rem .7rem; border-radius:.5rem; cursor:pointer; transition:all .2s;
-    }
-    .lang-dropdown-btn:hover { border-color:var(--cyan); background:rgba(13,27,42,.97); }
-    .lang-arrow { font-size:.6rem; color:var(--gray); transition:transform .3s; }
-    .lang-dropdown.open .lang-arrow { transform:rotate(180deg); }
-    .lang-dropdown-menu {
-      position:absolute; top:calc(100% + .4rem); right:0; min-width:150px;
-      background:rgba(13,27,42,.95); backdrop-filter:blur(14px);
-      border:1px solid rgba(0,180,216,.2); border-radius:.6rem;
-      overflow:hidden; opacity:0; transform:translateY(-8px);
-      pointer-events:none; transition:opacity .25s ease, transform .25s ease;
-      box-shadow:0 8px 32px rgba(0,0,0,.4);
-    }
-    .lang-dropdown.open .lang-dropdown-menu { opacity:1; transform:translateY(0); pointer-events:auto; }
-    .lang-dropdown-menu button {
-      display:flex; align-items:center; gap:.5rem; width:100%;
-      background:none; border:none; color:var(--gray);
-      font-size:.78rem; padding:.55rem 1rem; cursor:pointer; transition:all .15s;
-      text-align:left;
-    }
-    .lang-dropdown-menu button:hover { background:rgba(0,180,216,.1); color:var(--white); }
-    .lang-dropdown-menu button.active { color:var(--teal); background:rgba(27,168,166,.1); }
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.4rem);align-items:center;padding:clamp(2.6rem,7vw,5.2rem) 0 clamp(2rem,5vw,3.2rem)}
+  .hero h1{font-size:clamp(2.4rem,5.4vw,4.4rem);letter-spacing:-.015em;margin:1.05rem 0 1.15rem}
+  .hero h1 em{font-style:italic;color:var(--reagent-deep)}
+  .lede{font-size:clamp(1rem,1.4vw,1.12rem);color:var(--graphite);max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.7rem}
+  .cta-row .btn{padding:.8rem 1.3rem;font-size:.9rem}
+  .hero-vis{position:relative;aspect-ratio:1/1;max-height:450px}
+  #mol{width:100%;height:100%;display:block;border:1px solid var(--hairline);border-radius:6px;background:radial-gradient(120% 120% at 70% 20%,#fff 0%,#F1F6F5 60%,#EAF1F0 100%)}
+  .readout{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.93);border:1px solid var(--hairline);border-radius:5px;padding:.7rem .85rem;box-shadow:0 8px 26px rgba(15,33,31,.08)}
+  .readout .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:var(--graphite);text-transform:uppercase}
+  .readout .v{font-family:var(--serif);font-size:1.85rem;line-height:1;margin-top:.15rem}
+  .readout .v b{color:var(--gold-deep)}
+  .readout .u{font-family:var(--mono);font-size:.62rem;color:var(--graphite);margin-top:.25rem}
+  .corner{position:absolute;top:12px;right:14px;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--reagent-deep)}
+  @media(max-width:860px){.hero{grid-template-columns:1fr}.hero-vis{order:-1;max-height:320px}}
 
-    /* NAV */
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:100;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:.5rem 2rem;
-      background:rgba(13,27,42,.88); backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(0,180,216,.15);
-    }
-    .nav-logo { display:flex; align-items:center; gap:.5rem; text-decoration:none; flex-shrink:0; }
-    .nav-logo-img { height:34px; width:auto; object-fit:contain; filter:drop-shadow(0 0 8px rgba(0,180,216,.3)); }
-    .nav-logo span { font-size:.5rem; display:block; letter-spacing:.15em; color:var(--gray); line-height:1.3; }
-    .nav-links { display:flex; gap:1rem; list-style:none; flex-wrap:nowrap; }
-    .nav-links a { text-decoration:none; color:var(--gray); font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; transition:color .2s; white-space:nowrap; }
-    .nav-links a:hover { color:var(--cyan); }
-    .nav-cta { background:linear-gradient(135deg,#00b4d8,#0077b6); border:none; color:#fff; padding:.45rem 1.2rem; border-radius:2rem; font-size:.72rem; font-weight:700; letter-spacing:.06em; cursor:pointer; transition:transform .2s,box-shadow .2s; text-decoration:none; box-shadow:0 0 20px rgba(0,180,216,.4),0 0 50px rgba(0,119,182,.2); animation:navCtaPulse 2.5s ease-in-out infinite; white-space:nowrap; }
-    @keyframes navCtaPulse{0%,100%{box-shadow:0 0 20px rgba(0,180,216,.4),0 0 50px rgba(0,119,182,.2)}50%{box-shadow:0 0 30px rgba(0,180,216,.65),0 0 70px rgba(0,119,182,.35)}}
-    .nav-cta:hover { transform:scale(1.06); box-shadow:0 0 35px rgba(0,180,216,.6),0 0 70px rgba(0,119,182,.35); }
-    .nav-mobile-toggle { display:none; background:none; border:1px solid rgba(0,180,216,.4); color:var(--cyan); padding:.4rem .8rem; border-radius:.4rem; cursor:pointer; font-size:.9rem; }
+  .assay{border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--plate)}
+  .assay .wrap{display:grid;grid-template-columns:auto repeat(4,1fr);gap:clamp(1rem,3vw,2.2rem);align-items:center;padding:1.1rem clamp(1.1rem,4vw,2.4rem)}
+  .plate96{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;width:130px;aspect-ratio:12/8}
+  .plate96 i{border-radius:50%;background:var(--hairline);aspect-ratio:1}
+  .stat .n{font-family:var(--serif);font-size:1.5rem}
+  .stat .n .mono{font-family:var(--mono);font-size:1.05rem}
+  .stat .l{font-family:var(--mono);font-size:.61rem;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite);margin-top:.1rem}
+  @media(max-width:820px){.assay .wrap{grid-template-columns:1fr 1fr}.plate96{display:none}}
 
-    /* HERO */
-    #hero { position:relative; z-index:1; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    .hero-content { text-align:center; padding:10rem 2rem 4rem; max-width:960px; }
-    .hero-badge { display:inline-block; background:rgba(0,180,216,.12); border:1px solid rgba(0,180,216,.3); color:var(--cyan); font-size:.72rem; padding:.35rem 1rem; border-radius:2rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:1.8rem; animation:fadeInUp .8s ease both; }
-    .hero-title { font-family:'Rajdhani',sans-serif; font-size:clamp(3rem,9vw,6.5rem); font-weight:700; line-height:1; background:linear-gradient(135deg,#ffffff 0%,#00b4d8 50%,#90e0ef 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:1rem; animation:fadeInUp .8s .2s ease both; }
-    .hero-subtitle { font-family:'Rajdhani',sans-serif; font-size:clamp(.85rem,2vw,1.15rem); color:var(--lcyan); letter-spacing:.3em; text-transform:uppercase; margin-bottom:1.5rem; animation:fadeInUp .8s .35s ease both; }
-    .hero-desc { font-size:.95rem; color:var(--gray); line-height:1.75; max-width:620px; margin:0 auto 2.5rem; animation:fadeInUp .8s .5s ease both; }
-    .hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeInUp .8s .65s ease both; }
-    .btn-primary { background:linear-gradient(135deg,var(--cyan),#0077b6); color:#fff; border:none; padding:.8rem 2rem; border-radius:2rem; font-size:.88rem; font-weight:600; cursor:pointer; letter-spacing:.06em; transition:transform .2s,box-shadow .2s; text-decoration:none; display:inline-block; box-shadow:0 0 30px rgba(0,180,216,.3); }
-    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 50px rgba(0,180,216,.5); }
-    .btn-outline { background:transparent; border:1px solid rgba(0,180,216,.5); color:var(--cyan); padding:.8rem 2rem; border-radius:2rem; font-size:.88rem; font-weight:600; cursor:pointer; letter-spacing:.06em; transition:all .2s; text-decoration:none; display:inline-block; }
-    .btn-outline:hover { background:rgba(0,180,216,.1); border-color:var(--cyan); }
-    .btn-donate-hero { background:linear-gradient(135deg,#E6A817,#c9a84c); color:#fff; border:none; padding:.8rem 2rem; border-radius:2rem; font-size:.88rem; font-weight:700; cursor:pointer; letter-spacing:.06em; transition:transform .2s,box-shadow .2s; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; box-shadow:0 0 25px rgba(230,168,23,.35),0 0 60px rgba(230,168,23,.15); animation:donateHeroPulse 2.5s ease-in-out infinite; }
-    @keyframes donateHeroPulse{0%,100%{box-shadow:0 0 25px rgba(230,168,23,.35),0 0 60px rgba(230,168,23,.15)}50%{box-shadow:0 0 40px rgba(230,168,23,.55),0 0 80px rgba(230,168,23,.3)}}
-    .btn-donate-hero:hover { transform:translateY(-2px) scale(1.04); box-shadow:0 0 50px rgba(230,168,23,.5),0 0 100px rgba(230,168,23,.3); }
+  section.block{padding:clamp(3rem,7vw,5.4rem) 0}
+  .sec-head{max-width:58ch;margin-bottom:2.4rem}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.6rem);margin:.7rem 0 .6rem;letter-spacing:-.01em}
+  .sec-head p{color:var(--graphite)}
 
-    /* STICKY DONATION BAR */
-    .sticky-donate-bar { position:fixed; bottom:0; left:0; right:0; z-index:99; background:rgba(13,27,42,.95); backdrop-filter:blur(12px); border-top:1px solid rgba(230,168,23,.3); padding:.6rem 2rem; display:flex; align-items:center; justify-content:center; gap:1.5rem; transform:translateY(100%); animation:slideUpBar 1s 3s ease forwards; }
-    @keyframes slideUpBar{to{transform:translateY(0)}}
-    .sticky-donate-bar p { font-size:.78rem; color:var(--gray); margin:0; }
-    .sticky-donate-bar p strong { color:var(--gold-orim); }
-    .sticky-donate-btn { background:linear-gradient(135deg,#E6A817,#c9a84c); color:#fff; border:none; padding:.45rem 1.4rem; border-radius:2rem; font-size:.75rem; font-weight:700; letter-spacing:.05em; cursor:pointer; transition:transform .2s,box-shadow .2s; text-decoration:none; display:inline-flex; align-items:center; gap:.4rem; box-shadow:0 0 15px rgba(230,168,23,.3); white-space:nowrap; flex-shrink:0; }
-    .sticky-donate-btn:hover { transform:scale(1.06); box-shadow:0 0 25px rgba(230,168,23,.5); }
-    .sticky-donate-close { background:none; border:none; color:var(--gray); cursor:pointer; font-size:1.1rem; padding:.2rem .5rem; line-height:1; transition:color .2s; flex-shrink:0; }
-    .sticky-donate-close:hover { color:var(--white); }
-    .scroll-hint { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.4rem; color:var(--gray); font-size:.65rem; letter-spacing:.15em; animation:bounce 2s infinite; }
-    .scroll-hint::after { content:''; width:1px; height:40px; background:linear-gradient(to bottom,var(--cyan),transparent); }
+  .mission{display:grid;grid-template-columns:1.4fr .9fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:start}
+  .mission .lead{font-family:var(--serif);font-size:clamp(1.35rem,2.4vw,1.95rem);line-height:1.32;letter-spacing:-.01em}
+  .mission .lead b{color:var(--reagent-deep);font-weight:600}
+  .mission aside{border-left:2px solid var(--reagent);padding-left:1.3rem;display:flex;flex-direction:column;gap:1.1rem}
+  .mission aside .row{display:flex;gap:.8rem;align-items:baseline}
+  .mission aside .row .mono{font-size:.66rem;color:var(--reagent-deep);letter-spacing:.08em;min-width:2.2rem}
+  .mission aside .row div b{display:block;font-size:.98rem}
+  .mission aside .row div span{font-size:.84rem;color:var(--graphite)}
+  @media(max-width:760px){.mission{grid-template-columns:1fr}}
 
-    /* STATS BAR */
-    .stats-bar { position:relative; z-index:1; background:rgba(26,74,122,.2); border-top:1px solid rgba(0,180,216,.1); border-bottom:1px solid rgba(0,180,216,.1); padding:1.8rem 3rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1.5rem; text-align:center; }
-    .stat-num { font-family:'Rajdhani',sans-serif; font-size:2rem; font-weight:700; background:linear-gradient(135deg,var(--cyan),var(--lcyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .stat-label { font-size:.72rem; color:var(--gray); letter-spacing:.1em; text-transform:uppercase; }
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:6px;overflow:hidden}
+  .card{background:var(--plate);padding:1.8rem 1.6rem 2rem;transition:background .2s}
+  .card:hover{background:#FBFDFC}
+  .glyph{width:32px;height:32px;color:var(--reagent)}
+  .card h3{font-size:1.2rem;margin:.9rem 0 .5rem}
+  .card p{font-size:.9rem;color:var(--graphite)}
+  .card .tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--reagent-deep)}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}}
 
-    /* MISSION */
-    #mission { position:relative; z-index:1; padding:5rem 2rem; }
-    .mission-intro { text-align:center; max-width:700px; margin:0 auto 3.5rem; }
-    .section-tag { display:inline-block; color:var(--cyan); font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; margin-bottom:.75rem; }
-    .section-tag::before { content:'· '; }
-    .section-title { font-family:'Rajdhani',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; }
-    .section-title .accent { background:linear-gradient(135deg,var(--cyan),var(--lcyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .section-desc { font-size:.92rem; color:var(--gray); line-height:1.7; margin-top:1rem; }
-    .mission-card {
-      max-width:900px; margin:0 auto;
-      background:linear-gradient(135deg,rgba(26,106,154,.25) 0%,rgba(0,40,70,.4) 100%);
-      border:1px solid rgba(26,106,154,.5); border-radius:1.2rem; padding:3rem;
-      box-shadow:0 0 40px rgba(26,106,154,.15); position:relative; overflow:hidden;
-    }
-    .mission-card-glow { position:absolute; top:-50%; right:-30%; width:200px; height:200px; background:radial-gradient(circle,rgba(26,106,154,.3),transparent 70%); pointer-events:none; }
-    .mission-flag { font-size:2.5rem; margin-bottom:1rem; }
-    .mission-badge { display:inline-block; background:rgba(26,106,154,.3); border:1px solid rgba(26,106,154,.6); color:#6ec6ea; font-size:.65rem; padding:.25rem .8rem; border-radius:2rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
-    .mission-name { font-family:'Rajdhani',sans-serif; font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:.5rem; }
-    .mission-tagline { font-size:.92rem; color:var(--gray); line-height:1.7; margin-bottom:1.5rem; }
-    .mission-services { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
-    .mission-services li { font-size:.82rem; color:#b0cce0; display:flex; align-items:center; gap:.7rem; }
-    .mission-services li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
+  .piliers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:6px;overflow:hidden}
+  .pil{background:var(--plate);padding:1.5rem 1.3rem 1.8rem;display:flex;flex-direction:column;gap:1.1rem}
+  .pil-head{border-bottom:1px solid var(--hairline);padding-bottom:.8rem}
+  .pil-head .ph{font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--reagent-deep)}
+  .pil-head .pt{font-family:var(--serif);font-size:1.25rem;margin-top:.15rem}
+  .pil-item{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:baseline}
+  .pil-item .num{font-family:var(--mono);font-size:.66rem;color:var(--graphite);font-variant-numeric:tabular-nums}
+  .pil-item .nm{font-size:.9rem;font-weight:600}
+  .pil-item .ds{font-size:.78rem;color:var(--graphite);margin-top:.15rem;line-height:1.5}
+  @media(max-width:900px){.piliers{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.piliers{grid-template-columns:1fr}}
 
-    /* PRESTATIONS 4-COLUMN */
-    #prestations { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
-    .prestations-header { text-align:center; margin-bottom:3.5rem; }
-    .prestations-columns { display:grid; grid-template-columns:repeat(4,1fr); gap:0; max-width:1200px; margin:0 auto; border-radius:1rem; overflow:hidden; border:1px solid rgba(0,180,216,.15); }
-    .prest-col { padding:2rem 1.5rem; position:relative; border-right:1px solid rgba(0,180,216,.08); background:rgba(26,74,122,.08); }
-    .prest-col:last-child { border-right:none; }
-    .prest-col-header { display:flex; align-items:center; gap:.6rem; margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:2px solid; }
-    .prest-col-1 .prest-col-header { border-color:var(--teal); }
-    .prest-col-2 .prest-col-header { border-color:var(--gold-orim); }
-    .prest-col-3 .prest-col-header { border-color:var(--cyan); }
-    .prest-col-4 .prest-col-header { border-color:var(--teal); }
-    .prest-phase { font-size:.6rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; padding:.25rem .7rem; border-radius:2rem; }
-    .prest-col-1 .prest-phase { background:rgba(27,168,166,.15); color:var(--teal); }
-    .prest-col-2 .prest-phase { background:rgba(230,168,23,.15); color:var(--gold-orim); }
-    .prest-col-3 .prest-phase { background:rgba(0,180,216,.12); color:var(--cyan); }
-    .prest-col-4 .prest-phase { background:rgba(27,168,166,.15); color:var(--teal); }
-    .prest-col-title { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; color:var(--white); }
-    .prest-item { display:flex; gap:.8rem; padding:1rem 0; border-bottom:1px solid rgba(255,255,255,.04); align-items:flex-start; }
-    .prest-item:last-child { border-bottom:none; }
-    .prest-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
-    .prest-col-1 .prest-icon { background:rgba(27,168,166,.15); }
-    .prest-col-2 .prest-icon { background:rgba(230,168,23,.12); }
-    .prest-col-3 .prest-icon { background:rgba(0,180,216,.1); }
-    .prest-col-4 .prest-icon { background:rgba(27,168,166,.15); }
-    .prest-num { font-size:.6rem; font-weight:800; color:rgba(255,255,255,.25); letter-spacing:.08em; }
-    .prest-name { font-size:.82rem; font-weight:700; color:var(--white); margin:.15rem 0; line-height:1.3; }
-    .prest-desc { font-size:.72rem; color:var(--gray); line-height:1.5; }
-    .prest-arrow { position:absolute; right:-10px; top:50%; transform:translateY(-50%); width:20px; height:20px; background:rgba(13,27,42,.9); border:1px solid rgba(0,180,216,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; z-index:3; font-size:.55rem; color:var(--cyan); }
+  .indice{background:var(--plate);border:1px solid var(--hairline);border-radius:8px;padding:clamp(1.6rem,4vw,2.6rem)}
+  .scale{position:relative;height:12px;border-radius:6px;margin:2.6rem 0 .4rem;background:linear-gradient(90deg,#E4B7A0 0%,#E9D39A 38%,#BEDDCF 66%,var(--reagent) 100%)}
+  .scale .marker{position:absolute;top:-9px;width:2px;height:30px;background:var(--ink)}
+  .scale .marker::after{content:attr(data-l);position:absolute;top:-2.2rem;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--mono);font-size:.62rem;background:var(--ink);color:#fff;padding:.2rem .45rem;border-radius:3px}
+  .ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;color:var(--graphite)}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-top:2rem}
+  .metrics span{font-family:var(--mono);font-size:.66rem;letter-spacing:.02em;color:var(--graphite);border:1px solid var(--hairline);border-radius:4px;padding:.5rem .6rem;text-align:center}
+  @media(max-width:640px){.metrics{grid-template-columns:1fr 1fr}}
 
-    /* POLES */
-    #poles { position:relative; z-index:1; padding:5rem 2rem; }
-    .poles-header { text-align:center; margin-bottom:3.5rem; }
-    .entity-section-title { font-family:'Rajdhani',sans-serif; font-size:clamp(1.5rem,3vw,2.3rem); font-weight:700; margin:.5rem 0; }
-    .ch-label { color:#6ec6ea; }
-    .poles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem; max-width:1100px; margin:0 auto; }
-    .pole-card { background:rgba(26,74,122,.15); border:1px solid rgba(0,180,216,.15); border-radius:1rem; padding:2rem; transition:transform .3s, border-color .3s; }
-    .pole-card:hover { transform:translateY(-4px); border-color:rgba(0,180,216,.4); }
-    .pole-icon { font-size:2.2rem; margin-bottom:1rem; }
-    .pole-name { font-family:'Rajdhani',sans-serif; font-size:1.25rem; font-weight:700; color:var(--cyan); margin-bottom:.5rem; }
-    .pole-desc { font-size:.82rem; color:var(--gray); line-height:1.65; margin-bottom:1rem; }
-    .pole-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
-    .pole-tag { background:rgba(0,180,216,.1); border:1px solid rgba(0,180,216,.2); color:var(--lcyan); font-size:.65rem; padding:.2rem .6rem; border-radius:.3rem; letter-spacing:.08em; }
+  .marque{display:grid;grid-template-columns:1.1fr .9fr;gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:8px;overflow:hidden}
+  .marque>div{background:var(--plate);padding:clamp(1.5rem,3vw,2.2rem)}
+  .owner-badge{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--gold-deep);border:1px solid #EBD9A6;background:#FBF4DF;border-radius:4px;padding:.35rem .7rem;display:inline-block;margin-bottom:1rem}
+  .marque h3{font-size:1.5rem;margin-bottom:.7rem}
+  .marque p{font-size:.9rem;color:var(--graphite)}
+  .pi-sub{display:flex;flex-direction:column;gap:1rem;justify-content:center}
+  .pi-sub .pi{border:1px solid var(--hairline);border-radius:5px;padding:1rem 1.1rem}
+  .pi-sub .pi .t{font-family:var(--mono);font-size:.6rem;letter-spacing:.11em;text-transform:uppercase;color:var(--reagent-deep)}
+  .pi-sub .pi .h{font-family:var(--serif);font-size:1.15rem;margin:.2rem 0 .2rem}
+  .pi-sub .pi .d{font-size:.82rem;color:var(--graphite)}
+  @media(max-width:760px){.marque{grid-template-columns:1fr}}
 
-    /* MARQUE / IP */
-    #marque { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
-    .marque-inner { max-width:900px; margin:0 auto; }
-    .marque-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:3rem; }
-    .marque-grid-5 { grid-template-columns:repeat(3,1fr); }
-    .marque-grid-5 .marque-block:nth-child(4),
-    .marque-grid-5 .marque-block:nth-child(5) { }
-    @media(min-width:901px) { .marque-grid-5 { grid-template-columns:repeat(3,1fr); }
-      .marque-grid-5 .marque-block:nth-child(4) { grid-column: 1 / 2; margin-left:auto; margin-right:0; }
-      .marque-grid-5 .marque-block:nth-child(5) { grid-column: 3 / 4; margin-left:0; margin-right:auto; }
-    }
-    .marque-block { background:rgba(26,74,122,.1); border:1px solid rgba(0,180,216,.1); border-radius:1rem; padding:1.8rem; }
-    .marque-block h3 { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; color:var(--cyan); margin-bottom:.8rem; }
-    .marque-block p { font-size:.82rem; color:var(--gray); line-height:1.65; }
-    .marque-badge { display:inline-block; background:rgba(201,168,76,.15); border:1px solid rgba(201,168,76,.4); color:var(--gold); font-size:.65rem; padding:.2rem .7rem; border-radius:.3rem; letter-spacing:.1em; margin-bottom:1rem; }
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:6px;overflow:hidden}
+  .tm{background:var(--plate);padding:1.7rem 1.5rem 1.9rem}
+  .tm .av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--reagent-deep),var(--reagent));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:1.05rem}
+  .tm .nm{font-family:var(--serif);font-size:1.2rem;margin:.9rem 0 .6rem}
+  .tm .role{display:block;font-family:var(--mono);font-size:.66rem;color:var(--graphite);line-height:1.7}
+  .tm .role.lead{color:var(--reagent-deep)}
+  @media(max-width:760px){.team{grid-template-columns:1fr}}
 
-    /* TEAM */
-    #equipe { position:relative; z-index:1; padding:5rem 2rem; background:rgba(13,27,42,.5); }
-    .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:1000px; margin:3rem auto 0; }
-    .team-card { background:rgba(26,74,122,.1); border:1px solid rgba(0,180,216,.15); border-radius:1rem; padding:1.8rem; text-align:center; transition:transform .3s, border-color .3s; }
-    .team-card:hover { transform:translateY(-4px); border-color:rgba(0,180,216,.35); }
-    .team-avatar { width:70px; height:70px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--cyan)); display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 1rem; border:2px solid rgba(0,180,216,.3); }
-    .team-name { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; color:var(--white); }
-    .team-roles { margin-top:.5rem; display:flex; flex-wrap:wrap; gap:.3rem; justify-content:center; }
-    .team-role { font-size:.65rem; padding:.2rem .6rem; border-radius:.3rem; letter-spacing:.07em; }
-    .team-role.ch { background:rgba(26,106,154,.3); color:#6ec6ea; }
-    .team-role.sci { background:rgba(0,180,216,.15); color:var(--cyan); }
+  .support{background:var(--ink);color:#EAF2F0;border-radius:10px;padding:clamp(2rem,5vw,3.4rem);position:relative;overflow:hidden}
+  .support h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.5rem);max-width:22ch}
+  .support>p{color:#B9CBC8;max-width:54ch;margin-top:1rem}
+  .support .row{display:flex;flex-wrap:wrap;gap:1.4rem 2.6rem;margin-top:1.8rem;align-items:flex-end}
+  .iban{font-family:var(--mono);font-size:.95rem;letter-spacing:.03em;color:#fff}
+  .iban small{display:block;font-size:.6rem;letter-spacing:.14em;color:#7fa39e;text-transform:uppercase;margin-bottom:.25rem}
+  .support .fine{font-family:var(--mono);font-size:.62rem;color:#7fa39e;margin-top:1.5rem;letter-spacing:.02em}
+  .support .helix{position:absolute;right:-40px;top:-30px;width:280px;height:360px;opacity:.14;color:var(--reagent)}
+  .patron{border-top:1px solid rgba(255,255,255,.12);margin-top:1.5rem;padding-top:1.2rem;font-size:.82rem;color:#9db6b2;position:relative;max-width:62ch}
+  .patron b{color:#EAF2F0;font-weight:600}
 
-    /* CONTACT */
-    #contact { position:relative; z-index:1; padding:5rem 2rem; }
-    .contact-center { max-width:600px; margin:3rem auto 0; }
-    .contact-block { background:rgba(26,74,122,.1); border:1px solid rgba(26,106,154,.4); border-radius:1rem; padding:2rem; }
-    .contact-block h3 { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:1.2rem; color:#6ec6ea; }
-    .contact-item { display:flex; align-items:flex-start; gap:.7rem; margin-bottom:.9rem; }
-    .contact-item-icon { font-size:1rem; min-width:1.3rem; }
-    .contact-item-text { font-size:.82rem; color:var(--gray); line-height:1.5; }
-    .contact-item-text a { color:var(--cyan); text-decoration:none; }
-    .contact-item-text a:hover { text-decoration:underline; }
+  .nl{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;background:var(--plate);border:1px solid var(--hairline);border-radius:8px;padding:clamp(1.5rem,3vw,2.2rem)}
+  .nl h3{font-size:1.4rem;margin-bottom:.35rem}
+  .nl p{font-size:.88rem;color:var(--graphite);max-width:48ch}
+  .nl form{display:flex;gap:.5rem;flex-wrap:wrap}
+  .nl input{font-family:var(--sans);font-size:.88rem;padding:.7rem .9rem;border:1px solid var(--hairline);border-radius:4px;background:var(--bench);color:var(--ink);min-width:220px}
+  .nl input:focus{outline:2px solid var(--reagent);outline-offset:1px}
+  .nl-success{margin-top:1rem;padding:.8rem 1rem;border:1px solid rgba(27,168,166,.3);background:rgba(27,168,166,.06);border-radius:6px;color:var(--reagent-deep);font-size:.85rem}
+  @media(max-width:720px){.nl{grid-template-columns:1fr}}
+  .contact{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;margin-top:2.4rem;font-size:.88rem;color:var(--graphite)}
+  .contact b{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;color:var(--reagent-deep);margin-bottom:.3rem}
 
+  footer{border-top:1px solid var(--hairline);margin-top:2rem}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding:2rem clamp(1.1rem,4vw,2.4rem);font-size:.8rem;color:var(--graphite)}
+  footer .mono{font-size:.64rem;letter-spacing:.05em}
+  footer .foot-links{display:flex;flex-wrap:wrap;gap:.4rem .9rem;align-items:center}
+  footer .foot-links a{color:var(--graphite)}
+  footer .foot-links a:hover{color:var(--ink)}
 
-    /* DONATION */
-    #donation { position:relative; z-index:1; padding:5rem 2rem; }
-    .donation-inner { max-width:700px; margin:0 auto; text-align:center; }
-    .donation-card { background:linear-gradient(135deg,rgba(27,168,166,.15),rgba(0,40,70,.3)); border:1px solid rgba(27,168,166,.4); border-radius:1.2rem; padding:3rem 2rem; margin-top:2.5rem; }
-    .donation-qr { width:180px; height:180px; margin:0 auto 1.5rem; background:#fff; border-radius:1rem; padding:12px; display:flex; align-items:center; justify-content:center; }
-    .donation-qr img { width:100%; height:100%; image-rendering:pixelated; }
-    .donation-amount { font-family:'Rajdhani',sans-serif; font-size:1.8rem; font-weight:700; color:var(--teal); margin-bottom:.5rem; }
-    .donation-text { font-size:.88rem; color:var(--gray); line-height:1.7; margin-bottom:2rem; max-width:500px; margin-left:auto; margin-right:auto; }
-    .btn-donate { display:inline-flex; align-items:center; gap:.6rem; background:linear-gradient(135deg,#1BA8A6,#0d8a88); color:#fff; border:none; padding:1rem 2.5rem; border-radius:2rem; font-size:1rem; font-weight:700; letter-spacing:.06em; cursor:pointer; transition:transform .2s,box-shadow .2s; text-decoration:none; box-shadow:0 0 30px rgba(27,168,166,.3),0 0 60px rgba(27,168,166,.15); animation:donatePulse 2.5s ease-in-out infinite; }
-    @keyframes donatePulse{0%,100%{box-shadow:0 0 30px rgba(27,168,166,.3),0 0 60px rgba(27,168,166,.15)}50%{box-shadow:0 0 45px rgba(27,168,166,.5),0 0 90px rgba(27,168,166,.3)}}
-    .btn-donate:hover { transform:translateY(-3px) scale(1.04); box-shadow:0 0 50px rgba(27,168,166,.5),0 0 100px rgba(27,168,166,.3); }
-    .btn-donate svg { width:20px; height:20px; }
-    .donation-note { font-size:.72rem; color:rgba(148,163,184,.5); margin-top:1.5rem; }
+  /* sticky donation bar (clair) */
+  .sticky-donate-bar{position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(15,33,31,.97);backdrop-filter:blur(8px);color:#EAF2F0;display:flex;align-items:center;justify-content:center;gap:1.2rem;padding:.7rem 1.2rem;font-size:.86rem;border-top:1px solid rgba(255,255,255,.08)}
+  .sticky-donate-bar p{margin:0}
+  .sticky-donate-bar strong{color:#fff}
+  .sticky-donate-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--reagent);color:#fff;padding:.5rem 1.1rem;border-radius:4px;font-weight:600;font-size:.82rem;white-space:nowrap}
+  .sticky-donate-btn:hover{background:var(--reagent-deep)}
+  .sticky-donate-close{background:none;border:none;color:#7fa39e;font-size:1.3rem;line-height:1;cursor:pointer;padding:0 .2rem}
+  .sticky-donate-close:hover{color:#fff}
+  @media(max-width:600px){.sticky-donate-bar{font-size:.76rem;gap:.7rem;padding:.6rem .8rem}.sticky-donate-bar p{max-width:60%}}
 
-    /* NEWSLETTER */
-    #newsletter { position:relative; z-index:1; padding:5rem 2rem; }
-    .newsletter-inner { max-width:700px; margin:0 auto; text-align:center; }
-    .newsletter-card {
-      background:linear-gradient(135deg,rgba(0,180,216,.08),rgba(26,74,122,.2));
-      border:1px solid rgba(0,180,216,.25);
-      border-radius:1.2rem; padding:3rem 2rem; margin-top:2.5rem;
-      position:relative; overflow:hidden;
-    }
-    .newsletter-card::before {
-      content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
-      background:radial-gradient(circle at 30% 40%, rgba(0,180,216,.06) 0%, transparent 60%);
-      animation:nlGlow 8s ease-in-out infinite alternate;
-    }
-    @keyframes nlGlow { 0%{transform:translate(0,0)} 100%{transform:translate(5%,5%)} }
-    .newsletter-icon {
-      width:70px; height:70px; margin:0 auto 1.5rem;
-      background:linear-gradient(135deg,var(--cyan),#0077b6);
-      border-radius:50%; display:flex; align-items:center; justify-content:center;
-      box-shadow:0 0 30px rgba(0,180,216,.3);
-    }
-    .newsletter-icon svg { width:32px; height:32px; stroke:#fff; fill:none; stroke-width:1.5; }
-    .newsletter-subtitle { font-family:'Rajdhani',sans-serif; font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:.5rem; position:relative; }
-    .newsletter-text { font-size:.88rem; color:var(--gray); line-height:1.7; margin-bottom:2rem; max-width:500px; margin-left:auto; margin-right:auto; position:relative; }
-    .newsletter-form { display:flex; gap:.6rem; max-width:460px; margin:0 auto; position:relative; }
-    .newsletter-input {
-      flex:1; padding:.85rem 1.2rem; border-radius:2rem;
-      border:1px solid rgba(0,180,216,.3); background:rgba(13,27,42,.6);
-      color:var(--white); font-size:.88rem; font-family:'Inter',sans-serif;
-      outline:none; transition:border-color .3s, box-shadow .3s;
-    }
-    .newsletter-input::placeholder { color:var(--gray); }
-    .newsletter-input:focus { border-color:var(--cyan); box-shadow:0 0 20px rgba(0,180,216,.2); }
-    .newsletter-btn {
-      background:linear-gradient(135deg,var(--cyan),#0077b6); color:#fff; border:none;
-      padding:.85rem 2rem; border-radius:2rem; font-size:.88rem; font-weight:700;
-      letter-spacing:.06em; cursor:pointer; transition:transform .2s, box-shadow .2s;
-      box-shadow:0 0 20px rgba(0,180,216,.3); white-space:nowrap;
-    }
-    .newsletter-btn:hover { transform:translateY(-2px); box-shadow:0 0 35px rgba(0,180,216,.5); }
-    .newsletter-btn:disabled { opacity:.6; cursor:not-allowed; transform:none; }
-    .newsletter-success {
-      display:none; padding:1rem; border-radius:.8rem; margin-top:1rem;
-      background:rgba(34,197,94,.1); border:1px solid rgba(34,197,94,.3);
-      color:var(--green); font-size:.85rem; position:relative;
-    }
-    .newsletter-privacy { font-size:.68rem; color:rgba(148,163,184,.4); margin-top:1rem; position:relative; }
-    .newsletter-badges { display:flex; gap:.8rem; justify-content:center; margin-top:1.5rem; flex-wrap:wrap; position:relative; }
-    .newsletter-badge {
-      font-size:.68rem; padding:.3rem .8rem; border-radius:2rem;
-      background:rgba(0,180,216,.08); border:1px solid rgba(0,180,216,.15);
-      color:var(--lcyan); letter-spacing:.05em;
-    }
-    /* NEWSLETTER ARCHIVES DROPDOWN */
-    .nl-archives { position:relative; margin-top:2rem; }
-    .nl-archives-toggle {
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:rgba(0,180,216,.08); border:1px solid rgba(0,180,216,.25);
-      color:var(--lcyan); padding:.6rem 1.4rem; border-radius:2rem;
-      font-size:.8rem; font-weight:600; letter-spacing:.05em; cursor:pointer;
-      transition:all .3s;
-    }
-    .nl-archives-toggle:hover { background:rgba(0,180,216,.15); border-color:var(--cyan); }
-    .nl-archives-toggle svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; transition:transform .3s; }
-    .nl-archives-toggle.open svg { transform:rotate(180deg); }
-    .nl-archives-list {
-      max-height:0; overflow:hidden; transition:max-height .4s ease, opacity .3s ease;
-      opacity:0; margin-top:.8rem;
-    }
-    .nl-archives-list.open { max-height:500px; opacity:1; }
-    .nl-archives-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:.6rem; max-width:500px; margin:0 auto;
-    }
-    .nl-archive-item {
-      display:flex; align-items:center; gap:.6rem;
-      background:rgba(13,27,42,.5); border:1px solid rgba(0,180,216,.15);
-      border-radius:.8rem; padding:.7rem 1rem; text-decoration:none;
-      transition:all .3s; cursor:pointer;
-    }
-    .nl-archive-item:hover { background:rgba(0,180,216,.1); border-color:rgba(0,180,216,.4); transform:translateY(-2px); }
-    .nl-archive-icon {
-      width:36px; height:36px; border-radius:.5rem; flex-shrink:0;
-      background:linear-gradient(135deg,rgba(220,38,38,.2),rgba(220,38,38,.05));
-      border:1px solid rgba(220,38,38,.3);
-      display:flex; align-items:center; justify-content:center;
-      font-size:.6rem; font-weight:800; color:#f87171; letter-spacing:.03em;
-    }
-    .nl-archive-info { text-align:left; }
-    .nl-archive-title { font-size:.78rem; font-weight:600; color:var(--white); line-height:1.3; }
-    .nl-archive-date { font-size:.65rem; color:var(--gray); margin-top:.1rem; }
-    @media(max-width:600px) {
-      .newsletter-form { flex-direction:column; }
-      .newsletter-btn { width:100%; }
-      .nl-archives-grid { grid-template-columns:1fr; }
-    }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-    /* FOOTER */
-    footer { position:relative; z-index:1; background:rgba(13,27,42,.9); border-top:1px solid rgba(0,180,216,.1); padding:3rem 2rem 2rem; text-align:center; }
-    .footer-logo { text-align:center; }
-    .footer-logo img { height:50px; width:auto; object-fit:contain; filter:drop-shadow(0 0 10px rgba(0,180,216,.3)); }
-    .footer-entity-line { font-size:.8rem; color:var(--gray); margin:1rem 0; }
-    .footer-entity-line strong { color:var(--white); }
-    .footer-links { display:flex; gap:2rem; justify-content:center; margin:1.5rem 0; flex-wrap:wrap; }
-    .footer-links a { font-size:.75rem; color:var(--gray); text-decoration:none; transition:color .2s; }
-    .footer-links a:hover { color:var(--cyan); }
-    .footer-bottom { font-size:.7rem; color:rgba(148,163,184,.5); margin-top:1.5rem; border-top:1px solid rgba(0,180,216,.08); padding-top:1.5rem; }
-
-    /* ANIMATIONS */
-    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes bounce { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(-8px); } }
-
-    /* Reveal on scroll */
-    .reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-
-    /* RESPONSIVE */
-    @media(max-width:900px) {
-      .poles-grid, .marque-grid, .team-grid { grid-template-columns:1fr; }
-      .prestations-columns { grid-template-columns:1fr; }
-      .prest-arrow { display:none; }
-      .mission-services { grid-template-columns:1fr; }
-      nav { padding:.8rem 1.5rem; }
-      .nav-links, .nav-cta { display:none; }
-      .nav-mobile-toggle { display:block; }
-      .nav-links.open { display:flex; flex-direction:column; position:fixed; top:60px; left:0; right:0; background:rgba(13,27,42,.97); padding:2rem; gap:1.5rem; z-index:99; }
-    }
-    @media(max-width:600px) {
-      .lang-dropdown-btn { font-size:.68rem; padding:.3rem .6rem; }
-      .stats-bar { padding:1.5rem 1rem; }
-    }
   </style>
 </head>
 <body>
-<!-- Access gate removed - site is now public -->
-
-  <canvas id="canvas-bg"></canvas>
-
-  <!-- NAV -->
-  <nav id="main-nav">
-    <a href="#hero" class="nav-logo"><img src="orim-logo.png" alt="ORIM™" class="nav-logo-img" /><span data-i18n="nav.tagline">Immuno-Métabolique</span></a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#mission" data-i18n="nav.mission">Notre mission</a></li>
-      <li><a href="#prestations" data-i18n="nav.prestations">12 Prestations</a></li>
-      <li><a href="bibliotheque.html" data-i18n="nav.bibliotheque">Bibliothèque</a></li>
-      <li><a href="#poles" data-i18n="nav.poles">Pôles</a></li>
-      <li><a href="#marque" data-i18n="nav.marque">Marque ORIM™</a></li>
-      <li><a href="partenaires.html" data-i18n="nav.partenaires">Nos Partenaires</a></li>
-      <li><a href="#equipe" data-i18n="nav.equipe">Équipe</a></li>
-      <li><a href="#donation" data-i18n="nav.donation">Donation</a></li>
-      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-      <li><a href="blog/" data-i18n="nav.blog">Blog</a></li>
-      <li><a href="newsletters/" data-i18n="nav.newsletters">Newsletters</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0">
-      <a href="mailto:info@orimnutrition.org" class="nav-cta" data-i18n="nav.cta">Nous contacter</a>
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="brand">ORIM<small>IMMUNO&middot;MÉTABOLIQUE</small></a>
+    <div class="hgroup">
+      <nav class="links">
+        <a href="#mission" data-i18n="nav.mission">Notre mission</a>
+        <a href="#methode" data-i18n="lab.nav.methode">Méthode</a>
+        <a href="#indice" data-i18n="lab.nav.indice">Indice</a>
+        <a href="bibliotheque.html" data-i18n="nav.bibliotheque">Bibliothèque</a>
+        <a href="#equipe" data-i18n="lab.gov.tag">Gouvernance</a>
+        <a href="#soutenir" data-i18n="lab.nav.soutenir">Soutenir</a>
+      </nav>
       <div class="lang-dropdown" id="lang-dropdown" role="navigation" aria-label="Language selector">
-        <button class="lang-dropdown-btn" onclick="toggleLangMenu()">
+        <button class="lang-dropdown-btn" onclick="toggleLangMenu()" aria-label="Choisir la langue">
           <span id="current-lang-flag">🇫🇷</span> <span id="current-lang-code">FR</span> <span class="lang-arrow">▾</span>
         </button>
         <div class="lang-dropdown-menu" id="lang-menu">
@@ -443,527 +254,253 @@
           <button onclick="setLang('pt')" id="btn-pt">🇧🇷 Português</button>
         </div>
       </div>
+      <a href="/soutenir.html" class="btn btn-solid" data-i18n="lab.donate">Faire un don</a>
     </div>
-    <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
-  </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section id="hero">
-    <video id="hero-video" autoplay muted loop playsinline preload="metadata">
-      <source src="hero-bg.mp4" type="video/mp4" />
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge" data-i18n="hero.badge">Association à but non lucratif · Genève</div>
-      <h1 class="hero-title">ORIM™</h1>
-      <p class="hero-subtitle" data-i18n="hero.subtitle">Optimisation Résolutive Immuno-Métabolique</p>
-      <p class="hero-desc" data-i18n="hero.desc">Association scientifique genevoise à but non lucratif, dédiée à l'immunonutrition préventive. Recherche, éducation et accompagnement au service de votre santé.</p>
-      <div class="hero-actions">
-        <a href="#prestations" class="btn-primary" data-i18n="hero.btn1">Nos 12 prestations</a>
-        <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Nous contacter</a>
-        <a href="/soutenir.html" target="_blank" rel="noopener" class="btn-donate-hero" data-i18n="hero.btn3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Soutenir ORIM
-        </a>
+<main id="top">
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <span class="eyebrow" data-i18n="hero.badge">Association à but non lucratif · Genève</span>
+        <h1 data-i18n="lab.hero">L'immunonutrition préventive, à la précision du <em>laboratoire</em>.</h1>
+        <p class="lede" data-i18n="hero.desc">Association scientifique genevoise à but non lucratif, dédiée à l'immunonutrition préventive. Recherche, éducation et accompagnement au service de votre santé.</p>
+        <div class="cta-row">
+          <a href="#soutenir" class="btn btn-solid" data-i18n="lab.cta1">Soutenir la recherche</a>
+          <a href="#methode" class="btn btn-ghost" data-i18n="lab.cta2">Découvrir la méthode &rarr;</a>
+        </div>
       </div>
-    </div>
-    <div class="scroll-hint" data-i18n="hero.scroll">Découvrir</div>
-  </section>
-
-  <!-- STATS BAR -->
-  <div class="stats-bar reveal">
-    <div class="stat-item"><div class="stat-num">12</div><div class="stat-label" data-i18n="stats.prestations">Prestations</div></div>
-    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label" data-i18n="stats.poles">Pôles Association</div></div>
-    <div class="stat-item"><div class="stat-num">500</div><div class="stat-label" data-i18n="stats.aliments">Aliments indexés ORIM™</div></div>
-    <div class="stat-item"><div class="stat-num">v3.0</div><div class="stat-label" data-i18n="stats.indice">Indice ORIM™ actuel</div></div>
-    <div class="stat-item"><div class="stat-num">2027</div><div class="stat-label" data-i18n="stats.microbiome">Microbiome v4.0</div></div>
-    <div class="stat-item"><div class="stat-num">GE</div><div class="stat-label" data-i18n="stats.lieu">Genève, Suisse</div></div>
+      <div class="hero-vis">
+        <canvas id="mol" aria-hidden="true"></canvas>
+        <span class="corner mono">C&#8323;&#8320;H&#8325;&#8322;N&#8321;&#8320;O&#8321;&#8323;</span>
+        <div class="readout">
+          <div class="k">Indice ORIM&trade; · v3.0</div>
+          <div class="v"><b>0</b>–<b>100</b></div>
+          <div class="u" data-i18n="lab.readout">score alimentaire · 8 métriques</div>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- MISSION -->
-  <section id="mission">
-    <div class="mission-intro reveal">
-      <div class="section-tag" data-i18n="mission.tag">Notre mission</div>
-      <h2 class="section-title"><span class="accent" data-i18n="mission.title1">Une association,</span> <span data-i18n="mission.title2">une mission</span></h2>
-      <p class="section-desc" data-i18n="mission.desc">L'Association ORIM Genève est une organisation à but non lucratif dédiée à la recherche, l'éducation et l'accompagnement en immunonutrition préventive. Notre objectif : rendre accessible une approche scientifique de la nutrition au service de la santé immuno-métabolique.</p>
+  <div class="assay">
+    <div class="wrap">
+      <div class="plate96" id="plate" aria-hidden="true"></div>
+      <div class="stat"><div class="n"><span class="mono">4241</span></div><div class="l" data-i18n="lab.assay1">Aliments indexés</div></div>
+      <div class="stat"><div class="n"><span class="mono">12</span></div><div class="l" data-i18n="lab.assay2">Prestations</div></div>
+      <div class="stat"><div class="n"><span class="mono">3</span></div><div class="l" data-i18n="lab.assay3">Pôles scientifiques</div></div>
+      <div class="stat"><div class="n"><span class="mono">46.20&deg;N</span></div><div class="l" data-i18n="lab.assay4">Genève, Suisse</div></div>
     </div>
-    <div class="mission-card reveal">
-      <div class="mission-card-glow"></div>
-      <div class="mission-flag">🇨🇭</div>
-      <div class="mission-badge" data-i18n="mission.badge">Association à but non lucratif · Genève · Suisse</div>
-      <div class="mission-name" data-i18n="mission.name">Association ORIM Genève</div>
-      <p class="mission-tagline" data-i18n="mission.tagline">Organisation scientifique à but non lucratif. Licenciée de la marque ORIM™, opératrice de l'Indice ORIM™. Pôles Éducatif, Accompagnement &amp; Recherche.</p>
-      <ul class="mission-services">
-        <li data-i18n="mission.s1">Programme 3 Phases (désinflammation, optimisation, autorégulation)</li>
-        <li data-i18n="mission.s2">Indice ORIM™ 0-100 (scoring 8 métriques)</li>
-        <li data-i18n="mission.s3">Pôle R&amp;D ORIM (biomarqueurs, nutrigénomique)</li>
-        <li data-i18n="mission.s4">Certification praticiens (3 niveaux)</li>
-        <li data-i18n="mission.s5">App digitale ORIM (tracking, menus, progression)</li>
-        <li data-i18n="mission.s6">Centre ORIM Genève (fitness, coworking santé, bien-être)</li>
-      </ul>
-    </div>
-  </section>
+  </div>
 
-  <!-- 12 PRESTATIONS (Design C : 4 colonnes narratives) -->
-  <section id="prestations">
-    <div class="prestations-header reveal">
-      <div class="section-tag" data-i18n="prest.tag">12 prestations · 1 mission</div>
-      <h2 class="section-title"><span class="accent" data-i18n="prest.title">Nos prestations</span></h2>
-      <p class="section-desc" style="max-width:700px;margin:.8rem auto 0;" data-i18n="prest.desc">L'Association ORIM Genève structure ses 12 prestations en 4 piliers complémentaires : Science, Prévention, Communauté et Infrastructuré digitale.</p>
-    </div>
-    <div class="prestations-columns">
-      <!-- Col 1 : Science & Recherche -->
-      <div class="prest-col prest-col-1 reveal">
-        <div class="prest-col-header">
-          <span class="prest-phase" data-i18n="prest.c1.phase">Science</span>
-          <span class="prest-col-title" data-i18n="prest.c1.title">Recherche</span>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">🧬</div>
-          <div>
-            <div class="prest-num">01</div>
-            <div class="prest-name" data-i18n="prest.01.name">Programme 3 Phases</div>
-            <div class="prest-desc" data-i18n="prest.01.desc">Désinflammation, optimisation métabolique, autorégulation durable</div>
-          </div>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">📊</div>
-          <div>
-            <div class="prest-num">02</div>
-            <div class="prest-name" data-i18n="prest.02.name">Indice ORIM 0-100</div>
-            <div class="prest-desc" data-i18n="prest.02.desc">Scoring alimentaire sur 8 métriques scientifiques</div>
-          </div>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">🔬</div>
-          <div>
-            <div class="prest-num">03</div>
-            <div class="prest-name" data-i18n="prest.03.name">Pôle R&amp;D ORIM</div>
-            <div class="prest-desc" data-i18n="prest.03.desc">Biomarqueurs, SPMs, nutrigénomique, IA prédictive</div>
-          </div>
-        </div>
-        <div class="prest-arrow">▶</div>
+  <div class="wrap">
+    <section class="block" id="mission">
+      <span class="eyebrow" data-i18n="mission.tag">Notre mission</span>
+      <div class="mission" style="margin-top:1.4rem">
+        <p class="lead" data-i18n="lab.mission.lead">Rendre accessible une <b>approche scientifique de la nutrition</b>, au service de la santé immuno-métabolique. Organisation à but non lucratif, licenciée de la marque ORIM™, elle opère l'Indice ORIM™ sous licence.</p>
+        <aside>
+          <div class="row"><span class="mono">01</span><div><b data-i18n="lab.m1t">Recherche</b><span data-i18n="lab.m1d">Produire la connaissance : biomarqueurs, microbiote, nutrigénomique.</span></div></div>
+          <div class="row"><span class="mono">02</span><div><b data-i18n="lab.m2t">Éducation</b><span data-i18n="lab.m2d">Transmettre : publications, bibliothèque alimentaire, conférences.</span></div></div>
+          <div class="row"><span class="mono">03</span><div><b data-i18n="lab.m3t">Accompagnement</b><span data-i18n="lab.m3d">Appliquer : suivi sous mandat, réseau de praticiens habilités.</span></div></div>
+        </aside>
       </div>
-      <!-- Col 2 : Prévention & Accompagnement -->
-      <div class="prest-col prest-col-2 reveal">
-        <div class="prest-col-header">
-          <span class="prest-phase" data-i18n="prest.c2.phase">Prévention</span>
-          <span class="prest-col-title" data-i18n="prest.c2.title">Accompagnement</span>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">🤝</div>
-          <div>
-            <div class="prest-num">04</div>
-            <div class="prest-name" data-i18n="prest.04.name">Partenariats santé</div>
-            <div class="prest-desc" data-i18n="prest.04.desc">Réseau de praticiens partenaires, orientation et suivi</div>
-          </div>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">🥗</div>
-          <div>
-            <div class="prest-num">05</div>
-            <div class="prest-name" data-i18n="prest.05.name">Lexique ORIM™ 500 aliments</div>
-            <div class="prest-desc" data-i18n="prest.05.desc">Protocoles personnalisés 3 phases, menus ORIM, suivi</div>
-          </div>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">🍳</div>
-          <div>
-            <div class="prest-num">06</div>
-            <div class="prest-name" data-i18n="prest.06.name">Cuisine éducative</div>
-            <div class="prest-desc" data-i18n="prest.06.desc">Ateliers culinaires, demonstrations, menus personnalisés</div>
-          </div>
-        </div>
-        <div class="prest-arrow">▶</div>
-      </div>
-      <!-- Col 3 : Communauté & Formation -->
-      <div class="prest-col prest-col-3 reveal">
-        <div class="prest-col-header">
-          <span class="prest-phase" data-i18n="prest.c3.phase">Communauté</span>
-          <span class="prest-col-title" data-i18n="prest.c3.title">Formation</span>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">👥</div>
-          <div>
-            <div class="prest-num">07</div>
-            <div class="prest-name" data-i18n="prest.07.name">Communauté membres</div>
-            <div class="prest-desc" data-i18n="prest.07.desc">3 niveaux : Standard, Bienfaiteur, Premium</div>
-          </div>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">🎓</div>
-          <div>
-            <div class="prest-num">08</div>
-            <div class="prest-name" data-i18n="prest.08.name">Certification praticiens</div>
-            <div class="prest-desc" data-i18n="prest.08.desc">Formation 3 niveaux, certification ORIM continue</div>
-          </div>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">🎙️</div>
-          <div>
-            <div class="prest-num">09</div>
-            <div class="prest-name" data-i18n="prest.09.name">Conférences &amp; ateliers</div>
-            <div class="prest-desc" data-i18n="prest.09.desc">Séminaires publics, éducation nutritionnelle</div>
-          </div>
-        </div>
-        <div class="prest-arrow">▶</div>
-      </div>
-      <!-- Col 4 : Digital & Infrastructuré -->
-      <div class="prest-col prest-col-4 reveal">
-        <div class="prest-col-header">
-          <span class="prest-phase" data-i18n="prest.c4.phase">Digital</span>
-          <span class="prest-col-title" data-i18n="prest.c4.title">Infrastructure</span>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">📱</div>
-          <div>
-            <div class="prest-num">10</div>
-            <div class="prest-name" data-i18n="prest.10.name">App digitale ORIM</div>
-            <div class="prest-desc" data-i18n="prest.10.desc">Tracking biomarqueurs, menus, progression membre</div>
-          </div>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">📖</div>
-          <div>
-            <div class="prest-num">11</div>
-            <div class="prest-name" data-i18n="prest.11.name">Publications scientifiques</div>
-            <div class="prest-desc" data-i18n="prest.11.desc">Veille scientifique, bulletins, revue publique</div>
-          </div>
-        </div>
-        <div class="prest-item">
-          <div class="prest-icon">🏛️</div>
-          <div>
-            <div class="prest-num">12</div>
-            <div class="prest-name" data-i18n="prest.12.name">Centre ORIM Genève</div>
-            <div class="prest-desc" data-i18n="prest.12.desc">Fitness, coworking santé, conférence, bien-être</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;margin:3rem 0 1rem;">
-      <a href="prestations.html" class="btn-primary" style="font-size:1rem;padding:1rem 2.8rem;gap:.6rem;display:inline-flex;align-items:center;" data-i18n="prest.btn.details">
-        Voir plus de details
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- POLES ASSOCIATION -->
-  <section id="poles">
-    <div class="poles-header reveal">
-      <div class="section-tag" data-i18n="poles.tag">Association ORIM Genève</div>
-      <h2 class="entity-section-title ch-label" data-i18n="poles.title">🏛️ Trois Pôles</h2>
-      <p class="section-desc" style="max-width:600px;margin:.8rem auto 0;" data-i18n="poles.desc">L'Association ORIM Genève structure ses activités en trois pôles complémentaires : Éducatif, Accompagnement et Recherche.</p>
-    </div>
-    <div class="poles-grid">
-      <div class="pole-card reveal">
-        <div class="pole-icon">🎓</div>
-        <div class="pole-name" data-i18n="pole.edu.name">Pôle Éducatif</div>
-        <p class="pole-desc" data-i18n="pole.edu.desc">Formations individuelles et collectives en nutrition immuno-métabolique. Séminaires, contenus pédagogiques, cotisations membres Standard &amp; Bienfaiteur.</p>
-        <div class="pole-tags">
-          <span class="pole-tag" data-i18n="pole.edu.t1">Séminaires collectifs</span>
-          <span class="pole-tag" data-i18n="pole.edu.t2">Formation individuelle</span>
-          <span class="pole-tag" data-i18n="pole.edu.t3">Atelier Seniors 55+</span>
-          <span class="pole-tag" data-i18n="pole.edu.t4">Contenus pédagogiques</span>
-          <span class="pole-tag" data-i18n="pole.edu.t5">Cotisations membres</span>
+  <div class="wrap">
+    <section class="block" id="methode" style="padding-top:0">
+      <div class="sec-head">
+        <span class="eyebrow" data-i18n="lab.meth.tag">Trois pôles complémentaires</span>
+        <h2 data-i18n="lab.meth.title">Une méthode structurée comme un protocole.</h2>
+        <p data-i18n="lab.meth.desc">Chaque activité répond à une discipline : produire la connaissance, la transmettre, l'appliquer. Trois pôles, une seule exigence de preuve.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <svg class="glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="16" cy="16" r="11"/><path d="M16 5v22M5 16h22" stroke-opacity=".5"/><circle cx="16" cy="16" r="3.2" fill="currentColor" stroke="none"/></svg>
+          <div class="tag" data-i18n="lab.c1tag">Produire la connaissance</div>
+          <h3 data-i18n="lab.c1h">Recherche &amp; R&amp;D</h3>
+          <p data-i18n="lab.c1d">Biomarqueurs, médiateurs pro-résolutifs, nutrigénomique et microbiote.</p>
+        </div>
+        <div class="card">
+          <svg class="glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 24c4-10 16-10 20 0M6 8c4 10 16 10 20 0"/><circle cx="16" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>
+          <div class="tag" data-i18n="lab.c2tag">Transmettre</div>
+          <h3 data-i18n="lab.c2h">Éducatif</h3>
+          <p data-i18n="lab.c2d">Bulletins scientifiques, bibliothèque alimentaire, conférences et formation.</p>
+        </div>
+        <div class="card">
+          <svg class="glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M16 4v9M16 19v9M8 8l5 5M19 19l5 5M4 16h9M19 16h9"/><circle cx="16" cy="16" r="3" fill="currentColor" stroke="none"/></svg>
+          <div class="tag" data-i18n="lab.c3tag">Appliquer</div>
+          <h3 data-i18n="lab.c3h">Accompagnement</h3>
+          <p data-i18n="lab.c3d">Suivi personnalisé sous mandat, supervisé par le comité scientifique.</p>
         </div>
       </div>
-      <div class="pole-card reveal">
-        <div class="pole-icon">🩺</div>
-        <div class="pole-name" data-i18n="pole.thera.name">Pôle Accompagnement</div>
-        <p class="pole-desc" data-i18n="pole.thera.desc">Accompagnement personnalisé sous mandat Association, supervisé par le comité scientifique ORIM. Application de l'Indice ORIM™ v3.0. Orientation vers les professionnels de santé habilités.</p>
-        <div class="pole-tags">
-          <span class="pole-tag" data-i18n="pole.thera.t1">Accompagnement personnalisé</span>
-          <span class="pole-tag" data-i18n="pole.thera.t2">Indice ORIM™ v3.0</span>
-          <span class="pole-tag" data-i18n="pole.thera.t3">Comité scientifique</span>
-          <span class="pole-tag" data-i18n="pole.thera.t4">Droit suisse · Genève</span>
-        </div>
-      </div>
-      <div class="pole-card reveal">
-        <div class="pole-icon">🔬</div>
-        <div class="pole-name" data-i18n="pole.rech.name">Pôle Recherche &amp; IP</div>
-        <p class="pole-desc" data-i18n="pole.rech.desc">Développement de l'Indice ORIM™ v4.0 Microbiome (2027) &amp; v5.0 IA Nutrigénomique (2028). Gestion des subventions R&amp;D. Propriété intellectuelle.</p>
-        <div class="pole-tags">
-          <span class="pole-tag" data-i18n="pole.rech.t1">Indice v4.0 · 2027</span>
-          <span class="pole-tag" data-i18n="pole.rech.t2">Indice v5.0 · 2028</span>
-          <span class="pole-tag" data-i18n="pole.rech.t3">Subventions R&amp;D</span>
-          <span class="pole-tag" data-i18n="pole.rech.t4">Propriété intellectuelle</span>
-          <span class="pole-tag" data-i18n="pole.rech.t5">IPI · Suisse</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- MARQUE ORIM™ -->
-  <section id="marque">
-    <div class="marque-inner">
-      <div class="reveal" style="text-align:center;margin-bottom:1rem;">
-        <div class="section-tag" data-i18n="marque.tag">Propriété intellectuelle</div>
-        <h2 class="section-title"><span class="accent">ORIM™</span> · <span data-i18n="marque.title">Marque, Lexique &amp; Indice</span></h2>
+  <div class="wrap">
+    <section class="block" id="prestations" style="padding-top:0">
+      <div class="sec-head">
+        <span class="eyebrow" data-i18n="lab.pil.tag">12 prestations · 1 mission</span>
+        <h2 data-i18n="lab.pil.title">Quatre piliers, douze prestations.</h2>
+        <p data-i18n="lab.pil.desc">L'Association structure ses activités en quatre piliers complémentaires : Science, Prévention, Communauté et Infrastructure.</p>
       </div>
-      <div class="marque-grid marque-grid-5">
-        <div class="marque-block reveal">
-          <div class="marque-badge" data-i18n="marque.owner.badge">Propriétaire · Marcel O. Chevalley</div>
-          <h3 data-i18n="marque.owner.title">🏛️ Marque ORIM™</h3>
+      <div class="piliers">
+        <div class="pil">
+          <div class="pil-head"><div class="ph" data-i18n="lab.p1">Science</div><div class="pt" data-i18n="lab.p1t">Recherche</div></div>
+          <div class="pil-item"><span class="num">01</span><div><div class="nm" data-i18n="prest.01.name">Programme 3 Phases</div><div class="ds" data-i18n="prest.01.desc">Désinflammation, optimisation métabolique, autorégulation durable</div></div></div>
+          <div class="pil-item"><span class="num">02</span><div><div class="nm" data-i18n="prest.02.name">Indice ORIM 0-100</div><div class="ds" data-i18n="prest.02.desc">Scoring alimentaire sur 8 métriques scientifiques</div></div></div>
+          <div class="pil-item"><span class="num">03</span><div><div class="nm" data-i18n="prest.03.name">Pôle R&amp;D ORIM</div><div class="ds" data-i18n="prest.03.desc">Biomarqueurs, SPMs, nutrigénomique, IA prédictive</div></div></div>
+        </div>
+        <div class="pil">
+          <div class="pil-head"><div class="ph" data-i18n="lab.p2">Prévention</div><div class="pt" data-i18n="lab.p2t">Accompagnement</div></div>
+          <div class="pil-item"><span class="num">04</span><div><div class="nm" data-i18n="prest.04.name">Partenariats santé</div><div class="ds" data-i18n="prest.04.desc">Réseau de praticiens partenaires, orientation et suivi</div></div></div>
+          <div class="pil-item"><span class="num">05</span><div><div class="nm" data-i18n="prest.05.name">Lexique ORIM™ 500 aliments</div><div class="ds" data-i18n="prest.05.desc">Protocoles personnalisés 3 phases, menus ORIM, suivi</div></div></div>
+          <div class="pil-item"><span class="num">06</span><div><div class="nm" data-i18n="prest.06.name">Cuisine éducative</div><div class="ds" data-i18n="prest.06.desc">Ateliers culinaires, demonstrations, menus personnalisés</div></div></div>
+        </div>
+        <div class="pil">
+          <div class="pil-head"><div class="ph" data-i18n="lab.p3">Communauté</div><div class="pt" data-i18n="lab.p3t">Formation</div></div>
+          <div class="pil-item"><span class="num">07</span><div><div class="nm" data-i18n="prest.07.name">Communauté membres</div><div class="ds" data-i18n="prest.07.desc">3 niveaux : Standard, Bienfaiteur, Premium</div></div></div>
+          <div class="pil-item"><span class="num">08</span><div><div class="nm" data-i18n="prest.08.name">Certification praticiens</div><div class="ds" data-i18n="prest.08.desc">Formation 3 niveaux, certification ORIM continue</div></div></div>
+          <div class="pil-item"><span class="num">09</span><div><div class="nm" data-i18n="prest.09.name">Conférences &amp; ateliers</div><div class="ds" data-i18n="prest.09.desc">Séminaires publics, éducation nutritionnelle</div></div></div>
+        </div>
+        <div class="pil">
+          <div class="pil-head"><div class="ph" data-i18n="lab.p4">Digital</div><div class="pt" data-i18n="lab.p4t">Infrastructure</div></div>
+          <div class="pil-item"><span class="num">10</span><div><div class="nm" data-i18n="prest.10.name">App digitale ORIM</div><div class="ds" data-i18n="prest.10.desc">Tracking biomarqueurs, menus, progression membre</div></div></div>
+          <div class="pil-item"><span class="num">11</span><div><div class="nm" data-i18n="prest.11.name">Publications scientifiques</div><div class="ds" data-i18n="prest.11.desc">Veille scientifique, bulletins, revue publique</div></div></div>
+          <div class="pil-item"><span class="num">12</span><div><div class="nm" data-i18n="prest.12.name">Centre ORIM Genève</div><div class="ds" data-i18n="prest.12.desc">Fitness, coworking santé, conférence, bien-être</div></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="block" id="indice" style="padding-top:0">
+      <div class="indice">
+        <span class="eyebrow" data-i18n="lab.ind.tag">Indice ORIM™ · un score, huit métriques</span>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.3rem);margin:.7rem 0 .3rem" data-i18n="lab.ind.title">Chaque aliment, noté de 0 à 100.</h2>
+        <p style="color:var(--graphite);max-width:60ch" data-i18n="lab.ind.desc">Un indice scientifique qui évalue la valeur immuno-métabolique d'un aliment sur huit métriques scientifiques.</p>
+        <div class="scale" aria-hidden="true"><div class="marker" style="left:82%" data-l="Sardine · 82"></div></div>
+        <div class="ticks"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+        <div class="metrics" id="ind-metrics" aria-hidden="true"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="block" id="marque" style="padding-top:0">
+      <div class="marque">
+        <div>
+          <span class="owner-badge" data-i18n="marque.owner.badge">Propriétaire · Marcel O. Chevalley</span>
+          <h3 data-i18n="lab.marque.title">La marque ORIM™</h3>
           <p data-i18n="marque.owner.text">La marque ORIM™ est en cours d'enregistrement à l'IPI (Suisse) par Marcel O. Chevalley (personne physique). Classes NICE 42 (recherche scientifique) et 44 (conseil en nutrition). L'Association ORIM Genève bénéficie d'une licence d'usage non exclusive, conformément à l'art. 17 des Statuts.</p>
         </div>
-        <div class="marque-block reveal">
-          <div class="marque-badge" data-i18n="marque.lexique.badge">R&amp;D · Association ORIM</div>
-          <h3 data-i18n="marque.lexique.title">📚 Lexique ORIM™</h3>
-          <p data-i18n="marque.lexique.text">Le Lexique ORIM™ v3.0 catalogue 500 aliments indexés selon leurs propriétés immuno-métaboliques. Base de données éducative et scientifique, développée et maintenue par l'Association sous licence de la marque ORIM™.</p>
-        </div>
-        <div class="marque-block reveal">
-          <div class="marque-badge" data-i18n="marque.indice.badge">R&amp;D · Association ORIM</div>
-          <h3 data-i18n="marque.indice.title">🔬 Indice ORIM™ v3.0</h3>
-          <p data-i18n="marque.indice.text">L'Indice ORIM™ v3.0 applique 8 métriques de scoring immuno-métabolique aux 500 aliments du Lexique. Algorithme opérationnel, opéré par l'Association sous licence de la marque ORIM™.</p>
-        </div>
-        <div class="marque-block reveal">
-          <div class="marque-badge" data-i18n="marque.v4.badge">Projection R&amp;D · 2027</div>
-          <h3 data-i18n="marque.v4.title">🧬 Indice v4.0 · Microbiome</h3>
-          <p data-i18n="marque.v4.text">Extension prévue : intégration du microbiome intestinal. Sous supervision du comité scientifique ORIM. Financé par subventions R&amp;D. Algorithmes opérés par l'Association sous licence de la marque ORIM™.</p>
-        </div>
-        <div class="marque-block reveal">
-          <div class="marque-badge" data-i18n="marque.v5.badge">Projection R&amp;D · 2028</div>
-          <h3 data-i18n="marque.v5.title">🤖 Indice v5.0 · IA Nutrigénomique</h3>
-          <p data-i18n="marque.v5.text">Vision 2028 : intégration de l'intelligence artificielle et de la nutrigénomique. Algorithmes opérés par l'Association sous licence de la marque ORIM™. Protection IP renforcée dès la phase R&amp;D.</p>
+        <div class="pi-sub">
+          <div class="pi"><div class="t" data-i18n="lab.pi1t">Opéré sous licence</div><div class="h" data-i18n="lab.pi1h">Indice ORIM™ v3.0</div><div class="d" data-i18n="lab.pi1d">Algorithme de scoring alimentaire, opéré sous licence de la marque ORIM™.</div></div>
+          <div class="pi"><div class="t" data-i18n="lab.pi2t">Référentiel</div><div class="h" data-i18n="lab.pi2h">Lexique ORIM™</div><div class="d" data-i18n="lab.pi2d">Plus de 4000 aliments indexés selon la méthode ORIM.</div></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-
-  <!-- COMMUNAUTE SCIENTIFIQUE -->
-  <section id="communaute" style="position:relative;z-index:1;padding:5rem 2rem;">
-    <div style="max-width:900px;margin:0 auto;text-align:center;" class="reveal">
-      <div class="section-tag" data-i18n="communaute.tag">Ecosysteme ORIM</div>
-      <h2 class="section-title"><span class="accent" data-i18n="communaute.title">Communaute scientifique</span></h2>
-      <p class="section-desc" data-i18n="communaute.desc">ORIM construit un reseau de professionnels de sante engages dans la nutrition preventive et l'immunonutrition, au service d'un accompagnement global et personnalise.</p>
-      <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:3rem 0 2rem;">
-        <div style="background:rgba(26,106,154,.2);border:1px solid rgba(26,106,154,.5);border-radius:.8rem;padding:1.2rem 1.8rem;color:#6ec6ea;font-size:.85rem;font-weight:600;">
-          <span style="font-size:1.5rem;">🏛️</span><br>
-          <span data-i18n="communaute.node.orim">Association ORIM</span><br>
-          <small style="font-weight:400;opacity:.7;" data-i18n="communaute.node.orim.sub">Methodologie scientifique<br>Indice ORIM™</small>
+  <div class="wrap">
+    <section class="block" id="equipe" style="padding-top:0">
+      <div class="sec-head">
+        <span class="eyebrow" data-i18n="lab.gov.tag">Gouvernance</span>
+        <h2 data-i18n="lab.gov.title">Une direction, une exigence de preuve.</h2>
+      </div>
+      <div class="team">
+        <div class="tm">
+          <div class="av">OC</div>
+          <div class="nm">Marcel O. Chevalley</div>
+          <span class="role lead" data-i18n="team.oc.r1">Président fondateur · Association ORIM</span>
+          <span class="role" data-i18n="team.oc.r2">Titulaire de la marque ORIM™</span>
+          <span class="role" data-i18n="team.oc.r3">Spécialiste en ingénierie QHSE</span>
         </div>
-        <div style="color:var(--cyan);font-size:1.2rem;">⟷</div>
-        <div style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.4);border-radius:.8rem;padding:1.2rem 1.8rem;color:#4ade80;font-size:.85rem;font-weight:600;">
-          <span style="font-size:1.5rem;">🩺</span><br>
-          <span data-i18n="communaute.node.pro">Professionnels de sante</span><br>
-          <small style="font-weight:400;opacity:.7;" data-i18n="communaute.node.pro.sub">Medecins specialises, naturopathes,<br>nutritionnistes, dieteticiens</small>
+        <div class="tm">
+          <div class="av">FV</div>
+          <div class="nm">Francesco Volpicelli</div>
+          <span class="role lead" data-i18n="team.fv.r1">Co-fondateur &amp; Vice-Président</span>
+          <span class="role" data-i18n="team.fv.r2">Relations Institutionnelles, Mécénat &amp; Représentation</span>
+          <span class="role" data-i18n="team.fv.r3">Président du Comité de Patronage et de Mécénat</span>
+        </div>
+        <div class="tm">
+          <div class="av">CD</div>
+          <div class="nm" data-i18n="team.cd.title">Comité directeur</div>
+          <span class="role lead" data-i18n="team.cd.r1">Gouvernance collégiale</span>
+          <span class="role" data-i18n="team.cd.r2">Trésorerie · Secrétariat · Logistique</span>
+          <span class="role">Association ORIM Genève</span>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--gray);line-height:1.7;max-width:600px;margin:0 auto;" data-i18n="communaute.footer">Un reseau multidisciplinaire au service de votre sante, guide par la science et l'evidence clinique.</p>
-    </div>
-  </section>
+    </section>
+  </div>
 
-
-  <!-- EQUIPE -->
-  <section id="equipe">
-    <div class="reveal" style="text-align:center;margin-bottom:1rem;">
-      <div class="section-tag" data-i18n="equipe.tag">Notre équipe</div>
-      <h2 class="section-title"><span class="accent" data-i18n="equipe.title">Dirigeants &amp; Gouvernance</span></h2>
-    </div>
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <div class="team-avatar">MC</div>
-        <div class="team-name">Marcel O. Chevalley</div>
-        <div class="team-roles">
-          <span class="team-role ch" data-i18n="team.oc.r1">Président fondateur · Association ORIM</span>
-          <span class="team-role sci" data-i18n="team.oc.r2">Titulaire de la marque ORIM™</span>
-          <span class="team-role sci" data-i18n="team.oc.r3">Spécialiste en ingénierie QHSE</span>
+  <div class="wrap">
+    <section class="block" id="soutenir" style="padding-top:0">
+      <div class="support">
+        <svg class="helix" viewBox="0 0 100 130" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M25 0C75 22 25 43 75 65C25 87 75 108 25 130"/><path d="M75 0C25 22 75 43 25 65C75 87 25 108 75 130"/>
+          <path d="M30 8h40M34 20H66M30 32h40M34 44H66M30 56h40M34 68H66M30 80h40M34 92H66M30 104h40M34 116H66" stroke-opacity=".7"/>
+        </svg>
+        <span class="eyebrow" style="color:var(--reagent)" data-i18n="lab.sup.tag">Soutenir · Mécénat</span>
+        <h2 data-i18n="lab.sup.title">Soutenez une science au service de la prévention.</h2>
+        <p data-i18n="lab.sup.desc">Association à but non lucratif de droit suisse, ORIM finance sa recherche, ses publications et le futur Centre ORIM Genève grâce à votre soutien. Chaque don sert directement la connaissance.</p>
+        <div class="row">
+          <div class="iban"><small data-i18n="lab.iban.label">Virement · PostFinance</small>CH23 0900 0000 1687 1464 5</div>
+          <a href="/soutenir.html" class="btn btn-solid" style="background:var(--reagent);padding:.8rem 1.4rem;font-size:.9rem" data-i18n="donation.btn">Faire un don</a>
         </div>
+        <div class="patron" data-i18n="lab.patron">Sous l'égide de son <b>Comité de Patronage et de Mécénat</b>, présidé par le Vice-Président en charge des Relations Institutionnelles, l'Association offre aux institutions, fondations et grands donateurs un interlocuteur dédié.</div>
+        <div class="fine" data-i18n="lab.fine">Association à but non lucratif · Droit suisse · Canton de Genève · info@orimnutrition.org</div>
       </div>
-      <div class="team-card reveal">
-        <div class="team-avatar">FV</div>
-        <div class="team-name">Francesco Volpicelli</div>
-        <div class="team-roles">
-          <span class="team-role ch" data-i18n="team.fv.r1">Co-fondateur &amp; Vice-Président</span>
-          <span class="team-role sci" data-i18n="team.fv.r2">Relations Institutionnelles, Mécénat &amp; Représentation</span>
-          <span class="team-role sci" data-i18n="team.fv.r3">Président du Comité de Patronage et de Mécénat</span>
-        </div>
-      </div>
-      <div class="team-card reveal">
-        <div class="team-avatar">CD</div>
-        <div class="team-name" data-i18n="team.cd.title">Comité directeur</div>
-        <div class="team-roles">
-          <span class="team-role ch" data-i18n="team.cd.r1">Gouvernance collégiale</span>
-          <span class="team-role sci" data-i18n="team.cd.r2">Trésorerie · Secrétariat · Logistique</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-
-  <!-- DONATION PostFinance -->
-  <section id="donation">
-    <div class="donation-inner reveal">
-      <div class="section-tag" data-i18n="donation.tag">Soutenez notre mission</div>
-      <h2 class="section-title"><span class="accent" data-i18n="donation.title">Faire un don</span></h2>
-      <p class="section-desc" style="max-width:600px;margin:.8rem auto 0;" data-i18n="donation.desc">Votre soutien permet à l'Association ORIM Genève de poursuivre sa mission de recherche, d'éducation et d'accompagnement en immunonutrition préventive.</p>
-      <div class="donation-card">
-        <div class="donation-amount" data-i18n="donation.amount">Chaque don compte</div>
-        <p class="donation-text" data-i18n="donation.text">Soutenez l'Association ORIM Genève par virement bancaire sur notre compte PostFinance. 100% des dons financent la recherche, l'éducation et le futur Centre ORIM Genève.</p>
-        <a href="/soutenir.html" class="btn-donate" data-i18n="donation.btn">Faire un don</a>
-        <p class="donation-note" data-i18n="donation.note">Association à but non lucratif · Droit suisse · Canton de Genève</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER TEAM ORIM -->
-  <section id="newsletter">
-    <div class="newsletter-inner reveal">
-      <div class="section-tag" data-i18n="nl.tag">Restez connectés</div>
-      <h2 class="section-title"><span class="accent" data-i18n="nl.title">Newsletter TEAM ORIM</span></h2>
-      <p class="section-desc" style="max-width:600px;margin:.8rem auto 0;" data-i18n="nl.desc">Rejoignez la communauté ORIM et recevez nos avancées scientifiques, événements et actualités directement dans votre boîte mail.</p>
-      <div class="newsletter-card">
-        <div class="newsletter-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+  <div class="wrap">
+    <section class="block" id="contact" style="padding-top:0">
+      <div class="nl">
+        <div>
+          <h3 data-i18n="lab.nl.title">Newsletter TEAM ORIM</h3>
+          <p data-i18n="lab.nl.desc">Chaque mois, nos bulletins scientifiques, résultats de recherche et prochains événements, directement dans votre boîte mail.</p>
         </div>
-        <div class="newsletter-subtitle" data-i18n="nl.card.title">Rejoignez TEAM ORIM</div>
-        <p class="newsletter-text" data-i18n="nl.card.text">Recevez chaque mois nos bulletins scientifiques, les résultats de nos recherches en immunonutrition, les prochains événements et les avancées du programme ORIM.</p>
-        <form class="newsletter-form" id="nl-form" onsubmit="return handleNewsletter(event)">
-          <input type="email" class="newsletter-input" id="nl-email" placeholder="votre@email.com" required data-i18n-placeholder="nl.placeholder" />
-          <button type="submit" class="newsletter-btn" id="nl-btn" data-i18n="nl.btn">S'inscrire</button>
+        <form id="nl-form" onsubmit="return handleNewsletter(event)">
+          <input type="email" id="nl-email" placeholder="votre@email.com" aria-label="Adresse e-mail" data-i18n-placeholder="nl.placeholder" required />
+          <button type="submit" id="nl-btn" class="btn btn-solid" data-i18n="lab.nl.btn">S'inscrire</button>
         </form>
-        <div class="newsletter-success" id="nl-success" data-i18n="nl.success">Bienvenue dans TEAM ORIM ! Vous recevrez bientôt notre prochaine newsletter.</div>
-        <div class="newsletter-badges">
-          <span class="newsletter-badge" data-i18n="nl.b1">Bulletins scientifiques</span>
-          <span class="newsletter-badge" data-i18n="nl.b2">Événements & ateliers</span>
-          <span class="newsletter-badge" data-i18n="nl.b3">Avancées R&D</span>
-          <span class="newsletter-badge" data-i18n="nl.b4">Gratuit & sans spam</span>
-        </div>
-        <!-- Archives Newsletters PDF -->
-        <div class="nl-archives">
-          <button class="nl-archives-toggle" id="nl-archives-btn" onclick="toggleArchives()">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span data-i18n="nl.archives.btn">Newsletters 2026</span>
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="nl-archives-list" id="nl-archives-list">
-            <div class="nl-archives-grid">
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-01.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 01</div>
-                  <div class="nl-archive-date">29 Dec - 4 Jan 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-02.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 02</div>
-                  <div class="nl-archive-date">5 - 11 Jan 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-03.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 03</div>
-                  <div class="nl-archive-date">12 - 18 Jan 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-04.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 04</div>
-                  <div class="nl-archive-date">19 - 25 Jan 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-05.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 05</div>
-                  <div class="nl-archive-date">26 Jan - 1 Fev 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-06.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 06</div>
-                  <div class="nl-archive-date">2 - 8 Fev 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-07.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 07</div>
-                  <div class="nl-archive-date">9 - 15 Fev 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-08.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 08</div>
-                  <div class="nl-archive-date">16 - 22 Fev 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-09.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 09</div>
-                  <div class="nl-archive-date">23 Fev - 1 Mar 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-10.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 10</div>
-                  <div class="nl-archive-date">2 - 8 Mar 2026</div>
-                </div>
-              </a>
-              <a class="nl-archive-item" href="newsletters/fr/2026/week-11.html">
-                <div class="nl-archive-icon">&#x1F4E8;</div>
-                <div class="nl-archive-info">
-                  <div class="nl-archive-title">Semaine 11</div>
-                  <div class="nl-archive-date">9 - 15 Mar 2026</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <p class="newsletter-privacy" data-i18n="nl.privacy">Vos données restent confidentielles · Désabonnement en un clic · Conforme RGPD</p>
       </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="reveal" style="text-align:center;margin-bottom:1rem;">
-      <div class="section-tag" data-i18n="contact.tag">Nous joindre</div>
-      <h2 class="section-title"><span class="accent" data-i18n="contact.title">Contact</span></h2>
-      <p class="section-desc" style="max-width:550px;margin:.8rem auto 0;" data-i18n="contact.desc">Association ORIM Genève · à votre écoute pour toute question relative à nos prestations.</p>
-    </div>
-    <div class="contact-center">
-      <div class="contact-block reveal">
-        <h3 data-i18n="contact.ch.title">🏛️ Association ORIM Genève</h3>
-        <div class="contact-item"><div class="contact-item-icon">📧</div><div class="contact-item-text"><a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a><br><span style="font-size:.72rem;color:rgba(148,163,184,.5);" data-i18n="contact.ch.email.note">Éducation · Accompagnement · Recherche</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">🌐</div><div class="contact-item-text"><a href="https://www.orimnutrition.org">www.orimnutrition.org</a></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text" data-i18n="contact.ch.address">Genève, Suisse · Droit suisse applicable · For Genève</div></div>
-        <div class="contact-item"><div class="contact-item-icon">ℹ️</div><div class="contact-item-text" style="font-size:.75rem;color:rgba(148,163,184,.6);" data-i18n="contact.ch.note">Association à but non lucratif · Droit suisse · Canton de Genève</div></div>
+      <div class="nl-success" id="nl-success" style="display:none">Merci, votre inscription est bien prise en compte.</div>
+      <div class="contact">
+        <div><b data-i18n="lab.ct1t">Association</b><span data-i18n="lab.ct1d">Association ORIM Genève<br>À but non lucratif · Droit suisse</span></div>
+        <div><b data-i18n="lab.ct2t">Contact</b>info@orimnutrition.org</div>
+        <div><b data-i18n="lab.ct3t">Localisation</b><span data-i18n="lab.ct3d">Genève, Suisse · 46.20°N</span></div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+</main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo"><img src="orim-logo.png" alt="ORIM™" /></div>
-    <div class="footer-entity-line">
-      <strong data-i18n="footer.ch">Association ORIM Genève</strong><br>
-      <span data-i18n="footer.ch.sub">Suisse · But non lucratif · Immunonutrition préventive</span>
-    </div>
-    <div class="footer-links">
+<footer>
+  <div class="wrap">
+    <div><strong style="font-family:var(--serif);letter-spacing:.1em">ORIM</strong> · Association ORIM Genève · ORIM™</div>
+    <div class="foot-links">
+      <a href="prestations.html" data-i18n="nav.prestations">12 Prestations</a>
+      <a href="partenaires.html" data-i18n="nav.partenaires">Nos Partenaires</a>
       <a href="mentions-legales.html" data-i18n="footer.mentions">Mentions légales</a>
       <a href="politique-confidentialite.html" data-i18n="footer.privacy">Politique de confidentialité</a>
-      <a href="mailto:info@orimnutrition.org" data-i18n="footer.contact">Contact</a>
-      <a href="https://www.instagram.com/orim_nutrition/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.3rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg> Instagram</a>
     </div>
-    <div class="footer-bottom">© 2026 Association ORIM Genève · ORIM™ est une marque déposée · info@orimnutrition.org</div>
-  </footer>
+    <div class="mono">GENÈVE · SUISSE · INFO@ORIMNUTRITION.ORG · © 2026</div>
+  </div>
+</footer>
+
+<div class="sticky-donate-bar" id="sticky-donate">
+  <p data-i18n="lab.sticky"><strong>Aidez-nous</strong> à ouvrir le premier Centre ORIM à Genève</p>
+  <a href="/soutenir.html" class="sticky-donate-btn" data-i18n="lab.sticky.btn">Faire un don</a>
+  <button class="sticky-donate-close" onclick="document.getElementById('sticky-donate').style.display='none'" aria-label="Fermer">&times;</button>
+</div>
 
   <script>
+
   // ─── I18N DATA ─────────────────────────────────────────────────────────────
   const i18n = {
     fr: {
-      "nav.tagline":"Immuno-Métabolique","nav.mission":"Notre mission","nav.prestations":"12 Prestations","nav.bibliotheque":"Bibliothèque","nav.poles":"Pôles","nav.marque":"Marque ORIM™","nav.partenaires":"Nos Partenaires","nav.equipe":"Équipe","nav.contact":"Contact","nav.donation":"Donation","nav.cta":"Nous contacter",
+      "nav.tagline":"Immuno-Métabolique","lab.hero":"L'immunonutrition préventive, à la précision du <em>laboratoire</em>.","lab.cta1":"Soutenir la recherche","lab.cta2":"Découvrir la méthode &rarr;","lab.readout":"score alimentaire · 8 métriques","lab.meth.tag":"Trois pôles complémentaires","lab.meth.title":"Une méthode structurée comme un protocole.","lab.meth.desc":"Chaque activité répond à une discipline : produire la connaissance, la transmettre, l'appliquer. Trois pôles, une seule exigence de preuve.","lab.c1tag":"Produire la connaissance","lab.c1h":"Recherche &amp; R&amp;D","lab.c1d":"Biomarqueurs, médiateurs pro-résolutifs, nutrigénomique et microbiote. La science qui fonde l'Indice ORIM™ et la méthode.","lab.c2tag":"Transmettre","lab.c2h":"Éducatif","lab.c2d":"Bulletins scientifiques, bibliothèque alimentaire, conférences et formation des professionnels de santé.","lab.c3tag":"Appliquer","lab.c3h":"Accompagnement","lab.c3d":"Suivi personnalisé sous mandat, supervisé par le comité scientifique, en lien avec un réseau de praticiens habilités.","lab.pil.tag":"12 prestations · 1 mission","lab.pil.title":"Quatre piliers, douze prestations.","lab.pil.desc":"L'Association structure ses activités en quatre piliers complémentaires : Science, Prévention, Communauté et Infrastructure.","lab.p1":"Science","lab.p1t":"Recherche","lab.p2":"Prévention","lab.p2t":"Accompagnement","lab.p3":"Communauté","lab.p3t":"Formation","lab.p4":"Digital","lab.p4t":"Infrastructure","lab.ind.tag":"Indice ORIM™ · un score, huit métriques","lab.ind.title":"Chaque aliment, noté de 0 à 100.","lab.ind.desc":"Un indice scientifique qui évalue la valeur immuno-métabolique d'un aliment sur huit métriques scientifiques, pour transformer la nutrition en donnée mesurable.","lab.ind.metrics":"Densité micronutriments|Charge inflammatoire|Index glycémique|Oméga-3 / Oméga-6|Polyphénols|Fibres · microbiote|Biodisponibilité|Charge oxydative","lab.gov.tag":"Gouvernance","lab.gov.title":"Une direction, une exigence de preuve.","lab.sup.tag":"Soutenir · Mécénat","lab.sup.title":"Soutenez une science au service de la prévention.","lab.sup.desc":"Association à but non lucratif de droit suisse, ORIM finance sa recherche, ses publications et le futur Centre ORIM Genève grâce à votre soutien. Chaque don sert directement la connaissance.","lab.iban.label":"Virement · PostFinance","lab.patron":"Sous l'égide de son <b>Comité de Patronage et de Mécénat</b>, présidé par le Vice-Président en charge des Relations Institutionnelles, l'Association offre aux institutions, fondations et grands donateurs un interlocuteur dédié.","lab.fine":"Association à but non lucratif · Droit suisse · Canton de Genève · info@orimnutrition.org","lab.assay1":"Aliments indexés","lab.assay2":"Prestations","lab.assay3":"Pôles scientifiques","lab.assay4":"Genève, Suisse","lab.m1t":"Recherche","lab.m1d":"Produire la connaissance : biomarqueurs, microbiote, nutrigénomique.","lab.m2t":"Éducation","lab.m2d":"Transmettre : publications, bibliothèque alimentaire, conférences.","lab.m3t":"Accompagnement","lab.m3d":"Appliquer : suivi sous mandat, réseau de praticiens habilités.","lab.mission.lead":"Rendre accessible une <b>approche scientifique de la nutrition</b>, au service de la santé immuno-métabolique. Organisation à but non lucratif, licenciée de la marque ORIM™, elle opère l'Indice ORIM™ sous licence.","lab.marque.title":"La marque ORIM™","lab.pi1t":"Opéré sous licence","lab.pi1h":"Indice ORIM™ v3.0","lab.pi1d":"Algorithme de scoring alimentaire, opéré sous licence de la marque ORIM™.","lab.pi2t":"Référentiel","lab.pi2h":"Lexique ORIM™","lab.pi2d":"Plus de 4000 aliments indexés selon la méthode ORIM.","lab.nl.title":"Newsletter TEAM ORIM","lab.nl.desc":"Chaque mois, nos bulletins scientifiques, résultats de recherche et prochains événements, directement dans votre boîte mail.","lab.nl.btn":"S'inscrire","lab.ct1t":"Association","lab.ct1d":"Association ORIM Genève<br>À but non lucratif · Droit suisse","lab.ct2t":"Contact","lab.ct3t":"Localisation","lab.ct3d":"Genève, Suisse · 46.20°N","lab.sticky":"<strong>Aidez-nous</strong> à ouvrir le premier Centre ORIM à Genève","lab.sticky.btn":"Faire un don","lab.donate":"Faire un don","nav.mission":"Notre mission","nav.bibliotheque":"Bibliothèque","lab.nav.methode":"Méthode","lab.nav.indice":"Indice","lab.nav.soutenir":"Soutenir","nav.prestations":"12 Prestations","nav.poles":"Pôles","nav.marque":"Marque ORIM™","nav.partenaires":"Nos Partenaires","nav.equipe":"Équipe","nav.contact":"Contact","nav.donation":"Donation","nav.cta":"Nous contacter",
       "hero.badge":"Association à but non lucratif · Genève","hero.subtitle":"Optimisation Résolutive Immuno-Métabolique","hero.desc":"Association scientifique genevoise à but non lucratif, dédiée à l'immunonutrition préventive. Recherche, éducation et accompagnement au service de votre santé.","hero.btn1":"Nos 12 prestations","hero.btn2":"Nous contacter","hero.btn3":"Soutenir ORIM","hero.scroll":"Découvrir",
       "stats.prestations":"Prestations","stats.poles":"Pôles Association","stats.aliments":"Aliments indexés ORIM™","stats.indice":"Indice ORIM™ actuel","stats.microbiome":"Microbiome v4.0","stats.lieu":"Genève, Suisse",
       "mission.tag":"Notre mission","mission.title1":"Une association,","mission.title2":"une mission","mission.desc":"L'Association ORIM Genève est une organisation à but non lucratif dédiée à la recherche, l'éducation et l'accompagnement en immunonutrition préventive. Notre objectif : rendre accessible une approche scientifique de la nutrition au service de la santé immuno-métabolique.",
@@ -988,7 +525,7 @@
       "pole.rech.name":"Pôle Recherche & IP","pole.rech.desc":"Développement de l'Indice ORIM™ v4.0 Microbiome (2027) & v5.0 IA Nutrigénomique (2028). Gestion des subventions R&D. Propriété intellectuelle.","pole.rech.t1":"Indice v4.0 · 2027","pole.rech.t2":"Indice v5.0 · 2028","pole.rech.t3":"Subventions R&D","pole.rech.t4":"Propriété intellectuelle","pole.rech.t5":"IPI · Suisse",
       "marque.tag":"Propriété intellectuelle","marque.title":"Marque, Lexique & Indice",
       "marque.owner.badge":"Propriétaire · Marcel O. Chevalley","marque.owner.title":"🏛️ Marque ORIM™","marque.owner.text":"La marque ORIM™ est en cours d'enregistrement à l'IPI (Suisse) par Marcel O. Chevalley (personne physique). Classes NICE 42 (recherche scientifique) et 44 (conseil en nutrition). L'Association ORIM Genève bénéficie d'une licence d'usage non exclusive, conformément à l'art. 17 des Statuts.",
-      "marque.lexique.badge":"R&D · Association ORIM","marque.lexique.title":"📚 Lexique ORIM™","marque.lexique.text":"Le Lexique ORIM™ v3.0 catalogue 500 aliments indexés selon leurs propriétés immuno-métaboliques. Base de données éducative et scientifique, développée et maintenue par l'Association sous licence de la marque ORIM™.",
+      "marque.lexique.badge":"R&D · Association ORIM","marque.lexique.title":"📚 Lexique ORIM™","marque.lexique.text":"Le Lexique ORIM™ v3.0 catalogue 500 aliments indexés selon leurs propriétés immuno-métaboliques. Base de données éducative et scientifique, développée et détenue par l'Association.",
       "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 Indice ORIM™ v3.0","marque.indice.text":"L'Indice ORIM™ v3.0 applique 8 métriques de scoring immuno-métabolique aux 500 aliments du Lexique. Algorithme opérationnel, opéré par l'Association sous licence de la marque ORIM™.",
       "marque.v4.badge":"Projection R&D · 2027","marque.v4.title":"🧬 Indice v4.0 · Microbiome","marque.v4.text":"Extension prévue : intégration du microbiome intestinal. Sous supervision du comité scientifique ORIM. Financé par subventions R&D. Algorithmes opérés par l'Association sous licence de la marque ORIM™.",
       "marque.v5.badge":"Projection R&D · 2028","marque.v5.title":"🤖 Indice v5.0 · IA Nutrigénomique","marque.v5.text":"Vision 2028 : intégration de l'intelligence artificielle et de la nutrigénomique. Algorithmes opérés par l'Association sous licence de la marque ORIM™. Protection IP renforcée dès la phase R&D.",
@@ -1001,7 +538,7 @@
       "footer.ch":"Association ORIM Genève","footer.ch.sub":"Suisse · But non lucratif · Immunonutrition préventive","footer.mentions":"Mentions légales","footer.privacy":"Politique de confidentialité","footer.contact":"Contact"
     },
     en: {
-      "nav.tagline":"Immuno-Metabolic","nav.mission":"Our mission","nav.prestations":"12 Services","nav.bibliotheque":"Food Library","nav.poles":"Pôles","nav.marque":"ORIM™ Brand","nav.partenaires":"Our Partners","nav.equipe":"Team","nav.contact":"Contact","nav.donation":"Donation","nav.cta":"Contact us",
+      "nav.tagline":"Immuno-Metabolic","lab.hero":"Preventive immunonutrition, with <em>laboratory</em> precision.","lab.cta1":"Support our research","lab.cta2":"Discover the method &rarr;","lab.readout":"food score · 8 metrics","lab.meth.tag":"Three complementary pillars","lab.meth.title":"A method structured like a protocol.","lab.meth.desc":"Each activity answers to a discipline: produce knowledge, transmit it, apply it. Three pillars, one standard of proof.","lab.c1tag":"Produce knowledge","lab.c1h":"Research &amp; R&amp;D","lab.c1d":"Biomarkers, pro-resolving mediators, nutrigenomics and microbiome. The science behind the ORIM™ Index and the method.","lab.c2tag":"Transmit","lab.c2h":"Education","lab.c2d":"Scientific bulletins, food library, conferences and training for health professionals.","lab.c3tag":"Apply","lab.c3h":"Guidance","lab.c3d":"Personalised follow-up under mandate, supervised by the scientific committee, with a network of accredited practitioners.","lab.pil.tag":"12 services · 1 mission","lab.pil.title":"Four pillars, twelve services.","lab.pil.desc":"The Association structures its activities into four complementary pillars: Science, Prevention, Community and Infrastructure.","lab.p1":"Science","lab.p1t":"Research","lab.p2":"Prevention","lab.p2t":"Guidance","lab.p3":"Community","lab.p3t":"Training","lab.p4":"Digital","lab.p4t":"Infrastructure","lab.ind.tag":"ORIM™ Index · one score, eight metrics","lab.ind.title":"Every food, scored from 0 to 100.","lab.ind.desc":"A scientific index that rates the immuno-metabolic value of a food on eight scientific metrics, turning nutrition into measurable data.","lab.ind.metrics":"Micronutrient density|Inflammatory load|Glycaemic index|Omega-3 / Omega-6|Polyphenols|Fibre · microbiome|Bioavailability|Oxidative load","lab.gov.tag":"Governance","lab.gov.title":"One leadership, one standard of proof.","lab.sup.tag":"Support · Patronage","lab.sup.title":"Support science in the service of prevention.","lab.sup.desc":"A Swiss non-profit association, ORIM funds its research, publications and the future ORIM Center Geneva through your support. Every donation serves knowledge directly.","lab.iban.label":"Bank transfer · PostFinance","lab.patron":"Under its <b>Patronage and Endowment Committee</b>, chaired by the Vice-President for Institutional Relations, the Association offers institutions, foundations and major donors a dedicated contact.","lab.fine":"Non-profit association · Swiss law · Canton of Geneva · info@orimnutrition.org","lab.assay1":"Indexed foods","lab.assay2":"Services","lab.assay3":"Scientific pillars","lab.assay4":"Geneva, Switzerland","lab.m1t":"Research","lab.m1d":"Produce knowledge: biomarkers, microbiome, nutrigenomics.","lab.m2t":"Education","lab.m2d":"Transmit: publications, food library, conferences.","lab.m3t":"Guidance","lab.m3d":"Apply: follow-up under mandate, network of accredited practitioners.","lab.mission.lead":"Making a <b>scientific approach to nutrition</b> accessible, in the service of immuno-metabolic health. A non-profit organisation, licensee of the ORIM™ brand, operating the ORIM™ Index under licence.","lab.marque.title":"The ORIM™ brand","lab.pi1t":"Operated under licence","lab.pi1h":"ORIM™ Index v3.0","lab.pi1d":"Food-scoring algorithm, operated under licence of the ORIM™ brand.","lab.pi2t":"Reference base","lab.pi2h":"ORIM™ Lexicon","lab.pi2d":"Over 4000 foods indexed with the ORIM method.","lab.nl.title":"TEAM ORIM Newsletter","lab.nl.desc":"Every month, our scientific bulletins, research results and upcoming events, straight to your inbox.","lab.nl.btn":"Subscribe","lab.ct1t":"Association","lab.ct1d":"Association ORIM Geneva<br>Non-profit · Swiss law","lab.ct2t":"Contact","lab.ct3t":"Location","lab.ct3d":"Geneva, Switzerland · 46.20°N","lab.sticky":"<strong>Help us</strong> open the first ORIM Center in Geneva","lab.sticky.btn":"Donate","lab.donate":"Donate","nav.mission":"Our mission","nav.bibliotheque":"Food Library","lab.nav.methode":"Method","lab.nav.indice":"Index","lab.nav.soutenir":"Support","nav.prestations":"12 Services","nav.poles":"Pôles","nav.marque":"ORIM™ Brand","nav.partenaires":"Our Partners","nav.equipe":"Team","nav.contact":"Contact","nav.donation":"Donation","nav.cta":"Contact us",
       "hero.badge":"Non-profit association · Geneva","hero.subtitle":"Resolving Immuno-Metabolic Optimization","hero.desc":"Geneva-based non-profit scientific association dedicated to préventive immunonutrition. Research, éducation and support for your health.","hero.btn1":"Our 12 services","hero.btn2":"Contact us","hero.btn3":"Support ORIM","hero.scroll":"Explore",
       "stats.prestations":"Services","stats.poles":"Association pôles","stats.aliments":"ORIM™ indexed foods","stats.indice":"Current ORIM™ Index","stats.microbiome":"Microbiome v4.0","stats.lieu":"Geneva, Switzerland",
       "mission.tag":"Our mission","mission.title1":"One association,","mission.title2":"one mission","mission.desc":"Association ORIM Geneva is a non-profit organization dedicated to research, éducation and support in préventive immunonutrition. Our goal: making a scientific approach to nutrition accessible for immuno-metabolic health.",
@@ -1026,7 +563,7 @@
       "pole.rech.name":"Research & IP Pôle","pole.rech.desc":"Development of ORIM™ Index v4.0 Microbiome (2027) & v5.0 AI Nutrigenomics (2028). R&D grant management. Intellectual property.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"R&D grants","pole.rech.t4":"Intellectual property","pole.rech.t5":"IPI · Switzerland",
       "marque.tag":"Intellectual property","marque.title":"Brand, Lexicon & Index",
       "marque.owner.badge":"Owner · Marcel O. Chevalley","marque.owner.title":"🏛️ ORIM™ Brand","marque.owner.text":"The ORIM™ brand is being registered at the IPI (Switzerland) by Marcel O. Chevalley (natural person). NICE classes 42 (scientific research) and 44 (nutrition consulting). Association ORIM Geneva holds a non-exclusive usage license, in accordance with Art. 17 of the Statutes.",
-      "marque.lexique.badge":"R&D · Association ORIM","marque.lexique.title":"📚 ORIM™ Lexicon","marque.lexique.text":"The ORIM™ Lexicon v3.0 catalogs 500 foods indexed by their immuno-metabolic properties. Éducational and scientific database, developed and maintained by the Association under licence of the ORIM™ brand.",
+      "marque.lexique.badge":"R&D · Association ORIM","marque.lexique.title":"📚 ORIM™ Lexicon","marque.lexique.text":"The ORIM™ Lexicon v3.0 catalogs 500 foods indexed by their immuno-metabolic properties. Éducational and scientific database, developed and owned by the Association.",
       "marque.indice.badge":"R&D · Association ORIM","marque.indice.title":"🔬 ORIM™ Index v3.0","marque.indice.text":"The ORIM™ Index v3.0 applies 8 immuno-metabolic scoring metrics to the 500 foods in the Lexicon. Operational algorithm, operated by the Association under licence of the ORIM™ brand.",
       "marque.v4.badge":"R&D Projection · 2027","marque.v4.title":"🧬 Index v4.0 · Microbiome","marque.v4.text":"Planned extension: gut microbiome intégration. Under ORIM Scientific Committee supervision. Funded by R&D grants. Algorithms operated by the Association under licence of the ORIM™ brand.",
       "marque.v5.badge":"R&D Projection · 2028","marque.v5.title":"🤖 Index v5.0 · AI Nutrigenomics","marque.v5.text":"2028 vision: intégration of artificial intelligence and nutrigenomics. Algorithms operated by the Association under licence of the ORIM™ brand. Reinforced IP protection from R&D phase.",
@@ -1039,7 +576,7 @@
       "footer.ch":"Association ORIM Geneva","footer.ch.sub":"Switzerland · Non-profit · Preventive immunonutrition","footer.mentions":"Legal notices","footer.privacy":"Privacy policy","footer.contact":"Contact"
     },
     es: {
-      "nav.tagline":"Inmuno-Metabolico","nav.mission":"Nuestra mision","nav.prestations":"12 Prestaciones","nav.bibliotheque":"Biblioteca","nav.poles":"Polos","nav.marque":"Marca ORIM™","nav.partenaires":"Nuestros Socios","nav.equipe":"Equipo","nav.contact":"Contacto","nav.donation":"Donacion","nav.cta":"Contactenos",
+      "nav.tagline":"Inmuno-Metabolico","lab.hero":"La inmunonutricion preventiva, con la precision del <em>laboratorio</em>.","lab.cta1":"Apoyar la investigacion","lab.cta2":"Descubrir el metodo &rarr;","lab.readout":"puntuacion alimentaria · 8 metricas","lab.meth.tag":"Tres polos complementarios","lab.meth.title":"Un metodo estructurado como un protocolo.","lab.meth.desc":"Cada actividad responde a una disciplina: producir el conocimiento, transmitirlo, aplicarlo. Tres polos, una sola exigencia de prueba.","lab.c1tag":"Producir el conocimiento","lab.c1h":"Investigacion e I+D","lab.c1d":"Biomarcadores, mediadores pro-resolutivos, nutrigenomica y microbiota. La ciencia que fundamenta el Indice ORIM™ y el metodo.","lab.c2tag":"Transmitir","lab.c2h":"Educativo","lab.c2d":"Boletines cientificos, biblioteca alimentaria, conferencias y formacion de profesionales de la salud.","lab.c3tag":"Aplicar","lab.c3h":"Acompanamiento","lab.c3d":"Seguimiento personalizado bajo mandato, supervisado por el comite cientifico, con una red de profesionales habilitados.","lab.pil.tag":"12 prestaciones · 1 mision","lab.pil.title":"Cuatro pilares, doce prestaciones.","lab.pil.desc":"La Asociacion estructura sus actividades en cuatro pilares complementarios: Ciencia, Prevencion, Comunidad e Infraestructura.","lab.p1":"Ciencia","lab.p1t":"Investigacion","lab.p2":"Prevencion","lab.p2t":"Acompanamiento","lab.p3":"Comunidad","lab.p3t":"Formacion","lab.p4":"Digital","lab.p4t":"Infraestructura","lab.ind.tag":"Indice ORIM™ · una puntuacion, ocho metricas","lab.ind.title":"Cada alimento, puntuado de 0 a 100.","lab.ind.desc":"Un indice cientifico que evalua el valor inmuno-metabolico de un alimento sobre ocho metricas cientificas, para convertir la nutricion en un dato medible.","lab.ind.metrics":"Densidad de micronutrientes|Carga inflamatoria|Indice glucemico|Omega-3 / Omega-6|Polifenoles|Fibra · microbiota|Biodisponibilidad|Carga oxidativa","lab.gov.tag":"Gobernanza","lab.gov.title":"Una direccion, una exigencia de prueba.","lab.sup.tag":"Apoyar · Mecenazgo","lab.sup.title":"Apoye una ciencia al servicio de la prevencion.","lab.sup.desc":"Asociacion sin animo de lucro de derecho suizo, ORIM financia su investigacion, sus publicaciones y el futuro Centro ORIM Ginebra gracias a su apoyo. Cada donacion sirve directamente al conocimiento.","lab.iban.label":"Transferencia · PostFinance","lab.patron":"Bajo la egida de su <b>Comite de Patrocinio y Mecenazgo</b>, presidido por el Vicepresidente de Relaciones Institucionales, la Asociacion ofrece a instituciones, fundaciones y grandes donantes un interlocutor dedicado.","lab.fine":"Asociacion sin animo de lucro · Derecho suizo · Canton de Ginebra · info@orimnutrition.org","lab.assay1":"Alimentos indexados","lab.assay2":"Prestaciones","lab.assay3":"Polos cientificos","lab.assay4":"Ginebra, Suiza","lab.m1t":"Investigacion","lab.m1d":"Producir el conocimiento: biomarcadores, microbiota, nutrigenomica.","lab.m2t":"Educacion","lab.m2d":"Transmitir: publicaciones, biblioteca alimentaria, conferencias.","lab.m3t":"Acompanamiento","lab.m3d":"Aplicar: seguimiento bajo mandato, red de profesionales habilitados.","lab.mission.lead":"Hacer accesible un <b>enfoque cientifico de la nutricion</b>, al servicio de la salud inmuno-metabolica. Organizacion sin animo de lucro, licenciataria de la marca ORIM™, que opera el Indice ORIM™ bajo licencia.","lab.marque.title":"La marca ORIM™","lab.pi1t":"Operado bajo licencia","lab.pi1h":"Indice ORIM™ v3.0","lab.pi1d":"Algoritmo de puntuacion alimentaria, operado bajo licencia de la marca ORIM™.","lab.pi2t":"Referencial","lab.pi2h":"Lexico ORIM™","lab.pi2d":"Mas de 4000 alimentos indexados segun el metodo ORIM.","lab.nl.title":"Boletin TEAM ORIM","lab.nl.desc":"Cada mes, nuestros boletines cientificos, resultados de investigacion y proximos eventos, directamente en su correo.","lab.nl.btn":"Suscribirse","lab.ct1t":"Asociacion","lab.ct1d":"Asociacion ORIM Ginebra<br>Sin animo de lucro · Derecho suizo","lab.ct2t":"Contacto","lab.ct3t":"Ubicacion","lab.ct3d":"Ginebra, Suiza · 46.20°N","lab.sticky":"<strong>Ayudenos</strong> a abrir el primer Centro ORIM en Ginebra","lab.sticky.btn":"Donar","lab.donate":"Donar","nav.mission":"Nuestra mision","nav.bibliotheque":"Biblioteca","lab.nav.methode":"Metodo","lab.nav.indice":"Indice","lab.nav.soutenir":"Apoyar","nav.prestations":"12 Prestaciones","nav.poles":"Polos","nav.marque":"Marca ORIM™","nav.partenaires":"Nuestros Socios","nav.equipe":"Equipo","nav.contact":"Contacto","nav.donation":"Donacion","nav.cta":"Contactenos",
       "hero.badge":"Asociacion sin animo de lucro · Ginebra","hero.subtitle":"Optimizacion Resolutiva Inmuno-Metabolica","hero.desc":"Asociacion cientifica ginebrense sin animo de lucro, dedicada a la inmunonutricion preventiva. Investigacion, educacion y acompanamiento al servicio de su salud.","hero.btn1":"Nuestras 12 prestaciones","hero.btn2":"Contactenos","hero.scroll":"Explorar",
       "stats.prestations":"Prestaciones","stats.poles":"Polos Asociacion","stats.aliments":"Alimentos indexados ORIM™","stats.indice":"Indice ORIM™ actual","stats.microbiome":"Microbioma v4.0","stats.lieu":"Ginebra, Suiza",
       "mission.tag":"Nuestra mision","mission.title1":"Una asociacion,","mission.title2":"una mision","mission.desc":"La Asociacion ORIM Ginebra es una organizacion sin animo de lucro dedicada a la investigacion, educacion y acompanamiento en inmunonutricion preventiva.",
@@ -1064,7 +601,7 @@
       "pole.rech.name":"Polo Investigacion e IP","pole.rech.desc":"Desarrollo del Indice ORIM™ v4.0 Microbioma (2027) y v5.0 IA Nutrigenomica (2028). Gestion de subvenciones I+D. Propiedad intelectual.","pole.rech.t1":"Indice v4.0 · 2027","pole.rech.t2":"Indice v5.0 · 2028","pole.rech.t3":"Subvenciones I+D","pole.rech.t4":"Propiedad intelectual","pole.rech.t5":"IPI · Suiza",
       "marque.tag":"Propiedad intelectual","marque.title":"Marca, Lexico e Indice",
       "marque.owner.badge":"Propietario · Marcel O. Chevalley","marque.owner.title":"🏛️ Marca ORIM™","marque.owner.text":"La marca ORIM™ esta en proceso de registro en el IPI (Suiza) por Marcel O. Chevalley (persona fisica). Clases NICE 42 (investigacion cientifica) y 44 (consultoria nutricional). La Asociacion ORIM Ginebra dispone de una licencia de uso no exclusiva, conforme al art. 17 de los Estatutos.",
-      "marque.lexique.badge":"I+D · Asociacion ORIM","marque.lexique.title":"📚 Lexico ORIM™","marque.lexique.text":"El Lexico ORIM™ v3.0 cataloga 500 alimentos indexados segun sus propiedades inmuno-metabolicas. Base de datos educativa y cientifica, desarrollada y mantenida por la Asociacion bajo licencia de la marca ORIM™.",
+      "marque.lexique.badge":"I+D · Asociacion ORIM","marque.lexique.title":"📚 Lexico ORIM™","marque.lexique.text":"El Lexico ORIM™ v3.0 cataloga 500 alimentos indexados segun sus propiedades inmuno-metabolicas. Base de datos educativa y cientifica, desarrollada y propiedad de la Asociacion.",
       "marque.indice.badge":"I+D · Asociacion ORIM","marque.indice.title":"🔬 Indice ORIM™ v3.0","marque.indice.text":"El Indice ORIM™ v3.0 aplica 8 metricas de scoring inmuno-metabolico a los 500 alimentos del Lexico. Algoritmo operacional, operado por la Asociacion bajo licencia de la marca ORIM™.",
       "marque.v4.badge":"Proyeccion I+D · 2027","marque.v4.title":"🧬 Indice v4.0 · Microbioma","marque.v4.text":"Extension prevista: integracion del microbioma intestinal. Bajo supervision del comité cientifico ORIM. Financiado por subvenciones I+D. Algoritmos operados por la Asociacion bajo licencia de la marca ORIM™.",
       "marque.v5.badge":"Proyeccion I+D · 2028","marque.v5.title":"🤖 Indice v5.0 · IA Nutrigenomica","marque.v5.text":"Vision 2028: integracion de inteligencia artificial y nutrigenomica, objetivo 500+ alimentos. Algoritmos operados por la Asociacion bajo licencia de la marca ORIM™.",
@@ -1077,7 +614,7 @@
       "footer.ch":"Asociacion ORIM Ginebra","footer.ch.sub":"Suiza · Sin animo de lucro · Inmunonutricion preventiva","footer.mentions":"Avisos legales","footer.privacy":"Politica de privacidad","footer.contact":"Contacto"
     },
     de: {
-      "nav.tagline":"Immuno-Metabolisch","nav.mission":"Unsere Mission","nav.prestations":"12 Leistungen","nav.bibliotheque":"Bibliothek","nav.poles":"Pôle","nav.marque":"ORIM™ Marke","nav.partenaires":"Unsere Partner","nav.equipe":"Team","nav.contact":"Kontakt","nav.donation":"Spenden","nav.cta":"Kontaktieren Sie uns",
+      "nav.tagline":"Immuno-Metabolisch","lab.hero":"Praeventive Immunoernaehrung, mit der Praezision des <em>Labors</em>.","lab.cta1":"Forschung unterstuetzen","lab.cta2":"Die Methode entdecken &rarr;","lab.readout":"Lebensmittel-Score · 8 Metriken","lab.meth.tag":"Drei komplementaere Saeulen","lab.meth.title":"Eine Methode, strukturiert wie ein Protokoll.","lab.meth.desc":"Jede Taetigkeit folgt einer Disziplin: Wissen schaffen, vermitteln, anwenden. Drei Saeulen, ein einziger Beweisanspruch.","lab.c1tag":"Wissen schaffen","lab.c1h":"Forschung &amp; F&amp;E","lab.c1d":"Biomarker, pro-resolutive Mediatoren, Nutrigenomik und Mikrobiom. Die Wissenschaft hinter dem ORIM™-Index und der Methode.","lab.c2tag":"Vermitteln","lab.c2h":"Bildung","lab.c2d":"Wissenschaftliche Bulletins, Lebensmittelbibliothek, Konferenzen und Ausbildung von Gesundheitsfachleuten.","lab.c3tag":"Anwenden","lab.c3h":"Begleitung","lab.c3d":"Personalisierte Begleitung im Auftrag, betreut vom wissenschaftlichen Komitee, mit einem Netzwerk zugelassener Fachpersonen.","lab.pil.tag":"12 Leistungen · 1 Mission","lab.pil.title":"Vier Saeulen, zwoelf Leistungen.","lab.pil.desc":"Der Verein gliedert seine Taetigkeiten in vier komplementaere Saeulen: Wissenschaft, Praevention, Gemeinschaft und Infrastruktur.","lab.p1":"Wissenschaft","lab.p1t":"Forschung","lab.p2":"Praevention","lab.p2t":"Begleitung","lab.p3":"Gemeinschaft","lab.p3t":"Ausbildung","lab.p4":"Digital","lab.p4t":"Infrastruktur","lab.ind.tag":"ORIM™-Index · ein Score, acht Metriken","lab.ind.title":"Jedes Lebensmittel, bewertet von 0 bis 100.","lab.ind.desc":"Ein wissenschaftlicher Index, der den immuno-metabolischen Wert eines Lebensmittels anhand von acht wissenschaftlichen Metriken bewertet und Ernaehrung in messbare Daten verwandelt.","lab.ind.metrics":"Mikronaehrstoffdichte|Entzuendungslast|Glykaemischer Index|Omega-3 / Omega-6|Polyphenole|Ballaststoffe · Mikrobiom|Bioverfuegbarkeit|Oxidative Last","lab.gov.tag":"Governance","lab.gov.title":"Eine Leitung, ein Beweisanspruch.","lab.sup.tag":"Unterstuetzen · Maezenatentum","lab.sup.title":"Unterstuetzen Sie eine Wissenschaft im Dienst der Praevention.","lab.sup.desc":"Als gemeinnuetziger Verein nach Schweizer Recht finanziert ORIM seine Forschung, Publikationen und das zukuenftige ORIM-Zentrum Genf dank Ihrer Unterstuetzung. Jede Spende dient direkt dem Wissen.","lab.iban.label":"Ueberweisung · PostFinance","lab.patron":"Unter der Schirmherrschaft seines <b>Schirmherrschafts- und Maezenatenkomitees</b>, gefuehrt vom Vizepraesidenten fuer institutionelle Beziehungen, bietet der Verein Institutionen, Stiftungen und Grossspendern einen dedizierten Ansprechpartner.","lab.fine":"Gemeinnuetziger Verein · Schweizer Recht · Kanton Genf · info@orimnutrition.org","lab.assay1":"Indexierte Lebensmittel","lab.assay2":"Leistungen","lab.assay3":"Wissenschaftliche Saeulen","lab.assay4":"Genf, Schweiz","lab.m1t":"Forschung","lab.m1d":"Wissen schaffen: Biomarker, Mikrobiom, Nutrigenomik.","lab.m2t":"Bildung","lab.m2d":"Vermitteln: Publikationen, Lebensmittelbibliothek, Konferenzen.","lab.m3t":"Begleitung","lab.m3d":"Anwenden: Begleitung im Auftrag, Netzwerk zugelassener Fachpersonen.","lab.mission.lead":"Einen <b>wissenschaftlichen Ansatz der Ernaehrung</b> zugaenglich machen, im Dienst der immuno-metabolischen Gesundheit. Gemeinnuetzige Organisation, Lizenznehmerin der Marke ORIM™, die den ORIM™-Index unter Lizenz betreibt.","lab.marque.title":"Die Marke ORIM™","lab.pi1t":"Unter Lizenz betrieben","lab.pi1h":"ORIM™-Index v3.0","lab.pi1d":"Algorithmus zur Lebensmittelbewertung, unter Lizenz der Marke ORIM™ betrieben.","lab.pi2t":"Referenz","lab.pi2h":"ORIM™-Lexikon","lab.pi2d":"Ueber 4000 Lebensmittel nach der ORIM-Methode indexiert.","lab.nl.title":"TEAM ORIM Newsletter","lab.nl.desc":"Jeden Monat unsere wissenschaftlichen Bulletins, Forschungsergebnisse und kommenden Veranstaltungen, direkt in Ihr Postfach.","lab.nl.btn":"Abonnieren","lab.ct1t":"Verein","lab.ct1d":"Verein ORIM Genf<br>Gemeinnuetzig · Schweizer Recht","lab.ct2t":"Kontakt","lab.ct3t":"Standort","lab.ct3d":"Genf, Schweiz · 46.20°N","lab.sticky":"<strong>Helfen Sie uns</strong>, das erste ORIM-Zentrum in Genf zu eroeffnen","lab.sticky.btn":"Spenden","lab.donate":"Spenden","nav.mission":"Unsere Mission","nav.bibliotheque":"Bibliothek","lab.nav.methode":"Methode","lab.nav.indice":"Index","lab.nav.soutenir":"Unterstuetzen","nav.prestations":"12 Leistungen","nav.poles":"Pôle","nav.marque":"ORIM™ Marke","nav.partenaires":"Unsere Partner","nav.equipe":"Team","nav.contact":"Kontakt","nav.donation":"Spenden","nav.cta":"Kontaktieren Sie uns",
       "hero.badge":"Gemeinnuetziger Verein · Genf","hero.subtitle":"Aufloesende Immuno-Metabolische Optimierung","hero.desc":"Genfer gemeinnuetziger wissenschaftlicher Verein fuer praeventive Immunoernaehrung. Forschung, Bildung und Begleitung fuer Ihre Gesundheit.","hero.btn1":"Unsere 12 Leistungen","hero.btn2":"Kontakt aufnehmen","hero.scroll":"Entdecken",
       "stats.prestations":"Leistungen","stats.poles":"Verein-Pôle","stats.aliments":"Indexierte ORIM™-Lebensmittel","stats.indice":"Aktueller ORIM™-Index","stats.microbiome":"Mikrobiom v4.0","stats.lieu":"Genf, Schweiz",
       "mission.tag":"Unsere Mission","mission.title1":"Ein Verein,","mission.title2":"eine Mission","mission.desc":"Der Verein ORIM Genf ist eine gemeinnuetzige Organisation fuer Forschung, Bildung und Begleitung in praeventiver Immunoernaehrung.",
@@ -1102,7 +639,7 @@
       "pole.rech.name":"Forschungs- & IP-Pol","pole.rech.desc":"Entwicklung des ORIM™-Index v4.0 Mikrobiom (2027) & v5.0 KI Nutrigenomik (2028). F&E-Foerderungsverwaltung. Geistiges Eigentum.","pole.rech.t1":"Index v4.0 · 2027","pole.rech.t2":"Index v5.0 · 2028","pole.rech.t3":"F&E-Foerderungen","pole.rech.t4":"Geistiges Eigentum","pole.rech.t5":"IPI · Schweiz",
       "marque.tag":"Geistiges Eigentum","marque.title":"Marke, Lexikon & Index",
       "marque.owner.badge":"Eigentuemer · Marcel O. Chevalley","marque.owner.title":"🏛️ ORIM™ Marke","marque.owner.text":"Die Marke ORIM™ wird beim IPI (Schweiz) von Marcel O. Chevalley (natuerliche Person) eingetragen. NICE-Klassen 42 (wissenschaftliche Forschung) und 44 (Ernaehrungsberatung). Der Verein ORIM Genf verfuegt ueber eine nicht-exklusive Nutzungslizenz gemaess Art. 17 der Statuten.",
-      "marque.lexique.badge":"F&E · Verein ORIM","marque.lexique.title":"📚 ORIM™-Lexikon","marque.lexique.text":"Das ORIM™-Lexikon v3.0 katalogisiert 500 Lebensmittel, indexiert nach ihren immuno-metabolischen Eigenschaften. Bildungs- und wissenschaftliche Datenbank, entwickelt und vom Verein unter Lizenz der Marke ORIM™ gepflegt.",
+      "marque.lexique.badge":"F&E · Verein ORIM","marque.lexique.title":"📚 ORIM™-Lexikon","marque.lexique.text":"Das ORIM™-Lexikon v3.0 katalogisiert 500 Lebensmittel, indexiert nach ihren immuno-metabolischen Eigenschaften. Bildungs- und wissenschaftliche Datenbank, entwickelt und im Besitz des Vereins.",
       "marque.indice.badge":"F&E · Verein ORIM","marque.indice.title":"🔬 ORIM™-Index v3.0","marque.indice.text":"Der ORIM™-Index v3.0 wendet 8 immuno-metabolische Scoring-Metriken auf die 500 Lebensmittel des Lexikons an. Operativer Algorithmus, vom Verein unter Lizenz der Marke ORIM™ betrieben.",
       "marque.v4.badge":"F&E-Projektion · 2027","marque.v4.title":"🧬 Index v4.0 · Mikrobiom","marque.v4.text":"Geplante Erweiterung: Intégration des Darmmikrobioms. Unter Aufsicht des wissenschaftlichen Komitees ORIM. Finanziert durch F&E-Foerderungen. Algorithmen vom Verein unter Lizenz der Marke ORIM™ betrieben.",
       "marque.v5.badge":"F&E-Projektion · 2028","marque.v5.title":"🤖 Index v5.0 · KI Nutrigenomik","marque.v5.text":"Vision 2028: Intégration von kuenstlicher Intelligenz und Nutrigenomik. Vom Verein ORIM Genf unter Lizenz der Marke ORIM™ betriebene Algorithmen. Verstaerkter IP-Schutz ab der F&E-Phase.",
@@ -1114,7 +651,7 @@
       "footer.ch":"Verein ORIM Genf","footer.ch.sub":"Schweiz · Gemeinnuetzig · Praeventive Immunoernaehrung","footer.mentions":"Impressum","footer.privacy":"Datenschutzrichtlinie","footer.contact":"Kontakt"
     },
     pt: {
-      "nav.tagline":"Imuno-Metabólica","nav.mission":"Nossa missão","nav.prestations":"12 Serviços","nav.bibliotheque":"Biblioteca","nav.poles":"Polos","nav.marque":"Marca ORIM™","nav.partenaires":"Nossos Parceiros","nav.equipe":"Equipe","nav.contact":"Contato","nav.donation":"Doação","nav.cta":"Entre em contato",
+      "nav.tagline":"Imuno-Metabólica","lab.hero":"A imunonutrição preventiva, com a precisão do <em>laboratório</em>.","lab.cta1":"Apoiar a pesquisa","lab.cta2":"Descobrir o método &rarr;","lab.readout":"pontuação alimentar · 8 métricas","lab.meth.tag":"Três polos complementares","lab.meth.title":"Um método estruturado como um protocolo.","lab.meth.desc":"Cada atividade responde a uma disciplina: produzir o conhecimento, transmiti-lo, aplica-lo. Três polos, uma única exigência de prova.","lab.c1tag":"Produzir conhecimento","lab.c1h":"Pesquisa &amp; P&amp;D","lab.c1d":"Biomarcadores, mediadores pro-resolutivos, nutrigenomica e microbiota. A ciência que fundamenta o Indice ORIM™ e o método.","lab.c2tag":"Transmitir","lab.c2h":"Educativo","lab.c2d":"Boletins cientificos, biblioteca alimentar, conferências e formação de profissionais de saúde.","lab.c3tag":"Aplicar","lab.c3h":"Acompanhamento","lab.c3d":"Acompanhamento personalizado sob mandato, supervisionado pelo comité cientifico, com uma rede de profissionais habilitados.","lab.pil.tag":"12 serviços · 1 missão","lab.pil.title":"Quatro pilares, doze serviços.","lab.pil.desc":"A Associação estrutura as suas atividades em quatro pilares complementares: Ciência, Prevenção, Comunidade e Infraestrutura.","lab.p1":"Ciência","lab.p1t":"Pesquisa","lab.p2":"Prevenção","lab.p2t":"Acompanhamento","lab.p3":"Comunidade","lab.p3t":"Formação","lab.p4":"Digital","lab.p4t":"Infraestrutura","lab.ind.tag":"Indice ORIM™ · uma pontuação, oito métricas","lab.ind.title":"Cada alimento, pontuado de 0 a 100.","lab.ind.desc":"Um indice cientifico que avalia o valor imuno-metabolico de um alimento em oito métricas cientificas, para transformar a nutrição em dado mensuravel.","lab.ind.metrics":"Densidade de micronutrientes|Carga inflamatoria|Indice glicémico|Omega-3 / Omega-6|Polifenois|Fibras · microbiota|Biodisponibilidade|Carga oxidativa","lab.gov.tag":"Governança","lab.gov.title":"Uma direção, uma exigência de prova.","lab.sup.tag":"Apoiar · Mecenato","lab.sup.title":"Apoie uma ciência ao serviço da prevenção.","lab.sup.desc":"Associação sem fins lucrativos de direito suíço, a ORIM financia a sua pesquisa, as suas publicações e o futuro Centro ORIM Genebra graças ao seu apoio. Cada doação serve diretamente o conhecimento.","lab.iban.label":"Transferência · PostFinance","lab.patron":"Sob a égide do seu <b>Comité de Patrocinio e Mecenato</b>, presidido pelo Vice-Presidente das Relações Institucionais, a Associação oferece a instituições, fundações e grandes doadores um interlocutor dedicado.","lab.fine":"Associação sem fins lucrativos · Direito suíço · Cantão de Genebra · info@orimnutrition.org","lab.assay1":"Alimentos indexados","lab.assay2":"Serviços","lab.assay3":"Polos cientificos","lab.assay4":"Genebra, Suíça","lab.m1t":"Pesquisa","lab.m1d":"Produzir o conhecimento: biomarcadores, microbiota, nutrigenomica.","lab.m2t":"Educação","lab.m2d":"Transmitir: publicações, biblioteca alimentar, conferências.","lab.m3t":"Acompanhamento","lab.m3d":"Aplicar: acompanhamento sob mandato, rede de profissionais habilitados.","lab.mission.lead":"Tornar acessivel uma <b>abordagem cientifica da nutrição</b>, ao serviço da saúde imuno-metabolica. Organização sem fins lucrativos, licenciada da marca ORIM™, que opera o Indice ORIM™ sob licença.","lab.marque.title":"A marca ORIM™","lab.pi1t":"Operado sob licença","lab.pi1h":"Indice ORIM™ v3.0","lab.pi1d":"Algoritmo de pontuação alimentar, operado sob licença da marca ORIM™.","lab.pi2t":"Referencial","lab.pi2h":"Lexico ORIM™","lab.pi2d":"Mais de 4000 alimentos indexados segundo o método ORIM.","lab.nl.title":"Newsletter TEAM ORIM","lab.nl.desc":"Todos os meses, os nossos boletins cientificos, resultados de pesquisa e proximos eventos, diretamente na sua caixa de correio.","lab.nl.btn":"Inscrever-se","lab.ct1t":"Associação","lab.ct1d":"Associação ORIM Genebra<br>Sem fins lucrativos · Direito suíço","lab.ct2t":"Contacto","lab.ct3t":"Localização","lab.ct3d":"Genebra, Suíça · 46.20°N","lab.sticky":"<strong>Ajude-nos</strong> a abrir o primeiro Centro ORIM em Genebra","lab.sticky.btn":"Doar","lab.donate":"Doar","nav.mission":"Nossa missão","nav.bibliotheque":"Biblioteca","lab.nav.methode":"Método","lab.nav.indice":"Índice","lab.nav.soutenir":"Apoiar","nav.prestations":"12 Serviços","nav.poles":"Polos","nav.marque":"Marca ORIM™","nav.partenaires":"Nossos Parceiros","nav.equipe":"Equipe","nav.contact":"Contato","nav.donation":"Doação","nav.cta":"Entre em contato",
       "hero.badge":"Associação sem fins lucrativos · Genebra","hero.subtitle":"Otimização Resolutiva Imuno-Metabólica","hero.desc":"Associação científica de Genebra sem fins lucrativos, dedicada à imunonutrição preventiva. Pesquisa, educação e acompanhamento a serviço da sua saúde.","hero.btn1":"Nossos 12 serviços","hero.btn2":"Entre em contato","hero.btn3":"Apoiar ORIM","hero.scroll":"Descobrir",
       "stats.prestations":"Serviços","stats.poles":"Polos da Associação","stats.aliments":"Alimentos indexados ORIM™","stats.indice":"Índice ORIM™ atual","stats.microbiome":"Microbioma v4.0","stats.lieu":"Genebra, Suíça",
       "mission.tag":"Nossa missão","mission.title1":"Uma associação,","mission.title2":"uma missão","mission.desc":"A Associação ORIM Genebra é uma organização sem fins lucrativos dedicada à pesquisa, educação e acompanhamento em imunonutrição preventiva. Nosso objetivo: tornar acessível uma abordagem científica da nutrição a serviço da saúde imuno-metabólica.",
@@ -1139,7 +676,7 @@
       "pole.rech.name":"Polo Pesquisa e PI","pole.rech.desc":"Desenvolvimento do Índice ORIM™ v4.0 Microbioma (2027) e v5.0 IA Nutrigenômica (2028). Gestão de subsídios de P&D. Propriedade intelectual.","pole.rech.t1":"Índice v4.0 · 2027","pole.rech.t2":"Índice v5.0 · 2028","pole.rech.t3":"Subsídios P&D","pole.rech.t4":"Propriedade intelectual","pole.rech.t5":"IPI · Suíça",
       "marque.tag":"Propriedade intelectual","marque.title":"Marca, Léxico e Índice",
       "marque.owner.badge":"Proprietário · Marcel O. Chevalley","marque.owner.title":"🏛️ Marca ORIM™","marque.owner.text":"A marca ORIM™ está em processo de registro no IPI (Suíça) por Marcel O. Chevalley (pessoa física). Classes NICE 42 (pesquisa científica) e 44 (consultoria em nutrição). A Associação ORIM Genebra detém uma licença de uso não exclusiva, conforme o art. 17 dos Estatutos.",
-      "marque.lexique.badge":"P&D · Associação ORIM","marque.lexique.title":"📚 Léxico ORIM™","marque.lexique.text":"O Léxico ORIM™ v3.0 cataloga 500 alimentos indexados por suas propriedades imuno-metabólicas. Base de dados educativa e científica, desenvolvida e mantida pela Associação sob licença da marca ORIM™.",
+      "marque.lexique.badge":"P&D · Associação ORIM","marque.lexique.title":"📚 Léxico ORIM™","marque.lexique.text":"O Léxico ORIM™ v3.0 cataloga 500 alimentos indexados por suas propriedades imuno-metabólicas. Base de dados educativa e científica, desenvolvida e de propriedade da Associação.",
       "marque.indice.badge":"P&D · Associação ORIM","marque.indice.title":"🔬 Índice ORIM™ v3.0","marque.indice.text":"O Índice ORIM™ v3.0 aplica 8 métricas de pontuação imuno-metabólica aos 500 alimentos do Léxico. Algoritmo operacional, operado pela Associação sob licença da marca ORIM™.",
       "marque.v4.badge":"Projeção P&D · 2027","marque.v4.title":"🧬 Índice v4.0 · Microbioma","marque.v4.text":"Extensão prevista: integração do microbioma intestinal. Sob supervisão do comitê científico ORIM. Financiado por subsídios de P&D. Algoritmos operados pela Associação sob licença da marca ORIM™.",
       "marque.v5.badge":"Projeção P&D · 2028","marque.v5.title":"🤖 Índice v5.0 · IA Nutrigenômica","marque.v5.text":"Visão 2028: integração de inteligência artificial e nutrigenômica. Algoritmos operados pela Associação sob licença da marca ORIM™. Proteção de PI reforçada desde a fase de P&D.",
@@ -1195,61 +732,11 @@
     }
   });
 
-  // ─── CANVAS PARTICLES ────────────────────────────────────────────────────
-  (function() {
-    const canvas = document.getElementById('canvas-bg');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    resize();
-    window.addEventListener('resize', resize);
-    for (let i = 0; i < 60; i++) {
-      particles.push({ x: Math.random()*window.innerWidth, y: Math.random()*window.innerHeight, vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3, r: Math.random()*1.5+.5, opacity: Math.random()*.4+.1 });
-    }
-    function draw() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particles.forEach(p => {
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle = `rgba(0,180,216,${p.opacity})`; ctx.fill();
-        p.x+=p.vx; p.y+=p.vy;
-        if(p.x<0||p.x>canvas.width) p.vx*=-1;
-        if(p.y<0||p.y>canvas.height) p.vy*=-1;
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-  })();
-
-  // ─── SCROLL REVEAL ───────────────────────────────────────────────────────
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ─── NAV SCROLL ──────────────────────────────────────────────────────────
-  window.addEventListener('scroll', () => {
-    document.getElementById('main-nav').style.background = window.scrollY > 50 ? 'rgba(13,27,42,.97)' : 'rgba(13,27,42,.88)';
-  });
-
-  // ─── MOBILE MENU ─────────────────────────────────────────────────────────
-  document.getElementById('mobile-toggle').addEventListener('click', () => {
-    document.getElementById('nav-links').classList.toggle('open');
-  });
-
-  // ─── NEWSLETTER ARCHIVES TOGGLE ─────────────────────────────────────────
-  function toggleArchives() {
-    const btn = document.getElementById('nl-archives-btn');
-    const list = document.getElementById('nl-archives-list');
-    btn.classList.toggle('open');
-    list.classList.toggle('open');
-  }
-
-  // ─── NEWSLETTER HANDLER ────────────────────────────────────────────────
-  function handleNewsletter(e) {
+function handleNewsletter(e) {
     e.preventDefault();
     const email = document.getElementById('nl-email').value;
     const btn = document.getElementById('nl-btn');
-    const succèss = document.getElementById('nl-succèss');
+    const success = document.getElementById('nl-success');
     btn.disabled = true;
     btn.textContent = '...';
     // mailto fallback · envoie l'inscription par email a info@orimnutrition.org
@@ -1258,23 +745,56 @@
     window.open('mailto:info@orimnutrition.org?subject=' + subject + '&body=' + body, '_blank');
     // Afficher confirmation
     setTimeout(() => {
-      succèss.style.display = 'block';
+      success.style.display = 'block';
       btn.textContent = i18n[currentLang]['nl.btn'] || "S'inscrire";
       btn.disabled = false;
       document.getElementById('nl-email').value = '';
     }, 800);
     return false;
   }
-  </script>
+  // ─── APPLIQUE LA LANGUE (le dictionnaire fait autorité) ───
+  try{ if(typeof setLang==='function'){ setLang((typeof currentLang!=='undefined'&&currentLang)||'fr'); } }catch(e){}
 
-  <!-- STICKY DONATION BAR -->
-  <div class="sticky-donate-bar" id="sticky-donate">
-    <p><strong>Aidez-nous</strong> à ouvrir le premier Centre ORIM à Genève</p>
-    <a href="/soutenir.html" target="_blank" rel="noopener" class="sticky-donate-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      Faire un don
-    </a>
-    <button class="sticky-donate-close" onclick="document.getElementById('sticky-donate').style.display='none'" aria-label="Fermer">&times;</button>
-  </div>
+  // ─── LABORATORY · microplaque + réseau moléculaire + métriques ───────────
+  (function(){
+    // métriques Indice (depuis le dictionnaire i18n, langue courante)
+    try{
+      var mc=document.getElementById('ind-metrics');
+      var lang=(typeof currentLang!=='undefined')?currentLang:'fr';
+      var raw=(i18n[lang]&&i18n[lang]['lab.ind.metrics'])||(i18n.fr&&i18n.fr['lab.ind.metrics'])||'';
+      if(mc&&raw){raw.split('|').forEach(function(m){var s=document.createElement('span');s.textContent=m;mc.appendChild(s);});}
+    }catch(e){}
+
+    var plate=document.getElementById('plate');
+    if(plate){var lit={9:1,10:1,21:1,22:1,34:1,40:2,46:1,52:2,58:1,59:1,71:1,83:1,84:1,85:1};
+      for(var i=0;i<96;i++){var w=document.createElement('i');
+        if(lit[i]){w.style.background=(lit[i]===2)?'#E6A817':'#1BA8A6';}plate.appendChild(w);}}
+
+    var c=document.getElementById('mol'); if(!c)return;
+    var ctx=c.getContext('2d'), dpr=Math.min(window.devicePixelRatio||1,2), W,H;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var N=[], LINK=90, raf;
+    function size(){var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+    function init(){N=[];var n=Math.round(Math.max(22,Math.min(40,W/12)));
+      for(var i=0;i<n;i++){N.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()<.12?3.4:2,gold:Math.random()<.06});}}
+    function frame(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<N.length;i++){var a=N[i];
+        for(var j=i+1;j<N.length;j++){var b=N[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+          if(d<LINK){ctx.strokeStyle='rgba(27,168,166,'+(0.16*(1-d/LINK)).toFixed(3)+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+      }
+      for(var k=0;k<N.length;k++){var p=N[k];
+        if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<8||p.x>W-8)p.vx*=-1;if(p.y<8||p.y>H-8)p.vy*=-1;}
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.2832);ctx.fillStyle=p.gold?'#E6A817':'#127472';ctx.fill();
+        if(p.r>3){ctx.strokeStyle='rgba(18,116,114,.35)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(p.x,p.y,p.r+3.5,0,6.2832);ctx.stroke();}
+      }
+      if(!reduce)raf=requestAnimationFrame(frame);
+    }
+    function boot(){size();init();if(raf)cancelAnimationFrame(raf);frame();}
+    window.addEventListener('resize',boot,{passive:true});
+    boot();
+  })();
+
+  </script>
 </body>
 </html>

@@ -5,77 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bibliothèque Alimentaire ORIM</title>
 <meta name="description" content="Base de données alimentaire ORIM : 5'000 aliments indexés selon l'indice immuno-métabolique composite. Accès libre et gratuit.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --teal:#1BA8A6; --gold:#E6A817; --dark:#2D3436;
-    --lteal:#E8F6F6; --lgold:#FDF5E0; --line:#dfe6e6; --muted:#6b7776;
+    --serif:"Fraunces",ui-serif,Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    /* corps clinique clair (aligne sur l'accueil Laboratory) */
+    --bench:#F4F7F6; --ink:#0F211F; --graphite:#556663; --hairline:#DCE6E4; --plate:#FFFFFF;
+    /* bandeau sombre bioluminescent (echo du hero) */
+    --abyss:#04100E; --ink-d:#060D0C; --panel:#0C1A18; --line-d:#16302C;
+    --fg-d:#EAF4F2; --dim-d:#7FA39D;
+    /* accents marque */
+    --teal:#1BA8A6; --cyan:#38E1D6; --gold:#E6A817; --gold-hi:#F5C95A;
+    --lteal:#E8F6F6; --lgold:#FDF5E0;
+    /* bandes de score */
     --champ:#159c8a; --opt:#E6A817; --sub:#e28743; --bad:#d0453f;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:#fff;line-height:1.45}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bench);line-height:1.5;-webkit-font-smoothing:antialiased}
   a{color:var(--teal)}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
-  header.masthead{background:var(--teal);color:#fff;padding:18px 0 20px}
-  .backlink{display:inline-block;color:#eafffe;text-decoration:none;font-size:13px;font-weight:bold;opacity:.92;margin-bottom:8px}
-  .backlink:hover{opacity:1;text-decoration:underline}
-  .masthead .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.9;font-weight:bold}
-  .masthead h1{margin:6px 0 4px;font-size:30px;letter-spacing:.01em}
-  .masthead p{margin:0;font-size:14.5px;opacity:.95}
-  .badge-free{display:inline-block;background:var(--gold);color:#2b2b2b;font-weight:bold;font-size:12px;
-    padding:3px 10px;border-radius:12px;margin-top:10px;letter-spacing:.02em}
+  /* ===== En-tete sombre bioluminescent ===== */
+  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:26px 0 30px;
+    background:radial-gradient(120% 150% at 80% 0%,#071A17 0%,var(--abyss) 48%,var(--ink-d) 100%);
+    border-bottom:1px solid var(--line-d)}
+  header.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background:linear-gradient(var(--line-d) 1px,transparent 1px) 0 0/100% 42px,
+               linear-gradient(90deg,var(--line-d) 1px,transparent 1px) 0 0/42px 100%;
+    -webkit-mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%);
+            mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%)}
+  header.masthead .wrap{position:relative;z-index:1}
+  .backlink{display:inline-block;color:var(--dim-d);text-decoration:none;font-family:var(--mono);
+    font-size:12px;letter-spacing:.04em;margin-bottom:14px;transition:color .2s}
+  .backlink:hover{color:var(--cyan)}
+  .masthead .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
+  .masthead h1{margin:8px 0 6px;font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);
+    letter-spacing:-.01em;line-height:1.05;
+    background:linear-gradient(180deg,#FFFFFF,var(--fg-d) 60%,var(--gold-hi) 140%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .masthead p{margin:0;font-size:15px;color:#C7DAD6}
+  .masthead p b{font-family:var(--mono);color:var(--gold-hi);font-weight:500}
+  .badge-free{display:inline-block;background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#1A1204;
+    font-weight:600;font-size:12px;font-family:var(--mono);letter-spacing:.02em;
+    padding:5px 12px;border-radius:999px;margin-top:16px}
 
-  .intro{background:var(--lteal);border-bottom:1px solid var(--line)}
-  .intro .wrap{padding:14px 18px;font-size:13px;color:#3a4746}
-  .intro strong{color:var(--teal)}
+  /* ===== Intro ===== */
+  .intro{background:#fff;border-bottom:1px solid var(--hairline)}
+  .intro .wrap{padding:16px 20px;font-size:13.5px;color:var(--graphite)}
+  .intro strong{color:var(--teal);font-weight:600}
 
-  .controls{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);
-    box-shadow:0 2px 8px rgba(0,0,0,.04)}
-  .controls .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 18px}
-  .controls input[type=search],.controls select{font-family:inherit;font-size:14px;padding:9px 11px;
-    border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--dark)}
+  /* ===== Controles ===== */
+  .controls{position:sticky;top:0;z-index:20;background:rgba(244,247,246,.92);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--hairline)}
+  .controls .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 20px}
+  .controls input[type=search],.controls select{font-family:var(--sans);font-size:14px;padding:10px 12px;
+    border:1px solid var(--hairline);border-radius:8px;background:#fff;color:var(--ink)}
   .controls input[type=search]{flex:1;min-width:220px}
   .controls input[type=search]:focus,.controls select:focus{outline:2px solid var(--teal);border-color:var(--teal)}
-  .count{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap}
-  .count b{color:var(--dark)}
+  .count{margin-left:auto;font-family:var(--mono);font-size:13px;color:var(--graphite);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .count b{color:var(--ink)}
 
-  .tablecard{overflow-x:auto;margin:16px 0}
+  /* ===== Tableau ===== */
+  .tablecard{overflow-x:auto;margin:18px 0;background:var(--plate);border:1px solid var(--hairline);border-radius:12px}
   table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
-  thead th{position:sticky;top:0;background:var(--dark);color:#fff;text-align:left;padding:9px 10px;
-    font-weight:bold;white-space:nowrap;cursor:pointer;user-select:none}
+  thead th{position:sticky;top:0;background:var(--ink);color:var(--fg-d);text-align:left;padding:11px 12px;
+    font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+    white-space:nowrap;cursor:pointer;user-select:none}
   thead th.num{text-align:right}
-  thead th .arrow{opacity:.5;font-size:11px}
-  tbody td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-  tbody td.num{text-align:right;font-variant-numeric:tabular-nums}
-  tbody tr.food{cursor:pointer}
+  thead th .arrow{opacity:.6;font-size:11px;color:var(--cyan)}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--hairline);vertical-align:top}
+  tbody td.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--graphite)}
+  tbody tr.food{cursor:pointer;transition:background .12s}
   tbody tr.food:hover{background:var(--lteal)}
-  .name{font-weight:bold}
-  .grp{color:var(--muted);font-size:12.5px}
-  .score{display:inline-block;min-width:34px;text-align:center;font-weight:bold;color:#fff;
-    border-radius:6px;padding:2px 6px}
+  .name{font-weight:600;color:var(--ink)}
+  .grp{color:var(--graphite);font-size:12.5px}
+  .score{display:inline-block;min-width:34px;text-align:center;font-family:var(--mono);font-weight:500;color:#fff;
+    border-radius:6px;padding:2px 7px;font-variant-numeric:tabular-nums}
   .s-champ{background:var(--champ)} .s-opt{background:var(--opt);color:#2b2b2b}
   .s-sub{background:var(--sub)} .s-bad{background:var(--bad)}
   .detail td{background:var(--lgold);border-bottom:2px solid var(--gold)}
   .detail dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px 18px}
-  .detail dt{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:bold}
-  .detail dd{margin:0 0 6px;font-size:13.5px}
+  .detail dt{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--graphite);font-weight:500}
+  .detail dd{margin:0 0 6px;font-size:13.5px;color:var(--ink)}
   .detail .notes{grid-column:1/-1;font-style:italic}
 
-  .pager{display:flex;gap:10px;align-items:center;justify-content:center;padding:6px 0 22px;font-size:13.5px}
-  .pager button{font-family:inherit;font-size:13.5px;padding:7px 14px;border:1px solid var(--teal);
-    background:#fff;color:var(--teal);border-radius:8px;cursor:pointer}
+  /* ===== Pagination ===== */
+  .pager{display:flex;gap:10px;align-items:center;justify-content:center;padding:8px 0 26px;font-size:13.5px}
+  .pager button{font-family:var(--sans);font-size:13.5px;font-weight:500;padding:8px 16px;border:1px solid var(--teal);
+    background:#fff;color:var(--teal);border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+  .pager button:not(:disabled):hover{background:var(--teal);color:#fff}
   .pager button:disabled{opacity:.4;cursor:default}
-  .pager .pinfo{color:var(--muted)}
-  .empty{padding:40px 10px;text-align:center;color:var(--muted)}
+  .pager .pinfo{font-family:var(--mono);color:var(--graphite)}
+  .empty{padding:44px 10px;text-align:center;color:var(--graphite)}
 
-  footer.foot{border-top:1px solid var(--line);background:#fafbfb;color:#54615f;font-size:12px}
-  footer.foot .wrap{padding:18px 18px 26px}
-  footer.foot .disc{background:var(--lgold);border-left:3px solid var(--gold);padding:10px 12px;border-radius:4px;margin-bottom:12px;color:#5b4a1f}
-  footer.foot .src{color:var(--muted)}
-  footer.foot .brand{margin-top:10px;font-weight:bold;color:var(--teal)}
+  /* ===== Pied ===== */
+  footer.foot{border-top:1px solid var(--hairline);background:#fff;color:var(--graphite);font-size:12.5px}
+  footer.foot .wrap{padding:20px 20px 28px}
+  footer.foot .disc{background:var(--lgold);border-left:3px solid var(--gold);padding:11px 13px;border-radius:4px;margin-bottom:12px;color:#5b4a1f}
+  footer.foot .src{color:var(--graphite);font-family:var(--mono);font-size:11.5px}
+  footer.foot .brand{margin-top:12px;font-weight:600;color:var(--teal)}
 
   @media(max-width:640px){
-    .masthead h1{font-size:24px}
     .count{margin-left:0;width:100%}
   }
 </style>
@@ -83,7 +116,7 @@
 <body>
 <header class="masthead">
   <div class="wrap">
-    <a href="index.html" class="backlink">← Retour au site ORIM</a>
+    <a href="index.html" class="backlink">&larr; Retour au site ORIM</a>
     <div class="kicker">Association ORIM · Genève</div>
     <h1>Bibliothèque Alimentaire ORIM</h1>
     <p>L'indice immuno-métabolique de <b id="hcount">5'000</b> aliments, en accès libre.</p>
@@ -157,12 +190,13 @@
   var PAGE = 100, page = 0, sortKey = "score", sortDir = -1;
   var norm = function(s){return (s||"").toString().normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();};
   var rows = D.rows;
+  var nf = function(n){return n.toLocaleString("de-CH");}; // format suisse : 5'000
 
   // remplir groupes + sources + compteur entete
   var gsel = document.getElementById("fgroup");
   D.groups.forEach(function(g){var o=document.createElement("option");o.value=g;o.textContent=g;gsel.appendChild(o);});
   document.getElementById("src").textContent = "Sources : " + D.sources.join(" · ");
-  document.getElementById("hcount").textContent = D.total.toLocaleString("fr-CH");
+  document.getElementById("hcount").textContent = nf(D.total);
 
   function band(s){return s>=80?"champ":s>=60?"opt":s>=40?"sub":"bad";}
   function scoreClass(s){return "s-"+band(s);}
@@ -195,7 +229,7 @@
   }
   function render(){
     var n=filtered.length;
-    countEl.innerHTML="<b>"+n.toLocaleString("fr-CH")+"</b> aliment"+(n>1?"s":"");
+    countEl.innerHTML="<b>"+nf(n)+"</b> aliment"+(n>1?"s":"");
     emptyEl.style.display = n?"none":"block";
     var start=page*PAGE, slice=filtered.slice(start,start+PAGE);
     var h="";

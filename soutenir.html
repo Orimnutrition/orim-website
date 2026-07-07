@@ -1,562 +1,191 @@
 <!DOCTYPE html>
-<html lang="fr" data-lang="fr">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soutenir ORIM™ · Association genevoise d'immunonutrition préventive</title>
-  <meta name="description" content="Soutenez l'Association ORIM Genève, à but non lucratif. Vos dons financent la recherche scientifique, l'éducation et l'accompagnement en immunonutrition préventive." />
-  <meta name="robots" content="index, follow" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Soutenir ORIM™ · Association genevoise d'immunonutrition préventive</title>
+<meta name="description" content="Soutenez l'Association ORIM Genève, à but non lucratif. Vos dons financent la recherche scientifique, l'éducation et l'accompagnement en immunonutrition préventive." />
+<meta property="og:title" content="Soutenir ORIM™" />
+<meta property="og:description" content="Association ORIM Genève · Compte PostFinance officiel." />
+<meta property="og:url" content="https://orimnutrition.org/soutenir.html" />
+<meta property="og:locale" content="fr_CH" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --serif:"Fraunces",ui-serif,Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --bench:#F4F7F6; --ink:#0F211F; --graphite:#556663; --hairline:#DCE6E4; --plate:#FFFFFF;
+    --abyss:#04100E; --ink-d:#060D0C; --panel:#0C1A18; --line-d:#16302C; --fg-d:#EAF4F2; --dim-d:#7FA39D;
+    --teal:#1BA8A6; --cyan:#38E1D6; --gold:#E6A817; --gold-hi:#F5C95A; --lteal:#E8F6F6; --lgold:#FDF5E0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bench);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  a{color:var(--teal)}
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Soutenir ORIM™" />
-  <meta property="og:description" content="Association ORIM Genève · Recherche, éducation et accompagnement en immunonutrition préventive. Compte PostFinance officiel." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://orimnutrition.org/soutenir.html" />
-  <meta property="og:locale" content="fr_CH" />
+  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:22px 0 44px;text-align:center;
+    background:radial-gradient(120% 150% at 50% 0%,#071A17 0%,var(--abyss) 50%,var(--ink-d) 100%);border-bottom:1px solid var(--line-d)}
+  header.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background:linear-gradient(var(--line-d) 1px,transparent 1px) 0 0/100% 42px,linear-gradient(90deg,var(--line-d) 1px,transparent 1px) 0 0/42px 100%;
+    -webkit-mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%);mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%)}
+  header.masthead .wrap{position:relative;z-index:1}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px;text-align:left}
+  .backlink{color:var(--dim-d);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.04em;transition:color .2s}
+  .backlink:hover{color:var(--cyan)}
+  .langsw{display:flex;gap:2px;flex-shrink:0}
+  .langsw button{background:transparent;border:0;cursor:pointer;padding:5px 7px;color:var(--dim-d);font-family:var(--mono);font-size:12px;letter-spacing:.05em;border-radius:5px;transition:color .2s,background .2s}
+  .langsw button:hover{color:var(--fg-d);background:rgba(56,225,214,.08)}
+  .langsw button.on{color:var(--ink-d);background:var(--cyan);font-weight:500}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
+  .masthead h1{margin:10px 0 12px;font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.01em;line-height:1.04;
+    background:linear-gradient(180deg,#FFFFFF,var(--fg-d) 55%,var(--gold-hi) 135%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .masthead .sub{font-size:1.05rem;color:#C7DAD6;max-width:680px;margin:0 auto 8px}
+  .masthead .desc{font-size:.9rem;color:var(--dim-d);max-width:640px;margin:0 auto}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  main{padding:40px 0 60px}
+  .card{background:var(--plate);border:1px solid var(--hairline);border-radius:16px;padding:28px 26px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 10px 40px -24px rgba(15,33,31,.25)}
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold))}
+  .card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--hairline)}
+  .card-title{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ink)}
+  .card-sub{font-family:var(--mono);font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin-top:3px}
+  .bank-field{display:grid;grid-template-columns:180px 1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--hairline)}
+  .bank-field:last-of-type{border-bottom:none}
+  .bank-field-label{font-family:var(--mono);font-size:.68rem;color:var(--graphite);text-transform:uppercase;letter-spacing:.08em}
+  .bank-field-value{font-family:var(--mono);font-size:1rem;color:var(--ink);font-weight:500;word-break:break-all}
+  .bank-field-value.hl{color:var(--teal);font-size:1.1rem}
+  .copy-btn{background:var(--lteal);border:1px solid var(--teal);color:var(--teal);padding:.4rem .8rem;border-radius:6px;font-family:var(--mono);font-size:.68rem;font-weight:500;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+  .copy-btn:hover{background:var(--teal);color:#fff}
+  .copy-btn.copied{background:#159c8a;border-color:#159c8a;color:#fff}
+  .notice{background:var(--lgold);border:1px solid var(--hairline);border-left:3px solid var(--gold);border-radius:10px;padding:14px 18px;margin-top:20px;font-size:.86rem;color:#5b4a1f;line-height:1.7}
+  .notice strong{color:#5b4a1f}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:26px}
+  .info-card{background:var(--plate);border:1px solid var(--hairline);border-radius:12px;padding:18px;transition:border-color .2s,transform .2s}
+  .info-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+  .info-title{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+  .info-text{font-size:.86rem;color:var(--graphite)}
+  .patron-lead{font-size:.94rem;color:var(--ink);line-height:1.8;margin-bottom:18px}
+  .patron-person{display:flex;align-items:center;gap:14px;padding-top:16px;border-top:1px solid var(--hairline)}
+  .patron-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:1.05rem;color:#fff;flex-shrink:0}
+  .patron-name{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:1.05rem}
+  .patron-role{font-size:.8rem;color:var(--teal);line-height:1.5}
+  .patron-role2{font-size:.75rem;color:var(--graphite)}
+  .patron-cta{font-size:.82rem;color:var(--graphite);margin-top:18px;line-height:1.7}
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:   #0d1b2a;
-      --blue:   #1a4a7a;
-      --cyan:   #00b4d8;
-      --lcyan:  #90e0ef;
-      --white:  #f8fafc;
-      --gray:   #94a3b8;
-      --lgray:  #1e2d3d;
-      --gold:   #c9a84c;
-      --teal:   #1BA8A6;
-      --gold-orim: #E6A817;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    /* HEADER */
-    .header {
-      background: rgba(13,27,42,.95);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(0,180,216,.15);
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--teal);
-      text-decoration: none;
-      text-shadow: 0 0 12px rgba(27,168,166,.3);
-    }
-    .logo span {
-      color: var(--white);
-      font-weight: 300;
-      opacity: .7;
-      font-size: .7rem;
-      margin-left: 6px;
-      letter-spacing: 1px;
-    }
-    .nav-back {
-      color: var(--gray);
-      text-decoration: none;
-      font-size: .85rem;
-      transition: color .3s;
-    }
-    .nav-back:hover { color: var(--cyan); }
-
-    /* HERO */
-    .hero {
-      padding: 4rem 2rem 3rem;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(27,168,166,.05) 0%, transparent 100%);
-      border-bottom: 1px solid rgba(0,180,216,.08);
-    }
-    .hero-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .hero-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--teal);
-      margin-bottom: 1rem;
-      text-shadow: 0 0 24px rgba(27,168,166,.25);
-    }
-    .hero-subtitle {
-      font-size: 1.1rem;
-      color: var(--lcyan);
-      max-width: 720px;
-      margin: 0 auto 1.5rem;
-      font-weight: 300;
-    }
-    .hero-desc {
-      font-size: .92rem;
-      color: var(--gray);
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    /* MAIN */
-    .main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-
-    /* BANK CARD */
-    .bank-card {
-      background: linear-gradient(135deg, rgba(27,168,166,.08) 0%, rgba(230,168,23,.04) 100%);
-      border: 1px solid rgba(27,168,166,.25);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 8px 40px rgba(0,0,0,.3), 0 0 60px rgba(27,168,166,.05);
-      position: relative;
-      overflow: hidden;
-    }
-    .bank-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--teal) 0%, var(--gold-orim) 100%);
-    }
-    .bank-card-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.8rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(0,180,216,.1);
-    }
-    .bank-icon {
-      font-size: 2rem;
-      filter: drop-shadow(0 0 12px rgba(27,168,166,.4));
-    }
-    .bank-card-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 1px;
-    }
-    .bank-card-subtitle {
-      font-size: .72rem;
-      color: var(--teal);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 600;
-      margin-top: 3px;
-    }
-
-    .bank-field {
-      display: grid;
-      grid-template-columns: 180px 1fr auto;
-      gap: 1rem;
-      align-items: center;
-      padding: .9rem 0;
-      border-bottom: 1px solid rgba(148,163,184,.08);
-    }
-    .bank-field:last-of-type { border-bottom: none; }
-    .bank-field-label {
-      font-size: .72rem;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: .8px;
-      font-weight: 500;
-    }
-    .bank-field-value {
-      font-family: 'Rajdhani', monospace;
-      font-size: 1.05rem;
-      color: var(--white);
-      font-weight: 600;
-      letter-spacing: .3px;
-      word-break: break-all;
-    }
-    .bank-field-value.highlight {
-      color: var(--lcyan);
-      font-size: 1.15rem;
-    }
-    .copy-btn {
-      background: rgba(27,168,166,.12);
-      border: 1px solid rgba(27,168,166,.3);
-      color: var(--teal);
-      padding: .4rem .8rem;
-      border-radius: 6px;
-      font-size: .7rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all .25s;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      font-family: 'Inter', sans-serif;
-      white-space: nowrap;
-    }
-    .copy-btn:hover {
-      background: rgba(27,168,166,.22);
-      border-color: var(--teal);
-      transform: translateY(-1px);
-    }
-    .copy-btn.copied {
-      background: rgba(34,197,94,.2);
-      border-color: #22c55e;
-      color: #22c55e;
-    }
-
-    /* INFO SECTIONS */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-      margin-top: 2.5rem;
-    }
-    .info-card {
-      background: rgba(13,27,42,.6);
-      border: 1px solid rgba(0,180,216,.1);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: border-color .3s, transform .3s;
-    }
-    .info-card:hover {
-      border-color: rgba(27,168,166,.3);
-      transform: translateY(-2px);
-    }
-    .info-icon {
-      font-size: 1.6rem;
-      margin-bottom: .8rem;
-      display: block;
-    }
-    .info-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--teal);
-      margin-bottom: .5rem;
-      letter-spacing: .5px;
-    }
-    .info-text {
-      font-size: .85rem;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-
-    /* NOTICE */
-    .notice {
-      background: rgba(230,168,23,.06);
-      border: 1px solid rgba(230,168,23,.2);
-      border-radius: 10px;
-      padding: 1.2rem 1.5rem;
-      margin-top: 2rem;
-      font-size: .82rem;
-      color: var(--gray);
-      line-height: 1.7;
-      display: flex;
-      gap: .8rem;
-      align-items: flex-start;
-    }
-    .notice-icon {
-      font-size: 1.1rem;
-      color: var(--gold-orim);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .notice strong {
-      color: var(--gold-orim);
-      font-weight: 600;
-    }
-
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      padding: 3rem 2rem 2rem;
-      border-top: 1px solid rgba(0,180,216,.1);
-      margin-top: 3rem;
-      color: var(--gray);
-      font-size: .78rem;
-    }
-    .footer a {
-      color: var(--teal);
-      text-decoration: none;
-      transition: opacity .3s;
-    }
-    .footer a:hover { opacity: .75; }
-    .footer-divider {
-      margin: 0 .6rem;
-      opacity: .4;
-    }
-
-    /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(120%);
-      background: rgba(13,27,42,.95);
-      border: 1px solid var(--teal);
-      color: var(--white);
-      padding: .8rem 1.5rem;
-      border-radius: 8px;
-      font-size: .85rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,.5), 0 0 40px rgba(27,168,166,.2);
-      transition: transform .4s cubic-bezier(.4,0,.2,1);
-      z-index: 200;
-      backdrop-filter: blur(12px);
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); }
-
-    @media (max-width: 700px) {
-      .header { padding: .8rem 1rem; }
-      .hero { padding: 3rem 1rem 2rem; }
-      .main { padding: 2rem 1rem; }
-      .bank-card { padding: 1.8rem 1.2rem; }
-      .bank-field {
-        grid-template-columns: 1fr;
-        gap: .3rem;
-        padding: 1rem 0;
-      }
-      .bank-field-label { font-size: .68rem; }
-      .bank-field-value { font-size: .95rem; }
-      .copy-btn {
-        justify-self: start;
-        margin-top: .4rem;
-      }
-      .logo { font-size: 1.1rem; letter-spacing: 2px; }
-      .logo span { display: none; }
-    }
-  </style>
+  footer.foot{border-top:1px solid var(--hairline);background:#fff;color:var(--graphite);font-size:12.5px;text-align:center}
+  footer.foot .wrap{padding:24px 20px 28px}
+  footer.foot a{color:var(--teal);text-decoration:none} footer.foot a:hover{opacity:.75}
+  footer.foot .divider{margin:0 .6rem;opacity:.4}
+  .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120%);background:var(--ink);color:#fff;padding:.8rem 1.5rem;border-radius:8px;font-family:var(--mono);font-size:.82rem;box-shadow:0 8px 30px rgba(0,0,0,.4);transition:transform .4s cubic-bezier(.4,0,.2,1);z-index:200}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  @media(max-width:700px){.bank-field{grid-template-columns:1fr;gap:.3rem}.copy-btn{justify-self:start;margin-top:.4rem}}
+</style>
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="/" class="logo">ORIM<span>NUTRITION</span></a>
-      <a href="/" class="nav-back">&#8592; Retour au site</a>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <span class="hero-icon">&#x2764;&#xFE0F;</span>
-    <h1 class="hero-title">Soutenir ORIM&trade;</h1>
-    <p class="hero-subtitle">Association g&eacute;nevoise &agrave; but non lucratif d&eacute;di&eacute;e &agrave; la recherche, l'&eacute;ducation et l'accompagnement en immunonutrition pr&eacute;ventive.</p>
-    <p class="hero-desc">Votre soutien finance nos programmes scientifiques, nos publications, nos actions p&eacute;dagogiques et le futur Centre ORIM Gen&egrave;ve. Chaque don compte.</p>
-  </section>
-
-  <!-- MAIN CONTENT -->
-  <main class="main">
-
-    <!-- BANK CARD -->
-    <div class="bank-card">
-      <div class="bank-card-header">
-        <span class="bank-icon">&#x1F3E6;</span>
-        <div>
-          <div class="bank-card-title">Compte bancaire officiel</div>
-          <div class="bank-card-subtitle">Association ORIM Gen&egrave;ve &middot; PostFinance</div>
-        </div>
-      </div>
-
-      <div class="bank-field">
-        <div class="bank-field-label">Titulaire</div>
-        <div class="bank-field-value">Association ORIM</div>
-        <span></span>
-      </div>
-
-      <div class="bank-field">
-        <div class="bank-field-label">Nom complet</div>
-        <div class="bank-field-value" style="font-size:.9rem">Optimisation R&eacute;solutive Immuno-M&eacute;tabolique</div>
-        <span></span>
-      </div>
-
-      <div class="bank-field">
-        <div class="bank-field-label">Banque</div>
-        <div class="bank-field-value">PostFinance SA &middot; Ch&ecirc;ne-Bourg</div>
-        <span></span>
-      </div>
-
-      <div class="bank-field">
-        <div class="bank-field-label">Num&eacute;ro de compte</div>
-        <div class="bank-field-value" id="account-number">16-871464-5</div>
-        <button class="copy-btn" data-target="account-number">Copier</button>
-      </div>
-
-      <div class="bank-field">
-        <div class="bank-field-label">IBAN</div>
-        <div class="bank-field-value highlight" id="iban">CH23 0900 0000 1687 1464 5</div>
-        <button class="copy-btn" data-target="iban">Copier</button>
-      </div>
-
-      <div class="bank-field">
-        <div class="bank-field-label">BIC / SWIFT</div>
-        <div class="bank-field-value" id="bic">POFICHBEXXX</div>
-        <button class="copy-btn" data-target="bic">Copier</button>
-      </div>
-
-      <div class="bank-field">
-        <div class="bank-field-label">Devise</div>
-        <div class="bank-field-value">CHF (Francs suisses)</div>
-        <span></span>
+<header class="masthead">
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html" class="backlink" data-i18n="sv.back">&larr; Retour au site ORIM</a>
+      <div class="langsw" id="langsw" role="group" aria-label="Langue">
+        <button data-l="fr">FR</button><button data-l="en">EN</button><button data-l="es">ES</button
+        ><button data-l="de">DE</button><button data-l="pt">PT</button><button data-l="it">IT</button>
       </div>
     </div>
+    <div class="kicker" data-i18n="sv.kicker">Association ORIM · Genève · À but non lucratif</div>
+    <h1 data-i18n="sv.title">Soutenir ORIM™</h1>
+    <p class="sub" data-i18n="sv.sub">Association genevoise à but non lucratif dédiée à la recherche, l'éducation et l'accompagnement en immunonutrition préventive.</p>
+    <p class="desc" data-i18n="sv.desc">Votre soutien finance nos programmes scientifiques, nos publications, nos actions pédagogiques et le futur Centre ORIM Genève. Chaque don compte.</p>
+  </div>
+</header>
 
-    <!-- NOTICE -->
-    <div class="notice">
-      <span class="notice-icon">&#9432;</span>
+<main class="wrap">
+  <div class="card">
+    <div class="card-head">
       <div>
-        <strong>Attestation de don.</strong> L'Association ORIM &eacute;tablit sur demande une attestation pour chaque don re&ccedil;u. Merci d'indiquer votre adresse compl&egrave;te dans le motif de virement ou de nous &eacute;crire &agrave; <a href="mailto:info@orimnutrition.org" style="color:var(--teal);text-decoration:none">info@orimnutrition.org</a> apr&egrave;s votre don.
+        <div class="card-title" data-i18n="sv.bank.title">Compte bancaire officiel</div>
+        <div class="card-sub" data-i18n="sv.bank.sub">Association ORIM Genève · PostFinance</div>
       </div>
     </div>
+    <div class="bank-field"><div class="bank-field-label" data-i18n="sv.bank.holder">Titulaire</div><div class="bank-field-value">Association ORIM</div><span></span></div>
+    <div class="bank-field"><div class="bank-field-label" data-i18n="sv.bank.name">Nom complet</div><div class="bank-field-value" style="font-size:.88rem">Optimisation Résolutive Immuno-Métabolique</div><span></span></div>
+    <div class="bank-field"><div class="bank-field-label" data-i18n="sv.bank.bank">Banque</div><div class="bank-field-value">PostFinance SA · Chêne-Bourg</div><span></span></div>
+    <div class="bank-field"><div class="bank-field-label" data-i18n="sv.bank.account">Numéro de compte</div><div class="bank-field-value" id="account-number">16-871464-5</div><button class="copy-btn" data-target="account-number" data-i18n="sv.copy">Copier</button></div>
+    <div class="bank-field"><div class="bank-field-label">IBAN</div><div class="bank-field-value hl" id="iban">CH23 0900 0000 1687 1464 5</div><button class="copy-btn" data-target="iban" data-i18n="sv.copy">Copier</button></div>
+    <div class="bank-field"><div class="bank-field-label">BIC / SWIFT</div><div class="bank-field-value" id="bic">POFICHBEXXX</div><button class="copy-btn" data-target="bic" data-i18n="sv.copy">Copier</button></div>
+    <div class="bank-field"><div class="bank-field-label" data-i18n="sv.bank.currency">Devise</div><div class="bank-field-value" data-i18n="sv.bank.chf">CHF (Francs suisses)</div><span></span></div>
+  </div>
 
-    <!-- INFO CARDS -->
-    <div class="info-grid">
-      <div class="info-card">
-        <span class="info-icon">&#x1F52C;</span>
-        <div class="info-title">Recherche scientifique</div>
-        <div class="info-text">Financement des programmes de recherche ORIM sur l'immunonutrition pr&eacute;ventive, la nutrig&eacute;nomique et le microbiote.</div>
-      </div>
-      <div class="info-card">
-        <span class="info-icon">&#x1F4DA;</span>
-        <div class="info-title">&Eacute;ducation &amp; publications</div>
-        <div class="info-text">Production de contenus p&eacute;dagogiques, bulletins scientifiques, conf&eacute;rences publiques et formation des professionnels de sant&eacute;.</div>
-      </div>
-      <div class="info-card">
-        <span class="info-icon">&#x1F3E5;</span>
-        <div class="info-title">Centre ORIM Gen&egrave;ve</div>
-        <div class="info-text">Construction du futur centre d'immunonutrition pr&eacute;ventive &agrave; Gen&egrave;ve : consultations, cuisine &eacute;ducative, espace bien-&ecirc;tre.</div>
-      </div>
-      <div class="info-card">
-        <span class="info-icon">&#x1F91D;</span>
-        <div class="info-title">R&eacute;seau praticiens</div>
-        <div class="info-text">D&eacute;veloppement du r&eacute;seau de m&eacute;decins, naturopathes et th&eacute;rapeutes partenaires en Suisse et en Europe.</div>
+  <div class="notice">
+    <span data-i18n="sv.notice"><strong>Attestation de don.</strong> L'Association ORIM établit sur demande une attestation pour chaque don reçu. Merci d'indiquer votre adresse complète dans le motif de virement ou de nous écrire à <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a> après votre don.</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card"><div class="info-title" data-i18n="sv.i1t">Recherche scientifique</div><div class="info-text" data-i18n="sv.i1d">Financement des programmes de recherche ORIM sur l'immunonutrition préventive, la nutrigénomique et le microbiote.</div></div>
+    <div class="info-card"><div class="info-title" data-i18n="sv.i2t">Éducation &amp; publications</div><div class="info-text" data-i18n="sv.i2d">Production de contenus pédagogiques, bulletins scientifiques, conférences publiques et formation des professionnels de santé.</div></div>
+    <div class="info-card"><div class="info-title" data-i18n="sv.i3t">Centre ORIM Genève</div><div class="info-text" data-i18n="sv.i3d">Construction du futur centre d'immunonutrition préventive à Genève : consultations, cuisine éducative, espace bien-être.</div></div>
+    <div class="info-card"><div class="info-title" data-i18n="sv.i4t">Réseau de praticiens</div><div class="info-text" data-i18n="sv.i4d">Développement du réseau de médecins, naturopathes et thérapeutes partenaires en Suisse et en Europe.</div></div>
+  </div>
+
+  <div class="card" style="margin-top:24px">
+    <div class="card-head">
+      <div>
+        <div class="card-title" data-i18n="sv.pat.title">Comité de Patronage et de Mécénat</div>
+        <div class="card-sub" data-i18n="sv.pat.sub">Rayonnement institutionnel · Mécénat</div>
       </div>
     </div>
-
-    <!-- COMITE DE PATRONAGE ET DE MECENAT -->
-    <div class="bank-card" style="margin-top:2rem;">
-      <div class="bank-card-header">
-        <span class="bank-icon">&#x1F3DB;&#xFE0F;</span>
-        <div>
-          <div class="bank-card-title">Comit&eacute; de Patronage et de M&eacute;c&eacute;nat</div>
-          <div class="bank-card-subtitle">Rayonnement institutionnel &middot; M&eacute;c&eacute;nat</div>
-        </div>
+    <p class="patron-lead" data-i18n="sv.pat.lead">Sous l'impulsion de son Vice-Président en charge du Mécénat, l'Association ORIM Genève développe une stratégie de soutien philanthropique au service de la recherche et de l'éducation en immunonutrition préventive. Institutions, fondations, family offices et grands donateurs y trouvent un interlocuteur dédié, garant d'une exigence de rigueur financière et de transparence.</p>
+    <div class="patron-person">
+      <div class="patron-av">FV</div>
+      <div>
+        <div class="patron-name">Francesco Volpicelli</div>
+        <div class="patron-role" data-i18n="sv.pat.role">Vice-Président · Relations Institutionnelles, Mécénat et Représentation</div>
+        <div class="patron-role2" data-i18n="sv.pat.role2">Président du Comité de Patronage et de Mécénat</div>
       </div>
-
-      <p style="font-size:.92rem;color:var(--gray);line-height:1.8;margin-bottom:1.4rem;">
-        Sous l'impulsion de son Vice-Pr&eacute;sident en charge du M&eacute;c&eacute;nat, l'Association ORIM Gen&egrave;ve d&eacute;veloppe une strat&eacute;gie de soutien philanthropique au service de la recherche et de l'&eacute;ducation en immunonutrition pr&eacute;ventive. Institutions, fondations, family offices et grands donateurs y trouvent un interlocuteur d&eacute;di&eacute;, garant d'une exigence de rigueur financi&egrave;re et de transparence.
-      </p>
-
-      <div style="display:flex;align-items:center;gap:1rem;padding-top:1.4rem;border-top:1px solid rgba(0,180,216,.12);">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.05rem;color:#fff;flex-shrink:0;letter-spacing:1px;">FV</div>
-        <div>
-          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--white);font-size:1.05rem;letter-spacing:.5px;">Francesco Volpicelli</div>
-          <div style="font-size:.8rem;color:var(--teal);line-height:1.5;">Vice-Pr&eacute;sident &middot; Relations Institutionnelles, M&eacute;c&eacute;nat et Repr&eacute;sentation</div>
-          <div style="font-size:.75rem;color:var(--gray);">Pr&eacute;sident du Comit&eacute; de Patronage et de M&eacute;c&eacute;nat</div>
-        </div>
-      </div>
-
-      <p style="font-size:.8rem;color:var(--gray);margin-top:1.5rem;line-height:1.7;">
-        Vous repr&eacute;sentez une institution, une fondation ou souhaitez engager un partenariat de m&eacute;c&eacute;nat&nbsp;? &Eacute;crivez-nous &agrave; <a href="mailto:info@orimnutrition.org" style="color:var(--teal);text-decoration:none">info@orimnutrition.org</a>.
-      </p>
     </div>
+    <p class="patron-cta" data-i18n="sv.pat.cta">Vous représentez une institution, une fondation ou souhaitez engager un partenariat de mécénat ? Écrivez-nous à <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a>.</p>
+  </div>
+</main>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
+<footer class="foot">
+  <div class="wrap">
     <div>
-      <a href="/">Accueil</a>
-      <span class="footer-divider">&middot;</span>
-      <a href="/partenaires.html">Partenaires</a>
-      <span class="footer-divider">&middot;</span>
+      <a href="index.html" data-i18n="sv.f.home">Accueil</a><span class="divider">·</span>
+      <a href="partenaires.html" data-i18n="sv.f.partners">Partenaires</a><span class="divider">·</span>
       <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a>
     </div>
-    <div style="margin-top:1rem;opacity:.6">Association ORIM &middot; Gen&egrave;ve, Suisse &middot; &copy; 2026</div>
-  </footer>
+    <div style="margin-top:1rem;opacity:.7">Association ORIM · Genève, Suisse · © 2026</div>
+  </div>
+</footer>
 
-  <!-- TOAST -->
-  <div class="toast" id="toast">Copi&eacute; dans le presse-papiers</div>
+<div class="toast" id="toast" data-i18n="sv.toast">Copié dans le presse-papiers</div>
 
-  <script>
-    (function() {
-      var toast = document.getElementById('toast');
-      var toastTimeout = null;
-
-      function showToast(msg) {
-        toast.textContent = msg;
-        toast.classList.add('show');
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(function() {
-          toast.classList.remove('show');
-        }, 2200);
-      }
-
-      document.querySelectorAll('.copy-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var targetId = btn.getAttribute('data-target');
-          var target = document.getElementById(targetId);
-          if (!target) return;
-          var text = target.textContent.trim();
-
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              btn.textContent = 'Copi\u00e9';
-              btn.classList.add('copied');
-              showToast(text + ' copi\u00e9');
-              setTimeout(function() {
-                btn.textContent = 'Copier';
-                btn.classList.remove('copied');
-              }, 2000);
-            }).catch(function() {
-              fallbackCopy(text, btn);
-            });
-          } else {
-            fallbackCopy(text, btn);
-          }
-        });
-      });
-
-      function fallbackCopy(text, btn) {
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try {
-          document.execCommand('copy');
-          btn.textContent = 'Copi\u00e9';
-          btn.classList.add('copied');
-          showToast(text + ' copi\u00e9');
-          setTimeout(function() {
-            btn.textContent = 'Copier';
-            btn.classList.remove('copied');
-          }, 2000);
-        } catch (e) {}
-        document.body.removeChild(ta);
-      }
-    })();
-  </script>
-
+<script>
+var I18N = {"fr":{"sv.back":"&larr; Retour au site ORIM","sv.kicker":"Association ORIM · Genève · À but non lucratif","sv.title":"Soutenir ORIM™","sv.sub":"Association genevoise à but non lucratif dédiée à la recherche, l'éducation et l'accompagnement en immunonutrition préventive.","sv.desc":"Votre soutien finance nos programmes scientifiques, nos publications, nos actions pédagogiques et le futur Centre ORIM Genève. Chaque don compte.","sv.bank.title":"Compte bancaire officiel","sv.bank.sub":"Association ORIM Genève · PostFinance","sv.bank.holder":"Titulaire","sv.bank.name":"Nom complet","sv.bank.bank":"Banque","sv.bank.account":"Numéro de compte","sv.copy":"Copier","sv.bank.currency":"Devise","sv.bank.chf":"CHF (Francs suisses)","sv.notice":"<strong>Attestation de don.</strong> L'Association ORIM établit sur demande une attestation pour chaque don reçu. Merci d'indiquer votre adresse complète dans le motif de virement ou de nous écrire à <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> après votre don.","sv.i1t":"Recherche scientifique","sv.i1d":"Financement des programmes de recherche ORIM sur l'immunonutrition préventive, la nutrigénomique et le microbiote.","sv.i2t":"Éducation &amp; publications","sv.i2d":"Production de contenus pédagogiques, bulletins scientifiques, conférences publiques et formation des professionnels de santé.","sv.i3t":"Centre ORIM Genève","sv.i3d":"Construction du futur centre d'immunonutrition préventive à Genève : consultations, cuisine éducative, espace bien-être.","sv.i4t":"Réseau de praticiens","sv.i4d":"Développement du réseau de médecins, naturopathes et thérapeutes partenaires en Suisse et en Europe.","sv.pat.title":"Comité de Patronage et de Mécénat","sv.pat.sub":"Rayonnement institutionnel · Mécénat","sv.pat.lead":"Sous l'impulsion de son Vice-Président en charge du Mécénat, l'Association ORIM Genève développe une stratégie de soutien philanthropique au service de la recherche et de l'éducation en immunonutrition préventive. Institutions, fondations, family offices et grands donateurs y trouvent un interlocuteur dédié, garant d'une exigence de rigueur financière et de transparence.","sv.pat.role":"Vice-Président · Relations Institutionnelles, Mécénat et Représentation","sv.pat.role2":"Président du Comité de Patronage et de Mécénat","sv.pat.cta":"Vous représentez une institution, une fondation ou souhaitez engager un partenariat de mécénat ? Écrivez-nous à <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>.","sv.f.home":"Accueil","sv.f.partners":"Partenaires","sv.toast":"Copié dans le presse-papiers"},"en":{"sv.back":"&larr; Back to the ORIM site","sv.kicker":"ORIM Association · Geneva · Non-profit","sv.title":"Support ORIM™","sv.sub":"A Geneva-based non-profit association dedicated to research, education and guidance in preventive immunonutrition.","sv.desc":"Your support funds our scientific programmes, our publications, our educational initiatives and the future ORIM Geneva Centre. Every gift counts.","sv.bank.title":"Official bank account","sv.bank.sub":"ORIM Association Geneva · PostFinance","sv.bank.holder":"Account holder","sv.bank.name":"Full name","sv.bank.bank":"Bank","sv.bank.account":"Account number","sv.copy":"Copy","sv.bank.currency":"Currency","sv.bank.chf":"CHF (Swiss francs)","sv.notice":"<strong>Donation acknowledgement.</strong> The ORIM Association issues, upon request, an acknowledgement for each donation received. Please include your full address in the payment reference or write to us at <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> after making your gift.","sv.i1t":"Scientific research","sv.i1d":"Funding of ORIM research programmes on preventive immunonutrition, nutrigenomics and the microbiome.","sv.i2t":"Education &amp; publications","sv.i2d":"Production of educational content, scientific bulletins, public lectures and training for healthcare professionals.","sv.i3t":"ORIM Geneva Centre","sv.i3d":"Building the future preventive immunonutrition centre in Geneva: consultations, educational kitchen, wellness space.","sv.i4t":"Network of practitioners","sv.i4d":"Developing the network of partner physicians, naturopaths and therapists across Switzerland and Europe.","sv.pat.title":"Patronage and Philanthropy Committee","sv.pat.sub":"Institutional outreach · Philanthropy","sv.pat.lead":"Under the leadership of its Vice-President in charge of Philanthropy, the ORIM Association Geneva is developing a philanthropic support strategy in the service of research and education in preventive immunonutrition. Institutions, foundations, family offices and major donors find here a dedicated point of contact, committed to a standard of financial rigour and transparency.","sv.pat.role":"Vice-President · Institutional Relations, Philanthropy and Representation","sv.pat.role2":"Chair of the Patronage and Philanthropy Committee","sv.pat.cta":"Do you represent an institution or a foundation, or wish to enter into a philanthropic partnership? Write to us at <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>.","sv.f.home":"Home","sv.f.partners":"Partners","sv.toast":"Copied to clipboard"},"es":{"sv.back":"&larr; Volver al sitio ORIM","sv.kicker":"Asociación ORIM · Ginebra · Sin fines de lucro","sv.title":"Apoyar a ORIM™","sv.sub":"Asociación ginebrina sin fines de lucro dedicada a la investigación, la educación y el acompañamiento en inmunonutrición preventiva.","sv.desc":"Su apoyo financia nuestros programas científicos, nuestras publicaciones, nuestras acciones pedagógicas y el futuro Centro ORIM Ginebra. Cada donación cuenta.","sv.bank.title":"Cuenta bancaria oficial","sv.bank.sub":"Asociación ORIM Ginebra · PostFinance","sv.bank.holder":"Titular","sv.bank.name":"Nombre completo","sv.bank.bank":"Banco","sv.bank.account":"Número de cuenta","sv.copy":"Copiar","sv.bank.currency":"Divisa","sv.bank.chf":"CHF (francos suizos)","sv.notice":"<strong>Certificado de donación.</strong> La Asociación ORIM emite, previa solicitud, un certificado por cada donación recibida. Le rogamos indicar su dirección completa en el concepto de la transferencia o escribirnos a <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> tras su donación.","sv.i1t":"Investigación científica","sv.i1d":"Financiación de los programas de investigación ORIM sobre la inmunonutrición preventiva, la nutrigenómica y la microbiota.","sv.i2t":"Educación &amp; publicaciones","sv.i2d":"Producción de contenidos pedagógicos, boletines científicos, conferencias públicas y formación de los profesionales de la salud.","sv.i3t":"Centro ORIM Ginebra","sv.i3d":"Construcción del futuro centro de inmunonutrición preventiva en Ginebra: consultas, cocina educativa, espacio de bienestar.","sv.i4t":"Red de profesionales","sv.i4d":"Desarrollo de la red de médicos, naturópatas y terapeutas asociados en Suiza y en Europa.","sv.pat.title":"Comité de Patronazgo y Mecenazgo","sv.pat.sub":"Proyección institucional · Mecenazgo","sv.pat.lead":"Bajo el impulso de su Vicepresidente a cargo del Mecenazgo, la Asociación ORIM Ginebra desarrolla una estrategia de apoyo filantrópico al servicio de la investigación y la educación en inmunonutrición preventiva. Instituciones, fundaciones, family offices y grandes donantes encuentran en ella un interlocutor dedicado, garante de una exigencia de rigor financiero y de transparencia.","sv.pat.role":"Vicepresidente · Relaciones Institucionales, Mecenazgo y Representación","sv.pat.role2":"Presidente del Comité de Patronazgo y Mecenazgo","sv.pat.cta":"¿Representa a una institución, una fundación o desea establecer una colaboración de mecenazgo? Escríbanos a <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>.","sv.f.home":"Inicio","sv.f.partners":"Socios","sv.toast":"Copiado en el portapapeles"},"de":{"sv.back":"&larr; Zurück zur ORIM-Website","sv.kicker":"Verein ORIM · Genf · Gemeinnützig","sv.title":"ORIM™ unterstützen","sv.sub":"Genfer gemeinnütziger Verein für Forschung, Bildung und Begleitung im Bereich der präventiven Immunonutrition.","sv.desc":"Ihre Unterstützung finanziert unsere wissenschaftlichen Programme, unsere Publikationen, unsere Bildungsarbeit und das künftige Zentrum ORIM Genf. Jede Spende zählt.","sv.bank.title":"Offizielles Bankkonto","sv.bank.sub":"Verein ORIM Genf · PostFinance","sv.bank.holder":"Kontoinhaber","sv.bank.name":"Vollständiger Name","sv.bank.bank":"Bank","sv.bank.account":"Kontonummer","sv.copy":"Kopieren","sv.bank.currency":"Währung","sv.bank.chf":"CHF (Schweizer Franken)","sv.notice":"<strong>Spendenbestätigung.</strong> Der Verein ORIM stellt auf Anfrage für jede erhaltene Spende eine Bestätigung aus. Bitte geben Sie Ihre vollständige Adresse im Verwendungszweck der Überweisung an oder schreiben Sie uns nach Ihrer Spende an <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>.","sv.i1t":"Wissenschaftliche Forschung","sv.i1d":"Finanzierung der ORIM-Forschungsprogramme zu präventiver Immunonutrition, Nutrigenomik und Mikrobiom.","sv.i2t":"Bildung &amp; Publikationen","sv.i2d":"Erstellung von Bildungsinhalten, wissenschaftlichen Bulletins, öffentlichen Vorträgen und Weiterbildung von Fachpersonen des Gesundheitswesens.","sv.i3t":"Zentrum ORIM Genf","sv.i3d":"Bau des künftigen Zentrums für präventive Immunonutrition in Genf: Konsultationen, Lehrküche, Wellnessbereich.","sv.i4t":"Netzwerk von Fachpersonen","sv.i4d":"Aufbau des Netzwerks von Partnerärzten, Naturheilpraktikern und Therapeuten in der Schweiz und in Europa.","sv.pat.title":"Komitee für Schirmherrschaft und Mäzenatentum","sv.pat.sub":"Institutionelle Ausstrahlung · Mäzenatentum","sv.pat.lead":"Unter der Federführung seines für das Mäzenatentum zuständigen Vizepräsidenten entwickelt der Verein ORIM Genf eine Strategie philanthropischer Unterstützung im Dienste der Forschung und Bildung im Bereich der präventiven Immunonutrition. Institutionen, Stiftungen, Family Offices und Grossspender finden hier einen dedizierten Ansprechpartner, der für finanzielle Sorgfalt und Transparenz bürgt.","sv.pat.role":"Vizepräsident · Institutionelle Beziehungen, Mäzenatentum und Repräsentation","sv.pat.role2":"Präsident des Komitees für Schirmherrschaft und Mäzenatentum","sv.pat.cta":"Vertreten Sie eine Institution oder eine Stiftung, oder möchten Sie eine Mäzenatspartnerschaft eingehen? Schreiben Sie uns an <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>.","sv.f.home":"Startseite","sv.f.partners":"Partner","sv.toast":"In die Zwischenablage kopiert"},"pt":{"sv.back":"&larr; Voltar ao site ORIM","sv.kicker":"Associação ORIM · Genebra · Sem fins lucrativos","sv.title":"Apoiar a ORIM™","sv.sub":"Associação genebrina sem fins lucrativos dedicada à investigação, à educação e ao acompanhamento em imunonutrição preventiva.","sv.desc":"O seu apoio financia os nossos programas científicos, as nossas publicações, as nossas ações pedagógicas e o futuro Centro ORIM Genebra. Cada donativo conta.","sv.bank.title":"Conta bancária oficial","sv.bank.sub":"Associação ORIM Genebra · PostFinance","sv.bank.holder":"Titular","sv.bank.name":"Nome completo","sv.bank.bank":"Banco","sv.bank.account":"Número de conta","sv.copy":"Copiar","sv.bank.currency":"Moeda","sv.bank.chf":"CHF (Francos suíços)","sv.notice":"<strong>Comprovativo de donativo.</strong> A Associação ORIM emite, mediante pedido, um comprovativo para cada donativo recebido. Agradecemos que indique a sua morada completa no motivo da transferência ou que nos escreva para <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> após o seu donativo.","sv.i1t":"Investigação científica","sv.i1d":"Financiamento dos programas de investigação da ORIM sobre imunonutrição preventiva, nutrigenómica e microbiota.","sv.i2t":"Educação &amp; publicações","sv.i2d":"Produção de conteúdos pedagógicos, boletins científicos, conferências públicas e formação dos profissionais de saúde.","sv.i3t":"Centro ORIM Genebra","sv.i3d":"Construção do futuro centro de imunonutrição preventiva em Genebra: consultas, cozinha educativa, espaço de bem-estar.","sv.i4t":"Rede de profissionais","sv.i4d":"Desenvolvimento da rede de médicos, naturopatas e terapeutas parceiros na Suíça e na Europa.","sv.pat.title":"Comité de Patrocínio e Mecenato","sv.pat.sub":"Projeção institucional · Mecenato","sv.pat.lead":"Sob o impulso do seu Vice-Presidente encarregue do Mecenato, a Associação ORIM Genebra desenvolve uma estratégia de apoio filantrópico ao serviço da investigação e da educação em imunonutrição preventiva. Instituições, fundações, family offices e grandes doadores encontram aqui um interlocutor dedicado, garante de uma exigência de rigor financeiro e de transparência.","sv.pat.role":"Vice-Presidente · Relações Institucionais, Mecenato e Representação","sv.pat.role2":"Presidente do Comité de Patrocínio e Mecenato","sv.pat.cta":"Representa uma instituição, uma fundação ou pretende estabelecer uma parceria de mecenato? Escreva-nos para <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>.","sv.f.home":"Início","sv.f.partners":"Parceiros","sv.toast":"Copiado para a área de transferência"},"it":{"sv.back":"&larr; Ritorna al sito ORIM","sv.kicker":"Associazione ORIM · Ginevra · Senza scopo di lucro","sv.title":"Sostenere ORIM™","sv.sub":"Associazione ginevrina senza scopo di lucro dedicata alla ricerca, all'educazione e all'accompagnamento nell'immunonutrizione preventiva.","sv.desc":"Il vostro sostegno finanzia i nostri programmi scientifici, le nostre pubblicazioni, le nostre azioni pedagogiche e il futuro Centro ORIM Ginevra. Ogni donazione conta.","sv.bank.title":"Conto bancario ufficiale","sv.bank.sub":"Associazione ORIM Ginevra · PostFinance","sv.bank.holder":"Titolare","sv.bank.name":"Nome completo","sv.bank.bank":"Banca","sv.bank.account":"Numero di conto","sv.copy":"Copia","sv.bank.currency":"Valuta","sv.bank.chf":"CHF (Franchi svizzeri)","sv.notice":"<strong>Attestazione di donazione.</strong> L'Associazione ORIM rilascia su richiesta un'attestazione per ogni donazione ricevuta. Vi preghiamo di indicare il vostro indirizzo completo nella causale del bonifico oppure di scriverci a <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a> dopo la vostra donazione.","sv.i1t":"Ricerca scientifica","sv.i1d":"Finanziamento dei programmi di ricerca ORIM sull'immunonutrizione preventiva, la nutrigenomica e il microbiota.","sv.i2t":"Educazione &amp; pubblicazioni","sv.i2d":"Produzione di contenuti pedagogici, bollettini scientifici, conferenze pubbliche e formazione dei professionisti della salute.","sv.i3t":"Centro ORIM Ginevra","sv.i3d":"Costruzione del futuro centro di immunonutrizione preventiva a Ginevra: consultazioni, cucina educativa, spazio benessere.","sv.i4t":"Rete di professionisti","sv.i4d":"Sviluppo della rete di medici, naturopati e terapeuti partner in Svizzera e in Europa.","sv.pat.title":"Comitato di Patronato e Mecenatismo","sv.pat.sub":"Rilievo istituzionale · Mecenatismo","sv.pat.lead":"Sotto l'impulso del suo Vicepresidente incaricato del Mecenatismo, l'Associazione ORIM Ginevra sviluppa una strategia di sostegno filantropico al servizio della ricerca e dell'educazione nell'immunonutrizione preventiva. Istituzioni, fondazioni, family office e grandi donatori vi trovano un interlocutore dedicato, garante di un'esigenza di rigore finanziario e di trasparenza.","sv.pat.role":"Vicepresidente · Relazioni Istituzionali, Mecenatismo e Rappresentanza","sv.pat.role2":"Presidente del Comitato di Patronato e Mecenatismo","sv.pat.cta":"Rappresentate un'istituzione, una fondazione o desiderate avviare un partenariato di mecenatismo? Scriveteci a <a href=\"mailto:info@orimnutrition.org\">info@orimnutrition.org</a>.","sv.f.home":"Home","sv.f.partners":"Partner","sv.toast":"Copiato negli appunti"}};
+var LANGS=["fr","en","es","de","pt","it"], lang="fr";
+function ui(k){var b=(typeof I18N!=="undefined")&&I18N[lang]; return (b&&b[k])||null;}
+function setLang(l){
+  if(LANGS.indexOf(l)===-1)l="fr"; lang=l; document.documentElement.lang=l;
+  try{localStorage.setItem("orim_sv_lang",l);}catch(e){}
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var v=ui(el.getAttribute("data-i18n")); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll("#langsw button").forEach(function(b){b.classList.toggle("on",b.dataset.l===l);});
+}
+document.getElementById("langsw").addEventListener("click",function(e){var b=e.target.closest("button[data-l]"); if(b)setLang(b.dataset.l);});
+(function(){
+  var toast=document.getElementById('toast'), tT=null;
+  function copyLabel(){return ui('sv.copy')||'Copier';}
+  function show(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(tT);tT=setTimeout(function(){toast.classList.remove('show');},2200);}
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=document.getElementById(btn.getAttribute('data-target')); if(!t)return;
+      var text=t.textContent.trim();
+      function done(){btn.textContent=(ui('sv.copied')||'Copié');btn.classList.add('copied');show(text);setTimeout(function(){btn.textContent=copyLabel();btn.classList.remove('copied');},2000);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(function(){fb(text,done);});}else{fb(text,done);}
+    });
+  });
+  function fb(text,done){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+})();
+var _s; try{_s=localStorage.getItem("orim_sv_lang");}catch(e){}
+setLang(_s||(navigator.language||"fr").slice(0,2));
+</script>
 </body>
 </html>

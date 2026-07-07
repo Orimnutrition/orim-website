@@ -70,8 +70,9 @@
 
   header{position:sticky;top:0;z-index:100;background:rgba(244,247,246,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--hairline)}
   .bar{display:flex;align-items:center;justify-content:space-between;height:66px;gap:1rem}
-  .brand{font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:.13em;flex-shrink:0;color:var(--ink)}
-  .brand small{font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;color:var(--graphite);display:block;margin-top:-3px}
+  .brand{display:flex;align-items:center;gap:.6rem;flex-shrink:0;color:var(--ink);text-decoration:none}
+  .brand-logo{height:44px;width:auto;object-fit:contain;display:block}
+  .brand small{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;color:var(--graphite);display:block;line-height:1.15}
   nav.links{display:flex;gap:1.6rem;align-items:center}
   nav.links a{font-size:.82rem;color:var(--graphite)}
   nav.links a:hover{color:var(--ink)}
@@ -214,6 +215,8 @@
   footer .foot-links{display:flex;flex-wrap:wrap;gap:.4rem .9rem;align-items:center}
   footer .foot-links a{color:var(--graphite)}
   footer .foot-links a:hover{color:var(--ink)}
+  footer .foot-brand{display:flex;align-items:center;gap:.55rem}
+  footer .foot-logo{height:30px;width:auto;object-fit:contain;display:block}
 
   /* sticky donation bar (clair) */
   .sticky-donate-bar{position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(15,33,31,.97);backdrop-filter:blur(8px);color:#EAF2F0;display:flex;align-items:center;justify-content:center;gap:1.2rem;padding:.7rem 1.2rem;font-size:.86rem;border-top:1px solid rgba(255,255,255,.08)}
@@ -232,7 +235,7 @@
 <body>
 <header>
   <div class="wrap bar">
-    <a href="#top" class="brand">ORIM<small>IMMUNO&middot;MÉTABOLIQUE</small></a>
+    <a href="#top" class="brand"><img src="orim-logo.png" alt="ORIM™" class="brand-logo" /><small>IMMUNO&middot;MÉTABOLIQUE</small></a>
     <div class="hgroup">
       <nav class="links">
         <a href="#mission" data-i18n="nav.mission">Notre mission</a>
@@ -478,7 +481,7 @@
 
 <footer>
   <div class="wrap">
-    <div><strong style="font-family:var(--serif);letter-spacing:.1em">ORIM</strong> · Association ORIM Genève · ORIM™</div>
+    <div class="foot-brand"><img src="orim-logo.png" alt="ORIM™" class="foot-logo" /> Association ORIM Genève · ORIM™</div>
     <div class="foot-links">
       <a href="prestations.html" data-i18n="nav.prestations">12 Prestations</a>
       <a href="partenaires.html" data-i18n="nav.partenaires">Nos Partenaires</a>

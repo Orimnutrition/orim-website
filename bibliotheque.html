@@ -179,7 +179,7 @@
 (function(){
   var D = window.ORIM_BIBLIO, I = D.i18n;
   var F = {}; D.fields.forEach(function(k,i){F[k]=i;});
-  var rows = D.rows, ntr = D.ntr || [];
+  var rows = D.rows, ntr = D.ntr || [], ntn = D.ntn || [];
   var NTRI = {en:0,es:1,de:2,pt:3,it:4};
   var LANGS = ["fr","en","es","de","pt","it"];
   var lang = "fr";
@@ -191,6 +191,8 @@
   function glabel(key){var o=I.groups[key]; return o?(o[lang]||o.fr):key;}
   function tlabel(key){if(!key)return "";var o=I.timings[key]; return o?(o[lang]||o.fr):key;}
   function noteFor(i){return lang==="fr"?rows[i][F.notes]:((ntr[i]&&ntr[i][NTRI[lang]])||rows[i][F.notes]);}
+  // nom localise : FR = nom canonique ; autres langues = traduction si presente, sinon repli FR (noms propres/exotiques/AOP)
+  function nameFor(i){var fr=rows[i][F.name];return lang==="fr"?fr:((ntn[i]&&ntn[i][NTRI[lang]])||fr);}
 
   var q=document.getElementById("q"), fs=document.getElementById("fscore"), gsel=document.getElementById("fgroup");
   var tbody=document.getElementById("tbody"), pager=document.getElementById("pager"),
@@ -242,7 +244,8 @@
       if(g && r[F.group]!==g) continue;
       if(sc && band(r[F.score])!==sc) continue;
       if(term){
-        if(norm(r[F.name]).indexOf(term)===-1 && norm(glabel(r[F.group])).indexOf(term)===-1
+        if(norm(r[F.name]).indexOf(term)===-1 && norm(nameFor(i)).indexOf(term)===-1
+           && norm(glabel(r[F.group])).indexOf(term)===-1
            && norm(r[F.vitamines]).indexOf(term)===-1 && norm(noteFor(i)).indexOf(term)===-1) continue;
       }
       filtered.push(i);
@@ -252,8 +255,10 @@
   function sortRows(){
     var k=F[sortKey];
     filtered.sort(function(a,b){
-      var x=rows[a][k],y=rows[b][k];
-      if(typeof x==="string"){x=norm(sortKey==="group"?glabel(x):x);y=norm(sortKey==="group"?glabel(y):y);}
+      var x,y;
+      if(sortKey==="name"){x=norm(nameFor(a));y=norm(nameFor(b));}
+      else if(sortKey==="group"){x=norm(glabel(rows[a][k]));y=norm(glabel(rows[b][k]));}
+      else{x=rows[a][k];y=rows[b][k];if(typeof x==="string"){x=norm(x);y=norm(y);}}
       if(x<y) return -1*sortDir; if(x>y) return 1*sortDir; return 0;
     });
   }
@@ -266,7 +271,7 @@
     slice.forEach(function(i){
       var r=rows[i];
       h+='<tr class="food" data-i="'+i+'">'
-        +'<td class="name">'+esc(r[F.name])+'</td>'
+        +'<td class="name">'+esc(nameFor(i))+'</td>'
         +'<td class="grp">'+esc(glabel(r[F.group]))+'</td>'
         +'<td class="num"><span class="score '+scoreClass(r[F.score])+'">'+r[F.score]+'</span></td>'
         +'<td class="num">'+fmt(r[F.pral])+'</td>'

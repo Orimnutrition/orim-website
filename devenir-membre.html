@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Devenir membre · Association ORIM Genève</title>
+<meta name="description" content="Rejoignez l'Association ORIM Genève : 3 niveaux d'adhésion, candidature en ligne, accompagnement sous supervision du comité scientifique." />
+<meta property="og:title" content="Devenir membre · ORIM™" />
+<meta property="og:description" content="Association ORIM Genève · Candidature en ligne, 3 niveaux d'adhésion." />
+<meta property="og:url" content="https://orimnutrition.org/devenir-membre.html" />
+<meta property="og:locale" content="fr_CH" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --serif:"Fraunces",ui-serif,Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --bench:#F4F7F6; --ink:#0F211F; --graphite:#556663; --hairline:#DCE6E4; --plate:#FFFFFF;
+    --abyss:#04100E; --ink-d:#060D0C; --panel:#0C1A18; --line-d:#16302C; --fg-d:#EAF4F2; --dim-d:#7FA39D;
+    --teal:#1BA8A6; --cyan:#38E1D6; --gold:#E6A817; --gold-hi:#F5C95A; --lteal:#E8F6F6; --lgold:#FDF5E0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bench);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  a{color:var(--teal)}
+
+  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:22px 0 44px;text-align:center;
+    background:radial-gradient(120% 150% at 50% 0%,#071A17 0%,var(--abyss) 50%,var(--ink-d) 100%);border-bottom:1px solid var(--line-d)}
+  header.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background:linear-gradient(var(--line-d) 1px,transparent 1px) 0 0/100% 42px,linear-gradient(90deg,var(--line-d) 1px,transparent 1px) 0 0/42px 100%;
+    -webkit-mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%);mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%)}
+  header.masthead .wrap{position:relative;z-index:1}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px;text-align:left}
+  .backlink{color:var(--dim-d);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.04em;transition:color .2s}
+  .backlink:hover{color:var(--cyan)}
+  .langsw{display:flex;gap:2px;flex-shrink:0}
+  .langsw button{background:transparent;border:0;cursor:pointer;padding:5px 7px;color:var(--dim-d);font-family:var(--mono);font-size:12px;letter-spacing:.05em;border-radius:5px;transition:color .2s,background .2s}
+  .langsw button:hover{color:var(--fg-d);background:rgba(56,225,214,.08)}
+  .langsw button.on{color:var(--ink-d);background:var(--cyan);font-weight:500}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
+  .masthead h1{margin:10px 0 12px;font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.01em;line-height:1.04;
+    background:linear-gradient(180deg,#FFFFFF,var(--fg-d) 55%,var(--gold-hi) 135%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .masthead .sub{font-size:1.05rem;color:#C7DAD6;max-width:680px;margin:0 auto 8px}
+  .masthead .desc{font-size:.9rem;color:var(--dim-d);max-width:640px;margin:0 auto}
+
+  main{padding:40px 0 60px}
+  .card{background:var(--plate);border:1px solid var(--hairline);border-radius:16px;padding:28px 26px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 10px 40px -24px rgba(15,33,31,.25)}
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold))}
+  .card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--hairline)}
+  .card-title{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ink)}
+  .card-sub{font-family:var(--mono);font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin-top:3px}
+
+  .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .tier{border:1px solid var(--hairline);border-radius:12px;padding:18px;transition:border-color .2s,transform .2s}
+  .tier:hover{border-color:var(--teal);transform:translateY(-2px)}
+  .tier.hl{border-color:var(--gold);background:var(--lgold)}
+  .tier-name{font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--ink)}
+  .tier-price{font-family:var(--mono);font-size:.95rem;color:var(--teal);font-weight:500;margin:4px 0 10px}
+  .tier-desc{font-size:.85rem;color:var(--graphite);line-height:1.6}
+
+  .notice{background:var(--lteal);border:1px solid var(--hairline);border-left:3px solid var(--teal);border-radius:10px;padding:16px 18px;margin-bottom:22px;font-size:.86rem;color:var(--ink);line-height:1.9}
+  .notice ol{margin:0;padding-left:1.2em}
+  .notice strong{color:var(--ink)}
+
+  form .field{margin-bottom:16px}
+  form label{display:block;font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--graphite);margin-bottom:6px}
+  form input[type=text],form input[type=email],form input[type=tel],form textarea{
+    width:100%;border:1px solid var(--hairline);border-radius:8px;padding:.7rem .8rem;font-family:var(--sans);font-size:.92rem;color:var(--ink);background:var(--bench)}
+  form input:focus,form textarea:focus{outline:2px solid var(--teal);outline-offset:1px}
+  form textarea{min-height:110px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:600px){.row2{grid-template-columns:1fr}}
+  .tier-choice{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+  .tier-radio{border:1px solid var(--hairline);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:.85rem;display:flex;flex-direction:column;gap:2px;transition:border-color .2s,background .2s}
+  .tier-radio input{margin-right:6px}
+  .tier-radio:has(input:checked){border-color:var(--teal);background:var(--lteal)}
+  .tier-radio .tn{font-weight:600;color:var(--ink)}
+  .tier-radio .tp{font-family:var(--mono);font-size:.72rem;color:var(--teal)}
+  .consent{display:flex;align-items:flex-start;gap:10px;font-size:.82rem;color:var(--graphite);margin:18px 0}
+  .consent input{margin-top:3px}
+  .submit-btn{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:.85rem 1.6rem;font-family:var(--sans);font-weight:500;font-size:.92rem;cursor:pointer;transition:background .2s}
+  .submit-btn:hover{background:#159c8a}
+  .submit-btn:disabled{opacity:.6;cursor:default}
+  .form-success{display:none;margin-top:14px;background:var(--lgold);border:1px solid var(--hairline);border-left:3px solid var(--gold);border-radius:8px;padding:12px 16px;font-size:.85rem;color:var(--ink)}
+
+  footer.foot{border-top:1px solid var(--hairline);background:#fff;color:var(--graphite);font-size:12.5px;text-align:center}
+  footer.foot .wrap{padding:24px 20px 28px}
+  footer.foot a{color:var(--teal);text-decoration:none} footer.foot a:hover{opacity:.75}
+  footer.foot .divider{margin:0 .6rem;opacity:.4}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html" class="backlink" data-i18n="dm.back">&larr; Retour au site ORIM</a>
+      <div class="langsw" id="langsw" role="group" aria-label="Langue">
+        <button data-l="fr">FR</button><button data-l="en">EN</button><button data-l="es">ES</button
+        ><button data-l="de">DE</button><button data-l="pt">PT</button><button data-l="it">IT</button>
+      </div>
+    </div>
+    <div class="kicker" data-i18n="dm.kicker">Association ORIM · Genève · À but non lucratif</div>
+    <h1 data-i18n="dm.title">Devenir membre</h1>
+    <p class="sub" data-i18n="dm.sub">Rejoignez une communauté scientifique dédiée à l'immunonutrition préventive.</p>
+    <p class="desc" data-i18n="dm.desc">Trois niveaux d'adhésion, un accompagnement qui s'approfondit avec votre engagement — recherche, éducation et suivi personnalisé, sous la supervision du comité scientifique ORIM.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title" data-i18n="dm.tiers.title">Les 3 niveaux d'adhésion</div>
+        <div class="card-sub" data-i18n="dm.tiers.sub">Cotisation annuelle · Association ORIM Genève</div>
+      </div>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">Standard</div>
+        <div class="tier-price">150 CHF / an</div>
+        <div class="tier-desc" data-i18n="dm.standard.desc">App ORIM, menus de base, newsletter hebdomadaire, forum communautaire.</div>
+      </div>
+      <div class="tier hl">
+        <div class="tier-name">Bienfaiteur</div>
+        <div class="tier-price">500 CHF / an</div>
+        <div class="tier-desc" data-i18n="dm.bienfaiteur.desc">Tout Standard, plus : ateliers cuisine, webinaires mensuels, communauté privée, bulletin R&amp;D.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Premium</div>
+        <div class="tier-price">950 CHF / an</div>
+        <div class="tier-desc" data-i18n="dm.premium.desc">Tout Bienfaiteur, plus : consultations praticien, FoodLab, veille personnalisée, accès prioritaire aux événements.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong data-i18n="dm.process.title">Comment se déroule une candidature ?</strong>
+    <ol>
+      <li data-i18n="dm.process.s1">Candidature en ligne (ce formulaire) avec une brève lettre de motivation.</li>
+      <li data-i18n="dm.process.s2">Examen de votre dossier par le Comité directeur.</li>
+      <li data-i18n="dm.process.s3">Notification de la décision (acceptation ou refus motivé).</li>
+      <li data-i18n="dm.process.s4">Paiement de la cotisation annuelle du niveau choisi.</li>
+      <li data-i18n="dm.process.s5">Accès aux services de votre niveau d'adhésion.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title" data-i18n="dm.form.title">Candidature en ligne</div>
+        <div class="card-sub" data-i18n="dm.form.sub">Étape 1 · Formulaire + lettre de motivation</div>
+      </div>
+    </div>
+    <form id="dm-form" onsubmit="return handleCandidature(event)">
+      <div class="row2">
+        <div class="field">
+          <label for="dm-first" data-i18n="dm.form.firstname">Prénom</label>
+          <input type="text" id="dm-first" required />
+        </div>
+        <div class="field">
+          <label for="dm-last" data-i18n="dm.form.lastname">Nom</label>
+          <input type="text" id="dm-last" required />
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="dm-email" data-i18n="dm.form.email">E-mail</label>
+          <input type="email" id="dm-email" required />
+        </div>
+        <div class="field">
+          <label for="dm-phone" data-i18n="dm.form.phone">Téléphone (facultatif)</label>
+          <input type="tel" id="dm-phone" />
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="dm.form.tier">Niveau souhaité</label>
+        <div class="tier-choice">
+          <label class="tier-radio"><input type="radio" name="dm-tier" value="Standard (150 CHF/an)" checked /><span class="tn">Standard</span><span class="tp">150 CHF/an</span></label>
+          <label class="tier-radio"><input type="radio" name="dm-tier" value="Bienfaiteur (500 CHF/an)" /><span class="tn">Bienfaiteur</span><span class="tp">500 CHF/an</span></label>
+          <label class="tier-radio"><input type="radio" name="dm-tier" value="Premium (950 CHF/an)" /><span class="tn">Premium</span><span class="tp">950 CHF/an</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="dm-motivation" data-i18n="dm.form.motivation">Lettre de motivation</label>
+        <textarea id="dm-motivation" data-i18n-ph="dm.form.motivation.placeholder" placeholder="Dites-nous en quelques lignes pourquoi vous souhaitez rejoindre l'Association ORIM..." required></textarea>
+      </div>
+      <label class="consent">
+        <input type="checkbox" id="dm-consent" required />
+        <span data-i18n="dm.form.consent">Je m'engage à respecter la Charte, les Statuts et le Règlement de l'Association ORIM Genève.</span>
+      </label>
+      <button type="submit" class="submit-btn" id="dm-btn" data-i18n="dm.form.submit">Envoyer ma candidature</button>
+      <div class="form-success" id="dm-success" data-i18n="dm.form.success">Merci ! Votre messagerie s'est ouverte avec votre candidature pré-remplie — il ne vous reste qu'à l'envoyer.</div>
+    </form>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a href="index.html" data-i18n="dm.f.home">Accueil</a><span class="divider">·</span>
+      <a href="prestations.html" data-i18n="dm.f.prestations">Prestations</a><span class="divider">·</span>
+      <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a>
+    </div>
+    <div style="margin-top:1rem;opacity:.7">Association ORIM · Genève, Suisse · © 2026</div>
+  </div>
+</footer>
+
+<script>
+var I18N = {"fr":{"dm.back":"&larr; Retour au site ORIM","dm.kicker":"Association ORIM · Genève · À but non lucratif","dm.title":"Devenir membre","dm.sub":"Rejoignez une communauté scientifique dédiée à l'immunonutrition préventive.","dm.desc":"Trois niveaux d'adhésion, un accompagnement qui s'approfondit avec votre engagement — recherche, éducation et suivi personnalisé, sous la supervision du comité scientifique ORIM.","dm.tiers.title":"Les 3 niveaux d'adhésion","dm.tiers.sub":"Cotisation annuelle · Association ORIM Genève","dm.standard.desc":"App ORIM, menus de base, newsletter hebdomadaire, forum communautaire.","dm.bienfaiteur.desc":"Tout Standard, plus : ateliers cuisine, webinaires mensuels, communauté privée, bulletin R&amp;D.","dm.premium.desc":"Tout Bienfaiteur, plus : consultations praticien, FoodLab, veille personnalisée, accès prioritaire aux événements.","dm.process.title":"Comment se déroule une candidature ?","dm.process.s1":"Candidature en ligne (ce formulaire) avec une brève lettre de motivation.","dm.process.s2":"Examen de votre dossier par le Comité directeur.","dm.process.s3":"Notification de la décision (acceptation ou refus motivé).","dm.process.s4":"Paiement de la cotisation annuelle du niveau choisi.","dm.process.s5":"Accès aux services de votre niveau d'adhésion.","dm.form.title":"Candidature en ligne","dm.form.sub":"Étape 1 · Formulaire + lettre de motivation","dm.form.firstname":"Prénom","dm.form.lastname":"Nom","dm.form.email":"E-mail","dm.form.phone":"Téléphone (facultatif)","dm.form.tier":"Niveau souhaité","dm.form.motivation":"Lettre de motivation","dm.form.motivation.placeholder":"Dites-nous en quelques lignes pourquoi vous souhaitez rejoindre l'Association ORIM...","dm.form.consent":"Je m'engage à respecter la Charte, les Statuts et le Règlement de l'Association ORIM Genève.","dm.form.submit":"Envoyer ma candidature","dm.form.success":"Merci ! Votre messagerie s'est ouverte avec votre candidature pré-remplie — il ne vous reste qu'à l'envoyer.","dm.f.home":"Accueil","dm.f.prestations":"Prestations"},
+"en":{"dm.back":"&larr; Back to the ORIM site","dm.kicker":"ORIM Association · Geneva · Non-profit","dm.title":"Become a member","dm.sub":"Join a scientific community dedicated to preventive immunonutrition.","dm.desc":"Three membership tiers, support that deepens with your commitment — research, education and personalised guidance, supervised by the ORIM scientific committee.","dm.tiers.title":"The 3 membership tiers","dm.tiers.sub":"Annual fee · ORIM Association Geneva","dm.standard.desc":"ORIM app, basic menus, weekly newsletter, community forum.","dm.bienfaiteur.desc":"Everything in Standard, plus: cooking workshops, monthly webinars, private community, R&amp;D bulletin.","dm.premium.desc":"Everything in Bienfaiteur, plus: practitioner consultations, FoodLab, personalised monitoring, priority access to events.","dm.process.title":"How does an application work?","dm.process.s1":"Online application (this form) with a brief motivation letter.","dm.process.s2":"Review of your file by the Executive Committee.","dm.process.s3":"Notification of the decision (acceptance or reasoned refusal).","dm.process.s4":"Payment of the annual fee for the chosen tier.","dm.process.s5":"Access to the services of your membership tier.","dm.form.title":"Online application","dm.form.sub":"Step 1 · Form + motivation letter","dm.form.firstname":"First name","dm.form.lastname":"Last name","dm.form.email":"Email","dm.form.phone":"Phone (optional)","dm.form.tier":"Desired tier","dm.form.motivation":"Motivation letter","dm.form.motivation.placeholder":"Tell us in a few lines why you would like to join the ORIM Association...","dm.form.consent":"I undertake to comply with the Charter, Statutes and Regulations of the ORIM Association Geneva.","dm.form.submit":"Send my application","dm.form.success":"Thank you! Your mail client has opened with your application pre-filled — all that's left is to send it.","dm.f.home":"Home","dm.f.prestations":"Services"},
+"es":{"dm.back":"&larr; Volver al sitio ORIM","dm.kicker":"Asociación ORIM · Ginebra · Sin fines de lucro","dm.title":"Hazte miembro","dm.sub":"Únase a una comunidad científica dedicada a la inmunonutrición preventiva.","dm.desc":"Tres niveles de adhesión, un acompañamiento que se profundiza con su compromiso: investigación, educación y seguimiento personalizado, bajo la supervisión del comité científico ORIM.","dm.tiers.title":"Los 3 niveles de adhesión","dm.tiers.sub":"Cuota anual · Asociación ORIM Ginebra","dm.standard.desc":"App ORIM, menús básicos, boletín semanal, foro comunitario.","dm.bienfaiteur.desc":"Todo Standard, más: talleres de cocina, webinars mensuales, comunidad privada, boletín I+D.","dm.premium.desc":"Todo Bienfaiteur, más: consultas con profesional, FoodLab, seguimiento personalizado, acceso prioritario a eventos.","dm.process.title":"¿Cómo funciona una candidatura?","dm.process.s1":"Candidatura en línea (este formulario) con una breve carta de motivación.","dm.process.s2":"Examen de su expediente por el Comité Directivo.","dm.process.s3":"Notificación de la decisión (aceptación o rechazo motivado).","dm.process.s4":"Pago de la cuota anual del nivel elegido.","dm.process.s5":"Acceso a los servicios de su nivel de adhesión.","dm.form.title":"Candidatura en línea","dm.form.sub":"Paso 1 · Formulario + carta de motivación","dm.form.firstname":"Nombre","dm.form.lastname":"Apellido","dm.form.email":"Correo electrónico","dm.form.phone":"Teléfono (opcional)","dm.form.tier":"Nivel deseado","dm.form.motivation":"Carta de motivación","dm.form.motivation.placeholder":"Cuéntenos en pocas líneas por qué desea unirse a la Asociación ORIM...","dm.form.consent":"Me comprometo a respetar la Carta, los Estatutos y el Reglamento de la Asociación ORIM Ginebra.","dm.form.submit":"Enviar mi candidatura","dm.form.success":"¡Gracias! Su gestor de correo se ha abierto con su candidatura pre-rellenada — solo queda enviarla.","dm.f.home":"Inicio","dm.f.prestations":"Prestaciones"},
+"de":{"dm.back":"&larr; Zurück zur ORIM-Website","dm.kicker":"Verein ORIM · Genf · Gemeinnützig","dm.title":"Mitglied werden","dm.sub":"Treten Sie einer wissenschaftlichen Gemeinschaft für präventive Immunonutrition bei.","dm.desc":"Drei Mitgliedschaftsstufen, eine Begleitung, die mit Ihrem Engagement wächst — Forschung, Bildung und persönliche Betreuung unter Aufsicht des wissenschaftlichen Komitees von ORIM.","dm.tiers.title":"Die 3 Mitgliedschaftsstufen","dm.tiers.sub":"Jahresbeitrag · Verein ORIM Genf","dm.standard.desc":"ORIM-App, Basismenüs, wöchentlicher Newsletter, Community-Forum.","dm.bienfaiteur.desc":"Alles aus Standard, plus: Kochworkshops, monatliche Webinare, private Community, F&amp;E-Bulletin.","dm.premium.desc":"Alles aus Bienfaiteur, plus: Fachberatungen, FoodLab, persönliche Betreuung, bevorzugter Zugang zu Veranstaltungen.","dm.process.title":"Wie läuft eine Bewerbung ab?","dm.process.s1":"Online-Bewerbung (dieses Formular) mit einem kurzen Motivationsschreiben.","dm.process.s2":"Prüfung Ihres Dossiers durch den Vorstand.","dm.process.s3":"Mitteilung der Entscheidung (Annahme oder begründete Ablehnung).","dm.process.s4":"Zahlung des Jahresbeitrags der gewählten Stufe.","dm.process.s5":"Zugang zu den Leistungen Ihrer Mitgliedschaftsstufe.","dm.form.title":"Online-Bewerbung","dm.form.sub":"Schritt 1 · Formular + Motivationsschreiben","dm.form.firstname":"Vorname","dm.form.lastname":"Nachname","dm.form.email":"E-Mail","dm.form.phone":"Telefon (optional)","dm.form.tier":"Gewünschte Stufe","dm.form.motivation":"Motivationsschreiben","dm.form.motivation.placeholder":"Erzählen Sie uns in wenigen Zeilen, warum Sie dem Verein ORIM beitreten möchten...","dm.form.consent":"Ich verpflichte mich, die Charta, die Statuten und das Reglement des Vereins ORIM Genf einzuhalten.","dm.form.submit":"Bewerbung senden","dm.form.success":"Danke! Ihr Mailprogramm hat sich mit Ihrer vorausgefüllten Bewerbung geöffnet — Sie müssen sie nur noch senden.","dm.f.home":"Startseite","dm.f.prestations":"Leistungen"},
+"pt":{"dm.back":"&larr; Voltar ao site ORIM","dm.kicker":"Associação ORIM · Genebra · Sem fins lucrativos","dm.title":"Tornar-se membro","dm.sub":"Junte-se a uma comunidade científica dedicada à imunonutrição preventiva.","dm.desc":"Três níveis de adesão, um acompanhamento que se aprofunda com o seu compromisso — investigação, educação e acompanhamento personalizado, sob supervisão do comité científico da ORIM.","dm.tiers.title":"Os 3 níveis de adesão","dm.tiers.sub":"Quota anual · Associação ORIM Genebra","dm.standard.desc":"App ORIM, menus básicos, newsletter semanal, fórum comunitário.","dm.bienfaiteur.desc":"Tudo do Standard, mais: workshops de cozinha, webinars mensais, comunidade privada, boletim de I&amp;D.","dm.premium.desc":"Tudo do Bienfaiteur, mais: consultas com profissional, FoodLab, acompanhamento personalizado, acesso prioritário a eventos.","dm.process.title":"Como funciona uma candidatura?","dm.process.s1":"Candidatura online (este formulário) com uma breve carta de motivação.","dm.process.s2":"Análise do seu processo pelo Comité Diretor.","dm.process.s3":"Notificação da decisão (aceitação ou recusa fundamentada).","dm.process.s4":"Pagamento da quota anual do nível escolhido.","dm.process.s5":"Acesso aos serviços do seu nível de adesão.","dm.form.title":"Candidatura online","dm.form.sub":"Etapa 1 · Formulário + carta de motivação","dm.form.firstname":"Nome próprio","dm.form.lastname":"Apelido","dm.form.email":"E-mail","dm.form.phone":"Telefone (facultativo)","dm.form.tier":"Nível pretendido","dm.form.motivation":"Carta de motivação","dm.form.motivation.placeholder":"Diga-nos em poucas linhas porque deseja juntar-se à Associação ORIM...","dm.form.consent":"Comprometo-me a respeitar a Carta, os Estatutos e o Regulamento da Associação ORIM Genebra.","dm.form.submit":"Enviar a minha candidatura","dm.form.success":"Obrigado! O seu cliente de e-mail abriu-se com a candidatura pré-preenchida — falta apenas enviá-la.","dm.f.home":"Início","dm.f.prestations":"Prestações"},
+"it":{"dm.back":"&larr; Ritorna al sito ORIM","dm.kicker":"Associazione ORIM · Ginevra · Senza scopo di lucro","dm.title":"Diventare membro","dm.sub":"Unisciti a una comunità scientifica dedicata all'immunonutrizione preventiva.","dm.desc":"Tre livelli di adesione, un accompagnamento che si approfondisce con il tuo impegno — ricerca, educazione e supporto personalizzato, sotto la supervisione del comitato scientifico ORIM.","dm.tiers.title":"I 3 livelli di adesione","dm.tiers.sub":"Quota annuale · Associazione ORIM Ginevra","dm.standard.desc":"App ORIM, menu di base, newsletter settimanale, forum della comunità.","dm.bienfaiteur.desc":"Tutto Standard, più: laboratori di cucina, webinar mensili, comunità privata, bollettino R&amp;S.","dm.premium.desc":"Tutto Bienfaiteur, più: consulenze con professionisti, FoodLab, monitoraggio personalizzato, accesso prioritario agli eventi.","dm.process.title":"Come funziona una candidatura?","dm.process.s1":"Candidatura online (questo modulo) con una breve lettera di motivazione.","dm.process.s2":"Esame del vostro dossier da parte del Comitato Direttivo.","dm.process.s3":"Notifica della decisione (accettazione o rifiuto motivato).","dm.process.s4":"Pagamento della quota annuale del livello scelto.","dm.process.s5":"Accesso ai servizi del vostro livello di adesione.","dm.form.title":"Candidatura online","dm.form.sub":"Fase 1 · Modulo + lettera di motivazione","dm.form.firstname":"Nome","dm.form.lastname":"Cognome","dm.form.email":"E-mail","dm.form.phone":"Telefono (facoltativo)","dm.form.tier":"Livello desiderato","dm.form.motivation":"Lettera di motivazione","dm.form.motivation.placeholder":"Raccontateci in poche righe perché desiderate unirvi all'Associazione ORIM...","dm.form.consent":"Mi impegno a rispettare la Carta, lo Statuto e il Regolamento dell'Associazione ORIM Ginevra.","dm.form.submit":"Invia la mia candidatura","dm.form.success":"Grazie! Il vostro client di posta si è aperto con la candidatura precompilata — non resta che inviarla.","dm.f.home":"Home","dm.f.prestations":"Prestazioni"}};
+var LANGS=["fr","en","es","de","pt","it"], lang="fr";
+function ui(k){var b=(typeof I18N!=="undefined")&&I18N[lang]; return (b&&b[k])||null;}
+function setLang(l){
+  if(LANGS.indexOf(l)===-1)l="fr"; lang=l; document.documentElement.lang=l;
+  try{localStorage.setItem("orim_dm_lang",l);}catch(e){}
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var v=ui(el.getAttribute("data-i18n")); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){var v=ui(el.getAttribute("data-i18n-ph")); if(v!=null) el.setAttribute("placeholder",v);});
+  document.querySelectorAll("#langsw button").forEach(function(b){b.classList.toggle("on",b.dataset.l===l);});
+}
+document.getElementById("langsw").addEventListener("click",function(e){var b=e.target.closest("button[data-l]"); if(b)setLang(b.dataset.l);});
+
+function handleCandidature(e){
+  e.preventDefault();
+  var first=document.getElementById('dm-first').value;
+  var last=document.getElementById('dm-last').value;
+  var email=document.getElementById('dm-email').value;
+  var phone=document.getElementById('dm-phone').value;
+  var tier=document.querySelector('input[name="dm-tier"]:checked').value;
+  var motivation=document.getElementById('dm-motivation').value;
+  var btn=document.getElementById('dm-btn');
+  var success=document.getElementById('dm-success');
+  btn.disabled=true;
+  var subject=encodeURIComponent('Candidature Adhésion Association ORIM · '+first+' '+last);
+  var body=encodeURIComponent(
+    'Nouvelle candidature d\'adhésion — Association ORIM Genève\n\n'+
+    'Prénom : '+first+'\nNom : '+last+'\nE-mail : '+email+'\nTéléphone : '+(phone||'—')+'\n'+
+    'Niveau souhaité : '+tier+'\n\nLettre de motivation :\n'+motivation+'\n\n'+
+    'Date : '+new Date().toLocaleDateString('fr-CH')+'\nMessage automatique depuis orimnutrition.org/devenir-membre.html'
+  );
+  window.open('mailto:info@orimnutrition.org?subject='+subject+'&body='+body, '_blank');
+  success.style.display='block';
+  btn.disabled=false;
+  return false;
+}
+
+var _s; try{_s=localStorage.getItem("orim_dm_lang");}catch(e){}
+setLang(_s||(navigator.language||"fr").slice(0,2));
+</script>
+</body>
+</html>

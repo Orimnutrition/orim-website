@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pôle Sport, Alimentation & Méditation · Association ORIM Genève</title>
+<meta name="description" content="Le Pôle Sport, Alimentation & Méditation de l'Association ORIM Genève : calisthénie multiniveau, suivi alimentaire, gestion du stress, aligné sur l'Indice ORIM™." />
+<meta property="og:title" content="Pôle Sport, Alimentation & Méditation · ORIM™" />
+<meta property="og:description" content="Association ORIM Genève · Calisthénie multiniveau, nutrition sportive, méditation." />
+<meta property="og:url" content="https://orimnutrition.org/pole-sport.html" />
+<meta property="og:locale" content="fr_CH" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --serif:"Fraunces",ui-serif,Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --bench:#F4F7F6; --ink:#0F211F; --graphite:#556663; --hairline:#DCE6E4; --plate:#FFFFFF;
+    --abyss:#04100E; --ink-d:#060D0C; --panel:#0C1A18; --line-d:#16302C; --fg-d:#EAF4F2; --dim-d:#7FA39D;
+    --teal:#1BA8A6; --cyan:#38E1D6; --gold:#E6A817; --gold-hi:#F5C95A; --lteal:#E8F6F6; --lgold:#FDF5E0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bench);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  a{color:var(--teal)}
+
+  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:22px 0 44px;text-align:center;
+    background:radial-gradient(120% 150% at 50% 0%,#071A17 0%,var(--abyss) 50%,var(--ink-d) 100%);border-bottom:1px solid var(--line-d)}
+  header.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background:linear-gradient(var(--line-d) 1px,transparent 1px) 0 0/100% 42px,linear-gradient(90deg,var(--line-d) 1px,transparent 1px) 0 0/42px 100%;
+    -webkit-mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%);mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%)}
+  header.masthead .wrap{position:relative;z-index:1}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px;text-align:left}
+  .backlink{color:var(--dim-d);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.04em;transition:color .2s}
+  .backlink:hover{color:var(--cyan)}
+  .langsw{display:flex;gap:2px;flex-shrink:0}
+  .langsw button{background:transparent;border:0;cursor:pointer;padding:5px 7px;color:var(--dim-d);font-family:var(--mono);font-size:12px;letter-spacing:.05em;border-radius:5px;transition:color .2s,background .2s}
+  .langsw button:hover{color:var(--fg-d);background:rgba(56,225,214,.08)}
+  .langsw button.on{color:var(--ink-d);background:var(--cyan);font-weight:500}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
+  .masthead h1{margin:10px 0 12px;font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.01em;line-height:1.04;
+    background:linear-gradient(180deg,#FFFFFF,var(--fg-d) 55%,var(--gold-hi) 135%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .masthead .sub{font-size:1.05rem;color:#C7DAD6;max-width:680px;margin:0 auto 8px}
+  .masthead .desc{font-size:.9rem;color:var(--dim-d);max-width:640px;margin:0 auto}
+
+  main{padding:40px 0 60px}
+  .card{background:var(--plate);border:1px solid var(--hairline);border-radius:16px;padding:28px 26px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 10px 40px -24px rgba(15,33,31,.25)}
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold))}
+  .card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--hairline)}
+  .card-title{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ink)}
+  .card-sub{font-family:var(--mono);font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin-top:3px}
+  .card p{font-size:.92rem;color:var(--ink);margin-bottom:10px}
+
+  .axes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .axe{border:1px solid var(--hairline);border-radius:12px;padding:18px;transition:border-color .2s,transform .2s}
+  .axe:hover{border-color:var(--teal);transform:translateY(-2px)}
+  .axe-name{font-family:var(--serif);font-weight:600;font-size:1.05rem;color:var(--ink);margin-bottom:6px}
+  .axe-desc{font-size:.85rem;color:var(--graphite);line-height:1.6}
+
+  .levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
+  .level{border:1px solid var(--hairline);border-radius:12px;padding:16px;text-align:center}
+  .level.mid{border-color:var(--gold);background:var(--lgold)}
+  .level-name{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:4px}
+  .level-phase{font-family:var(--mono);font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.06em}
+
+  .seances{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .seance{border:1px solid var(--hairline);border-radius:10px;padding:14px}
+  .seance-name{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:4px}
+  .seance-meta{font-family:var(--mono);font-size:.7rem;color:var(--teal)}
+
+  .director{display:flex;align-items:center;gap:14px;padding-top:6px}
+  .director-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:1.05rem;color:#fff;flex-shrink:0}
+  .director-name{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:1.05rem}
+  .director-role{font-size:.8rem;color:var(--teal);line-height:1.5}
+
+  .notice{background:var(--lteal);border:1px solid var(--hairline);border-left:3px solid var(--teal);border-radius:10px;padding:14px 18px;margin-bottom:22px;font-size:.85rem;color:var(--ink);line-height:1.8}
+
+  .cta-row{text-align:center;margin-top:8px}
+  .cta-btn{display:inline-block;background:var(--teal);color:#fff;border-radius:8px;padding:.8rem 1.8rem;font-weight:500;font-size:.92rem;text-decoration:none;transition:background .2s}
+  .cta-btn:hover{background:#159c8a}
+
+  footer.foot{border-top:1px solid var(--hairline);background:#fff;color:var(--graphite);font-size:12.5px;text-align:center}
+  footer.foot .wrap{padding:24px 20px 28px}
+  footer.foot a{color:var(--teal);text-decoration:none} footer.foot a:hover{opacity:.75}
+  footer.foot .divider{margin:0 .6rem;opacity:.4}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html" class="backlink" data-i18n="ps.back">&larr; Retour au site ORIM</a>
+      <div class="langsw" id="langsw" role="group" aria-label="Langue">
+        <button data-l="fr">FR</button><button data-l="en">EN</button><button data-l="es">ES</button
+        ><button data-l="de">DE</button><button data-l="pt">PT</button><button data-l="it">IT</button>
+      </div>
+    </div>
+    <div class="kicker" data-i18n="ps.kicker">Association ORIM · Genève · Pôle Accompagnement</div>
+    <h1 data-i18n="ps.title">Sport, Alimentation &amp; Méditation</h1>
+    <p class="sub" data-i18n="ps.sub">Calisthénie multiniveau, suivi alimentaire et gestion du stress, au service de chaque membre.</p>
+    <p class="desc" data-i18n="ps.desc">Trois axes complémentaires à la Cuisine Éducative, alignés sur l'Indice ORIM™ et supervisés par le comité scientifique de l'Association.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title" data-i18n="ps.axes.title">Trois axes d'intervention</div>
+        <div class="card-sub" data-i18n="ps.axes.sub">Un accompagnement individualisé, en complément des ateliers collectifs</div>
+      </div>
+    </div>
+    <div class="axes">
+      <div class="axe">
+        <div class="axe-name" data-i18n="ps.axe1.name">Sport &amp; activité physique adaptée</div>
+        <div class="axe-desc" data-i18n="ps.axe1.desc">Calisthénie multiniveau, calibrée selon votre phase (Désinflammation, Optimisation, Autorégulation), avec recommandations d'intensité et de récupération.</div>
+      </div>
+      <div class="axe">
+        <div class="axe-name" data-i18n="ps.axe2.name">Alimentation — suivi individualisé</div>
+        <div class="axe-desc" data-i18n="ps.axe2.desc">Bilans alimentaires personnels et ajustements entre les ateliers collectifs du FoodLab, en coordination avec le Pôle Cuisine Éducative.</div>
+      </div>
+      <div class="axe">
+        <div class="axe-name" data-i18n="ps.axe3.name">Méditation &amp; gestion du stress</div>
+        <div class="axe-desc" data-i18n="ps.axe3.desc">Cohérence cardiaque, respiration et méditation guidée, ciblées sur le stress chronique comme facteur immuno-métabolique.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title" data-i18n="ps.method.title">Notre méthode fitness</div>
+        <div class="card-sub" data-i18n="ps.method.sub">Calisthénie · progression par niveau · sécurité d'abord</div>
+      </div>
+    </div>
+    <p data-i18n="ps.method.p1">Chaque séance suit une structure en trois temps (échauffement actif, circuit principal, retour au calme) et propose systématiquement trois variantes d'exercice, pour que chaque participant travaille à l'intensité qui lui correspond.</p>
+    <div class="levels">
+      <div class="level">
+        <div class="level-name" data-i18n="ps.lvl1.name">Débutant</div>
+        <div class="level-phase" data-i18n="ps.lvl1.phase">Phase 1 · Désinflammation</div>
+      </div>
+      <div class="level mid">
+        <div class="level-name" data-i18n="ps.lvl2.name">Intermédiaire</div>
+        <div class="level-phase" data-i18n="ps.lvl2.phase">Phase 2 · Optimisation</div>
+      </div>
+      <div class="level">
+        <div class="level-name" data-i18n="ps.lvl3.name">Avancé</div>
+        <div class="level-phase" data-i18n="ps.lvl3.phase">Phase 3 · Autorégulation</div>
+      </div>
+    </div>
+    <p data-i18n="ps.method.p2">La progression suit les principes de surcharge progressive et d'autorégulation par échelle de perception de l'effort (RPE), avec correction technique systématique avant toute augmentation d'intensité.</p>
+  </div>
+
+  <div class="notice" data-i18n="ps.medical">Cette activité physique encadrée a une visée préventive et éducative ; elle ne constitue en aucun cas un avis médical. Toute personne présentant une pathologie ou un doute sur son aptitude physique doit consulter un professionnel de santé habilité avant de débuter.</div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title" data-i18n="ps.seances.title">Types de séances</div>
+        <div class="card-sub" data-i18n="ps.seances.sub">Tarifs différenciés selon votre niveau d'adhésion</div>
+      </div>
+    </div>
+    <div class="seances">
+      <div class="seance"><div class="seance-name" data-i18n="ps.s1.name">Bilan initial Sport &amp; Stress</div><div class="seance-meta" data-i18n="ps.s1.meta">1h · à l'entrée</div></div>
+      <div class="seance"><div class="seance-name" data-i18n="ps.s2.name">Séance Sport (par niveau)</div><div class="seance-meta" data-i18n="ps.s2.meta">45 min · hebdomadaire à bimensuel</div></div>
+      <div class="seance"><div class="seance-name" data-i18n="ps.s3.name">Atelier Méditation &amp; Cohérence cardiaque</div><div class="seance-meta" data-i18n="ps.s3.meta">1h · bimensuel</div></div>
+      <div class="seance"><div class="seance-name" data-i18n="ps.s4.name">Suivi alimentaire individuel</div><div class="seance-meta" data-i18n="ps.s4.meta">30 min · mensuel</div></div>
+      <div class="seance"><div class="seance-name" data-i18n="ps.s5.name">Master Class thématique</div><div class="seance-meta" data-i18n="ps.s5.meta">2h · trimestriel</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title" data-i18n="ps.director.title">Direction du pôle</div>
+        <div class="card-sub" data-i18n="ps.director.sub">Association ORIM Genève</div>
+      </div>
+    </div>
+    <div class="director">
+      <div class="director-av">IS</div>
+      <div>
+        <div class="director-name">Ismael Shassah</div>
+        <div class="director-role" data-i18n="ps.director.role">Directeur du Pôle Sport, Alimentation &amp; Méditation</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a href="devenir-membre.html" class="cta-btn" data-i18n="ps.cta">Devenir membre</a>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a href="index.html" data-i18n="ps.f.home">Accueil</a><span class="divider">·</span>
+      <a href="devenir-membre.html" data-i18n="ps.f.join">Devenir membre</a><span class="divider">·</span>
+      <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a>
+    </div>
+    <div style="margin-top:1rem;opacity:.7">Association ORIM · Genève, Suisse · © 2026</div>
+  </div>
+</footer>
+
+<script>
+var I18N = {"fr":{"ps.back":"&larr; Retour au site ORIM","ps.kicker":"Association ORIM · Genève · Pôle Accompagnement","ps.title":"Sport, Alimentation &amp; Méditation","ps.sub":"Calisthénie multiniveau, suivi alimentaire et gestion du stress, au service de chaque membre.","ps.desc":"Trois axes complémentaires à la Cuisine Éducative, alignés sur l'Indice ORIM™ et supervisés par le comité scientifique de l'Association.","ps.axes.title":"Trois axes d'intervention","ps.axes.sub":"Un accompagnement individualisé, en complément des ateliers collectifs","ps.axe1.name":"Sport &amp; activité physique adaptée","ps.axe1.desc":"Calisthénie multiniveau, calibrée selon votre phase (Désinflammation, Optimisation, Autorégulation), avec recommandations d'intensité et de récupération.","ps.axe2.name":"Alimentation — suivi individualisé","ps.axe2.desc":"Bilans alimentaires personnels et ajustements entre les ateliers collectifs du FoodLab, en coordination avec le Pôle Cuisine Éducative.","ps.axe3.name":"Méditation &amp; gestion du stress","ps.axe3.desc":"Cohérence cardiaque, respiration et méditation guidée, ciblées sur le stress chronique comme facteur immuno-métabolique.","ps.method.title":"Notre méthode fitness","ps.method.sub":"Calisthénie · progression par niveau · sécurité d'abord","ps.method.p1":"Chaque séance suit une structure en trois temps (échauffement actif, circuit principal, retour au calme) et propose systématiquement trois variantes d'exercice, pour que chaque participant travaille à l'intensité qui lui correspond.","ps.lvl1.name":"Débutant","ps.lvl1.phase":"Phase 1 · Désinflammation","ps.lvl2.name":"Intermédiaire","ps.lvl2.phase":"Phase 2 · Optimisation","ps.lvl3.name":"Avancé","ps.lvl3.phase":"Phase 3 · Autorégulation","ps.method.p2":"La progression suit les principes de surcharge progressive et d'autorégulation par échelle de perception de l'effort (RPE), avec correction technique systématique avant toute augmentation d'intensité.","ps.medical":"Cette activité physique encadrée a une visée préventive et éducative ; elle ne constitue en aucun cas un avis médical. Toute personne présentant une pathologie ou un doute sur son aptitude physique doit consulter un professionnel de santé habilité avant de débuter.","ps.seances.title":"Types de séances","ps.seances.sub":"Tarifs différenciés selon votre niveau d'adhésion","ps.s1.name":"Bilan initial Sport &amp; Stress","ps.s1.meta":"1h · à l'entrée","ps.s2.name":"Séance Sport (par niveau)","ps.s2.meta":"45 min · hebdomadaire à bimensuel","ps.s3.name":"Atelier Méditation &amp; Cohérence cardiaque","ps.s3.meta":"1h · bimensuel","ps.s4.name":"Suivi alimentaire individuel","ps.s4.meta":"30 min · mensuel","ps.s5.name":"Master Class thématique","ps.s5.meta":"2h · trimestriel","ps.director.title":"Direction du pôle","ps.director.sub":"Association ORIM Genève","ps.director.role":"Directeur du Pôle Sport, Alimentation &amp; Méditation","ps.cta":"Devenir membre","ps.f.home":"Accueil","ps.f.join":"Devenir membre"},
+"en":{"ps.back":"&larr; Back to the ORIM site","ps.kicker":"ORIM Association · Geneva · Support Pole","ps.title":"Sport, Nutrition &amp; Meditation","ps.sub":"Multi-level calisthenics, dietary guidance and stress management, for every member.","ps.desc":"Three pillars complementing Culinary Education, aligned with the ORIM™ Index and supervised by the Association's scientific committee.","ps.axes.title":"Three areas of action","ps.axes.sub":"Individualised guidance, complementing group workshops","ps.axe1.name":"Sport &amp; adapted physical activity","ps.axe1.desc":"Multi-level calisthenics, calibrated to your phase (Anti-inflammation, Optimisation, Self-regulation), with intensity and recovery guidance.","ps.axe2.name":"Nutrition — individual follow-up","ps.axe2.desc":"Personal dietary assessments and adjustments between FoodLab group workshops, in coordination with the Culinary Education pole.","ps.axe3.name":"Meditation &amp; stress management","ps.axe3.desc":"Heart-rate coherence, breathing and guided meditation, targeting chronic stress as an immuno-metabolic factor.","ps.method.title":"Our fitness method","ps.method.sub":"Calisthenics · level-based progression · safety first","ps.method.p1":"Each session follows a three-part structure (active warm-up, main circuit, cool-down) and systematically offers three exercise variants, so every participant works at the right intensity.","ps.lvl1.name":"Beginner","ps.lvl1.phase":"Phase 1 · Anti-inflammation","ps.lvl2.name":"Intermediate","ps.lvl2.phase":"Phase 2 · Optimisation","ps.lvl3.name":"Advanced","ps.lvl3.phase":"Phase 3 · Self-regulation","ps.method.p2":"Progression follows the principles of progressive overload and self-regulation via Rate of Perceived Exertion (RPE), with systematic technique correction before any increase in intensity.","ps.medical":"This supervised physical activity is preventive and educational in scope; it is in no way medical advice. Anyone with a condition or in doubt about their physical fitness should consult a qualified healthcare professional before starting.","ps.seances.title":"Session types","ps.seances.sub":"Fees differ according to your membership tier","ps.s1.name":"Initial Sport &amp; Stress assessment","ps.s1.meta":"1h · on joining","ps.s2.name":"Sport session (by level)","ps.s2.meta":"45 min · weekly to fortnightly","ps.s3.name":"Meditation &amp; Heart-rate Coherence workshop","ps.s3.meta":"1h · fortnightly","ps.s4.name":"Individual dietary follow-up","ps.s4.meta":"30 min · monthly","ps.s5.name":"Themed Master Class","ps.s5.meta":"2h · quarterly","ps.director.title":"Pole leadership","ps.director.sub":"ORIM Association Geneva","ps.director.role":"Director of the Sport, Nutrition &amp; Meditation Pole","ps.cta":"Become a member","ps.f.home":"Home","ps.f.join":"Become a member"},
+"es":{"ps.back":"&larr; Volver al sitio ORIM","ps.kicker":"Asociación ORIM · Ginebra · Polo de Acompañamiento","ps.title":"Deporte, Alimentación y Meditación","ps.sub":"Calistenia multinivel, seguimiento alimentario y gestión del estrés, al servicio de cada miembro.","ps.desc":"Tres ejes complementarios a la Cocina Educativa, alineados con el Índice ORIM™ y supervisados por el comité científico de la Asociación.","ps.axes.title":"Tres ejes de intervención","ps.axes.sub":"Un acompañamiento individualizado, en complemento de los talleres colectivos","ps.axe1.name":"Deporte y actividad física adaptada","ps.axe1.desc":"Calistenia multinivel, calibrada según su fase (Desinflamación, Optimización, Autorregulación), con recomendaciones de intensidad y recuperación.","ps.axe2.name":"Alimentación — seguimiento individualizado","ps.axe2.desc":"Balances alimentarios personales y ajustes entre los talleres colectivos del FoodLab, en coordinación con el Polo de Cocina Educativa.","ps.axe3.name":"Meditación y gestión del estrés","ps.axe3.desc":"Coherencia cardiaca, respiración y meditación guiada, centradas en el estrés crónico como factor inmuno-metabólico.","ps.method.title":"Nuestro método fitness","ps.method.sub":"Calistenia · progresión por nivel · seguridad ante todo","ps.method.p1":"Cada sesión sigue una estructura en tres tiempos (calentamiento activo, circuito principal, vuelta a la calma) y ofrece sistemáticamente tres variantes de ejercicio, para que cada participante trabaje a la intensidad adecuada.","ps.lvl1.name":"Principiante","ps.lvl1.phase":"Fase 1 · Desinflamación","ps.lvl2.name":"Intermedio","ps.lvl2.phase":"Fase 2 · Optimización","ps.lvl3.name":"Avanzado","ps.lvl3.phase":"Fase 3 · Autorregulación","ps.method.p2":"La progresión sigue los principios de sobrecarga progresiva y autorregulación mediante la escala de percepción del esfuerzo (RPE), con corrección técnica sistemática antes de cualquier aumento de intensidad.","ps.medical":"Esta actividad física supervisada tiene una finalidad preventiva y educativa; en ningún caso constituye un consejo médico. Toda persona con una patología o duda sobre su aptitud física debe consultar a un profesional de la salud habilitado antes de comenzar.","ps.seances.title":"Tipos de sesiones","ps.seances.sub":"Tarifas diferenciadas según su nivel de adhesión","ps.s1.name":"Balance inicial Deporte y Estrés","ps.s1.meta":"1h · al ingresar","ps.s2.name":"Sesión de Deporte (por nivel)","ps.s2.meta":"45 min · semanal a quincenal","ps.s3.name":"Taller de Meditación y Coherencia Cardiaca","ps.s3.meta":"1h · quincenal","ps.s4.name":"Seguimiento alimentario individual","ps.s4.meta":"30 min · mensual","ps.s5.name":"Master Class temática","ps.s5.meta":"2h · trimestral","ps.director.title":"Dirección del polo","ps.director.sub":"Asociación ORIM Ginebra","ps.director.role":"Director del Polo Deporte, Alimentación y Meditación","ps.cta":"Hazte miembro","ps.f.home":"Inicio","ps.f.join":"Hazte miembro"},
+"de":{"ps.back":"&larr; Zurück zur ORIM-Website","ps.kicker":"Verein ORIM · Genf · Begleitungsbereich","ps.title":"Sport, Ernährung &amp; Meditation","ps.sub":"Mehrstufiges Calisthenics, Ernährungsbegleitung und Stressmanagement für jedes Mitglied.","ps.desc":"Drei Säulen, die die Kulinarische Bildung ergänzen, ausgerichtet am ORIM™-Index und betreut vom wissenschaftlichen Komitee des Vereins.","ps.axes.title":"Drei Handlungsbereiche","ps.axes.sub":"Individuelle Begleitung, ergänzend zu den Gruppenworkshops","ps.axe1.name":"Sport &amp; angepasste körperliche Aktivität","ps.axe1.desc":"Mehrstufiges Calisthenics, angepasst an Ihre Phase (Entzündungshemmung, Optimierung, Selbstregulierung), mit Empfehlungen zu Intensität und Erholung.","ps.axe2.name":"Ernährung — individuelle Begleitung","ps.axe2.desc":"Persönliche Ernährungsbilanzen und Anpassungen zwischen den FoodLab-Gruppenworkshops, in Abstimmung mit dem Bereich Kulinarische Bildung.","ps.axe3.name":"Meditation &amp; Stressmanagement","ps.axe3.desc":"Herzkohärenz, Atmung und geführte Meditation, ausgerichtet auf chronischen Stress als immunmetabolischen Faktor.","ps.method.title":"Unsere Fitness-Methode","ps.method.sub":"Calisthenics · stufenweise Progression · Sicherheit zuerst","ps.method.p1":"Jede Einheit folgt einem dreiteiligen Aufbau (aktives Aufwärmen, Hauptzirkel, Abkühlung) und bietet systematisch drei Übungsvarianten, damit jede teilnehmende Person mit der passenden Intensität arbeitet.","ps.lvl1.name":"Anfänger","ps.lvl1.phase":"Phase 1 · Entzündungshemmung","ps.lvl2.name":"Fortgeschritten","ps.lvl2.phase":"Phase 2 · Optimierung","ps.lvl3.name":"Fortgeschritten+","ps.lvl3.phase":"Phase 3 · Selbstregulierung","ps.method.p2":"Die Progression folgt den Prinzipien der progressiven Überlastung und der Selbstregulierung mittels Belastungsempfinden-Skala (RPE), mit systematischer Technikkorrektur vor jeder Intensitätssteigerung.","ps.medical":"Diese betreute körperliche Aktivität hat einen präventiven und pädagogischen Zweck; sie stellt in keinem Fall einen medizinischen Rat dar. Personen mit einer Erkrankung oder Zweifeln an ihrer körperlichen Eignung sollten vor Beginn eine qualifizierte Fachperson des Gesundheitswesens konsultieren.","ps.seances.title":"Arten von Einheiten","ps.seances.sub":"Gebühren je nach Mitgliedschaftsstufe unterschiedlich","ps.s1.name":"Erstbilanz Sport &amp; Stress","ps.s1.meta":"1 Std. · beim Eintritt","ps.s2.name":"Sporteinheit (nach Stufe)","ps.s2.meta":"45 Min. · wöchentlich bis zweiwöchentlich","ps.s3.name":"Workshop Meditation &amp; Herzkohärenz","ps.s3.meta":"1 Std. · zweiwöchentlich","ps.s4.name":"Individuelle Ernährungsbegleitung","ps.s4.meta":"30 Min. · monatlich","ps.s5.name":"Themen-Master-Class","ps.s5.meta":"2 Std. · vierteljährlich","ps.director.title":"Bereichsleitung","ps.director.sub":"Verein ORIM Genf","ps.director.role":"Leiter des Bereichs Sport, Ernährung &amp; Meditation","ps.cta":"Mitglied werden","ps.f.home":"Startseite","ps.f.join":"Mitglied werden"},
+"pt":{"ps.back":"&larr; Voltar ao site ORIM","ps.kicker":"Associação ORIM · Genebra · Polo de Acompanhamento","ps.title":"Desporto, Alimentação e Meditação","ps.sub":"Calistenia multinível, acompanhamento alimentar e gestão do stress, ao serviço de cada membro.","ps.desc":"Três eixos complementares à Cozinha Educativa, alinhados com o Índice ORIM™ e supervisionados pelo comité científico da Associação.","ps.axes.title":"Três eixos de intervenção","ps.axes.sub":"Um acompanhamento individualizado, em complemento aos workshops coletivos","ps.axe1.name":"Desporto e atividade física adaptada","ps.axe1.desc":"Calistenia multinível, calibrada segundo a sua fase (Desinflamação, Otimização, Autorregulação), com recomendações de intensidade e recuperação.","ps.axe2.name":"Alimentação — acompanhamento individualizado","ps.axe2.desc":"Balanços alimentares pessoais e ajustes entre os workshops coletivos do FoodLab, em coordenação com o Polo de Cozinha Educativa.","ps.axe3.name":"Meditação e gestão do stress","ps.axe3.desc":"Coerência cardíaca, respiração e meditação guiada, centradas no stress crónico como fator imuno-metabólico.","ps.method.title":"O nosso método fitness","ps.method.sub":"Calistenia · progressão por nível · segurança em primeiro lugar","ps.method.p1":"Cada sessão segue uma estrutura em três tempos (aquecimento ativo, circuito principal, retorno à calma) e propõe sistematicamente três variantes de exercício, para que cada participante trabalhe na intensidade adequada.","ps.lvl1.name":"Iniciante","ps.lvl1.phase":"Fase 1 · Desinflamação","ps.lvl2.name":"Intermédio","ps.lvl2.phase":"Fase 2 · Otimização","ps.lvl3.name":"Avançado","ps.lvl3.phase":"Fase 3 · Autorregulação","ps.method.p2":"A progressão segue os princípios de sobrecarga progressiva e autorregulação pela escala de perceção do esforço (RPE), com correção técnica sistemática antes de qualquer aumento de intensidade.","ps.medical":"Esta atividade física supervisionada tem finalidade preventiva e educativa; não constitui, em caso algum, um parecer médico. Qualquer pessoa com uma patologia ou dúvida sobre a sua aptidão física deve consultar um profissional de saúde habilitado antes de começar.","ps.seances.title":"Tipos de sessões","ps.seances.sub":"Tarifas diferenciadas consoante o seu nível de adesão","ps.s1.name":"Balanço inicial Desporto e Stress","ps.s1.meta":"1h · na admissão","ps.s2.name":"Sessão de Desporto (por nível)","ps.s2.meta":"45 min · semanal a quinzenal","ps.s3.name":"Workshop Meditação e Coerência Cardíaca","ps.s3.meta":"1h · quinzenal","ps.s4.name":"Acompanhamento alimentar individual","ps.s4.meta":"30 min · mensal","ps.s5.name":"Master Class temática","ps.s5.meta":"2h · trimestral","ps.director.title":"Direção do polo","ps.director.sub":"Associação ORIM Genebra","ps.director.role":"Diretor do Polo Desporto, Alimentação e Meditação","ps.cta":"Tornar-se membro","ps.f.home":"Início","ps.f.join":"Tornar-se membro"},
+"it":{"ps.back":"&larr; Ritorna al sito ORIM","ps.kicker":"Associazione ORIM · Ginevra · Polo di Accompagnamento","ps.title":"Sport, Alimentazione e Meditazione","ps.sub":"Calistenia multilivello, monitoraggio alimentare e gestione dello stress, al servizio di ogni membro.","ps.desc":"Tre assi complementari alla Cucina Educativa, allineati con l'Indice ORIM™ e supervisionati dal comitato scientifico dell'Associazione.","ps.axes.title":"Tre assi di intervento","ps.axes.sub":"Un accompagnamento individualizzato, a complemento dei laboratori collettivi","ps.axe1.name":"Sport e attività fisica adattata","ps.axe1.desc":"Calistenia multilivello, calibrata secondo la vostra fase (Disinfiammazione, Ottimizzazione, Autoregolazione), con raccomandazioni di intensità e recupero.","ps.axe2.name":"Alimentazione — monitoraggio individualizzato","ps.axe2.desc":"Bilanci alimentari personali e aggiustamenti tra i laboratori collettivi del FoodLab, in coordinamento con il Polo Cucina Educativa.","ps.axe3.name":"Meditazione e gestione dello stress","ps.axe3.desc":"Coerenza cardiaca, respirazione e meditazione guidata, mirate allo stress cronico come fattore immuno-metabolico.","ps.method.title":"Il nostro metodo fitness","ps.method.sub":"Calistenia · progressione per livello · sicurezza prima di tutto","ps.method.p1":"Ogni sessione segue una struttura in tre tempi (riscaldamento attivo, circuito principale, ritorno alla calma) e propone sistematicamente tre varianti di esercizio, affinché ogni partecipante lavori all'intensità adeguata.","ps.lvl1.name":"Principiante","ps.lvl1.phase":"Fase 1 · Disinfiammazione","ps.lvl2.name":"Intermedio","ps.lvl2.phase":"Fase 2 · Ottimizzazione","ps.lvl3.name":"Avanzato","ps.lvl3.phase":"Fase 3 · Autoregolazione","ps.method.p2":"La progressione segue i principi del sovraccarico progressivo e dell'autoregolazione tramite la scala di percezione dello sforzo (RPE), con correzione tecnica sistematica prima di ogni aumento di intensità.","ps.medical":"Questa attività fisica supervisionata ha finalità preventiva ed educativa; non costituisce in alcun caso un parere medico. Chiunque presenti una patologia o un dubbio sulla propria idoneità fisica deve consultare un professionista sanitario abilitato prima di iniziare.","ps.seances.title":"Tipi di sessioni","ps.seances.sub":"Tariffe differenziate secondo il vostro livello di adesione","ps.s1.name":"Bilancio iniziale Sport e Stress","ps.s1.meta":"1h · all'ingresso","ps.s2.name":"Sessione Sport (per livello)","ps.s2.meta":"45 min · settimanale-quindicinale","ps.s3.name":"Laboratorio Meditazione e Coerenza Cardiaca","ps.s3.meta":"1h · quindicinale","ps.s4.name":"Monitoraggio alimentare individuale","ps.s4.meta":"30 min · mensile","ps.s5.name":"Master Class tematica","ps.s5.meta":"2h · trimestrale","ps.director.title":"Direzione del polo","ps.director.sub":"Associazione ORIM Ginevra","ps.director.role":"Direttore del Polo Sport, Alimentazione e Meditazione","ps.cta":"Diventare membro","ps.f.home":"Home","ps.f.join":"Diventare membro"}};
+var LANGS=["fr","en","es","de","pt","it"], lang="fr";
+function ui(k){var b=(typeof I18N!=="undefined")&&I18N[lang]; return (b&&b[k])||null;}
+function setLang(l){
+  if(LANGS.indexOf(l)===-1)l="fr"; lang=l; document.documentElement.lang=l;
+  try{localStorage.setItem("orim_ps_lang",l);}catch(e){}
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var v=ui(el.getAttribute("data-i18n")); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll("#langsw button").forEach(function(b){b.classList.toggle("on",b.dataset.l===l);});
+}
+document.getElementById("langsw").addEventListener("click",function(e){var b=e.target.closest("button[data-l]"); if(b)setLang(b.dataset.l);});
+var _s; try{_s=localStorage.getItem("orim_ps_lang");}catch(e){}
+setLang(_s||(navigator.language||"fr").slice(0,2));
+</script>
+</body>
+</html>

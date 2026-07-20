@@ -4,247 +4,442 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pôle Sport, Alimentation & Méditation · Association ORIM Genève</title>
-<meta name="description" content="Le Pôle Sport, Alimentation & Méditation de l'Association ORIM Genève : calisthénie multiniveau, suivi alimentaire, gestion du stress, aligné sur l'Indice ORIM™." />
+<meta name="description" content="Le Pôle Sport, Alimentation & Méditation de l'Association ORIM Genève : calisthénie en plein air, nutrition immuno-métabolique et méditation. Faites votre bilan gratuit." />
 <meta property="og:title" content="Pôle Sport, Alimentation & Méditation · ORIM™" />
-<meta property="og:description" content="Association ORIM Genève · Calisthénie multiniveau, nutrition sportive, méditation." />
+<meta property="og:description" content="Calisthénie, nutrition et méditation à Genève. Une énergie qui dure." />
+<meta property="og:image" content="https://orimnutrition.org/media/ps-hero.jpg" />
 <meta property="og:url" content="https://orimnutrition.org/pole-sport.html" />
 <meta property="og:locale" content="fr_CH" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
     --serif:"Fraunces",ui-serif,Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-    --bench:#F4F7F6; --ink:#0F211F; --graphite:#556663; --hairline:#DCE6E4; --plate:#FFFFFF;
-    --abyss:#04100E; --ink-d:#060D0C; --panel:#0C1A18; --line-d:#16302C; --fg-d:#EAF4F2; --dim-d:#7FA39D;
-    --teal:#1BA8A6; --cyan:#38E1D6; --gold:#E6A817; --gold-hi:#F5C95A; --lteal:#E8F6F6; --lgold:#FDF5E0;
+    --ink:#0F211F; --bench:#F4F7F6; --plate:#FFFFFF; --hair:#E2ECEA; --grey:#586b68;
+    --teal:#1BA8A6; --cyan:#38E1D6; --deep:#0B1A18;
+    --gold:#E6A817; --flame:#F2843A; --sun:#F5A623; --lteal:#E8F6F6; --lgold:#FEF4E2;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:var(--sans);color:var(--ink);background:var(--bench);line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
-  a{color:var(--teal)}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bench);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:var(--teal);text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .section{padding:clamp(3.5rem,8vw,6.5rem) 0}
+  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);font-weight:500}
+  .h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.85rem,4.2vw,2.9rem);line-height:1.08;letter-spacing:-.01em;margin:.5rem 0}
+  .lead{color:var(--grey);font-size:1.06rem;max-width:660px}
+  .center{text-align:center;margin:0 auto}
+  .center .lead{margin-left:auto;margin-right:auto}
 
-  header.masthead{position:relative;overflow:hidden;color:var(--fg-d);padding:22px 0 44px;text-align:center;
-    background:radial-gradient(120% 150% at 50% 0%,#071A17 0%,var(--abyss) 50%,var(--ink-d) 100%);border-bottom:1px solid var(--line-d)}
-  header.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
-    background:linear-gradient(var(--line-d) 1px,transparent 1px) 0 0/100% 42px,linear-gradient(90deg,var(--line-d) 1px,transparent 1px) 0 0/42px 100%;
-    -webkit-mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%);mask-image:radial-gradient(130% 120% at 50% 0%,#000 25%,transparent 78%)}
-  header.masthead .wrap{position:relative;z-index:1}
-  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px;text-align:left}
-  .backlink{color:var(--dim-d);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.04em;transition:color .2s}
-  .backlink:hover{color:var(--cyan)}
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:100px;padding:.95rem 1.9rem;font-family:var(--sans);font-weight:600;font-size:1rem;cursor:pointer;border:0;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;text-align:center}
+  .btn-flame{color:#3A1B00;background:linear-gradient(120deg,var(--sun),var(--flame));box-shadow:0 12px 34px -10px rgba(242,132,58,.65)}
+  .btn-flame:hover{transform:translateY(-3px);box-shadow:0 18px 44px -10px rgba(242,132,58,.75)}
+  .btn-teal{color:#fff;background:linear-gradient(120deg,var(--teal),#12907f);box-shadow:0 12px 34px -12px rgba(27,168,166,.6)}
+  .btn-teal:hover{transform:translateY(-3px)}
+  .btn-ghost{color:#fff;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.07);backdrop-filter:blur(6px)}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.16)}
+  .btn-outline{color:var(--ink);border:1.5px solid var(--hair);background:var(--plate)}
+  .btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100svh;display:grid;align-content:end;overflow:hidden;color:#fff;padding-bottom:clamp(3rem,7vh,5rem)}
+  .hero-bg{position:absolute;inset:0;background:url('media/ps-hero.jpg') center 30%/cover no-repeat;transform:scale(1.06);animation:ken 24s ease-in-out infinite alternate;z-index:0}
+  @keyframes ken{to{transform:scale(1.16)}}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,16,14,.55) 0%,rgba(6,16,14,.15) 30%,rgba(6,16,14,.35) 62%,rgba(6,16,14,.9) 100%),radial-gradient(120% 80% at 50% 120%,rgba(27,168,166,.35),transparent 60%)}
+  .hero-top{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 22px}
+  .backlink{color:rgba(255,255,255,.82);font-family:var(--mono);font-size:12px;letter-spacing:.04em;transition:color .2s}
+  .backlink:hover{color:#fff}
   .langsw{display:flex;gap:2px;flex-shrink:0}
-  .langsw button{background:transparent;border:0;cursor:pointer;padding:5px 7px;color:var(--dim-d);font-family:var(--mono);font-size:12px;letter-spacing:.05em;border-radius:5px;transition:color .2s,background .2s}
-  .langsw button:hover{color:var(--fg-d);background:rgba(56,225,214,.08)}
-  .langsw button.on{color:var(--ink-d);background:var(--cyan);font-weight:500}
-  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
-  .masthead h1{margin:10px 0 12px;font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.01em;line-height:1.04;
-    background:linear-gradient(180deg,#FFFFFF,var(--fg-d) 55%,var(--gold-hi) 135%);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .masthead .sub{font-size:1.05rem;color:#C7DAD6;max-width:680px;margin:0 auto 8px}
-  .masthead .desc{font-size:.9rem;color:var(--dim-d);max-width:640px;margin:0 auto}
+  .langsw button{background:rgba(255,255,255,.08);border:0;cursor:pointer;padding:5px 8px;color:rgba(255,255,255,.75);font-family:var(--mono);font-size:12px;letter-spacing:.05em;border-radius:6px;transition:color .2s,background .2s}
+  .langsw button:hover{color:#fff}
+  .langsw button.on{color:var(--deep);background:var(--cyan);font-weight:500}
+  .hero-inner{position:relative;z-index:2}
+  .hero .kicker{color:var(--cyan)}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;letter-spacing:-.02em;margin:.6rem 0 1rem;max-width:16ch;text-shadow:0 2px 30px rgba(0,0,0,.3)}
+  .hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--sun),var(--flame));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .hsub{font-size:clamp(1rem,1.6vw,1.2rem);color:#e7f1ef;max-width:60ch;margin-bottom:2rem}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .scrollcue{margin-top:2.4rem;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .scrollcue .dot{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.5);border-radius:12px;position:relative}
+  .scrollcue .dot::after{content:"";position:absolute;top:6px;left:50%;width:3px;height:6px;background:var(--cyan);border-radius:2px;transform:translateX(-50%);animation:scr 1.6s ease-in-out infinite}
+  @keyframes scr{0%,100%{opacity:0;transform:translate(-50%,0)}50%{opacity:1;transform:translate(-50%,8px)}}
 
-  main{padding:40px 0 60px}
-  .card{background:var(--plate);border:1px solid var(--hairline);border-radius:16px;padding:28px 26px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 10px 40px -24px rgba(15,33,31,.25)}
-  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold))}
-  .card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--hairline)}
-  .card-title{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ink)}
-  .card-sub{font-family:var(--mono);font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin-top:3px}
-  .card p{font-size:.92rem;color:var(--ink);margin-bottom:10px}
+  /* ---------- AXES ---------- */
+  .sec-head{max-width:720px}
+  .axes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:2.4rem}
+  .axe-card{background:var(--plate);border:1px solid var(--hair);border-radius:20px;overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+  .axe-card:hover{transform:translateY(-6px);box-shadow:0 26px 60px -30px rgba(15,33,31,.4)}
+  .axe-photo{aspect-ratio:4/3;overflow:hidden}
+  .axe-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  .axe-card:hover .axe-photo img{transform:scale(1.07)}
+  .axe-body{padding:22px 22px 26px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);background:var(--lteal);padding:4px 10px;border-radius:100px;margin-bottom:12px}
+  .axe-card h3{font-family:var(--serif);font-weight:600;font-size:1.35rem;margin-bottom:6px}
+  .axe-hook{color:var(--flame);font-weight:500;font-size:.95rem;margin-bottom:10px}
+  .axe-card p{color:var(--grey);font-size:.94rem}
 
-  .axes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  .axe{border:1px solid var(--hairline);border-radius:12px;padding:18px;transition:border-color .2s,transform .2s}
-  .axe:hover{border-color:var(--teal);transform:translateY(-2px)}
-  .axe-name{font-family:var(--serif);font-weight:600;font-size:1.05rem;color:var(--ink);margin-bottom:6px}
-  .axe-desc{font-size:.85rem;color:var(--graphite);line-height:1.6}
+  /* ---------- METHOD / LEVELS ---------- */
+  .levels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:2.4rem}
+  .level{position:relative;background:var(--plate);border:1px solid var(--hair);border-radius:20px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+  .level:hover{transform:translateY(-6px);box-shadow:0 26px 60px -30px rgba(15,33,31,.4)}
+  .level.flame{border-color:rgba(242,132,58,.5);box-shadow:0 0 0 1px rgba(242,132,58,.2)}
+  .level-photo{aspect-ratio:3/4;overflow:hidden;position:relative}
+  .level-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .level:hover .level-photo img{transform:scale(1.06)}
+  .level-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,16,14,.78))}
+  .level-num{position:absolute;top:14px;left:14px;z-index:2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:600;color:#fff;background:rgba(11,26,24,.55);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25)}
+  .level.flame .level-num{background:linear-gradient(120deg,var(--sun),var(--flame));color:#3A1B00}
+  .level-cap{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px;color:#fff}
+  .level-cap .ptag{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:2px}
+  .level-cap h3{font-family:var(--serif);font-weight:600;font-size:1.5rem}
+  .level-body{padding:16px 18px 20px;color:var(--grey);font-size:.94rem}
+  .method-note{margin-top:1.8rem;background:var(--lteal);border-left:3px solid var(--teal);border-radius:12px;padding:14px 18px;font-size:.9rem;color:var(--ink);max-width:760px}
 
-  .levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
-  .level{border:1px solid var(--hairline);border-radius:12px;padding:16px;text-align:center}
-  .level.mid{border-color:var(--gold);background:var(--lgold)}
-  .level-name{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:4px}
-  .level-phase{font-family:var(--mono);font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.06em}
+  /* ---------- FEEL (band) ---------- */
+  .feel{position:relative;color:#fff;background:radial-gradient(120% 130% at 15% 0%,#123d38,var(--deep) 60%)}
+  .feel .kicker{color:var(--cyan)}
+  .feel .h2{color:#fff}
+  .feel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:2.4rem}
+  .feel-card{border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px;background:rgba(255,255,255,.03);transition:transform .3s,background .3s,border-color .3s}
+  .feel-card:hover{transform:translateY(-5px);background:rgba(56,225,214,.07);border-color:rgba(56,225,214,.35)}
+  .feel-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;background:linear-gradient(135deg,var(--teal),var(--cyan))}
+  .feel-ic svg{width:22px;height:22px;stroke:#062;stroke-width:2;fill:none}
+  .feel-card h3{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin-bottom:6px}
+  .feel-card p{color:#bcd6d2;font-size:.9rem}
+  .feel-invite{margin-top:2rem;font-size:.95rem;color:#cfe6e2;font-style:italic;max-width:640px}
 
-  .seances{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-  .seance{border:1px solid var(--hairline);border-radius:10px;padding:14px}
-  .seance-name{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:4px}
-  .seance-meta{font-family:var(--mono);font-size:.7rem;color:var(--teal)}
-
-  .director{display:flex;align-items:center;gap:14px;padding-top:6px}
-  .director-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:1.05rem;color:#fff;flex-shrink:0}
-  .director-name{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:1.05rem}
-  .director-role{font-size:.8rem;color:var(--teal);line-height:1.5}
-
-  .notice{background:var(--lteal);border:1px solid var(--hairline);border-left:3px solid var(--teal);border-radius:10px;padding:14px 18px;margin-bottom:22px;font-size:.85rem;color:var(--ink);line-height:1.8}
-
-  .cta-row{text-align:center;margin-top:8px}
-  .cta-btn{display:inline-block;background:var(--teal);color:#fff;border-radius:8px;padding:.8rem 1.8rem;font-weight:500;font-size:.92rem;text-decoration:none;transition:background .2s}
-  .cta-btn:hover{background:#159c8a}
-
-  footer.foot{border-top:1px solid var(--hairline);background:#fff;color:var(--graphite);font-size:12.5px;text-align:center}
-  footer.foot .wrap{padding:24px 20px 28px}
-  footer.foot a{color:var(--teal);text-decoration:none} footer.foot a:hover{opacity:.75}
-  footer.foot .divider{margin:0 .6rem;opacity:.4}
-
-  .quiz-progress{height:6px;background:var(--hairline);border-radius:3px;overflow:hidden;margin-bottom:22px}
+  /* ---------- QUIZ ---------- */
+  .quiz-card{background:var(--plate);border:1px solid var(--hair);border-radius:20px;padding:28px 26px;max-width:760px;margin:2rem auto 0;box-shadow:0 26px 70px -40px rgba(15,33,31,.5)}
+  .quiz-progress{height:6px;background:var(--hair);border-radius:3px;overflow:hidden;margin-bottom:22px}
   .quiz-progress-bar{height:100%;width:20%;background:linear-gradient(90deg,var(--teal),var(--cyan));border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1)}
   .qz-step{animation:qzIn .35s cubic-bezier(.2,.8,.2,1)}
   @keyframes qzIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
-  .qz-q{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:16px}
+  .qz-q{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:16px}
   .qz-opts{display:grid;gap:10px}
-  .qz-opt{display:block;width:100%;text-align:left;border:1px solid var(--hairline);background:var(--plate);border-radius:10px;padding:14px 16px;font-family:var(--sans);font-size:.9rem;color:var(--ink);cursor:pointer;transition:border-color .18s,transform .18s,background .18s}
+  .qz-opt{display:block;width:100%;text-align:left;border:1px solid var(--hair);background:var(--bench);border-radius:12px;padding:14px 16px;font-family:var(--sans);font-size:.92rem;color:var(--ink);cursor:pointer;transition:border-color .18s,transform .18s,background .18s}
   .qz-opt:hover{border-color:var(--teal);background:var(--lteal);transform:translateX(3px)}
-  .qz-opt:active{transform:translateX(3px) scale(.98)}
-  .qz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:var(--mono);font-size:.7rem;color:var(--graphite);text-transform:uppercase;letter-spacing:.06em}
+  .qz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:var(--mono);font-size:.7rem;color:var(--grey);text-transform:uppercase;letter-spacing:.06em}
   .qz-back{background:none;border:0;color:var(--teal);font-family:var(--mono);font-size:.72rem;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;padding:0}
   .qz-back:hover{text-decoration:underline}
   .qz-result{animation:qzIn .4s cubic-bezier(.2,.8,.2,1)}
   .qz-badges{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
-  .qz-badge{flex:1;min-width:160px;border:1px solid var(--hairline);border-radius:12px;padding:16px;text-align:center;animation:qzPop .5s cubic-bezier(.2,.8,.2,1) backwards}
+  .qz-badge{flex:1;min-width:160px;border:1px solid var(--hair);border-radius:14px;padding:16px;text-align:center;animation:qzPop .5s cubic-bezier(.2,.8,.2,1) backwards}
   .qz-badge:nth-child(2){animation-delay:.1s}
   @keyframes qzPop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
   .qz-badge-label{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:6px}
-  .qz-badge-value{font-family:var(--serif);font-weight:600;font-size:1.2rem;color:var(--ink)}
-  .qz-result-text{font-size:.9rem;color:var(--ink);line-height:1.7;margin-bottom:14px}
-  .qz-safety{background:var(--lgold);border-left:3px solid var(--gold);border-radius:8px;padding:12px 16px;font-size:.84rem;color:var(--ink);margin-bottom:16px;line-height:1.7}
-  .qz-result-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-  .qz-restart{background:none;border:1px solid var(--hairline);border-radius:8px;padding:.6rem 1rem;font-family:var(--sans);font-size:.82rem;color:var(--graphite);cursor:pointer}
+  .qz-badge-value{font-family:var(--serif);font-weight:600;font-size:1.25rem}
+  .qz-result-text{font-size:.92rem;line-height:1.7;margin-bottom:14px}
+  .qz-safety{background:var(--lgold);border-left:3px solid var(--gold);border-radius:10px;padding:12px 16px;font-size:.86rem;margin-bottom:16px;line-height:1.7}
+  .qz-result-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;align-items:center}
+  .qz-restart{background:none;border:1px solid var(--hair);border-radius:100px;padding:.7rem 1.2rem;font-family:var(--sans);font-size:.85rem;color:var(--grey);cursor:pointer}
   .qz-restart:hover{border-color:var(--teal);color:var(--teal)}
-  .qz-sent{display:none;margin-top:10px;font-size:.82rem;color:var(--teal)}
+  .cta-btn{display:inline-block;background:linear-gradient(120deg,var(--sun),var(--flame));color:#3A1B00;border-radius:100px;padding:.75rem 1.5rem;font-weight:600;font-size:.9rem;text-decoration:none}
+  .qz-sent{display:none;margin-top:10px;font-size:.85rem;color:var(--teal)}
+
+  /* ---------- TIERS ---------- */
+  .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:2.6rem;align-items:stretch}
+  .tier{position:relative;background:var(--plate);border:1px solid var(--hair);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+  .tier:hover{transform:translateY(-6px);box-shadow:0 26px 60px -30px rgba(15,33,31,.4)}
+  .tier.pop{border-color:rgba(242,132,58,.55);box-shadow:0 0 0 1px rgba(242,132,58,.25),0 30px 70px -40px rgba(242,132,58,.5);transform:scale(1.02)}
+  .tier.pop:hover{transform:translateY(-6px) scale(1.02)}
+  .tier-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,var(--sun),var(--flame));color:#3A1B00;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;padding:5px 14px;border-radius:100px}
+  .tier h3{font-family:var(--serif);font-weight:600;font-size:1.4rem}
+  .tier-tag{color:var(--grey);font-size:.88rem;margin-bottom:14px}
+  .tier-price{font-family:var(--serif);font-weight:600;font-size:1.7rem;color:var(--teal);margin-bottom:16px}
+  .tier.pop .tier-price{color:var(--flame)}
+  .tier ul{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:10px}
+  .tier li{position:relative;padding-left:26px;font-size:.9rem;color:var(--ink)}
+  .tier li::before{content:"";position:absolute;left:0;top:2px;width:16px;height:16px;border-radius:50%;background:var(--lteal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231BA8A6' stroke-width='3'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center/10px no-repeat}
+  .tier .btn{margin-top:auto;width:100%;justify-content:center}
+
+  /* ---------- COMMUNITY band ---------- */
+  .band{position:relative;color:#fff;overflow:hidden}
+  .band-bg{position:absolute;inset:0;background:url('media/ps-communaute.jpg') center/cover;z-index:0}
+  .band::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,16,14,.85),rgba(6,16,14,.45))}
+  .band .wrap{position:relative;z-index:2;padding-top:clamp(3.5rem,8vw,6rem);padding-bottom:clamp(3.5rem,8vw,6rem)}
+  .band .kicker{color:var(--cyan)}
+  .band h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;margin:.5rem 0;max-width:16ch}
+  .band p{color:#dbe9e6;max-width:52ch;margin-bottom:1.6rem}
+
+  /* ---------- GALLERY ---------- */
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:2rem}
+  .gal-item{border-radius:18px;overflow:hidden;aspect-ratio:1/1}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  .gal-item:hover img{transform:scale(1.08)}
+
+  /* ---------- DIRECTOR ---------- */
+  .dir{display:grid;grid-template-columns:1fr 1.15fr;gap:36px;align-items:center;margin-top:2.4rem}
+  .dir-photo{border-radius:20px;overflow:hidden;aspect-ratio:4/5}
+  .dir-photo img{width:100%;height:100%;object-fit:cover}
+  .dir-person{display:flex;align-items:center;gap:16px;margin:18px 0}
+  .dir-av{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:1.15rem;color:#fff;flex-shrink:0}
+  .dir-name{font-family:var(--serif);font-weight:600;font-size:1.25rem}
+  .dir-role{color:var(--teal);font-size:.9rem}
+  .dir p{color:var(--grey);font-size:1rem}
+
+  /* ---------- notice ---------- */
+  .notice{background:var(--lgold);border:1px solid var(--hair);border-left:3px solid var(--gold);border-radius:12px;padding:14px 18px;font-size:.86rem;color:var(--ink);line-height:1.7;max-width:820px;margin:0 auto}
+
+  /* ---------- FOOTER CTA ---------- */
+  .foot-cta{background:radial-gradient(120% 140% at 50% 0%,#123d38,var(--deep) 65%);color:#fff;text-align:center}
+  .foot-cta h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.5vw,3rem);margin-bottom:.6rem}
+  .foot-cta p{color:#cfe6e2;max-width:52ch;margin:0 auto 1.8rem}
+  .foot-cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  footer.foot{background:#fff;border-top:1px solid var(--hair);color:var(--grey);font-size:12.5px;text-align:center}
+  footer.foot .wrap{padding:22px}
+  footer.foot a{color:var(--teal)}
+  .divider{margin:0 .5rem;opacity:.4}
+
+  @media(max-width:900px){
+    .axes-grid,.levels,.tiers-grid,.feel-grid{grid-template-columns:1fr}
+    .feel-grid{grid-template-columns:1fr 1fr}
+    .gal-grid{grid-template-columns:1fr 1fr}
+    .dir{grid-template-columns:1fr}
+    .tier.pop{transform:none}
+    .tier.pop:hover{transform:translateY(-6px)}
+  }
+  @media(max-width:560px){.feel-grid,.gal-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header class="masthead">
-  <div class="wrap">
-    <div class="topbar">
-      <a href="index.html" class="backlink" data-i18n="ps.back">&larr; Retour au site ORIM</a>
-      <div class="langsw" id="langsw" role="group" aria-label="Langue">
-        <button data-l="fr">FR</button><button data-l="en">EN</button><button data-l="es">ES</button
-        ><button data-l="de">DE</button><button data-l="pt">PT</button><button data-l="it">IT</button>
-      </div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-top">
+    <a href="index.html" class="backlink" data-i18n="nav.back">&larr; Retour au site ORIM</a>
+    <div class="langsw" id="langsw" role="group" aria-label="Langue">
+      <button data-l="fr">FR</button><button data-l="en">EN</button><button data-l="es">ES</button
+      ><button data-l="de">DE</button><button data-l="pt">PT</button><button data-l="it">IT</button>
     </div>
-    <div class="kicker" data-i18n="ps.kicker">Association ORIM · Genève · Pôle Accompagnement</div>
-    <h1 data-i18n="ps.title">Sport, Alimentation &amp; Méditation</h1>
-    <p class="sub" data-i18n="ps.sub">Calisthénie multiniveau, suivi alimentaire et gestion du stress, au service de chaque membre.</p>
-    <p class="desc" data-i18n="ps.desc">Trois axes complémentaires à la Cuisine Éducative, alignés sur l'Indice ORIM™ et supervisés par le comité scientifique de l'Association.</p>
+  </div>
+  <div class="wrap hero-inner">
+    <span class="kicker" data-i18n="hero.kicker">Genève · Calisthénie · Nutrition · Méditation</span>
+    <h1 data-i18n="hero.title">Reprenez le pouvoir sur votre <em>énergie</em>.</h1>
+    <p class="hsub" data-i18n="hero.sub">Calisthénie en plein air, alimentation immuno-métabolique et respiration : une méthode complète et progressive, portée par la science ORIM™, pour un corps fort et un esprit clair.</p>
+    <div class="hero-cta">
+      <a href="devenir-membre.html" class="btn btn-flame" data-i18n="hero.cta1">Rejoindre le Pôle Sport</a>
+      <a href="#bilan" class="btn btn-ghost" data-i18n="hero.cta2">Faire mon bilan gratuit</a>
+    </div>
+    <div class="scrollcue"><span class="dot"></span><span data-i18n="hero.scroll">Découvrir</span></div>
   </div>
 </header>
 
-<main class="wrap">
-  <div class="card">
-    <div class="card-head">
-      <div>
-        <div class="card-title" data-i18n="ps.axes.title">Trois axes d'intervention</div>
-        <div class="card-sub" data-i18n="ps.axes.sub">Un accompagnement individualisé, en complément des ateliers collectifs</div>
-      </div>
+<!-- ===================== AXES ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="axes.kicker">Une approche, trois leviers</span>
+      <h2 class="h2" data-i18n="axes.title">Le corps, l'assiette, le souffle.</h2>
+      <p class="lead" data-i18n="axes.lead">Trois axes qui se répondent, en complément des ateliers collectifs.</p>
     </div>
-    <div class="axes">
-      <div class="axe">
-        <div class="axe-name" data-i18n="ps.axe1.name">Sport &amp; activité physique adaptée</div>
-        <div class="axe-desc" data-i18n="ps.axe1.desc">Calisthénie multiniveau, calibrée selon votre phase (Désinflammation, Optimisation, Autorégulation), avec recommandations d'intensité et de récupération.</div>
-      </div>
-      <div class="axe">
-        <div class="axe-name" data-i18n="ps.axe2.name">Alimentation — suivi individualisé</div>
-        <div class="axe-desc" data-i18n="ps.axe2.desc">Bilans alimentaires personnels et ajustements entre les ateliers collectifs du FoodLab, en coordination avec le Pôle Cuisine Éducative.</div>
-      </div>
-      <div class="axe">
-        <div class="axe-name" data-i18n="ps.axe3.name">Méditation &amp; gestion du stress</div>
-        <div class="axe-desc" data-i18n="ps.axe3.desc">Cohérence cardiaque, respiration et méditation guidée, ciblées sur le stress chronique comme facteur immuno-métabolique.</div>
-      </div>
+    <div class="axes-grid">
+      <article class="axe-card reveal">
+        <div class="axe-photo"><img src="media/ps-axe-sport.jpg" alt="Calisthénie en plein air" loading="lazy" /></div>
+        <div class="axe-body">
+          <span class="tag" data-i18n="axe1.tag">Le corps</span>
+          <h3 data-i18n="axe1.title">Bouger avec justesse</h3>
+          <p class="axe-hook" data-i18n="axe1.hook">La force du poids de corps, en pleine nature.</p>
+          <p data-i18n="axe1.body">Calisthénie multiniveau, calibrée sur votre phase.</p>
+        </div>
+      </article>
+      <article class="axe-card reveal" style="transition-delay:.1s">
+        <div class="axe-photo"><img src="media/ps-axe-alimentation.jpg" alt="Assiette anti-inflammatoire colorée" loading="lazy" /></div>
+        <div class="axe-body">
+          <span class="tag" data-i18n="axe2.tag">L'assiette</span>
+          <h3 data-i18n="axe2.title">Manger pour son énergie</h3>
+          <p class="axe-hook" data-i18n="axe2.hook">Des couleurs dans l'assiette, de la vitalité dans le corps.</p>
+          <p data-i18n="axe2.body">Un suivi alimentaire personnalisé, scoré par l'Indice ORIM™.</p>
+        </div>
+      </article>
+      <article class="axe-card reveal" style="transition-delay:.2s">
+        <div class="axe-photo"><img src="media/ps-axe-meditation.jpg" alt="Méditation et cohérence cardiaque au bord du lac" loading="lazy" /></div>
+        <div class="axe-body">
+          <span class="tag" data-i18n="axe3.tag">Le souffle</span>
+          <h3 data-i18n="axe3.title">Apaiser le mental</h3>
+          <p class="axe-hook" data-i18n="axe3.hook">Retrouver le calme, même au cœur de l'effort.</p>
+          <p data-i18n="axe3.body">Cohérence cardiaque, respiration et méditation guidée.</p>
+        </div>
+      </article>
     </div>
   </div>
+</section>
 
-  <div class="card">
-    <div class="card-head">
-      <div>
-        <div class="card-title" data-i18n="ps.method.title">Notre méthode fitness</div>
-        <div class="card-sub" data-i18n="ps.method.sub">Calisthénie · progression par niveau · sécurité d'abord</div>
-      </div>
+<!-- ===================== METHOD / LEVELS ===================== -->
+<section class="section" style="background:var(--plate);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="method.kicker">Notre méthode</span>
+      <h2 class="h2" data-i18n="method.title">Une progression, trois phases.</h2>
+      <p class="lead" data-i18n="method.lead">La calisthénie ORIM avance par étapes.</p>
     </div>
-    <p data-i18n="ps.method.p1">Chaque séance suit une structure en trois temps (échauffement actif, circuit principal, retour au calme) et propose systématiquement trois variantes d'exercice, pour que chaque participant travaille à l'intensité qui lui correspond.</p>
     <div class="levels">
-      <div class="level">
-        <div class="level-name" data-i18n="ps.lvl1.name">Débutant</div>
-        <div class="level-phase" data-i18n="ps.lvl1.phase">Phase 1 · Désinflammation</div>
-      </div>
-      <div class="level mid">
-        <div class="level-name" data-i18n="ps.lvl2.name">Intermédiaire</div>
-        <div class="level-phase" data-i18n="ps.lvl2.phase">Phase 2 · Optimisation</div>
-      </div>
-      <div class="level">
-        <div class="level-name" data-i18n="ps.lvl3.name">Avancé</div>
-        <div class="level-phase" data-i18n="ps.lvl3.phase">Phase 3 · Autorégulation</div>
-      </div>
+      <article class="level reveal">
+        <div class="level-photo"><span class="level-num">1</span><img src="media/ps-level-debutant.jpg" alt="Niveau débutant" loading="lazy" />
+          <div class="level-cap"><span class="ptag" data-i18n="lvl.d.tag">Phase 1 · Désinflammation</span><h3 data-i18n="lvl.d.name">Débutant</h3></div>
+        </div>
+        <div class="level-body" data-i18n="lvl.d.promise">On pose des bases saines, on réveille le corps en douceur.</div>
+      </article>
+      <article class="level reveal" style="transition-delay:.1s">
+        <div class="level-photo"><span class="level-num">2</span><img src="media/ps-level-intermediaire.jpg" alt="Niveau intermédiaire" loading="lazy" />
+          <div class="level-cap"><span class="ptag" data-i18n="lvl.i.tag">Phase 2 · Optimisation</span><h3 data-i18n="lvl.i.name">Intermédiaire</h3></div>
+        </div>
+        <div class="level-body" data-i18n="lvl.i.promise">On monte en intensité, on affine la technique.</div>
+      </article>
+      <article class="level flame reveal" style="transition-delay:.2s">
+        <div class="level-photo"><span class="level-num">3</span><img src="media/ps-level-avance.jpg" alt="Niveau avancé" loading="lazy" />
+          <div class="level-cap"><span class="ptag" data-i18n="lvl.a.tag">Phase 3 · Autorégulation</span><h3 data-i18n="lvl.a.name">Avancé</h3></div>
+        </div>
+        <div class="level-body" data-i18n="lvl.a.promise">On maîtrise, on compose ses séances en autonomie.</div>
+      </article>
     </div>
-    <p data-i18n="ps.method.p2">La progression suit les principes de surcharge progressive et d'autorégulation par échelle de perception de l'effort (RPE), avec correction technique systématique avant toute augmentation d'intensité.</p>
+    <p class="method-note reveal" data-i18n="method.note">Surcharge progressive, autorégulation par l'effort ressenti.</p>
   </div>
+</section>
 
-  <div class="card quiz-card">
-    <div class="card-head">
-      <div>
-        <div class="card-title" data-i18n="qz.title">Quel est votre profil ?</div>
-        <div class="card-sub" data-i18n="qz.subtitle">30 secondes pour une recommandation personnalisée</div>
-      </div>
+<!-- ===================== FEEL ===================== -->
+<section class="section feel">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="feel.kicker">Ce que vous allez ressentir</span>
+      <h2 class="h2" data-i18n="feel.title">Bien plus qu'une séance.</h2>
     </div>
-    <div class="quiz-progress"><div class="quiz-progress-bar" id="qz-bar"></div></div>
-    <div id="qz-body"></div>
+    <div class="feel-grid">
+      <div class="feel-card reveal"><div class="feel-ic"><svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M6 6l1.5 1.5M18 18l-1.5-1.5M6 18l1.5-1.5M18 6l-1.5 1.5"/><circle cx="12" cy="12" r="3.5"/></svg></div><h3 data-i18n="feel1.title">L'énergie du matin</h3><p data-i18n="feel1.body">Vous vous levez plus léger.</p></div>
+      <div class="feel-card reveal" style="transition-delay:.08s"><div class="feel-ic"><svg viewBox="0 0 24 24"><path d="M6 12c0-4 3-7 6-7s6 3 6 7-3 7-6 7-6-3-6-7z"/><path d="M12 8v8M9 12h6"/></svg></div><h3 data-i18n="feel2.title">Un corps qui répond</h3><p data-i18n="feel2.body">Plus de force, plus de mobilité.</p></div>
+      <div class="feel-card reveal" style="transition-delay:.16s"><div class="feel-ic"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6c0 2 1 3 1 5h10c0-2 1-3 1-5a6 6 0 0 0-6-6z"/><path d="M9 19h6M10 21h4"/></svg></div><h3 data-i18n="feel3.title">Un mental apaisé</h3><p data-i18n="feel3.body">Le souffle qui ralentit.</p></div>
+      <div class="feel-card reveal" style="transition-delay:.24s"><div class="feel-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><path d="M15 11a3 3 0 1 0 0-6M3 20c0-3 2.5-5 6-5s6 2 6 5M15 15c3 0 6 1.5 6 5"/></svg></div><h3 data-i18n="feel4.title">Une communauté</h3><p data-i18n="feel4.body">Une énergie collective.</p></div>
+    </div>
+    <p class="feel-invite reveal" data-i18n="feel.invite">Vous serez parmi les premiers membres du Pôle.</p>
   </div>
+</section>
 
-  <div class="notice" data-i18n="ps.medical">Cette activité physique encadrée a une visée préventive et éducative ; elle ne constitue en aucun cas un avis médical. Toute personne présentant une pathologie ou un doute sur son aptitude physique doit consulter un professionnel de santé habilité avant de débuter.</div>
-
-  <div class="card">
-    <div class="card-head">
-      <div>
-        <div class="card-title" data-i18n="ps.seances.title">Types de séances</div>
-        <div class="card-sub" data-i18n="ps.seances.sub">Tarifs différenciés selon votre niveau d'adhésion</div>
-      </div>
+<!-- ===================== BILAN / QUIZ ===================== -->
+<section class="section" id="bilan">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker" data-i18n="bilan.kicker">Bilan gratuit · 30 secondes</span>
+      <h2 class="h2" data-i18n="bilan.title">Par où commencer ?</h2>
+      <p class="lead" data-i18n="bilan.lead">Cinq questions pour découvrir votre niveau.</p>
     </div>
-    <div class="seances">
-      <div class="seance"><div class="seance-name" data-i18n="ps.s1.name">Bilan initial Sport &amp; Stress</div><div class="seance-meta" data-i18n="ps.s1.meta">1h · à l'entrée</div></div>
-      <div class="seance"><div class="seance-name" data-i18n="ps.s2.name">Séance Sport (par niveau)</div><div class="seance-meta" data-i18n="ps.s2.meta">45 min · hebdomadaire à bimensuel</div></div>
-      <div class="seance"><div class="seance-name" data-i18n="ps.s3.name">Atelier Méditation &amp; Cohérence cardiaque</div><div class="seance-meta" data-i18n="ps.s3.meta">1h · bimensuel</div></div>
-      <div class="seance"><div class="seance-name" data-i18n="ps.s4.name">Suivi alimentaire individuel</div><div class="seance-meta" data-i18n="ps.s4.meta">30 min · mensuel</div></div>
-      <div class="seance"><div class="seance-name" data-i18n="ps.s5.name">Master Class thématique</div><div class="seance-meta" data-i18n="ps.s5.meta">2h · trimestriel</div></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-head">
-      <div>
-        <div class="card-title" data-i18n="ps.director.title">Direction du pôle</div>
-        <div class="card-sub" data-i18n="ps.director.sub">Association ORIM Genève</div>
-      </div>
-    </div>
-    <div class="director">
-      <div class="director-av">IS</div>
-      <div>
-        <div class="director-name">Ismael Shassah</div>
-        <div class="director-role" data-i18n="ps.director.role">Directeur du Pôle Sport, Alimentation &amp; Méditation</div>
-      </div>
+    <div class="quiz-card reveal">
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="qz-bar"></div></div>
+      <div id="qz-body"></div>
     </div>
   </div>
+</section>
 
-  <div class="cta-row">
-    <a href="devenir-membre.html" class="cta-btn" data-i18n="ps.cta">Devenir membre</a>
+<!-- ===================== TIERS ===================== -->
+<section class="section" style="background:var(--plate);border-top:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker" data-i18n="tiers.kicker">Rejoindre l'Association</span>
+      <h2 class="h2" data-i18n="tiers.title">Choisissez votre engagement.</h2>
+      <p class="lead" data-i18n="tiers.lead">L'accès aux séances du Pôle se fait par l'adhésion à l'Association ORIM.</p>
+    </div>
+    <div class="tiers-grid">
+      <div class="tier reveal">
+        <h3 data-i18n="tier.s.name">Standard</h3>
+        <div class="tier-tag" data-i18n="tier.s.tagline">Pour démarrer en douceur</div>
+        <div class="tier-price" data-i18n="tier.s.price">150 CHF / an</div>
+        <ul><li data-i18n="tier.s.f1">App ORIM & menus de base</li><li data-i18n="tier.s.f2">Newsletter hebdomadaire</li><li data-i18n="tier.s.f3">Forum communautaire</li></ul>
+        <a href="devenir-membre.html?niveau=Standard" class="btn btn-outline" data-i18n="tiers.cta">Devenir membre</a>
+      </div>
+      <div class="tier pop reveal" style="transition-delay:.1s">
+        <span class="tier-badge" data-i18n="tier.b.badge">Recommandé</span>
+        <h3 data-i18n="tier.b.name">Bienfaiteur</h3>
+        <div class="tier-tag" data-i18n="tier.b.tagline">Le plus complet pour progresser</div>
+        <div class="tier-price" data-i18n="tier.b.price">500 CHF / an</div>
+        <ul><li data-i18n="tier.b.f1">Tout le Standard</li><li data-i18n="tier.b.f2">Ateliers cuisine & séances sport</li><li data-i18n="tier.b.f3">Webinaires mensuels</li><li data-i18n="tier.b.f4">Communauté privée & bulletin R&D</li></ul>
+        <a href="devenir-membre.html?niveau=Bienfaiteur" class="btn btn-flame" data-i18n="tiers.cta">Devenir membre</a>
+      </div>
+      <div class="tier reveal" style="transition-delay:.2s">
+        <h3 data-i18n="tier.p.name">Premium</h3>
+        <div class="tier-tag" data-i18n="tier.p.tagline">L'accompagnement sur mesure</div>
+        <div class="tier-price" data-i18n="tier.p.price">950 CHF / an</div>
+        <ul><li data-i18n="tier.p.f1">Tout le Bienfaiteur</li><li data-i18n="tier.p.f2">Consultations praticien & FoodLab</li><li data-i18n="tier.p.f3">Suivi alimentaire personnalisé</li><li data-i18n="tier.p.f4">Accès prioritaire aux événements</li></ul>
+        <a href="devenir-membre.html?niveau=Premium" class="btn btn-outline" data-i18n="tiers.cta">Devenir membre</a>
+      </div>
+    </div>
+    <p class="notice reveal" style="margin-top:2.4rem" data-i18n="medical">Cette activité physique encadrée a une visée préventive et éducative ; elle ne constitue en aucun cas un avis médical.</p>
   </div>
-</main>
+</section>
+
+<!-- ===================== COMMUNITY band ===================== -->
+<section class="band">
+  <div class="band-bg"></div>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="comm.kicker">La communauté ORIM</span>
+    <h2 class="reveal" data-i18n="comm.title">On progresse mieux, ensemble.</h2>
+    <p class="reveal" data-i18n="comm.body">À Genève, le Pôle Sport, c'est un collectif qui s'encourage.</p>
+    <a href="devenir-membre.html" class="btn btn-flame reveal" data-i18n="tiers.cta">Devenir membre</a>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head center reveal"><h2 class="h2" data-i18n="gal.title">En images</h2></div>
+    <div class="gal-grid">
+      <div class="gal-item reveal"><img src="media/ps-gallery-shoes.jpg" alt="En mouvement" loading="lazy" /></div>
+      <div class="gal-item reveal" style="transition-delay:.1s"><img src="media/ps-gallery-herbs.jpg" alt="Fraîcheur et vitalité" loading="lazy" /></div>
+      <div class="gal-item reveal" style="transition-delay:.2s"><img src="media/ps-coaching.jpg" alt="Séance encadrée en plein air" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIRECTOR ===================== -->
+<section class="section" style="background:var(--plate);border-top:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="dir.kicker">Direction du pôle</span>
+      <h2 class="h2" data-i18n="dir.title">Une passion au service de votre progression.</h2>
+    </div>
+    <div class="dir">
+      <div class="dir-photo reveal"><img src="media/ps-coaching.jpg" alt="Coaching en plein air" loading="lazy" /></div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="dir-person">
+          <div class="dir-av">IS</div>
+          <div>
+            <div class="dir-name">Ismael Shassah</div>
+            <div class="dir-role" data-i18n="dir.role">Directeur du Pôle Sport, Alimentation & Méditation</div>
+          </div>
+        </div>
+        <p data-i18n="dir.bio">Passionné de calisthénie et de mouvement naturel, Ismael met son énergie au service de chaque membre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER CTA ===================== -->
+<section class="section foot-cta">
+  <div class="wrap">
+    <h2 data-i18n="foot.title">Prêt à bouger ?</h2>
+    <p data-i18n="foot.body">Faites votre bilan gratuit ou rejoignez dès maintenant l'Association ORIM.</p>
+    <div class="row">
+      <a href="devenir-membre.html" class="btn btn-flame" data-i18n="foot.cta">Devenir membre</a>
+      <a href="#bilan" class="btn btn-ghost" data-i18n="foot.join">Faire mon bilan gratuit</a>
+    </div>
+  </div>
+</section>
 
 <footer class="foot">
   <div class="wrap">
-    <div>
-      <a href="index.html" data-i18n="ps.f.home">Accueil</a><span class="divider">·</span>
-      <a href="devenir-membre.html" data-i18n="ps.f.join">Devenir membre</a><span class="divider">·</span>
-      <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a>
-    </div>
+    <a href="index.html" data-i18n="foot.home">Accueil</a><span class="divider">·</span>
+    <a href="devenir-membre.html" data-i18n="tiers.cta">Devenir membre</a><span class="divider">·</span>
+    <a href="mailto:info@orimnutrition.org">info@orimnutrition.org</a>
     <div style="margin-top:1rem;opacity:.7">Association ORIM · Genève, Suisse · © 2026</div>
   </div>
 </footer>
 
 <script>
-var I18N = {"fr":{"ps.back":"&larr; Retour au site ORIM","ps.kicker":"Association ORIM · Genève · Pôle Accompagnement","ps.title":"Sport, Alimentation &amp; Méditation","ps.sub":"Calisthénie multiniveau, suivi alimentaire et gestion du stress, au service de chaque membre.","ps.desc":"Trois axes complémentaires à la Cuisine Éducative, alignés sur l'Indice ORIM™ et supervisés par le comité scientifique de l'Association.","ps.axes.title":"Trois axes d'intervention","ps.axes.sub":"Un accompagnement individualisé, en complément des ateliers collectifs","ps.axe1.name":"Sport &amp; activité physique adaptée","ps.axe1.desc":"Calisthénie multiniveau, calibrée selon votre phase (Désinflammation, Optimisation, Autorégulation), avec recommandations d'intensité et de récupération.","ps.axe2.name":"Alimentation — suivi individualisé","ps.axe2.desc":"Bilans alimentaires personnels et ajustements entre les ateliers collectifs du FoodLab, en coordination avec le Pôle Cuisine Éducative.","ps.axe3.name":"Méditation &amp; gestion du stress","ps.axe3.desc":"Cohérence cardiaque, respiration et méditation guidée, ciblées sur le stress chronique comme facteur immuno-métabolique.","ps.method.title":"Notre méthode fitness","ps.method.sub":"Calisthénie · progression par niveau · sécurité d'abord","ps.method.p1":"Chaque séance suit une structure en trois temps (échauffement actif, circuit principal, retour au calme) et propose systématiquement trois variantes d'exercice, pour que chaque participant travaille à l'intensité qui lui correspond.","ps.lvl1.name":"Débutant","ps.lvl1.phase":"Phase 1 · Désinflammation","ps.lvl2.name":"Intermédiaire","ps.lvl2.phase":"Phase 2 · Optimisation","ps.lvl3.name":"Avancé","ps.lvl3.phase":"Phase 3 · Autorégulation","ps.method.p2":"La progression suit les principes de surcharge progressive et d'autorégulation par échelle de perception de l'effort (RPE), avec correction technique systématique avant toute augmentation d'intensité.","ps.medical":"Cette activité physique encadrée a une visée préventive et éducative ; elle ne constitue en aucun cas un avis médical. Toute personne présentant une pathologie ou un doute sur son aptitude physique doit consulter un professionnel de santé habilité avant de débuter.","ps.seances.title":"Types de séances","ps.seances.sub":"Tarifs différenciés selon votre niveau d'adhésion","ps.s1.name":"Bilan initial Sport &amp; Stress","ps.s1.meta":"1h · à l'entrée","ps.s2.name":"Séance Sport (par niveau)","ps.s2.meta":"45 min · hebdomadaire à bimensuel","ps.s3.name":"Atelier Méditation &amp; Cohérence cardiaque","ps.s3.meta":"1h · bimensuel","ps.s4.name":"Suivi alimentaire individuel","ps.s4.meta":"30 min · mensuel","ps.s5.name":"Master Class thématique","ps.s5.meta":"2h · trimestriel","ps.director.title":"Direction du pôle","ps.director.sub":"Association ORIM Genève","ps.director.role":"Directeur du Pôle Sport, Alimentation &amp; Méditation","ps.cta":"Devenir membre","ps.f.home":"Accueil","ps.f.join":"Devenir membre","qz.title":"Quel est votre profil ?","qz.subtitle":"30 secondes pour une recommandation personnalisée","qz.progress":"Question {n} sur {t}","qz.back":"&larr; Retour","qz.q.niveau.text":"Où en êtes-vous avec l'activité physique aujourd'hui ?","qz.q.niveau.opt.debutant":"Je débute ou je reprends après une longue pause","qz.q.niveau.opt.intermediaire":"Je pratique occasionnellement","qz.q.niveau.opt.avance":"Je m'entraîne régulièrement (2x/semaine ou plus)","qz.q.objectif.text":"Quel est votre objectif principal ?","qz.q.objectif.opt.perte":"Perdre du poids, m'affiner","qz.q.objectif.opt.muscle":"Prendre du muscle, de la force","qz.q.objectif.opt.stress":"Retrouver de l'énergie, gérer mon stress","qz.q.objectif.opt.bienetre":"Bien-être général, sans objectif précis","qz.q.contrainte.text":"Avez-vous une blessure, une douleur ou une contrainte de santé à prendre en compte ?","qz.q.contrainte.opt.non":"Non, aucune contrainte particulière","qz.q.contrainte.opt.oui":"Oui, une contrainte à signaler","qz.q.frequence.text":"À quelle fréquence pensez-vous pouvoir vous entraîner ?","qz.q.frequence.opt.1x":"1 fois par semaine","qz.q.frequence.opt.2a3x":"2 à 3 fois par semaine","qz.q.frequence.opt.guidage":"Je ne sais pas encore, j'ai besoin d'être guidé(e)","qz.q.interet.text":"À quel point la santé est-elle une priorité pour vous en ce moment ?","qz.q.interet.opt.bas":"Je regarde ce qui se fait, sans urgence","qz.q.interet.opt.moyen":"C'est important, je fais déjà des efforts","qz.q.interet.opt.haut":"C'est une vraie priorité, je veux un accompagnement sérieux","qz.result.intro":"Voici votre profil, calculé à partir de vos réponses :","qz.result.level.label":"Niveau recommandé","qz.result.tier.label":"Palier conseillé","qz.result.safety":"Vos réponses suggèrent un réel besoin de suivi. Nous recommandons un bilan initial encadré et, si nécessaire, l'orientation vers un professionnel de santé habilité avant de débuter.","qz.result.cta.join":"Devenir membre","qz.result.cta.profile":"Être recontacté(e)","qz.result.restart":"Refaire le quiz","qz.result.sent":"Merci, votre messagerie s'est ouverte avec votre profil pré-rempli."},
-"en":{"ps.back":"&larr; Back to the ORIM site","ps.kicker":"ORIM Association · Geneva · Support Pole","ps.title":"Sport, Nutrition &amp; Meditation","ps.sub":"Multi-level calisthenics, dietary guidance and stress management, for every member.","ps.desc":"Three pillars complementing Culinary Education, aligned with the ORIM™ Index and supervised by the Association's scientific committee.","ps.axes.title":"Three areas of action","ps.axes.sub":"Individualised guidance, complementing group workshops","ps.axe1.name":"Sport &amp; adapted physical activity","ps.axe1.desc":"Multi-level calisthenics, calibrated to your phase (Anti-inflammation, Optimisation, Self-regulation), with intensity and recovery guidance.","ps.axe2.name":"Nutrition — individual follow-up","ps.axe2.desc":"Personal dietary assessments and adjustments between FoodLab group workshops, in coordination with the Culinary Education pole.","ps.axe3.name":"Meditation &amp; stress management","ps.axe3.desc":"Heart-rate coherence, breathing and guided meditation, targeting chronic stress as an immuno-metabolic factor.","ps.method.title":"Our fitness method","ps.method.sub":"Calisthenics · level-based progression · safety first","ps.method.p1":"Each session follows a three-part structure (active warm-up, main circuit, cool-down) and systematically offers three exercise variants, so every participant works at the right intensity.","ps.lvl1.name":"Beginner","ps.lvl1.phase":"Phase 1 · Anti-inflammation","ps.lvl2.name":"Intermediate","ps.lvl2.phase":"Phase 2 · Optimisation","ps.lvl3.name":"Advanced","ps.lvl3.phase":"Phase 3 · Self-regulation","ps.method.p2":"Progression follows the principles of progressive overload and self-regulation via Rate of Perceived Exertion (RPE), with systematic technique correction before any increase in intensity.","ps.medical":"This supervised physical activity is preventive and educational in scope; it is in no way medical advice. Anyone with a condition or in doubt about their physical fitness should consult a qualified healthcare professional before starting.","ps.seances.title":"Session types","ps.seances.sub":"Fees differ according to your membership tier","ps.s1.name":"Initial Sport &amp; Stress assessment","ps.s1.meta":"1h · on joining","ps.s2.name":"Sport session (by level)","ps.s2.meta":"45 min · weekly to fortnightly","ps.s3.name":"Meditation &amp; Heart-rate Coherence workshop","ps.s3.meta":"1h · fortnightly","ps.s4.name":"Individual dietary follow-up","ps.s4.meta":"30 min · monthly","ps.s5.name":"Themed Master Class","ps.s5.meta":"2h · quarterly","ps.director.title":"Pole leadership","ps.director.sub":"ORIM Association Geneva","ps.director.role":"Director of the Sport, Nutrition &amp; Meditation Pole","ps.cta":"Become a member","ps.f.home":"Home","ps.f.join":"Become a member","qz.title":"What's your profile?","qz.subtitle":"30 seconds for a personalised recommendation","qz.progress":"Question {n} of {t}","qz.back":"&larr; Back","qz.q.niveau.text":"Where are you at with physical activity today?","qz.q.niveau.opt.debutant":"I'm starting out or returning after a long break","qz.q.niveau.opt.intermediaire":"I train occasionally","qz.q.niveau.opt.avance":"I train regularly (2x/week or more)","qz.q.objectif.text":"What is your main goal?","qz.q.objectif.opt.perte":"Lose weight, get leaner","qz.q.objectif.opt.muscle":"Build muscle, gain strength","qz.q.objectif.opt.stress":"Regain energy, manage my stress","qz.q.objectif.opt.bienetre":"General well-being, no specific goal","qz.q.contrainte.text":"Do you have an injury, pain or health condition to take into account?","qz.q.contrainte.opt.non":"No, no particular condition","qz.q.contrainte.opt.oui":"Yes, something to flag","qz.q.frequence.text":"How often do you think you could train?","qz.q.frequence.opt.1x":"Once a week","qz.q.frequence.opt.2a3x":"2 to 3 times a week","qz.q.frequence.opt.guidage":"Not sure yet, I need guidance","qz.q.interet.text":"How much of a priority is health for you right now?","qz.q.interet.opt.bas":"I'm just looking around, no urgency","qz.q.interet.opt.moyen":"It matters, I'm already making an effort","qz.q.interet.opt.haut":"It's a real priority, I want serious support","qz.result.intro":"Here is your profile, based on your answers:","qz.result.level.label":"Recommended level","qz.result.tier.label":"Suggested tier","qz.result.safety":"Your answers suggest a genuine need for follow-up. We recommend a supervised initial assessment and, if needed, referral to a qualified healthcare professional before starting.","qz.result.cta.join":"Become a member","qz.result.cta.profile":"Request follow-up","qz.result.restart":"Retake the quiz","qz.result.sent":"Thank you, your mail client has opened with your profile pre-filled."},
-"es":{"ps.back":"&larr; Volver al sitio ORIM","ps.kicker":"Asociación ORIM · Ginebra · Polo de Acompañamiento","ps.title":"Deporte, Alimentación y Meditación","ps.sub":"Calistenia multinivel, seguimiento alimentario y gestión del estrés, al servicio de cada miembro.","ps.desc":"Tres ejes complementarios a la Cocina Educativa, alineados con el Índice ORIM™ y supervisados por el comité científico de la Asociación.","ps.axes.title":"Tres ejes de intervención","ps.axes.sub":"Un acompañamiento individualizado, en complemento de los talleres colectivos","ps.axe1.name":"Deporte y actividad física adaptada","ps.axe1.desc":"Calistenia multinivel, calibrada según su fase (Desinflamación, Optimización, Autorregulación), con recomendaciones de intensidad y recuperación.","ps.axe2.name":"Alimentación — seguimiento individualizado","ps.axe2.desc":"Balances alimentarios personales y ajustes entre los talleres colectivos del FoodLab, en coordinación con el Polo de Cocina Educativa.","ps.axe3.name":"Meditación y gestión del estrés","ps.axe3.desc":"Coherencia cardiaca, respiración y meditación guiada, centradas en el estrés crónico como factor inmuno-metabólico.","ps.method.title":"Nuestro método fitness","ps.method.sub":"Calistenia · progresión por nivel · seguridad ante todo","ps.method.p1":"Cada sesión sigue una estructura en tres tiempos (calentamiento activo, circuito principal, vuelta a la calma) y ofrece sistemáticamente tres variantes de ejercicio, para que cada participante trabaje a la intensidad adecuada.","ps.lvl1.name":"Principiante","ps.lvl1.phase":"Fase 1 · Desinflamación","ps.lvl2.name":"Intermedio","ps.lvl2.phase":"Fase 2 · Optimización","ps.lvl3.name":"Avanzado","ps.lvl3.phase":"Fase 3 · Autorregulación","ps.method.p2":"La progresión sigue los principios de sobrecarga progresiva y autorregulación mediante la escala de percepción del esfuerzo (RPE), con corrección técnica sistemática antes de cualquier aumento de intensidad.","ps.medical":"Esta actividad física supervisada tiene una finalidad preventiva y educativa; en ningún caso constituye un consejo médico. Toda persona con una patología o duda sobre su aptitud física debe consultar a un profesional de la salud habilitado antes de comenzar.","ps.seances.title":"Tipos de sesiones","ps.seances.sub":"Tarifas diferenciadas según su nivel de adhesión","ps.s1.name":"Balance inicial Deporte y Estrés","ps.s1.meta":"1h · al ingresar","ps.s2.name":"Sesión de Deporte (por nivel)","ps.s2.meta":"45 min · semanal a quincenal","ps.s3.name":"Taller de Meditación y Coherencia Cardiaca","ps.s3.meta":"1h · quincenal","ps.s4.name":"Seguimiento alimentario individual","ps.s4.meta":"30 min · mensual","ps.s5.name":"Master Class temática","ps.s5.meta":"2h · trimestral","ps.director.title":"Dirección del polo","ps.director.sub":"Asociación ORIM Ginebra","ps.director.role":"Director del Polo Deporte, Alimentación y Meditación","ps.cta":"Hazte miembro","ps.f.home":"Inicio","ps.f.join":"Hazte miembro","qz.title":"¿Cuál es su perfil?","qz.subtitle":"30 segundos para una recomendación personalizada","qz.progress":"Pregunta {n} de {t}","qz.back":"&larr; Volver","qz.q.niveau.text":"¿Cómo se encuentra hoy con la actividad física?","qz.q.niveau.opt.debutant":"Empiezo o retomo tras una larga pausa","qz.q.niveau.opt.intermediaire":"Practico ocasionalmente","qz.q.niveau.opt.avance":"Entreno con regularidad (2x/semana o más)","qz.q.objectif.text":"¿Cuál es su objetivo principal?","qz.q.objectif.opt.perte":"Perder peso, afinar mi figura","qz.q.objectif.opt.muscle":"Ganar músculo, ganar fuerza","qz.q.objectif.opt.stress":"Recuperar energía, gestionar mi estrés","qz.q.objectif.opt.bienetre":"Bienestar general, sin objetivo concreto","qz.q.contrainte.text":"¿Tiene una lesión, dolor o condición de salud a tener en cuenta?","qz.q.contrainte.opt.non":"No, ninguna condición particular","qz.q.contrainte.opt.oui":"Sí, algo que señalar","qz.q.frequence.text":"¿Con qué frecuencia cree que podrá entrenar?","qz.q.frequence.opt.1x":"1 vez por semana","qz.q.frequence.opt.2a3x":"2 a 3 veces por semana","qz.q.frequence.opt.guidage":"Aún no lo sé, necesito orientación","qz.q.interet.text":"¿Hasta qué punto la salud es una prioridad para usted ahora mismo?","qz.q.interet.opt.bas":"Estoy mirando lo que se hace, sin urgencia","qz.q.interet.opt.moyen":"Es importante, ya hago esfuerzos","qz.q.interet.opt.haut":"Es una prioridad real, quiero un acompañamiento serio","qz.result.intro":"Este es su perfil, calculado a partir de sus respuestas:","qz.result.level.label":"Nivel recomendado","qz.result.tier.label":"Nivel de adhesión sugerido","qz.result.safety":"Sus respuestas sugieren una necesidad real de seguimiento. Recomendamos un balance inicial supervisado y, si es necesario, la orientación hacia un profesional de la salud habilitado antes de comenzar.","qz.result.cta.join":"Hazte miembro","qz.result.cta.profile":"Ser contactado/a","qz.result.restart":"Repetir el quiz","qz.result.sent":"Gracias, su gestor de correo se ha abierto con su perfil pre-rellenado."},
-"de":{"ps.back":"&larr; Zurück zur ORIM-Website","ps.kicker":"Verein ORIM · Genf · Begleitungsbereich","ps.title":"Sport, Ernährung &amp; Meditation","ps.sub":"Mehrstufiges Calisthenics, Ernährungsbegleitung und Stressmanagement für jedes Mitglied.","ps.desc":"Drei Säulen, die die Kulinarische Bildung ergänzen, ausgerichtet am ORIM™-Index und betreut vom wissenschaftlichen Komitee des Vereins.","ps.axes.title":"Drei Handlungsbereiche","ps.axes.sub":"Individuelle Begleitung, ergänzend zu den Gruppenworkshops","ps.axe1.name":"Sport &amp; angepasste körperliche Aktivität","ps.axe1.desc":"Mehrstufiges Calisthenics, angepasst an Ihre Phase (Entzündungshemmung, Optimierung, Selbstregulierung), mit Empfehlungen zu Intensität und Erholung.","ps.axe2.name":"Ernährung — individuelle Begleitung","ps.axe2.desc":"Persönliche Ernährungsbilanzen und Anpassungen zwischen den FoodLab-Gruppenworkshops, in Abstimmung mit dem Bereich Kulinarische Bildung.","ps.axe3.name":"Meditation &amp; Stressmanagement","ps.axe3.desc":"Herzkohärenz, Atmung und geführte Meditation, ausgerichtet auf chronischen Stress als immunmetabolischen Faktor.","ps.method.title":"Unsere Fitness-Methode","ps.method.sub":"Calisthenics · stufenweise Progression · Sicherheit zuerst","ps.method.p1":"Jede Einheit folgt einem dreiteiligen Aufbau (aktives Aufwärmen, Hauptzirkel, Abkühlung) und bietet systematisch drei Übungsvarianten, damit jede teilnehmende Person mit der passenden Intensität arbeitet.","ps.lvl1.name":"Anfänger","ps.lvl1.phase":"Phase 1 · Entzündungshemmung","ps.lvl2.name":"Fortgeschritten","ps.lvl2.phase":"Phase 2 · Optimierung","ps.lvl3.name":"Fortgeschritten+","ps.lvl3.phase":"Phase 3 · Selbstregulierung","ps.method.p2":"Die Progression folgt den Prinzipien der progressiven Überlastung und der Selbstregulierung mittels Belastungsempfinden-Skala (RPE), mit systematischer Technikkorrektur vor jeder Intensitätssteigerung.","ps.medical":"Diese betreute körperliche Aktivität hat einen präventiven und pädagogischen Zweck; sie stellt in keinem Fall einen medizinischen Rat dar. Personen mit einer Erkrankung oder Zweifeln an ihrer körperlichen Eignung sollten vor Beginn eine qualifizierte Fachperson des Gesundheitswesens konsultieren.","ps.seances.title":"Arten von Einheiten","ps.seances.sub":"Gebühren je nach Mitgliedschaftsstufe unterschiedlich","ps.s1.name":"Erstbilanz Sport &amp; Stress","ps.s1.meta":"1 Std. · beim Eintritt","ps.s2.name":"Sporteinheit (nach Stufe)","ps.s2.meta":"45 Min. · wöchentlich bis zweiwöchentlich","ps.s3.name":"Workshop Meditation &amp; Herzkohärenz","ps.s3.meta":"1 Std. · zweiwöchentlich","ps.s4.name":"Individuelle Ernährungsbegleitung","ps.s4.meta":"30 Min. · monatlich","ps.s5.name":"Themen-Master-Class","ps.s5.meta":"2 Std. · vierteljährlich","ps.director.title":"Bereichsleitung","ps.director.sub":"Verein ORIM Genf","ps.director.role":"Leiter des Bereichs Sport, Ernährung &amp; Meditation","ps.cta":"Mitglied werden","ps.f.home":"Startseite","ps.f.join":"Mitglied werden","qz.title":"Wie sieht Ihr Profil aus?","qz.subtitle":"30 Sekunden für eine persönliche Empfehlung","qz.progress":"Frage {n} von {t}","qz.back":"&larr; Zurück","qz.q.niveau.text":"Wo stehen Sie heute bei der körperlichen Aktivität?","qz.q.niveau.opt.debutant":"Ich fange an oder steige nach einer langen Pause wieder ein","qz.q.niveau.opt.intermediaire":"Ich trainiere gelegentlich","qz.q.niveau.opt.avance":"Ich trainiere regelmässig (2x/Woche oder mehr)","qz.q.objectif.text":"Was ist Ihr Hauptziel?","qz.q.objectif.opt.perte":"Gewicht verlieren, straffer werden","qz.q.objectif.opt.muscle":"Muskeln aufbauen, Kraft gewinnen","qz.q.objectif.opt.stress":"Energie zurückgewinnen, Stress bewältigen","qz.q.objectif.opt.bienetre":"Allgemeines Wohlbefinden, kein konkretes Ziel","qz.q.contrainte.text":"Haben Sie eine Verletzung, Schmerzen oder eine gesundheitliche Einschränkung zu berücksichtigen?","qz.q.contrainte.opt.non":"Nein, keine besondere Einschränkung","qz.q.contrainte.opt.oui":"Ja, etwas ist zu beachten","qz.q.frequence.text":"Wie oft, denken Sie, könnten Sie trainieren?","qz.q.frequence.opt.1x":"1 Mal pro Woche","qz.q.frequence.opt.2a3x":"2 bis 3 Mal pro Woche","qz.q.frequence.opt.guidage":"Noch nicht sicher, ich brauche Beratung","qz.q.interet.text":"Wie sehr steht Gesundheit für Sie gerade im Vordergrund?","qz.q.interet.opt.bas":"Ich schaue mich um, ohne Dringlichkeit","qz.q.interet.opt.moyen":"Es ist wichtig, ich bemühe mich bereits","qz.q.interet.opt.haut":"Es ist eine echte Priorität, ich möchte eine ernsthafte Begleitung","qz.result.intro":"Hier ist Ihr Profil, berechnet aus Ihren Antworten:","qz.result.level.label":"Empfohlene Stufe","qz.result.tier.label":"Empfohlene Mitgliedschaftsstufe","qz.result.safety":"Ihre Antworten deuten auf einen echten Betreuungsbedarf hin. Wir empfehlen eine betreute Erstbilanz und bei Bedarf die Vermittlung an eine qualifizierte Fachperson des Gesundheitswesens vor dem Start.","qz.result.cta.join":"Mitglied werden","qz.result.cta.profile":"Kontaktaufnahme wünschen","qz.result.restart":"Quiz wiederholen","qz.result.sent":"Danke, Ihr Mailprogramm hat sich mit Ihrem vorausgefüllten Profil geöffnet."},
-"pt":{"ps.back":"&larr; Voltar ao site ORIM","ps.kicker":"Associação ORIM · Genebra · Polo de Acompanhamento","ps.title":"Desporto, Alimentação e Meditação","ps.sub":"Calistenia multinível, acompanhamento alimentar e gestão do stress, ao serviço de cada membro.","ps.desc":"Três eixos complementares à Cozinha Educativa, alinhados com o Índice ORIM™ e supervisionados pelo comité científico da Associação.","ps.axes.title":"Três eixos de intervenção","ps.axes.sub":"Um acompanhamento individualizado, em complemento aos workshops coletivos","ps.axe1.name":"Desporto e atividade física adaptada","ps.axe1.desc":"Calistenia multinível, calibrada segundo a sua fase (Desinflamação, Otimização, Autorregulação), com recomendações de intensidade e recuperação.","ps.axe2.name":"Alimentação — acompanhamento individualizado","ps.axe2.desc":"Balanços alimentares pessoais e ajustes entre os workshops coletivos do FoodLab, em coordenação com o Polo de Cozinha Educativa.","ps.axe3.name":"Meditação e gestão do stress","ps.axe3.desc":"Coerência cardíaca, respiração e meditação guiada, centradas no stress crónico como fator imuno-metabólico.","ps.method.title":"O nosso método fitness","ps.method.sub":"Calistenia · progressão por nível · segurança em primeiro lugar","ps.method.p1":"Cada sessão segue uma estrutura em três tempos (aquecimento ativo, circuito principal, retorno à calma) e propõe sistematicamente três variantes de exercício, para que cada participante trabalhe na intensidade adequada.","ps.lvl1.name":"Iniciante","ps.lvl1.phase":"Fase 1 · Desinflamação","ps.lvl2.name":"Intermédio","ps.lvl2.phase":"Fase 2 · Otimização","ps.lvl3.name":"Avançado","ps.lvl3.phase":"Fase 3 · Autorregulação","ps.method.p2":"A progressão segue os princípios de sobrecarga progressiva e autorregulação pela escala de perceção do esforço (RPE), com correção técnica sistemática antes de qualquer aumento de intensidade.","ps.medical":"Esta atividade física supervisionada tem finalidade preventiva e educativa; não constitui, em caso algum, um parecer médico. Qualquer pessoa com uma patologia ou dúvida sobre a sua aptidão física deve consultar um profissional de saúde habilitado antes de começar.","ps.seances.title":"Tipos de sessões","ps.seances.sub":"Tarifas diferenciadas consoante o seu nível de adesão","ps.s1.name":"Balanço inicial Desporto e Stress","ps.s1.meta":"1h · na admissão","ps.s2.name":"Sessão de Desporto (por nível)","ps.s2.meta":"45 min · semanal a quinzenal","ps.s3.name":"Workshop Meditação e Coerência Cardíaca","ps.s3.meta":"1h · quinzenal","ps.s4.name":"Acompanhamento alimentar individual","ps.s4.meta":"30 min · mensal","ps.s5.name":"Master Class temática","ps.s5.meta":"2h · trimestral","ps.director.title":"Direção do polo","ps.director.sub":"Associação ORIM Genebra","ps.director.role":"Diretor do Polo Desporto, Alimentação e Meditação","ps.cta":"Tornar-se membro","ps.f.home":"Início","ps.f.join":"Tornar-se membro","qz.title":"Qual é o seu perfil?","qz.subtitle":"30 segundos para uma recomendação personalizada","qz.progress":"Pergunta {n} de {t}","qz.back":"&larr; Voltar","qz.q.niveau.text":"Como está hoje com a atividade física?","qz.q.niveau.opt.debutant":"Estou a começar ou a retomar após uma longa pausa","qz.q.niveau.opt.intermediaire":"Pratico ocasionalmente","qz.q.niveau.opt.avance":"Treino regularmente (2x/semana ou mais)","qz.q.objectif.text":"Qual é o seu principal objetivo?","qz.q.objectif.opt.perte":"Perder peso, definir","qz.q.objectif.opt.muscle":"Ganhar músculo, ganhar força","qz.q.objectif.opt.stress":"Recuperar energia, gerir o meu stress","qz.q.objectif.opt.bienetre":"Bem-estar geral, sem objetivo específico","qz.q.contrainte.text":"Tem alguma lesão, dor ou condição de saúde a ter em conta?","qz.q.contrainte.opt.non":"Não, nenhuma condição particular","qz.q.contrainte.opt.oui":"Sim, algo a assinalar","qz.q.frequence.text":"Com que frequência pensa poder treinar?","qz.q.frequence.opt.1x":"1 vez por semana","qz.q.frequence.opt.2a3x":"2 a 3 vezes por semana","qz.q.frequence.opt.guidage":"Ainda não sei, preciso de orientação","qz.q.interet.text":"Até que ponto a saúde é uma prioridade para si neste momento?","qz.q.interet.opt.bas":"Estou só a ver o que existe, sem urgência","qz.q.interet.opt.moyen":"É importante, já faço esforços","qz.q.interet.opt.haut":"É uma verdadeira prioridade, quero um acompanhamento sério","qz.result.intro":"Aqui está o seu perfil, calculado a partir das suas respostas:","qz.result.level.label":"Nível recomendado","qz.result.tier.label":"Nível de adesão sugerido","qz.result.safety":"As suas respostas sugerem uma necessidade real de acompanhamento. Recomendamos um balanço inicial supervisionado e, se necessário, o encaminhamento para um profissional de saúde habilitado antes de começar.","qz.result.cta.join":"Tornar-se membro","qz.result.cta.profile":"Ser contactado(a)","qz.result.restart":"Refazer o quiz","qz.result.sent":"Obrigado, o seu cliente de e-mail abriu-se com o seu perfil pré-preenchido."},
-"it":{"ps.back":"&larr; Ritorna al sito ORIM","ps.kicker":"Associazione ORIM · Ginevra · Polo di Accompagnamento","ps.title":"Sport, Alimentazione e Meditazione","ps.sub":"Calistenia multilivello, monitoraggio alimentare e gestione dello stress, al servizio di ogni membro.","ps.desc":"Tre assi complementari alla Cucina Educativa, allineati con l'Indice ORIM™ e supervisionati dal comitato scientifico dell'Associazione.","ps.axes.title":"Tre assi di intervento","ps.axes.sub":"Un accompagnamento individualizzato, a complemento dei laboratori collettivi","ps.axe1.name":"Sport e attività fisica adattata","ps.axe1.desc":"Calistenia multilivello, calibrata secondo la vostra fase (Disinfiammazione, Ottimizzazione, Autoregolazione), con raccomandazioni di intensità e recupero.","ps.axe2.name":"Alimentazione — monitoraggio individualizzato","ps.axe2.desc":"Bilanci alimentari personali e aggiustamenti tra i laboratori collettivi del FoodLab, in coordinamento con il Polo Cucina Educativa.","ps.axe3.name":"Meditazione e gestione dello stress","ps.axe3.desc":"Coerenza cardiaca, respirazione e meditazione guidata, mirate allo stress cronico come fattore immuno-metabolico.","ps.method.title":"Il nostro metodo fitness","ps.method.sub":"Calistenia · progressione per livello · sicurezza prima di tutto","ps.method.p1":"Ogni sessione segue una struttura in tre tempi (riscaldamento attivo, circuito principale, ritorno alla calma) e propone sistematicamente tre varianti di esercizio, affinché ogni partecipante lavori all'intensità adeguata.","ps.lvl1.name":"Principiante","ps.lvl1.phase":"Fase 1 · Disinfiammazione","ps.lvl2.name":"Intermedio","ps.lvl2.phase":"Fase 2 · Ottimizzazione","ps.lvl3.name":"Avanzato","ps.lvl3.phase":"Fase 3 · Autoregolazione","ps.method.p2":"La progressione segue i principi del sovraccarico progressivo e dell'autoregolazione tramite la scala di percezione dello sforzo (RPE), con correzione tecnica sistematica prima di ogni aumento di intensità.","ps.medical":"Questa attività fisica supervisionata ha finalità preventiva ed educativa; non costituisce in alcun caso un parere medico. Chiunque presenti una patologia o un dubbio sulla propria idoneità fisica deve consultare un professionista sanitario abilitato prima di iniziare.","ps.seances.title":"Tipi di sessioni","ps.seances.sub":"Tariffe differenziate secondo il vostro livello di adesione","ps.s1.name":"Bilancio iniziale Sport e Stress","ps.s1.meta":"1h · all'ingresso","ps.s2.name":"Sessione Sport (per livello)","ps.s2.meta":"45 min · settimanale-quindicinale","ps.s3.name":"Laboratorio Meditazione e Coerenza Cardiaca","ps.s3.meta":"1h · quindicinale","ps.s4.name":"Monitoraggio alimentare individuale","ps.s4.meta":"30 min · mensile","ps.s5.name":"Master Class tematica","ps.s5.meta":"2h · trimestrale","ps.director.title":"Direzione del polo","ps.director.sub":"Associazione ORIM Ginevra","ps.director.role":"Direttore del Polo Sport, Alimentazione e Meditazione","ps.cta":"Diventare membro","ps.f.home":"Home","ps.f.join":"Diventare membro","qz.title":"Qual è il vostro profilo?","qz.subtitle":"30 secondi per una raccomandazione personalizzata","qz.progress":"Domanda {n} di {t}","qz.back":"&larr; Indietro","qz.q.niveau.text":"A che punto siete oggi con l'attività fisica?","qz.q.niveau.opt.debutant":"Sto iniziando o riprendo dopo una lunga pausa","qz.q.niveau.opt.intermediaire":"Pratico occasionalmente","qz.q.niveau.opt.avance":"Mi alleno regolarmente (2x/settimana o più)","qz.q.objectif.text":"Qual è il vostro obiettivo principale?","qz.q.objectif.opt.perte":"Perdere peso, tonificarmi","qz.q.objectif.opt.muscle":"Aumentare la massa muscolare, la forza","qz.q.objectif.opt.stress":"Ritrovare energia, gestire lo stress","qz.q.objectif.opt.bienetre":"Benessere generale, senza obiettivo preciso","qz.q.contrainte.text":"Avete un infortunio, un dolore o una condizione di salute da considerare?","qz.q.contrainte.opt.non":"No, nessuna condizione particolare","qz.q.contrainte.opt.oui":"Sì, qualcosa da segnalare","qz.q.frequence.text":"Con quale frequenza pensate di potervi allenare?","qz.q.frequence.opt.1x":"1 volta a settimana","qz.q.frequence.opt.2a3x":"2-3 volte a settimana","qz.q.frequence.opt.guidage":"Non lo so ancora, ho bisogno di essere guidato/a","qz.q.interet.text":"Quanto è prioritaria la salute per voi in questo momento?","qz.q.interet.opt.bas":"Sto solo guardando, senza urgenza","qz.q.interet.opt.moyen":"È importante, mi sto già impegnando","qz.q.interet.opt.haut":"È una vera priorità, voglio un accompagnamento serio","qz.result.intro":"Ecco il vostro profilo, calcolato in base alle vostre risposte:","qz.result.level.label":"Livello raccomandato","qz.result.tier.label":"Livello di adesione consigliato","qz.result.safety":"Le vostre risposte suggeriscono un reale bisogno di accompagnamento. Raccomandiamo un bilancio iniziale supervisionato e, se necessario, l'orientamento verso un professionista sanitario abilitato prima di iniziare.","qz.result.cta.join":"Diventare membro","qz.result.cta.profile":"Essere ricontattato/a","qz.result.restart":"Rifare il quiz","qz.result.sent":"Grazie, il vostro client di posta si è aperto con il profilo precompilato."}};
+var I18N = {"fr": {"nav.back": "&larr; Retour au site ORIM", "hero.kicker": "Genève · Calisthénie · Nutrition · Méditation", "hero.title": "Reprenez le pouvoir sur votre <em>énergie</em>.", "hero.sub": "Calisthénie en plein air, alimentation immuno-métabolique et respiration : une méthode complète et progressive, portée par la science ORIM™, pour un corps fort et un esprit clair.", "hero.cta1": "Rejoindre le Pôle Sport", "hero.cta2": "Faire mon bilan gratuit", "hero.scroll": "Découvrir", "axes.kicker": "Une approche, trois leviers", "axes.title": "Le corps, l'assiette, le souffle.", "axes.lead": "Trois axes qui se répondent, en complément des ateliers collectifs. Parce qu'une vraie énergie ne se construit jamais sur un seul pilier.", "axe1.tag": "Le corps", "axe1.title": "Bouger avec justesse", "axe1.hook": "La force du poids de corps, en pleine nature.", "axe1.body": "Calisthénie multiniveau, calibrée sur votre phase. Vous gagnez en force, en mobilité et en confiance — sans matériel, à votre rythme.", "axe2.tag": "L'assiette", "axe2.title": "Manger pour son énergie", "axe2.hook": "Des couleurs dans l'assiette, de la vitalité dans le corps.", "axe2.body": "Un suivi alimentaire personnalisé, scoré par l'Indice ORIM™, en lien avec les ateliers du FoodLab. Vous apprenez à nourrir votre récupération, jour après jour.", "axe3.tag": "Le souffle", "axe3.title": "Apaiser le mental", "axe3.hook": "Retrouver le calme, même au cœur de l'effort.", "axe3.body": "Cohérence cardiaque, respiration et méditation guidée. Vous relâchez la pression, vous récupérez mieux, vous gardez l'esprit clair.", "method.kicker": "Notre méthode", "method.title": "Une progression, trois phases.", "method.lead": "La calisthénie ORIM avance par étapes, alignées sur les trois phases de votre parcours. Chaque exercice existe en trois variantes : vous commencez exactement là où vous êtes, et vous progressez en sécurité.", "lvl.d.tag": "Phase 1 · Désinflammation", "lvl.d.name": "Débutant", "lvl.d.promise": "On pose des bases saines, on réveille le corps en douceur, on retrouve le plaisir de bouger.", "lvl.i.tag": "Phase 2 · Optimisation", "lvl.i.name": "Intermédiaire", "lvl.i.promise": "On monte en intensité, on affine la technique, on installe la régularité qui transforme.", "lvl.a.tag": "Phase 3 · Autorégulation", "lvl.a.name": "Avancé", "lvl.a.promise": "On maîtrise, on compose ses séances en autonomie, on vise une performance durable et sereine.", "method.note": "Surcharge progressive, autorégulation par l'effort ressenti, correction technique avant l'intensité. Toujours la technique avant la performance.", "feel.kicker": "Ce que vous allez ressentir", "feel.title": "Bien plus qu'une séance.", "feel1.title": "L'énergie du matin", "feel1.body": "Vous vous levez plus léger, l'esprit dégagé, prêt à mordre dans la journée.", "feel2.title": "Un corps qui répond", "feel2.body": "Plus de force, plus de mobilité, moins de raideurs. Votre corps redevient un allié.", "feel3.title": "Un mental apaisé", "feel3.body": "Le souffle qui ralentit, la pression qui retombe, la clarté qui revient.", "feel4.title": "Une communauté", "feel4.body": "Des visages qui vous reconnaissent, une énergie collective, l'envie de revenir.", "feel.invite": "Vous serez parmi les premiers membres du Pôle. Votre histoire, bientôt, inspirera les suivants.", "bilan.kicker": "Bilan gratuit · 30 secondes", "bilan.title": "Par où commencer ?", "bilan.lead": "Cinq questions pour découvrir votre niveau, votre phase et le suivi qui vous correspond. Sans engagement.", "tiers.kicker": "Rejoindre l'Association", "tiers.title": "Choisissez votre engagement.", "tiers.lead": "L'accès aux séances du Pôle se fait par l'adhésion à l'Association ORIM. Trois niveaux, un accompagnement qui s'approfondit avec vous.", "tier.s.name": "Standard", "tier.s.price": "150 CHF / an", "tier.s.tagline": "Pour démarrer en douceur", "tier.s.f1": "App ORIM & menus de base", "tier.s.f2": "Newsletter hebdomadaire", "tier.s.f3": "Forum communautaire", "tier.b.name": "Bienfaiteur", "tier.b.price": "500 CHF / an", "tier.b.tagline": "Le plus complet pour progresser", "tier.b.badge": "Recommandé", "tier.b.f1": "Tout le Standard", "tier.b.f2": "Ateliers cuisine & séances sport", "tier.b.f3": "Webinaires mensuels", "tier.b.f4": "Communauté privée & bulletin R&D", "tier.p.name": "Premium", "tier.p.price": "950 CHF / an", "tier.p.tagline": "L'accompagnement sur mesure", "tier.p.f1": "Tout le Bienfaiteur", "tier.p.f2": "Consultations praticien & FoodLab", "tier.p.f3": "Suivi alimentaire personnalisé", "tier.p.f4": "Accès prioritaire aux événements", "tiers.cta": "Devenir membre", "comm.kicker": "La communauté ORIM", "comm.title": "On progresse mieux, ensemble.", "comm.body": "À Genève, le Pôle Sport, c'est un collectif qui s'encourage, transpire et rit ensemble. Rejoignez un groupe qui vous tire vers le haut.", "gal.title": "En images", "dir.kicker": "Direction du pôle", "dir.title": "Une passion au service de votre progression.", "dir.role": "Directeur du Pôle Sport, Alimentation & Méditation", "dir.bio": "Passionné de calisthénie et de mouvement naturel, Ismael met son énergie au service de chaque membre : une méthode exigeante mais bienveillante, où la technique et le plaisir avancent ensemble.", "medical": "Cette activité physique encadrée a une visée préventive et éducative ; elle ne constitue en aucun cas un avis médical. En cas de pathologie ou de doute sur votre aptitude physique, consultez un professionnel de santé habilité avant de débuter.", "foot.title": "Prêt à bouger ?", "foot.body": "Faites votre bilan gratuit ou rejoignez dès maintenant l'Association ORIM et son Pôle Sport.", "foot.cta": "Devenir membre", "foot.home": "Accueil", "foot.join": "Faire mon bilan gratuit", "qz.title": "Quel est votre profil ?", "qz.subtitle": "30 secondes pour une recommandation personnalisée", "qz.progress": "Question {n} sur {t}", "qz.back": "&larr; Retour", "qz.q.niveau.text": "Où en êtes-vous avec l'activité physique aujourd'hui ?", "qz.q.niveau.opt.debutant": "Je débute ou je reprends après une longue pause", "qz.q.niveau.opt.intermediaire": "Je pratique occasionnellement", "qz.q.niveau.opt.avance": "Je m'entraîne régulièrement (2x/semaine ou plus)", "qz.q.objectif.text": "Quel est votre objectif principal ?", "qz.q.objectif.opt.perte": "Perdre du poids, m'affiner", "qz.q.objectif.opt.muscle": "Prendre du muscle, de la force", "qz.q.objectif.opt.stress": "Retrouver de l'énergie, gérer mon stress", "qz.q.objectif.opt.bienetre": "Bien-être général, sans objectif précis", "qz.q.contrainte.text": "Avez-vous une blessure, une douleur ou une contrainte de santé à prendre en compte ?", "qz.q.contrainte.opt.non": "Non, aucune contrainte particulière", "qz.q.contrainte.opt.oui": "Oui, une contrainte à signaler", "qz.q.frequence.text": "À quelle fréquence pensez-vous pouvoir vous entraîner ?", "qz.q.frequence.opt.1x": "1 fois par semaine", "qz.q.frequence.opt.2a3x": "2 à 3 fois par semaine", "qz.q.frequence.opt.guidage": "Je ne sais pas encore, j'ai besoin d'être guidé(e)", "qz.q.interet.text": "À quel point la santé est-elle une priorité pour vous en ce moment ?", "qz.q.interet.opt.bas": "Je regarde ce qui se fait, sans urgence", "qz.q.interet.opt.moyen": "C'est important, je fais déjà des efforts", "qz.q.interet.opt.haut": "C'est une vraie priorité, je veux un accompagnement sérieux", "qz.result.intro": "Voici votre profil, calculé à partir de vos réponses :", "qz.result.level.label": "Niveau recommandé", "qz.result.tier.label": "Palier conseillé", "qz.result.safety": "Vos réponses suggèrent un réel besoin de suivi. Nous recommandons un bilan initial encadré et, si nécessaire, l'orientation vers un professionnel de santé habilité avant de débuter.", "qz.result.cta.join": "Devenir membre", "qz.result.cta.profile": "Être recontacté(e)", "qz.result.restart": "Refaire le quiz", "qz.result.sent": "Merci, votre messagerie s'est ouverte avec votre profil pré-rempli."}, "en": {"nav.back": "&larr; Back to the ORIM site", "hero.kicker": "Geneva · Calisthenics · Nutrition · Meditation", "hero.title": "Take back control of your <em>energy</em>.", "hero.sub": "Outdoor calisthenics, immuno-metabolic nutrition and breathing: a complete, progressive method, grounded in ORIM™ science, for a strong body and a clear mind.", "hero.cta1": "Join the Sport Pole", "hero.cta2": "Take my free assessment", "hero.scroll": "Discover", "axes.kicker": "One approach, three levers", "axes.title": "The body, the plate, the breath.", "axes.lead": "Three areas that reinforce one another, complementing the group workshops. Because real energy is never built on a single pillar.", "axe1.tag": "The body", "axe1.title": "Move with precision", "axe1.hook": "The power of bodyweight, out in nature.", "axe1.body": "Multi-level calisthenics, calibrated to your phase. You gain strength, mobility and confidence — no equipment, at your own pace.", "axe2.tag": "The plate", "axe2.title": "Eat for your energy", "axe2.hook": "Colour on the plate, vitality in the body.", "axe2.body": "Personalised dietary follow-up, scored by the ORIM™ Index, linked to the FoodLab workshops. You learn to fuel your recovery, day after day.", "axe3.tag": "The breath", "axe3.title": "Calm the mind", "axe3.hook": "Finding calm, even in the heart of effort.", "axe3.body": "Heart-rate coherence, breathing and guided meditation. You release the pressure, recover better and keep a clear mind.", "method.kicker": "Our method", "method.title": "One progression, three phases.", "method.lead": "ORIM calisthenics advances step by step, aligned with the three phases of your journey. Every exercise comes in three variants: you start exactly where you are, and you progress safely.", "lvl.d.tag": "Phase 1 · Anti-inflammation", "lvl.d.name": "Beginner", "lvl.d.promise": "We build healthy foundations, gently wake the body and rediscover the joy of moving.", "lvl.i.tag": "Phase 2 · Optimisation", "lvl.i.name": "Intermediate", "lvl.i.promise": "We step up the intensity, refine technique and build the consistency that transforms.", "lvl.a.tag": "Phase 3 · Self-regulation", "lvl.a.name": "Advanced", "lvl.a.promise": "We master, design our own sessions independently and aim for lasting, serene performance.", "method.note": "Progressive overload, self-regulation by perceived effort, technique corrected before intensity. Always technique before performance.", "feel.kicker": "What you will feel", "feel.title": "Far more than a session.", "feel1.title": "Morning energy", "feel1.body": "You wake up lighter, mind clear, ready to seize the day.", "feel2.title": "A body that responds", "feel2.body": "More strength, more mobility, less stiffness. Your body becomes an ally again.", "feel3.title": "A calmer mind", "feel3.body": "Breath slowing, pressure easing, clarity returning.", "feel4.title": "A community", "feel4.body": "Faces that recognise you, a collective energy, the urge to come back.", "feel.invite": "You will be among the Pole's first members. Your story, soon, will inspire the next ones.", "bilan.kicker": "Free assessment · 30 seconds", "bilan.title": "Where to begin?", "bilan.lead": "Five questions to discover your level, your phase and the guidance that fits you. No commitment.", "tiers.kicker": "Join the Association", "tiers.title": "Choose your commitment.", "tiers.lead": "Access to the Pole's sessions comes through membership of the ORIM Association. Three tiers, support that deepens with you.", "tier.s.name": "Standard", "tier.s.price": "150 CHF / year", "tier.s.tagline": "To start gently", "tier.s.f1": "ORIM app & basic menus", "tier.s.f2": "Weekly newsletter", "tier.s.f3": "Community forum", "tier.b.name": "Bienfaiteur", "tier.b.price": "500 CHF / year", "tier.b.tagline": "The most complete way to progress", "tier.b.badge": "Recommended", "tier.b.f1": "Everything in Standard", "tier.b.f2": "Cooking workshops & sport sessions", "tier.b.f3": "Monthly webinars", "tier.b.f4": "Private community & R&D bulletin", "tier.p.name": "Premium", "tier.p.price": "950 CHF / year", "tier.p.tagline": "Tailored support", "tier.p.f1": "Everything in Bienfaiteur", "tier.p.f2": "Practitioner consultations & FoodLab", "tier.p.f3": "Personalised dietary follow-up", "tier.p.f4": "Priority access to events", "tiers.cta": "Become a member", "comm.kicker": "The ORIM community", "comm.title": "We progress better, together.", "comm.body": "In Geneva, the Sport Pole is a collective that encourages, sweats and laughs together. Join a group that lifts you up.", "gal.title": "In pictures", "dir.kicker": "Pole leadership", "dir.title": "A passion in the service of your progress.", "dir.role": "Director of the Sport, Nutrition & Meditation Pole", "dir.bio": "Passionate about calisthenics and natural movement, Ismael puts his energy at the service of every member: a demanding yet caring method, where technique and enjoyment move forward together.", "medical": "This supervised physical activity is preventive and educational in scope; it is in no way medical advice. In case of a condition or doubt about your physical fitness, consult a qualified healthcare professional before starting.", "foot.title": "Ready to move?", "foot.body": "Take your free assessment or join the ORIM Association and its Sport Pole right now.", "foot.cta": "Become a member", "foot.home": "Home", "foot.join": "Take my free assessment", "qz.title": "What's your profile?", "qz.subtitle": "30 seconds for a personalised recommendation", "qz.progress": "Question {n} of {t}", "qz.back": "&larr; Back", "qz.q.niveau.text": "Where are you at with physical activity today?", "qz.q.niveau.opt.debutant": "I'm starting out or returning after a long break", "qz.q.niveau.opt.intermediaire": "I train occasionally", "qz.q.niveau.opt.avance": "I train regularly (2x/week or more)", "qz.q.objectif.text": "What is your main goal?", "qz.q.objectif.opt.perte": "Lose weight, get leaner", "qz.q.objectif.opt.muscle": "Build muscle, gain strength", "qz.q.objectif.opt.stress": "Regain energy, manage my stress", "qz.q.objectif.opt.bienetre": "General well-being, no specific goal", "qz.q.contrainte.text": "Do you have an injury, pain or health condition to take into account?", "qz.q.contrainte.opt.non": "No, no particular condition", "qz.q.contrainte.opt.oui": "Yes, something to flag", "qz.q.frequence.text": "How often do you think you could train?", "qz.q.frequence.opt.1x": "Once a week", "qz.q.frequence.opt.2a3x": "2 to 3 times a week", "qz.q.frequence.opt.guidage": "Not sure yet, I need guidance", "qz.q.interet.text": "How much of a priority is health for you right now?", "qz.q.interet.opt.bas": "I'm just looking around, no urgency", "qz.q.interet.opt.moyen": "It matters, I'm already making an effort", "qz.q.interet.opt.haut": "It's a real priority, I want serious support", "qz.result.intro": "Here is your profile, based on your answers:", "qz.result.level.label": "Recommended level", "qz.result.tier.label": "Suggested tier", "qz.result.safety": "Your answers suggest a genuine need for follow-up. We recommend a supervised initial assessment and, if needed, referral to a qualified healthcare professional before starting.", "qz.result.cta.join": "Become a member", "qz.result.cta.profile": "Request follow-up", "qz.result.restart": "Retake the quiz", "qz.result.sent": "Thank you, your mail client has opened with your profile pre-filled."}, "es": {"nav.back": "&larr; Volver al sitio ORIM", "hero.kicker": "Ginebra · Calistenia · Nutrición · Meditación", "hero.title": "Recupere el control de su <em>energía</em>.", "hero.sub": "Calistenia al aire libre, alimentación inmuno-metabólica y respiración: un método completo y progresivo, basado en la ciencia ORIM™, para un cuerpo fuerte y una mente clara.", "hero.cta1": "Unirse al Polo Deporte", "hero.cta2": "Hacer mi balance gratuito", "hero.scroll": "Descubrir", "axes.kicker": "Un enfoque, tres palancas", "axes.title": "El cuerpo, el plato, el aliento.", "axes.lead": "Tres ejes que se refuerzan entre sí, en complemento de los talleres colectivos. Porque una verdadera energía nunca se construye sobre un solo pilar.", "axe1.tag": "El cuerpo", "axe1.title": "Moverse con precisión", "axe1.hook": "La fuerza del peso corporal, en plena naturaleza.", "axe1.body": "Calistenia multinivel, calibrada según su fase. Gana fuerza, movilidad y confianza — sin material, a su ritmo.", "axe2.tag": "El plato", "axe2.title": "Comer para su energía", "axe2.hook": "Color en el plato, vitalidad en el cuerpo.", "axe2.body": "Un seguimiento alimentario personalizado, evaluado por el Índice ORIM™, ligado a los talleres del FoodLab. Aprende a nutrir su recuperación, día tras día.", "axe3.tag": "El aliento", "axe3.title": "Calmar la mente", "axe3.hook": "Reencontrar la calma, incluso en pleno esfuerzo.", "axe3.body": "Coherencia cardiaca, respiración y meditación guiada. Libera la presión, se recupera mejor y mantiene la mente clara.", "method.kicker": "Nuestro método", "method.title": "Una progresión, tres fases.", "method.lead": "La calistenia ORIM avanza por etapas, alineadas con las tres fases de su recorrido. Cada ejercicio existe en tres variantes: empieza exactamente donde está y progresa con seguridad.", "lvl.d.tag": "Fase 1 · Desinflamación", "lvl.d.name": "Principiante", "lvl.d.promise": "Construimos bases sanas, despertamos el cuerpo con suavidad y recuperamos el placer de movernos.", "lvl.i.tag": "Fase 2 · Optimización", "lvl.i.name": "Intermedio", "lvl.i.promise": "Subimos la intensidad, afinamos la técnica e instalamos la constancia que transforma.", "lvl.a.tag": "Fase 3 · Autorregulación", "lvl.a.name": "Avanzado", "lvl.a.promise": "Dominamos, componemos nuestras sesiones con autonomía y buscamos un rendimiento duradero y sereno.", "method.note": "Sobrecarga progresiva, autorregulación por el esfuerzo percibido, corrección técnica antes que la intensidad. Siempre la técnica antes que el rendimiento.", "feel.kicker": "Lo que va a sentir", "feel.title": "Mucho más que una sesión.", "feel1.title": "La energía de la mañana", "feel1.body": "Se levanta más ligero, con la mente despejada, listo para afrontar el día.", "feel2.title": "Un cuerpo que responde", "feel2.body": "Más fuerza, más movilidad, menos rigidez. Su cuerpo vuelve a ser un aliado.", "feel3.title": "Una mente serena", "feel3.body": "La respiración que se ralentiza, la presión que baja, la claridad que regresa.", "feel4.title": "Una comunidad", "feel4.body": "Rostros que le reconocen, una energía colectiva, las ganas de volver.", "feel.invite": "Estará entre los primeros miembros del Polo. Su historia, pronto, inspirará a los siguientes.", "bilan.kicker": "Balance gratuito · 30 segundos", "bilan.title": "¿Por dónde empezar?", "bilan.lead": "Cinco preguntas para descubrir su nivel, su fase y el seguimiento que le corresponde. Sin compromiso.", "tiers.kicker": "Unirse a la Asociación", "tiers.title": "Elija su compromiso.", "tiers.lead": "El acceso a las sesiones del Polo se realiza mediante la adhesión a la Asociación ORIM. Tres niveles, un acompañamiento que se profundiza con usted.", "tier.s.name": "Standard", "tier.s.price": "150 CHF / año", "tier.s.tagline": "Para empezar con suavidad", "tier.s.f1": "App ORIM y menús básicos", "tier.s.f2": "Boletín semanal", "tier.s.f3": "Foro comunitario", "tier.b.name": "Bienfaiteur", "tier.b.price": "500 CHF / año", "tier.b.tagline": "Lo más completo para progresar", "tier.b.badge": "Recomendado", "tier.b.f1": "Todo lo del Standard", "tier.b.f2": "Talleres de cocina y sesiones de deporte", "tier.b.f3": "Webinars mensuales", "tier.b.f4": "Comunidad privada y boletín I+D", "tier.p.name": "Premium", "tier.p.price": "950 CHF / año", "tier.p.tagline": "El acompañamiento a medida", "tier.p.f1": "Todo lo del Bienfaiteur", "tier.p.f2": "Consultas con profesional y FoodLab", "tier.p.f3": "Seguimiento alimentario personalizado", "tier.p.f4": "Acceso prioritario a eventos", "tiers.cta": "Hazte miembro", "comm.kicker": "La comunidad ORIM", "comm.title": "Progresamos mejor, juntos.", "comm.body": "En Ginebra, el Polo Deporte es un colectivo que se anima, suda y ríe junto. Únase a un grupo que le impulsa hacia arriba.", "gal.title": "En imágenes", "dir.kicker": "Dirección del polo", "dir.title": "Una pasión al servicio de su progresión.", "dir.role": "Director del Polo Deporte, Alimentación y Meditación", "dir.bio": "Apasionado de la calistenia y del movimiento natural, Ismael pone su energía al servicio de cada miembro: un método exigente pero cercano, donde la técnica y el placer avanzan juntos.", "medical": "Esta actividad física supervisada tiene una finalidad preventiva y educativa; en ningún caso constituye un consejo médico. En caso de patología o duda sobre su aptitud física, consulte a un profesional de la salud habilitado antes de comenzar.", "foot.title": "¿Listo para moverse?", "foot.body": "Haga su balance gratuito o únase ahora mismo a la Asociación ORIM y su Polo Deporte.", "foot.cta": "Hazte miembro", "foot.home": "Inicio", "foot.join": "Hacer mi balance gratuito", "qz.title": "¿Cuál es su perfil?", "qz.subtitle": "30 segundos para una recomendación personalizada", "qz.progress": "Pregunta {n} de {t}", "qz.back": "&larr; Volver", "qz.q.niveau.text": "¿Cómo se encuentra hoy con la actividad física?", "qz.q.niveau.opt.debutant": "Empiezo o retomo tras una larga pausa", "qz.q.niveau.opt.intermediaire": "Practico ocasionalmente", "qz.q.niveau.opt.avance": "Entreno con regularidad (2x/semana o más)", "qz.q.objectif.text": "¿Cuál es su objetivo principal?", "qz.q.objectif.opt.perte": "Perder peso, afinar mi figura", "qz.q.objectif.opt.muscle": "Ganar músculo, ganar fuerza", "qz.q.objectif.opt.stress": "Recuperar energía, gestionar mi estrés", "qz.q.objectif.opt.bienetre": "Bienestar general, sin objetivo concreto", "qz.q.contrainte.text": "¿Tiene una lesión, dolor o condición de salud a tener en cuenta?", "qz.q.contrainte.opt.non": "No, ninguna condición particular", "qz.q.contrainte.opt.oui": "Sí, algo que señalar", "qz.q.frequence.text": "¿Con qué frecuencia cree que podrá entrenar?", "qz.q.frequence.opt.1x": "1 vez por semana", "qz.q.frequence.opt.2a3x": "2 a 3 veces por semana", "qz.q.frequence.opt.guidage": "Aún no lo sé, necesito orientación", "qz.q.interet.text": "¿Hasta qué punto la salud es una prioridad para usted ahora mismo?", "qz.q.interet.opt.bas": "Estoy mirando lo que se hace, sin urgencia", "qz.q.interet.opt.moyen": "Es importante, ya hago esfuerzos", "qz.q.interet.opt.haut": "Es una prioridad real, quiero un acompañamiento serio", "qz.result.intro": "Este es su perfil, calculado a partir de sus respuestas:", "qz.result.level.label": "Nivel recomendado", "qz.result.tier.label": "Nivel de adhesión sugerido", "qz.result.safety": "Sus respuestas sugieren una necesidad real de seguimiento. Recomendamos un balance inicial supervisado y, si es necesario, la orientación hacia un profesional de la salud habilitado antes de comenzar.", "qz.result.cta.join": "Hazte miembro", "qz.result.cta.profile": "Ser contactado/a", "qz.result.restart": "Repetir el quiz", "qz.result.sent": "Gracias, su gestor de correo se ha abierto con su perfil pre-rellenado."}, "de": {"nav.back": "&larr; Zurück zur ORIM-Website", "hero.kicker": "Genf · Calisthenics · Ernährung · Meditation", "hero.title": "Übernehmen Sie wieder die Kontrolle über Ihre <em>Energie</em>.", "hero.sub": "Calisthenics im Freien, immunmetabolische Ernährung und Atmung: eine vollständige, progressive Methode, gestützt auf die ORIM™-Wissenschaft, für einen starken Körper und einen klaren Geist.", "hero.cta1": "Dem Sportbereich beitreten", "hero.cta2": "Meine kostenlose Standortbestimmung", "hero.scroll": "Entdecken", "axes.kicker": "Ein Ansatz, drei Hebel", "axes.title": "Der Körper, der Teller, der Atem.", "axes.lead": "Drei Bereiche, die sich gegenseitig verstärken, ergänzend zu den Gruppenworkshops. Denn echte Energie entsteht nie aus einer einzigen Säule.", "axe1.tag": "Der Körper", "axe1.title": "Präzise bewegen", "axe1.hook": "Die Kraft des eigenen Körpergewichts, mitten in der Natur.", "axe1.body": "Mehrstufiges Calisthenics, abgestimmt auf Ihre Phase. Sie gewinnen Kraft, Beweglichkeit und Selbstvertrauen — ohne Geräte, in Ihrem Tempo.", "axe2.tag": "Der Teller", "axe2.title": "Für die eigene Energie essen", "axe2.hook": "Farbe auf dem Teller, Vitalität im Körper.", "axe2.body": "Persönliche Ernährungsbegleitung, bewertet durch den ORIM™-Index, verbunden mit den FoodLab-Workshops. Sie lernen, Ihre Erholung Tag für Tag zu nähren.", "axe3.tag": "Der Atem", "axe3.title": "Den Geist beruhigen", "axe3.hook": "Ruhe finden, selbst mitten in der Anstrengung.", "axe3.body": "Herzkohärenz, Atmung und geführte Meditation. Sie lassen den Druck los, erholen sich besser und behalten einen klaren Kopf.", "method.kicker": "Unsere Methode", "method.title": "Ein Verlauf, drei Phasen.", "method.lead": "Das ORIM-Calisthenics schreitet in Etappen voran, abgestimmt auf die drei Phasen Ihres Wegs. Jede Übung gibt es in drei Varianten: Sie beginnen genau dort, wo Sie stehen, und machen sicher Fortschritte.", "lvl.d.tag": "Phase 1 · Entzündungshemmung", "lvl.d.name": "Anfänger", "lvl.d.promise": "Wir schaffen gesunde Grundlagen, wecken den Körper sanft und finden die Freude an der Bewegung wieder.", "lvl.i.tag": "Phase 2 · Optimierung", "lvl.i.name": "Fortgeschritten", "lvl.i.promise": "Wir steigern die Intensität, verfeinern die Technik und etablieren die Regelmäßigkeit, die verändert.", "lvl.a.tag": "Phase 3 · Selbstregulierung", "lvl.a.name": "Profi", "lvl.a.promise": "Wir beherrschen, gestalten unsere Einheiten eigenständig und streben eine dauerhafte, gelassene Leistung an.", "method.note": "Progressive Überlastung, Selbstregulierung nach dem empfundenen Aufwand, Technikkorrektur vor der Intensität. Immer die Technik vor der Leistung.", "feel.kicker": "Was Sie spüren werden", "feel.title": "Weit mehr als eine Einheit.", "feel1.title": "Die Energie des Morgens", "feel1.body": "Sie stehen leichter auf, mit klarem Kopf, bereit, den Tag zu packen.", "feel2.title": "Ein Körper, der antwortet", "feel2.body": "Mehr Kraft, mehr Beweglichkeit, weniger Steifheit. Ihr Körper wird wieder zum Verbündeten.", "feel3.title": "Ein ruhigerer Geist", "feel3.body": "Der Atem verlangsamt sich, der Druck lässt nach, die Klarheit kehrt zurück.", "feel4.title": "Eine Gemeinschaft", "feel4.body": "Gesichter, die Sie erkennen, eine kollektive Energie, die Lust, wiederzukommen.", "feel.invite": "Sie gehören zu den ersten Mitgliedern des Bereichs. Ihre Geschichte wird bald die nächsten inspirieren.", "bilan.kicker": "Kostenlose Standortbestimmung · 30 Sekunden", "bilan.title": "Wo anfangen?", "bilan.lead": "Fünf Fragen, um Ihr Niveau, Ihre Phase und die passende Begleitung zu entdecken. Unverbindlich.", "tiers.kicker": "Dem Verein beitreten", "tiers.title": "Wählen Sie Ihr Engagement.", "tiers.lead": "Der Zugang zu den Einheiten des Bereichs erfolgt über die Mitgliedschaft im Verein ORIM. Drei Stufen, eine Begleitung, die mit Ihnen wächst.", "tier.s.name": "Standard", "tier.s.price": "150 CHF / Jahr", "tier.s.tagline": "Für einen sanften Start", "tier.s.f1": "ORIM-App & Basismenüs", "tier.s.f2": "Wöchentlicher Newsletter", "tier.s.f3": "Community-Forum", "tier.b.name": "Bienfaiteur", "tier.b.price": "500 CHF / Jahr", "tier.b.tagline": "Der vollständigste Weg voranzukommen", "tier.b.badge": "Empfohlen", "tier.b.f1": "Alles aus Standard", "tier.b.f2": "Kochworkshops & Sporteinheiten", "tier.b.f3": "Monatliche Webinare", "tier.b.f4": "Private Community & F&E-Bulletin", "tier.p.name": "Premium", "tier.p.price": "950 CHF / Jahr", "tier.p.tagline": "Massgeschneiderte Begleitung", "tier.p.f1": "Alles aus Bienfaiteur", "tier.p.f2": "Fachberatungen & FoodLab", "tier.p.f3": "Persönliche Ernährungsbegleitung", "tier.p.f4": "Bevorzugter Zugang zu Veranstaltungen", "tiers.cta": "Mitglied werden", "comm.kicker": "Die ORIM-Gemeinschaft", "comm.title": "Gemeinsam kommen wir besser voran.", "comm.body": "In Genf ist der Sportbereich ein Kollektiv, das sich gegenseitig anspornt, gemeinsam schwitzt und lacht. Schliessen Sie sich einer Gruppe an, die Sie nach oben zieht.", "gal.title": "In Bildern", "dir.kicker": "Bereichsleitung", "dir.title": "Eine Leidenschaft im Dienst Ihres Fortschritts.", "dir.role": "Leiter des Bereichs Sport, Ernährung & Meditation", "dir.bio": "Leidenschaftlich für Calisthenics und natürliche Bewegung stellt Ismael seine Energie in den Dienst jedes Mitglieds: eine anspruchsvolle, aber wohlwollende Methode, in der Technik und Freude gemeinsam vorankommen.", "medical": "Diese betreute körperliche Aktivität hat einen präventiven und pädagogischen Zweck; sie stellt in keinem Fall einen medizinischen Rat dar. Bei einer Erkrankung oder Zweifeln an Ihrer körperlichen Eignung konsultieren Sie vor Beginn eine qualifizierte Fachperson des Gesundheitswesens.", "foot.title": "Bereit, sich zu bewegen?", "foot.body": "Machen Sie Ihre kostenlose Standortbestimmung oder treten Sie jetzt dem Verein ORIM und seinem Sportbereich bei.", "foot.cta": "Mitglied werden", "foot.home": "Startseite", "foot.join": "Meine kostenlose Standortbestimmung", "qz.title": "Wie sieht Ihr Profil aus?", "qz.subtitle": "30 Sekunden für eine persönliche Empfehlung", "qz.progress": "Frage {n} von {t}", "qz.back": "&larr; Zurück", "qz.q.niveau.text": "Wo stehen Sie heute bei der körperlichen Aktivität?", "qz.q.niveau.opt.debutant": "Ich fange an oder steige nach einer langen Pause wieder ein", "qz.q.niveau.opt.intermediaire": "Ich trainiere gelegentlich", "qz.q.niveau.opt.avance": "Ich trainiere regelmässig (2x/Woche oder mehr)", "qz.q.objectif.text": "Was ist Ihr Hauptziel?", "qz.q.objectif.opt.perte": "Gewicht verlieren, straffer werden", "qz.q.objectif.opt.muscle": "Muskeln aufbauen, Kraft gewinnen", "qz.q.objectif.opt.stress": "Energie zurückgewinnen, Stress bewältigen", "qz.q.objectif.opt.bienetre": "Allgemeines Wohlbefinden, kein konkretes Ziel", "qz.q.contrainte.text": "Haben Sie eine Verletzung, Schmerzen oder eine gesundheitliche Einschränkung zu berücksichtigen?", "qz.q.contrainte.opt.non": "Nein, keine besondere Einschränkung", "qz.q.contrainte.opt.oui": "Ja, etwas ist zu beachten", "qz.q.frequence.text": "Wie oft, denken Sie, könnten Sie trainieren?", "qz.q.frequence.opt.1x": "1 Mal pro Woche", "qz.q.frequence.opt.2a3x": "2 bis 3 Mal pro Woche", "qz.q.frequence.opt.guidage": "Noch nicht sicher, ich brauche Beratung", "qz.q.interet.text": "Wie sehr steht Gesundheit für Sie gerade im Vordergrund?", "qz.q.interet.opt.bas": "Ich schaue mich um, ohne Dringlichkeit", "qz.q.interet.opt.moyen": "Es ist wichtig, ich bemühe mich bereits", "qz.q.interet.opt.haut": "Es ist eine echte Priorität, ich möchte eine ernsthafte Begleitung", "qz.result.intro": "Hier ist Ihr Profil, berechnet aus Ihren Antworten:", "qz.result.level.label": "Empfohlene Stufe", "qz.result.tier.label": "Empfohlene Mitgliedschaftsstufe", "qz.result.safety": "Ihre Antworten deuten auf einen echten Betreuungsbedarf hin. Wir empfehlen eine betreute Erstbilanz und bei Bedarf die Vermittlung an eine qualifizierte Fachperson des Gesundheitswesens vor dem Start.", "qz.result.cta.join": "Mitglied werden", "qz.result.cta.profile": "Kontaktaufnahme wünschen", "qz.result.restart": "Quiz wiederholen", "qz.result.sent": "Danke, Ihr Mailprogramm hat sich mit Ihrem vorausgefüllten Profil geöffnet."}, "pt": {"nav.back": "&larr; Voltar ao site ORIM", "hero.kicker": "Genebra · Calistenia · Nutrição · Meditação", "hero.title": "Retome o controlo da sua <em>energia</em>.", "hero.sub": "Calistenia ao ar livre, alimentação imuno-metabólica e respiração: um método completo e progressivo, apoiado na ciência ORIM™, para um corpo forte e uma mente clara.", "hero.cta1": "Juntar-se ao Polo Desporto", "hero.cta2": "Fazer o meu balanço gratuito", "hero.scroll": "Descobrir", "axes.kicker": "Uma abordagem, três alavancas", "axes.title": "O corpo, o prato, a respiração.", "axes.lead": "Três eixos que se reforçam mutuamente, em complemento aos workshops coletivos. Porque uma verdadeira energia nunca se constrói sobre um único pilar.", "axe1.tag": "O corpo", "axe1.title": "Mover-se com precisão", "axe1.hook": "A força do peso do corpo, em plena natureza.", "axe1.body": "Calistenia multinível, calibrada segundo a sua fase. Ganha força, mobilidade e confiança — sem material, ao seu ritmo.", "axe2.tag": "O prato", "axe2.title": "Comer para a sua energia", "axe2.hook": "Cor no prato, vitalidade no corpo.", "axe2.body": "Um acompanhamento alimentar personalizado, avaliado pelo Índice ORIM™, ligado aos workshops do FoodLab. Aprende a nutrir a sua recuperação, dia após dia.", "axe3.tag": "A respiração", "axe3.title": "Acalmar a mente", "axe3.hook": "Reencontrar a calma, mesmo no auge do esforço.", "axe3.body": "Coerência cardíaca, respiração e meditação guiada. Liberta a pressão, recupera melhor e mantém a mente clara.", "method.kicker": "O nosso método", "method.title": "Uma progressão, três fases.", "method.lead": "A calistenia ORIM avança por etapas, alinhadas com as três fases do seu percurso. Cada exercício existe em três variantes: começa exatamente onde está e progride em segurança.", "lvl.d.tag": "Fase 1 · Desinflamação", "lvl.d.name": "Iniciante", "lvl.d.promise": "Construímos bases saudáveis, despertamos o corpo com suavidade e recuperamos o prazer de mover.", "lvl.i.tag": "Fase 2 · Otimização", "lvl.i.name": "Intermédio", "lvl.i.promise": "Aumentamos a intensidade, afinamos a técnica e instalamos a regularidade que transforma.", "lvl.a.tag": "Fase 3 · Autorregulação", "lvl.a.name": "Avançado", "lvl.a.promise": "Dominamos, compomos as nossas sessões com autonomia e procuramos um desempenho duradouro e sereno.", "method.note": "Sobrecarga progressiva, autorregulação pelo esforço percebido, correção técnica antes da intensidade. Sempre a técnica antes do desempenho.", "feel.kicker": "O que vai sentir", "feel.title": "Muito mais do que uma sessão.", "feel1.title": "A energia da manhã", "feel1.body": "Levanta-se mais leve, com a mente desanuviada, pronto para agarrar o dia.", "feel2.title": "Um corpo que responde", "feel2.body": "Mais força, mais mobilidade, menos rigidez. O seu corpo volta a ser um aliado.", "feel3.title": "Uma mente serena", "feel3.body": "A respiração que abranda, a pressão que baixa, a clareza que regressa.", "feel4.title": "Uma comunidade", "feel4.body": "Rostos que o reconhecem, uma energia coletiva, a vontade de voltar.", "feel.invite": "Estará entre os primeiros membros do Polo. A sua história, em breve, inspirará os seguintes.", "bilan.kicker": "Balanço gratuito · 30 segundos", "bilan.title": "Por onde começar?", "bilan.lead": "Cinco perguntas para descobrir o seu nível, a sua fase e o acompanhamento que lhe corresponde. Sem compromisso.", "tiers.kicker": "Juntar-se à Associação", "tiers.title": "Escolha o seu compromisso.", "tiers.lead": "O acesso às sessões do Polo faz-se pela adesão à Associação ORIM. Três níveis, um acompanhamento que se aprofunda consigo.", "tier.s.name": "Standard", "tier.s.price": "150 CHF / ano", "tier.s.tagline": "Para começar com suavidade", "tier.s.f1": "App ORIM e menus básicos", "tier.s.f2": "Newsletter semanal", "tier.s.f3": "Fórum comunitário", "tier.b.name": "Bienfaiteur", "tier.b.price": "500 CHF / ano", "tier.b.tagline": "O mais completo para progredir", "tier.b.badge": "Recomendado", "tier.b.f1": "Tudo do Standard", "tier.b.f2": "Workshops de cozinha e sessões de desporto", "tier.b.f3": "Webinars mensais", "tier.b.f4": "Comunidade privada e boletim de I&D", "tier.p.name": "Premium", "tier.p.price": "950 CHF / ano", "tier.p.tagline": "O acompanhamento à medida", "tier.p.f1": "Tudo do Bienfaiteur", "tier.p.f2": "Consultas com profissional e FoodLab", "tier.p.f3": "Acompanhamento alimentar personalizado", "tier.p.f4": "Acesso prioritário a eventos", "tiers.cta": "Tornar-se membro", "comm.kicker": "A comunidade ORIM", "comm.title": "Progredimos melhor, juntos.", "comm.body": "Em Genebra, o Polo Desporto é um coletivo que se encoraja, transpira e ri em conjunto. Junte-se a um grupo que o puxa para cima.", "gal.title": "Em imagens", "dir.kicker": "Direção do polo", "dir.title": "Uma paixão ao serviço da sua progressão.", "dir.role": "Diretor do Polo Desporto, Alimentação e Meditação", "dir.bio": "Apaixonado pela calistenia e pelo movimento natural, Ismael coloca a sua energia ao serviço de cada membro: um método exigente mas atencioso, onde a técnica e o prazer avançam juntos.", "medical": "Esta atividade física supervisionada tem finalidade preventiva e educativa; não constitui, em caso algum, um parecer médico. Em caso de patologia ou dúvida sobre a sua aptidão física, consulte um profissional de saúde habilitado antes de começar.", "foot.title": "Pronto para se mover?", "foot.body": "Faça o seu balanço gratuito ou junte-se já à Associação ORIM e ao seu Polo Desporto.", "foot.cta": "Tornar-se membro", "foot.home": "Início", "foot.join": "Fazer o meu balanço gratuito", "qz.title": "Qual é o seu perfil?", "qz.subtitle": "30 segundos para uma recomendação personalizada", "qz.progress": "Pergunta {n} de {t}", "qz.back": "&larr; Voltar", "qz.q.niveau.text": "Como está hoje com a atividade física?", "qz.q.niveau.opt.debutant": "Estou a começar ou a retomar após uma longa pausa", "qz.q.niveau.opt.intermediaire": "Pratico ocasionalmente", "qz.q.niveau.opt.avance": "Treino regularmente (2x/semana ou mais)", "qz.q.objectif.text": "Qual é o seu principal objetivo?", "qz.q.objectif.opt.perte": "Perder peso, definir", "qz.q.objectif.opt.muscle": "Ganhar músculo, ganhar força", "qz.q.objectif.opt.stress": "Recuperar energia, gerir o meu stress", "qz.q.objectif.opt.bienetre": "Bem-estar geral, sem objetivo específico", "qz.q.contrainte.text": "Tem alguma lesão, dor ou condição de saúde a ter em conta?", "qz.q.contrainte.opt.non": "Não, nenhuma condição particular", "qz.q.contrainte.opt.oui": "Sim, algo a assinalar", "qz.q.frequence.text": "Com que frequência pensa poder treinar?", "qz.q.frequence.opt.1x": "1 vez por semana", "qz.q.frequence.opt.2a3x": "2 a 3 vezes por semana", "qz.q.frequence.opt.guidage": "Ainda não sei, preciso de orientação", "qz.q.interet.text": "Até que ponto a saúde é uma prioridade para si neste momento?", "qz.q.interet.opt.bas": "Estou só a ver o que existe, sem urgência", "qz.q.interet.opt.moyen": "É importante, já faço esforços", "qz.q.interet.opt.haut": "É uma verdadeira prioridade, quero um acompanhamento sério", "qz.result.intro": "Aqui está o seu perfil, calculado a partir das suas respostas:", "qz.result.level.label": "Nível recomendado", "qz.result.tier.label": "Nível de adesão sugerido", "qz.result.safety": "As suas respostas sugerem uma necessidade real de acompanhamento. Recomendamos um balanço inicial supervisionado e, se necessário, o encaminhamento para um profissional de saúde habilitado antes de começar.", "qz.result.cta.join": "Tornar-se membro", "qz.result.cta.profile": "Ser contactado(a)", "qz.result.restart": "Refazer o quiz", "qz.result.sent": "Obrigado, o seu cliente de e-mail abriu-se com o seu perfil pré-preenchido."}, "it": {"nav.back": "&larr; Ritorna al sito ORIM", "hero.kicker": "Ginevra · Calistenia · Nutrizione · Meditazione", "hero.title": "Riprendete il controllo della vostra <em>energia</em>.", "hero.sub": "Calistenia all'aperto, alimentazione immuno-metabolica e respirazione: un metodo completo e progressivo, fondato sulla scienza ORIM™, per un corpo forte e una mente lucida.", "hero.cta1": "Unirsi al Polo Sport", "hero.cta2": "Fare il mio bilancio gratuito", "hero.scroll": "Scoprire", "axes.kicker": "Un approccio, tre leve", "axes.title": "Il corpo, il piatto, il respiro.", "axes.lead": "Tre assi che si rafforzano a vicenda, a complemento dei laboratori collettivi. Perché una vera energia non si costruisce mai su un solo pilastro.", "axe1.tag": "Il corpo", "axe1.title": "Muoversi con precisione", "axe1.hook": "La forza del peso corporeo, in piena natura.", "axe1.body": "Calistenia multilivello, calibrata sulla vostra fase. Guadagnate forza, mobilità e fiducia — senza attrezzi, al vostro ritmo.", "axe2.tag": "Il piatto", "axe2.title": "Mangiare per la propria energia", "axe2.hook": "Colore nel piatto, vitalità nel corpo.", "axe2.body": "Un monitoraggio alimentare personalizzato, valutato dall'Indice ORIM™, collegato ai laboratori del FoodLab. Imparate a nutrire il vostro recupero, giorno dopo giorno.", "axe3.tag": "Il respiro", "axe3.title": "Calmare la mente", "axe3.hook": "Ritrovare la calma, anche nel cuore dello sforzo.", "axe3.body": "Coerenza cardiaca, respirazione e meditazione guidata. Liberate la pressione, recuperate meglio e mantenete la mente lucida.", "method.kicker": "Il nostro metodo", "method.title": "Una progressione, tre fasi.", "method.lead": "La calistenia ORIM avanza per tappe, allineate alle tre fasi del vostro percorso. Ogni esercizio esiste in tre varianti: iniziate esattamente da dove siete e progredite in sicurezza.", "lvl.d.tag": "Fase 1 · Disinfiammazione", "lvl.d.name": "Principiante", "lvl.d.promise": "Costruiamo basi sane, risvegliamo il corpo con dolcezza e ritroviamo il piacere di muoverci.", "lvl.i.tag": "Fase 2 · Ottimizzazione", "lvl.i.name": "Intermedio", "lvl.i.promise": "Aumentiamo l'intensità, affiniamo la tecnica e installiamo la regolarità che trasforma.", "lvl.a.tag": "Fase 3 · Autoregolazione", "lvl.a.name": "Avanzato", "lvl.a.promise": "Padroneggiamo, componiamo le nostre sessioni in autonomia e puntiamo a una prestazione duratura e serena.", "method.note": "Sovraccarico progressivo, autoregolazione secondo lo sforzo percepito, correzione tecnica prima dell'intensità. Sempre la tecnica prima della prestazione.", "feel.kicker": "Ciò che sentirete", "feel.title": "Molto più di una sessione.", "feel1.title": "L'energia del mattino", "feel1.body": "Vi alzate più leggeri, con la mente sgombra, pronti ad affrontare la giornata.", "feel2.title": "Un corpo che risponde", "feel2.body": "Più forza, più mobilità, meno rigidità. Il vostro corpo torna a essere un alleato.", "feel3.title": "Una mente serena", "feel3.body": "Il respiro che rallenta, la pressione che scende, la lucidità che ritorna.", "feel4.title": "Una comunità", "feel4.body": "Volti che vi riconoscono, un'energia collettiva, la voglia di tornare.", "feel.invite": "Sarete tra i primi membri del Polo. La vostra storia, presto, ispirerà i prossimi.", "bilan.kicker": "Bilancio gratuito · 30 secondi", "bilan.title": "Da dove cominciare?", "bilan.lead": "Cinque domande per scoprire il vostro livello, la vostra fase e l'accompagnamento adatto a voi. Senza impegno.", "tiers.kicker": "Unirsi all'Associazione", "tiers.title": "Scegliete il vostro impegno.", "tiers.lead": "L'accesso alle sessioni del Polo avviene tramite l'adesione all'Associazione ORIM. Tre livelli, un accompagnamento che si approfondisce con voi.", "tier.s.name": "Standard", "tier.s.price": "150 CHF / anno", "tier.s.tagline": "Per iniziare con dolcezza", "tier.s.f1": "App ORIM e menu di base", "tier.s.f2": "Newsletter settimanale", "tier.s.f3": "Forum della comunità", "tier.b.name": "Bienfaiteur", "tier.b.price": "500 CHF / anno", "tier.b.tagline": "Il più completo per progredire", "tier.b.badge": "Consigliato", "tier.b.f1": "Tutto lo Standard", "tier.b.f2": "Laboratori di cucina e sessioni sport", "tier.b.f3": "Webinar mensili", "tier.b.f4": "Comunità privata e bollettino R&S", "tier.p.name": "Premium", "tier.p.price": "950 CHF / anno", "tier.p.tagline": "L'accompagnamento su misura", "tier.p.f1": "Tutto il Bienfaiteur", "tier.p.f2": "Consulenze con professionista e FoodLab", "tier.p.f3": "Monitoraggio alimentare personalizzato", "tier.p.f4": "Accesso prioritario agli eventi", "tiers.cta": "Diventare membro", "comm.kicker": "La comunità ORIM", "comm.title": "Progrediamo meglio, insieme.", "comm.body": "A Ginevra, il Polo Sport è un collettivo che si incoraggia, suda e ride insieme. Unitevi a un gruppo che vi tira verso l'alto.", "gal.title": "In immagini", "dir.kicker": "Direzione del polo", "dir.title": "Una passione al servizio della vostra progressione.", "dir.role": "Direttore del Polo Sport, Alimentazione e Meditazione", "dir.bio": "Appassionato di calistenia e di movimento naturale, Ismael mette la sua energia al servizio di ogni membro: un metodo esigente ma attento, dove la tecnica e il piacere avanzano insieme.", "medical": "Questa attività fisica supervisionata ha finalità preventiva ed educativa; non costituisce in alcun caso un parere medico. In caso di patologia o dubbio sulla propria idoneità fisica, consultate un professionista sanitario abilitato prima di iniziare.", "foot.title": "Pronti a muovervi?", "foot.body": "Fate il vostro bilancio gratuito o unitevi subito all'Associazione ORIM e al suo Polo Sport.", "foot.cta": "Diventare membro", "foot.home": "Home", "foot.join": "Fare il mio bilancio gratuito", "qz.title": "Qual è il vostro profilo?", "qz.subtitle": "30 secondi per una raccomandazione personalizzata", "qz.progress": "Domanda {n} di {t}", "qz.back": "&larr; Indietro", "qz.q.niveau.text": "A che punto siete oggi con l'attività fisica?", "qz.q.niveau.opt.debutant": "Sto iniziando o riprendo dopo una lunga pausa", "qz.q.niveau.opt.intermediaire": "Pratico occasionalmente", "qz.q.niveau.opt.avance": "Mi alleno regolarmente (2x/settimana o più)", "qz.q.objectif.text": "Qual è il vostro obiettivo principale?", "qz.q.objectif.opt.perte": "Perdere peso, tonificarmi", "qz.q.objectif.opt.muscle": "Aumentare la massa muscolare, la forza", "qz.q.objectif.opt.stress": "Ritrovare energia, gestire lo stress", "qz.q.objectif.opt.bienetre": "Benessere generale, senza obiettivo preciso", "qz.q.contrainte.text": "Avete un infortunio, un dolore o una condizione di salute da considerare?", "qz.q.contrainte.opt.non": "No, nessuna condizione particolare", "qz.q.contrainte.opt.oui": "Sì, qualcosa da segnalare", "qz.q.frequence.text": "Con quale frequenza pensate di potervi allenare?", "qz.q.frequence.opt.1x": "1 volta a settimana", "qz.q.frequence.opt.2a3x": "2-3 volte a settimana", "qz.q.frequence.opt.guidage": "Non lo so ancora, ho bisogno di essere guidato/a", "qz.q.interet.text": "Quanto è prioritaria la salute per voi in questo momento?", "qz.q.interet.opt.bas": "Sto solo guardando, senza urgenza", "qz.q.interet.opt.moyen": "È importante, mi sto già impegnando", "qz.q.interet.opt.haut": "È una vera priorità, voglio un accompagnamento serio", "qz.result.intro": "Ecco il vostro profilo, calcolato in base alle vostre risposte:", "qz.result.level.label": "Livello raccomandato", "qz.result.tier.label": "Livello di adesione consigliato", "qz.result.safety": "Le vostre risposte suggeriscono un reale bisogno di accompagnamento. Raccomandiamo un bilancio iniziale supervisionato e, se necessario, l'orientamento verso un professionista sanitario abilitato prima di iniziare.", "qz.result.cta.join": "Diventare membro", "qz.result.cta.profile": "Essere ricontattato/a", "qz.result.restart": "Rifare il quiz", "qz.result.sent": "Grazie, il vostro client di posta si è aperto con il profilo precompilato."}};
 var LANGS=["fr","en","es","de","pt","it"], lang="fr";
 function ui(k){var b=(typeof I18N!=="undefined")&&I18N[lang]; return (b&&b[k])||null;}
 function setLang(l){
@@ -255,6 +450,7 @@ function setLang(l){
   if(typeof qzRender==="function") qzRender();
 }
 document.getElementById("langsw").addEventListener("click",function(e){var b=e.target.closest("button[data-l]"); if(b)setLang(b.dataset.l);});
+
 // ===== Quiz "Quel est votre profil ?" =====
 var QZ_STEPS = [
   {id:"niveau", opts:["debutant","intermediaire","avance"]},
@@ -358,6 +554,11 @@ function qzSendProfile(){
   var sent = document.getElementById("qz-sent");
   if(sent) sent.style.display = "block";
 }
+
+
+// scroll reveal
+var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});},{threshold:.14});
+document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
 
 var _s; try{_s=localStorage.getItem("orim_ps_lang");}catch(e){}
 setLang(_s||(navigator.language||"fr").slice(0,2));

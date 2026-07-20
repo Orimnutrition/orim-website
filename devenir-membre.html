@@ -249,6 +249,15 @@ function handleCandidature(e){
 
 var _s; try{_s=localStorage.getItem("orim_dm_lang");}catch(e){}
 setLang(_s||(navigator.language||"fr").slice(0,2));
+
+// Pré-sélection du niveau depuis un lien externe (ex. quiz du Pôle Sport : ?niveau=Bienfaiteur)
+try{
+  var qsNiveau = new URLSearchParams(window.location.search).get("niveau");
+  if(qsNiveau){
+    var match = document.querySelector('input[name="dm-tier"][value^="' + qsNiveau + '"]');
+    if(match) match.checked = true;
+  }
+}catch(e){}
 </script>
 </body>
 </html>
